@@ -1,8 +1,49 @@
 # Este documento tendrá que ir creciendo.
-He creado un par de programas. Para auomatizar la generacion de las actas de los tribunales que particippo.
-Las rúbricas son archivos excel (workbook) que contienen dos pestañas (worksheet). Una de ellas es la que contiene la rúbrica y se denomina Rubrica.
-La forma sencilla es  copiar todas las rúbricas en el mismo directorio y ahí convertirlas a PDF que es lo que se requiere aportar.  Así he creado dos  automatizaciones:
-1.	Appplescript para copiar los xlsx en un único directorio.
-2.	VBA para generar los PDF desde Excel ya que puede controlar las condiciones de impresión.
+\# Proyecto Unificado
 
-Consideraciones no están en VS Code sino como scripts independientes. El de VBA tiene el incoveniente de que va incrustado en el workbook.
+
+
+Este repositorio contiene múltiples proyectos y subproyectos organizados en una estructura jerárquica. Cada subproyecto puede representar una etapa, módulo o componente específico del proyecto principal.
+
+
+
+\## Estructura del Repositorio
+
+
+
+La estructura del repositorio es la siguiente:
+
+
+
+\- **proyectoA/**: Descripción del proyecto A.
+
+\- **proyectoB/**: Descripción del proyecto B.
+
+\- **proyectoC/**: Descripción del proyecto C.
+
+
+
+\## Propósito
+
+
+
+El propósito de este repositorio es centralizar y organizar todos los proyectos y subproyectos relacionados, facilitando la gestión y el desarrollo colaborativo.
+
+
+
+\## Cómo empezar
+
+
+
+1. Clona el repositorio:
+
+  \```bash
+
+  git clone https://github.com/tu-usuario/tu-repositorio.git
+
+  cd tu-repositorio
+
+  \```
+
+
+
