@@ -1,0 +1,114 @@
+import os
+import json
+from openpyxl import Workbook
+from AppKit import NSOpenPanel
+
+def select_directory_native():
+    """
+    Open a native macOS dialog to select a directory and return its path.
+    """
+    panel = NSOpenPanel.openPanel()
+    panel.setCanChooseFiles_(False)
+    panel.setCanChooseDirectories_(True)
+    panel.setAllowsMultipleSelection_(False)
+    panel.setTitle_("Select a Folder with JSON Files")
+    panel.setPrompt_("Choose")
+
+    if panel.runModal() == 1:  # User clicked "Choose"
+        return panel.URLs()[0].path()
+    return None
+
+def flatten_dict(d, parent_key=""):
+    """Flatten a nested dictionary, using dot notation for nested keys."""
+    items = []
+    for k, v in d.items():
+        new_key = f"{parent_key}.{k}" if parent_key else k
+        if isinstance(v, dict):
+            items.extend(flatten_dict(v, new_key).items())
+        else:
+            items.append((new_key, v))
+    return dict(items)
+
+def process_json_files_to_excel(directory_path):
+    """
+    Reads JSON files from the given directory, consolidates their content into a single worksheet,
+    and saves the Excel file in the same directory.
+    """
+    json_files = [f for f in os.listdir(directory_path) if f.endswith('.json')]
+    if not json_files:
+        print("No JSON files found in the selected directory.")
+        return
+
+    print(f"Processing JSON files in directory: {directory_path}")
+
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Consolidated Data"
+
+    all_data = []
+    all_keys = set()
+    skipped_files = []
+
+    for json_file in json_files:
+        file_path = os.path.join(directory_path, json_file)
+        with open(file_path, 'r', encoding='utf-8') as file:
+            try:
+                data = json.load(file)
+
+                if isinstance(data, dict):
+                    flattened_item = flatten_dict(data)
+                    flattened_item["File Name"] = json_file
+                    all_data.append(flattened_item)
+                    all_keys.update(flattened_item.keys())
+                elif isinstance(data, list):
+                    for item in data:
+                        if isinstance(item, dict):
+                            flattened_item = flatten_dict(item)
+                            flattened_item["File Name"] = json_file
+                            all_data.append(flattened_item)
+                            all_keys.update(flattened_item.keys())
+                        else:
+                            print(f"Skipping unsupported list item in {json_file}: {type(item).__name__}")
+                else:
+                    print(f"Skipping unsupported JSON structure in {json_file}: {type(data).__name__}")
+
+            except json.JSONDecodeError as e:
+                skipped_files.append((json_file, str(e)))
+
+    if not all_data:
+        print("No valid JSON data found. Excel file will not be created.")
+        return
+
+    all_keys = sorted(all_keys)
+    for col_num, key in enumerate(all_keys, start=1):
+        sheet.cell(row=1, column=col_num, value=key)
+
+    for row_num, item in enumerate(all_data, start=2):
+        for col_num, key in enumerate(all_keys, start=1):
+            sheet.cell(row=row_num, column=col_num, value=item.get(key))
+
+    excel_file_path = os.path.join(directory_path, "Consolidated_JSON_Output.xlsx")
+    print(f"Attempting to save Excel file to: {excel_file_path}")
+
+    try:
+        workbook.save(excel_file_path)
+        if os.path.exists(excel_file_path):
+            print(f"Excel file successfully created at: {excel_file_path}")
+        else:
+            print("File save operation completed, but file not found at expected location.")
+    except Exception as e:
+        print(f"Failed to save Excel file: {e}")
+
+    if skipped_files:
+        error_log_path = os.path.join(directory_path, "JSON_Errors.log")
+        with open(error_log_path, 'w') as error_log:
+            for file_name, reason in skipped_files:
+                error_log.write(f"{file_name}: {reason}\n")
+        print(f"Some files were skipped due to errors. Details logged in: {error_log_path}")
+
+if __name__ == "__main__":
+    directory = select_directory_native()
+    if directory:
+        process_json_files_to_excel(directory)
+    else:
+        print("No directory selected. Exiting...")

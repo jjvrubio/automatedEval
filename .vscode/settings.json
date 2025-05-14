@@ -1,0 +1,9 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv_${command:python.interpreterArchitecture}/bin/python",
+    "python.analysis.extraPaths": [
+        "./venv_intel/lib/python3.x/site-packages",
+        "./venv_arm64/lib/python3.x/site-packages"
+    ],
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.preferredDarkColorTheme": "Default Dark+"
+}

@@ -1,0 +1,1 @@
+pdftotext "/Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Tribunales/TFM 2025/Tribunal Enero/27 enero/TFT.pdf" - | awk '/REFERENCIAS/{buf=""} {buf=buf ORS $0} END{print buf}' > "/Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Tribunales/TFM 2025/Tribunal Enero/27 enero/references.md"

@@ -1,0 +1,17 @@
+
+import pandas as pd
+import ace_tools as tools
+
+# Create Evaluation Rubric Data
+rubric_data = {
+    "Criteria": ["Identification of Stakeholders", "Definition of Communication Objectives", "Categorization of Needs", "Urgency and Frequency Definition"],
+    "1 - Poor": ["No clear stakeholder list", "Unclear or missing objectives", "No clear distinction", "Not established"],
+    "3 - Moderate": ["Some key stakeholders identified", "Some defined, but not structured", "Some needs categorized", "Basic differentiation"],
+    "5 - Excellent": ["All relevant stakeholders mapped", "Clearly defined and aligned objectives", "Comprehensive classification", "Clearly structured and standardized"]
+}
+
+# Convert to DataFrame
+rubric_df = pd.DataFrame(rubric_data)
+
+# Display DataFrame
+tools.display_dataframe_to_user(name="Communication Needs Mapping Rubric", dataframe=rubric_df)
