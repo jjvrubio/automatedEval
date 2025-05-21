@@ -1,9 +1,9 @@
+from pathlib import Path
 
 
 import os
 import traceback
 import time
-from pathlib import Path
 from AppKit import NSOpenPanel
 from openpyxl import load_workbook
 from selenium import webdriver

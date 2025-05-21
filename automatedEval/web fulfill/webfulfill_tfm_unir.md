@@ -67,3 +67,4 @@ Tras el paso 6, el script **no cierra Safari**. El usuario puede:
 
 Esta versión está optimizada para **"Dirección de Procesos Estratégicos"**, pero puede adaptarse fácilmente a otras titulaciones cambiando los valores en la función `asignar_valores()`.
 
+-------------------------------
