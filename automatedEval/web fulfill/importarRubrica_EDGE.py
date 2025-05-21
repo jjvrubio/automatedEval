@@ -3,12 +3,13 @@ import shutil
 import time
 from datetime import datetime
 from selenium import webdriver
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
 from AppKit import NSOpenPanel
 
-RUTA_LOG = os.path.expanduser("~/Desktop/traza_seleccion_safari.txt")
+RUTA_LOG = os.path.expanduser("~/Desktop/traza_seleccion.txt")
 
 def trazar(msg):
     timestamp = datetime.now().strftime('%H:%M:%S')
@@ -46,7 +47,7 @@ def buscar_y_seleccionar(driver, valor_buscado):
                     driver.execute_script("arguments[0].scrollIntoView(true);", s)
                     select.select_by_visible_text(opt.text)
                     trazar(f"✅ '{valor_buscado}' seleccionado en <select #{i}> con texto exacto: '{opt.text}'")
-                    with open(f"seleccion_{valor_buscado.replace(' ', '_')}_safari.html", "w", encoding="utf-8") as f:
+                    with open(f"seleccion_{valor_buscado.replace(' ', '_')}.html", "w", encoding="utf-8") as f:
                         f.write(s.get_attribute("outerHTML"))
                     return True
         except Exception as e:
@@ -55,13 +56,15 @@ def buscar_y_seleccionar(driver, valor_buscado):
     return False
 
 def main():
-    trazar("▶ INICIO - SELECCIÓN POR CONTENIDO (Safari)")
+    trazar("▶ INICIO - SELECCIÓN POR CONTENIDO")
     pdf_path = seleccionar_pdf()
     if not pdf_path:
         return
     pdf_local = modificar_pdf(pdf_path)
 
-    driver = webdriver.Safari()
+    options = Options()
+    options.add_argument("start-maximized")
+    driver = webdriver.Edge(service=Service(), options=options)
     driver.get("https://verifirma.unir.net/Rubricas")
 
     time.sleep(5)
