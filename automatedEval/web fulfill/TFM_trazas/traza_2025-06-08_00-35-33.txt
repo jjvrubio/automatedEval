@@ -1,0 +1,16 @@
+[00:35:33] ▶ INICIO - SAFARI + TRAZAS LOCALES
+[00:35:50] 🧑 Nombre introducido: Talía Patricia 	Andrade Merecí
+[00:35:56] 🪪 DNI introducido: 1724371305
+[00:36:02] 📎 PDF seleccionado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Tribunales/TFM 2025/Tribunal Mayo/_XLSXs/RUBRICA_TFE Talia Andrade.pdf
+[00:36:02] 📄 Copiado y marcado: /tmp/RUBRICA_TFE Talia Andrade.pdf
+[00:36:11] ✅ Campos del alumno rellenados: {'nombre': 'Talía Patricia\xa0\tAndrade\xa0Merecí', 'dni': '1724371305'}
+[00:36:12] Estado botón Continuar: enabled=True, displayed=True, html=<button type="submit" id="btnFirmar" class="btn btn-primary w-100" title="Continuar a firma">Continuar</button>
+[00:36:13] ✅ '2024-2025' seleccionado en <select #0>: '2024-2025'
+[00:36:14] ✅ 'Máster' seleccionado en <select #2>: 'Máster'
+[00:36:15] ✅ 'Dirección de Procesos Estratégicos' seleccionado en <select #3>: 'Dirección de Procesos Estratégicos'
+[00:36:16] ✅ 'Primavera' seleccionado en <select #1>: 'Primavera'
+[00:36:17] ✅ Botón 'Continuar' pulsado (click normal).
+[00:36:17] Safari traído al frente tras pulsar 'Continuar'.
+[00:36:17] ✅ Proceso completado.
+[00:36:18] ✅ Usuario y contraseña rellenados tras continuar.
+[00:36:41] Cerrando Safari...

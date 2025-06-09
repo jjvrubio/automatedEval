@@ -1,0 +1,100 @@
+2025-06-03 11:12:48,231 [INFO] 🟢 Inicio del proceso de evaluación
+2025-06-03 11:12:48,232 [INFO] 📁 Usando rúbrica fija: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
+2025-06-03 11:12:48,232 [INFO] 📁 Rúbrica seleccionada: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
+2025-06-03 11:12:48,233 [INFO] ✅ Rúbrica cargada correctamente.
+2025-06-03 11:13:22,172 [INFO] 📄 TFM seleccionado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/Gustavo Fernández Calvo/VALINOR 2ª.docx
+2025-06-03 11:13:22,173 [INFO] 📘 Instrucciones ultraestrictas cargadas desde: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/Prompt en modo humano.md
+2025-06-03 11:13:22,173 [INFO] 📥 Leyendo DOCX...
+2025-06-03 11:13:22,246 [INFO] ✅ Lectura del TFM completada.
+2025-06-03 11:13:22,246 [INFO] Longitud del texto extraído del TFM: 54681
+2025-06-03 11:13:22,246 [INFO] Primeros 500 caracteres del texto extraído:
+
+
+Universidad Internacional de La Rioja
+Facultad de Economía y Empresa
+
+
+
+
+Máster Universitario en Transformación Digital en la Empresa
+Valinor Tech
+
+
+
+	
+
+
+Resumen 
+Valinor Tech (En adelante VT) es una empresa dedicada a la prestación de servicios tecnológicos (desarrollo y mantenimiento de software, gestión, securización y monitorización de infraestructuras, gestión y administración de Bases de Datos, gestión y securización de puestos de usuarios…). El principal cliente de VT es una empresa de 
+2025-06-03 11:13:22,247 [INFO] 🧠 Evaluando criterio: Formato y lenguaje:
+(10%; máx. 1punto)
+Estilo formal/académico
+2025-06-03 11:13:26,068 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:13:26,075 [INFO] 🧠 Evaluando criterio: Estructura/apartados: 
+(10%)
+· Portada; Resumen; Índice
+· Introducción; Justificación; objetivos
+· Análisis externo e interno de la empresa
+· Conclusiones  
+· Limitaciones, principales amenazas y alternativas                                                                                                                                                                                                                                                                                                                           · Referencias bibliográficas
+2025-06-03 11:13:26,549 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:13:26,550 [INFO] Retrying request to /chat/completions in 13.362000 seconds
+2025-06-03 11:14:00,357 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:14:00,359 [INFO] 🧠 Evaluando criterio: Portada, índice y resumen: 
+(1%)
+2025-06-03 11:14:00,630 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:14:00,631 [INFO] Retrying request to /chat/completions in 15.516000 seconds
+2025-06-03 11:18:50,736 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:18:51,527 [INFO] 🧠 Evaluando criterio: Introducción/objetivos: 
+(4%)
+2025-06-03 11:18:51,928 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:18:51,929 [INFO] Retrying request to /chat/completions in 6.498000 seconds
+2025-06-03 11:19:17,328 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:19:17,329 [INFO] 🧠 Evaluando criterio: Proyecto:
+(30%)
+2025-06-03 11:19:17,649 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:19:17,650 [INFO] Retrying request to /chat/completions in 17.092000 seconds
+2025-06-03 11:19:37,603 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:19:37,604 [INFO] 🧠 Evaluando criterio: Fotografías, ilustraciones, tablas, gráficos y figuras: 
+(1%)
+2025-06-03 11:19:37,966 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:19:37,966 [INFO] Retrying request to /chat/completions in 31.788000 seconds
+2025-06-03 11:20:20,710 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:20:20,714 [INFO] 🧠 Evaluando criterio: Conclusiones: 
+(6%)
+2025-06-03 11:20:20,906 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:20:20,907 [INFO] Retrying request to /chat/completions in 24.370000 seconds
+2025-06-03 11:21:06,075 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:21:06,078 [INFO] 🧠 Evaluando criterio: Limitaciones, principales amenazas y alternativas:
+(5%)
+2025-06-03 11:21:06,244 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:21:06,244 [INFO] Retrying request to /chat/completions in 15.340000 seconds
+2025-06-03 11:21:39,553 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:21:39,557 [INFO] 🧠 Evaluando criterio: Referencias bibliográficas: 
+(3%)
+2025-06-03 11:21:39,750 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:21:39,751 [INFO] Retrying request to /chat/completions in 18.040000 seconds
+2025-06-03 11:22:19,827 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:22:19,830 [INFO] 🧠 Evaluando criterio: Presentación del TFE/Exposición:
+(10%)
+2025-06-03 11:22:20,106 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:22:20,106 [INFO] Retrying request to /chat/completions in 14.134000 seconds
+2025-06-03 11:22:39,848 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:22:39,851 [INFO] 🧠 Evaluando criterio: Estructura y formato de la presentación:
+(4%)
+2025-06-03 11:22:40,390 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:22:40,391 [INFO] Retrying request to /chat/completions in 29.084000 seconds
+2025-06-03 11:23:36,523 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:23:36,533 [INFO] 🧠 Evaluando criterio: Dominio del contenido:
+(8%)
+2025-06-03 11:23:36,731 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:23:36,731 [INFO] Retrying request to /chat/completions in 8.988000 seconds
+2025-06-03 11:23:48,073 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:23:48,074 [INFO] 🧠 Evaluando criterio: Comunicación (verbal y no verbal) con el tribunal:
+(8%)
+2025-06-03 11:23:48,298 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-03 11:23:48,298 [INFO] Retrying request to /chat/completions in 32.432000 seconds
+2025-06-03 11:24:25,243 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 11:24:25,286 [INFO] 💾 CSV generado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/Gustavo Fernández Calvo/evaluacion_tfm_resultado.csv
+2025-06-03 11:24:25,288 [INFO] 📝 Markdown generado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/Gustavo Fernández Calvo/evaluacion_tfm_informe.md
+2025-06-03 11:24:25,288 [INFO] ✅ Evaluación finalizada correctamente.

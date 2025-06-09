@@ -1,0 +1,16 @@
+[00:31:04] ▶ INICIO - SAFARI + TRAZAS LOCALES
+[00:31:13] 🧑 Nombre introducido: Maria Cristina Salvador Spin
+[00:31:18] 🪪 DNI introducido: 1726025784
+[00:31:23] 📎 PDF seleccionado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Tribunales/TFM 2025/Tribunal Mayo/_XLSXs/RUBRICA_TFE Mª Cristina Salvador.pdf
+[00:31:23] 📄 Copiado y marcado: /tmp/RUBRICA_TFE Mª Cristina Salvador.pdf
+[00:31:35] ✅ Campos del alumno rellenados: {'nombre': 'Maria Cristina\xa0Salvador\xa0Spin', 'dni': '1726025784'}
+[00:31:36] Estado botón Continuar: enabled=True, displayed=True, html=<button type="submit" id="btnFirmar" class="btn btn-primary w-100" title="Continuar a firma">Continuar</button>
+[00:31:36] ✅ '2024-2025' seleccionado en <select #0>: '2024-2025'
+[00:31:38] ✅ 'Máster' seleccionado en <select #2>: 'Máster'
+[00:31:39] ✅ 'Dirección de Procesos Estratégicos' seleccionado en <select #3>: 'Dirección de Procesos Estratégicos'
+[00:31:40] ✅ 'Primavera' seleccionado en <select #1>: 'Primavera'
+[00:31:41] ✅ Botón 'Continuar' pulsado (click normal).
+[00:31:41] Safari traído al frente tras pulsar 'Continuar'.
+[00:31:41] ✅ Proceso completado.
+[00:31:42] ✅ Usuario y contraseña rellenados tras continuar.
+[00:31:58] Cerrando Safari...

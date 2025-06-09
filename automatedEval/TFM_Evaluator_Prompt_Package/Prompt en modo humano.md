@@ -1,8 +1,12 @@
 
 
-Sigue las instrucciones y lee el prompt antes de responder. Si encuentras problemas de acceso a algún archivo, avisa e interrumpe la respuesta. De forma especifica, evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. Se debe realizar una lectura profundo de cada apartado  contemplando: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y secuenciación del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
 
-Evalúa el documento pdf anexo según los criterios de evaluación y sus niveles de la rúbrica reflejados en la tabla que aparece a continuación:
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
 
 | Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -14,7 +18,7 @@ Evalúa el documento pdf anexo según los criterios de evaluación y sus niveles
 | Fotografías, ilustraciones, tablas, gráficos y figuras:      (1%) | · No hay  numeración;     · No pone título;     · Hay errores en la información que contiene;     · Están poco elaboradas.     · No se explican, ni se justifican | · Numeradas,  aunque el título no refleja del todo el contenido;     · Contiene alguna errata o no aportan información relevante.     · No indica la fuente, en caso de no ser original.     · La mayor parte están sin justificar ni explicar | · Correcta  numeración y titulación;     · Sin erratas, aunque alguna de ellas no aporta información relevante       · Indica la fuente, en caso de no ser original     · La mayor parte están justificadas y explicadas | · Correcta  numeración y titulación;     · Selección adecuada acorde con el contenido del TFE.     · Indica la fuente, en caso de no ser original     · Todas están justificadas y explicadas     · Incorpora leyenda;     · Incluye índice de figuras y tablas; |
 | Conclusiones:      (6%)                                      | · No hay  conclusiones.     · Las conclusiones no responden a los objetivos planteados y no analizan la  viabilidad del proyecto | · Hay apartado  de conclusiones pero no responde a todos los objetivos;     · Analizan la viabilidad pero les falta profundidad | · Hay apartado  de conclusiones que permite conocer si se han conseguido los objetivos;     · Son consecuencia del análisis de viabilidad;     · Sólo presentan los resultados sin mostrar un análisis de los mismos | · Hay apartado  de conclusiones que permite conocer si se han conseguido los objetivos;     · Son consecuencia del análisis de viabilidad;     · Se expresan con terminología propia y muestra un análisis de los  resultados obtenidos; |
 | Limitaciones, principales amenazas y alternativas:     (5%)  | · No hay  limitaciones, riesgos y amenazas o no se derivan del proyecto.                                                                                                 · No elabora planes de contingencia. | · Presenta las  limitaciones, riesgos y amenazas encontradas para llevar a cabo el proyecto.       · No elabora planes de contingencia. | · Presenta las  limitaciones, riesgos y amenazas encontradas para llevar a cabo el  proyecto.                                                                                    · Elabora planes de contingencia que no se derivan del proyecto  elaborado. | · Presenta las  limitaciones, riesgos y amenazas encontradas para llevar a cabo el  proyecto.                                                                                    · Elabora planes de contingencia adecuados y derivados del proyecto. |
-| Referencias bibliográficas:      (3%)                        | · No incluye  bibliografía;      · La mayor parte de las citas en el texto no aparece en las referencias  bibliográficas y a la inversa;     · No hay coherencia en la forma de citar en el texto y tampoco en la  bibliografía. | · Incluye  bibliografía pero falta alguna de las referencias citadas en el texto (máx.  3);     · No utiliza normativa APA pero la forma de citar es coherente a lo largo  del documento. | · Incluye  bibliografía y todas las citas del  texto se encuentran en la lista de referencias;     · No utiliza normativa APA pero la forma de citar es coherente a lo largo  del documento. | · Incluye  bibliografía ;     · Todas las citas del texto se encuentran la lista de referencias;     · Utiliza normativa APA |
+| Referencias bibliográficas:      (3%)                        | · No incluye  bibliografía;      · La mayor parte de las citas en el texto no aparece en las referencias  bibliográficas y a la inversa;     · No hay coherencia en la forma de citar en el texto y tampoco en la  bibliografía. | · Incluye  bibliografía pero falta alguna de las referencias citadas en el texto (máx.  3);     · No utiliza normativa APA 7 pero la forma de citar es coherente a lo largo  del documento. | · Incluye  bibliografía y todas las citas del  texto se encuentran en la lista de referencias;     · No utiliza normativa APA 7 pero la forma de citar es coherente a lo largo  del documento. | · Incluye  bibliografía ;     · Todas las citas del texto se encuentran la lista de referencias;     · Utiliza normativa APA 7 |
 | Presentación del TFE/Exposición:     (10%)                   | · El discurso no  tiene orden ni estructura, solo presenta ideas poco coherentes;     · No queda claro que ha hecho en el TFE;     · No ha conseguido captar la atención de la audiencia;     · No se ajusta al tiempo establecido. | · Discurso  ordenado pero le falta claridad;     · Algunos apartados están mejor presentados que otros;     · Se ajusta al tiempo establecido.     · Puede mejorar la capacidad de síntesis. | · Expone las  ideas de forma clara y ordenada;     · La comunicación es fluida;     · Se ajusta al tiempo establecido pero puede mejorarse algún  apartado.     · Puede mejorar la capacidad de síntesis. | · Expone las  ideas de forma clara y ordenada;     · Demuestra capacidad de síntesis;     · La comunicación es fluida;     · Se ajusta al tiempo establecido;      · Ha conseguido captar la atención de la audiencia durante toda la  presentación. |
 | Estructura y formato de la presentación:     (4%)            | · Presentación  sin formato ni estilo homogéneo;     · No tiene una estructura definida;     · La presentación tiene faltas de ortografía graves. | · Presentación  con un formato simple (solo incluye texto, sin diagramas, ni figuras);     · Hay un número excesivo de diapositivas/información. | · Presentación  con formato adecuado;     · Incluye figuras y/o diagramas además del texto;     · Podría reducirse el número de diapositivas/información;     · El uso de las animaciones o videos no es adecuado. | · Presentación  con formato y longitud adecuadas;     · Utiliza figuras y/o diagramas que facilitan el discurso y ayudan a la  comprensión;     · Incluye animaciones y vídeos (si fuera pertinente). |
 | Dominio del contenido:     (8%)                              | · Lee el  contenido de un papel, no utiliza las diapositivas;     · No contextualiza el trabajo;     · No hay coherencia entre la presentación y el contenido del TFE;     · Se pierde repetidamente; no sabe de lo que está hablando;     · No responde a las preguntas del tribunal.     · No demuestra conocimiento sobre el contenido de su trabajo. | · Utiliza las  diapositivas pero también emplea un papel, sin llegar a estar continuamente  leyendo;     · Hay coherencia entre la presentación y el contenido del TFE pero alguno  de los apartados está poco trabajado;     · Se ha perdido alguna vez pero ha sido posible seguir el hilo  argumental;     · Responde a las preguntas del tribunal pero repitiendo el discurso, es  poco original. | · Utiliza las  diapositivas y, en pocas ocasiones, se apoya en un papel;     · Hay coherencia entre la presentación y el contenido del TFE;     · Responde adecuadamente a las preguntas del tribunal. | · Realiza la  exposición utilizando las diapositivas solo como apoyo;     · Demuestra interés y entusiasmo cuando habla del tema;     · Hay coherencia entre la presentación y el contenido del TFE;     · Responde adecuadamente a las preguntas del tribunal. |
@@ -34,17 +38,15 @@ Al finalizar preparar un archivo en formato markdown para descargar.
 
 ## Resumen
 
-Redactar un resumen no es sólo realizar una redacción que auto-justifique la opinión del autor sobre el trabajo de fin de maestría (TFM) que ha escrito. Hay que realizar una lectura profunda.
+Redactar un resumen no es sólo realizar una redacción que auto-justifique la opinión del autor sobre el trabajo de fin de maestría (TFM) que ha escrito. Hay que realizar una lectura profunda y congruente del documento completo. La extensión de un resumen no debe superar una página en ningún caso
 
-Un resumen proporcionar una rápida visión a los lectores exponiéndotelas la justificación o motivación principal para abordar el proyecto objeto del TFM. La justificación debe estar seguida por el objetivo principal derivado. A continuación se enuncia la metodologia seleccionada para alcanzar el objetivo, y sus sub-objetivos. Y finaliza con una conclusion que detalla en que grado se ha alcanzado objetivo. Y, en caso de no haber sido alcanzado el motivo o impedimento.
-
-Además, la extensión de un resumen no debe superar una página en ningún caso.
+La resumen debe estar contemplar la justificación teórica y económica. De las que se deriva el objetivo principal y específicos. Los cuales requieren la selección motivada de una metodología. Y, finaliza con una conclusion que describe si y en que grado se han alcanzado tanto el objetivo principal como los específicos. Y, en caso de no haber sido alcanzado el motivo o impedimento.
 
 
 
 ## Justificación
 
-La justificación construye el contexto en el que se va a desarrollar el proyecto o iniciativa sobre la que versa el Trabajo de Fin de Maestría TMF. Debe desarrollar, con el debido balance entre extensión y concreción, los siguientes aspectos,
+La justificación construye el contexto en el que se va a desarrollar el proyecto o iniciativa sobre la que versa el Trabajo de Fin de Maestría TMF. Debe desarrollar, con el debido balance entre extensión y concreción, los siguientes aspectos:
 
 ### 1. Identificación de la Problemática u Oportunidad
 
@@ -211,7 +213,7 @@ Para realizar un análisis interno completo y efectivo, el TFM debe mostrar evid
 6. Fotografías, ilustraciones, tablas, gráficos y figuras (1%)
 7. Conclusiones (6%)
 8. Limitaciones, amenazas y alternativas (5%)
-9. Referencias bibliográficas (3%)
+9. Referencias bibliográficas (3%) en formato APA 7
 10. Presentación del TFE/Exposición (10%) → No evaluable (oral)
 11. Estructura y formato de la presentación (4%) → No evaluable (oral)
 12. Dominio del contenido (8%) → No evaluable (oral)
@@ -235,7 +237,11 @@ Cada evaluación incluirá una tabla resumen con los criterios en el mismo orden
 
 ## 📌 Conclusión global
 
-- Incluir siempre un apartado de Conclusión global que determine con claridad el nivel alcanzado por el trabajo.
+- Incluir siempre un apartado de Conclusión global que determine con claridad el nivel alcanzado por el trabajo basado en un análisis de congruencia estructural siguiendo:
+  - Detectar **rupturas lógicas o argumentales**.
+  - Identificar objetivos “colocados”, sin nexo real con el problema.
+  - Evaluar si la **solución propuesta responde directamente al diagnóstico**.
+  - Verificar si **las conclusiones cierran el ciclo metodológico**.
 - El nivel global debe reflejar la nota más representativa, sin redondear hacia arriba si existen carencias importantes.
 
 ## ❓ Preguntas de clarificación académica
