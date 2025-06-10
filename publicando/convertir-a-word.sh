@@ -12,8 +12,8 @@
 
 # CONFIGURACIÓN DE RUTAS
 BIB="/Users/juanjo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Research/Kaleida GM bibliografía.bib"
-CSL="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/publicando/apa-7th-edition.csl"
-REFERENCE_DOC="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/publicando/Para Pulse/plantilla pulse.docx" # Esta palntilla la cambio cuando voya a publicar en pulse
+CSL="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/publicando/apa-7th-edition.csl"
+REFERENCE_DOC="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/publicando/Para Pulse/plantilla pulse.docx" # Esta palntilla la cambio cuando voya a publicar en pulse
 
 # VERIFICACIÓN DE ARGUMENTOS
 if [ -z "$1" ]; then
@@ -48,7 +48,7 @@ else
   REFERENCE_OPTION=(--reference-doc "$REFERENCE_DOC")
 fi
 
-LUA_FILTER="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/publicando/pagebreak.lua"
+LUA_FILTER="/Users/juanjo/Documents/Personal/JJVR/automatizaciones/publicando/pagebreak.lua"
 
 # EJECUCIÓN DE PANDOC
 pandoc "$MD" -o "$DOCX" \
