@@ -1,0 +1,29 @@
+{
+  "modo": "ultra-estricto",
+  "titulo": "INSTRUCCIONES ULTRA-ESTRICTAS PARA LA EVALUACIÓN",
+  "normas": [
+    "Evalúa cada sección del TFM según la estructura oficial, aunque no esté presente explícitamente.",
+    "Para cada sección, utiliza los subcriterios de la rúbrica como guía estricta de evaluación.",
+    "Para cada subcriterio, indica la puntuación, la justificación literal y cita textual del TFM.",
+    "Indica explícitamente qué norma(s) y ejemplo(s) de esta configuración aplicas en cada caso.",
+    "Si una sección o subcriterio es deficiente, ambigua o falta, asigna la puntuación mínima y explica detalladamente por qué, citando la norma correspondiente.",
+    "No asignes puntuaciones altas si no puedes citar evidencia textual clara y completa para ese subcriterio.",
+    "Prohíbido hacer suposiciones, inferencias o generalizaciones: solo cuenta lo que está escrito.",
+    "Justifica cada puntuación citando fragmentos literales del texto del estudiante.",
+    "Penaliza cualquier ambigüedad, vaguedad o ausencia de información.",
+    "Para los criterios relacionados con estructura, coherencia, argumentación o flujo, analiza si el texto mantiene una progresión lógica y congruente entre apartados.",
+    "Detecta y penaliza contradicciones, repeticiones innecesarias, saltos argumentales o falta de conexión entre ideas.",
+    "Incluye ejemplos concretos de incoherencias, problemas de flujo o contradicciones si los encuentras.",
+    "Presenta la evaluación en formato estructurado: para cada sección y subcriterio, indica la puntuación, la justificación y la cita textual.",
+    "Al final, incluye una tabla resumen de puntuaciones y recomendaciones finales."
+  ],
+  "ejemplos": [
+    "Si el subcriterio es 'Coherencia argumental', primero identifica la tesis principal, luego revisa si cada apartado desarrolla esa tesis sin contradicciones.",
+    "Si el subcriterio es 'Flujo y estructura', revisa que cada sección conecte lógicamente con la anterior y la siguiente, y señala cualquier salto abrupto.",
+    "Si detectas una contradicción, cítala y explica por qué afecta la puntuación.",
+    "Si el texto repite ideas sin aportar valor, indícalo y penaliza la puntuación.",
+    "Si la progresión de ideas es clara y lógica, justifica la puntuación alta con ejemplos textuales.",
+    "Si cualquier sección obligatoria de la estructura (por ejemplo, 'Formatting & Style Guide', 'References', 'Executive Summary', etc.) no cumple todos los requisitos, asigna la puntuación mínima y explica detalladamente cada carencia citando la norma correspondiente. Esto es extrapolable a todas las secciones del TFM, no solo a las mencionadas como ejemplo.",
+    "Si una sección obligatoria no aparece o es insuficiente, asigna la puntuación mínima y justifica la penalización."
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "BUSINESS MODEL ": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "The idea is clearly stated ",
+        "contribucion": 0.15,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The business model is coherent as well as the value proposition and aligned with the analysis",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Includes competitive advantages ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The economic viability is assessed",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Includes a summary of the business model (canva or similar)",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "FINANCES ": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "Expenses are well detailed and analyzed (fix and variable) as well as incomes ",
+        "contribucion": 0.15,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "P&L is correct and includes EBITDA, EBIT, cash flow",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Balance sheet is included",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Projections are included",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Financial proposals are realistic ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The financial plan is coherent with the operations plan ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "FORMAT": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "General (letter, pages…)",
+        "contribucion": 0.1,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "References",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "MARKETING": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "Marketing plan has objective goals ",
+        "contribucion": 0.15,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Marketing plan is aligned with the business model ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Marketing proposals are coherent and well detailed",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "OPERATIONS ": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "Goals of the proposal are clearly stated ",
+        "contribucion": 0.2,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Goals are measurable and with indicated KPIs",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Goals are temporalized in a coherent way ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The action plan is shown and well detailed ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The HR strategy is defined",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The steps to implement the project are stated ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The needs to implement the project are stated ",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "The tangible and intangible resources are detected and well assigned",
+        "contribucion": null,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "PRESENTATION": {
+    "peso": 0.3,
+    "items": [
+      {
+        "detalle": "Visual support",
+        "contribucion": 0.3,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Time adequation",
+        "contribucion": 0.1,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Oral communication",
+        "contribucion": 0.4,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      },
+      {
+        "detalle": "Knowledge of the topic ",
+        "contribucion": 0.2,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  },
+  "RISK MITIGATION": {
+    "peso": NaN,
+    "items": [
+      {
+        "detalle": "A risk mitigation plan is included",
+        "contribucion": 0.1,
+        "escala": {
+          "1": "Deficiente",
+          "2": "Insuficiente",
+          "3": "Aprobado",
+          "4": "Notable",
+          "5": "Sobresaliente"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+
+criteria:
+  Strategic Analysis:
+    default_score: 6
+    default_comment: "Diagnosis presented but lacks integrated models (e.g. PESTEL, competitor analysis)."
+  Business Model Development:
+    default_score: 5
+    default_comment: "Revenue model and value logic not clearly structured."
+  Value Proposition:
+    default_score: 5
+    default_comment: "Value is stated but not contrasted with market needs or competitors."
+  Marketing Plan:
+    default_score: 4
+    default_comment: "No structured segmentation or strategic campaign planning."
+  Operational Plan:
+    default_score: 4
+    default_comment: "Execution roadmap is missing."
+  Human Resources:
+    default_score: 3
+    default_comment: "No team structure or staffing plan described."
+  Financial Aspects:
+    default_score: 4
+    default_comment: "No clear cost/revenue projections or metrics."
+  Risk Mitigation Plan:
+    default_score: 3
+    default_comment: "Risks are not formally identified or mitigated."
+  English Language & Style:
+    default_score: 6
+    default_comment: "Readable, but inconsistent academic tone."
+  Formal Presentation:
+    default_score: 7
+    default_comment: "Mostly correct but formatting and referencing are inconsistent."
+
+clarification_questions:
+  - "What are your core customer segments and how is the value proposition tailored to them?"
+  - "How does the financial forecast relate to your operational roadmap?"
+  - "What risks have you identified and how do you plan to manage them?"
