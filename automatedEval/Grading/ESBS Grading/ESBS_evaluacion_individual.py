@@ -51,6 +51,19 @@ def read_pdf_text(file_path: str) -> str:
         reader = PyPDF2.PdfReader(f)
         return "\n".join(p.extract_text() or "" for p in reader.pages)
 
+def read_docx_text(file_path: str) -> str:
+    doc = docx.Document(file_path)
+    return '\n'.join([p.text for p in doc.paragraphs if p.text.strip()])
+
+def read_student_text(file_path: str) -> str:
+    ext = os.path.splitext(file_path)[1].lower()
+    if ext == '.pdf':
+        return read_pdf_text(file_path)
+    elif ext == '.docx':
+        return read_docx_text(file_path)
+    else:
+        raise ValueError(f"Formato de archivo no soportado: {ext}")
+
 def dividir_tfm_en_bloques_por_paginas(file_path: str) -> dict:
     with open(file_path, "rb") as f:
         reader = PyPDF2.PdfReader(f)
@@ -73,9 +86,9 @@ def save_evaluation_result(content: str, output_path: str):
 def select_student_file() -> str:
     NSApplication.sharedApplication()
     panel = NSOpenPanel.alloc().init()
-    panel.setTitle_("Selecciona el archivo PDF del estudiante")
+    panel.setTitle_("Selecciona el archivo PDF o DOCX del estudiante")
     panel.setCanChooseFiles_(True)
-    panel.setAllowedFileTypes_(["pdf"])
+    panel.setAllowedFileTypes_(["pdf", "docx"])
     if panel.runModal() == 1:
         return panel.URLs()[0].path()
     return None
@@ -229,23 +242,20 @@ def main():
     evaluador = EvaluadorTFM(api_key=api_key)
     rubrica_md = rubrica_a_markdown(rubrica_json)
 
-    # Leer texto del PDF según discriminante de tokens (ventana de contexto)
-    with open(student_file, "rb") as f:
-        reader = PyPDF2.PdfReader(f)
-        textos_paginas = [p.extract_text() or "" for p in reader.pages]
-        texto_completo = "".join(textos_paginas)
-        token_count = estimate_token_count(texto_completo)
-        if token_count <= evaluador.token_limit:
-            bloques = {f"TFM completo (1-{len(reader.pages)} páginas)": texto_completo}
-        else:
-            # Si excede el límite, divide en tercios de páginas como fallback
-            total = len(reader.pages)
-            tercios = [total // 3 + (1 if i < total % 3 else 0) for i in range(3)]
-            bloques, start = {}, 0
-            for i, n in enumerate(tercios):
-                texto = "".join(textos_paginas[start:start + n])
-                bloques[f"Bloque {i+1} (páginas {start+1}-{start+n})"] = texto
-                start += n
+    # Leer texto del archivo del estudiante (PDF o DOCX)
+    texto_completo = read_student_text(student_file)
+    token_count = estimate_token_count(texto_completo)
+    bloques = {}
+    if token_count <= evaluador.token_limit:
+        bloques = {f"TFM completo": texto_completo}
+    else:
+        # Si excede el límite, divide el texto en tercios por número de caracteres
+        tercio = len(texto_completo) // 3
+        bloques = {
+            "Bloque 1": texto_completo[:tercio],
+            "Bloque 2": texto_completo[tercio:2*tercio],
+            "Bloque 3": texto_completo[2*tercio:]
+        }
 
     evaluaciones = {}
     puntuaciones_bloques = []
