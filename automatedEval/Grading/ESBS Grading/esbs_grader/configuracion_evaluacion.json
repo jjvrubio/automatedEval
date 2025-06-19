@@ -2,28 +2,224 @@
   "modo": "ultra-estricto",
   "titulo": "INSTRUCCIONES ULTRA-ESTRICTAS PARA LA EVALUACIÓN",
   "normas": [
-    "Evalúa cada sección del TFM según la estructura oficial, aunque no esté presente explícitamente.",
-    "Para cada sección, utiliza los subcriterios de la rúbrica como guía estricta de evaluación.",
-    "Para cada subcriterio, indica la puntuación, la justificación literal y cita textual del TFM.",
-    "Indica explícitamente qué norma(s) y ejemplo(s) de esta configuración aplicas en cada caso.",
-    "Si una sección o subcriterio es deficiente, ambigua o falta, asigna la puntuación mínima y explica detalladamente por qué, citando la norma correspondiente.",
-    "No asignes puntuaciones altas si no puedes citar evidencia textual clara y completa para ese subcriterio.",
-    "Prohíbido hacer suposiciones, inferencias o generalizaciones: solo cuenta lo que está escrito.",
-    "Justifica cada puntuación citando fragmentos literales del texto del estudiante.",
-    "Penaliza cualquier ambigüedad, vaguedad o ausencia de información.",
-    "Para los criterios relacionados con estructura, coherencia, argumentación o flujo, analiza si el texto mantiene una progresión lógica y congruente entre apartados.",
-    "Detecta y penaliza contradicciones, repeticiones innecesarias, saltos argumentales o falta de conexión entre ideas.",
-    "Incluye ejemplos concretos de incoherencias, problemas de flujo o contradicciones si los encuentras.",
-    "Presenta la evaluación en formato estructurado: para cada sección y subcriterio, indica la puntuación, la justificación y la cita textual.",
-    "Al final, incluye una tabla resumen de puntuaciones y recomendaciones finales."
+    "Evalúa únicamente lo que está explícitamente escrito en el texto del estudiante.",
+    "No asignes puntuaciones altas si no puedes citar evidencia literal y completa para ese subcriterio.",
+    "Penaliza cualquier ambigüedad, vaguedad o falta de alineación global entre secciones."
   ],
-  "ejemplos": [
-    "Si el subcriterio es 'Coherencia argumental', primero identifica la tesis principal, luego revisa si cada apartado desarrolla esa tesis sin contradicciones.",
-    "Si el subcriterio es 'Flujo y estructura', revisa que cada sección conecte lógicamente con la anterior y la siguiente, y señala cualquier salto abrupto.",
-    "Si detectas una contradicción, cítala y explica por qué afecta la puntuación.",
-    "Si el texto repite ideas sin aportar valor, indícalo y penaliza la puntuación.",
-    "Si la progresión de ideas es clara y lógica, justifica la puntuación alta con ejemplos textuales.",
-    "Si cualquier sección obligatoria de la estructura (por ejemplo, 'Formatting & Style Guide', 'References', 'Executive Summary', etc.) no cumple todos los requisitos, asigna la puntuación mínima y explica detalladamente cada carencia citando la norma correspondiente. Esto es extrapolable a todas las secciones del TFM, no solo a las mencionadas como ejemplo.",
-    "Si una sección obligatoria no aparece o es insuficiente, asigna la puntuación mínima y justifica la penalización."
-  ]
+  "criterios": {
+    "TFM Structure": {
+      "subcriterios": [
+        "Cover Page (Project title, student names, tutor, academic year)",
+        "Table of Contents (numbered, linked pages)",
+        "Executive Summary (purpose, findings, proposals)"
+      ]
+    },
+    "Introduction": {
+      "subcriterios": [
+        "Context of the topic",
+        "Justification of professional relevance",
+        "Project objectives"
+      ]
+    },
+    "Strategic Analysis": {
+      "subcriterios": [
+        "External analysis (market trends, competitors, industry)",
+        "Internal analysis (capabilities, strengths, weaknesses)",
+        "SWOT matrix",
+        "Business idea and economic viability"
+      ]
+    },
+    "Business Model Development": {
+      "subcriterios": [
+        "Value proposition",
+        "Marketing plan",
+        "Operational plan",
+        "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)",
+        "Risk mitigation strategies",
+        "Action Plan",
+        "Key strategies",
+        "Implementation timeline"
+      ]
+    },
+    "Conclusions and Recommendations": {
+      "subcriterios": [
+        "Summary of key results",
+        "Practical implications",
+        "Potential future extensions"
+      ]
+    },
+    "References & Appendices": {
+      "subcriterios": [
+        "References (proper citation, official style, all sources included)",
+        "Appendices (supporting but non-essential information)"
+      ]
+    },
+    "Figures, Tables & Graphs": {
+      "subcriterios": [
+        "Figures, tables, and graphs (numbered, referenced, titled, sourced)"
+      ]
+    },
+    "Formatting & Style Guide": {
+      "subcriterios": [
+        "Formatting and style (font, size, spacing, margins, headings, citation format)"
+      ]
+    }
+  },
+  "claves_puntuacion": {
+    "Cover Page (Project title, student names, tutor, academic year)": [
+      "Debe incluir todos los elementos requeridos, identificados y justificados explícitamente.",
+      "No basta con mencionar: si la cita es parcial, superficial o genérica, la puntuación máxima no puede asignarse bajo ningún concepto."
+    ],
+    "Table of Contents (numbered, linked pages)": [
+      "Debe estar numerada y con páginas enlazadas, identificadas y justificadas explícitamente.",
+      "No basta con mencionar: si la cita es parcial, superficial o genérica, la puntuación máxima no puede asignarse bajo ningún concepto."
+    ],
+    "Executive Summary (purpose, findings, proposals)": [
+      "Debe sintetizar propósito, hallazgos y propuestas.",
+      "Debe establecer una conexion entre los siguientes elementos: justificación o motivacion el proyecto, objetivos derivados, métoddo o plan de tabajo, y las conclusiones.",
+      "No basta con citar una frase: la cita debe demostrar que se cumplen todos los requisitos del subcriterio de forma exhaustiva y alineada."
+    ],
+    "Context of the topic": [
+      "Debe contextualizar el tema con referencias actuales y relevantes.",
+      "Debe estar conectado con un análisi de mercado identificando, ya competidores, ya casos de éxito, ya tendencias del sector.",
+      "No basta con mencionar: si la cita es parcial, superficial o genérica, la puntuación no puede ser c onsiderada una respuesta bajo ningún concepto."
+    ],
+    "Justification of professional relevance": [
+      "Debe argumentar claramente la importancia profesional del tema con datos y referencias.",
+      "Puntuación 5: Justificación exhaustiva, con datos concretos, referencias actuales y alineación clara con la profesión. Se citan fuentes y se explica el impacto profesional.",
+      "Puntuación 4: Justificación bien argumentada y alineada, pero falta algún dato, referencia o detalle menor.",
+      "Puntuación 3: Justificación presente pero genérica, poco detallada o con referencias vagas.",
+      "Puntuación 2: Justificación superficial, incompleta o sin referencias claras.",
+      "Puntuación 1: No se justifica la relevancia profesional o la justificación es irrelevante."
+    ],
+    "Project objectives": [
+      "Deben estar claramente diferenciados el objetivo principal y los objetivos específicos, todos medibles y alineados.",
+      "Puntuación 5: Objetivo principal y específicos claramente diferenciados, todos medibles, alineados y justificados. Se explican los métodos para medirlos.",
+      "Puntuación 4: Objetivos bien definidos y alineados, pero falta algún detalle menor (por ejemplo, no todos son medibles o falta justificación de algún objetivo).",
+      "Puntuación 3: Objetivos presentes pero poco diferenciados, no todos medibles o alineados.",
+      "Puntuación 2: Objetivos vagos, superficiales o sin justificación/metodología clara.",
+      "Puntuación 1: No se presentan objetivos claros o son irrelevantes."
+    ],
+    "External analysis (market trends, competitors, industry)": [
+      "Debe emplearse al menos una técnica reconocida y estar conectada con el análisis interno y la matriz SWOT.",
+      "Puntuación 5: Se aplica al menos una técnica reconocida (PESTEL, Porter, etc.), identificada y justificada, y se conecta explícitamente con el análisis interno y la matriz SWOT. Se citan resultados y se demuestra coherencia.",
+      "Puntuación 4: Se aplica una técnica reconocida y se justifica, pero la conexión con el análisis interno/SWOT es parcial o falta algún detalle menor.",
+      "Puntuación 3: Se menciona una técnica pero su aplicación es superficial, incompleta o no se justifica la conexión.",
+      "Puntuación 2: Se menciona el análisis externo pero sin técnica reconocida o sin justificación/metodología clara.",
+      "Puntuación 1: No se realiza análisis externo relevante."
+    ],
+    "Internal analysis (capabilities, strengths, weaknesses)": [
+      "Debe emplearse al menos una técnica reconocida y estar conectada con el análisis externo y la matriz SWOT.",
+      "Puntuación 5: Se aplica al menos una técnica reconocida (VRIO, cadena de valor, etc.), identificada y justificada, y se conecta explícitamente con el análisis externo y la matriz SWOT. Se citan resultados y se demuestra coherencia.",
+      "Puntuación 4: Se aplica una técnica reconocida y se justifica, pero la conexión con el análisis externo/SWOT es parcial o falta algún detalle menor.",
+      "Puntuación 3: Se menciona una técnica pero su aplicación es superficial, incompleta o no se justifica la conexión.",
+      "Puntuación 2: Se menciona el análisis interno pero sin técnica reconocida o sin justificación/metodología clara.",
+      "Puntuación 1: No se realiza análisis interno relevante."
+    ],
+    "SWOT matrix": [
+      "Debe estar fundamentada en los análisis previos y mostrar coherencia explícita.",
+      "Puntuación 5: La matriz SWOT está claramente fundamentada en los análisis externo e interno, con coherencia explícita y justificación de cada elemento.",
+      "Puntuación 4: La matriz está bien fundamentada, pero falta algún detalle menor o la justificación de algún elemento.",
+      "Puntuación 3: La matriz está presente pero la fundamentación es superficial o incompleta.",
+      "Puntuación 2: La matriz es muy superficial, incoherente o no se justifica con los análisis previos.",
+      "Puntuación 1: No se presenta una matriz SWOT relevante."
+    ],
+    "Business idea and economic viability": [
+      "Debe estar claramente definida y justificada con datos y coherencia con el modelo de negocio.",
+      "Puntuación 5: La idea de negocio está claramente definida, justificada con datos y alineada con el modelo de negocio. Se explican los métodos de viabilidad y se citan resultados.",
+      "Puntuación 4: La idea está bien definida y justificada, pero falta algún dato, método o detalle menor.",
+      "Puntuación 3: La idea está presente pero la justificación es superficial, incompleta o poco alineada.",
+      "Puntuación 2: La idea es vaga, sin datos ni justificación clara.",
+      "Puntuación 1: No se presenta una idea de negocio relevante."
+    ],
+    "Value proposition": [
+      "Debe describir la propuesta de valor de forma clara y alineada con el análisis previo.",
+      "Puntuación 5: Propuesta de valor claramente definida, alineada y justificada con ejemplos o datos concretos.",
+      "Puntuación 4: Propuesta de valor bien definida y alineada, pero falta algún detalle menor o la justificación no es completamente exhaustiva.",
+      "Puntuación 3: Propuesta de valor mencionada pero genérica, poco detallada o no claramente alineada.",
+      "Puntuación 2: Propuesta de valor superficial, incompleta o poco relevante.",
+      "Puntuación 1: No se identifica una propuesta de valor clara o es irrelevante para el proyecto."
+    ],
+    "Marketing plan": [
+      "Debe ser detallado y justificado con datos y estrategias claras.",
+      "Puntuación 5: Incluye estrategias concretas, datos justificativos y está alineado con los objetivos.",
+      "Puntuación 4: Estrategias y datos presentes, pero falta algún elemento menor o la justificación no es completamente exhaustiva.",
+      "Puntuación 3: Plan presente pero superficial, sin datos o estrategias poco justificadas.",
+      "Puntuación 2: Plan muy superficial, incompleto o poco relevante.",
+      "Puntuación 1: No hay plan de marketing o solo se menciona de forma genérica."
+    ],
+    "Operational plan": [
+      "Debe estar bien estructurado, detalla un calendario, identificar recursos e  incluir los objetivos", 
+      "Debe identificar la método/técnica justificarla y probar su aplicación.",
+      "Solo se acepta la máxima puntuación si se identifica, justifica y aplica explícitamente al menos una de estas técnicas, y se cita el resultado."
+    ],
+    "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)": [
+      "Debe cubrir al menos 3 años, incluir todos los elementos financieros clave, estar justificado y aplicar método/técnica identificada y aplicada.",
+      "Solo se acepta la máxima puntuación si se identifican y aplican explícitamente al menos una de estas técnicas, y se citan los resultados."
+    ],
+    "Risk mitigation strategies": [
+      "Deben identificarse con claridad los principales riesgos y proponer estrategias concretas y alineadas.",
+      "Si no puedes citar literalmente los riesgos y las estrategias, la puntuación máxima no puede asignarse."
+    ],
+    "Action Plan": [
+      "Debe ser concreto, calendarizado y alineado con los objetivos y recursos.",
+      "Puntuación 5: Incluye pasos concretos, fechas, responsables y está alineado con recursos y objetivos.",
+      "Puntuación 4: Plan bien estructurado, pero falta algún detalle menor (fechas, responsables, etc.).",
+      "Puntuación 3: Plan existe pero es poco concreto, le faltan fechas o responsables, o no está claramente alineado.",
+      "Puntuación 2: Plan muy superficial, incompleto o poco relevante.",
+      "Puntuación 1: No hay plan de acción o solo se menciona superficialmente."
+    ],
+    "Key strategies": [
+      "Deben estar claramente definidas y alineadas con el análisis y los objetivos.",
+      "Puntuación 5: Estrategias claramente definidas, justificadas y alineadas.",
+      "Puntuación 4: Estrategias bien definidas y alineadas, pero falta algún detalle menor.",
+      "Puntuación 3: Estrategias presentes pero vagas, poco justificadas o no claramente alineadas.",
+      "Puntuación 2: Estrategias superficiales, incompletas o poco relevantes.",
+      "Puntuación 1: No se identifican estrategias clave o son irrelevantes."
+    ],
+    "Implementation timeline": [
+      "Debe ser clara, detallada y alineada con el plan de acción.",
+      "Puntuación 5: Cronograma detallado, incluye fechas, hitos y está alineado con el plan de acción.",
+      "Puntuación 4: Cronograma bien estructurado, pero falta algún detalle menor.",
+      "Puntuación 3: Cronograma existe pero es superficial, le faltan detalles o no está claramente alineado.",
+      "Puntuación 2: Cronograma muy superficial, incompleto o poco relevante.",
+      "Puntuación 1: No hay cronograma o solo se menciona superficialmente."
+    ],
+    "Summary of key results": [
+      "Debe presentar los resultados clave de forma exhaustiva y alineada con los objetivos.",
+      "Puntuación 5: Resultados clave claramente presentados, exhaustivos y alineados con los objetivos.",
+      "Puntuación 4: Resultados bien presentados y alineados, pero falta algún detalle menor.",
+      "Puntuación 3: Resultados presentes pero superficiales, incompletos o no claramente alineados.",
+      "Puntuación 2: Resultados muy superficiales, incompletos o poco relevantes.",
+      "Puntuación 1: No se presentan resultados clave o son irrelevantes."
+    ],
+    "Practical implications": [
+      "Debe explicar las implicaciones prácticas de forma clara y alineada con los resultados y objetivos.",
+      "Puntuación 5: Implicaciones prácticas claramente explicadas y alineadas.",
+      "Puntuación 4: Implicaciones bien explicadas y alineadas, pero falta algún detalle menor.",
+      "Puntuación 3: Implicaciones mencionadas pero vagas o no claramente alineadas.",
+      "Puntuación 2: Implicaciones muy superficiales, incompletas o poco relevantes.",
+      "Puntuación 1: No se explican implicaciones prácticas o son irrelevantes."
+    ],
+    "Potential future extensions": [
+      "Debe proponer extensiones futuras relevantes y alineadas con el trabajo realizado.",
+      "Puntuación 5: Extensiones futuras relevantes, justificadas y alineadas.",
+      "Puntuación 4: Extensiones bien propuestas y alineadas, pero falta algún detalle menor.",
+      "Puntuación 3: Extensiones mencionadas pero poco relevantes o no claramente alineadas.",
+      "Puntuación 2: Extensiones muy superficiales, incompletas o poco relevantes.",
+      "Puntuación 1: No se proponen extensiones futuras o son irrelevantes."
+    ],
+    "References (proper citation, official style, all sources included)": [
+      "Todas las fuentes deben estar correctamente citadas siguiendo un estilo oficial y ser completas y actuales."
+    ],
+    "Appendices (supporting but non-essential information)": [
+      "Deben aportar información relevante pero no esencial, y estar bien organizados."
+    ],
+    "Figures, tables, and graphs (numbered, referenced, titled, sourced)": [
+      "Deben estar numerados, titulados, referenciados y con fuente si no son originales."
+    ],
+    "Formatting and style (font, size, spacing, margins, headings, citation format)": [
+      "Debe seguirse el formato oficial en todos los aspectos."
+    ]
+  }
 }

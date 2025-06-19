@@ -1,0 +1,257 @@
+{
+  "modo": "ultra-estricto",
+  "titulo": "INSTRUCCIONES ULTRA-ESTRICTAS PARA LA EVALUACIÓN",
+  "normas": [
+    "Evalúa cada sección del TFM según la estructura oficial, aunque no esté presente explícitamente.",
+    "Para cada sección, utiliza los subcriterios de la rúbrica como guía estricta de evaluación.",
+    "Para cada subcriterio, indica la puntuación, la justificación literal y cita textual del TFM.",
+    "Indica explícitamente qué norma(s) y ejemplo(s) de esta configuración aplicas en cada caso.",
+    "Si una sección o subcriterio es deficiente, ambigua o falta, asigna la puntuación mínima y explica detalladamente por qué, citando la norma correspondiente.",
+    "No asignes puntuaciones altas si no puedes citar evidencia textual clara y completa para ese subcriterio.",
+    "Prohíbido hacer suposiciones, inferencias o generalizaciones: solo cuenta lo que está escrito.",
+    "Justifica cada puntuación citando fragmentos literales del texto del estudiante.",
+    "Penaliza cualquier ambigüedad, vaguedad o ausencia de información.",
+    "Para los criterios relacionados con estructura, coherencia, argumentación o flujo, analiza si el texto mantiene una progresión lógica y congruente entre apartados.",
+    "Detecta y penaliza contradicciones, repeticiones innecesarias, saltos argumentales o falta de conexión entre ideas.",
+    "Incluye ejemplos concretos de incoherencias, problemas de flujo o contradicciones si los encuentras.",
+    "Presenta la evaluación en formato estructurado: para cada sección y subcriterio, indica la puntuación, la justificación y la cita textual.",
+    "Al final, incluye una tabla resumen de puntuaciones y recomendaciones finales.",
+    "No se permite ninguna concesión: si falta evidencia, desarrollo, profundidad o cumplimiento literal de los requisitos, la puntuación debe ser la mínima, sin excepciones. La severidad debe ser máxima en todos los casos."
+  ],
+  "ejemplos": [
+    "Si el subcriterio es 'Coherencia argumental', primero identifica la tesis principal, luego revisa si cada apartado desarrolla esa tesis sin contradicciones.",
+    "Si el subcriterio es 'Flujo y estructura', revisa que cada sección conecte lógicamente con la anterior y la siguiente, y señala cualquier salto abrupto.",
+    "Si detectas una contradicción, cítala y explica por qué afecta la puntuación.",
+    "Si el texto repite ideas sin aportar valor, indícalo y penaliza la puntuación.",
+    "Si la progresión de ideas es clara y lógica, justifica la puntuación alta con ejemplos textuales.",
+    "Si cualquier sección obligatoria de la estructura (por ejemplo, 'Formatting & Style Guide', 'References', 'Executive Summary', etc.) no cumple todos los requisitos, asigna la puntuación mínima y explica detalladamente cada carencia citando la norma correspondiente. Esto es extrapolable a todas las secciones del TFM, no solo a las mencionadas como ejemplo.",
+    "Si una sección obligatoria no aparece o es insuficiente, asigna la puntuación mínima y justifica la penalización."
+  ],
+  "criterios": {
+    "TFM Structure": {
+      "normas": [
+        "La portada debe incluir título, nombres completos, tutor y año académico.",
+        "El índice debe estar numerado y con páginas enlazadas.",
+        "El resumen ejecutivo debe exponer propósito, hallazgos y propuestas principales."
+      ],
+      "ejemplos": [
+        "Ejemplo de portada correcta: 'Plan de Marketing 2025, Juan Pérez, Tutor: Dr. López, 2024-2025'.",
+        "Ejemplo de resumen ejecutivo: 'El objetivo de este TFM es... Los principales hallazgos son...'"
+      ]
+    },
+    "Introduction": {
+      "normas": [
+        "Debe contextualizar el tema y justificar su relevancia profesional.",
+        "Debe exponer claramente los objetivos del proyecto."
+      ],
+      "ejemplos": [
+        "Ejemplo de contexto: 'En el entorno actual de la industria...'.",
+        "Ejemplo de objetivos: 'El objetivo principal de este trabajo es...'"
+      ]
+    },
+    "Strategic Analysis": {
+      "normas": [
+        "Debe incluir análisis externo (mercado, competencia) e interno (capacidades, fortalezas, debilidades).",
+        "Debe presentar una matriz DAFO y definir la viabilidad económica."
+      ],
+      "ejemplos": [
+        "Ejemplo de análisis externo: 'El sector muestra una tendencia de...'.",
+        "Ejemplo de DAFO: 'Fortalezas: ..., Debilidades: ...'"
+      ]
+    },
+    "Business Model Development": {
+      "normas": [
+        "Debe describir la propuesta de valor, plan de marketing, plan operativo y financiero, riesgos y plan de acción.",
+        "Debe incluir proyecciones financieras a 3 años y cronograma de implementación."
+      ],
+      "ejemplos": [
+        "Ejemplo de propuesta de valor: 'Nuestra empresa ofrece...'.",
+        "Ejemplo de cronograma: 'Fase 1: ... (Enero-Marzo 2025)'"
+      ]
+    },
+    "Conclusions and Recommendations": {
+      "normas": [
+        "Debe resumir resultados clave, implicaciones prácticas y posibles extensiones futuras."
+      ],
+      "ejemplos": [
+        "Ejemplo de conclusión: 'Los resultados muestran que...'."
+      ]
+    },
+    "References & Appendices": {
+      "normas": [
+        "Todas las fuentes deben citarse correctamente siguiendo un estilo oficial (APA, Harvard, Chicago).",
+        "Los apéndices deben aportar información relevante pero no esencial."
+      ],
+      "ejemplos": [
+        "Ejemplo de cita APA: 'Smith, J. (2020). Título del libro. Editorial.'"
+      ]
+    },
+    "Figures, Tables & Graphs": {
+      "normas": [
+        "Todas las figuras, tablas y gráficos deben estar numerados, titulados y referenciados en el texto."
+      ],
+      "ejemplos": [
+        "Ejemplo de referencia: 'Como se muestra en la Figura 2...'"
+      ]
+    },
+    "Formatting & Style Guide": {
+      "normas": [
+        "Debe seguirse el formato oficial: fuente, tamaño, espaciado, márgenes, jerarquía de títulos y formato de citas."
+      ],
+      "ejemplos": [
+        "Ejemplo de formato correcto: 'Texto en Arial 12pt, interlineado 1.5, márgenes 2.5cm.'"
+      ]
+    }
+  },
+  "mapeo_secciones": {
+    "TFM Structure": ["1. TFM Structure"],
+    "Introduction": ["1. Introducción"],
+    "Strategic Analysis": ["2. Strategic Analysis"],
+    "Business Model Development": ["3. Business Model Development"],
+    "Conclusions and Recommendations": ["4. Conclusions and Recommendations"],
+    "References & Appendices": ["5. References & Appendices"],
+    "Figures, Tables & Graphs": ["Figures, Tables & Graphs"],
+    "Formatting & Style Guide": ["Global writing, formatting & Style Guide"]
+  },
+  "instrucciones_por_seccion": [
+    "Usa los subcriterios de la rúbrica que correspondan a esta sección.",
+    "Para cada subcriterio, indica la puntuación, la justificación literal y cita textual.",
+    "Indica explícitamente qué norma(s) y ejemplo(s) globales y específicos aplicas en cada caso.",
+    "Si la sección es deficiente, superficial, dispersa o falta, asigna la puntuación mínima y explica detalladamente por qué, citando la norma correspondiente.",
+    "No asignes puntuaciones altas si no puedes citar evidencia textual clara, completa y desarrollada para ese subcriterio.",
+    "No basta con una mención aislada: exige desarrollo completo, profundidad y coherencia en cada subcriterio."
+  ],
+  "instrucciones_por_capitulo": {
+    "TFM Structure": [
+      "Verifica que la portada incluya todos los elementos obligatorios (título, nombres, tutor, año académico).",
+      "El índice debe estar numerado y con páginas enlazadas.",
+      "El resumen ejecutivo debe exponer propósito, hallazgos y propuestas principales de forma clara y concisa."
+    ],
+    "Introduction": [
+      "Contextualiza el tema con referencias actuales y relevantes.",
+      "Justifica la relevancia profesional del trabajo.",
+      "Expón claramente los objetivos del proyecto, diferenciando entre generales y específicos."
+    ],
+    "Strategic Analysis": [
+      "Incluye técnicas de análisis externo como PESTEL, análisis de la competencia y análisis de mercado.",
+      "Incluye técnicas de análisis interno como VRIO, cadena de valor, análisis de recursos y capacidades.",
+      "Presenta una matriz DAFO (SWOT) completa y justificada.",
+      "Evalúa la viabilidad económica con datos y argumentos claros."
+    ],
+    "Business Model Development": [
+      "Describe el modelo de negocio usando herramientas como el Business Model Canvas o similares.",
+      "Incluye un plan de marketing detallado y justificado.",
+      "Presenta un plan operativo y financiero con proyecciones a 3 años.",
+      "Incluye análisis de riesgos y un plan de acción concreto."
+    ],
+    "Conclusions and Recommendations": [
+      "Resume los resultados clave de forma sintética y crítica.",
+      "Incluye implicaciones prácticas y recomendaciones fundamentadas.",
+      "Propón posibles extensiones o líneas futuras de trabajo."
+    ],
+    "References & Appendices": [
+      "Verifica que todas las fuentes estén citadas correctamente siguiendo un estilo oficial (APA, Harvard, Chicago).",
+      "Los apéndices deben aportar información relevante pero no esencial para la comprensión del trabajo principal."
+    ],
+    "Figures, Tables & Graphs": [
+      "Todas las figuras, tablas y gráficos deben estar numerados, titulados y referenciados en el texto.",
+      "Incluye la fuente si no es material original."
+    ],
+    "Formatting & Style Guide": [
+      "Revisa que se sigan las normas de formato: fuente, tamaño, espaciado, márgenes, jerarquía de títulos y formato de citas.",
+      "Penaliza cualquier inconsistencia en el estilo o formato."
+    ]
+  },
+  "instrucciones_informe_final": [
+    "Incluye al principio una tabla resumen global de puntuaciones por criterio y subcriterio.",
+    "Presenta una síntesis global crítica e integrada, analizando la coherencia, congruencia y el flujo entre bloques.",
+    "Detecta contradicciones, repeticiones o saltos argumentales entre partes.",
+    "Integra las justificaciones y puntuaciones de cada bloque en una visión global, penalizando incoherencias.",
+    "Emite recomendaciones finales claras y accionables.",
+    "No repitas texto, razona sobre la integración y la calidad global del TFM.",
+    "Finalmente, formula dos preguntas concretas y exigentes dirigidas al autor, centradas en los dos aspectos más débiles o menos desarrollados del TFM, para que pueda aclarar o mejorar esos puntos."
+  ],
+  "claves_puntuacion": {
+    "Internal analysis (capabilities, strengths, weaknesses)": [
+      "Debe emplearse al menos uno de los siguientes métodos: Cadena de Valor de Porter, Core Competencies (Prahalad y Hamel), Value Stream Mapping, VRIO, Diagrama de Ishikawa o 5 Porqués.",
+      "El método debe estar bien aplicado, con profundidad y justificación, y los resultados deben estar conectados con el análisis externo y la matriz SWOT.",
+      "Si no se emplea ninguna técnica reconocida, o la aplicación es superficial o desconectada, debe asignarse la puntuación mínima."
+    ],
+    "External analysis (market trends, competitors, industry)": [
+      "Debe emplearse al menos una de las siguientes técnicas: PESTEL, Análisis de las Cinco Fuerzas de Porter, Benchmarking sectorial, análisis de tendencias de mercado, o análisis de competencia directa/indirecta.",
+      "El análisis debe estar conectado con el análisis interno y la matriz SWOT.",
+      "La ausencia de técnicas reconocidas, la superficialidad o la falta de conexión justifican la puntuación mínima."
+    ],
+    "Business idea and economic viability": [
+      "La idea de negocio debe estar claramente definida y justificada en base a los análisis previos.",
+      "La viabilidad económica debe estar argumentada con datos, supuestos claros y coherencia con el modelo de negocio.",
+      "La falta de justificación, datos o coherencia con el resto del trabajo debe penalizarse con la puntuación mínima."
+    ],
+    "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)": [
+      "Las proyecciones financieras deben cubrir al menos 3 años e incluir: costes, ingresos, cuenta de resultados, cash flow y balance.",
+      "Debe justificarse cada supuesto y mostrar coherencia con el modelo de negocio y el plan operativo.",
+      "Proyecciones superficiales, sin justificación o incoherentes deben recibir la puntuación mínima."
+    ],
+    "Risk mitigation strategies": [
+      "Deben identificarse los principales riesgos del proyecto y proponerse estrategias concretas para mitigarlos.",
+      "Las estrategias deben ser realistas, detalladas y alineadas con el resto del plan.",
+      "La ausencia de análisis de riesgos, estrategias vagas o genéricas, o la falta de alineación con el plan justifican la puntuación mínima."
+    ],
+    "Justification of professional relevance": [
+      "La justificación debe estar basada en datos actuales, referencias relevantes y argumentar claramente la importancia profesional del tema.",
+      "Debe conectar la relevancia con necesidades reales del sector, vacíos de conocimiento o retos profesionales.",
+      "Justificaciones vagas, genéricas o sin respaldo deben recibir la puntuación mínima."
+    ],
+    "Project objectives": [
+      "Deben estar claramente diferenciados el objetivo principal y los objetivos específicos.",
+      "Los objetivos deben ser medibles, alcanzables y alineados con la problemática y el desarrollo del TFM.",
+      "La ausencia de objetivos claros, la confusión entre principal y específicos, o la falta de alineación con el trabajo justifican la puntuación mínima."
+    ],
+    "Executive Summary (purpose, findings, proposals)": [
+      "Debe sintetizar el propósito, los principales hallazgos y las propuestas de valor del TFM.",
+      "Debe ser fiel al contenido real del trabajo y permitir al lector captar la esencia del proyecto.",
+      "Resúmenes vagos, incompletos o que no reflejan el contenido real deben recibir la puntuación mínima."
+    ],
+    "SWOT matrix": [
+      "La matriz debe estar fundamentada en los análisis interno y externo previos.",
+      "Debe haber coherencia y conexión explícita entre los factores SWOT y los análisis previos.",
+      "Una matriz superficial, sin justificación o desconectada de los análisis previos, debe recibir la puntuación mínima."
+    ],
+    "Action Plan": [
+      "Debe ser concreto, calendarizado y alineado con los objetivos y recursos del proyecto.",
+      "Debe incluir responsables, plazos y recursos asignados.",
+      "Planes vagos, sin fechas ni responsables, o desconectados de los objetivos justifican la puntuación mínima."
+    ],
+    "Conclusions and Recommendations": [
+      "Las conclusiones deben responder explícitamente a los objetivos planteados al inicio del TFM.",
+      "Las recomendaciones deben estar fundamentadas en las limitaciones encontradas (operativas, financieras, de conocimiento, regulatorias, etc.) y ser accionables.",
+      "Conclusiones o recomendaciones genéricas, no alineadas con los objetivos o sin referencia a las limitaciones reales deben recibir la puntuación mínima."
+    ],
+    "References (proper citation, official style, all sources included)": [
+      "Todas las fuentes deben estar correctamente citadas siguiendo un estilo oficial (APA, Harvard, Chicago, etc.).",
+      "Las referencias deben ser completas, actualizadas y corresponderse con las citas en el texto.",
+      "Referencias incompletas, desactualizadas o con errores de citación justifican la puntuación mínima."
+    ],
+    "Contextualización del tema": [
+      "Debe situar el tema en el contexto actual, con referencias recientes y relevantes.",
+      "La contextualización debe estar conectada con la problemática y justificar la importancia del trabajo.",
+      "Si la contextualización es superficial, desactualizada o no justifica la relevancia, debe asignarse la puntuación mínima.",
+      "Ejemplo positivo: 'En el contexto actual de la digitalización industrial, las pymes enfrentan retos de integración tecnológica (García, 2024)...'",
+      "Ejemplo negativo: 'El sector es importante.' (sin datos, sin referencias, sin conexión con la problemática)"
+    ],
+    "Justificación de la metodología": [
+      "Debe explicarse por qué se elige la metodología, con argumentos claros y referencias.",
+      "La metodología debe estar alineada con los objetivos y la naturaleza del problema.",
+      "Ausencia de justificación, elección arbitraria o falta de alineación justifican la puntuación mínima.",
+      "Ejemplo positivo: 'Se emplea un enfoque cualitativo porque... (referencia a autores/metodologías reconocidas)'",
+      "Ejemplo negativo: 'Se eligió esta metodología porque sí.' (sin justificación ni referencias)"
+    ],
+    "Calidad de redacción y ortografía": [
+      "El texto debe estar libre de faltas de ortografía, errores gramaticales y debe emplear un lenguaje académico.",
+      "La redacción debe ser clara, precisa y coherente en todo el documento.",
+      "Errores frecuentes, lenguaje coloquial o incoherencias justifican la puntuación mínima.",
+      "Ejemplo positivo: 'El presente trabajo analiza... (redacción fluida, sin errores)'.",
+      "Ejemplo negativo: 'Este trabajo va de...' (errores, lenguaje informal, frases inconexas)"
+    ]
+  }
+}

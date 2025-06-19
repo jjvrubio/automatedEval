@@ -1,356 +1,59 @@
 {
-  "BUSINESS MODEL ": {
-    "peso": NaN,
+  "TFM Structure": {
     "items": [
-      {
-        "detalle": "The idea is clearly stated ",
-        "contribucion": 0.15,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The business model is coherent as well as the value proposition and aligned with the analysis",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Includes competitive advantages ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The economic viability is assessed",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Includes a summary of the business model (canva or similar)",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "Cover Page (Project title, student names, tutor, academic year)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Table of Contents (numbered, linked pages)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Executive Summary (purpose, findings, proposals)", "contribucion": 2, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "FINANCES ": {
-    "peso": NaN,
+  "Introduction": {
     "items": [
-      {
-        "detalle": "Expenses are well detailed and analyzed (fix and variable) as well as incomes ",
-        "contribucion": 0.15,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "P&L is correct and includes EBITDA, EBIT, cash flow",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Balance sheet is included",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Projections are included",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Financial proposals are realistic ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The financial plan is coherent with the operations plan ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "Context of the topic", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Justification of professional relevance", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Project objectives", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "FORMAT": {
-    "peso": NaN,
+  "Strategic Analysis": {
     "items": [
-      {
-        "detalle": "General (letter, pages…)",
-        "contribucion": 0.1,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "References",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "External analysis (market trends, competitors, industry)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Internal analysis (capabilities, strengths, weaknesses)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "SWOT matrix", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Business idea and economic viability", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "MARKETING": {
-    "peso": NaN,
+  "Business Model Development": {
     "items": [
-      {
-        "detalle": "Marketing plan has objective goals ",
-        "contribucion": 0.15,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Marketing plan is aligned with the business model ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Marketing proposals are coherent and well detailed",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "Value proposition", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Marketing plan", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Operational plan", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Risk mitigation strategies", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Action Plan", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Key strategies", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Implementation timeline", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "OPERATIONS ": {
-    "peso": NaN,
+  "Conclusions and Recommendations": {
     "items": [
-      {
-        "detalle": "Goals of the proposal are clearly stated ",
-        "contribucion": 0.2,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Goals are measurable and with indicated KPIs",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Goals are temporalized in a coherent way ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The action plan is shown and well detailed ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The HR strategy is defined",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The steps to implement the project are stated ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The needs to implement the project are stated ",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "The tangible and intangible resources are detected and well assigned",
-        "contribucion": null,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "Summary of key results", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Practical implications", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Potential future extensions", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "PRESENTATION": {
-    "peso": 0.3,
+  "References & Appendices": {
     "items": [
-      {
-        "detalle": "Visual support",
-        "contribucion": 0.3,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Time adequation",
-        "contribucion": 0.1,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Oral communication",
-        "contribucion": 0.4,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      },
-      {
-        "detalle": "Knowledge of the topic ",
-        "contribucion": 0.2,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "References (proper citation, official style, all sources included)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}},
+      {"detalle": "Appendices (supporting but non-essential information)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   },
-  "RISK MITIGATION": {
-    "peso": NaN,
+  "Figures, Tables & Graphs": {
     "items": [
-      {
-        "detalle": "A risk mitigation plan is included",
-        "contribucion": 0.1,
-        "escala": {
-          "1": "Deficiente",
-          "2": "Insuficiente",
-          "3": "Aprobado",
-          "4": "Notable",
-          "5": "Sobresaliente"
-        }
-      }
+      {"detalle": "Figures, tables, and graphs (numbered, referenced, titled, sourced)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
+    ]
+  },
+  "Formatting & Style Guide": {
+    "items": [
+      {"detalle": "Formatting and style (font, size, spacing, margins, headings, citation format)", "contribucion": 1, "escala": {"1": "Missing", "2": "Very incomplete", "3": "Partial", "4": "Almost complete", "5": "Complete and correct"}}
     ]
   }
 }

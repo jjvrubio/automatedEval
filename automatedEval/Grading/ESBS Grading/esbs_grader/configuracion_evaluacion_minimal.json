@@ -1,0 +1,211 @@
+{
+  "modo": "ultra-estricto",
+  "titulo": "INSTRUCCIONES ULTRA-ESTRICTAS PARA LA EVALUACIÓN",
+  "normas": [
+    "Evalúa únicamente lo que está explícitamente escrito en el texto del estudiante.",
+    "No asignes puntuaciones altas si no puedes citar evidencia literal y completa para ese subcriterio.",
+    "Penaliza cualquier ambigüedad, vaguedad o falta de alineación global entre secciones."
+  ],
+  "criterios": {
+    "TFM Structure": {
+      "subcriterios": [
+        "Cover Page (Project title, student names, tutor, academic year)",
+        "Table of Contents (numbered, linked pages)",
+        "Executive Summary (purpose, findings, proposals)"
+      ]
+    },
+    "Introduction": {
+      "subcriterios": [
+        "Context of the topic",
+        "Justification of professional relevance",
+        "Project objectives"
+      ]
+    },
+    "Strategic Analysis": {
+      "subcriterios": [
+        "External analysis (market trends, competitors, industry)",
+        "Internal analysis (capabilities, strengths, weaknesses)",
+        "SWOT matrix",
+        "Business idea and economic viability"
+      ]
+    },
+    "Business Model Development": {
+      "subcriterios": [
+        "Value proposition",
+        "Marketing plan",
+        "Operational plan",
+        "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)",
+        "Risk mitigation strategies",
+        "Action Plan",
+        "Key strategies",
+        "Implementation timeline"
+      ]
+    },
+    "Conclusions and Recommendations": {
+      "subcriterios": [
+        "Summary of key results",
+        "Practical implications",
+        "Potential future extensions"
+      ]
+    },
+    "References & Appendices": {
+      "subcriterios": [
+        "References (proper citation, official style, all sources included)",
+        "Appendices (supporting but non-essential information)"
+      ]
+    },
+    "Figures, Tables & Graphs": {
+      "subcriterios": [
+        "Figures, tables, and graphs (numbered, referenced, titled, sourced)"
+      ]
+    },
+    "Formatting & Style Guide": {
+      "subcriterios": [
+        "Formatting and style (font, size, spacing, margins, headings, citation format)"
+      ]
+    }
+  },
+  "claves_puntuacion": {
+    "Cover Page (Project title, student names, tutor, academic year)": [
+      "Debe incluir todos los elementos requeridos, identificados y justificados explícitamente.",
+      "Ejemplo positivo (5): 'Plan de Marketing 2025, Juan Pérez, Tutor: Dr. López, 2024-2025.' (cita literal completa y explícita)",
+      "Ejemplo negativo (2): 'Falta el tutor o el año académico, o la cita es incompleta o genérica.'",
+      "No basta con mencionar: si la cita es parcial, superficial o genérica, la puntuación máxima no puede asignarse bajo ningún concepto."
+    ],
+    "Table of Contents (numbered, linked pages)": [
+      "Debe estar numerada y con páginas enlazadas, identificadas y justificadas explícitamente.",
+      "Ejemplo positivo (5): 'Índice\n1. Introducción .......... 2\n2. Análisis .......... 5' (cita literal con numeración y enlaces)",
+      "Ejemplo negativo (2): 'Índice sin numeración, sin enlaces o con frase genérica.'",
+      "No basta con mencionar: si la cita es parcial, superficial o genérica, la puntuación máxima no puede asignarse bajo ningún concepto."
+    ],
+    "Executive Summary (purpose, findings, proposals)": [
+      "Debe sintetizar propósito, hallazgos y propuestas.",
+      "Ejemplo positivo (5): 'El propósito es... Los hallazgos principales son... Las propuestas son...' (citas literales de cada elemento)",
+      "Ejemplo negativo (2): 'Solo se cita el propósito, pero no los hallazgos ni las propuestas.'",
+      "No basta con citar una frase: la cita debe demostrar que se cumplen todos los requisitos del subcriterio de forma exhaustiva y alineada."
+    ],
+    "Context of the topic": [
+      "Debe contextualizar el tema con referencias actuales y relevantes.",
+      "Ejemplo positivo (5): 'En el entorno actual de la industria...' (cita literal con contexto y referencias)",
+      "Ejemplo negativo (2): 'El sector es importante.' (sin datos ni referencias)"
+    ],
+    "Justification of professional relevance": [
+      "Debe argumentar claramente la importancia profesional del tema con datos y referencias.",
+      "Ejemplo positivo (5): 'La relevancia profesional radica en...' (cita literal con datos y referencias)",
+      "Ejemplo negativo (2): 'Es importante para la profesión.' (sin justificación ni datos)"
+    ],
+    "Project objectives": [
+      "Deben estar claramente diferenciados el objetivo principal y los objetivos específicos, todos medibles y alineados.",
+      "Ejemplo positivo (5): 'El objetivo principal es... Los objetivos específicos son...' (cita literal de ambos, todos medibles y alineados)",
+      "Ejemplo negativo (3): 'El objetivo principal es...' (no se citan objetivos específicos, o no son medibles)",
+      "Ejemplo negativo (1): 'El objetivo es mejorar la empresa.' (vago, sin diferenciación ni cita literal)",
+      "Si no puedes citar literalmente todos los objetivos y justificar su alineación, la puntuación máxima no puede asignarse."
+    ],
+    "External analysis (market trends, competitors, industry)": [
+      "Debe emplearse al menos una técnica reconocida y estar conectada con el análisis interno y la matriz SWOT.",
+      "Técnicas aceptadas: PESTEL, 5 Fuerzas de Porter, Grupos Estratégicos, Ciclo de Vida, Benchmarking, Análisis de Mercado y Clientes, Vigilancia Tecnológica, Análisis de Stakeholders, MEFE, DAFO externo.",
+      "Ejemplo positivo (5): 'El sector muestra una tendencia de... (análisis PESTEL)' (cita literal y conexión explícita)",
+      "Ejemplo negativo (2): 'Se menciona el mercado pero sin análisis, sin técnica, sin conexión, o con frase genérica.'",
+      "Solo se acepta la máxima puntuación si se identifica, justifica y aplica explícitamente al menos una de estas técnicas, y se cita el resultado."
+    ],
+    "Internal analysis (capabilities, strengths, weaknesses)": [
+      "Debe emplearse al menos una técnica reconocida y estar conectada con el análisis externo y la matriz SWOT.",
+      "Técnicas aceptadas: Auditoría de recursos, Cadena de Valor, Análisis Financiero, Análisis Organizacional, Core Competence, Benchmarking interno, VRIO, Análisis de Procesos Críticos y Causa Raíz, MEFI, DAFO interno.",
+      "Ejemplo positivo (5): 'Fortalezas: ... Debilidades: ... (análisis VRIO)' (cita literal, técnica identificada y aplicada, conexión explícita)",
+      "Ejemplo negativo (2): 'Solo se mencionan fortalezas, sin análisis, sin técnica, sin conexión, o con frase genérica.'",
+      "Solo se acepta la máxima puntuación si se identifica, justifica y aplica explícitamente al menos una de estas técnicas, y se cita el resultado."
+    ],
+    "SWOT matrix": [
+      "Debe estar fundamentada en los análisis previos y mostrar coherencia explícita.",
+      "Ejemplo positivo (5): 'Matriz DAFO: Fortalezas..., Oportunidades...' (cita literal y justificación)"
+    ],
+    "Business idea and economic viability": [
+      "Debe estar claramente definida y justificada con datos y coherencia con el modelo de negocio.",
+      "Ejemplo positivo (5): 'La idea de negocio es... (cita literal clara y justificada con datos)'.",
+      "Ejemplo negativo (3): 'La idea de negocio es... (cita literal pero sin justificación económica clara)'.",
+      "Ejemplo negativo (1): 'Se propone una idea sin datos ni justificación.'",
+      "Si no puedes citar literalmente la definición y justificación, la puntuación máxima no puede asignarse."
+    ],
+    "Value proposition": [
+      "Debe describir la propuesta de valor de forma clara y alineada con el análisis previo.",
+      "Ejemplo positivo (5): 'Nuestra empresa ofrece...' (cita literal alineada)",
+      "Ejemplo negativo (2): 'Se menciona la propuesta pero sin detalle ni alineación.'"
+    ],
+    "Marketing plan": [
+      "Debe ser detallado y justificado con datos y estrategias claras.",
+      "Ejemplo positivo (5): 'El plan de marketing incluye...' (cita literal detallada)",
+      "Ejemplo negativo (2): 'Se menciona el marketing pero sin detalle ni justificación.'"
+    ],
+    "Operational plan": [
+      "Debe estar bien estructurado, calendarizado, alineado con recursos y objetivos, y aplicar método/técnica identificada y justificada.",
+      "Técnicas aceptadas: Mapeo de procesos, cronogramas Gantt, análisis de cuellos de botella, SIPOC, FMEA, Diagrama de Ishikawa, 5 Porqués, Matriz esfuerzo-impacto.",
+      "Ejemplo positivo (5): 'El plan operativo contempla... (mapa de procesos y cronograma Gantt)' (cita literal estructurada, calendarizada, alineada y con técnica identificada/aplicada)",
+      "Ejemplo negativo (2): 'Se menciona un plan pero sin estructura, sin calendario, sin técnica, o con frase genérica como 'Deportech’s deployment...'.'",
+      "Solo se acepta la máxima puntuación si se identifica, justifica y aplica explícitamente al menos una de estas técnicas, y se cita el resultado."
+    ],
+    "Financial aspects (costs, revenue, P&L, cash flow, balance sheet projections for 3 years)": [
+      "Debe cubrir al menos 3 años, incluir todos los elementos financieros clave, estar justificado y aplicar método/técnica identificada y aplicada.",
+      "Técnicas aceptadas: Proyecciones financieras, ratios financieros, análisis vertical/horizontal, EVA, cash flow, balance, cuenta de resultados.",
+      "Ejemplo positivo (5): 'Proyecciones: Ingresos..., Costes..., Cash flow...' (cita literal completa, justificada y con técnica identificada/aplicada)",
+      "Ejemplo negativo (2): 'Solo se mencionan ingresos, sin proyecciones completas, sin técnica, o con frase genérica.'",
+      "Solo se acepta la máxima puntuación si se identifican y aplican explícitamente al menos una de estas técnicas, y se citan los resultados."
+    ],
+    "Risk mitigation strategies": [
+      "Deben identificarse los principales riesgos y proponer estrategias concretas y alineadas.",
+      "Ejemplo positivo (5): 'Se identifican los riesgos X, Y, Z y para cada uno se propone una estrategia concreta: ... (cita literal)'.",
+      "Ejemplo negativo (2): 'Se mencionan riesgos pero las estrategias son vagas o no hay citas literales suficientes.'",
+      "Si no puedes citar literalmente los riesgos y las estrategias, la puntuación máxima no puede asignarse."
+    ],
+    "Action Plan": [
+      "Debe ser concreto, calendarizado y alineado con los objetivos y recursos.",
+      "Ejemplo positivo (5): 'El plan de acción incluye...' (cita literal concreta y calendarizada)",
+      "Ejemplo negativo (2): 'Se menciona un plan pero sin fechas ni responsables.'"
+    ],
+    "Key strategies": [
+      "Deben estar claramente definidas y alineadas con el análisis y los objetivos.",
+      "Ejemplo positivo (5): 'Las estrategias clave son...' (cita literal alineada)",
+      "Ejemplo negativo (2): 'Se mencionan estrategias pero sin alineación ni detalle.'"
+    ],
+    "Implementation timeline": [
+      "Debe ser clara, detallada y alineada con el plan de acción.",
+      "Ejemplo positivo (5): 'Cronograma: Fase 1 (Enero-Marzo 2025)...' (cita literal detallada)",
+      "Ejemplo negativo (2): 'Se menciona un cronograma pero sin detalle ni alineación.'"
+    ],
+    "Summary of key results": [
+      "Debe presentar los resultados clave de forma exhaustiva y alineada con los objetivos.",
+      "Ejemplo positivo (5): 'Los resultados muestran que...' (cita literal exhaustiva y alineada)",
+      "Ejemplo negativo (2): 'Se citan resultados pero de forma superficial o sin alineación.'",
+      "No basta con citar una frase: la cita debe demostrar que se cumplen todos los requisitos del subcriterio de forma exhaustiva y alineada."
+    ],
+    "Practical implications": [
+      "Debe explicar las implicaciones prácticas de forma clara y alineada con los resultados y objetivos.",
+      "Ejemplo positivo (5): 'Las implicaciones prácticas son...' (cita literal clara y alineada)",
+      "Ejemplo negativo (2): 'Se mencionan implicaciones pero de forma superficial o sin alineación.'"
+    ],
+    "Potential future extensions": [
+      "Debe proponer extensiones futuras relevantes y alineadas con el trabajo realizado.",
+      "Ejemplo positivo (5): 'Las extensiones futuras incluyen...' (cita literal relevante y alineada)",
+      "Ejemplo negativo (2): 'Se mencionan extensiones pero sin relevancia ni alineación.'"
+    ],
+    "References (proper citation, official style, all sources included)": [
+      "Todas las fuentes deben estar correctamente citadas siguiendo un estilo oficial y ser completas y actuales.",
+      "Ejemplo positivo (5): 'Smith, J. (2020). Título del libro. Editorial.' (cita literal completa)",
+      "Ejemplo negativo (2): 'Referencias incompletas o desactualizadas.'"
+    ],
+    "Appendices (supporting but non-essential information)": [
+      "Deben aportar información relevante pero no esencial, y estar bien organizados.",
+      "Ejemplo positivo (5): 'Apéndice A: Encuesta completa...' (cita literal relevante)",
+      "Ejemplo negativo (2): 'Apéndices irrelevantes o desorganizados.'"
+    ],
+    "Figures, tables, and graphs (numbered, referenced, titled, sourced)": [
+      "Deben estar numerados, titulados, referenciados y con fuente si no son originales.",
+      "Ejemplo positivo (5): 'Figura 2. Tendencias del mercado...' (cita literal completa)",
+      "Ejemplo negativo (2): 'Figuras sin numerar o sin fuente.'"
+    ],
+    "Formatting and style (font, size, spacing, margins, headings, citation format)": [
+      "Debe seguirse el formato oficial en todos los aspectos.",
+      "Ejemplo positivo (5): 'Texto en Arial 12pt, interlineado 1.5, márgenes 2.5cm.' (cita literal de formato)",
+      "Ejemplo negativo (2): 'Formato inconsistente o incorrecto.'"
+    ]
+  }
+}

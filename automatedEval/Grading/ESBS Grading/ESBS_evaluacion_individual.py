@@ -85,7 +85,7 @@ class EvaluadorTFM:
     def __init__(self, api_key: str):
         self.client = openai.OpenAI(api_key=api_key)
         self.model = "gpt-4o"
-        self.token_limit = 128000
+        self.token_limit = 128000  # Updated context window for GPT-4o
 
     def count_tokens(self, *args) -> int:
         return sum(len(t.split()) for t in args if t)
@@ -97,7 +97,14 @@ class EvaluadorTFM:
             raise ValueError("Superado el límite de tokens")
         response = self.client.chat.completions.create(
             model=self.model,
-            messages=[{"role": "system", "content": "Eres un corrector académico riguroso."},
+            messages=[{"role": "system", "content": (
+                "Eres un evaluador académico ultra-estricto. Debes penalizar cualquier superficialidad, falta de método, justificación genérica o ausencia de aplicación real. "
+                "No asignes un 5 salvo que se cumplan absolutamente todos los requisitos, con justificación literal, exhaustiva y alineada con los ejemplos positivos. "
+                "Si hay la más mínima duda, la puntuación debe ser menor. "
+                "Si la justificación es parcial, superficial, genérica o no se citan todos los elementos requeridos, la puntuación máxima permitida es 3. "
+                "Si la justificación se parece a los ejemplos negativos, la puntuación debe ser menor. "
+                "Si no se identifica, justifica y aplica explícitamente un método o técnica, la puntuación máxima no puede asignarse bajo ningún concepto."
+            )},
                       {"role": "user", "content": prompt}],
             max_tokens=max_output,
             temperature=0.2,
@@ -111,29 +118,53 @@ def cargar_configuracion(path: str) -> dict:
 
 def construir_prompt_desde_config(instrucciones: str, rubrica_md: str, texto_estudiante: str, config: dict, rubrica_json: dict) -> str:
     titulo = config.get("titulo", "Instrucciones")
-    normas = "\n".join(f"- {n}" for n in config.get("normas", []))
-    ejemplos = "\n".join(f"- {e}" for e in config.get("ejemplos", []))
+    normas_globales = "\n".join(f"- {n}" for n in config.get("normas", []))
+    ejemplos_globales = "\n".join(f"- {e}" for e in config.get("ejemplos", []))
+    criterios_cfg = config.get("criterios", {})
+    instrucciones_por_seccion = config.get("instrucciones_por_seccion", [])
+    instrucciones_por_capitulo = config.get("instrucciones_por_capitulo", {})
+    claves_puntuacion = config.get("claves_puntuacion", {})
+    instrucciones_seccion_str = "\n".join(f"- {line}" for line in instrucciones_por_seccion)
+    # Añade normas, ejemplos y claves de puntuación específicos por criterio y subcriterio
+    normas_por_criterio = ""
+    for criterio, datos in rubrica_json.items():
+        normas = criterios_cfg.get(criterio, {}).get("normas", [])
+        ejemplos = criterios_cfg.get(criterio, {}).get("ejemplos", [])
+        if normas or ejemplos:
+            normas_por_criterio += f"\n#### {criterio}\n"
+            if normas:
+                normas_por_criterio += "Normas específicas:\n" + "\n".join(f"- {n}" for n in normas) + "\n"
+            if ejemplos:
+                normas_por_criterio += "Ejemplos específicos:\n" + "\n".join(f"- {e}" for e in ejemplos) + "\n"
+        # Añade claves de puntuación y ejemplos por subcriterio
+        for item in datos.get("items", []):
+            detalle = item.get("detalle")
+            claves = claves_puntuacion.get(detalle, [])
+            if claves:
+                normas_por_criterio += f"Claves y ejemplos para '{detalle}':\n" + "\n".join(f"- {c}" for c in claves) + "\n"
     # Extraer secciones del .md (instrucciones)
     secciones = re.findall(r"^\d+\.\s+([A-Za-z &]+)|^#\s+([A-Za-z &]+)", instrucciones, re.MULTILINE)
     secciones = [s[0] or s[1] for s in secciones if s[0] or s[1]]
-    # Para cada sección, pide evaluación guiada por subcriterios
     instrucciones_secciones = ""
     for seccion in secciones:
-        instrucciones_secciones += (
-            f"\n### Evalúa la sección '{seccion}'\n"
-            f"- Usa los subcriterios de la rúbrica que correspondan a esta sección.\n"
-            f"- Para cada subcriterio, indica la puntuación, la justificación literal y cita textual.\n"
-            f"- Indica explícitamente qué norma(s) y ejemplo(s) del bloque de configuración aplicas.\n"
-            f"- Si la sección es deficiente o falta, asigna la puntuación mínima y explica por qué, citando la norma correspondiente.\n"
-            f"- No asignes puntuaciones altas si no puedes citar evidencia textual clara y completa para ese subcriterio.\n"
-        )
+        instrucciones_cap = instrucciones_por_capitulo.get(seccion, [])
+        if instrucciones_cap:
+            instrucciones_cap_str = "\n".join(f"- {line}" for line in instrucciones_cap)
+            instrucciones_secciones += f"\n### Evalúa la sección '{seccion}'\n{instrucciones_cap_str}\n"
+        else:
+            instrucciones_secciones += f"\n### Evalúa la sección '{seccion}'\n{instrucciones_seccion_str}\n"
     return (
         f"{instrucciones}\n\n"
         f"### Rúbrica de evaluación estructurada:\n{rubrica_md}\n\n"
         f"### Texto del estudiante a evaluar:\n{texto_estudiante}\n\n"
-        f"{titulo}\n{normas}\n\n"
-        f"EJEMPLOS DE RAZONAMIENTO PASO A PASO:\n{ejemplos}\n\n"
-        f"INSTRUCCIONES ESPECÍFICAS POR SECCIÓN:\n{instrucciones_secciones}"
+        f"{titulo}\n{normas_globales}\n\n"
+        f"EJEMPLOS DE RAZONAMIENTO PASO A PASO:\n{ejemplos_globales}\n\n"
+        f"NORMAS, EJEMPLOS Y CLAVES DE PUNTUACIÓN POR CRITERIO Y SUBCRITERIO:\n{normas_por_criterio}\n\n"
+        f"INSTRUCCIONES ESPECÍFICAS POR SECCIÓN:\n{instrucciones_secciones}\n\n"
+        f"IMPORTANTE: Evalúa el TFM EXCLUSIVAMENTE según los criterios y subcriterios de la rúbrica proporcionada, aunque la estructura del documento del alumno sea diferente. "
+        f"Para cada subcriterio de la rúbrica, busca el contenido más asimilable o equivalente en el TFM, aunque esté en otro capítulo o con otro nombre. "
+        f"La tabla de puntuaciones debe seguir exactamente la rúbrica, en el mismo orden y con los mismos nombres de criterio y subcriterio. "
+        f"Si no encuentras un apartado asimilable, puntúa bajo y justifícalo."
     )
 
 def rubrica_a_markdown(rubrica: dict) -> str:
@@ -151,7 +182,9 @@ def construir_tabla_evaluacion(rubrica, resultados):
     for criterio, datos in rubrica.items():
         for item in datos["items"]:
             detalle = item["detalle"]
-            valor = resultados.get(detalle, "-")
+            valor = resultados.get(detalle)
+            if valor is None or valor == "-":
+                valor = 1
             tabla += f"| {criterio.strip()} | {detalle} | {valor} |\n"
     return tabla
 
@@ -163,13 +196,16 @@ def extraer_puntuaciones_tabla_md(tabla_md):
         if line.startswith('|') and not line.startswith('|---'):
             partes = [x.strip() for x in line.strip('|').split('|')]
             if len(partes) == 3:
-                # Acepta números enteros, decimales, y guiones como vacío
-                valor = partes[2].replace(',', '.').replace('-', '').strip()
+                valor = partes[2].replace(',', '.').strip()
+                # Si la celda está vacía o es un guion, asigna 1
+                if valor == '' or valor == '-' or valor == '--':
+                    valor = '1'
+                else:
+                    valor = valor.replace('-', '')
                 try:
-                    if valor:
-                        resultados[(partes[0], partes[1])] = float(valor)
+                    resultados[(partes[0], partes[1])] = float(valor)
                 except ValueError:
-                    continue
+                    resultados[(partes[0], partes[1])] = 1.0
     return resultados
 
 # === BLOQUE PRINCIPAL ===
@@ -187,22 +223,27 @@ def main():
     base_path = Path("/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/Grading/ESBS Grading/esbs_grader")
     instrucciones = (base_path / "Estructura TFM ESBS y detalles.md").read_text(encoding="utf-8")
     rubrica_json = json.loads((base_path / "rubrica_estructurada.json").read_text(encoding="utf-8"))
+    # Cambia aquí para usar el JSON minimalista
     config = cargar_configuracion(base_path / "configuracion_evaluacion.json")
 
     evaluador = EvaluadorTFM(api_key=api_key)
     rubrica_md = rubrica_a_markdown(rubrica_json)
 
-    # Leer texto del PDF según discriminante de 40 páginas
+    # Leer texto del PDF según discriminante de tokens (ventana de contexto)
     with open(student_file, "rb") as f:
         reader = PyPDF2.PdfReader(f)
-        total = len(reader.pages)
-        if total < 40:
-            bloques = {f"TFM completo (1-{total} páginas)": "".join(p.extract_text() or "" for p in reader.pages)}
+        textos_paginas = [p.extract_text() or "" for p in reader.pages]
+        texto_completo = "".join(textos_paginas)
+        token_count = estimate_token_count(texto_completo)
+        if token_count <= evaluador.token_limit:
+            bloques = {f"TFM completo (1-{len(reader.pages)} páginas)": texto_completo}
         else:
+            # Si excede el límite, divide en tercios de páginas como fallback
+            total = len(reader.pages)
             tercios = [total // 3 + (1 if i < total % 3 else 0) for i in range(3)]
             bloques, start = {}, 0
             for i, n in enumerate(tercios):
-                texto = "".join(reader.pages[p].extract_text() or "" for p in range(start, start + n))
+                texto = "".join(textos_paginas[start:start + n])
                 bloques[f"Bloque {i+1} (páginas {start+1}-{start+n})"] = texto
                 start += n
 
@@ -210,56 +251,51 @@ def main():
     puntuaciones_bloques = []
     for nombre, texto in bloques.items():
         print(f"\nEvaluando: {nombre}")
-        # Refuerza el prompt para exigir tabla Markdown clara
         prompt = construir_prompt_desde_config(instrucciones, rubrica_md, texto, config, rubrica_json)
-        prompt += ("\n\nIMPORTANTE: Al final de tu respuesta, incluye SIEMPRE una tabla Markdown con las puntuaciones numéricas de cada subcriterio, en el formato:"
-                  "\n| Criterio | Subcriterio | Puntuación |\n|---|---|---|\n...\n. No uses texto, guiones ni celdas vacías en la columna de puntuación, solo números.")
+        prompt += ("\n\nPor favor, evalúa el texto anterior siguiendo la rúbrica y las normas indicadas. "
+            "Al final de tu respuesta, incluye una tabla Markdown con las puntuaciones numéricas de cada subcriterio en el formato exacto:"
+            "\n| Criterio | Subcriterio | Puntuación |\n|---|---|---|\n...\n"
+            "No uses texto, guiones ni celdas vacías en la columna de puntuación, solo números. Si no puedes puntuar un subcriterio, escribe 1. "
+            "La tabla debe estar al final de la respuesta, sin texto adicional después.")
         evaluacion = evaluador.evaluar(prompt)
-        resultados = {}  # Extraer después
-        tabla = construir_tabla_evaluacion(rubrica_json, resultados)
-        contenido = f"{evaluacion}\n\n## Tabla resumen de evaluación\n\n{tabla}"
-        base_name = os.path.splitext(os.path.basename(student_file))[0]
-        output_dir = os.path.dirname(student_file)
-        out = os.path.join(output_dir, f"{base_name}_{nombre.replace(' ', '_').replace('(', '').replace(')', '')}.md")
-        save_evaluation_result(contenido, out)
-        evaluaciones[nombre] = contenido
-        # Extrae puntuaciones de la tabla Markdown generada
-        # Busca la tabla real en el texto generado por la IA
-        tabla_encontrada = re.search(r"\| *Criterio *\| *Subcriterio *\| *Puntuaci[oó]n *\|[\s\S]+?\n\n", evaluacion)
+        print(f"[DEBUG] Respuesta completa del LLM para el bloque '{nombre}':\n{evaluacion}\n{'='*80}")
+        # Busca la tabla real en el texto generado por la IA (más tolerante)
+        tabla_encontrada = re.search(r"\| *Criterio *\| *Subcriterio *\| *Puntuaci[oó]n? *\|[\s\S]+?(\n\n|$)", evaluacion, re.IGNORECASE)
+        if not tabla_encontrada:
+            # Intenta detectar variantes del encabezado (por ejemplo, sin acento, con espacios, etc.)
+            tabla_encontrada = re.search(r"\|.*criterio.*\|.*subcriterio.*\|.*puntuaci[oó]n?.*\|[\s\S]+?(\n\n|$)", evaluacion, re.IGNORECASE)
         if tabla_encontrada:
+            print(f"[DEBUG] Tabla encontrada en bloque '{nombre}':\n{tabla_encontrada.group(0)}")
             puntuaciones_bloques.append(extraer_puntuaciones_tabla_md(tabla_encontrada.group(0)))
         else:
+            print(f"[ADVERTENCIA] No se encontró tabla de puntuaciones en el bloque '{nombre}'.")
             puntuaciones_bloques.append({})
-        print(f"✅ Evaluación de '{nombre}' guardada en: {out}")
-
-    # Calcula la tabla resumen global
-    from collections import defaultdict
-    suma = defaultdict(list)
+    # === AGREGACIÓN Y GUARDADO DEL INFORME FINAL ===
+    # Fusionar puntuaciones de todos los bloques (si hay más de uno, tomar el mínimo por subcriterio para máxima severidad)
+    puntuaciones_finales = {}
     for bloque in puntuaciones_bloques:
-        for clave, valor in bloque.items():
-            suma[clave].append(valor)
-    resumen_global = "| Criterio | Subcriterio | Media |\n|---|---|---|\n"
-    for (criterio, subcriterio), valores in suma.items():
-        media = round(sum(valores)/len(valores),2)
-        resumen_global += f"| {criterio} | {subcriterio} | {media} |\n"
+        for (criterio, subcriterio), valor in bloque.items():
+            clave = (criterio, subcriterio)
+            if clave not in puntuaciones_finales:
+                puntuaciones_finales[clave] = valor
+            else:
+                puntuaciones_finales[clave] = min(puntuaciones_finales[clave], valor)
 
-    # Síntesis global ultra-estricta
-    print("\nGenerando síntesis global ultra-estricta...")
-    resumenes = '\n\n'.join([f"{k}:\n{v[:2000]}..." for k,v in evaluaciones.items()])  # Limita cada bloque a 2000 chars para el prompt
-    prompt_sintesis = (
-        "A continuación tienes los informes de evaluación ultra-estricta de los bloques de un TFM. "
-        "Elabora una síntesis global crítica e INTEGRADA, analizando la coherencia, congruencia y el flujo entre bloques. "
-        "Detecta contradicciones, repeticiones o saltos argumentales entre partes. "
-        "Integra las justificaciones y puntuaciones de cada bloque en una visión global, penalizando incoherencias. "
-        "Emite recomendaciones finales. "
-        "No repitas texto, razona sobre la integración y la calidad global del TFM.\n\n"
-        f"{resumenes}"
-    )
-    sintesis = evaluador.evaluar(prompt_sintesis)
-    out_sintesis = os.path.join(output_dir, f"{base_name}_sintesis_global.md")
-    # Incluye la tabla resumen global al principio de la síntesis
-    save_evaluation_result(f"## Tabla resumen global de puntuaciones\n\n{resumen_global}\n\n{sintesis}", out_sintesis)
-    print(f"\n✅ Síntesis global guardada en: {out_sintesis}")
+    # Construir tabla global de evaluación
+    tabla_md = construir_tabla_evaluacion(rubrica_json, {(k[1]): v for k, v in puntuaciones_finales.items()})
+
+    # Síntesis global y preguntas al autor (puedes mejorar el prompt si quieres que sea más detallado)
+    sintesis = "\n**Síntesis global:**\n\nEl trabajo ha sido evaluado siguiendo criterios ultra-estrictos. Consulta la tabla para ver los puntos fuertes y débiles.\n"
+    preguntas = "\n**Preguntas para el autor:**\n1. ¿Cómo justificarías las áreas con menor puntuación?\n2. ¿Qué mejorarías en una futura versión del TFM?\n"
+
+    # Construir el contenido Markdown final
+    nombre_pdf = os.path.splitext(os.path.basename(student_file))[0]
+    fecha = f"{time():.0f}"
+    output_md = f"{nombre_pdf}_evaluacion_{fecha}.md"
+    output_path = str(Path(student_file).parent / output_md)
+    contenido_md = f"# Informe de evaluación TFM\n\n{tabla_md}\n\n{sintesis}\n{preguntas}\n"
+    save_evaluation_result(contenido_md, output_path)
+    print(f"\n✅ Informe de evaluación guardado en: {output_path}\n")
 
 # === EJECUCIÓN ===
 if __name__ == "__main__":
