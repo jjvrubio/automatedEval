@@ -5,12 +5,13 @@ import pdfplumber
 import docx
 import logging
 from dotenv import load_dotenv
-from AppKit import NSOpenPanel
+from AppKit import NSOpenPanel, NSApplication
 
 # ------------------------------
 # CONFIGURACIÓN OPENAI (via .env)
 # ------------------------------
 def configurar_openai():
+    print("Entrando en configurar_openai()")
     load_dotenv()
     api_key = os.getenv("MI_CLAVE_API_OPENAI")
     if not api_key:
@@ -21,6 +22,7 @@ def configurar_openai():
 # CONFIGURACIÓN DEL LOGGER
 # ------------------------------
 def configurar_logger():
+    print("Entrando en configurar_logger()")
     log_path = "evaluador_tfm.log"
     logging.basicConfig(
         level=logging.INFO,
@@ -36,6 +38,9 @@ def configurar_logger():
 # SELECCIÓN DE ARCHIVO (AppKit)
 # ------------------------------
 def seleccionar_archivo(allowed_types, titulo, mensaje):
+    print("Entrando en seleccionar_archivo()")
+    NSApp = NSApplication.sharedApplication()
+    NSApp.activateIgnoringOtherApps_(True)
     panel = NSOpenPanel.openPanel()
     panel.setCanChooseFiles_(True)
     panel.setCanChooseDirectories_(False)
@@ -45,13 +50,16 @@ def seleccionar_archivo(allowed_types, titulo, mensaje):
     panel.setMessage_(mensaje)
 
     if panel.runModal() == 1:
+        print("Archivo seleccionado en seleccionar_archivo()")
         return panel.URLs()[0].path()
+    print("No se seleccionó archivo en seleccionar_archivo()")
     return None
 
 # ------------------------------
 # CARGA DE RÚBRICA
 # ------------------------------
 def cargar_rubrica(path, logger):
+    print("Entrando en cargar_rubrica()")
     ext = os.path.splitext(path)[-1].lower()
     try:
         if ext == ".csv":
@@ -73,6 +81,7 @@ def cargar_rubrica(path, logger):
 # CARGA OPCIONAL DE INSTRUCCIONES
 # ------------------------------
 def cargar_instrucciones_md_opcional(ruta_md, logger):
+    print("Entrando en cargar_instrucciones_md_opcional()")
     if os.path.exists(ruta_md):
         try:
             with open(ruta_md, "r", encoding="utf-8") as f:
@@ -89,6 +98,7 @@ def cargar_instrucciones_md_opcional(ruta_md, logger):
 # LECTURA DEL TFM
 # ------------------------------
 def leer_tfm(path, logger):
+    print("Entrando en leer_tfm()")
     ext = os.path.splitext(path)[-1].lower()
     texto = ""
 
@@ -116,39 +126,37 @@ def leer_tfm(path, logger):
 # EVALUACIÓN CON OPENAI
 # ------------------------------
 def evaluar_criterio(client, criterio, texto_tfm, instrucciones_base):
+    print("Entrando en evaluar_criterio()")
     prompt = f"{instrucciones_base.strip()}\n\n" if instrucciones_base.strip() else ""
     prompt += f"""Ahora evalúa el siguiente trabajo según el criterio:
 
 Criterio:
 {criterio}
 
-Trabajo del TFM:
+Trabajo del TFM (solo para consulta, NO lo repitas en la respuesta):
 {texto_tfm}
 
-Responde estrictamente con Nivel 1, Nivel 2, Nivel 3 o Nivel 4 seguido de una justificación crítica y detallada.
+Responde SOLO con el nivel (Nivel 1, 2, 3 o 4) y una justificación crítica y detallada. NO repitas el texto del TFM en tu respuesta.
 """
     # Log del prompt antes de enviarlo a OpenAI
     logging.getLogger("evaluador_tfm").info(f"Prompt enviado a OpenAI para el criterio '{criterio}':\n{prompt[:2000]}... [truncado]")
 
     # Selección del modelo con mayor ventana de tokens
-    # gpt-4o: 128k tokens (OpenAI, 2024)
-    # gpt-4-turbo: 128k tokens
-    # gpt-4-32k: 32k tokens
-    # gpt-3.5-turbo-16k: 16k tokens
-    # Usamos gpt-4o si está disponible
     modelo_llm = "gpt-4o"
 
     response = client.chat.completions.create(
         model=modelo_llm,
         messages=[{"role": "user", "content": prompt}],
-        temperature=0
+        temperature=0,
+        max_tokens=400  # Limita la longitud de la respuesta
     )
-    return response.choices[0].message.content
+    return response.choices[0].message.content.strip()
 
 # ------------------------------
 # EVALUACIÓN COMPLETA
 # ------------------------------
 def evaluar_tfm_completo(client, rubrica_df, texto_tfm, instrucciones_base, logger):
+    print("Entrando en evaluar_tfm_completo()")
     resultados = []
     for criterio in rubrica_df.iloc[:, 0]:
         logger.info(f"🧠 Evaluando criterio: {criterio}")
@@ -160,6 +168,7 @@ def evaluar_tfm_completo(client, rubrica_df, texto_tfm, instrucciones_base, logg
 # EXPORTAR RESULTADOS
 # ------------------------------
 def exportar_resultados(resultados, csv_path, md_path, logger):
+    print("Entrando en exportar_resultados()")
     try:
         pd.DataFrame(resultados).to_csv(csv_path, index=False)
         logger.info(f"💾 CSV generado: {csv_path}")
@@ -177,10 +186,22 @@ def exportar_resultados(resultados, csv_path, md_path, logger):
 # MAIN
 # ------------------------------
 def main():
+    print("Entrando en main()")
     logger = configurar_logger()
-    client = configurar_openai()
-
     logger.info("🟢 Inicio del proceso de evaluación")
+
+    ruta_tfm = seleccionar_archivo(
+        ["pdf", "docx"],
+        titulo="Selecciona el TFM",
+        mensaje="Elige el archivo del TFM (.pdf o .docx)"
+    )
+    print(f"ruta_tfm: {ruta_tfm}")
+    if not ruta_tfm:
+        logger.warning("❗ No se seleccionó ningún archivo de TFM.")
+        return
+    logger.info(f"📄 TFM seleccionado: {ruta_tfm}")
+
+    client = configurar_openai()
 
     ruta_rubrica = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv"
     logger.info(f"📁 Usando rúbrica fija: {ruta_rubrica}")
@@ -194,21 +215,12 @@ def main():
     if rubrica is None:
         return
 
-    ruta_tfm = seleccionar_archivo(
-        ["pdf", "docx"],
-        titulo="Selecciona el TFM",
-        mensaje="Elige el archivo del TFM (.pdf o .docx)"
-    )
-    if not ruta_tfm:
-        logger.warning("❗ No se seleccionó ningún archivo de TFM.")
-        return
-    logger.info(f"📄 TFM seleccionado: {ruta_tfm}")
-
     # 🔁 Cargar instrucciones ultraestrictas solo si existen
     ruta_instrucciones = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/Prompt en modo humano.md"
     instrucciones_base = cargar_instrucciones_md_opcional(ruta_instrucciones, logger)
 
     texto = leer_tfm(ruta_tfm, logger)
+    print(f"Longitud del texto extraído del TFM: {len(texto)}")
     logger.info(f"Longitud del texto extraído del TFM: {len(texto)}")
     logger.info(f"Primeros 500 caracteres del texto extraído:\n{texto[:500]}")
     if not texto.strip():

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "extract_text",
+    "description": "Extrae el texto de un archivo PDF o DOCX.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Ruta al archivo"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "pdf",
+            "docx"
+          ],
+          "description": "Tipo de archivo"
+        }
+      },
+      "required": [
+        "file_path",
+        "source_type"
+      ]
+    }
+  },
+  {
+    "name": "get_file_title",
+    "description": "Devuelve el nombre del archivo sin extensi\u00f3n.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_path"
+      ]
+    }
+  }
+]

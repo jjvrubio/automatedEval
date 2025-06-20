@@ -1,23 +1,23 @@
-2025-06-17 21:00:55,712 [INFO] 🟢 Inicio del proceso de evaluación
-2025-06-17 21:00:55,712 [INFO] 📁 Usando rúbrica fija: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
-2025-06-17 21:00:55,712 [INFO] 📁 Rúbrica seleccionada: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
-2025-06-17 21:00:55,714 [INFO] ✅ Rúbrica cargada correctamente.
-2025-06-17 21:01:18,072 [INFO] 📄 TFM seleccionado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/Gustavo Fernández Calvo/VALINOR 2ª bis.docx
-2025-06-17 21:01:18,076 [INFO] 📘 Instrucciones ultraestrictas cargadas desde: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/Prompt en modo humano.md
-2025-06-17 21:01:18,077 [INFO] 📥 Leyendo DOCX...
-2025-06-17 21:01:18,166 [INFO] ✅ Lectura del TFM completada.
-2025-06-17 21:01:18,166 [INFO] Longitud del texto extraído del TFM: 98042
-2025-06-17 21:01:18,166 [INFO] Primeros 500 caracteres del texto extraído:
+2025-06-20 10:06:51,862 [INFO] 🟢 Inicio del proceso de evaluación
+2025-06-20 10:06:55,171 [INFO] 📄 TFM seleccionado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/José Osuna Pérez/[PER 11004]_TFM_ Entrega 2ª bis.docx
+2025-06-20 10:06:55,281 [INFO] 📁 Usando rúbrica fija: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
+2025-06-20 10:06:55,281 [INFO] 📁 Rúbrica seleccionada: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv
+2025-06-20 10:06:55,285 [INFO] ✅ Rúbrica cargada correctamente.
+2025-06-20 10:06:55,285 [INFO] 📘 Instrucciones ultraestrictas cargadas desde: /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/Prompt en modo humano.md
+2025-06-20 10:06:55,285 [INFO] 📥 Leyendo DOCX...
+2025-06-20 10:06:55,363 [INFO] ✅ Lectura del TFM completada.
+2025-06-20 10:06:55,364 [INFO] Longitud del texto extraído del TFM: 94542
+2025-06-20 10:06:55,364 [INFO] Primeros 500 caracteres del texto extraído:
 
 
 Universidad Internacional de La Rioja
-Facultad de Economía y Empresa
+Facultad de Empresa y Comunicación
 
 
 
 
 Máster Universitario en Transformación Digital en la Empresa
-Valinor Tech
+Transformación Digital del Control de Calidad en Econatur 
 
 
 
@@ -25,11 +25,11 @@ Valinor Tech
 
 
 Resumen 
-El presente Trabajo Fin de Máster recoge el diseño e implementación de un proyecto integral de transformación digital para VT, una unidad BPO especializada en procesos del sector inmobiliario. Su objetivo es evolucionar desde un modelo basado en tecnología legacy hacia una plataforma moderna, escalable, orientada al dato y al cliente
-2025-06-17 21:01:18,167 [INFO] 🧠 Evaluando criterio: Formato y lenguaje:
+El presente Trabajo Fin de Máster se enmarca en el proceso de transformación digital de la empresa Econatur. Actualmente, una de sus sedes ha implantado el ERP Odoo, lo cual ha permitido digitalizar varios procesos administrativos y de gestión. Sin embargo, el área de producción, espe
+2025-06-20 10:06:55,364 [INFO] 🧠 Evaluando criterio: Formato y lenguaje:
 (10%; máx. 1punto)
 Estilo formal/académico
-2025-06-17 21:01:18,168 [INFO] Prompt enviado a OpenAI para el criterio 'Formato y lenguaje:
+2025-06-20 10:06:55,364 [INFO] Prompt enviado a OpenAI para el criterio 'Formato y lenguaje:
 (10%; máx. 1punto)
 Estilo formal/académico':
 Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
@@ -43,8 +43,209 @@ La evaluación debe contemplar el análisis de congruencia del documento al apli
 | Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
-2025-06-17 21:01:23,706 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2025-06-17 21:01:23,708 [INFO] Retrying request to /chat/completions in 0.464961 seconds
-2025-06-17 21:01:24,714 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2025-06-17 21:01:24,715 [INFO] Retrying request to /chat/completions in 0.751586 seconds
-2025-06-17 21:01:25,840 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-06-20 10:07:05,241 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:05,247 [INFO] 🧠 Evaluando criterio: Estructura/apartados: 
+(10%)
+· Portada; Resumen; Índice
+· Introducción; Justificación; objetivos
+· Análisis externo e interno de la empresa
+· Conclusiones  
+· Limitaciones, principales amenazas y alternativas                                                                                                                                                                                                                                                                                                                           · Referencias bibliográficas
+2025-06-20 10:07:05,247 [INFO] Prompt enviado a OpenAI para el criterio 'Estructura/apartados: 
+(10%)
+· Portada; Resumen; Índice
+· Introducción; Justificación; objetivos
+· Análisis externo e interno de la empresa
+· Conclusiones  
+· Limitaciones, principales amenazas y alternativas                                                                                                                                                                                                                                                                                                                           · Referencias bibliográficas':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:12,147 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:12,149 [INFO] 🧠 Evaluando criterio: Portada, índice y resumen: 
+(1%)
+2025-06-20 10:07:12,150 [INFO] Prompt enviado a OpenAI para el criterio 'Portada, índice y resumen: 
+(1%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:18,028 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:18,033 [INFO] 🧠 Evaluando criterio: Introducción/objetivos: 
+(4%)
+2025-06-20 10:07:18,033 [INFO] Prompt enviado a OpenAI para el criterio 'Introducción/objetivos: 
+(4%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:25,973 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:25,975 [INFO] 🧠 Evaluando criterio: Proyecto:
+(30%)
+2025-06-20 10:07:25,976 [INFO] Prompt enviado a OpenAI para el criterio 'Proyecto:
+(30%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:32,183 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:32,191 [INFO] 🧠 Evaluando criterio: Fotografías, ilustraciones, tablas, gráficos y figuras: 
+(1%)
+2025-06-20 10:07:32,191 [INFO] Prompt enviado a OpenAI para el criterio 'Fotografías, ilustraciones, tablas, gráficos y figuras: 
+(1%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:39,384 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:39,386 [INFO] 🧠 Evaluando criterio: Conclusiones: 
+(6%)
+2025-06-20 10:07:39,387 [INFO] Prompt enviado a OpenAI para el criterio 'Conclusiones: 
+(6%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:47,473 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:47,474 [INFO] 🧠 Evaluando criterio: Limitaciones, principales amenazas y alternativas:
+(5%)
+2025-06-20 10:07:47,474 [INFO] Prompt enviado a OpenAI para el criterio 'Limitaciones, principales amenazas y alternativas:
+(5%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:53,745 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:53,747 [INFO] 🧠 Evaluando criterio: Referencias bibliográficas: 
+(3%)
+2025-06-20 10:07:53,747 [INFO] Prompt enviado a OpenAI para el criterio 'Referencias bibliográficas: 
+(3%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:07:59,852 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:07:59,852 [INFO] 🧠 Evaluando criterio: Presentación del TFE/Exposición:
+(10%)
+2025-06-20 10:07:59,853 [INFO] Prompt enviado a OpenAI para el criterio 'Presentación del TFE/Exposición:
+(10%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:08:06,064 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:08:06,066 [INFO] 🧠 Evaluando criterio: Estructura y formato de la presentación:
+(4%)
+2025-06-20 10:08:06,067 [INFO] Prompt enviado a OpenAI para el criterio 'Estructura y formato de la presentación:
+(4%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:08:11,633 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:08:11,646 [INFO] 🧠 Evaluando criterio: Dominio del contenido:
+(8%)
+2025-06-20 10:08:11,646 [INFO] Prompt enviado a OpenAI para el criterio 'Dominio del contenido:
+(8%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:08:18,112 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:08:18,115 [INFO] 🧠 Evaluando criterio: Comunicación (verbal y no verbal) con el tribunal:
+(8%)
+2025-06-20 10:08:18,115 [INFO] Prompt enviado a OpenAI para el criterio 'Comunicación (verbal y no verbal) con el tribunal:
+(8%)':
+Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
+
+
+
+EL análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
+
+La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y sus niveles -rúbrica- reflejados en la tabla que aparece a continuación:
+
+| Criterio                                                     | Nivel 1                                                      | Nivel 2                                                      | Nivel 3                                                      | Nivel 4                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Formato  y lenguaje:     (10%; máx. 1punto)     Estilo formal/académico | · Documento sin formato  (diferente tipo de letra, tamaño, párrafos con sangría distinta...);      · Aspecto descuidado;     · Uso continuo de la primera persona para redactar.     · Partes del texto con redacción incomprensible     · Muchas faltas de ortografía y lenguaje coloquial. | · El trabajo tiene formato pero  alguna falta de ortografía, gramática o puntuación;     · Puede mejorarse el estilo (utiliza... [truncado]
+2025-06-20 10:08:24,402 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-20 10:08:25,129 [INFO] 💾 CSV generado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/José Osuna Pérez/evaluacion_tfm_resultado.csv
+2025-06-20 10:08:26,100 [INFO] 📝 Markdown generado: /Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/UNIR/Convocatorias/PER 11004/NV/José Osuna Pérez/evaluacion_tfm_informe.md
+2025-06-20 10:08:26,100 [INFO] ✅ Evaluación finalizada correctamente.
