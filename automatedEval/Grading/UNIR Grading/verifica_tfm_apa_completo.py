@@ -183,8 +183,17 @@ Dado el siguiente cuerpo de texto académico y la lista de referencias bibliogr�
         max_tokens=1500,
         temperature=0.2
     )
+    resultado = response.choices[0].message.content
     print("\n--- RESULTADO GPT-4 ---\n")
-    print(response.choices[0].message.content)
+    print(resultado)
+    # Guardar como Markdown
+    out_dir = os.path.dirname(tfm_file)
+    out_base = os.path.splitext(os.path.basename(tfm_file))[0]
+    md_path = os.path.join(out_dir, f"{out_base}_informe_apa_gpt4.md")
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(f"# Informe de validación APA (GPT-4)\n\n")
+        f.write(resultado)
+    print(f"\nInforme guardado en: {md_path}\n")
 
 if __name__ == "__main__":
     main()

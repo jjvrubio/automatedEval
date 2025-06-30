@@ -5,7 +5,10 @@ import pdfplumber
 import docx
 import logging
 from dotenv import load_dotenv
-from AppKit import NSOpenPanel, NSApplication
+from AppKit import NSApplication, NSOpenPanel
+
+# Inicializando AppKit (puede tardar unos segundos la primera vez)...
+NSApp = NSApplication.sharedApplication()
 
 # ------------------------------
 # CONFIGURACIÓN OPENAI (via .env)
@@ -39,7 +42,6 @@ def configurar_logger():
 # ------------------------------
 def seleccionar_archivo(allowed_types, titulo, mensaje):
     print("Entrando en seleccionar_archivo()")
-    NSApp = NSApplication.sharedApplication()
     NSApp.activateIgnoringOtherApps_(True)
     panel = NSOpenPanel.openPanel()
     panel.setCanChooseFiles_(True)
@@ -158,7 +160,15 @@ Responde SOLO con el nivel (Nivel 1, 2, 3 o 4) y una justificación crítica y d
 def evaluar_tfm_completo(client, rubrica_df, texto_tfm, instrucciones_base, logger):
     print("Entrando en evaluar_tfm_completo()")
     resultados = []
+    # Palabras clave para excluir criterios de exposición/presentación/comunicación
+    palabras_excluir = [
+        "presentación", "exposición", "comunicación", "tribunal", "formato de la presentación"
+    ]
     for criterio in rubrica_df.iloc[:, 0]:
+        criterio_lower = criterio.lower()
+        if any(palabra in criterio_lower for palabra in palabras_excluir):
+            logger.info(f"⏩ Criterio excluido de la evaluación automática: {criterio}")
+            continue
         logger.info(f"🧠 Evaluando criterio: {criterio}")
         evaluacion = evaluar_criterio(client, criterio, texto_tfm, instrucciones_base)
         resultados.append({"criterio": criterio, "evaluacion": evaluacion})
