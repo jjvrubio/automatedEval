@@ -5,16 +5,16 @@ import os
 from AppKit import NSApplication, NSApp
 from Cocoa import NSOpenPanel
 from collections import Counter
+import docx
 
 
-def select_pdf_file():
-    """Open a native macOS file picker to select a PDF file."""
+def select_file():
+    """Open a native macOS file picker to select a PDF o DOCX file."""
     panel = NSOpenPanel.openPanel()
-    panel.setAllowedFileTypes_(["pdf"])
+    panel.setAllowedFileTypes_(["pdf", "docx"])
     panel.setCanChooseFiles_(True)
     panel.setCanChooseDirectories_(False)
-
-    if panel.runModal() == 1:  # 1 means OK button clicked
+    if panel.runModal() == 1:
         return panel.URLs()[0].path()
     return None
 
@@ -68,17 +68,17 @@ def extract_references_from_pdf(pdf_path):
                     filtered_text = filter_head_footer_patterns(page_text, head_footer_patterns)
                     text += filtered_text + "\n"
 
-            ref_positions = [i for i, line in enumerate(text.splitlines()) if "REFERENCIAS" in line]
+            ref_positions = [i for i, line in enumerate(text.splitlines()) if "Referencias bibliográficas" in line]
 
             if not ref_positions:
-                print("No occurrences of 'REFERENCIAS' found.")
+                print("No occurrences of 'Referencias bibliográficas' found.")
                 return
 
             start_line = ref_positions[-1]
             lines = text.splitlines()
 
             for line in lines[start_line:]:
-                if is_page_number(line) or "REFERENCIAS" in line:
+                if is_page_number(line) or "Referencias bibliográficas" in line:
                     continue
 
                 if "Anexo" in line:
@@ -88,7 +88,7 @@ def extract_references_from_pdf(pdf_path):
                     extracted_references.append(line.strip())
 
             if not extracted_references:
-                print("No references found between 'REFERENCIAS' and 'Anexo'.")
+                print("No references found between 'Referencias bibliográficas' and 'Anexo'.")
             else:
                 save_json_file(extracted_references, pdf_path)
 
@@ -96,12 +96,35 @@ def extract_references_from_pdf(pdf_path):
         print(f"Error during extraction: {e}")
 
 
+def extract_references_from_docx(docx_path):
+    """Extract references from DOCX and export to JSON."""
+    try:
+        doc = docx.Document(docx_path)
+        lines = [para.text.strip() for para in doc.paragraphs if para.text.strip()]
+        ref_positions = [i for i, line in enumerate(lines) if "Referencias bibliográficas" in line.upper()]
+        if not ref_positions:
+            print("No occurrences of 'Referencias bibliográficas' found.")
+            return
+        start_line = ref_positions[-1]
+        extracted_references = []
+        for line in lines[start_line+1:]:
+            if "ANEXO" in line.upper():
+                break
+            extracted_references.append(line)
+        if not extracted_references:
+            print("No references found between 'Referencias bibliográficas' and 'Anexo'.")
+        else:
+            save_json_file(extracted_references, docx_path)
+    except Exception as e:
+        print(f"Error extracting references from DOCX: {e}")
+
+
 def save_json_file(references, input_file_path):
     """Save references as JSON in the same directory as the input file with a custom name."""
     try:
         input_dir = os.path.dirname(input_file_path)
         input_filename = os.path.splitext(os.path.basename(input_file_path))[0]
-        output_file_path = os.path.join(input_dir, f"{input_filename}_REFERENCIAS.json")
+        output_file_path = os.path.join(input_dir, f"{input_filename}_Referencias bibliográficas.json")
 
         with open(output_file_path, "w", encoding="utf-8") as f:
             json.dump(references, f, ensure_ascii=False, indent=4)
@@ -112,14 +135,20 @@ def save_json_file(references, input_file_path):
 
 
 def main():
-    """Main function to select PDF, extract references, and save them as JSON."""
+    """Main function to select PDF or DOCX, extract references, and save them as JSON."""
     NSApp()
-    print("Select a PDF file...")
-    pdf_path = select_pdf_file()
-
-    if pdf_path:
-        print(f"Extracting references from {pdf_path}...")
-        extract_references_from_pdf(pdf_path)
+    print("Select a PDF or DOCX file...")
+    file_path = select_file()
+    if file_path:
+        ext = os.path.splitext(file_path)[-1].lower()
+        if ext == ".pdf":
+            print(f"Extracting references from {file_path} (PDF)...")
+            extract_references_from_pdf(file_path)
+        elif ext == ".docx":
+            print(f"Extracting references from {file_path} (DOCX)...")
+            extract_references_from_docx(file_path)
+        else:
+            print("Unsupported file type.")
     else:
         print("File selection cancelled.")
 

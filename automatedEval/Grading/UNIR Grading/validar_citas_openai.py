@@ -80,6 +80,13 @@ Texto del TFM:
         temperature=0.2
     )
     print(response.choices[0].message.content)
+    # Guardar resultado en un archivo .md
+    output_dir = os.path.dirname(tfm_file)
+    base_name = os.path.splitext(os.path.basename(tfm_file))[0]
+    md_path = os.path.join(output_dir, f"{base_name}_VALIDACION_CITAS.md")
+    with open(md_path, "w", encoding="utf-8") as f:
+        f.write(response.choices[0].message.content)
+    print(f"\nEl resultado también se ha guardado en: {md_path}")
 
 if __name__ == "__main__":
     main()
