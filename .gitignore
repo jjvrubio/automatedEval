@@ -1,5 +1,78 @@
+# Archivos específicos del proyecto
 automatedEval/web fulfill/test.py
+
+# macOS - Archivos del sistema
 .DS_Store
-automatedEval/.DS_Store
-automatedEval/Grading/.DS_Store
-automatedEval/Grading/.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Entornos virtuales (específicos de este proyecto)
+venv_arm64/
+venv_intel/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs
+*.log
+logs/
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# Archivos de configuración local
+config.local.*
+.env.local
