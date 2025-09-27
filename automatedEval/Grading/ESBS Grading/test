@@ -1,0 +1,23 @@
+# Variables
+$tenantId = "f58b9b92-7597-45fe-b628-f0325085ed37"
+$clientId = "617e9cd4-3b09-4058-a217-46d1abe28ba2"
+$clientSecret = "rts8Q~Z~RawgKKqNHJyUZ0JHwbkL1Rll8USDNcPw"
+
+# Obtener token OAuth
+$body = @{
+    grant_type    = "client_credentials"
+    scope         = "https://graph.microsoft.com/.default"
+    client_id     = $clientId
+    client_secret = $clientSecret
+}
+$tokenResponse = Invoke-RestMethod -Method Post -Uri "https://login.microsoftonline.com/$tenantId/oauth2/v2.0/token" -Body $body
+$accessToken = $tokenResponse.access_token
+
+# Activar RMS (simulado, ya que Graph no expone directamente el endpoint de activación)
+# Aquí normalmente se usaría el endpoint de AIP, pero como no está disponible públicamente,
+# se puede verificar el estado o usar Graph para configurar políticas relacionadas.
+
+# Verificar estado de RMS
+Invoke-RestMethod -Method Get `
+  -Uri "https://graph.microsoft.com/v1.0/informationProtection/policy" `
+  -Headers @{ Authorization = "Bearer $accessToken" }
