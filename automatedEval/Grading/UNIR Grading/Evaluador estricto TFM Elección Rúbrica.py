@@ -1,60 +1,62 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Evaluador TFM – Integrado (sin parámetros, 2 rúbricas fijas)
-===========================================================
+Evaluador TFM Integrado – Finder + OneDrive + OpenAI
+===================================================
 
-Qué hace (todo en un script, sin flags ni CLI):
-1) Abre **selector AppKit (NSOpenPanel)** para elegir el TFM del alumno (PDF/DOCX).
-2) Intenta **hidratar** el archivo si está en OneDrive (File Provider).
-3) Lee **etiquetas Finder (kMDItemUserTags)** y decide la rúbrica:
-   - Si hay etiqueta **MUDPE** → usa la rúbrica MUDPE.
-   - Si hay etiqueta **MGPTD** → usa la rúbrica MGPTD.
-   - Si no hay etiquetas válidas o hay ambigüedad → muestra un **diálogo AppKit** para elegir entre MUDPE/MGPTD.
-4) Carga la rúbrica (xlsx), extrae el texto del TFM (PDF o DOCX) y ejecuta una **evaluación por criterio con OpenAI**.
-5) Genera **CSV** y **Markdown** con el informe de evaluación en la misma carpeta del TFM.
+Integra en un único script:
+1) **Selector de archivo** (AppKit/NSOpenPanel) y lectura de **etiquetas Finder** (kMDItemUserTags) con soporte OneDrive (hidratar).
+2) **Selección automática de rúbrica** según etiquetas Finder → ruta de rúbrica.
+3) **Extracción de texto** del TFM (PDF / DOCX).
+4) **Evaluación con OpenAI** por criterios de la rúbrica (CSV + Markdown).
+
+Probado en macOS (Apple Silicon) con Python 3.11/3.12/3.13.
+
+Uso rápido
+----------
+$ python evaluador_tfm_integrado.py \
+    [--pdf /ruta/TFM.pdf|.docx] \
+    [--rubrica /ruta/rubrica.(xlsx|csv|json)] \
+    [--instrucciones /ruta/Prompt_ultraestricto.md] \
+    [--modelo gpt-4o-mini] \
+    [--temperatura 0.0]
+
+Si no se proporcionan rutas, el script abre un selector para elegir el TFM y resuelve la rúbrica por etiquetas Finder.
 
 Requisitos
 ----------
-- macOS (Apple Silicon OK) con `mdls` y (opcional) `fileproviderctl`.
-- Python 3.11+ (probado con 3.11/3.12/3.13).
-- Paquetes: pdfplumber, python-docx, pandas, openai>=1.0, pyobjc (AppKit).
-- Variable de entorno **MI_CLAVE_API_OPENAI** (o **OPENAI_API_KEY**) con tu API key.
-
-Rúbricas fijas
---------------
-- MUDPE → /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica MUDPE.xlsx
-- MGPTD → /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica MGPTD.xlsx
+- pdfplumber, python-docx (docx), pandas, openai>=1.0, python-dotenv (opcional), AppKit (pyobjc),
+- macOS con utilidades `mdls` y (opcional) `fileproviderctl`.
+- Variable de entorno **MI_CLAVE_API_OPENAI** con tu API key.
 """
 from __future__ import annotations
 
 import os
 import sys
 import json
+import csv
 import logging
 import plistlib
 import subprocess
 import unicodedata
+from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional, Tuple
 
 # ----------------------------
-# Configuración fija (sin parámetros)
+# Configuración editable
 # ----------------------------
 RUBRICAS_POR_ETIQUETA: dict[str, str] = {
     "MUDPE": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica MUDPE.xlsx",
-    "MGPTD": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica MGPTD.xlsx",
+    "MUGPTD": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica MUGPTD.xlsx",
 }
 
-# Instrucciones internas por defecto (sin fichero MD)
-INSTRUCCIONES_ULTRAESTRICTAS = (
-    "Eres un evaluador académico experto en TFMs de UNIR. Modelo ultraestricto: "
-    "asigna nivel 4 solo si todos los elementos esenciales se cumplen con coherencia profunda. "
-    "Sigue exactamente el orden y redacción de los criterios de la rúbrica aportada. "
-    "Para cada criterio devuelve: Nivel (1-4 o 'No evaluable'), Justificación estructurada y Áreas de mejora."
-)
-
+RUTA_RUBRICA_POR_DEFECTO = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/rubrica.csv"  # <- existe en tu proyecto
+RUTA_INSTRUCCIONES_POR_DEFECTO = "/Users/juanjo/Documents/Personal/JJVR/...matedEval/TFM_Evaluator_Prompt_Package/Prompt en modo humano.md"
 MODELO_POR_DEFECTO = "gpt-4o-mini"
+# Ruta opcional a un fichero externo (.md) con las INSTRUCCIONES ESTRICTAS.
+# Si existe, se usará este contenido en lugar de las instrucciones internas.
+RUTA_INSTRUCCIONES_MD = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/Ultraestricto.md"
 TEMPERATURA_POR_DEFECTO = 0.0
 FORZAR_NFC = True
 ONEDRIVE_HINTS = ("OneDrive", "OneDrive - ")
@@ -64,11 +66,8 @@ ONEDRIVE_HINTS = ("OneDrive", "OneDrive - ")
 # ----------------------------
 
 def configurar_logger(path_salida: Optional[str]) -> logging.Logger:
-    logger = logging.getLogger("evaluador_tfm_integrado_sin_cli")
+    logger = logging.getLogger("evaluador_tfm_integrado")
     logger.setLevel(logging.INFO)
-    # Evitar handlers duplicados si se reimporta
-    if logger.handlers:
-        return logger
     handlers: List[logging.Handler] = [logging.StreamHandler()]
     if path_salida:
         log_path = os.path.join(path_salida, "evaluador_tfm_integrado.log")
@@ -120,10 +119,11 @@ def ensure_hydrated(path: str, logger: logging.Logger) -> None:
             logger.warning(f"No se pudo hidratar el archivo: {e2}")
 
 # ----------------------------
-# Selector de archivo (AppKit obligatorio)
+# Selector de archivo (NSOpenPanel con fallback a consola)
 # ----------------------------
 
-def seleccionar_archivo_pdf_docx(logger: logging.Logger) -> Optional[str]:
+def seleccionar_archivo(allowed_types: List[str], titulo: str, mensaje: str, logger: logging.Logger) -> Optional[str]:
+    # GUI con AppKit
     try:
         from AppKit import NSApplication, NSOpenPanel  # type: ignore
         NSApp = NSApplication.sharedApplication()
@@ -132,14 +132,21 @@ def seleccionar_archivo_pdf_docx(logger: logging.Logger) -> Optional[str]:
         panel.setCanChooseFiles_(True)
         panel.setCanChooseDirectories_(False)
         panel.setAllowsMultipleSelection_(False)
-        panel.setAllowedFileTypes_(["pdf", "docx"])  # TFM
-        panel.setTitle_("Selecciona el TFM del alumno")
-        panel.setMessage_("Elige el archivo PDF o DOCX del TFM")
+        panel.setAllowedFileTypes_(allowed_types)
+        panel.setTitle_(titulo)
+        panel.setMessage_(mensaje)
         if panel.runModal() == 1:
             path = panel.URLs()[0].path()
             return normalize_path(path, nfc=FORZAR_NFC)
     except Exception as e:
-        logger.error(f"El selector GUI de AppKit es requerido: {e}")
+        logger.info(f"Selector GUI no disponible, fallback a consola ({e})")
+
+    # Consola
+    try:
+        ruta = input("Introduce la ruta del archivo: ").strip()
+        if ruta:
+            return normalize_path(ruta, nfc=FORZAR_NFC)
+    except (EOFError, KeyboardInterrupt):
         return None
     return None
 
@@ -179,43 +186,51 @@ def leer_etiquetas_finder(path: str, logger: logging.Logger) -> List[str]:
     return []
 
 
-def seleccionar_rubrica_por_etiquetas(tags: List[str]) -> Optional[str]:
-    # Prioridad: si hay MUDPE, luego MGPTD (o al revés). Aquí dejamos prioridad natural.
-    for key in ("MUDPE", "MGPTD"):
-        if key in tags:
-            return RUBRICAS_POR_ETIQUETA[key]
-    return None
+def seleccionar_rubrica_por_etiquetas(tags: List[str], logger: logging.Logger) -> str:
+    """
+    Selecciona la rúbrica basada en las etiquetas Finder. Si no se encuentra una rúbrica correspondiente,
+    solicita al usuario que seleccione una manualmente.
+
+    Parámetros:
+        tags (List[str]): Lista de etiquetas Finder.
+        logger (logging.Logger): Logger para registrar eventos.
+
+    Retorna:
+        str: Ruta de la rúbrica seleccionada.
+    """
+    for t in tags:
+        if t in RUBRICAS_POR_ETIQUETA:
+            logger.info(f"Rúbrica encontrada para la etiqueta '{t}': {RUBRICAS_POR_ETIQUETA[t]}")
+            return RUBRICAS_POR_ETIQUETA[t]
+
+    logger.warning("No se encontró una rúbrica correspondiente a las etiquetas. Se solicitará al usuario que seleccione una.")
+    ruta_rubrica = seleccionar_archivo(["xlsx", "csv", "json"], "Selecciona una rúbrica", "Elige el archivo de la rúbrica", logger)
+    if not ruta_rubrica:
+        raise FileNotFoundError("No se seleccionó ninguna rúbrica y no se puede continuar sin una.")
+
+    logger.info(f"Rúbrica seleccionada manualmente: {ruta_rubrica}")
+    return ruta_rubrica
 
 # ----------------------------
-# Diálogo para elegir rúbrica si no hay etiquetas
+# Carga de rúbrica
 # ----------------------------
 
-def elegir_rubrica_dialogo(logger: logging.Logger) -> Optional[str]:
-    try:
-        from AppKit import NSAlert, NSApplication  # type: ignore
-        NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
-        alert = NSAlert.alloc().init()
-        alert.setMessageText_("Selecciona la rúbrica")
-        alert.setInformativeText_("No se detectaron etiquetas Finder MUDPE/MGPTD o hay ambigüedad. Elige la rúbrica a aplicar.")
-        alert.addButtonWithTitle_("MUDPE")  # 1000
-        alert.addButtonWithTitle_("MGPTD")   # 1001
-        resp = alert.runModal()
-        if resp == 1000:
-            return RUBRICAS_POR_ETIQUETA["MUDPE"]
-        elif resp == 1001:
-            return RUBRICAS_POR_ETIQUETA["MGPTD"]
-    except Exception as e:
-        logger.error(f"No se pudo abrir el diálogo de rúbrica: {e}")
-    return None
-
-# ----------------------------
-# Carga de rúbrica (xlsx)
-# ----------------------------
-
-def cargar_rubrica_xlsx(path: str, logger: logging.Logger):
+def cargar_rubrica(path: str, logger: logging.Logger):
     import pandas as pd
+    ext = Path(path).suffix.lower()
     try:
-        df = pd.read_excel(path)
+        if ext in (".xlsx", ".xls"):
+            df = pd.read_excel(path)
+        elif ext == ".csv":
+            df = pd.read_csv(path)
+        elif ext == ".json":
+            import json
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            df = pd.DataFrame(data)
+        else:
+            raise ValueError("Formato de rúbrica no soportado. Usa .xlsx, .csv o .json")
+        # Validación mínima: primera columna son los criterios
         if df.shape[1] == 0:
             raise ValueError("La rúbrica está vacía")
         logger.info(f"Rúbrica cargada: {path} → {len(df)} filas / {len(df.columns)} columnas")
@@ -225,89 +240,155 @@ def cargar_rubrica_xlsx(path: str, logger: logging.Logger):
         return None
 
 # ----------------------------
-# Lectura del TFM (PDF/DOCX)
+# Carga de instrucciones (MD opcional)
+# ----------------------------
+
+def cargar_instrucciones_md_opcional(path_md: Optional[str], logger: logging.Logger) -> str:
+    """Devuelve el contenido de instrucciones estrictas.
+    Preferencia: si existe un fichero externo (MD), se usa tal cual. Si no, se usa el bloque interno.
+    """
+    base = (
+        "Actúa como evaluador académico experto en TFMs de UNIR con MODELO ULTRAESTRICTO. "
+        "Solo asigna NIVEL 4 si TODOS los elementos esenciales del criterio se cumplen SIN EXCEPCIÓN y con coherencia profunda. "
+        "Si el texto no aporta evidencia suficiente, responde 'No evaluable'. "
+        "Mantén exactamente el ORDEN y REDACCIÓN de la rúbrica. "
+        "Incluye reflexión crítica y congruencia diagnóstica (diagnóstico↔justificación↔objetivos↔metodología↔propuesta↔resultados). "
+        "Cuando el criterio lo permita, evalúa relación AS‑IS/TO‑BE."
+    )
+    if path_md and Path(path_md).exists():
+        try:
+            externo = Path(path_md).read_text(encoding="utf-8")
+            logger.info(f"Usando instrucciones externas desde: {path_md}")
+            return externo
+        except Exception as e:
+            logger.warning(f"No se pudo leer el MD de instrucciones externo: {e}. Usando internas.")
+    logger.info("Usando instrucciones internas ultraestrictas.")
+    return base
+
+# ----------------------------
+# Extracción de texto del TFM
 # ----------------------------
 
 def leer_tfm(path: str, logger: logging.Logger) -> str:
+    """Extrae texto y añade marcas de página [P#] para evidencias citables."""
     ext = Path(path).suffix.lower()
     try:
         if ext == ".pdf":
             import pdfplumber
-            logger.info("Extrayendo texto del PDF…")
-            texto = []
+            logger.info("Extrayendo texto del PDF con marcas de página…")
+            partes = []
             with pdfplumber.open(path) as pdf:
                 for i, page in enumerate(pdf.pages):
                     try:
-                        texto.append(page.extract_text() or "")
+                        t = (page.extract_text() or "").strip()
+                        partes.append(f"[P{i+1}]\n" + (t if t else "(sin texto extraíble)"))
                     except Exception as e:
                         logger.warning(f"Página {i+1}: {e}")
-            return "\n".join(texto)
-        elif ext == ".docx":
+                        partes.append(f"[P{i+1}] (error de extracción)")
+            return "\n".join(partes)
+        elif ext in (".docx", ".doc"):
             import docx
-            logger.info("Extrayendo texto del DOCX…")
+            logger.info("Extrayendo texto del DOC/DOCX… (sin paginación fiable)")
             d = docx.Document(path)
-            return "\n".join(p.text for p in d.paragraphs)
+            cuerpo = "\n".join(p.text for p in d.paragraphs)
+            return "[P1]\n" + cuerpo
         else:
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                return f.read()
+                contenido = f.read()
+            return "[P1]\n" + contenido
     except Exception as e:
         logger.error(f"Error leyendo TFM: {e}")
         return ""
 
 # ----------------------------
-# OpenAI client (v1 o v0)
-# ----------------------------
+# Cliente OpenAI (compatibilidad v0.x y v1.x)
 
 def crear_cliente_openai(logger: logging.Logger):
     api_key = os.getenv("MI_CLAVE_API_OPENAI") or os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("Falta la variable de entorno MI_CLAVE_API_OPENAI u OPENAI_API_KEY")
     try:
-        from openai import OpenAI  # type: ignore
+        # Nuevo SDK (>=1.0)
+        from openai import OpenAI
         client = OpenAI(api_key=api_key)
         logger.info("OpenAI client (v1) inicializado")
         return ("v1", client)
     except Exception:
-        import openai  # type: ignore
+        import openai
         openai.api_key = api_key
         logger.info("OpenAI client (v0.x) inicializado")
         return ("v0", openai)
 
 # ----------------------------
-# Construcción / evaluación de prompts
+# Evaluación por criterio
 # ----------------------------
+
+def construir_prompt(criterio: str, instrucciones_base: str, texto_tfm: str) -> str:
+    schema = (
+        "Devuelve SOLO JSON con este esquema exacto: {"
+        "\"nivel\": \"1|2|3|4|No evaluable\", "
+        "\"justificacion\": \"texto\", "
+        "\"areas_mejora\": \"texto o vacio si nivel=4\", "
+        "\"evidencias\": [{\"frase\": \"cita breve\", \"pagina\": \"P#\"}] }"
+    )
+    evidencias_rule = (
+        "OBLIGATORIO: incluye ≥2 evidencias extraídas literalmente del TFM con su etiqueta de página [P#]. "
+        "Si no puedes aportar 2 evidencias válidas, fija nivel=\"No evaluable\". Prohibido inventar páginas."
+    )
+    return f"""
+Evalúa el TFM según el criterio EXACTO de la rúbrica, en modo ultraestricto.
+
+Criterio a evaluar:
+{criterio}
+
+Guía del evaluador:
+{instrucciones_base}
+
+Formato de salida:
+- {schema}
+- {evidencias_rule}
+- Idioma: español.
+
+Texto del TFM (con marcas de página [P#]):
+---
+{text_tfm_recorte(texto_tfm)}
+---
+""".strip()
 
 def text_tfm_recorte(texto: str, max_chars: int = 7000) -> str:
     if len(texto) <= max_chars:
         return texto
+    # Preferir comienzos + finales del documento para contexto
     head = texto[: max_chars // 2]
     tail = texto[-max_chars // 2 :]
     return head + "\n…\n" + tail
 
 
-def construir_prompt(criterio: str, instrucciones_base: str, texto_tfm: str) -> str:
-    return f"""
-Evalúa el TFM según el criterio EXACTO de la rúbrica:
 
-Criterio: {criterio}
-
-Instrucciones del evaluador (ultraestricto):
-{instrucciones_base}
-
-Texto del TFM (extracto útil si es necesario):
----
-{text_tfm_recorte(texto_tfm)}
----
-
-Devuelve SOLO un bloque estructurado en español con:
-- Nivel alcanzado: 1, 2, 3, 4 o "No evaluable"
-- Justificación estructurada: Validación de elementos esperados
-- Áreas de mejora (si no alcanza 4)
-""".strip()
+def construir_prompt_v2(criterio: str, instrucciones_base: str, texto_tfm: str) -> str:
+    """Construcción segura del prompt."""
+    partes: List[str] = []
+    partes.append("Evalúa el TFM según el criterio EXACTO de la rúbrica, en modo ultraestricto.")
+    partes.append("")
+    partes.append("Criterio a evaluar:")
+    partes.append(criterio)
+    partes.append("")
+    partes.append("Guía del evaluador:")
+    partes.append(instrucciones_base)
+    partes.append("")
+    partes.append("Formato de salida (JSON estricto, sin texto adicional):")
+    partes.append('{ "nivel": "1|2|3|4|No evaluable", "justificacion": "texto", "areas_mejora": "texto o vacio si nivel=4", "evidencias": [{"frase": "cita breve", "pagina": "P#"}] }')
+    partes.append("")
+    partes.append("Reglas de evidencias: incluye al menos 2 evidencias literales del TFM con su etiqueta de página [P#]. Si no puedes, responde con nivel=\"No evaluable\".")
+    partes.append("")
+    partes.append("Texto del TFM (con marcas de página [P#]):\n---")
+    partes.append(text_tfm_recorte(texto_tfm))
+    partes.append("---")
+    return "\n".join(partes) + "\n"
 
 
 def evaluar_criterio(compat: str, client, modelo: str, temperatura: float, criterio: str, instrucciones: str, texto_tfm: str, logger: logging.Logger) -> str:
-    prompt = construir_prompt(criterio, instrucciones, texto_tfm)
+    prompt = construir_prompt_v2(criterio, instrucciones, texto_tfm)
     logger.info(f"Evaluando criterio: {criterio}")
     try:
         if compat == "v1":
@@ -315,7 +396,7 @@ def evaluar_criterio(compat: str, client, modelo: str, temperatura: float, crite
                 model=modelo,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=temperatura,
-                max_tokens=600,
+                max_tokens=900,
             )
             return resp.choices[0].message.content.strip()
         else:  # v0
@@ -324,7 +405,7 @@ def evaluar_criterio(compat: str, client, modelo: str, temperatura: float, crite
                 model=modelo,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=temperatura,
-                max_tokens=600,
+                max_tokens=900,
             )
             return resp["choices"][0]["message"]["content"].strip()
     except Exception as e:
@@ -350,84 +431,149 @@ def evaluar_tfm_completo(compat: str, client, modelo: str, temperatura: float, r
 # Exportar resultados
 # ----------------------------
 
-def exportar_resultados(resultados: List[dict], carpeta_salida: str, logger: logging.Logger) -> Tuple[str, str]:
+def exportar_resultados(resultados: List[dict], carpeta_salida: str, logger: logging.Logger) -> Tuple[str, str, str]:
+    """
+    Genera los archivos de salida (.md, .csv, .json) con los resultados de la evaluación.
+
+    - El archivo `.md` es un informe redactado con un tono formal y pedagógico, incluyendo:
+        - Nivel alcanzado.
+        - Justificación del nivel.
+        - Evidencias (1 o 2).
+        - Áreas de mejora.
+        - Preguntas finales para el estudiante.
+    - El archivo `.json` contiene únicamente el criterio y el nivel alcanzado.
+
+    Parámetros:
+        resultados (List[dict]): Lista de resultados de la evaluación.
+        carpeta_salida (str): Carpeta donde se guardarán los archivos.
+        logger (logging.Logger): Logger para registrar eventos.
+
+    Retorna:
+        Tuple[str, str, str]: Rutas de los archivos generados (.csv, .md, .json).
+    """
     import pandas as pd
     csv_path = os.path.join(carpeta_salida, "evaluacion_tfm_resultado.csv")
     md_path = os.path.join(carpeta_salida, "evaluacion_tfm_informe.md")
+    json_path = os.path.join(carpeta_salida, "evaluacion_tfm_informe.json")
     try:
+        # Exportar a CSV
         pd.DataFrame(resultados).to_csv(csv_path, index=False)
+
+        # Exportar a Markdown con redacción formal y pedagógica
         with open(md_path, "w", encoding="utf-8") as f:
             f.write("# Informe de Evaluación TFM\n\n")
             for r in resultados:
-                f.write(f"## {r['criterio']}\n\n{r['evaluacion']}\n\n")
+                f.write(f"## {r['criterio']}\n\n")
+                evaluacion = json.loads(r['evaluacion'])
+                f.write(f"**Nivel alcanzado:** {evaluacion['nivel']}\n\n")
+                f.write(f"**Justificación:** {evaluacion['justificacion']}\n\n")
+                if evaluacion['evidencias']:
+                    f.write("**Evidencias:**\n")
+                    for evidencia in evaluacion['evidencias']:
+                        f.write(f"- {evidencia['frase']} ({evidencia['pagina']})\n")
+                if evaluacion['areas_mejora']:
+                    f.write(f"\n**Áreas de mejora:** {evaluacion['areas_mejora']}\n\n")
+                f.write("\n")
+
+            # Añadir preguntas finales para el estudiante
+            f.write("## Preguntas para el estudiante\n\n")
+            f.write("1. ¿Qué aspectos de tu trabajo consideras que podrían haber sido explicados con mayor claridad?\n")
+            f.write("2. ¿Qué análisis o secciones crees que podrían haberse desarrollado con mayor profundidad?\n")
+            f.write("3. ¿Qué cambios implementarías para mejorar la coherencia entre los objetivos, la metodología y los resultados?\n")
+
+        # Exportar a JSON con solo criterio y nivel
+        criterios_niveles = [
+            {"criterio": r['criterio'], "nivel": json.loads(r['evaluacion'])['nivel']}
+            for r in resultados
+        ]
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(criterios_niveles, f, ensure_ascii=False, indent=2)
+
         logger.info(f"CSV → {csv_path}")
         logger.info(f"Markdown → {md_path}")
-        return csv_path, md_path
+        logger.info(f"JSON → {json_path}")
+        return csv_path, md_path, json_path
     except Exception as e:
         logger.error(f"Error exportando resultados: {e}")
-        return csv_path, md_path
+        return csv_path, md_path, json_path
 
 # ----------------------------
-# Main (sin parámetros)
+# CLI
 # ----------------------------
 
-def main() -> int:
-    # 1) Selector AppKit del TFM
-    logger_tmp = configurar_logger(None)
-    ruta_tfm = seleccionar_archivo_pdf_docx(logger_tmp)
+def parse_args(argv: List[str]):
+    import argparse
+    p = argparse.ArgumentParser(description="Evaluador TFM Integrado – Finder + OneDrive + OpenAI")
+    p.add_argument("--pdf", dest="ruta_tfm", help="Ruta del TFM (.pdf/.docx)")
+    p.add_argument("--rubrica", dest="ruta_rubrica", help="Ruta de la rúbrica (.xlsx/.csv/.json)")
+    p.add_argument("--instrucciones", dest="ruta_md", help="Ruta .md con instrucciones ultraestrictas")
+    p.add_argument("--modelo", dest="modelo", default=MODELO_POR_DEFECTO)
+    p.add_argument("--temperatura", dest="temperatura", type=float, default=TEMPERATURA_POR_DEFECTO)
+    return p.parse_args(argv)
+
+# ----------------------------
+# Main
+# ----------------------------
+
+def main(argv: List[str]) -> int:
+    args = parse_args(argv)
+
+    # Resolución de rutas (selector si faltan)
+    ruta_tfm = args.ruta_tfm
     if not ruta_tfm:
-        print("No se seleccionó TFM. Abortando.")
-        return 1
+        logger_tmp = configurar_logger(None)
+        ruta_tfm = seleccionar_archivo(["pdf", "docx"], "Selecciona el TFM", "Elige el archivo PDF o DOCX", logger_tmp)
+        if not ruta_tfm:
+            print("No se seleccionó TFM. Abortando.")
+            return 1
     ruta_tfm = normalize_path(os.path.abspath(os.path.expanduser(ruta_tfm)), nfc=FORZAR_NFC)
 
     carpeta_salida = os.path.dirname(ruta_tfm)
     logger = configurar_logger(carpeta_salida)
 
-    # 2) Hidratar si aplica
     ensure_hydrated(ruta_tfm, logger)
 
-    # 3) Resolver rúbrica (etiquetas → diálogo si falta)
-    tags = leer_etiquetas_finder(ruta_tfm, logger)
-    logger.info(f"Etiquetas Finder: {tags}")
-    ruta_rubrica = seleccionar_rubrica_por_etiquetas(tags)
+    # Rúbrica: si no se proporciona, se decide por etiquetas Finder
+    ruta_rubrica = args.ruta_rubrica
     if not ruta_rubrica:
-        ruta_rubrica = elegir_rubrica_dialogo(logger)
-    if not ruta_rubrica:
-        logger.error("No se seleccionó rúbrica. Abortando.")
-        return 1
+        tags = leer_etiquetas_finder(ruta_tfm, logger)
+        logger.info(f"Etiquetas Finder: {tags}")
+        ruta_rubrica = seleccionar_rubrica_por_etiquetas(tags, logger)
+        logger.info(f"Rúbrica sugerida por etiquetas: {ruta_rubrica}")
+    ruta_rubrica = normalize_path(os.path.abspath(os.path.expanduser(ruta_rubrica)), nfc=FORZAR_NFC)
 
     if not Path(ruta_rubrica).exists():
         logger.error(f"No existe la rúbrica: {ruta_rubrica}")
         return 1
 
-    # 4) Carga rúbrica + TFM
-    rubrica_df = cargar_rubrica_xlsx(ruta_rubrica, logger)
+    rubrica_df = cargar_rubrica(ruta_rubrica, logger)
     if rubrica_df is None:
         return 1
+
+    instrucciones = cargar_instrucciones_md_opcional(RUTA_INSTRUCCIONES_MD, logger)
 
     texto_tfm = leer_tfm(ruta_tfm, logger)
     if not texto_tfm.strip():
         logger.error("El texto del TFM está vacío.")
         return 1
 
-    # 5) OpenAI y evaluación
     compat, client = crear_cliente_openai(logger)
+
     resultados = evaluar_tfm_completo(
         compat=compat,
         client=client,
-        modelo=MODELO_POR_DEFECTO,
-        temperatura=TEMPERATURA_POR_DEFECTO,
+        modelo=args.modelo,
+        temperatura=args.temperatura,
         rubrica_df=rubrica_df,
         texto_tfm=texto_tfm,
-        instrucciones=INSTRUCCIONES_ULTRAESTRICTAS,
+        instrucciones=instrucciones,
         logger=logger,
     )
 
-    # 6) Exportar
     exportar_resultados(resultados, carpeta_salida, logger)
     logger.info("✅ Evaluación finalizada correctamente.")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

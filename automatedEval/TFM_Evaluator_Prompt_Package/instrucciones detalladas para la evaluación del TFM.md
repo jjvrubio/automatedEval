@@ -1,29 +1,3 @@
-
-
-Evaluar un TFM no consiste en utilizar las lista de criterios como  una lista de comprobación. El primer paso debe ser una  lectura profunda del documento completo que permita realizar una análisis de congruencia. Éste debe detectar: incoherencias, rupturas de flujo, o desconexiones argumentativas que debilitan el desarrollo discurso del TFM y la coherencia entre capítulos.
-
-
-
-El análisis de cada capítulo tiene que contemplar: congruencia entre las partes, análisis riguroso en el desarrollo metodológico; coherencia en  la selección, aplicación, y flujo del marco metodológico; adecuación y relevancia de las referencias empleadas para sustentar los marcos teóricos y de referencia,...
-
-La evaluación debe contemplar el análisis de congruencia del documento al aplicar los criterios de evaluación y niveles recogidos en la rúbrica especifica por categoría de estudio. 
-
-Los resultados de la evaluación los devuelves en dos archivos.
-
-El primero un archivo .md con  un redacción con un tono formal y pedagógico contemplando cada criterio de la rúbrica.  De cada uno indicará: 
-
-- nivel, califiación logrado en el criterio, 
-- justificación, por la que se otorga el nivel al criterio, 
-- evidencias, de la justificaicón, con uno o dos es suficiente.
-- área de de mejora, para lograr una mejor calificación del criterio.
-
-Además, finalizará el documento con: 
-
-- tabla de evaluación, calificando los criterios de Nivel 1 a Nivel 4.
-- Y, 3 preguntas sobre aquellos aspectos cuya exposición sea menos clara. 
-
-Al finalizar preparar un archivo en formato markdown para descargar.
-
 # Instrucciones detalladas
 
 ## Resumen
@@ -178,6 +152,4 @@ Para realizar un análisis interno completo y efectivo, el TFM debe mostrar evid
 - **Output**: Diagnóstico financiero con tendencias y puntos críticos
 
 ---
-
-
 
