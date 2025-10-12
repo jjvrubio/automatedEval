@@ -4,6 +4,6 @@
         "./venv_intel/lib/python3.x/site-packages",
         "./venv_arm64/lib/python3.x/site-packages"
     ],
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Solarized Light",
     "workbench.preferredDarkColorTheme": "Default Dark+"
 }
