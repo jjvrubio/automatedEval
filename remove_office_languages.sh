@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Script to remove unnecessary language packages from Microsoft Office apps
 # Keeps only Spanish (es), Portuguese (pt), and English (en)

@@ -17,12 +17,14 @@ El primero un archivo .md con  un redacción con un tono formal y pedagógico co
 - evidencias, de la justificaicón, con uno o dos es suficiente.
 - área de de mejora, para lograr una mejor calificación del criterio.
 
+El 2º archivo es un .json que contenga los criterios y los respectivos niveles alcanzado.
+
 Además, finalizará el documento con: 
 
 - tabla de evaluación, calificando los criterios de Nivel 1 a Nivel 4.
 - Y, 3 preguntas sobre aquellos aspectos cuya exposición sea menos clara. 
 
-Al finalizar preparar un archivo en formato markdown para descargar.
+
 
 # Instrucciones detalladas
 
