@@ -296,29 +296,62 @@ def text_tfm_recorte(texto: str, max_chars: int = 7000) -> str:
     return head + "\n…\n" + tail
 
 
-def construir_prompt_v2(criterio: str, instrucciones_base: str, texto_tfm: str) -> str:
+def construir_prompt_v2(criterio: str, instrucciones_base: str, texto_tfm: str, niveles_rubrica: List[str]) -> str:
     """
-    Construye el prompt para evaluar un criterio del TFM.
+    Construye el prompt para evaluar un criterio del TFM e identificar problemas específicos del contenido.
     """
+    
     partes = [
-        "Evalúa el TFM según el criterio EXACTO de la rúbrica, en modo ultraestricto.",
+        "Eres un evaluador académico experto que debe evaluar un TFM según criterios específicos de rúbrica.",
         "",
-        "Criterio a evaluar:",
+        "CRITERIO A EVALUAR:",
         criterio,
         "",
-        "Guía del evaluador:",
+        "INSTRUCCIONES DEL EVALUADOR:",
         instrucciones_base,
         "",
-        "Formato de salida (JSON estricto, sin texto adicional):",
-        '{ "nivel": "1|2|3|4|No evaluable", "justificacion": "texto", "areas_mejora": "texto o vacio si nivel=4", "evidencias": [{"frase": "cita breve", "pagina": "P#"}] }',
+        f"NIVELES VÁLIDOS PARA ESTE CRITERIO (debes elegir EXACTAMENTE uno de estos):",
+    ]
+    
+    # Agregar cada nivel válido con claridad
+    for i, nivel in enumerate(niveles_rubrica, 1):
+        partes.append(f"- {nivel}")
+    partes.append("- No evaluable (solo si no hay evidencia suficiente)")
+    
+    partes.extend([
         "",
-        "Reglas de evidencias: incluye al menos 2 evidencias literales del TFM con su etiqueta de página [P#]. Si no puedes, responde con nivel=\"No evaluable\".",
+        "REGLAS DE EVALUACIÓN:",
+        "1. Debes elegir EXACTAMENTE uno de los niveles listados arriba",
+        "2. Proporciona una justificación clara y específica",
+        "3. Incluye al menos 2 evidencias con citas exactas del texto",
+        "4. Cada evidencia debe incluir el número de página [P#]",
         "",
-        "Texto del TFM (con marcas de página [P#]):",
+        "FORMATO DE RESPUESTA (JSON válido):",
+        "{",
+        f'  "nivel": "DEBE ser exactamente uno de: {" | ".join(niveles_rubrica)} | No evaluable",',
+        '  "justificacion": "Explicación detallada de por qué se asigna este nivel",',
+        '  "areas_mejora": "Recomendaciones específicas para mejorar (vacío si nivel máximo)",',
+        '  "evidencias": [',
+        '    {"frase": "Cita exacta del texto", "pagina": "P#"},',
+        '    {"frase": "Otra cita exacta del texto", "pagina": "P#"}',
+        '  ],',
+        '  "problemas_contenido": [',
+        '    {',
+        '      "tipo": "CONTRADICCION|METODOLOGIA_POCO_CLARA|CONTENIDO_AMBIGUO|etc",',
+        '      "descripcion": "Breve descripción del problema",',
+        '      "fragmento1": "Texto problemático exacto",',
+        '      "pagina1": "P#"',
+        '    }',
+        '  ]',
+        '}',
+        "",
+        "IMPORTANTE: Responde SOLO con el JSON válido, sin texto adicional antes o después.",
+        "",
+        "TEXTO DEL TFM PARA EVALUAR:",
         "---",
         text_tfm_recorte(texto_tfm),
         "---",
-    ]
+    ])
     return "\n".join(partes) + "\n"
 
 
@@ -346,9 +379,10 @@ def evaluar_criterio(
     criterio: str,
     instrucciones: str,
     texto_tfm: str,
+    niveles_rubrica: List[str],
     logger: logging.Logger,
 ) -> str:
-    prompt = construir_prompt_v2(criterio, instrucciones, texto_tfm)
+    prompt = construir_prompt_v2(criterio, instrucciones, texto_tfm, niveles_rubrica)
     logger.info(f"Evaluando criterio: {criterio}")
     try:
         if compat == "v1":
@@ -386,16 +420,88 @@ def evaluar_tfm_completo(
     logger: logging.Logger,
 ):
     resultados: List[dict] = []
-    # Criterios típicamente no automatizables (si aparecen):
-    excluir = {"presentación", "exposición", "comunicación", "tribunal", "formato de la presentación"}
+    problemas_contenido_globales: List[dict] = []  # Almacenar todos los problemas de contenido
+    
     criterios = [str(c) for c in rubrica_df.iloc[:, 0].tolist()]
-    niveles = rubrica_df.columns[1:].tolist()  # Asumimos que las columnas después de la primera son los niveles
+    
+    # EXTRACCIÓN CORRECTA DE NIVELES DE LA RÚBRICA
+    # En lugar de usar nombres de columnas, extraer los niveles reales del contenido
+    primera_fila = rubrica_df.iloc[0]  # Usar primera fila como ejemplo
+    niveles_reales = []
+    
+    # Detectar formato de rúbrica basado en el contenido
+    for col in rubrica_df.columns[1:]:  # Saltar primera columna (criterios)
+        contenido_col = str(primera_fila[col]).strip()
+        if contenido_col and contenido_col.lower() not in ['nan', 'none', '']:
+            # Para MUDPE: buscar "Nivel X" en el contenido
+            if "Nivel" in contenido_col:
+                # Extraer "Nivel 1", "Nivel 2", etc.
+                if "1" in contenido_col:
+                    niveles_reales.append("Nivel 1")
+                elif "2" in contenido_col:
+                    niveles_reales.append("Nivel 2")
+                elif "3" in contenido_col:
+                    niveles_reales.append("Nivel 3")
+                elif "4" in contenido_col:
+                    niveles_reales.append("Nivel 4")
+            # Para MUGPTD: buscar términos específicos
+            elif any(term in contenido_col.lower() for term in ["suspenso", "aprobado", "notable", "sobresaliente"]):
+                if "suspenso" in contenido_col.lower():
+                    niveles_reales.append("Suspenso (0-4)")
+                elif "aprobado" in contenido_col.lower():
+                    niveles_reales.append("Aprobado (5-6)")
+                elif "notable" in contenido_col.lower():
+                    niveles_reales.append("Notable (7-8)")
+                elif "sobresaliente" in contenido_col.lower():
+                    niveles_reales.append("Sobresaliente (9-10)")
+            else:
+                # Fallback: usar nombres de columnas
+                niveles_reales.append(col)
+    
+    # Si no se detectaron niveles reales, usar nombres de columnas como fallback
+    if not niveles_reales:
+        niveles_reales = rubrica_df.columns[1:].tolist()
+    
+    # Debug: mostrar información detallada de la rúbrica
+    logger.info(f"Columnas de la rúbrica: {list(rubrica_df.columns)}")
+    logger.info(f"Criterios encontrados: {len(criterios)} criterios")
+    logger.info(f"Niveles reales detectados: {niveles_reales}")
+    
+    # Detectar tipo de rúbrica y definir criterios a excluir
+    num_criterios = len(criterios)
+    if num_criterios == 8:
+        # MUGPTD - 8 criterios: excluir 7 y 8 (presentación oral)
+        criterios_excluir = [7, 8]
+        tipo_rubrica = "MUGPTD"
+    elif num_criterios in [12, 13]:
+        # MUDPE - 12-13 criterios: excluir los últimos 4 (presentación oral)
+        criterios_excluir = list(range(num_criterios - 3, num_criterios + 1))  # Últimos 4 criterios
+        tipo_rubrica = "MUDPE"
+    else:
+        # Rúbrica desconocida - no excluir ningún criterio
+        criterios_excluir = []
+        tipo_rubrica = "DESCONOCIDA"
+    
+    logger.info(f"Rúbrica detectada: {tipo_rubrica} ({num_criterios} criterios)")
+    logger.info(f"Criterios de presentación oral a excluir: {criterios_excluir}")
 
-    for criterio in criterios:
-        low = criterio.lower()
-        if any(p in low for p in excluir):
-            logger.info(f"⏩ Criterio excluido: {criterio}")
+    for i, criterio in enumerate(criterios, 1):  # Enumerar desde 1 para identificar criterios
+        
+        # Marcar como "No evaluable" los criterios de presentación oral según la rúbrica
+        if i in criterios_excluir:
+            logger.info(f"⏩ Criterio {i} (presentación oral) marcado como No evaluable: {criterio}")
+            resultados.append({
+                "criterio": criterio,
+                "nivel": "No evaluable",
+                "justificacion": "Criterio de presentación oral, no evaluable desde el documento escrito.",
+                "areas_mejora": "Se evaluará durante la defensa oral.",
+                "evidencias": [],
+                "problemas_contenido": [],
+            })
             continue
+            
+        logger.info(f"🔄 Iniciando evaluación del criterio {i}: {criterio}")
+        
         evaluacion = evaluar_criterio(
             compat=compat,
             client=client,
@@ -404,25 +510,30 @@ def evaluar_tfm_completo(
             criterio=criterio,
             instrucciones=instrucciones,
             texto_tfm=texto_tfm,
+            niveles_rubrica=niveles_reales,  # Usar niveles reales detectados
             logger=logger,
         )
+        
+        logger.debug(f"Respuesta cruda del modelo para criterio {i}: {evaluacion}")
+        
         try:
             evaluacion_json = json.loads(evaluacion)
-            nivel = evaluacion_json.get("nivel", "No evaluable")
-            
-            # Normalizar niveles para comparación (asegurando que comiencen con 'N')
-            niveles_normalizados = [n.strip() for n in niveles]
             nivel = evaluacion_json.get("nivel", "No evaluable").strip()
-
-            # Asegurar que el nivel devuelto comienza con 'N'
-            if not nivel.startswith("N"):
-                logger.warning(f"Nivel '{nivel}' no válido para el criterio '{criterio}'.")
+            
+            logger.info(f"Nivel devuelto por el modelo para '{criterio}': '{nivel}'")
+            
+            # Validar que el nivel esté en los niveles de la rúbrica
+            if nivel not in niveles_reales and nivel != "No evaluable":
+                logger.warning(f"Nivel '{nivel}' no encontrado en rúbrica para '{criterio}'. Niveles válidos: {niveles_reales}")
                 nivel = "No evaluable"
 
-            # Excluir criterios relacionados con la exposición del alumno
-            if "exposición" in criterio.lower():
-                logger.info(f"⏩ Criterio relacionado con exposición excluido: {criterio}")
-                continue
+            # Capturar problemas de contenido específicos
+            problemas_contenido = evaluacion_json.get("problemas_contenido", [])
+            if problemas_contenido:
+                for problema in problemas_contenido:
+                    problema['criterio_origen'] = criterio  # Añadir referencia al criterio
+                problemas_contenido_globales.extend(problemas_contenido)
+                logger.info(f"Identificados {len(problemas_contenido)} problemas de contenido en '{criterio}'")
 
             resultados.append({
                 "criterio": criterio,
@@ -430,7 +541,11 @@ def evaluar_tfm_completo(
                 "justificacion": evaluacion_json.get("justificacion", ""),
                 "areas_mejora": evaluacion_json.get("areas_mejora", ""),
                 "evidencias": evaluacion_json.get("evidencias", []),
+                "problemas_contenido": problemas_contenido,  # Incluir problemas específicos del criterio
             })
+            
+            logger.info(f"✅ Criterio {i} evaluado - '{criterio}': {nivel}")
+            
         except json.JSONDecodeError:
             logger.error(f"Error al decodificar la evaluación para el criterio '{criterio}': {evaluacion}")
             resultados.append({
@@ -439,8 +554,12 @@ def evaluar_tfm_completo(
                 "justificacion": "Error al procesar la evaluación.",
                 "areas_mejora": "Revisar el criterio manualmente.",
                 "evidencias": [],
+                "problemas_contenido": [],
             })
-    return resultados
+    
+    # Añadir los problemas globales a los resultados para usar en la generación de preguntas
+    logger.info(f"Total de problemas de contenido identificados: {len(problemas_contenido_globales)}")
+    return resultados, problemas_contenido_globales
 
 # ----------------------------
 # Exportes
@@ -448,7 +567,7 @@ def evaluar_tfm_completo(
 
 # Modificación para integrar guardar_resultados en el flujo principal
 
-def exportar_resultados(resultados: List[dict], carpeta_salida: str, logger: logging.Logger) -> Tuple[str, str]:
+def exportar_resultados(resultados: List[dict], carpeta_salida: str, problemas_contenido: List[dict], logger: logging.Logger) -> Tuple[str, str]:
     """
     Exporta los resultados en formato CSV, Markdown y JSON.
     """
@@ -461,7 +580,7 @@ def exportar_resultados(resultados: List[dict], carpeta_salida: str, logger: log
         logger.info(f"CSV → {csv_path}")
 
         # Exportar a Markdown y JSON
-        guardar_resultados(resultados, md_json_base, logger)
+        guardar_resultados(resultados, md_json_base, problemas_contenido, logger)
 
         return csv_path, f"{md_json_base}.md"
     except Exception as e:
@@ -478,7 +597,7 @@ def cargar_plantillas_preguntas(ruta_plantillas: Optional[str] = None) -> Dict[s
     Carga las plantillas de preguntas desde un archivo YAML.
     """
     if ruta_plantillas is None:
-        ruta_plantillas = os.path.join(os.path.dirname(__file__), "plantillas_preguntas.yaml")
+        ruta_plantillas = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/plantillas_preguntas.yaml"
     
     try:
         with open(ruta_plantillas, "r", encoding="utf-8") as f:
@@ -503,59 +622,321 @@ def cargar_plantillas_preguntas(ruta_plantillas: Optional[str] = None) -> Dict[s
 
 def generar_preguntas_dinamicas(resultados: List[Dict[str, Any]], plantillas: Dict[str, Any], logger: logging.Logger) -> List[str]:
     """
-    Genera preguntas dinámicas basadas en los resultados de la evaluación.
+    Genera preguntas epistemológicamente sofisticadas basadas en análisis metodológico integral.
     """
     config = plantillas.get("configuracion", {})
     num_preguntas = config.get("numero_preguntas", 3)
-    plantillas_preguntas = plantillas.get("plantillas_preguntas", {})
+    criterios_evaluacion = plantillas.get("criterios_evaluacion", {})
+    patrones_problemas = plantillas.get("patrones_problemas", {})
+    instrucciones = plantillas.get("instrucciones_modelo", {})
+    
+    # DETECTAR FORMATO DE RÚBRICA AUTOMÁTICAMENTE
+    formato_rubrica = detectar_formato_rubrica(resultados)
+    logger.info(f"Formato de rúbrica detectado: {formato_rubrica.upper()}")
     
     preguntas = []
-    criterios_problematicos = []
+    logger.info("Iniciando análisis epistemológico para generación de preguntas expertas")
     
-    # Identificar criterios con problemas (nivel bajo o no evaluable)
-    for resultado in resultados:
-        nivel = resultado.get("nivel", "").strip()
-        criterio = resultado.get("criterio", "")
-        
-        if nivel in ["N1", "N2"] or "1" in nivel or "2" in nivel:
-            criterios_problematicos.append(("nivel_bajo", criterio))
-        elif nivel == "No evaluable":
-            criterios_problematicos.append(("no_evaluable", criterio))
+    # FASE 1: ANÁLISIS PRELIMINAR GLOBAL según instrucciones
+    analisis_global = realizar_analisis_preliminar(resultados, formato_rubrica, logger)
     
-    # Generar preguntas específicas para criterios problemáticos
-    for tipo_problema, criterio in criterios_problematicos[:num_preguntas]:
-        plantillas_tipo = plantillas_preguntas.get(tipo_problema, [])
-        if plantillas_tipo:
-            plantilla = random.choice(plantillas_tipo)
-            pregunta = plantilla.format(criterio=criterio)
-            preguntas.append(pregunta)
+    # FASE 2: IDENTIFICACIÓN DE PATRONES PROBLEMÁTICOS
+    problemas_detectados = identificar_patrones_problemas(resultados, patrones_problemas, formato_rubrica, logger)
     
-    # Completar con preguntas generales si es necesario
-    while len(preguntas) < num_preguntas:
-        plantillas_generales = plantillas_preguntas.get("generales", [])
-        if plantillas_generales:
-            pregunta = random.choice(plantillas_generales)
-            if pregunta not in preguntas:
-                preguntas.append(pregunta)
-            else:
-                # Si ya tenemos esa pregunta, intentar con otra
-                intentos = 0
-                while pregunta in preguntas and intentos < 10:
-                    pregunta = random.choice(plantillas_generales)
-                    intentos += 1
-                if pregunta not in preguntas:
-                    preguntas.append(pregunta)
-                else:
-                    break
-        else:
+    # FASE 3: GENERACIÓN DE PREGUNTAS ESPECÍFICAS POR SECCIÓN
+    secciones_criticas = determinar_secciones_criticas(resultados, criterios_evaluacion, formato_rubrica)
+    
+    for seccion, criterios in secciones_criticas.items():
+        if len(preguntas) >= num_preguntas:
             break
+            
+        seccion_config = criterios_evaluacion.get(seccion, {})
+        plantillas_seccion = seccion_config.get("plantillas_pregunta", [])
+        
+        if plantillas_seccion and criterios:
+            # Seleccionar plantilla más relevante para los problemas detectados
+            plantilla_seleccionada = seleccionar_plantilla_por_problemas(
+                plantillas_seccion, problemas_detectados, criterios
+            )
+            
+            if plantilla_seleccionada:
+                # Contextualizar la plantilla con datos específicos del TFM
+                pregunta_contextualizada = contextualizar_pregunta_experta(
+                    plantilla_seleccionada, criterios, analisis_global
+                )
+                preguntas.append(pregunta_contextualizada)
+                logger.info(f"Generada pregunta experta para sección: {seccion}")
     
-    logger.info(f"Generadas {len(preguntas)} preguntas dinámicas")
+    # FASE 4: COMPLETAR CON PREGUNTAS DE PATRONES ESPECÍFICOS
+    while len(preguntas) < num_preguntas and problemas_detectados:
+        patron_problema = problemas_detectados.pop(0)
+        pregunta_patron = generar_pregunta_por_patron(patron_problema, resultados)
+        if pregunta_patron and pregunta_patron not in preguntas:
+            preguntas.append(pregunta_patron)
+    
+    logger.info(f"Generadas {len(preguntas)} preguntas con rigor epistemológico")
     return preguntas[:num_preguntas]
+
+def realizar_analisis_preliminar(resultados: List[Dict[str, Any]], formato_rubrica: str, logger: logging.Logger) -> Dict[str, Any]:
+    """
+    Realiza análisis global de cadena de pensamiento y coherencia metodológica.
+    """
+    analisis = {
+        "cadena_pensamiento": {},
+        "secuencia_metodologica": {},
+        "rigor_aplicacion": {},
+        "problemas_detectados": []
+    }
+    
+    # Analizar coherencia en objetivos, metodología y conclusiones
+    criterios_objetivos = [r for r in resultados if "objetivo" in r.get("criterio", "").lower()]
+    criterios_metodologia = [r for r in resultados if any(term in r.get("criterio", "").lower() 
+                           for term in ["metodolog", "método", "diseño", "desarrollo", "marco teórico"])]
+    
+    # Verificar problemas en objetivos
+    if criterios_objetivos:
+        for crit in criterios_objetivos:
+            nivel = crit.get("nivel", "")
+            if es_nivel_problematico(nivel, formato_rubrica) or nivel_es_mejorable(nivel, formato_rubrica):
+                analisis["problemas_detectados"].append("objetivos_debiles")
+    
+    # Verificar problemas metodológicos
+    if criterios_metodologia:
+        for crit in criterios_metodologia:
+            nivel = crit.get("nivel", "")
+            if es_nivel_problematico(nivel, formato_rubrica):
+                analisis["problemas_detectados"].append("metodologia_deficiente")
+    
+    # Verificar problemas estructurales generales
+    problemas_graves = len([r for r in resultados if es_nivel_problematico(r.get("nivel", ""), formato_rubrica)])
+    if problemas_graves >= 1:
+        analisis["problemas_detectados"].append("problemas_estructurales")
+    
+    logger.debug(f"Análisis preliminar detectó: {len(analisis['problemas_detectados'])} problemas")
+    return analisis
+
+def identificar_patrones_problemas(resultados: List[Dict[str, Any]], patrones: Dict[str, Any], formato_rubrica: str, logger: logging.Logger) -> List[str]:
+    """
+    Identifica patrones específicos de problemas metodológicos.
+    """
+    problemas_encontrados = []
+    
+    # Verificar desarticulación lógica - buscar niveles bajos o suspensos
+    niveles_bajos = len([r for r in resultados if es_nivel_problematico(r.get("nivel", ""), formato_rubrica)])
+    if niveles_bajos >= 1:  # Con cualquier suspenso ya hay problemas
+        problemas_encontrados.append("desarticulacion_logica")
+    
+    # Verificar problemas estructurales específicos
+    criterios_estructura = [r for r in resultados if any(term in r.get("criterio", "").lower() 
+                          for term in ["estructura", "apartados", "organiz"])]
+    if criterios_estructura and any(es_nivel_problematico(r.get("nivel", ""), formato_rubrica) for r in criterios_estructura):
+        problemas_encontrados.append("secuencia_metodologica_incorrecta")
+    
+    # Verificar problemas de desarrollo y contribución
+    criterios_desarrollo = [r for r in resultados if any(term in r.get("criterio", "").lower() 
+                          for term in ["desarrollo", "contribución", "marco teórico"])]
+    if criterios_desarrollo and any(nivel_es_mejorable(r.get("nivel", ""), formato_rubrica) for r in criterios_desarrollo):
+        problemas_encontrados.append("superficialidad_herramientas")
+    
+    # Verificar problemas de coherencia entre objetivos y desarrollo
+    criterios_coherencia = [r for r in resultados if any(term in r.get("criterio", "").lower() 
+                          for term in ["relación", "objetivos", "coherencia", "alcance"])]
+    if criterios_coherencia and any(nivel_es_mejorable(r.get("nivel", ""), formato_rubrica) for r in criterios_coherencia):
+        problemas_encontrados.append("incongruencia_cuantitativa")
+    
+    logger.info(f"Patrones problemáticos identificados: {problemas_encontrados}")
+    return problemas_encontrados
+
+def determinar_secciones_criticas(resultados: List[Dict[str, Any]], criterios_evaluacion: Dict[str, Any], formato_rubrica: str) -> Dict[str, List[Dict]]:
+    """
+    Determina qué secciones requieren preguntas específicas basadas en problemas detectados.
+    """
+    secciones = {}
+    
+    # Mapear criterios a secciones
+    for resultado in resultados:
+        criterio_texto = resultado.get("criterio", "").lower()
+        nivel = resultado.get("nivel", "")
+        
+        # Solo considerar criterios problemáticos o mejorables
+        if not (es_nivel_problematico(nivel, formato_rubrica) or nivel_es_mejorable(nivel, formato_rubrica)):
+            continue
+            
+        if any(term in criterio_texto for term in ["resumen", "abstract"]):
+            secciones.setdefault("resumen", []).append(resultado)
+        elif any(term in criterio_texto for term in ["justificación", "justificacion", "marco teórico", "referencias"]):
+            secciones.setdefault("justificacion", []).append(resultado)
+        elif any(term in criterio_texto for term in ["objetivo", "relación", "coherencia"]):
+            secciones.setdefault("objetivos", []).append(resultado)
+        elif any(term in criterio_texto for term in ["desarrollo", "contribución", "estructura", "apartados"]):
+            secciones.setdefault("analisis_estrategico", []).append(resultado)
+        else:
+            # Categoría general para otros criterios problemáticos
+            secciones.setdefault("general", []).append(resultado)
+    
+    return secciones
+
+def detectar_formato_rubrica(resultados: List[Dict[str, Any]]) -> str:
+    """
+    Detecta automáticamente el formato de niveles usado en la rúbrica.
+    Retorna: 'mudpe' para formato Nivel 1-4, 'mugptd' para formato Suspenso/Aprobado
+    """
+    if not resultados:
+        return 'mugptd'  # Por defecto
+    
+    # Analizar los niveles presentes
+    niveles_encontrados = [r.get("nivel", "") for r in resultados if r.get("nivel")]
+    texto_niveles = " ".join(niveles_encontrados).lower()
+    
+    # Detectar formato MUDPE (Nivel 1, Nivel 2, etc.)
+    if any(patron in texto_niveles for patron in ["nivel 1", "nivel 2", "nivel 3", "nivel 4"]):
+        return 'mudpe'
+    
+    # Detectar formato MUGPTD (Suspenso, Aprobado, etc.)
+    if any(patron in texto_niveles for patron in ["suspenso", "aprobado", "notable", "sobresaliente"]):
+        return 'mugptd'
+    
+    # Por defecto, asumir MUGPTD
+    return 'mugptd'
+
+def es_nivel_problematico(nivel: str, formato_rubrica: str = None) -> bool:
+    """Determina si un nivel indica problemas serios según el formato de rúbrica."""
+    nivel_lower = nivel.lower()
+    
+    if formato_rubrica == 'mudpe':
+        # Formato MUDPE: Nivel 1 y Nivel 2 son problemáticos
+        return any(indicador in nivel_lower for indicador in [
+            "nivel 1", "nivel 2", "n1", "n2", "no evaluable"
+        ])
+    else:
+        # Formato MUGPTD: Suspenso es problemático
+        return any(indicador in nivel_lower for indicador in [
+            "suspenso", "0-4", "insuficiente", "no evaluable"
+        ])
+
+def nivel_es_mejorable(nivel: str, formato_rubrica: str = None) -> bool:
+    """Determina si un nivel indica que necesita mejoras según el formato de rúbrica."""
+    nivel_lower = nivel.lower()
+    
+    if formato_rubrica == 'mudpe':
+        # Formato MUDPE: Nivel 1, 2 y 3 son mejorables
+        return any(indicador in nivel_lower for indicador in [
+            "nivel 1", "nivel 2", "nivel 3", "n1", "n2", "n3"
+        ])
+    else:
+        # Formato MUGPTD: Suspenso y Aprobado son mejorables
+        return any(indicador in nivel_lower for indicador in [
+            "suspenso", "0-4", "aprobado (5-6)", "5-6", "aprobado"
+        ])
+
+def seleccionar_plantilla_por_problemas(plantillas: List[str], problemas: List[str], criterios: List[Dict]) -> str:
+    """
+    Selecciona la plantilla más adecuada según los problemas específicos detectados.
+    """
+    if not plantillas:
+        return ""
+    
+    # Lógica de selección basada en problemas específicos
+    if "desarticulacion_logica" in problemas:
+        # Buscar plantillas que mencionen "derivación lógica" o "cadena de pensamiento"
+        for plantilla in plantillas:
+            if any(term in plantilla.lower() for term in ["derivación lógica", "cadena de pensamiento", "articulación"]):
+                return plantilla
+    
+    if "secuencia_metodologica_incorrecta" in problemas:
+        # Buscar plantillas sobre secuencia metodológica
+        for plantilla in plantillas:
+            if any(term in plantilla.lower() for term in ["secuencia", "metodológica", "pestel"]):
+                return plantilla
+                
+    # Por defecto, seleccionar la primera plantilla disponible
+    return plantillas[0] if plantillas else ""
+
+def contextualizar_pregunta_experta(plantilla: str, criterios: List[Dict], analisis: Dict[str, Any]) -> str:
+    """
+    Contextualiza la plantilla con datos específicos del TFM evaluado.
+    """
+    # Extraer datos específicos de los criterios para llenar los placeholders
+    contexto = {}
+    
+    for criterio in criterios:
+        criterio_texto = criterio.get("criterio", "")
+        justificacion = criterio.get("justificacion", "")
+        evidencias = criterio.get("evidencias", [])
+        
+        # Extraer información específica para contextualizacion
+        if evidencias:
+            contexto["evidencia_especifica"] = evidencias[0].get("frase", "")[:100] + "..."
+        
+        contexto["nivel_detectado"] = criterio.get("nivel", "")
+        contexto["problema_identificado"] = justificacion[:150] + "..." if len(justificacion) > 150 else justificacion
+    
+    # Aplicar contextualizacion básica
+    pregunta_contextualizada = plantilla
+    
+    # Reemplazar placeholders específicos comunes
+    replacements = {
+        "{metodologias_empleadas}": "las herramientas de análisis disponibles",
+        "{objetivos_especificos}": "los objetivos formulados", 
+        "{problema_inicial}": "la problemática identificada",
+        "{metodologia_empleada}": "la metodología seleccionada",
+        "{justificacion_resumida}": "la fundamentación presentada",
+        "{objetivos_enunciados}": "los objetivos establecidos",
+        "{resultados_obtenidos}": "los resultados alcanzados",
+        "{objetivos_planteados}": "los objetivos planteados",
+        "{puntuacion_externa}": "la puntuación del análisis externo",
+        "{puntuacion_interna}": "la puntuación del análisis interno",
+        "{matriz_dafo}": "la matriz DAFO resultante",
+        "{evaluacion_vrio}": "la evaluación VRIO realizada"
+    }
+    
+    # Aplicar reemplazos de placeholders
+    for placeholder, valor in replacements.items():
+        pregunta_contextualizada = pregunta_contextualizada.replace(placeholder, valor)
+    
+    # Aplicar contexto específico del criterio
+    for clave, valor in contexto.items():
+        placeholder = "{" + clave + "}"
+        if placeholder in pregunta_contextualizada:
+            pregunta_contextualizada = pregunta_contextualizada.replace(placeholder, valor)
+    
+    return pregunta_contextualizada
+
+def generar_pregunta_por_patron(patron: str, resultados: List[Dict[str, Any]]) -> str:
+    """
+    Genera pregunta específica basada en un patrón problemático identificado.
+    """
+    preguntas_patron = {
+        "desarticulacion_logica": "**Falta de coherencia estructural**: Se observa desconexión entre la justificación del problema, los objetivos formulados y la metodología aplicada. ¿Cómo se garantiza que existe una línea argumental coherente que conecte lógicamente la identificación del problema con la formulación de objetivos y la selección metodológica?",
+        
+        "secuencia_metodologica_incorrecta": "**Alteración de secuencia analítica**: El análisis estratégico no sigue la secuencia metodológica prescrita (PESTEL → Porter → Competidores → MEFE → DAFO). ¿Qué fundamentación epistemológica justifica esta variación y cómo se garantiza la validez del diagnóstico estratégico resultante?",
+        
+        "superficialidad_herramientas": "**Aplicación superficial de herramientas**: Las herramientas de análisis se aplican de manera formal pero sin demostrar rigor metodológico en los criterios de evaluación. ¿Qué evidencia empírica sustenta las valoraciones realizadas y cómo se controló la subjetividad inherente a estas evaluaciones?"
+    }
+    
+    return preguntas_patron.get(patron, "")
+    
+    logger.info(f"Generadas {len(preguntas)} preguntas con enfoque epistemológico crítico")
+    return preguntas[:num_preguntas]
+
+
+def mapear_problema_a_enfoque(tipo_problema: str) -> str:
+    """
+    Mapea tipos de problemas detectados a enfoques epistemológicos específicos.
+    """
+    mapeo = {
+        "contradiccion": "coherencia_interna",
+        "metodologia_poco_clara": "validacion_empirica", 
+        "formula_sin_justificacion": "fundamentacion_teorica",
+        "contenido_ambiguo": "fundamentacion_teorica",
+        "datos_sin_explicacion": "validacion_empirica",
+        "salto_logico": "coherencia_interna"
+    }
+    return mapeo.get(tipo_problema, "coherencia_interna")
 
 # Modificación para generar dos archivos de salida: .md y .json
 
-def guardar_resultados(resultados: List[Dict[str, Any]], ruta_base: str, logger: logging.Logger):
+def guardar_resultados(resultados: List[Dict[str, Any]], ruta_base: str, problemas_contenido: List[Dict[str, Any]], logger: logging.Logger):
     """
     Guarda los resultados de la evaluación en dos archivos: .md y .json.
     """
@@ -563,7 +944,7 @@ def guardar_resultados(resultados: List[Dict[str, Any]], ruta_base: str, logger:
         # Cargar plantillas de preguntas
         plantillas = cargar_plantillas_preguntas()
         
-        # Generar preguntas dinámicas
+        # Generar preguntas dinámicas usando el nuevo sistema epistemológico
         preguntas = generar_preguntas_dinamicas(resultados, plantillas, logger)
         
         # Generar archivo .md
@@ -654,7 +1035,7 @@ def main() -> int:
 
     # 5) OpenAI y evaluación
     compat, client = crear_cliente_openai(logger)
-    resultados = evaluar_tfm_completo(
+    resultados, problemas_contenido = evaluar_tfm_completo(
         compat=compat,
         client=client,
         modelo=MODELO_POR_DEFECTO,
@@ -666,7 +1047,7 @@ def main() -> int:
     )
 
     # 6) Exportar
-    exportar_resultados(resultados, carpeta_salida, logger)
+    exportar_resultados(resultados, carpeta_salida, problemas_contenido, logger)
     logger.info("✅ Evaluación finalizada correctamente.")
     return 0
 

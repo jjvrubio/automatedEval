@@ -1,0 +1,135 @@
+# Marco epistemológico para evaluación crítica de TFMs - Enfoque integrado y metodológico
+
+configuracion:
+  numero_preguntas: 3
+  enfoque_epistemologico: "integracion_metodologica"
+  nivel_profundidad: "experto"
+
+# Criterios de evaluación específicos por sección del TFM
+criterios_evaluacion:
+  
+  resumen:
+    descripcion: "Evaluación integral del resumen como síntesis coherente del trabajo completo"
+    aspectos_criticos:
+      - "Integración justificación teórica y económica"
+      - "Derivación lógica del objetivo principal y específicos"
+      - "Coherencia metodológica"
+      - "Conclusiones que cierran el círculo objetivo-resultado"
+    plantillas_pregunta:
+      - "**Desarticulación entre justificación y objetivos en el resumen**: El resumen presenta {justificacion_resumida} como base para {objetivos_enunciados}, pero no se evidencia la **derivación lógica** entre la fundamentación teórica-económica y la formulación de objetivos. ¿Cómo se garantiza que los objetivos formulados constituyen una respuesta directa y necesaria a la problemática justificada?"
+      - "**Ausencia de cierre objetivo-resultado**: El resumen enuncia {objetivos_planteados} pero las conclusiones indican {resultados_obtenidos} sin establecer **correlación explícita**. ¿En qué medida cada objetivo específico fue efectivamente alcanzado y cuál es la evidencia empírica que sustenta esta valoración?"
+
+  justificacion:
+    descripcion: "Análisis de la construcción contextual y fundamentación del problema/oportunidad"
+    aspectos_criticos:
+      - "Magnitud cuantitativa y cualitativa del problema"
+      - "Árbol de problemas: causas primarias y secundarias"
+      - "Estado del arte y benchmarking"
+      - "Transformación problema-objetivo"
+    plantillas_pregunta:
+      - "**Indefinición de magnitud e implicaciones**: La justificación identifica {problema_enunciado} pero no cuantifica su **magnitud real** ni sus **implicaciones económicas específicas**. ¿Qué datos empíricos sustentan la relevancia del problema y cómo se proyectan las consecuencias futuras si no se interviene?"
+      - "**Debilidad en el análisis de antecedentes**: Se referencia {antecedentes_mencionados} pero no se realiza un **benchmarking sistemático** que identifique factores críticos de éxito/fracaso. ¿Cómo se analizaron las lecciones aprendidas de experiencias similares y qué criterios determinaron la pertinencia de la solución propuesta?"
+      - "**Desconexión teoría-práctica**: El marco teórico desarrolla {conceptos_teoricos} pero no se articula **metodológicamente** con la problemática específica abordada. ¿Cómo se garantiza que las teorías seleccionadas son las más adecuadas para explicar y abordar el fenómeno estudiado?"
+
+  objetivos:
+    descripcion: "Evaluación de la integración lógica objetivo-desarrollo-conclusiones"
+    aspectos_criticos:
+      - "Cadena de pensamiento: justificación → objetivos → metodología → conclusiones"
+      - "Verificación de alineación problema-objetivo"
+      - "Coherencia metodológica con objetivos"
+      - "Cierre del círculo en conclusiones"
+    plantillas_pregunta:
+      - "**Ruptura en la cadena de pensamiento**: Los objetivos formulados {objetivos_especificos} no derivan **lógicamente** de la problemática planteada {problema_inicial}, y la metodología aplicada {metodologia_empleada} no persigue coherentemente dichos objetivos. ¿Cómo se justifica esta desarticulación y qué evidencia sustenta que la metodología es la más adecuada para alcanzar los objetivos planteados?"
+      - "**Incumplimiento del cierre objetivo-conclusión**: Las conclusiones presentan {resultados_conclusiones} pero no establecen **correlación explícita** con el logro de {objetivos_planteados}. ¿En qué grado específico se alcanzó cada objetivo y cuáles son las evidencias empíricas que sustentan esta valoración?"
+
+  analisis_estrategico:
+    descripcion: "Evaluación de la aplicación secuencial y coherente de metodologías de análisis"
+    aspectos_criticos:
+      - "Secuencia metodológica prescrita: PESTEL → Porter → Competidores → MEFE → DAFO"
+      - "Aplicación coherente entre metodologías"
+      - "Integración análisis externo-interno"
+      - "Rigor en la aplicación de herramientas"
+    plantillas_pregunta:
+      - "**Alteración de secuencia metodológica**: El análisis estratégico aplica {metodologias_empleadas} sin respetar la **secuencia prescrita** (PESTEL → 5 Fuerzas → Competidores → MEFE → DAFO). ¿Cómo se justifica esta variación metodológica y qué implicaciones tiene para la validez del diagnóstico estratégico?"
+      - "**Incoherencia entre análisis externo e interno**: Los resultados del MEFE {puntuacion_externa} y MEFI {puntuacion_interna} no se **articulan consistentemente** en el DAFO final {matriz_dafo}. ¿Cómo se garantiza la coherencia entre los hallazgos de ambos análisis y cuál es la fundamentación de la síntesis estratégica resultante?"
+      - "**Superficialidad en aplicación de herramientas**: El análisis VRIO presenta {evaluacion_vrio} pero no demuestra **rigor metodológico** en la evaluación de criterios (Valor, Rareza, Inimitabilidad, Organización). ¿Qué evidencia empírica sustenta cada valoración y cómo se controló la subjetividad inherente a esta evaluación?"
+
+# Patrones específicos de problemas a identificar
+patrones_problemas:
+  
+  desarticulacion_logica:
+    descripcion: "Falta de conexión lógica entre secciones del TFM"
+    indicadores:
+      - "Objetivos no derivan de la justificación"
+      - "Metodología no persigue los objetivos"
+      - "Conclusiones no cierran con objetivos"
+    ejemplo: "Justifica problema A, objetivos buscan resolver B, metodología analiza C"
+
+  secuencia_metodologica_incorrecta:
+    descripcion: "Aplicación desordenada de herramientas de análisis estratégico"
+    indicadores:
+      - "DAFO antes que PESTEL o Porter"
+      - "MEFE/MEFI sin base analítica previa"
+      - "Competidores sin contexto sectorial"
+    ejemplo: "Aplica DAFO sin haber realizado análisis PESTEL previo"
+
+  superficialidad_herramientas:
+    descripcion: "Aplicación formal pero sin rigor metodológico"
+    indicadores:
+      - "Matrices sin criterios de ponderación justificados"
+      - "Análisis VRIO sin evidencia empírica"
+      - "Benchmarking sin factores críticos"
+    ejemplo: "VRIO marca 'Sí' en rareza sin demostrar por qué es raro"
+
+  incongruencia_cuantitativa:
+    descripcion: "Datos o proyecciones no sustentadas o contradictorias"
+    indicadores:
+      - "Mejoras proyectadas irrealistas vs. limitaciones reconocidas"
+      - "Magnitudes sin base empírica"
+      - "Ratios financieros inconsistentes"
+    ejemplo: "Proyecta 90% mejora en sector público con alta resistencia al cambio"
+
+# Instrucciones específicas para el modelo
+instrucciones_modelo:
+  fase_analisis_preliminar: |
+    Antes de evaluar cualquier criterio, realiza un ANÁLISIS PRELIMINAR GLOBAL buscando:
+    
+    1. CADENA DE PENSAMIENTO:
+       - ¿Los objetivos derivan lógicamente de la justificación?
+       - ¿La metodología persigue coherentemente los objetivos?
+       - ¿Las conclusiones cierran específicamente con cada objetivo?
+    
+    2. SECUENCIA METODOLÓGICA (si aplica):
+       - ¿Se respeta la secuencia PESTEL → Porter → Competidores → MEFE → DAFO?
+       - ¿Cada herramienta se alimenta de los resultados de la anterior?
+       - ¿Hay coherencia entre análisis externo e interno?
+    
+    3. RIGOR EN APLICACIÓN:
+       - ¿Las herramientas se aplican con criterios justificados?
+       - ¿Hay evidencia empírica para las valoraciones?
+       - ¿Los datos cuantitativos son coherentes y realistas?
+
+  estructura_pregunta_experta: |
+    **[Título específico del problema metodológico]**: 
+    [Descripción precisa con datos/herramientas/secciones específicas] + 
+    [Análisis de la inconsistencia o deficiencia] + 
+    [Cuestionamiento epistemológico sobre rigor metodológico]
+
+  criterios_excelencia:
+    - "Identificar problemas metodológicos específicos (no genéricos)"
+    - "Usar terminología técnica precisa (PESTEL, VRIO, MEFE, etc.)"
+    - "Referenciar secciones, datos y herramientas específicas del TFM"
+    - "Cuestionar la fundamentación epistemológica de las decisiones"
+    - "Evaluar coherencia en la cadena completa de pensamiento"
+  
+  objetivos:
+    - "objetivos"
+    - "hipótesis"
+    - "preguntas"
+    - "propósito"
+  
+  marco_teorico:
+    - "marco teórico"
+    - "fundamentación"
+    - "antecedentes"
+    - "revisión"
