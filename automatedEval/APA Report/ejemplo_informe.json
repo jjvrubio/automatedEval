@@ -1,0 +1,60 @@
+{
+  "archivo_analizado": "ejemplo_referencias.txt",
+  "estilo_validacion": "APA",
+  "total_referencias": 3,
+  "referencias_validas": 1,
+  "referencias_con_errores": 2,
+  "puntuacion_promedio": 0.5555555555555556,
+  "referencias": [
+    {
+      "texto_original": "García, J. M. (2023). Inteligencia artificial en educación. Revista Educativa, 45(3), 123-145.",
+      "tiene_autor": true,
+      "tiene_anio": true,
+      "tiene_titulo": true,
+      "tiene_editorial": false,
+      "tiene_url": false,
+      "tiene_doi": false,
+      "es_completa": false,
+      "errores": [],
+      "sugerencias": [],
+      "puntuacion": 0.5
+    },
+    {
+      "texto_original": "SMITH, JOHN (2022) MACHINE LEARNING BASICS. TECH JOURNAL.",
+      "tiene_autor": false,
+      "tiene_anio": true,
+      "tiene_titulo": true,
+      "tiene_editorial": false,
+      "tiene_url": false,
+      "tiene_doi": false,
+      "es_completa": false,
+      "errores": [
+        "Falta información del autor",
+        "Formato de autor no cumple APA (debe ser: Apellido, I.)"
+      ],
+      "sugerencias": [
+        "Incluir apellido e inicial del nombre del autor"
+      ],
+      "puntuacion": 0.3333333333333333
+    },
+    {
+      "texto_original": "López, A. (2021). Análisis de datos con Python. Editorial Técnica. https://doi.org/10.1234/example",
+      "tiene_autor": true,
+      "tiene_anio": true,
+      "tiene_titulo": true,
+      "tiene_editorial": true,
+      "tiene_url": true,
+      "tiene_doi": false,
+      "es_completa": true,
+      "errores": [],
+      "sugerencias": [],
+      "puntuacion": 0.8333333333333334
+    }
+  ],
+  "patrones_detectados": [],
+  "recomendaciones_generales": [
+    "Revisar formato de autores según estándar APA",
+    "Incluir DOI cuando esté disponible",
+    "Verificar capitalización de títulos"
+  ]
+}

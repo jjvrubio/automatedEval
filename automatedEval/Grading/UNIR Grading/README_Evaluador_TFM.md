@@ -1,4 +1,4 @@
-# Evaluador TFM Integrado Ultraestricto
+# Evaluador TFM Integrado Ultraestricto v4.1
 
 ## 📋 Descripción General
 
@@ -16,7 +16,22 @@ El **Evaluador TFM Integrado Ultraestricto** es un sistema avanzado de evaluaci�
 - **🔍 Sistema de evidencias citables** con referencias exactas de página
 - **🚫 Exclusión inteligente** de criterios de presentación oral
 
-### 🆕 Nuevas Funcionalidades (v4.0)
+### 🆕 Nuevas Funcionalidades (v4.1)
+
+#### **🔧 Sistema de Debugging Avanzado**
+- **🔑 Identificación única de documentos** con hash MD5
+- **📋 Verificación de unicidad de preguntas** por documento
+- **🔍 Detección automática de duplicaciones** entre TFMs
+- **📝 Logging extensivo** para tracking de análisis
+- **⚙️ Funciones mejoradas** de extracción de fragmentos específicos
+
+#### **⚙️ Configuración Externa YAML**
+- **📄 Configuración de extracción** (`configuracion_extraccion_datos.yaml`)
+- **🎯 Plantillas de análisis** (`plantillas_analisis_critico.yaml`)
+- **🔧 Configuración del sistema** (`configuracion_sistema_tfm.yaml`)
+- **🛠️ Mantenibilidad mejorada** sin código hardcodeado
+
+### ✅ Funcionalidades v4.0 Consolidadas
 
 - **📄 Integración de extractos textuales** en preguntas (elimina consulta de páginas)
 - **🔍 Búsqueda inteligente de datos específicos** (números, porcentajes, términos técnicos)
@@ -39,12 +54,24 @@ El **Evaluador TFM Integrado Ultraestricto** es un sistema avanzado de evaluaci�
 ```
 /Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/
 ├── Grading/UNIR Grading/
-│   └── Evaluador_TFM_Integrado_ultraestricto.py   # Script principal
-└── TFM_Evaluator_Prompt_Package/
-    ├── plantillas_preguntas.yaml                  # Marco epistemológico
-    ├── rubrica MUDPE.xlsx                         # Rúbrica MUDPE
-    ├── rubrica MUGPTD.xlsx                        # Rúbrica MUGPTD
-    └── Ultraestricto.md                          # Instrucciones de evaluación
+│   ├── Evaluador_TFM_Integrado_ultraestricto.py   # Script principal
+│   ├── configuracion_extraccion_datos.yaml        # Config extracción
+│   ├── plantillas_analisis_critico.yaml          # Plantillas análisis
+│   ├── configuracion_sistema_tfm.yaml            # Config sistema
+│   ├── test_debugging_system.py                  # Tests debugging
+│   ├── SOLUCION_DUPLICACION_PREGUNTAS.md        # Doc debugging
+│   └── README_Evaluador_TFM.md                  # Esta documentación
+├── TFM_Evaluator_Prompt_Package/
+│   ├── plantillas_preguntas.yaml                  # Marco epistemológico
+│   ├── rubrica MUDPE.xlsx                         # Rúbrica MUDPE
+│   ├── rubrica MUGPTD.xlsx                        # Rúbrica MUGPTD
+│   └── Ultraestricto.md                          # Instrucciones de evaluación
+└── APA Report/                                    # Sistema independiente
+    ├── referencias_validator.py                   # Validador referencias
+    ├── config_referencias.py                      # Config referencias
+    ├── utils_referencias.py                       # Utilidades
+    ├── ejemplos_uso.py                           # Ejemplos
+    └── README_REFERENCIAS.md                     # Doc referencias
 ```
 
 ## 🛠️ Requisitos del Sistema
@@ -265,6 +292,128 @@ RUBRICAS_POR_ETIQUETA = {
 RUTA_INSTRUCCIONES_MD = "ruta/a/Ultraestricto.md"
 ```
 
+## 🔧 Sistema de Configuración Externa (v4.1)
+
+### Archivos de Configuración YAML
+
+#### `configuracion_extraccion_datos.yaml`
+Contiene patrones de extracción y metodologías por dominio:
+```yaml
+estructura_datos:
+  metodologias: []
+  datos_numericos: []
+  terminologia_tecnica: []
+
+patrones_regex:
+  numeros_porcentajes: "[0-9]+(?:[.,][0-9]+)?%"
+  valores_monetarios: "[€$£¥][0-9]+(?:[.,][0-9]+)?"
+  
+metodologias_por_dominio:
+  tecnologia: ["machine learning", "big data", "IoT"]
+  educacion: ["constructivismo", "aprendizaje cooperativo"]
+```
+
+#### `plantillas_analisis_critico.yaml`
+Plantillas para análisis crítico y generación de preguntas:
+```yaml
+plantillas_analisis:
+  objetivos_generales:
+    - "Analizar la rigurosidad metodológica del estudio"
+    - "Evaluar la coherencia entre objetivos y metodología"
+    
+  requisitos_esenciales:
+    - "Uso de extractos específicos del documento"
+    - "Preguntas basadas en inconsistencias detectadas"
+```
+
+#### `configuracion_sistema_tfm.yaml`
+Configuración general del sistema:
+```yaml
+rutas_archivos:
+  ruta_instrucciones_md: "TFM_Evaluator_Prompt_Package/Ultraestricto.md"
+  carpeta_plantillas: "TFM_Evaluator_Prompt_Package/"
+
+configuracion_openai:
+  modelo_por_defecto: "gpt-4o-mini"
+  temperatura: 0.0
+  max_tokens: 4000
+```
+
+### Ventajas de la Configuración Externa
+
+- ✅ **Mantenibilidad**: Cambios sin modificar código
+- ✅ **Flexibilidad**: Adaptación rápida a nuevos dominios
+- ✅ **Extensibilidad**: Fácil agregar nuevos patrones
+- ✅ **Consistencia**: Configuración centralizada
+- ✅ **Debugging**: Parámetros configurables para testing
+
+## 🔍 Sistema de Debugging Avanzado (v4.1)
+
+### Características del Sistema de Debugging
+
+#### 🔑 Identificación Única de Documentos
+```python
+# Generación de hash único por documento
+documento_hash = hashlib.md5(texto_tfm.encode('utf-8')).hexdigest()[:12]
+logger.info(f"🔑 Hash del documento: {documento_hash}")
+```
+
+#### 📋 Verificación de Unicidad
+- **Detección de duplicaciones**: Evita preguntas idénticas entre TFMs
+- **Análisis de extractos**: Verifica que cada pregunta use contenido específico
+- **Sistema de similitud**: Detecta extractos genéricos vs específicos
+
+#### 📝 Logging Extensivo
+```python
+logger.info(f"📏 Longitud del texto: {len(texto_tfm)} caracteres")
+logger.info(f"🎯 Prompts enviados a OpenAI con identificación única")
+logger.info(f"✅ Pregunta generada con extracto específico: {extracto[:50]}...")
+```
+
+### Funciones de Debugging Implementadas
+
+#### `analizar_documento_profundamente()` - Mejorado
+- **Hash de documento**: Identificación única para tracking
+- **Verificación de especificidad**: Asegura preguntas documento-específicas
+- **Logging detallado**: Tracking completo del proceso de análisis
+
+#### `analizar_inconsistencias_locales()` - Sistema de Fallback
+- **Análisis local**: Funciona sin OpenAI para testing
+- **Extracción específica**: Busca contenido real del documento
+- **Verificación de contexto**: Valida que los extractos sean específicos
+
+#### Funciones de Utilidad
+```python
+def verificar_unicidad_preguntas(pregunta: str, historial: List[str]) -> bool
+def calcular_similitud_extractos(extracto1: str, extracto2: str) -> float
+def extraer_fragmentos_con_numeros(texto: str, numeros: List[str]) -> List[str]
+```
+
+### Testing del Sistema de Debugging
+
+#### `test_debugging_system.py`
+Script específico para probar la unicidad de preguntas:
+```bash
+python test_debugging_system.py
+```
+
+**Resultado esperado**:
+```
+✅ NO SE DETECTARON DUPLICACIONES - Sistema funcionando correctamente
+```
+
+### Resolución de Problemas Detectados
+
+#### ❌ Problema Original
+Preguntas idénticas generándose para diferentes TFMs.
+
+#### ✅ Solución Implementada
+1. **Sistema de hash único** por documento
+2. **Extracción mejorada** de fragmentos específicos
+3. **Verificación de contexto** real vs genérico
+4. **Fallbacks identificables** cuando no hay contenido específico
+5. **Testing automatizado** para verificar unicidad
+
 ## 🔧 Funciones Principales
 
 ### `main()` - Función Principal
@@ -347,7 +496,88 @@ uniformemente exitosos*. ¿Cómo se justifica esta inconsistencia específica do
 subproceso empeora 2.91 puntos porcentuales mientras se declara éxito universal?
 ```
 
-#### Pregunta con Análisis Estadístico
+## 🔗 Sistemas Relacionados
+
+### 📚 Sistema de Validación de Referencias (Independiente)
+
+En el directorio `APA Report/` se encuentra un **sistema modular independiente** para validación de referencias bibliográficas:
+
+#### Características
+- ✅ **Completamente independiente** del evaluador TFM
+- ✅ **Reutilizable** para ensayos, artículos, tesis
+- ✅ **Multi-formato**: PDF, DOCX
+- ✅ **Multi-estilo**: APA 7, IEEE, MLA
+- ✅ **Multi-idioma**: Español, inglés
+
+#### Uso básico
+```bash
+cd "../APA Report/"
+python referencias_validator.py --archivo documento.pdf --estilo apa
+```
+
+#### Documentación
+Ver `APA Report/README_REFERENCIAS.md` para documentación completa.
+
+### 🔄 Integración Futura
+
+Aunque ambos sistemas funcionan de manera independiente, una futura integración podría incluir:
+
+- **Validación automática** de referencias durante la evaluación TFM
+- **Informe combinado** con evaluación de contenido + referencias
+- **Análisis de calidad** bibliográfica como criterio adicional
+
+## 📈 Historial de Versiones
+
+### v4.1 (Octubre 2025) - Debugging y Configuración Externa
+- ✅ **Sistema de debugging avanzado** con hash único por documento
+- ✅ **Configuración externa YAML** para patrones y plantillas
+- ✅ **Verificación de unicidad** de preguntas entre TFMs
+- ✅ **Funciones de extracción mejoradas** para contenido específico
+- ✅ **Sistema de testing** automatizado para debugging
+
+### v4.0 (Septiembre 2025) - Extractos Integrados
+- ✅ **Integración de extractos textuales** en preguntas
+- ✅ **Sistema de búsqueda inteligente** de datos específicos
+- ✅ **Preguntas autocontenidas** con evidencia integrada
+- ✅ **Análisis crítico profundo** con IA
+- ✅ **Extracción ampliada** de datos especializados
+
+### v3.0 (Agosto 2025) - Sistema Adaptativo
+- ✅ **Detección automática** de formato de rúbrica
+- ✅ **Extracción de niveles reales** del contenido
+- ✅ **Sistema adaptativo universal** MUDPE/MUGPTD
+- ✅ **Eliminación** de funciones duplicadas
+- ✅ **Mejoras** en robustez y exportación
+
+### v2.0 (Julio 2025) - Marco Epistemológico
+- ✅ **Marco epistemológico** avanzado
+- ✅ **Análisis por secciones** estructurado
+- ✅ **Detección** de patrones problemáticos
+- ✅ **Generación** de preguntas expertas
+
+### v1.0 (Junio 2025) - Versión Inicial
+- ✅ **Evaluación básica** por criterios
+- ✅ **Exportación** CSV y Markdown
+- ✅ **Integración** con OpenAI API
+- ✅ **Soporte** PDF y DOCX
+
+## 🎯 Conclusión
+
+El **Evaluador TFM Integrado Ultraestricto v4.1** representa la evolución más avanzada del sistema de evaluación automatizada, incorporando:
+
+- **🔧 Robustez técnica** con debugging avanzado
+- **⚙️ Configuración externa** para máxima flexibilidad
+- **🎯 Precisión mejorada** con verificación de unicidad
+- **📊 Análisis específico** por documento
+- **🔗 Ecosistema completo** con sistema de referencias independiente
+
+El sistema está listo para **producción académica** y proporciona evaluaciones de **calidad profesional** para TFMs de cualquier dominio académico.
+
+---
+
+**📧 Soporte**: Ver documentación técnica en archivos de configuración YAML y scripts de debugging.
+
+**🔄 Actualizaciones**: Sistema modular preparado para expansión y mejoras continuas.
 
 ```text
 La investigación reporta *15 participantes en entrevistas semiestructuradas y 200 

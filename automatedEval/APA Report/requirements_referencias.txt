@@ -1,0 +1,21 @@
+# Requisitos específicos para el Sistema de Validación de Referencias
+# ================================================================
+
+# Procesamiento de PDFs
+pdfplumber>=0.9.0
+
+# Procesamiento de documentos DOCX  
+lxml>=4.9.0
+
+# Análisis de texto y expresiones regulares (incluido en Python estándar)
+# re, json, os, pathlib, argparse, dataclasses, enum
+
+# Opcional: Detección avanzada de idioma
+# langdetect>=1.0.9
+
+# Opcional: Análisis de similitud de texto
+# difflib (incluido en Python estándar)
+
+# Opcional: Interfaz gráfica nativa macOS (ya disponible)
+# PyObjC-framework-Cocoa
+# PyObjC-framework-Quartz
