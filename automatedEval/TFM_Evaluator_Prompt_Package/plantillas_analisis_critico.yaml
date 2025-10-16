@@ -1,0 +1,133 @@
+# Plantillas de Prompts para Análisis Crítico de Documentos TFM
+# ================================================================
+
+# Configuración general de análisis
+configuracion_analisis:
+  numero_preguntas_exactas: 3
+  longitud_minima_pregunta: 250
+  incluir_estadisticas_extracion: true
+  formato_salida: "json"
+
+# Instrucciones base para análisis crítico
+instrucciones_base:
+  introduccion: |
+    Actúa como un evaluador académico experto analizando un Trabajo Final de Máster (TFM).
+
+  objetivos_analisis:
+    - titulo: "IDENTIFIQUEN INCONSISTENCIAS ESPECÍFICAS"
+      descripcion: "Contradicciones entre metodología declarada vs aplicada, datos vs conclusiones, teoría vs práctica"
+    
+    - titulo: "DETECTEN FALTA DE CLARIDAD" 
+      descripcion: "Conceptos mal definidos, argumentación confusa, conexiones lógicas débiles"
+    
+    - titulo: "ENCUENTREN CRITERIOS INCORRECTOS"
+      descripcion: "Metodologías inadecuadas, sesgos no controlados, limitaciones no reconocidas"
+
+# Requisitos esenciales para preguntas
+requisitos_esenciales:
+  extractos_textuales:
+    obligatorio: true
+    formato: "cursiva (*texto exacto del documento*)"
+    tipo_contenido: "ESPECÍFICOS y TÉCNICOS"
+    
+  datos_concretos_priorizados:
+    - "números exactos"
+    - "porcentajes" 
+    - "nombres técnicos"
+    - "metodologías específicas"
+    - "cifras, ratios, métricas"
+    - "nombres propios"
+    - "términos técnicos especializados"
+  
+  evidencia_directa:
+    requerida: true
+    tipo: "EVIDENCIA DIRECTA del problema identificado"
+    no_permitido: "descripciones generales"
+  
+  multiples_extractos:
+    minimo_por_pregunta: 2
+    proposito: "crear contexto técnico completo"
+  
+  longitud_minima: 250  # palabras por pregunta incluyendo extractos
+
+# Formato de respuesta requerido
+formato_respuesta:
+  tipo: "json"
+  estructura:
+    preguntas:
+      - enfoque: "inconsistencia_metodologica|falta_claridad|criterio_incorrecto"
+        pregunta: "La pregunta completa que INCLUYE extractos del documento en cursiva *así*..."
+        extractos_utilizados: ["fragmento exacto 1", "fragmento exacto 2"]
+        datos_especificos: ["dato1", "dato2", "dato3"]
+        pagina_referencia: "XX"
+
+# Ejemplos de formato esperado
+ejemplos_formato:
+  datos_numericos:
+    titulo: "EJEMPLO 1 (Datos numéricos específicos)"
+    texto: |
+      El modelo TO-BE muestra *incremento en la ineficiencia del tiempo de ciclo para el subproceso 'Diseño de instrumentos de evaluación y acreditación' (CTE desciende del 32.88% en AS-IS al 29.97% en TO-BE)*, mientras que todos los otros subprocesos mejoran. El documento también indica que *la implementación de LEAN redujo desperdicios en un 15% en promedio*, pero contradictoriamente afirma que *todos los rediseños TO-BE fueron uniformemente exitosos*. ¿Cómo se justifica esta inconsistencia específica donde un subproceso empeora 2.91 puntos porcentuales mientras se declara éxito universal?
+
+  terminos_tecnicos:
+    titulo: "EJEMPLO 2 (Términos técnicos específicos)" 
+    texto: |
+      El análisis financiero presenta *ROI del 23.5% y VAN de €2.4M calculado con WACC del 8.2%*, pero posteriormente menciona que *el análisis de sensibilidad no fue aplicado debido a limitaciones de tiempo*. Dado que el documento afirma usar *metodología Monte Carlo para modelar incertidumbre*, ¿por qué estos cálculos críticos no incorporan variabilidad en las tasas de descuento, especialmente cuando el WACC del 8.2% no refleja el perfil de riesgo del proyecto según las limitaciones reconocidas?
+
+# Instrucciones críticas específicas
+instrucciones_criticas:
+  header: "INSTRUCCIONES CRÍTICAS:"
+  analisis_profundo: "Analiza profundamente el documento y genera EXACTAMENTE {numero_preguntas} preguntas muy diferentes que:"
+  
+  requisito_datos: |
+    REQUISITO: Usar SIEMPRE datos específicos (números exactos, nombres técnicos, metodologías concretas) en los extractos, NUNCA descripciones genéricas.
+
+# Plantilla de prompt completo
+template_prompt_completo: |
+  {instrucciones_base.introduccion}
+  
+  DOCUMENTO A ANALIZAR:
+  {texto_muestra}
+  
+  PROBLEMAS DETECTADOS EN LA EVALUACIÓN:
+  {problemas_detectados}
+  
+  {instrucciones_criticas.header}
+  {instrucciones_criticas.analisis_profundo}
+  
+  {objetivos_lista}
+  
+  REQUISITOS ESENCIALES:
+  {requisitos_lista}
+  
+  FORMATO OBLIGATORIO DE RESPUESTA:
+  {formato_json}
+  
+  EJEMPLOS DE FORMATO ESPERADO CON EXTRACTOS TÉCNICOS ESPECÍFICOS:
+  {ejemplos_formateados}
+  
+  {instrucciones_criticas.requisito_datos}
+
+# Configuración de muestra de texto
+muestra_texto:
+  caracteres_maximos: 10000
+  porcentaje_contenido_prioritario: 70  # 70% para secciones clave
+  secciones_clave:
+    - "metodología"
+    - "método" 
+    - "análisis"
+    - "resultados"
+    - "conclusiones"
+    - "limitaciones"
+    - "discusión"
+    - "marco teórico"
+    - "revisión"
+    - "literatura"
+
+# Configuración de fallbacks
+fallbacks:
+  si_falla_json: "extraer_preguntas_texto_plano"
+  si_falla_openai: "analizar_inconsistencias_locales"
+  configuracion_reducida:
+    numero_preguntas: 2
+    longitud_minima: 150
+    ejemplos_simplificados: true

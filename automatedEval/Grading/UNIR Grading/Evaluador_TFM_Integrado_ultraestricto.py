@@ -687,11 +687,166 @@ def generar_preguntas_dinamicas(resultados: List[Dict[str, Any]], plantillas: Di
         return []
 
 
+def cargar_plantillas_analisis_critico(logger: logging.Logger) -> Dict[str, Any]:
+    """
+    Carga las plantillas de análisis crítico desde archivo YAML.
+    """
+    config_path = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/plantillas_analisis_critico.yaml"
+    
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = yaml.safe_load(f)
+        logger.info(f"Plantillas de análisis crítico cargadas desde: {config_path}")
+        return config
+    except FileNotFoundError:
+        logger.error(f"No se encontró archivo de plantillas: {config_path}")
+        logger.info("Usando plantillas por defecto reducidas")
+        return {
+            "configuracion_analisis": {"numero_preguntas_exactas": 3},
+            "instrucciones_base": {"introduccion": "Actúa como evaluador académico experto."},
+            "requisitos_esenciales": {"longitud_minima": 250},
+            "ejemplos_formato": {}
+        }
+    except Exception as e:
+        logger.error(f"Error cargando plantillas de análisis: {e}")
+        return {}
+
+
+def construir_prompt_analisis_desde_yaml(texto_muestra: str, problemas_detectados: List[Dict], 
+                                       plantillas: Dict[str, Any], logger: logging.Logger) -> str:
+    """
+    Construye el prompt de análisis crítico usando las plantillas YAML.
+    """
+    if not plantillas:
+        logger.warning("No hay plantillas disponibles, usando prompt básico")
+        return construir_prompt_analisis_basico(texto_muestra, problemas_detectados)
+    
+    try:
+        # Obtener secciones del YAML
+        instrucciones = plantillas.get("instrucciones_base", {})
+        objetivos = plantillas.get("instrucciones_base", {}).get("objetivos_analisis", [])
+        requisitos = plantillas.get("requisitos_esenciales", {})
+        formato = plantillas.get("formato_respuesta", {})
+        ejemplos = plantillas.get("ejemplos_formato", {})
+        criticas = plantillas.get("instrucciones_criticas", {})
+        config = plantillas.get("configuracion_analisis", {})
+        
+        # Construir lista de objetivos
+        objetivos_texto = []
+        for i, obj in enumerate(objetivos, 1):
+            titulo = obj.get("titulo", f"OBJETIVO {i}")
+            desc = obj.get("descripcion", "")
+            objetivos_texto.append(f"{i}. {titulo}: {desc}")
+        
+        # Construir lista de requisitos
+        requisitos_texto = []
+        if requisitos.get("extractos_textuales", {}).get("obligatorio"):
+            formato_extracto = requisitos["extractos_textuales"].get("formato", "")
+            requisitos_texto.append(f"- Cada pregunta DEBE incluir extractos textuales ESPECÍFICOS y TÉCNICOS del documento {formato_extracto}")
+        
+        datos_concretos = requisitos.get("datos_concretos_priorizados", [])
+        if datos_concretos:
+            lista_datos = ", ".join(datos_concretos)
+            requisitos_texto.append(f"- Los extractos deben contener DATOS CONCRETOS: {lista_datos}")
+        
+        if requisitos.get("evidencia_directa", {}).get("requerida"):
+            requisitos_texto.append("- Los extractos deben ser EVIDENCIA DIRECTA del problema identificado, no descripciones generales")
+        
+        minimo_extractos = requisitos.get("multiples_extractos", {}).get("minimo_por_pregunta", 2)
+        if minimo_extractos:
+            requisitos_texto.append(f"- Incluir MÚLTIPLES extractos específicos por pregunta (mínimo {minimo_extractos})")
+        
+        longitud_min = requisitos.get("longitud_minima", 250)
+        requisitos_texto.append(f"- Mínimo {longitud_min} palabras por pregunta incluyendo múltiples extractos técnicos específicos")
+        
+        # Construir ejemplos
+        ejemplos_texto = []
+        for clave, ejemplo in ejemplos.items():
+            titulo = ejemplo.get("titulo", clave.upper())
+            texto = ejemplo.get("texto", "")
+            if texto:
+                ejemplos_texto.append(f"{titulo}:\n\"{texto}\"")
+        
+        # Construir prompt completo
+        num_preguntas = config.get("numero_preguntas_exactas", 3)
+        
+        prompt_partes = [
+            instrucciones.get("introduccion", ""),
+            "",
+            "DOCUMENTO A ANALIZAR:",
+            texto_muestra,
+            "",
+            "PROBLEMAS DETECTADOS EN LA EVALUACIÓN:",
+            json.dumps(problemas_detectados, indent=2, ensure_ascii=False),
+            "",
+            criticas.get("header", "INSTRUCCIONES CRÍTICAS:"),
+            criticas.get("analisis_profundo", "Analiza profundamente el documento y genera EXACTAMENTE {numero_preguntas} preguntas muy diferentes que:").format(numero_preguntas=num_preguntas),
+            ""
+        ]
+        
+        # Añadir objetivos
+        prompt_partes.extend(objetivos_texto)
+        prompt_partes.append("")
+        
+        # Añadir requisitos
+        prompt_partes.append("REQUISITOS ESENCIALES:")
+        prompt_partes.extend(requisitos_texto)
+        prompt_partes.append("")
+        
+        # Añadir formato JSON
+        estructura = formato.get("estructura", {})
+        if estructura:
+            prompt_partes.extend([
+                "FORMATO OBLIGATORIO DE RESPUESTA:",
+                "```json",
+                json.dumps(estructura, indent=2, ensure_ascii=False),
+                "```",
+                ""
+            ])
+        
+        # Añadir ejemplos
+        if ejemplos_texto:
+            prompt_partes.append("EJEMPLOS DE FORMATO ESPERADO CON EXTRACTOS TÉCNICOS ESPECÍFICOS:")
+            prompt_partes.extend(ejemplos_texto)
+            prompt_partes.append("")
+        
+        # Añadir requisito final
+        requisito_final = criticas.get("requisito_datos", "REQUISITO: Usar SIEMPRE datos específicos en los extractos.")
+        prompt_partes.append(requisito_final)
+        
+        return "\n".join(prompt_partes)
+        
+    except Exception as e:
+        logger.error(f"Error construyendo prompt desde YAML: {e}")
+        return construir_prompt_analisis_basico(texto_muestra, problemas_detectados)
+
+
+def construir_prompt_analisis_basico(texto_muestra: str, problemas_detectados: List[Dict]) -> str:
+    """
+    Prompt básico de fallback si falla la carga del YAML.
+    """
+    return f"""
+Actúa como un evaluador académico experto analizando un Trabajo Final de Máster (TFM).
+
+DOCUMENTO A ANALIZAR:
+{texto_muestra}
+
+PROBLEMAS DETECTADOS EN LA EVALUACIÓN:
+{json.dumps(problemas_detectados, indent=2, ensure_ascii=False)}
+
+Genera 3 preguntas críticas con extractos específicos del documento.
+"""
+
+
 def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> List[str]:
     """
     Utiliza OpenAI para analizar profundamente el documento y generar preguntas específicas
     con extractos textuales incluidos para evitar consultar páginas.
+    Usa plantillas YAML para máxima configurabilidad.
     """
+    # Cargar plantillas desde YAML
+    plantillas = cargar_plantillas_analisis_critico(logger)
+    
     # Preparar contexto de la evaluación para el análisis
     problemas_detectados = []
     for resultado in resultados:
@@ -703,58 +858,18 @@ def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], log
                 'evidencias': resultado.get('evidencias', [])
             })
     
-    # Tomar una muestra representativa del texto (máximo 10000 caracteres para incluir más contexto)
-    texto_muestra = extraer_muestra_representativa(texto_tfm, 10000)
+    # Obtener configuración de muestra de texto desde YAML
+    config_muestra = plantillas.get("muestra_texto", {})
+    max_chars = config_muestra.get("caracteres_maximos", 10000)
+    secciones_clave = config_muestra.get("secciones_clave", None)
     
-    prompt_analisis = f"""
-Actúa como un evaluador académico experto analizando un Trabajo Final de Máster (TFM).
-
-DOCUMENTO A ANALIZAR:
-{texto_muestra}
-
-PROBLEMAS DETECTADOS EN LA EVALUACIÓN:
-{json.dumps(problemas_detectados, indent=2, ensure_ascii=False)}
-
-INSTRUCCIONES CRÍTICAS:
-Analiza profundamente el documento y genera EXACTAMENTE 3 preguntas muy diferentes que:
-
-1. IDENTIFIQUEN INCONSISTENCIAS ESPECÍFICAS: Contradicciones entre metodología declarada vs aplicada, datos vs conclusiones, teoría vs práctica
-2. DETECTEN FALTA DE CLARIDAD: Conceptos mal definidos, argumentación confusa, conexiones lógicas débiles
-3. ENCUENTREN CRITERIOS INCORRECTOS: Metodologías inadecuadas, sesgos no controlados, limitaciones no reconocidas
-
-REQUISITOS ESENCIALES:
-- Cada pregunta DEBE incluir extractos textuales ESPECÍFICOS y TÉCNICOS del documento en cursiva (*texto exacto del documento*)
-- Los extractos deben contener DATOS CONCRETOS: números exactos, porcentajes, nombres técnicos, metodologías específicas
-- PRIORIZAR fragmentos con cifras, ratios, métricas, nombres propios, términos técnicos especializados
-- Los extractos deben ser EVIDENCIA DIRECTA del problema identificado, no descripciones generales
-- Incluir MÚLTIPLES extractos específicos por pregunta para crear contexto técnico completo
-- Mínimo 250 palabras por pregunta incluyendo múltiples extractos técnicos específicos
-
-FORMATO OBLIGATORIO DE RESPUESTA:
-```json
-{{
-  "preguntas": [
-    {{
-      "enfoque": "inconsistencia_metodologica|falta_claridad|criterio_incorrecto",
-      "pregunta": "La pregunta completa que INCLUYE extractos del documento en cursiva *así*...",
-      "extractos_utilizados": ["fragmento exacto 1", "fragmento exacto 2"],
-      "datos_especificos": ["dato1", "dato2", "dato3"],
-      "pagina_referencia": "XX"
-    }}
-  ]
-}}
-```
-
-EJEMPLOS DE FORMATO ESPERADO CON EXTRACTOS TÉCNICOS ESPECÍFICOS:
-
-EJEMPLO 1 (Datos numéricos específicos):
-"El modelo TO-BE muestra *incremento en la ineficiencia del tiempo de ciclo para el subproceso 'Diseño de instrumentos de evaluación y acreditación' (CTE desciende del 32.88% en AS-IS al 29.97% en TO-BE)*, mientras que todos los otros subprocesos mejoran. El documento también indica que *la implementación de LEAN redujo desperdicios en un 15% en promedio*, pero contradictoriamente afirma que *todos los rediseños TO-BE fueron uniformemente exitosos*. ¿Cómo se justifica esta inconsistencia específica donde un subproceso empeora 2.91 puntos porcentuales mientras se declara éxito universal?"
-
-EJEMPLO 2 (Términos técnicos específicos):
-"El análisis financiero presenta *ROI del 23.5% y VAN de €2.4M calculado con WACC del 8.2%*, pero posteriormente menciona que *el análisis de sensibilidad no fue aplicado debido a limitaciones de tiempo*. Dado que el documento afirma usar *metodología Monte Carlo para modelar incertidumbre*, ¿por qué estos cálculos críticos no incorporan variabilidad en las tasas de descuento, especialmente cuando el WACC del 8.2% no refleja el perfil de riesgo del proyecto según las limitaciones reconocidas?"
-
-REQUISITO: Usar SIEMPRE datos específicos (números exactos, nombres técnicos, metodologías concretas) en los extractos, NUNCA descripciones genéricas.
-"""
+    # Tomar una muestra representativa del texto
+    texto_muestra = extraer_muestra_representativa(texto_tfm, max_chars, secciones_clave)
+    
+    # Construir prompt usando plantillas YAML
+    prompt_analisis = construir_prompt_analisis_desde_yaml(
+        texto_muestra, problemas_detectados, plantillas, logger
+    )
     
     try:
         respuesta = obtener_respuesta_openai(prompt_analisis, logger)
@@ -764,15 +879,19 @@ REQUISITO: Usar SIEMPRE datos específicos (números exactos, nombres técnicos,
         return []
 
 
-def extraer_muestra_representativa(texto: str, max_chars: int) -> str:
+def extraer_muestra_representativa(texto: str, max_chars: int, config_secciones: List[str] = None) -> str:
     """
     Extrae una muestra representativa del documento priorizando secciones clave.
+    Usa configuración externa para determinar secciones prioritarias.
     """
-    # Secciones clave a priorizar
-    secciones_clave = [
-        "metodología", "método", "análisis", "resultados", "conclusiones", 
-        "limitaciones", "discusión", "marco teórico", "revisión", "literatura"
-    ]
+    # Secciones clave configurables
+    if config_secciones is None:
+        secciones_clave = [
+            "metodología", "método", "análisis", "resultados", "conclusiones", 
+            "limitaciones", "discusión", "marco teórico", "revisión", "literatura"
+        ]
+    else:
+        secciones_clave = config_secciones
     
     parrafos = texto.split('\n\n')
     parrafos_priorizados = []
@@ -791,9 +910,9 @@ def extraer_muestra_representativa(texto: str, max_chars: int) -> str:
     # Construir muestra representativa
     muestra = ""
     
-    # Añadir párrafos prioritarios primero
+    # Añadir párrafos prioritarios primero (70% del espacio)
     for parrafo in parrafos_priorizados:
-        if len(muestra) + len(parrafo) < max_chars * 0.7:  # 70% para contenido prioritario
+        if len(muestra) + len(parrafo) < max_chars * 0.7:
             muestra += parrafo + "\n\n"
     
     # Añadir párrafos normales hasta completar
