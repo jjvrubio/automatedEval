@@ -659,8 +659,9 @@ def generar_preguntas_dinamicas(resultados: List[Dict[str, Any]], plantillas: Di
     num_preguntas = config.get("numero_preguntas", 3)
     
     if not texto_tfm or len(texto_tfm.strip()) < 100:
-        logger.warning("Texto del TFM insuficiente para análisis crítico profundo")
-        return generar_preguntas_respaldo(resultados, num_preguntas)
+        logger.error("❌ ERROR: Texto del TFM insuficiente para generar preguntas con extractos integrados")
+        logger.error("   📋 Solución: Verificar que el documento TFM se ha extraído correctamente")
+        return []
     
     logger.info("Iniciando análisis crítico profundo del documento")
     
@@ -680,8 +681,10 @@ def generar_preguntas_dinamicas(resultados: List[Dict[str, Any]], plantillas: Di
         return preguntas_finales[:num_preguntas]
         
     except Exception as e:
-        logger.error(f"Error en análisis crítico: {e}")
-        return generar_preguntas_respaldo(resultados, num_preguntas)
+        logger.error(f"❌ ERROR CRÍTICO: Fallo en análisis de preguntas con extractos integrados: {e}")
+        logger.error("   🔧 Posibles causas: Problema de conexión OpenAI, límite de tokens, o formato de documento")
+        logger.error("   📋 Solución: Verificar API key, conexión a internet, y formato del documento TFM")
+        return []
 
 
 def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> List[str]:
@@ -1065,55 +1068,68 @@ def buscar_extracto_en_documento(texto: str, palabras_clave: List[str], max_char
     return "los indicadores técnicos específicos del análisis requieren mayor justificación metodológica"
 
 
-def generar_preguntas_respaldo(resultados: List[Dict], num_preguntas: int) -> List[str]:
+def cargar_configuracion_extraccion(logger: logging.Logger) -> Dict[str, Any]:
     """
-    Sistema de respaldo cuando falla el análisis profundo.
+    Carga la configuración de extracción de datos desde archivo YAML.
     """
-    preguntas_respaldo = [
-        "El trabajo presenta metodología declarada que no se alinea completamente con la implementación práctica observada. ¿Cómo se justifica esta desconexión metodológica y qué implicaciones tiene para la validez de los resultados obtenidos?",
-        
-        "Los resultados se presentan sin análisis suficiente de factores confusores o variables intervinientes que podrían explicar los hallazgos. ¿Por qué no se controlan estas variables y cómo afecta esta omisión a la robustez de las conclusiones?",
-        
-        "Las conclusiones del estudio exceden el alcance de los datos presentados y la metodología aplicada. ¿Qué fundamenta estas generalizaciones y por qué no se reconocen explícitamente las limitaciones del diseño utilizado?"
-    ]
+    config_path = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/configuracion_extraccion_datos.yaml"
     
-    return preguntas_respaldo[:num_preguntas]
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = yaml.safe_load(f)
+        logger.info(f"Configuración de extracción cargada desde: {config_path}")
+        return config
+    except FileNotFoundError:
+        logger.error(f"No se encontró archivo de configuración: {config_path}")
+        logger.info("Usando configuración por defecto reducida")
+        return {
+            "estructura_datos": {
+                "numericos": ["numeros_y_porcentajes", "valores_financieros"],
+                "metodologicos": ["metodologias_mencionadas"],
+                "academicos": ["conceptos_teoricos", "fuentes_citadas"],
+                "organizacionales": ["empresas_organizaciones"],
+                "problemas": ["indicadores_problemas"]
+            },
+            "metodologias": {"estrategicas": ["SWOT", "PORTER"], "financieras": ["ROI", "VAN"]},
+            "patrones_regex": {"numeros_porcentajes": r'\d+(?:\.\d+)?%'},
+            "limites": {"empresas_max": 3}
+        }
+    except Exception as e:
+        logger.error(f"Error cargando configuración: {e}")
+        return {}
+
+
+def inicializar_estructura_datos(config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Inicializa la estructura de datos basada en la configuración YAML.
+    """
+    datos = {}
+    estructura = config.get("estructura_datos", {})
+    
+    # Inicializar todas las categorías de datos
+    for categoria, campos in estructura.items():
+        for campo in campos:
+            datos[campo] = []
+    
+    return datos
+
 
 def extraer_datos_especificos_tfm(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> Dict[str, Any]:
     """
     Extrae datos específicos, números, percentajes, nombres de metodologías,
     y evidencias concretas del texto del TFM para contextualizar preguntas.
+    Usa configuración YAML externa para máxima flexibilidad.
     """
     import re
     
-    datos = {
-        "numeros_y_porcentajes": [],
-        "metodologias_mencionadas": [],
-        "nombres_herramientas": [],
-        "empresas_organizaciones": [],
-        "indicadores_problemas": [],
-        "frases_contradictorias": [],
-        "datos_temporales": [],
-        "valores_financieros": [],
-        "conceptos_teoricos": [],
-        "variables_estudiadas": [],
-        "hipotesis_planteadas": [],
-        "resultados_cuantitativos": [],
-        "fuentes_citadas": [],
-        "limitaciones_reconocidas": [],
-        "conclusiones_clave": [],
-        "recomendaciones": [],
-        "sectores_industrias": [],
-        "terminos_tecnicos": [],
-        "escalas_medicion": [],
-        # NUEVOS CAMPOS FINANCIEROS ESPECÍFICOS
-        "ratios_financieros": [],
-        "indicadores_financieros": [],
-        "metricas_rendimiento": [],
-        "analisis_financiero_tipo": [],
-        "proyecciones_financieras": [],
-        "criterios_inversion": []
-    }
+    # Cargar configuración desde YAML
+    config = cargar_configuracion_extraccion(logger)
+    if not config:
+        logger.error("No se pudo cargar configuración - abortando extracción")
+        return {}
+    
+    # Inicializar estructura de datos
+    datos = inicializar_estructura_datos(config)
     
     if not texto_tfm:
         if logger:

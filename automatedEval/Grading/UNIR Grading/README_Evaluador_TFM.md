@@ -30,7 +30,7 @@ El **Evaluador TFM Integrado Ultraestricto** es un sistema avanzado de evaluaci�
 - **🔄 Detección automática de formato de rúbrica** (MUDPE vs MUGPTD)
 - **📊 Extracción inteligente de niveles reales** del contenido de la rúbrica
 - **🎯 Prompt optimizado** para evaluaciones más precisas
-- **🧹 Sistema depurado** sin funciones duplicadas
+- **🧹 Sistema depurado** sin funciones duplicadas o de respaldo
 - **⚡ Generación mejorada de archivos MD/JSON**
 - **🔍 Validación robusta** de niveles según formato detectado
 
@@ -457,6 +457,7 @@ Los logs se guardan en `evaluador_tfm_integrado.log` en la carpeta del TFM para 
 - 🔧 **Función buscar_extracto_en_documento()** con 3 niveles de prioridad
 - 📋 **Formato profesional** con extractos marcados en cursiva (*texto*)
 - ✅ **Validación completa** con ejemplos reales (CTE, ROI, participantes)
+- 🗑️ **Eliminación de funciones de respaldo** (sistema fail-fast con mensajes claros)
 
 ### v3.0 (Octubre 2025) - Sistema Adaptativo Universal
 

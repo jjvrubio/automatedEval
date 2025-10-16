@@ -1,0 +1,309 @@
+# Configuración para Extracción de Datos Específicos del TFM
+# ================================================================
+# Este archivo define todos los patrones, metodologías y estructura de datos
+# para la extracción inteligente de información específica de documentos TFM
+
+# Estructura de datos a extraer
+estructura_datos:
+  # Datos numéricos y cuantitativos
+  numericos:
+    - "numeros_y_porcentajes"
+    - "valores_financieros"
+    - "ratios_financieros"
+    - "indicadores_financieros"
+    - "metricas_rendimiento"
+    - "resultados_cuantitativos"
+    - "datos_temporales"
+    - "proyecciones_financieras"
+    - "criterios_inversion"
+  
+  # Metodologías y herramientas
+  metodologicos:
+    - "metodologias_mencionadas"
+    - "nombres_herramientas"
+    - "analisis_financiero_tipo"
+    - "escalas_medicion"
+  
+  # Conceptos académicos
+  academicos:
+    - "conceptos_teoricos"
+    - "variables_estudiadas"
+    - "hipotesis_planteadas"
+    - "fuentes_citadas"
+    - "limitaciones_reconocidas"
+    - "conclusiones_clave"
+    - "recomendaciones"
+  
+  # Contexto organizacional
+  organizacionales:
+    - "empresas_organizaciones"
+    - "sectores_industrias"
+    - "terminos_tecnicos"
+  
+  # Indicadores de problemas
+  problemas:
+    - "indicadores_problemas"
+    - "frases_contradictorias"
+
+# Patrones de expresiones regulares
+patrones_regex:
+  # Números y porcentajes
+  numeros_porcentajes: '\d+(?:\.\d+)?%'
+  valores_financieros: '[€$£¥S/]\s*\d+(?:,\d{3})*(?:\.\d+)?'
+  resultados_cuantitativos: '\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras|respuestas)'
+  datos_temporales: '\b(?:20\d{2}|2\d{3})\b'
+  
+  # Ratios financieros
+  ratios_financieros: '(?:ratio|índice|coeficiente)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?)'
+  metricas_rendimiento: '(?:margen|rentabilidad|rendimiento)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?%?)'
+  proyecciones_financieras: '(?:proyección|previsión|estimación)\s+(?:a\s+)?(\d+\s*años?)'
+  
+  # Herramientas y frameworks
+  herramientas: '\b(?:matriz|análisis|modelo|framework|diagrama)\s+([A-Z][A-Za-z\s]+?)(?:\s|\.|\,)'
+  empresas: '\b[A-Z][A-Z\s&]{2,15}\b'
+  
+  # Conceptos teóricos
+  teorias: 'teoría\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+  modelos: 'modelo\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+  enfoques: 'enfoque\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+  paradigmas: 'paradigma\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+  
+  # Variables de investigación
+  variables_dependientes: 'variable\s+(?:dependiente|independiente|moderadora):\s*([^.]{3,60})'
+  hipotesis: 'hipótesis\s*(?:\d+)?:\s*([^.]{10,100})'
+  escalas: 'escala\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,20})(?:\s|\.|\,)'
+  
+  # Sectores y dominios
+  sectores: '(?:sector|industria|área|campo|ámbito|dominio)\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+  
+  # Fuentes y referencias
+  fuentes_citadas: '\(([A-Za-záéíóúñü\s&,]{3,30}),?\s*(\d{4})\)'
+  
+  # Limitaciones y problemas
+  limitaciones: 'limitaci[oó]n[^.]{5,80}\.'
+  no_pudo: 'no se (?:pudo|puede|considera)[^.]{5,60}\.'
+  ausencias: '(?:falta|ausencia) de[^.]{5,60}\.'
+  
+  # Conclusiones
+  conclusiones: '(?:se concluye|en conclusión|finalmente)[^.]{10,80}\.'
+  recomendaciones: '(?:se recomienda|recomendación)[^.]{10,80}\.'
+  
+  # Frases problemáticas
+  frases_contradictorias: '[^.]*(?:sin embargo|pero|no obstante|contradice|inconsistente|falta|ausencia)[^.]*\.'
+  
+  # Términos técnicos
+  camel_case: '\b[A-Z][a-z]+(?:[A-Z][a-z]+)+\b'
+  siglas: '\b[A-Z]{2,6}\b'
+
+# Indicadores financieros específicos con patrones
+indicadores_financieros:
+  ROI: 'ROI[:=]\s*(\d+(?:\.\d+)?%?)'
+  VAN: 'VAN[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)'
+  NPV: 'NPV[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)'
+  TIR: 'TIR[:=]\s*(\d+(?:\.\d+)?%)'
+  IRR: 'IRR[:=]\s*(\d+(?:\.\d+)?%)'
+  WACC: 'WACC[:=]\s*(\d+(?:\.\d+)?%)'
+  EVA: 'EVA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)'
+  EBITDA: 'EBITDA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)'
+  PAYBACK: 'payback[:=]\s*(\d+(?:\.\d+)?)\s*(?:años?|meses?)'
+  PUNTO_EQUILIBRIO: 'punto de equilibrio[:=]\s*(\d+(?:,\d{3})*)'
+  BREAK_EVEN: 'break\s*even[:=]\s*(\d+(?:,\d{3})*)'
+
+# Criterios de inversión
+criterios_inversion:
+  - 'criterio de (?:aceptación|rechazo):\s*([^.]{10,60})'
+  - 'umbral mínimo:\s*(\d+(?:\.\d+)?%?)'
+  - 'tasa de descuento:\s*(\d+(?:\.\d+)?%)'
+  - 'costo de capital:\s*(\d+(?:\.\d+)?%)'
+  - 'beta:\s*(\d+(?:\.\d+)?)'
+  - 'prima de riesgo:\s*(\d+(?:\.\d+)?%)'
+
+# Metodologías por dominio
+metodologias:
+  estrategicas:
+    - "PESTEL"
+    - "PORTER"
+    - "DAFO"
+    - "SWOT"
+    - "VRIO"
+    - "CANVAS"
+    - "BALANCED SCORECARD"
+    - "MEFE"
+    - "MEFI"
+    - "MATRIZ BCG"
+    - "CINCO FUERZAS"
+    - "CADENA DE VALOR"
+    - "CORE COMPETENCE"
+    - "BENCHMARKING"
+    - "ANALISIS DE COMPETIDORES"
+  
+  financieras:
+    - "ROI"
+    - "VAN"
+    - "NPV"
+    - "TIR"
+    - "IRR"
+    - "PAYBACK"
+    - "EVA"
+    - "EBITDA"
+    - "WACC"
+    - "RATIO DE LIQUIDEZ"
+    - "RATIO DE SOLVENCIA"
+    - "RATIO DE RENTABILIDAD"
+    - "ANALISIS VERTICAL"
+    - "ANALISIS HORIZONTAL"
+    - "DUPONT"
+    - "Z-SCORE"
+    - "CAPM"
+    - "BETA"
+    - "COEFICIENTE DE VARIACION"
+    - "ANALISIS DE SENSIBILIDAD"
+    - "MONTE CARLO"
+    - "ARBOL DE DECISION"
+    - "VALOR PRESENTE NETO"
+    - "TASA INTERNA"
+    - "FLUJO DE CAJA"
+    - "CASH FLOW"
+    - "PUNTO DE EQUILIBRIO"
+    - "BREAK EVEN"
+    - "ANALISIS COSTO-BENEFICIO"
+    - "ABC COSTING"
+    - "MARGEN CONTRIBUCION"
+  
+  operacionales:
+    - "LEAN"
+    - "SIX SIGMA"
+    - "SCRUM"
+    - "KANBAN"
+    - "ISHIKAWA"
+    - "KAIZEN"
+    - "JUST IN TIME"
+    - "TOC"
+    - "TEORIA DE RESTRICCIONES"
+    - "ANALISIS DE PARETO"
+    - "FMEA"
+    - "CAUSA RAIZ"
+    - "5 PORQUES"
+    - "MAPEO DE PROCESOS"
+  
+  investigacion_cientifica:
+    - "ENCUESTA"
+    - "ENTREVISTA"
+    - "OBSERVACIÓN"
+    - "FOCUS GROUP"
+    - "DELPHI"
+    - "ANÁLISIS FACTORIAL"
+    - "REGRESIÓN"
+    - "CORRELACIÓN"
+    - "CHI-CUADRADO"
+    - "ANOVA"
+    - "CRONBACH"
+    - "KAISER"
+    - "BARTLETT"
+    - "LIKERT"
+    - "SPSS"
+    - "R STUDIO"
+    - "ANALISIS MULTIVARIANTE"
+    - "REGRESION LOGISTICA"
+    - "CLUSTER ANALYSIS"
+  
+  tecnologicas:
+    - "MACHINE LEARNING"
+    - "BIG DATA"
+    - "BLOCKCHAIN"
+    - "IOT"
+    - "INTELIGENCIA ARTIFICIAL"
+    - "CRM"
+    - "ERP"
+    - "API"
+    - "UX"
+    - "UI"
+    - "DEVOPS"
+    - "CLOUD COMPUTING"
+    - "BUSINESS INTELLIGENCE"
+    - "DATA MINING"
+    - "ANALYTICS"
+    - "DASHBOARD"
+  
+  educativas:
+    - "CONSTRUCTIVISMO"
+    - "CONDUCTISMO"
+    - "COGNITIVISMO"
+    - "BLOOM"
+    - "KIRKPATRICK"
+    - "ADDIE"
+    - "MOODLE"
+    - "LMS"
+    - "E-LEARNING"
+    - "FLIPPED CLASSROOM"
+  
+  salud:
+    - "ENSAYO CONTROLADO"
+    - "PLACEBO"
+    - "DOBLE CIEGO"
+    - "META-ANÁLISIS"
+    - "REVISIÓN SISTEMÁTICA"
+  
+  marketing:
+    - "SEM"
+    - "SEO"
+    - "SOCIAL MEDIA"
+    - "INBOUND"
+    - "FUNNEL"
+    - "KPI"
+    - "CTR"
+    - "CAC"
+    - "LTV"
+  
+  psicologia_sociologia:
+    - "GROUNDED THEORY"
+    - "FENOMENOLOGÍA"
+    - "ETNOGRAFÍA"
+    - "ANÁLISIS DE CONTENIDO"
+
+# Tipos de análisis financiero
+tipos_analisis_financiero:
+  - "análisis vertical"
+  - "análisis horizontal"
+  - "análisis dupont"
+  - "análisis de ratios"
+  - "análisis de sensibilidad"
+  - "análisis de escenarios"
+  - "simulación monte carlo"
+  - "análisis costo-beneficio"
+  - "flujo de caja descontado"
+  - "análisis de riesgo"
+
+# Palabras a excluir en búsquedas de empresas
+palabras_excluir_empresas:
+  - "EL"
+  - "LA"
+  - "DE"
+  - "CON"
+  - "POR"
+  - "PARA"
+  - "QUE"
+  - "DEL"
+  - "LOS"
+  - "LAS"
+  - "UN"
+  - "UNA"
+
+# Límites de extracción
+limites:
+  herramientas_max: 5
+  empresas_max: 5
+  fuentes_citadas_max: 8
+  limitaciones_max: 2
+  conclusiones_max: 3
+  recomendaciones_max: 3
+  sectores_max: 5
+  terminos_tecnicos_max: 10
+  frases_contradictorias_max: 3
+  proyecciones_max: 3
+  criterios_inversion_max: 2
+
+# Configuración de logging
+logging:
+  mostrar_estadisticas: true
+  nivel_detalle: "INFO"  # DEBUG, INFO, WARNING, ERROR
