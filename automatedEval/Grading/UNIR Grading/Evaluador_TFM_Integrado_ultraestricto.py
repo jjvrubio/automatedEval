@@ -844,8 +844,21 @@ def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], log
     con extractos textuales incluidos para evitar consultar páginas.
     Usa plantillas YAML para máxima configurabilidad.
     """
+    logger.info("🔍 INICIANDO ANÁLISIS PROFUNDO - Generación de preguntas específicas")
+    
     # Cargar plantillas desde YAML
     plantillas = cargar_plantillas_analisis_critico(logger)
+    
+    # DEBUGGING: Verificar contenido del texto
+    logger.info(f"📄 Texto del TFM: {len(texto_tfm)} caracteres totales")
+    if len(texto_tfm) < 1000:
+        logger.warning(f"⚠️ TEXTO SOSPECHOSAMENTE CORTO: {len(texto_tfm)} caracteres")
+        logger.warning(f"   📋 Primeros 200 caracteres: {texto_tfm[:200]}")
+    
+    # Generar huella única del documento para evitar duplicados
+    import hashlib
+    documento_hash = hashlib.md5(texto_tfm.encode('utf-8')).hexdigest()[:12]
+    logger.info(f"🔑 Hash del documento: {documento_hash}")
     
     # Preparar contexto de la evaluación para el análisis
     problemas_detectados = []
@@ -858,6 +871,8 @@ def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], log
                 'evidencias': resultado.get('evidencias', [])
             })
     
+    logger.info(f"🚨 Problemas detectados en evaluación: {len(problemas_detectados)}")
+    
     # Obtener configuración de muestra de texto desde YAML
     config_muestra = plantillas.get("muestra_texto", {})
     max_chars = config_muestra.get("caracteres_maximos", 10000)
@@ -866,16 +881,68 @@ def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], log
     # Tomar una muestra representativa del texto
     texto_muestra = extraer_muestra_representativa(texto_tfm, max_chars, secciones_clave)
     
+    # DEBUGGING: Verificar muestra extraída
+    logger.info(f"📝 Muestra extraída: {len(texto_muestra)} caracteres")
+    if len(texto_muestra) < 500:
+        logger.warning(f"⚠️ MUESTRA SOSPECHOSAMENTE CORTA: {len(texto_muestra)} caracteres")
+        logger.warning(f"   📋 Muestra completa: {texto_muestra}")
+    
     # Construir prompt usando plantillas YAML
     prompt_analisis = construir_prompt_analisis_desde_yaml(
         texto_muestra, problemas_detectados, plantillas, logger
     )
     
+    # DEBUGGING: Verificar prompt construido
+    logger.info(f"🎯 Prompt construido: {len(prompt_analisis)} caracteres")
+    
+    # Añadir información única del documento al prompt para forzar especificidad
+    prompt_con_unicidad = f"""
+IDENTIFICADOR ÚNICO DEL DOCUMENTO: {documento_hash}
+ATENCIÓN: Este análisis es para un documento específico único. 
+Las preguntas DEBEN contener extractos LITERALES y ÚNICOS de este documento específico.
+NO utilices ejemplos genéricos o plantillas predefinidas.
+
+{prompt_analisis}
+
+RECORDATORIO CRÍTICO: 
+- Utiliza SOLO extractos del documento proporcionado
+- Incluye datos numéricos ESPECÍFICOS del texto
+- Menciona nombres, metodologías y términos ÚNICOS del documento
+- NO generes preguntas genéricas aplicables a cualquier TFM
+"""
+    
     try:
-        respuesta = obtener_respuesta_openai(prompt_analisis, logger)
-        return procesar_respuesta_analisis(respuesta, logger)
+        logger.info("🤖 Enviando prompt a OpenAI...")
+        respuesta = obtener_respuesta_openai(prompt_con_unicidad, logger)
+        
+        # DEBUGGING: Verificar respuesta
+        logger.info(f"📨 Respuesta de OpenAI: {len(respuesta)} caracteres")
+        logger.info(f"   📋 Primeros 200 caracteres: {respuesta[:200]}")
+        
+        # Procesar respuesta y verificar especificidad
+        preguntas = procesar_respuesta_analisis(respuesta, logger)
+        
+        # VERIFICACIÓN DE ESPECIFICIDAD
+        for i, pregunta in enumerate(preguntas, 1):
+            # Verificar que contenga extractos específicos (marcados con *)
+            extractos_count = pregunta.count('*')
+            if extractos_count < 4:  # Al menos 2 extractos (4 asteriscos)
+                logger.warning(f"⚠️ Pregunta {i} tiene pocos extractos específicos ({extractos_count//2})")
+            
+            # Verificar que contenga números
+            import re
+            numeros_en_pregunta = re.findall(r'\d+(?:\.\d+)?%?', pregunta)
+            if len(numeros_en_pregunta) < 1:
+                logger.warning(f"⚠️ Pregunta {i} no contiene datos numéricos específicos")
+            else:
+                logger.info(f"✅ Pregunta {i} contiene {len(numeros_en_pregunta)} datos numéricos")
+        
+        logger.info(f"🎉 Análisis profundo completado: {len(preguntas)} preguntas generadas")
+        return preguntas
+        
     except Exception as e:
-        logger.error(f"Error en análisis OpenAI: {e}")
+        logger.error(f"❌ Error en análisis OpenAI: {e}")
+        logger.error(f"   🔧 Esto podría indicar problema con API, texto insuficiente, o límites")
         return []
 
 
@@ -1013,38 +1080,98 @@ def extraer_preguntas_texto_plano(respuesta: str, logger: logging.Logger) -> Lis
 def analizar_inconsistencias_locales(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> List[str]:
     """
     Análisis local de inconsistencias cuando OpenAI no está disponible.
+    GENERA PREGUNTAS ESPECÍFICAS DEL DOCUMENTO, NO GENÉRICAS.
     """
+    logger.info("🔧 INICIANDO ANÁLISIS LOCAL - Fallback sin OpenAI")
+    
     preguntas_locales = []
     
-    # Buscar inconsistencias numéricas con contexto
+    # Generar huella única del documento para debugging
+    import hashlib
+    documento_hash = hashlib.md5(texto_tfm.encode('utf-8')).hexdigest()[:12]
+    logger.info(f"🔑 Hash del documento (análisis local): {documento_hash}")
+    
+    # Buscar inconsistencias numéricas con contexto ESPECÍFICO
     import re
     numeros = re.findall(r'\d+(?:\.\d+)?%?', texto_tfm)
     metodologias = re.findall(r'(metodología|método|análisis|enfoque)\s+\w+', texto_tfm.lower())
     
-    # Extraer fragmentos con números para incluir contexto
+    logger.info(f"📊 Datos extraídos: {len(numeros)} números, {len(metodologias)} metodologías")
+    
+    # Extraer fragmentos con números para incluir contexto REAL del documento
     fragmentos_numericos = extraer_fragmentos_con_numeros(texto_tfm, numeros[:3])
     
     if len(numeros) >= 3 and fragmentos_numericos:
-        extracto_principal = fragmentos_numericos[0] if fragmentos_numericos else f"valores {numeros[0]}, {numeros[1]}, {numeros[2]}"
-        pregunta_numerica = f"""El documento presenta *{extracto_principal}*, sin embargo, no se proporciona análisis de coherencia interna entre estas cifras ni validación cruzada de los cálculos. Considerando que la validez de los resultados cuantitativos depende de la consistencia metodológica en su obtención, ¿cómo se garantiza que estos valores fueron calculados bajo los mismos supuestos y criterios, y por qué no se incluye análisis de sensibilidad que evalúe el impacto de variaciones en los parámetros clave sobre la robustez de las conclusiones?"""
+        # USAR FRAGMENTO REAL DEL DOCUMENTO, NO TEXTO GENÉRICO
+        extracto_principal = fragmentos_numericos[0] if fragmentos_numericos else f"valores numéricos encontrados: {', '.join(numeros[:3])}"
+        
+        # Buscar contexto específico adicional
+        contexto_numerico = buscar_contexto_especifico_numeros(texto_tfm, numeros[:3])
+        
+        pregunta_numerica = f"""El documento presenta *{extracto_principal}*, {contexto_numerico}, sin embargo, no se proporciona análisis de coherencia interna entre estas cifras ni validación cruzada de los cálculos. Considerando que la validez de los resultados cuantitativos depende de la consistencia metodológica en su obtención, ¿cómo se garantiza que estos valores fueron calculados bajo los mismos supuestos y criterios, y por qué no se incluye análisis de sensibilidad que evalúe el impacto de variaciones en los parámetros clave sobre la robustez de las conclusiones?"""
+        
         preguntas_locales.append(pregunta_numerica)
+        logger.info(f"✅ Pregunta numérica generada con extracto: {extracto_principal[:50]}...")
+    else:
+        logger.warning(f"⚠️ Insuficientes datos numéricos para pregunta específica")
     
-    # Extraer fragmentos con metodologías
+    # Extraer fragmentos con metodologías REALES del documento
     fragmentos_metodologicos = extraer_fragmentos_con_metodologias(texto_tfm, metodologias[:2])
     
     if len(metodologias) >= 2 and fragmentos_metodologicos:
-        extracto_metodologico = fragmentos_metodologicos[0] if fragmentos_metodologicos else f"enfoques {metodologias[0]} y {metodologias[1]}"
+        # USAR FRAGMENTO REAL DEL DOCUMENTO
+        extracto_metodologico = fragmentos_metodologicos[0] if fragmentos_metodologicos else f"enfoques metodológicos: {metodologias[0]} y {metodologias[1]}"
+        
         pregunta_metodologica = f"""La investigación indica *{extracto_metodologico}*, pero no se explicita la justificación epistemológica para esta combinación ni se analizan las implicaciones de la triangulación metodológica. Dado que la coherencia paradigmática es fundamental en investigación rigurosa, ¿cómo se resuelven las posibles tensiones ontológicas entre estos enfoques, y qué criterios específicos se utilizaron para determinar su compatibilidad y complementariedad en el contexto particular del estudio?"""
+        
         preguntas_locales.append(pregunta_metodologica)
+        logger.info(f"✅ Pregunta metodológica generada con extracto: {extracto_metodologico[:50]}...")
+    else:
+        logger.warning(f"⚠️ Insuficientes datos metodológicos para pregunta específica")
     
-    # Buscar fragmentos sobre limitaciones o conclusiones categóricas
+    # Buscar fragmentos sobre limitaciones o conclusiones categóricas REALES
     fragmento_limitaciones = extraer_fragmento_conclusiones_categoricas(texto_tfm)
     
-    pregunta_limitaciones = f"""El trabajo concluye que *{fragmento_limitaciones}*, presentando afirmaciones categóricas sin reconocimiento explícito de limitaciones metodológicas o contextuales que podrían afectar la generalización de los hallazgos. Considerando que la transparencia sobre las limitaciones es un requisito de rigor académico, ¿por qué no se discuten los posibles sesgos de confirmación, restricciones muestrales o limitaciones temporales que podrían influir en la validez externa de las conclusiones, y cómo afecta esta omisión a la credibilidad y transferibilidad científica del trabajo?"""
-    preguntas_locales.append(pregunta_limitaciones)
+    # Verificar que no sea el fallback genérico
+    if fragmento_limitaciones != "los hallazgos confirman la hipótesis de manera concluyente":
+        pregunta_limitaciones = f"""El trabajo concluye que *{fragmento_limitaciones}*, presentando afirmaciones categóricas sin reconocimiento explícito de limitaciones metodológicas o contextuales que podrían afectar la generalización de los hallazgos. Considerando que la transparencia sobre las limitaciones es un requisito de rigor académico, ¿por qué no se discuten los posibles sesgos de confirmación, restricciones muestrales o limitaciones temporales que podrían influir en la validez externa de las conclusiones, y cómo afecta esta omisión a la credibilidad y transferibilidad científica del trabajo?"""
+        
+        preguntas_locales.append(pregunta_limitaciones)
+        logger.info(f"✅ Pregunta de limitaciones generada con extracto: {fragmento_limitaciones[:50]}...")
+    else:
+        logger.warning(f"⚠️ Solo se encontró fragmento genérico de conclusiones")
+        
+        # GENERAR PREGUNTA BASADA EN CONTENIDO REAL ENCONTRADO
+        frases_reales = re.findall(r'[^.]*(?:conclu|result|eviden|demostr)[^.]*\.', texto_tfm, re.IGNORECASE)
+        if frases_reales:
+            frase_real = frases_reales[0][:150] + "..." if len(frases_reales[0]) > 150 else frases_reales[0]
+            pregunta_real = f"""El documento afirma que *{frase_real}*, sin embargo, esta conclusión no está respaldada por un análisis exhaustivo de las limitaciones metodológicas que podrían afectar su validez. ¿Cómo se puede evaluar la robustez de esta conclusión sin un reconocimiento explícito de las posibles fuentes de sesgo y limitaciones del estudio?"""
+            preguntas_locales.append(pregunta_real)
+            logger.info(f"✅ Pregunta con contenido real generada: {frase_real[:30]}...")
     
-    logger.info(f"Generadas {len(preguntas_locales)} preguntas locales con extractos integrados")
+    logger.info(f"🎉 Análisis local completado: {len(preguntas_locales)} preguntas generadas con extractos específicos")
     return preguntas_locales
+
+
+def buscar_contexto_especifico_numeros(texto: str, numeros: List[str]) -> str:
+    """
+    Busca contexto específico adicional alrededor de los números encontrados.
+    """
+    import re
+    contextos = []
+    
+    for numero in numeros[:2]:  # Solo los primeros 2
+        patron = rf'.{{20,100}}{re.escape(numero)}.{{20,100}}'
+        matches = re.findall(patron, texto, re.IGNORECASE)
+        if matches:
+            contexto = matches[0].strip()
+            if len(contexto) > 30:
+                contextos.append(contexto[:80] + "..." if len(contexto) > 80 else contexto)
+    
+    if contextos:
+        return f"específicamente en el contexto: *{contextos[0]}*"
+    else:
+        return "en múltiples secciones del documento"
 
 
 def extraer_fragmentos_con_numeros(texto: str, numeros: List[str]) -> List[str]:
@@ -2239,6 +2366,166 @@ def main() -> int:
     exportar_resultados(resultados, carpeta_salida, problemas_contenido, logger, texto_tfm)
     logger.info("✅ Evaluación finalizada correctamente.")
     return 0
+
+
+def extraer_fragmentos_con_numeros(texto: str, numeros: List[str]) -> List[str]:
+    """
+    Extrae fragmentos del texto que contengan números específicos con contexto REAL.
+    """
+    import re
+    fragmentos = []
+    
+    for numero in numeros[:3]:  # Solo los primeros 3
+        # Patrón más amplio que busca el número con contexto alrededor
+        patron = rf'[^.]*{re.escape(numero)}[^.]*\.'
+        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
+        
+        for match in matches:
+            # Limpiar el fragmento y quitar saltos de línea
+            fragmento = re.sub(r'\s+', ' ', match.strip())
+            
+            # Solo usar fragmentos que tengan suficiente contexto específico
+            if len(fragmento) > 30 and numero in fragmento:
+                # Verificar que no sea solo el número sin contexto
+                palabras_contexto = len([p for p in fragmento.split() if p != numero and len(p) > 2])
+                if palabras_contexto >= 5:  # Al menos 5 palabras de contexto
+                    if len(fragmento) > 150:
+                        fragmento = fragmento[:150] + "..."
+                    fragmentos.append(fragmento)
+                    break  # Solo un fragmento por número
+    
+    return fragmentos
+
+
+def extraer_fragmentos_con_metodologias(texto: str, metodologias: List[str]) -> List[str]:
+    """
+    Extrae fragmentos del texto que contengan metodologías específicas con contexto REAL.
+    """
+    import re
+    fragmentos = []
+    
+    for metodologia in metodologias[:2]:  # Solo las primeras 2
+        # Buscar oraciones completas que contengan la metodología
+        metodo_palabra = metodologia[0] if isinstance(metodologia, tuple) else metodologia
+        patron = rf'[^.]*{re.escape(metodo_palabra)}[^.]*\.'
+        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
+        
+        for match in matches:
+            # Limpiar el fragmento
+            fragmento = re.sub(r'\s+', ' ', match.strip())
+            
+            # Solo usar fragmentos con suficiente contexto específico
+            if len(fragmento) > 40 and metodo_palabra.lower() in fragmento.lower():
+                palabras_contexto = len([p for p in fragmento.split() if len(p) > 3])
+                if palabras_contexto >= 6:  # Al menos 6 palabras significativas
+                    if len(fragmento) > 150:
+                        fragmento = fragmento[:150] + "..."
+                    fragmentos.append(fragmento)
+                    break  # Solo un fragmento por metodología
+    
+    return fragmentos
+
+
+def extraer_fragmento_conclusiones_categoricas(texto: str) -> str:
+    """
+    Extrae un fragmento ESPECÍFICO del texto que contenga conclusiones categóricas REALES.
+    """
+    import re
+    
+    # Patrones más específicos para buscar conclusiones categóricas REALES
+    patrones_especificos = [
+        r'[Ll]os resultados [^.]{30,150}\.',
+        r'[Ss]e demuestra que [^.]{30,150}\.',
+        r'[Ss]e concluye que [^.]{30,150}\.',
+        r'[Ll]os hallazgos [^.]{30,150}\.',
+        r'[Ll]a investigación muestra [^.]{30,150}\.',
+        r'[Ss]e confirma que [^.]{30,150}\.',
+        r'[Qq]ueda evidenciado [^.]{30,150}\.',
+        r'[Ss]e establece que [^.]{30,150}\.',
+        r'[Ee]l análisis revela [^.]{30,150}\.',
+        r'[Ss]e observa que [^.]{30,150}\.'
+    ]
+    
+    for patron in patrones_especificos:
+        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
+        if matches:
+            for match in matches:
+                fragmento = re.sub(r'\s+', ' ', match.strip())
+                # Verificar que tenga contenido específico, no genérico
+                palabras_significativas = len([p for p in fragmento.split() if len(p) > 4])
+                if palabras_significativas >= 8:  # Al menos 8 palabras significativas
+                    return fragmento[:150] + "..." if len(fragmento) > 150 else fragmento
+    
+    # Buscar cualquier oración que contenga términos de resultados con más contexto
+    patrones_flexibles = [
+        r'[^.]*(?:confirm|establec|demuestr|evidenci|valid)[^.]{20,100}\.',
+        r'[^.]*(?:resulta|hallazg|conclus|encuentr)[^.]{20,100}\.',
+        r'[^.]*(?:indica|sugier|señal|revel)[^.]{20,100}\.'
+    ]
+    
+    for patron in patrones_flexibles:
+        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
+        if matches:
+            for match in matches:
+                fragmento = re.sub(r'\s+', ' ', match.strip())
+                if len(fragmento) > 50:
+                    palabras_significativas = len([p for p in fragmento.split() if len(p) > 4])
+                    if palabras_significativas >= 6:
+                        return fragmento[:150] + "..." if len(fragmento) > 150 else fragmento
+    
+    # ÚLTIMO RECURSO: buscar cualquier oración larga con contenido
+    oraciones_largas = re.findall(r'[^.]{60,200}\.', texto)
+    if oraciones_largas:
+        for oracion in oraciones_largas:
+            oracion_limpia = re.sub(r'\s+', ' ', oracion.strip())
+            # Evitar oraciones que sean solo listas o referencias
+            if not re.search(r'^\s*\d+[\.\))]', oracion_limpia) and len(oracion_limpia.split()) >= 8:
+                return oracion_limpia[:150] + "..." if len(oracion_limpia) > 150 else oracion_limpia
+    
+    # Fallback con fragmento genérico IDENTIFICABLE - SOLO si no se encuentra nada
+    return "los hallazgos confirman la hipótesis de manera concluyente"
+
+
+def verificar_unicidad_preguntas(pregunta: str, historial_preguntas: List[str]) -> bool:
+    """
+    Verifica que una pregunta no sea duplicada comparando extractos específicos.
+    """
+    import re
+    
+    # Extraer el extracto de la pregunta actual (texto entre asteriscos)
+    match_actual = re.search(r'\*(.*?)\*', pregunta)
+    if not match_actual:
+        return True  # Si no tiene extracto, la consideramos válida
+    
+    extracto_actual = match_actual.group(1).strip()
+    
+    # Comparar con preguntas anteriores
+    for pregunta_anterior in historial_preguntas:
+        match_anterior = re.search(r'\*(.*?)\*', pregunta_anterior)
+        if match_anterior:
+            extracto_anterior = match_anterior.group(1).strip()
+            
+            # Si los extractos son muy similares, es potencialmente duplicada
+            if calcular_similitud_extractos(extracto_actual, extracto_anterior) > 0.8:
+                return False
+    
+    return True
+
+
+def calcular_similitud_extractos(extracto1: str, extracto2: str) -> float:
+    """
+    Calcula la similitud entre dos extractos usando comparación de palabras.
+    """
+    palabras1 = set(extracto1.lower().split())
+    palabras2 = set(extracto2.lower().split())
+    
+    if not palabras1 or not palabras2:
+        return 0.0
+    
+    interseccion = len(palabras1.intersection(palabras2))
+    union = len(palabras1.union(palabras2))
+    
+    return interseccion / union if union > 0 else 0.0
 
 
 if __name__ == "__main__":
