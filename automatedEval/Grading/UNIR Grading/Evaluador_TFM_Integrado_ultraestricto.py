@@ -1136,199 +1136,220 @@ def extraer_datos_especificos_tfm(texto_tfm: str, resultados: List[Dict], logger
             logger.warning("No hay texto del TFM disponible para extracción específica")
         return datos
     
-    # 1. Números, porcentajes y valores numéricos (EXPANDIDO PARA FINANZAS)
-    datos["numeros_y_porcentajes"] = re.findall(r'\d+(?:\.\d+)?%', texto_tfm)
+    # Obtener configuraciones del YAML
+    patrones = config.get("patrones_regex", {})
+    indicadores_config = config.get("indicadores_financieros", {})
+    limites = config.get("limites", {})
     
-    # Valores financieros ampliados
-    datos["valores_financieros"] = re.findall(r'[€$£¥S/]\s*\d+(?:,\d{3})*(?:\.\d+)?', texto_tfm)
+    # 1. Extracción basada en patrones regex del YAML
+    if "numeros_y_porcentajes" in datos:
+        patron = patrones.get("numeros_porcentajes", r'\d+(?:\.\d+)?%')
+        datos["numeros_y_porcentajes"] = re.findall(patron, texto_tfm)
     
-    # Ratios financieros específicos
-    ratios_pattern = r'(?:ratio|índice|coeficiente)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?)'
-    ratios_encontrados = re.findall(ratios_pattern, texto_tfm, re.IGNORECASE)
-    datos["ratios_financieros"] = [f"{ratio.strip()}: {valor}" for ratio, valor in ratios_encontrados]
+    if "valores_financieros" in datos:
+        patron = patrones.get("valores_financieros", r'[€$£¥S/]\s*\d+(?:,\d{3})*(?:\.\d+)?')
+        datos["valores_financieros"] = re.findall(patron, texto_tfm)
     
-    # Indicadores financieros clave
-    indicadores_financieros = [
-        r'ROI[:=]\s*(\d+(?:\.\d+)?%?)',
-        r'VAN[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
-        r'NPV[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
-        r'TIR[:=]\s*(\d+(?:\.\d+)?%)',
-        r'IRR[:=]\s*(\d+(?:\.\d+)?%)',
-        r'WACC[:=]\s*(\d+(?:\.\d+)?%)',
-        r'EVA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
-        r'EBITDA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
-        r'payback[:=]\s*(\d+(?:\.\d+)?)\s*(?:años?|meses?)',
-        r'punto de equilibrio[:=]\s*(\d+(?:,\d{3})*)',
-        r'break\s*even[:=]\s*(\d+(?:,\d{3})*)'
-    ]
+    if "ratios_financieros" in datos:
+        patron = patrones.get("ratios_financieros", r'(?:ratio|índice|coeficiente)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?)')
+        ratios_encontrados = re.findall(patron, texto_tfm, re.IGNORECASE)
+        datos["ratios_financieros"] = [f"{ratio.strip()}: {valor}" for ratio, valor in ratios_encontrados]
     
-    datos["indicadores_financieros"] = []
-    for patron in indicadores_financieros:
-        matches = re.findall(patron, texto_tfm, re.IGNORECASE)
-        datos["indicadores_financieros"].extend(matches)
+    # Indicadores financieros desde configuración YAML
+    if "indicadores_financieros" in datos:
+        datos["indicadores_financieros"] = []
+        for nombre, patron in indicadores_config.items():
+            try:
+                matches = re.findall(patron, texto_tfm, re.IGNORECASE)
+                datos["indicadores_financieros"].extend(matches)
+            except re.error:
+                logger.warning(f"Patrón regex inválido para {nombre}: {patron}")
     
-    datos["resultados_cuantitativos"] = re.findall(r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras)', texto_tfm, re.IGNORECASE)
-    datos["datos_temporales"] = re.findall(r'\b(?:20\d{2}|2\d{3})\b', texto_tfm)
+    if "resultados_cuantitativos" in datos:
+        patron = patrones.get("resultados_cuantitativos", r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras|respuestas)')
+        datos["resultados_cuantitativos"] = re.findall(patron, texto_tfm, re.IGNORECASE)
     
-    # 2. Metodologías y herramientas (ampliado para CUALQUIER DOMINIO)
-    metodologias_amplias = [
-        # Estratégicas
-        'PESTEL', 'PORTER', 'DAFO', 'SWOT', 'VRIO', 'CANVAS', 'BALANCED SCORECARD',
-        'MEFE', 'MEFI', 'MATRIZ BCG', 'CINCO FUERZAS', 'CADENA DE VALOR',
-        'CORE COMPETENCE', 'BENCHMARKING', 'ANALISIS DE COMPETIDORES',
-        # Financieras y Económicas
-        'ROI', 'VAN', 'NPV', 'TIR', 'IRR', 'PAYBACK', 'EVA', 'EBITDA', 'WACC',
-        'RATIO DE LIQUIDEZ', 'RATIO DE SOLVENCIA', 'RATIO DE RENTABILIDAD',
-        'ANALISIS VERTICAL', 'ANALISIS HORIZONTAL', 'DUPONT', 'Z-SCORE',
-        'CAPM', 'BETA', 'COEFICIENTE DE VARIACION', 'ANALISIS DE SENSIBILIDAD',
-        'MONTE CARLO', 'ARBOL DE DECISION', 'VALOR PRESENTE NETO', 'TASA INTERNA',
-        'FLUJO DE CAJA', 'CASH FLOW', 'PUNTO DE EQUILIBRIO', 'BREAK EVEN',
-        'ANALISIS COSTO-BENEFICIO', 'ABC COSTING', 'MARGEN CONTRIBUCION',
-        # Operacionales y Mejora
-        'LEAN', 'SIX SIGMA', 'SCRUM', 'KANBAN', 'ISHIKAWA', 'KAIZEN',
-        'JUST IN TIME', 'TOC', 'TEORIA DE RESTRICCIONES', 'ANALISIS DE PARETO',
-        'FMEA', 'CAUSA RAIZ', '5 PORQUES', 'MAPEO DE PROCESOS',
-        # Investigación científica
-        'ENCUESTA', 'ENTREVISTA', 'OBSERVACIÓN', 'FOCUS GROUP', 'DELPHI',
-        'ANÁLISIS FACTORIAL', 'REGRESIÓN', 'CORRELACIÓN', 'CHI-CUADRADO', 'ANOVA',
-        'CRONBACH', 'KAISER', 'BARTLETT', 'LIKERT', 'SPSS', 'R STUDIO',
-        'ANALISIS MULTIVARIANTE', 'REGRESION LOGISTICA', 'CLUSTER ANALYSIS',
-        # Tecnológicas
-        'MACHINE LEARNING', 'BIG DATA', 'BLOCKCHAIN', 'IOT', 'INTELIGENCIA ARTIFICIAL',
-        'CRM', 'ERP', 'API', 'UX', 'UI', 'DEVOPS', 'CLOUD COMPUTING',
-        'BUSINESS INTELLIGENCE', 'DATA MINING', 'ANALYTICS', 'DASHBOARD',
-        # Educativas
-        'CONSTRUCTIVISMO', 'CONDUCTISMO', 'COGNITIVISMO', 'BLOOM', 'KIRKPATRICK',
-        'ADDIE', 'MOODLE', 'LMS', 'E-LEARNING', 'FLIPPED CLASSROOM',
-        # Salud
-        'ENSAYO CONTROLADO', 'PLACEBO', 'DOBLE CIEGO', 'META-ANÁLISIS', 'REVISIÓN SISTEMÁTICA',
-        # Marketing
-        'SEM', 'SEO', 'SOCIAL MEDIA', 'INBOUND', 'FUNNEL', 'KPI', 'CTR', 'CAC', 'LTV',
-        # Psicología/Sociología
-        'GROUNDED THEORY', 'FENOMENOLOGÍA', 'ETNOGRAFÍA', 'ANÁLISIS DE CONTENIDO'
-    ]
+    if "datos_temporales" in datos:
+        patron = patrones.get("datos_temporales", r'\b(?:20\d{2}|2\d{3})\b')
+        datos["datos_temporales"] = re.findall(patron, texto_tfm)
     
-    for metodologia in metodologias_amplias:
-        if metodologia.lower() in texto_tfm.lower():
-            datos["metodologias_mencionadas"].append(metodologia)
+    # 2. Metodologías desde configuración YAML
+    if "metodologias_mencionadas" in datos:
+        metodologias_config = config.get("metodologias", {})
+        for categoria, lista_metodologias in metodologias_config.items():
+            for metodologia in lista_metodologias:
+                if metodologia.lower() in texto_tfm.lower():
+                    datos["metodologias_mencionadas"].append(metodologia)
     
-    # Extraer nombres de herramientas específicas
-    herramientas_pattern = r'\b(?:matriz|análisis|modelo|framework|diagrama)\s+([A-Z][A-Za-z\s]+?)(?:\s|\.|\,)'
-    herramientas_encontradas = re.findall(herramientas_pattern, texto_tfm, re.IGNORECASE)
-    datos["nombres_herramientas"] = herramientas_encontradas[:5]  # Máximo 5
+    # 3. Herramientas, empresas y problemas usando patrones del YAML
+    if "nombres_herramientas" in datos:
+        patron = patrones.get("herramientas", r'\b(?:matriz|análisis|modelo|framework|diagrama)\s+([A-Z][A-Za-z\s]+?)(?:\s|\.|\,)')
+        herramientas_encontradas = re.findall(patron, texto_tfm, re.IGNORECASE)
+        max_herramientas = limites.get("herramientas_max", 5)
+        datos["nombres_herramientas"] = herramientas_encontradas[:max_herramientas]
     
-    # Extraer nombres de empresas u organizaciones (palabras en mayúsculas)
-    empresas_pattern = r'\b[A-Z][A-Z\s&]{2,15}\b'
-    empresas_encontradas = re.findall(empresas_pattern, texto_tfm)
-    # Filtrar palabras comunes que no son empresas
-    palabras_excluir = {'EL', 'LA', 'DE', 'CON', 'POR', 'PARA', 'QUE', 'DEL', 'LOS', 'LAS', 'UN', 'UNA'}
-    datos["empresas_organizaciones"] = [emp for emp in empresas_encontradas[:5] 
-                                       if len(emp.strip()) > 3 and emp.strip() not in palabras_excluir]
+    if "empresas_organizaciones" in datos:
+        patron = patrones.get("empresas", r'\b[A-Z][A-Z\s&]{2,15}\b')
+        empresas_encontradas = re.findall(patron, texto_tfm)
+        palabras_excluir = set(config.get("palabras_excluir_empresas", ["EL", "LA", "DE"]))
+        max_empresas = limites.get("empresas_max", 5)
+        datos["empresas_organizaciones"] = [emp for emp in empresas_encontradas[:max_empresas] 
+                                           if len(emp.strip()) > 3 and emp.strip() not in palabras_excluir]
     
     # Buscar indicadores de problemas en justificaciones de resultados
-    for resultado in resultados:
-        justificacion = resultado.get("justificacion", "")
-        if any(palabra in justificacion.lower() for palabra in 
-               ["sin embargo", "pero", "no obstante", "contradice", "inconsistente", "falta", "ausencia"]):
-            datos["indicadores_problemas"].append(justificacion[:150])
+    if "indicadores_problemas" in datos:
+        for resultado in resultados:
+            justificacion = resultado.get("justificacion", "")
+            if any(palabra in justificacion.lower() for palabra in 
+                   ["sin embargo", "pero", "no obstante", "contradice", "inconsistente", "falta", "ausencia"]):
+                datos["indicadores_problemas"].append(justificacion[:150])
     
-    # Buscar frases que indican contradicciones o problemas
-    frases_problema_pattern = r'[^.]*(?:sin embargo|pero|no obstante|contradice|inconsistente|falta|ausencia)[^.]*\.'
-    frases_contradictorias = re.findall(frases_problema_pattern, texto_tfm, re.IGNORECASE)
-    datos["frases_contradictorias"] = frases_contradictorias[:3]  # Máximo 3
+    # Buscar frases contradictorias usando patrón del YAML
+    if "frases_contradictorias" in datos:
+        patron = patrones.get("frases_contradictorias", r'[^.]*(?:sin embargo|pero|no obstante|contradice|inconsistente|falta|ausencia)[^.]*\.')
+        frases_contradictorias = re.findall(patron, texto_tfm, re.IGNORECASE)
+        max_frases = limites.get("frases_contradictorias_max", 3)
+        datos["frases_contradictorias"] = frases_contradictorias[:max_frases]
     
-    # EXTRACCIONES AMPLIADAS PARA CUALQUIER DOMINIO
+    # 4. Extracción de conceptos académicos usando patrones del YAML
     
-    # Conceptos teóricos y marcos conceptuales
-    patrones_teoricos = [
-        r'teoría\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
-        r'modelo\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
-        r'enfoque\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
-        r'paradigma\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
-    ]
-    for patron in patrones_teoricos:
-        conceptos = re.findall(patron, texto_tfm, re.IGNORECASE)
-        datos["conceptos_teoricos"].extend([c.strip() for c in conceptos if len(c.strip()) > 3])
+    # Conceptos teóricos
+    if "conceptos_teoricos" in datos:
+        patrones_teoricos = [
+            patrones.get("teorias", r'teoría\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
+            patrones.get("modelos", r'modelo\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
+            patrones.get("enfoques", r'enfoque\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
+            patrones.get("paradigmas", r'paradigma\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)')
+        ]
+        for patron in patrones_teoricos:
+            try:
+                conceptos = re.findall(patron, texto_tfm, re.IGNORECASE)
+                datos["conceptos_teoricos"].extend([c.strip() for c in conceptos if len(c.strip()) > 3])
+            except re.error:
+                continue
     
-    # Variables e hipótesis de investigación
-    datos["variables_estudiadas"] = re.findall(r'variable\s+(?:dependiente|independiente|moderadora):\s*([^.]{3,60})', texto_tfm, re.IGNORECASE)
-    datos["hipotesis_planteadas"] = re.findall(r'hipótesis\s*(?:\d+)?:\s*([^.]{10,100})', texto_tfm, re.IGNORECASE)
+    # Variables e hipótesis
+    if "variables_estudiadas" in datos:
+        patron = patrones.get("variables_dependientes", r'variable\s+(?:dependiente|independiente|moderadora):\s*([^.]{3,60})')
+        datos["variables_estudiadas"] = re.findall(patron, texto_tfm, re.IGNORECASE)
     
-    # Resultados cuantitativos y escalas
-    datos["resultados_cuantitativos"] = re.findall(r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras|respuestas)', texto_tfm, re.IGNORECASE)
-    datos["escalas_medicion"] = re.findall(r'escala\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,20})(?:\s|\.|\,)', texto_tfm, re.IGNORECASE)
+    if "hipotesis_planteadas" in datos:
+        patron = patrones.get("hipotesis", r'hipótesis\s*(?:\d+)?:\s*([^.]{10,100})')
+        datos["hipotesis_planteadas"] = re.findall(patron, texto_tfm, re.IGNORECASE)
     
-    # Sectores, industrias y dominios
-    sectores_pattern = r'(?:sector|industria|área|campo|ámbito|dominio)\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
-    sectores = re.findall(sectores_pattern, texto_tfm, re.IGNORECASE)
-    datos["sectores_industrias"] = [s.strip() for s in sectores if len(s.strip()) > 3][:5]
+    # Escalas de medición
+    if "escalas_medicion" in datos:
+        patron = patrones.get("escalas", r'escala\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,20})(?:\s|\.|\,)')
+        datos["escalas_medicion"] = re.findall(patron, texto_tfm, re.IGNORECASE)
+    
+    # Sectores e industrias
+    if "sectores_industrias" in datos:
+        patron = patrones.get("sectores", r'(?:sector|industria|área|campo|ámbito|dominio)\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)')
+        sectores = re.findall(patron, texto_tfm, re.IGNORECASE)
+        max_sectores = limites.get("sectores_max", 5)
+        datos["sectores_industrias"] = [s.strip() for s in sectores if len(s.strip()) > 3][:max_sectores]
     
     # Fuentes citadas
-    fuentes_pattern = r'\(([A-Za-záéíóúñü\s&,]{3,30}),?\s*(\d{4})\)'
-    fuentes = re.findall(fuentes_pattern, texto_tfm)
-    datos["fuentes_citadas"] = [f"{autor.strip()} ({año})" for autor, año in fuentes[:8]]
+    if "fuentes_citadas" in datos:
+        patron = patrones.get("fuentes_citadas", r'\(([A-Za-záéíóúñü\s&,]{3,30}),?\s*(\d{4})\)')
+        fuentes = re.findall(patron, texto_tfm)
+        max_fuentes = limites.get("fuentes_citadas_max", 8)
+        datos["fuentes_citadas"] = [f"{autor.strip()} ({año})" for autor, año in fuentes[:max_fuentes]]
     
     # Limitaciones explícitas
-    limitaciones_patterns = [
-        r'limitaci[oó]n[^.]{5,80}\.',
-        r'no se (?:pudo|puede|considera)[^.]{5,60}\.',
-        r'(?:falta|ausencia) de[^.]{5,60}\.'
-    ]
-    for patron in limitaciones_patterns:
-        limitaciones = re.findall(patron, texto_tfm, re.IGNORECASE)
-        datos["limitaciones_reconocidas"].extend(limitaciones[:2])
+    if "limitaciones_reconocidas" in datos:
+        limitaciones_patterns = [
+            patrones.get("limitaciones", r'limitaci[oó]n[^.]{5,80}\.'),
+            patrones.get("no_pudo", r'no se (?:pudo|puede|considera)[^.]{5,60}\.'),
+            patrones.get("ausencias", r'(?:falta|ausencia) de[^.]{5,60}\.')
+        ]
+        max_limitaciones = limites.get("limitaciones_max", 2)
+        for patron in limitaciones_patterns:
+            try:
+                limitaciones = re.findall(patron, texto_tfm, re.IGNORECASE)
+                datos["limitaciones_reconocidas"].extend(limitaciones[:max_limitaciones])
+            except re.error:
+                continue
     
     # Conclusiones y recomendaciones
-    datos["conclusiones_clave"] = re.findall(r'(?:se concluye|en conclusión|finalmente)[^.]{10,80}\.', texto_tfm, re.IGNORECASE)[:3]
-    datos["recomendaciones"] = re.findall(r'(?:se recomienda|recomendación)[^.]{10,80}\.', texto_tfm, re.IGNORECASE)[:3]
+    if "conclusiones_clave" in datos:
+        patron = patrones.get("conclusiones", r'(?:se concluye|en conclusión|finalmente)[^.]{10,80}\.')
+        max_conclusiones = limites.get("conclusiones_max", 3)
+        datos["conclusiones_clave"] = re.findall(patron, texto_tfm, re.IGNORECASE)[:max_conclusiones]
     
-    # Términos técnicos y siglas
-    terminos_tecnicos = re.findall(r'\b[A-Z][a-z]+(?:[A-Z][a-z]+)+\b', texto_tfm)  # CamelCase
-    terminos_tecnicos.extend(re.findall(r'\b[A-Z]{2,6}\b', texto_tfm))  # Siglas
-    datos["terminos_tecnicos"] = list(set(terminos_tecnicos))[:10]
+    if "recomendaciones" in datos:
+        patron = patrones.get("recomendaciones", r'(?:se recomienda|recomendación)[^.]{10,80}\.')
+        max_recomendaciones = limites.get("recomendaciones_max", 3)
+        datos["recomendaciones"] = re.findall(patron, texto_tfm, re.IGNORECASE)[:max_recomendaciones]
     
-    # EXTRACCIONES FINANCIERAS AVANZADAS
+    # Términos técnicos
+    if "terminos_tecnicos" in datos:
+        terminos_tecnicos = []
+        patron_camel = patrones.get("camel_case", r'\b[A-Z][a-z]+(?:[A-Z][a-z]+)+\b')
+        patron_siglas = patrones.get("siglas", r'\b[A-Z]{2,6}\b')
+        
+        try:
+            terminos_tecnicos.extend(re.findall(patron_camel, texto_tfm))
+            terminos_tecnicos.extend(re.findall(patron_siglas, texto_tfm))
+            max_tecnicos = limites.get("terminos_tecnicos_max", 10)
+            datos["terminos_tecnicos"] = list(set(terminos_tecnicos))[:max_tecnicos]
+        except re.error:
+            datos["terminos_tecnicos"] = []
     
-    # Tipos de análisis financiero mencionados
-    tipos_analisis = [
-        'análisis vertical', 'análisis horizontal', 'análisis dupont', 'análisis de ratios',
-        'análisis de sensibilidad', 'análisis de escenarios', 'simulación monte carlo',
-        'análisis costo-beneficio', 'flujo de caja descontado', 'análisis de riesgo'
-    ]
-    for tipo in tipos_analisis:
-        if tipo.lower() in texto_tfm.lower():
-            datos["analisis_financiero_tipo"].append(tipo)
+    # 5. Análisis financiero avanzado usando configuración YAML
+    if "analisis_financiero_tipo" in datos:
+        tipos_analisis_config = config.get("tipos_analisis_financiero", [])
+        for tipo in tipos_analisis_config:
+            if tipo.lower() in texto_tfm.lower():
+                datos["analisis_financiero_tipo"].append(tipo)
     
-    # Métricas de rendimiento específicas
-    metricas_pattern = r'(?:margen|rentabilidad|rendimiento)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?%?)'
-    metricas = re.findall(metricas_pattern, texto_tfm, re.IGNORECASE)
-    datos["metricas_rendimiento"] = [f"{metrica.strip()}: {valor}" for metrica, valor in metricas]
+    # Métricas de rendimiento
+    if "metricas_rendimiento" in datos:
+        patron = patrones.get("metricas_rendimiento", r'(?:margen|rentabilidad|rendimiento)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?%?)')
+        try:
+            metricas = re.findall(patron, texto_tfm, re.IGNORECASE)
+            datos["metricas_rendimiento"] = [f"{metrica.strip()}: {valor}" for metrica, valor in metricas]
+        except re.error:
+            datos["metricas_rendimiento"] = []
     
-    # Proyecciones y horizontes temporales
-    proyecciones_pattern = r'(?:proyección|previsión|estimación)\s+(?:a\s+)?(\d+\s*años?)'
-    proyecciones = re.findall(proyecciones_pattern, texto_tfm, re.IGNORECASE)
-    datos["proyecciones_financieras"] = proyecciones[:3]
+    # Proyecciones financieras
+    if "proyecciones_financieras" in datos:
+        patron = patrones.get("proyecciones_financieras", r'(?:proyección|previsión|estimación)\s+(?:a\s+)?(\d+\s*años?)')
+        try:
+            proyecciones = re.findall(patron, texto_tfm, re.IGNORECASE)
+            max_proyecciones = limites.get("proyecciones_max", 3)
+            datos["proyecciones_financieras"] = proyecciones[:max_proyecciones]
+        except re.error:
+            datos["proyecciones_financieras"] = []
     
-    # Criterios de inversión y evaluación
-    criterios_inversion = [
-        r'criterio de (?:aceptación|rechazo):\s*([^.]{10,60})',
-        r'umbral mínimo:\s*(\d+(?:\.\d+)?%?)',
-        r'tasa de descuento:\s*(\d+(?:\.\d+)?%)',
-        r'costo de capital:\s*(\d+(?:\.\d+)?%)',
-        r'beta:\s*(\d+(?:\.\d+)?)',
-        r'prima de riesgo:\s*(\d+(?:\.\d+)?%)'
-    ]
-    for patron in criterios_inversion:
-        matches = re.findall(patron, texto_tfm, re.IGNORECASE)
-        datos["criterios_inversion"].extend(matches[:2])
+    # Criterios de inversión usando configuración YAML
+    if "criterios_inversion" in datos:
+        criterios_config = config.get("criterios_inversion", [])
+        max_criterios = limites.get("criterios_inversion_max", 2)
+        for patron in criterios_config:
+            try:
+                matches = re.findall(patron, texto_tfm, re.IGNORECASE)
+                datos["criterios_inversion"].extend(matches[:max_criterios])
+            except re.error:
+                continue
     
-    if logger:
-        logger.info(f"Extraídos datos específicos: {len(datos['numeros_y_porcentajes'])} números, "
-                    f"{len(datos['metodologias_mencionadas'])} metodologías, "
-                    f"{len(datos['conceptos_teoricos'])} conceptos teóricos, "
-                    f"{len(datos['variables_estudiadas'])} variables, "
-                    f"{len(datos['sectores_industrias'])} sectores, "
-                    f"{len(datos['empresas_organizaciones'])} organizaciones") if logger else None
+    # 6. Estadísticas finales y logging
+    if logger and config.get("logging", {}).get("mostrar_estadisticas", True):
+        total_campos = sum(len(v) if isinstance(v, list) else 1 for v in datos.values())
+        campos_con_datos = sum(1 for v in datos.values() if (isinstance(v, list) and len(v) > 0) or (not isinstance(v, list) and v))
+        
+        logger.info(f"📊 EXTRACCIÓN COMPLETADA:")
+        logger.info(f"   📈 Total de campos configurados: {len(datos)}")
+        logger.info(f"   ✅ Campos con datos extraídos: {campos_con_datos}")
+        logger.info(f"   📋 Total de elementos extraídos: {total_campos}")
+        
+        # Mostrar resumen por categorías principales si hay datos
+        categorias_principales = ["metodologias_mencionadas", "conceptos_teoricos", "indicadores_financieros", "sectores_industrias"]
+        for categoria in categorias_principales:
+            if categoria in datos and len(datos[categoria]) > 0:
+                logger.info(f"   🔹 {categoria}: {len(datos[categoria])} elementos")
+    
+    logger.info(f"✅ Extracción de datos específicos completada usando configuración YAML")
     
     return datos
 
