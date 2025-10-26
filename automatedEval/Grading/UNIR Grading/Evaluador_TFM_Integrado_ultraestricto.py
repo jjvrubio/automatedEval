@@ -687,179 +687,11 @@ def generar_preguntas_dinamicas(resultados: List[Dict[str, Any]], plantillas: Di
         return []
 
 
-def cargar_plantillas_analisis_critico(logger: logging.Logger) -> Dict[str, Any]:
-    """
-    Carga las plantillas de análisis crítico desde archivo YAML.
-    """
-    config_path = "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/automatedEval/TFM_Evaluator_Prompt_Package/plantillas_analisis_critico.yaml"
-    
-    try:
-        with open(config_path, "r", encoding="utf-8") as f:
-            config = yaml.safe_load(f)
-        logger.info(f"Plantillas de análisis crítico cargadas desde: {config_path}")
-        return config
-    except FileNotFoundError:
-        logger.error(f"No se encontró archivo de plantillas: {config_path}")
-        logger.info("Usando plantillas por defecto reducidas")
-        return {
-            "configuracion_analisis": {"numero_preguntas_exactas": 3},
-            "instrucciones_base": {"introduccion": "Actúa como evaluador académico experto."},
-            "requisitos_esenciales": {"longitud_minima": 250},
-            "ejemplos_formato": {}
-        }
-    except Exception as e:
-        logger.error(f"Error cargando plantillas de análisis: {e}")
-        return {}
-
-
-def construir_prompt_analisis_desde_yaml(texto_muestra: str, problemas_detectados: List[Dict], 
-                                       plantillas: Dict[str, Any], logger: logging.Logger) -> str:
-    """
-    Construye el prompt de análisis crítico usando las plantillas YAML.
-    """
-    if not plantillas:
-        logger.warning("No hay plantillas disponibles, usando prompt básico")
-        return construir_prompt_analisis_basico(texto_muestra, problemas_detectados)
-    
-    try:
-        # Obtener secciones del YAML
-        instrucciones = plantillas.get("instrucciones_base", {})
-        objetivos = plantillas.get("instrucciones_base", {}).get("objetivos_analisis", [])
-        requisitos = plantillas.get("requisitos_esenciales", {})
-        formato = plantillas.get("formato_respuesta", {})
-        ejemplos = plantillas.get("ejemplos_formato", {})
-        criticas = plantillas.get("instrucciones_criticas", {})
-        config = plantillas.get("configuracion_analisis", {})
-        
-        # Construir lista de objetivos
-        objetivos_texto = []
-        for i, obj in enumerate(objetivos, 1):
-            titulo = obj.get("titulo", f"OBJETIVO {i}")
-            desc = obj.get("descripcion", "")
-            objetivos_texto.append(f"{i}. {titulo}: {desc}")
-        
-        # Construir lista de requisitos
-        requisitos_texto = []
-        if requisitos.get("extractos_textuales", {}).get("obligatorio"):
-            formato_extracto = requisitos["extractos_textuales"].get("formato", "")
-            requisitos_texto.append(f"- Cada pregunta DEBE incluir extractos textuales ESPECÍFICOS y TÉCNICOS del documento {formato_extracto}")
-        
-        datos_concretos = requisitos.get("datos_concretos_priorizados", [])
-        if datos_concretos:
-            lista_datos = ", ".join(datos_concretos)
-            requisitos_texto.append(f"- Los extractos deben contener DATOS CONCRETOS: {lista_datos}")
-        
-        if requisitos.get("evidencia_directa", {}).get("requerida"):
-            requisitos_texto.append("- Los extractos deben ser EVIDENCIA DIRECTA del problema identificado, no descripciones generales")
-        
-        minimo_extractos = requisitos.get("multiples_extractos", {}).get("minimo_por_pregunta", 2)
-        if minimo_extractos:
-            requisitos_texto.append(f"- Incluir MÚLTIPLES extractos específicos por pregunta (mínimo {minimo_extractos})")
-        
-        longitud_min = requisitos.get("longitud_minima", 250)
-        requisitos_texto.append(f"- Mínimo {longitud_min} palabras por pregunta incluyendo múltiples extractos técnicos específicos")
-        
-        # Construir ejemplos
-        ejemplos_texto = []
-        for clave, ejemplo in ejemplos.items():
-            titulo = ejemplo.get("titulo", clave.upper())
-            texto = ejemplo.get("texto", "")
-            if texto:
-                ejemplos_texto.append(f"{titulo}:\n\"{texto}\"")
-        
-        # Construir prompt completo
-        num_preguntas = config.get("numero_preguntas_exactas", 3)
-        
-        prompt_partes = [
-            instrucciones.get("introduccion", ""),
-            "",
-            "DOCUMENTO A ANALIZAR:",
-            texto_muestra,
-            "",
-            "PROBLEMAS DETECTADOS EN LA EVALUACIÓN:",
-            json.dumps(problemas_detectados, indent=2, ensure_ascii=False),
-            "",
-            criticas.get("header", "INSTRUCCIONES CRÍTICAS:"),
-            criticas.get("analisis_profundo", "Analiza profundamente el documento y genera EXACTAMENTE {numero_preguntas} preguntas muy diferentes que:").format(numero_preguntas=num_preguntas),
-            ""
-        ]
-        
-        # Añadir objetivos
-        prompt_partes.extend(objetivos_texto)
-        prompt_partes.append("")
-        
-        # Añadir requisitos
-        prompt_partes.append("REQUISITOS ESENCIALES:")
-        prompt_partes.extend(requisitos_texto)
-        prompt_partes.append("")
-        
-        # Añadir formato JSON
-        estructura = formato.get("estructura", {})
-        if estructura:
-            prompt_partes.extend([
-                "FORMATO OBLIGATORIO DE RESPUESTA:",
-                "```json",
-                json.dumps(estructura, indent=2, ensure_ascii=False),
-                "```",
-                ""
-            ])
-        
-        # Añadir ejemplos
-        if ejemplos_texto:
-            prompt_partes.append("EJEMPLOS DE FORMATO ESPERADO CON EXTRACTOS TÉCNICOS ESPECÍFICOS:")
-            prompt_partes.extend(ejemplos_texto)
-            prompt_partes.append("")
-        
-        # Añadir requisito final
-        requisito_final = criticas.get("requisito_datos", "REQUISITO: Usar SIEMPRE datos específicos en los extractos.")
-        prompt_partes.append(requisito_final)
-        
-        return "\n".join(prompt_partes)
-        
-    except Exception as e:
-        logger.error(f"Error construyendo prompt desde YAML: {e}")
-        return construir_prompt_analisis_basico(texto_muestra, problemas_detectados)
-
-
-def construir_prompt_analisis_basico(texto_muestra: str, problemas_detectados: List[Dict]) -> str:
-    """
-    Prompt básico de fallback si falla la carga del YAML.
-    """
-    return f"""
-Actúa como un evaluador académico experto analizando un Trabajo Final de Máster (TFM).
-
-DOCUMENTO A ANALIZAR:
-{texto_muestra}
-
-PROBLEMAS DETECTADOS EN LA EVALUACIÓN:
-{json.dumps(problemas_detectados, indent=2, ensure_ascii=False)}
-
-Genera 3 preguntas críticas con extractos específicos del documento.
-"""
-
-
 def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> List[str]:
     """
     Utiliza OpenAI para analizar profundamente el documento y generar preguntas específicas
     con extractos textuales incluidos para evitar consultar páginas.
-    Usa plantillas YAML para máxima configurabilidad.
     """
-    logger.info("🔍 INICIANDO ANÁLISIS PROFUNDO - Generación de preguntas específicas")
-    
-    # Cargar plantillas desde YAML
-    plantillas = cargar_plantillas_analisis_critico(logger)
-    
-    # DEBUGGING: Verificar contenido del texto
-    logger.info(f"📄 Texto del TFM: {len(texto_tfm)} caracteres totales")
-    if len(texto_tfm) < 1000:
-        logger.warning(f"⚠️ TEXTO SOSPECHOSAMENTE CORTO: {len(texto_tfm)} caracteres")
-        logger.warning(f"   📋 Primeros 200 caracteres: {texto_tfm[:200]}")
-    
-    # Generar huella única del documento para evitar duplicados
-    import hashlib
-    documento_hash = hashlib.md5(texto_tfm.encode('utf-8')).hexdigest()[:12]
-    logger.info(f"🔑 Hash del documento: {documento_hash}")
-    
     # Preparar contexto de la evaluación para el análisis
     problemas_detectados = []
     for resultado in resultados:
@@ -871,94 +703,76 @@ def analizar_documento_profundamente(texto_tfm: str, resultados: List[Dict], log
                 'evidencias': resultado.get('evidencias', [])
             })
     
-    logger.info(f"🚨 Problemas detectados en evaluación: {len(problemas_detectados)}")
+    # Tomar una muestra representativa del texto (máximo 10000 caracteres para incluir más contexto)
+    texto_muestra = extraer_muestra_representativa(texto_tfm, 10000)
     
-    # Obtener configuración de muestra de texto desde YAML
-    config_muestra = plantillas.get("muestra_texto", {})
-    max_chars = config_muestra.get("caracteres_maximos", 10000)
-    secciones_clave = config_muestra.get("secciones_clave", None)
-    
-    # Tomar una muestra representativa del texto
-    texto_muestra = extraer_muestra_representativa(texto_tfm, max_chars, secciones_clave)
-    
-    # DEBUGGING: Verificar muestra extraída
-    logger.info(f"📝 Muestra extraída: {len(texto_muestra)} caracteres")
-    if len(texto_muestra) < 500:
-        logger.warning(f"⚠️ MUESTRA SOSPECHOSAMENTE CORTA: {len(texto_muestra)} caracteres")
-        logger.warning(f"   📋 Muestra completa: {texto_muestra}")
-    
-    # Construir prompt usando plantillas YAML
-    prompt_analisis = construir_prompt_analisis_desde_yaml(
-        texto_muestra, problemas_detectados, plantillas, logger
-    )
-    
-    # DEBUGGING: Verificar prompt construido
-    logger.info(f"🎯 Prompt construido: {len(prompt_analisis)} caracteres")
-    
-    # Añadir información única del documento al prompt para forzar especificidad
-    prompt_con_unicidad = f"""
-IDENTIFICADOR ÚNICO DEL DOCUMENTO: {documento_hash}
-ATENCIÓN: Este análisis es para un documento específico único. 
-Las preguntas DEBEN contener extractos LITERALES y ÚNICOS de este documento específico.
-NO utilices ejemplos genéricos o plantillas predefinidas.
+    prompt_analisis = f"""
+Actúa como un evaluador académico experto analizando un Trabajo Final de Máster (TFM).
 
-{prompt_analisis}
+DOCUMENTO A ANALIZAR:
+{texto_muestra}
 
-RECORDATORIO CRÍTICO: 
-- Utiliza SOLO extractos del documento proporcionado
-- Incluye datos numéricos ESPECÍFICOS del texto
-- Menciona nombres, metodologías y términos ÚNICOS del documento
-- NO generes preguntas genéricas aplicables a cualquier TFM
+PROBLEMAS DETECTADOS EN LA EVALUACIÓN:
+{json.dumps(problemas_detectados, indent=2, ensure_ascii=False)}
+
+INSTRUCCIONES CRÍTICAS:
+Analiza profundamente el documento y genera EXACTAMENTE 3 preguntas muy diferentes que:
+
+1. IDENTIFIQUEN INCONSISTENCIAS ESPECÍFICAS: Contradicciones entre metodología declarada vs aplicada, datos vs conclusiones, teoría vs práctica
+2. DETECTEN FALTA DE CLARIDAD: Conceptos mal definidos, argumentación confusa, conexiones lógicas débiles
+3. ENCUENTREN CRITERIOS INCORRECTOS: Metodologías inadecuadas, sesgos no controlados, limitaciones no reconocidas
+
+REQUISITOS ESENCIALES:
+- Cada pregunta DEBE incluir extractos textuales ESPECÍFICOS y TÉCNICOS del documento en cursiva (*texto exacto del documento*)
+- Los extractos deben contener DATOS CONCRETOS: números exactos, porcentajes, nombres técnicos, metodologías específicas
+- PRIORIZAR fragmentos con cifras, ratios, métricas, nombres propios, términos técnicos especializados
+- Los extractos deben ser EVIDENCIA DIRECTA del problema identificado, no descripciones generales
+- Incluir MÚLTIPLES extractos específicos por pregunta para crear contexto técnico completo
+- Mínimo 250 palabras por pregunta incluyendo múltiples extractos técnicos específicos
+
+FORMATO OBLIGATORIO DE RESPUESTA:
+```json
+{{
+  "preguntas": [
+    {{
+      "enfoque": "inconsistencia_metodologica|falta_claridad|criterio_incorrecto",
+      "pregunta": "La pregunta completa que INCLUYE extractos del documento en cursiva *así*...",
+      "extractos_utilizados": ["fragmento exacto 1", "fragmento exacto 2"],
+      "datos_especificos": ["dato1", "dato2", "dato3"],
+      "pagina_referencia": "XX"
+    }}
+  ]
+}}
+```
+
+EJEMPLOS DE FORMATO ESPERADO CON EXTRACTOS TÉCNICOS ESPECÍFICOS:
+
+EJEMPLO 1 (Datos numéricos específicos):
+"El modelo TO-BE muestra *incremento en la ineficiencia del tiempo de ciclo para el subproceso 'Diseño de instrumentos de evaluación y acreditación' (CTE desciende del 32.88% en AS-IS al 29.97% en TO-BE)*, mientras que todos los otros subprocesos mejoran. El documento también indica que *la implementación de LEAN redujo desperdicios en un 15% en promedio*, pero contradictoriamente afirma que *todos los rediseños TO-BE fueron uniformemente exitosos*. ¿Cómo se justifica esta inconsistencia específica donde un subproceso empeora 2.91 puntos porcentuales mientras se declara éxito universal?"
+
+EJEMPLO 2 (Términos técnicos específicos):
+"El análisis financiero presenta *ROI del 23.5% y VAN de €2.4M calculado con WACC del 8.2%*, pero posteriormente menciona que *el análisis de sensibilidad no fue aplicado debido a limitaciones de tiempo*. Dado que el documento afirma usar *metodología Monte Carlo para modelar incertidumbre*, ¿por qué estos cálculos críticos no incorporan variabilidad en las tasas de descuento, especialmente cuando el WACC del 8.2% no refleja el perfil de riesgo del proyecto según las limitaciones reconocidas?"
+
+REQUISITO: Usar SIEMPRE datos específicos (números exactos, nombres técnicos, metodologías concretas) en los extractos, NUNCA descripciones genéricas.
 """
     
     try:
-        logger.info("🤖 Enviando prompt a OpenAI...")
-        respuesta = obtener_respuesta_openai(prompt_con_unicidad, logger)
-        
-        # DEBUGGING: Verificar respuesta
-        logger.info(f"📨 Respuesta de OpenAI: {len(respuesta)} caracteres")
-        logger.info(f"   📋 Primeros 200 caracteres: {respuesta[:200]}")
-        
-        # Procesar respuesta y verificar especificidad
-        preguntas = procesar_respuesta_analisis(respuesta, logger)
-        
-        # VERIFICACIÓN DE ESPECIFICIDAD
-        for i, pregunta in enumerate(preguntas, 1):
-            # Verificar que contenga extractos específicos (marcados con *)
-            extractos_count = pregunta.count('*')
-            if extractos_count < 4:  # Al menos 2 extractos (4 asteriscos)
-                logger.warning(f"⚠️ Pregunta {i} tiene pocos extractos específicos ({extractos_count//2})")
-            
-            # Verificar que contenga números
-            import re
-            numeros_en_pregunta = re.findall(r'\d+(?:\.\d+)?%?', pregunta)
-            if len(numeros_en_pregunta) < 1:
-                logger.warning(f"⚠️ Pregunta {i} no contiene datos numéricos específicos")
-            else:
-                logger.info(f"✅ Pregunta {i} contiene {len(numeros_en_pregunta)} datos numéricos")
-        
-        logger.info(f"🎉 Análisis profundo completado: {len(preguntas)} preguntas generadas")
-        return preguntas
-        
+        respuesta = obtener_respuesta_openai(prompt_analisis, logger)
+        return procesar_respuesta_analisis(respuesta, logger)
     except Exception as e:
-        logger.error(f"❌ Error en análisis OpenAI: {e}")
-        logger.error(f"   🔧 Esto podría indicar problema con API, texto insuficiente, o límites")
+        logger.error(f"Error en análisis OpenAI: {e}")
         return []
 
 
-def extraer_muestra_representativa(texto: str, max_chars: int, config_secciones: List[str] = None) -> str:
+def extraer_muestra_representativa(texto: str, max_chars: int) -> str:
     """
     Extrae una muestra representativa del documento priorizando secciones clave.
-    Usa configuración externa para determinar secciones prioritarias.
     """
-    # Secciones clave configurables
-    if config_secciones is None:
-        secciones_clave = [
-            "metodología", "método", "análisis", "resultados", "conclusiones", 
-            "limitaciones", "discusión", "marco teórico", "revisión", "literatura"
-        ]
-    else:
-        secciones_clave = config_secciones
+    # Secciones clave a priorizar
+    secciones_clave = [
+        "metodología", "método", "análisis", "resultados", "conclusiones", 
+        "limitaciones", "discusión", "marco teórico", "revisión", "literatura"
+    ]
     
     parrafos = texto.split('\n\n')
     parrafos_priorizados = []
@@ -977,9 +791,9 @@ def extraer_muestra_representativa(texto: str, max_chars: int, config_secciones:
     # Construir muestra representativa
     muestra = ""
     
-    # Añadir párrafos prioritarios primero (70% del espacio)
+    # Añadir párrafos prioritarios primero
     for parrafo in parrafos_priorizados:
-        if len(muestra) + len(parrafo) < max_chars * 0.7:
+        if len(muestra) + len(parrafo) < max_chars * 0.7:  # 70% para contenido prioritario
             muestra += parrafo + "\n\n"
     
     # Añadir párrafos normales hasta completar
@@ -1080,98 +894,38 @@ def extraer_preguntas_texto_plano(respuesta: str, logger: logging.Logger) -> Lis
 def analizar_inconsistencias_locales(texto_tfm: str, resultados: List[Dict], logger: logging.Logger) -> List[str]:
     """
     Análisis local de inconsistencias cuando OpenAI no está disponible.
-    GENERA PREGUNTAS ESPECÍFICAS DEL DOCUMENTO, NO GENÉRICAS.
     """
-    logger.info("🔧 INICIANDO ANÁLISIS LOCAL - Fallback sin OpenAI")
-    
     preguntas_locales = []
     
-    # Generar huella única del documento para debugging
-    import hashlib
-    documento_hash = hashlib.md5(texto_tfm.encode('utf-8')).hexdigest()[:12]
-    logger.info(f"🔑 Hash del documento (análisis local): {documento_hash}")
-    
-    # Buscar inconsistencias numéricas con contexto ESPECÍFICO
+    # Buscar inconsistencias numéricas con contexto
     import re
     numeros = re.findall(r'\d+(?:\.\d+)?%?', texto_tfm)
     metodologias = re.findall(r'(metodología|método|análisis|enfoque)\s+\w+', texto_tfm.lower())
     
-    logger.info(f"📊 Datos extraídos: {len(numeros)} números, {len(metodologias)} metodologías")
-    
-    # Extraer fragmentos con números para incluir contexto REAL del documento
+    # Extraer fragmentos con números para incluir contexto
     fragmentos_numericos = extraer_fragmentos_con_numeros(texto_tfm, numeros[:3])
     
     if len(numeros) >= 3 and fragmentos_numericos:
-        # USAR FRAGMENTO REAL DEL DOCUMENTO, NO TEXTO GENÉRICO
-        extracto_principal = fragmentos_numericos[0] if fragmentos_numericos else f"valores numéricos encontrados: {', '.join(numeros[:3])}"
-        
-        # Buscar contexto específico adicional
-        contexto_numerico = buscar_contexto_especifico_numeros(texto_tfm, numeros[:3])
-        
-        pregunta_numerica = f"""El documento presenta *{extracto_principal}*, {contexto_numerico}, sin embargo, no se proporciona análisis de coherencia interna entre estas cifras ni validación cruzada de los cálculos. Considerando que la validez de los resultados cuantitativos depende de la consistencia metodológica en su obtención, ¿cómo se garantiza que estos valores fueron calculados bajo los mismos supuestos y criterios, y por qué no se incluye análisis de sensibilidad que evalúe el impacto de variaciones en los parámetros clave sobre la robustez de las conclusiones?"""
-        
+        extracto_principal = fragmentos_numericos[0] if fragmentos_numericos else f"valores {numeros[0]}, {numeros[1]}, {numeros[2]}"
+        pregunta_numerica = f"""El documento presenta *{extracto_principal}*, sin embargo, no se proporciona análisis de coherencia interna entre estas cifras ni validación cruzada de los cálculos. Considerando que la validez de los resultados cuantitativos depende de la consistencia metodológica en su obtención, ¿cómo se garantiza que estos valores fueron calculados bajo los mismos supuestos y criterios, y por qué no se incluye análisis de sensibilidad que evalúe el impacto de variaciones en los parámetros clave sobre la robustez de las conclusiones?"""
         preguntas_locales.append(pregunta_numerica)
-        logger.info(f"✅ Pregunta numérica generada con extracto: {extracto_principal[:50]}...")
-    else:
-        logger.warning(f"⚠️ Insuficientes datos numéricos para pregunta específica")
     
-    # Extraer fragmentos con metodologías REALES del documento
+    # Extraer fragmentos con metodologías
     fragmentos_metodologicos = extraer_fragmentos_con_metodologias(texto_tfm, metodologias[:2])
     
     if len(metodologias) >= 2 and fragmentos_metodologicos:
-        # USAR FRAGMENTO REAL DEL DOCUMENTO
-        extracto_metodologico = fragmentos_metodologicos[0] if fragmentos_metodologicos else f"enfoques metodológicos: {metodologias[0]} y {metodologias[1]}"
-        
+        extracto_metodologico = fragmentos_metodologicos[0] if fragmentos_metodologicos else f"enfoques {metodologias[0]} y {metodologias[1]}"
         pregunta_metodologica = f"""La investigación indica *{extracto_metodologico}*, pero no se explicita la justificación epistemológica para esta combinación ni se analizan las implicaciones de la triangulación metodológica. Dado que la coherencia paradigmática es fundamental en investigación rigurosa, ¿cómo se resuelven las posibles tensiones ontológicas entre estos enfoques, y qué criterios específicos se utilizaron para determinar su compatibilidad y complementariedad en el contexto particular del estudio?"""
-        
         preguntas_locales.append(pregunta_metodologica)
-        logger.info(f"✅ Pregunta metodológica generada con extracto: {extracto_metodologico[:50]}...")
-    else:
-        logger.warning(f"⚠️ Insuficientes datos metodológicos para pregunta específica")
     
-    # Buscar fragmentos sobre limitaciones o conclusiones categóricas REALES
+    # Buscar fragmentos sobre limitaciones o conclusiones categóricas
     fragmento_limitaciones = extraer_fragmento_conclusiones_categoricas(texto_tfm)
     
-    # Verificar que no sea el fallback genérico
-    if fragmento_limitaciones != "los hallazgos confirman la hipótesis de manera concluyente":
-        pregunta_limitaciones = f"""El trabajo concluye que *{fragmento_limitaciones}*, presentando afirmaciones categóricas sin reconocimiento explícito de limitaciones metodológicas o contextuales que podrían afectar la generalización de los hallazgos. Considerando que la transparencia sobre las limitaciones es un requisito de rigor académico, ¿por qué no se discuten los posibles sesgos de confirmación, restricciones muestrales o limitaciones temporales que podrían influir en la validez externa de las conclusiones, y cómo afecta esta omisión a la credibilidad y transferibilidad científica del trabajo?"""
-        
-        preguntas_locales.append(pregunta_limitaciones)
-        logger.info(f"✅ Pregunta de limitaciones generada con extracto: {fragmento_limitaciones[:50]}...")
-    else:
-        logger.warning(f"⚠️ Solo se encontró fragmento genérico de conclusiones")
-        
-        # GENERAR PREGUNTA BASADA EN CONTENIDO REAL ENCONTRADO
-        frases_reales = re.findall(r'[^.]*(?:conclu|result|eviden|demostr)[^.]*\.', texto_tfm, re.IGNORECASE)
-        if frases_reales:
-            frase_real = frases_reales[0][:150] + "..." if len(frases_reales[0]) > 150 else frases_reales[0]
-            pregunta_real = f"""El documento afirma que *{frase_real}*, sin embargo, esta conclusión no está respaldada por un análisis exhaustivo de las limitaciones metodológicas que podrían afectar su validez. ¿Cómo se puede evaluar la robustez de esta conclusión sin un reconocimiento explícito de las posibles fuentes de sesgo y limitaciones del estudio?"""
-            preguntas_locales.append(pregunta_real)
-            logger.info(f"✅ Pregunta con contenido real generada: {frase_real[:30]}...")
+    pregunta_limitaciones = f"""El trabajo concluye que *{fragmento_limitaciones}*, presentando afirmaciones categóricas sin reconocimiento explícito de limitaciones metodológicas o contextuales que podrían afectar la generalización de los hallazgos. Considerando que la transparencia sobre las limitaciones es un requisito de rigor académico, ¿por qué no se discuten los posibles sesgos de confirmación, restricciones muestrales o limitaciones temporales que podrían influir en la validez externa de las conclusiones, y cómo afecta esta omisión a la credibilidad y transferibilidad científica del trabajo?"""
+    preguntas_locales.append(pregunta_limitaciones)
     
-    logger.info(f"🎉 Análisis local completado: {len(preguntas_locales)} preguntas generadas con extractos específicos")
+    logger.info(f"Generadas {len(preguntas_locales)} preguntas locales con extractos integrados")
     return preguntas_locales
-
-
-def buscar_contexto_especifico_numeros(texto: str, numeros: List[str]) -> str:
-    """
-    Busca contexto específico adicional alrededor de los números encontrados.
-    """
-    import re
-    contextos = []
-    
-    for numero in numeros[:2]:  # Solo los primeros 2
-        patron = rf'.{{20,100}}{re.escape(numero)}.{{20,100}}'
-        matches = re.findall(patron, texto, re.IGNORECASE)
-        if matches:
-            contexto = matches[0].strip()
-            if len(contexto) > 30:
-                contextos.append(contexto[:80] + "..." if len(contexto) > 80 else contexto)
-    
-    if contextos:
-        return f"específicamente en el contexto: *{contextos[0]}*"
-    else:
-        return "en múltiples secciones del documento"
 
 
 def extraer_fragmentos_con_numeros(texto: str, numeros: List[str]) -> List[str]:
@@ -1382,220 +1136,199 @@ def extraer_datos_especificos_tfm(texto_tfm: str, resultados: List[Dict], logger
             logger.warning("No hay texto del TFM disponible para extracción específica")
         return datos
     
-    # Obtener configuraciones del YAML
-    patrones = config.get("patrones_regex", {})
-    indicadores_config = config.get("indicadores_financieros", {})
-    limites = config.get("limites", {})
+    # 1. Números, porcentajes y valores numéricos (EXPANDIDO PARA FINANZAS)
+    datos["numeros_y_porcentajes"] = re.findall(r'\d+(?:\.\d+)?%', texto_tfm)
     
-    # 1. Extracción basada en patrones regex del YAML
-    if "numeros_y_porcentajes" in datos:
-        patron = patrones.get("numeros_porcentajes", r'\d+(?:\.\d+)?%')
-        datos["numeros_y_porcentajes"] = re.findall(patron, texto_tfm)
+    # Valores financieros ampliados
+    datos["valores_financieros"] = re.findall(r'[€$£¥S/]\s*\d+(?:,\d{3})*(?:\.\d+)?', texto_tfm)
     
-    if "valores_financieros" in datos:
-        patron = patrones.get("valores_financieros", r'[€$£¥S/]\s*\d+(?:,\d{3})*(?:\.\d+)?')
-        datos["valores_financieros"] = re.findall(patron, texto_tfm)
+    # Ratios financieros específicos
+    ratios_pattern = r'(?:ratio|índice|coeficiente)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?)'
+    ratios_encontrados = re.findall(ratios_pattern, texto_tfm, re.IGNORECASE)
+    datos["ratios_financieros"] = [f"{ratio.strip()}: {valor}" for ratio, valor in ratios_encontrados]
     
-    if "ratios_financieros" in datos:
-        patron = patrones.get("ratios_financieros", r'(?:ratio|índice|coeficiente)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?)')
-        ratios_encontrados = re.findall(patron, texto_tfm, re.IGNORECASE)
-        datos["ratios_financieros"] = [f"{ratio.strip()}: {valor}" for ratio, valor in ratios_encontrados]
+    # Indicadores financieros clave
+    indicadores_financieros = [
+        r'ROI[:=]\s*(\d+(?:\.\d+)?%?)',
+        r'VAN[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
+        r'NPV[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
+        r'TIR[:=]\s*(\d+(?:\.\d+)?%)',
+        r'IRR[:=]\s*(\d+(?:\.\d+)?%)',
+        r'WACC[:=]\s*(\d+(?:\.\d+)?%)',
+        r'EVA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
+        r'EBITDA[:=]\s*([€$£¥S/]?\s*\d+(?:,\d{3})*(?:\.\d+)?)',
+        r'payback[:=]\s*(\d+(?:\.\d+)?)\s*(?:años?|meses?)',
+        r'punto de equilibrio[:=]\s*(\d+(?:,\d{3})*)',
+        r'break\s*even[:=]\s*(\d+(?:,\d{3})*)'
+    ]
     
-    # Indicadores financieros desde configuración YAML
-    if "indicadores_financieros" in datos:
-        datos["indicadores_financieros"] = []
-        for nombre, patron in indicadores_config.items():
-            try:
-                matches = re.findall(patron, texto_tfm, re.IGNORECASE)
-                datos["indicadores_financieros"].extend(matches)
-            except re.error:
-                logger.warning(f"Patrón regex inválido para {nombre}: {patron}")
+    datos["indicadores_financieros"] = []
+    for patron in indicadores_financieros:
+        matches = re.findall(patron, texto_tfm, re.IGNORECASE)
+        datos["indicadores_financieros"].extend(matches)
     
-    if "resultados_cuantitativos" in datos:
-        patron = patrones.get("resultados_cuantitativos", r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras|respuestas)')
-        datos["resultados_cuantitativos"] = re.findall(patron, texto_tfm, re.IGNORECASE)
+    datos["resultados_cuantitativos"] = re.findall(r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras)', texto_tfm, re.IGNORECASE)
+    datos["datos_temporales"] = re.findall(r'\b(?:20\d{2}|2\d{3})\b', texto_tfm)
     
-    if "datos_temporales" in datos:
-        patron = patrones.get("datos_temporales", r'\b(?:20\d{2}|2\d{3})\b')
-        datos["datos_temporales"] = re.findall(patron, texto_tfm)
+    # 2. Metodologías y herramientas (ampliado para CUALQUIER DOMINIO)
+    metodologias_amplias = [
+        # Estratégicas
+        'PESTEL', 'PORTER', 'DAFO', 'SWOT', 'VRIO', 'CANVAS', 'BALANCED SCORECARD',
+        'MEFE', 'MEFI', 'MATRIZ BCG', 'CINCO FUERZAS', 'CADENA DE VALOR',
+        'CORE COMPETENCE', 'BENCHMARKING', 'ANALISIS DE COMPETIDORES',
+        # Financieras y Económicas
+        'ROI', 'VAN', 'NPV', 'TIR', 'IRR', 'PAYBACK', 'EVA', 'EBITDA', 'WACC',
+        'RATIO DE LIQUIDEZ', 'RATIO DE SOLVENCIA', 'RATIO DE RENTABILIDAD',
+        'ANALISIS VERTICAL', 'ANALISIS HORIZONTAL', 'DUPONT', 'Z-SCORE',
+        'CAPM', 'BETA', 'COEFICIENTE DE VARIACION', 'ANALISIS DE SENSIBILIDAD',
+        'MONTE CARLO', 'ARBOL DE DECISION', 'VALOR PRESENTE NETO', 'TASA INTERNA',
+        'FLUJO DE CAJA', 'CASH FLOW', 'PUNTO DE EQUILIBRIO', 'BREAK EVEN',
+        'ANALISIS COSTO-BENEFICIO', 'ABC COSTING', 'MARGEN CONTRIBUCION',
+        # Operacionales y Mejora
+        'LEAN', 'SIX SIGMA', 'SCRUM', 'KANBAN', 'ISHIKAWA', 'KAIZEN',
+        'JUST IN TIME', 'TOC', 'TEORIA DE RESTRICCIONES', 'ANALISIS DE PARETO',
+        'FMEA', 'CAUSA RAIZ', '5 PORQUES', 'MAPEO DE PROCESOS',
+        # Investigación científica
+        'ENCUESTA', 'ENTREVISTA', 'OBSERVACIÓN', 'FOCUS GROUP', 'DELPHI',
+        'ANÁLISIS FACTORIAL', 'REGRESIÓN', 'CORRELACIÓN', 'CHI-CUADRADO', 'ANOVA',
+        'CRONBACH', 'KAISER', 'BARTLETT', 'LIKERT', 'SPSS', 'R STUDIO',
+        'ANALISIS MULTIVARIANTE', 'REGRESION LOGISTICA', 'CLUSTER ANALYSIS',
+        # Tecnológicas
+        'MACHINE LEARNING', 'BIG DATA', 'BLOCKCHAIN', 'IOT', 'INTELIGENCIA ARTIFICIAL',
+        'CRM', 'ERP', 'API', 'UX', 'UI', 'DEVOPS', 'CLOUD COMPUTING',
+        'BUSINESS INTELLIGENCE', 'DATA MINING', 'ANALYTICS', 'DASHBOARD',
+        # Educativas
+        'CONSTRUCTIVISMO', 'CONDUCTISMO', 'COGNITIVISMO', 'BLOOM', 'KIRKPATRICK',
+        'ADDIE', 'MOODLE', 'LMS', 'E-LEARNING', 'FLIPPED CLASSROOM',
+        # Salud
+        'ENSAYO CONTROLADO', 'PLACEBO', 'DOBLE CIEGO', 'META-ANÁLISIS', 'REVISIÓN SISTEMÁTICA',
+        # Marketing
+        'SEM', 'SEO', 'SOCIAL MEDIA', 'INBOUND', 'FUNNEL', 'KPI', 'CTR', 'CAC', 'LTV',
+        # Psicología/Sociología
+        'GROUNDED THEORY', 'FENOMENOLOGÍA', 'ETNOGRAFÍA', 'ANÁLISIS DE CONTENIDO'
+    ]
     
-    # 2. Metodologías desde configuración YAML
-    if "metodologias_mencionadas" in datos:
-        metodologias_config = config.get("metodologias", {})
-        for categoria, lista_metodologias in metodologias_config.items():
-            for metodologia in lista_metodologias:
-                if metodologia.lower() in texto_tfm.lower():
-                    datos["metodologias_mencionadas"].append(metodologia)
+    for metodologia in metodologias_amplias:
+        if metodologia.lower() in texto_tfm.lower():
+            datos["metodologias_mencionadas"].append(metodologia)
     
-    # 3. Herramientas, empresas y problemas usando patrones del YAML
-    if "nombres_herramientas" in datos:
-        patron = patrones.get("herramientas", r'\b(?:matriz|análisis|modelo|framework|diagrama)\s+([A-Z][A-Za-z\s]+?)(?:\s|\.|\,)')
-        herramientas_encontradas = re.findall(patron, texto_tfm, re.IGNORECASE)
-        max_herramientas = limites.get("herramientas_max", 5)
-        datos["nombres_herramientas"] = herramientas_encontradas[:max_herramientas]
+    # Extraer nombres de herramientas específicas
+    herramientas_pattern = r'\b(?:matriz|análisis|modelo|framework|diagrama)\s+([A-Z][A-Za-z\s]+?)(?:\s|\.|\,)'
+    herramientas_encontradas = re.findall(herramientas_pattern, texto_tfm, re.IGNORECASE)
+    datos["nombres_herramientas"] = herramientas_encontradas[:5]  # Máximo 5
     
-    if "empresas_organizaciones" in datos:
-        patron = patrones.get("empresas", r'\b[A-Z][A-Z\s&]{2,15}\b')
-        empresas_encontradas = re.findall(patron, texto_tfm)
-        palabras_excluir = set(config.get("palabras_excluir_empresas", ["EL", "LA", "DE"]))
-        max_empresas = limites.get("empresas_max", 5)
-        datos["empresas_organizaciones"] = [emp for emp in empresas_encontradas[:max_empresas] 
-                                           if len(emp.strip()) > 3 and emp.strip() not in palabras_excluir]
+    # Extraer nombres de empresas u organizaciones (palabras en mayúsculas)
+    empresas_pattern = r'\b[A-Z][A-Z\s&]{2,15}\b'
+    empresas_encontradas = re.findall(empresas_pattern, texto_tfm)
+    # Filtrar palabras comunes que no son empresas
+    palabras_excluir = {'EL', 'LA', 'DE', 'CON', 'POR', 'PARA', 'QUE', 'DEL', 'LOS', 'LAS', 'UN', 'UNA'}
+    datos["empresas_organizaciones"] = [emp for emp in empresas_encontradas[:5] 
+                                       if len(emp.strip()) > 3 and emp.strip() not in palabras_excluir]
     
     # Buscar indicadores de problemas en justificaciones de resultados
-    if "indicadores_problemas" in datos:
-        for resultado in resultados:
-            justificacion = resultado.get("justificacion", "")
-            if any(palabra in justificacion.lower() for palabra in 
-                   ["sin embargo", "pero", "no obstante", "contradice", "inconsistente", "falta", "ausencia"]):
-                datos["indicadores_problemas"].append(justificacion[:150])
+    for resultado in resultados:
+        justificacion = resultado.get("justificacion", "")
+        if any(palabra in justificacion.lower() for palabra in 
+               ["sin embargo", "pero", "no obstante", "contradice", "inconsistente", "falta", "ausencia"]):
+            datos["indicadores_problemas"].append(justificacion[:150])
     
-    # Buscar frases contradictorias usando patrón del YAML
-    if "frases_contradictorias" in datos:
-        patron = patrones.get("frases_contradictorias", r'[^.]*(?:sin embargo|pero|no obstante|contradice|inconsistente|falta|ausencia)[^.]*\.')
-        frases_contradictorias = re.findall(patron, texto_tfm, re.IGNORECASE)
-        max_frases = limites.get("frases_contradictorias_max", 3)
-        datos["frases_contradictorias"] = frases_contradictorias[:max_frases]
+    # Buscar frases que indican contradicciones o problemas
+    frases_problema_pattern = r'[^.]*(?:sin embargo|pero|no obstante|contradice|inconsistente|falta|ausencia)[^.]*\.'
+    frases_contradictorias = re.findall(frases_problema_pattern, texto_tfm, re.IGNORECASE)
+    datos["frases_contradictorias"] = frases_contradictorias[:3]  # Máximo 3
     
-    # 4. Extracción de conceptos académicos usando patrones del YAML
+    # EXTRACCIONES AMPLIADAS PARA CUALQUIER DOMINIO
     
-    # Conceptos teóricos
-    if "conceptos_teoricos" in datos:
-        patrones_teoricos = [
-            patrones.get("teorias", r'teoría\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
-            patrones.get("modelos", r'modelo\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
-            patrones.get("enfoques", r'enfoque\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'),
-            patrones.get("paradigmas", r'paradigma\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)')
-        ]
-        for patron in patrones_teoricos:
-            try:
-                conceptos = re.findall(patron, texto_tfm, re.IGNORECASE)
-                datos["conceptos_teoricos"].extend([c.strip() for c in conceptos if len(c.strip()) > 3])
-            except re.error:
-                continue
+    # Conceptos teóricos y marcos conceptuales
+    patrones_teoricos = [
+        r'teoría\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
+        r'modelo\s+de\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
+        r'enfoque\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)',
+        r'paradigma\s+([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+    ]
+    for patron in patrones_teoricos:
+        conceptos = re.findall(patron, texto_tfm, re.IGNORECASE)
+        datos["conceptos_teoricos"].extend([c.strip() for c in conceptos if len(c.strip()) > 3])
     
-    # Variables e hipótesis
-    if "variables_estudiadas" in datos:
-        patron = patrones.get("variables_dependientes", r'variable\s+(?:dependiente|independiente|moderadora):\s*([^.]{3,60})')
-        datos["variables_estudiadas"] = re.findall(patron, texto_tfm, re.IGNORECASE)
+    # Variables e hipótesis de investigación
+    datos["variables_estudiadas"] = re.findall(r'variable\s+(?:dependiente|independiente|moderadora):\s*([^.]{3,60})', texto_tfm, re.IGNORECASE)
+    datos["hipotesis_planteadas"] = re.findall(r'hipótesis\s*(?:\d+)?:\s*([^.]{10,100})', texto_tfm, re.IGNORECASE)
     
-    if "hipotesis_planteadas" in datos:
-        patron = patrones.get("hipotesis", r'hipótesis\s*(?:\d+)?:\s*([^.]{10,100})')
-        datos["hipotesis_planteadas"] = re.findall(patron, texto_tfm, re.IGNORECASE)
+    # Resultados cuantitativos y escalas
+    datos["resultados_cuantitativos"] = re.findall(r'\d+(?:\.\d+)?\s*(?:puntos|grados|unidades|casos|participantes|muestras|respuestas)', texto_tfm, re.IGNORECASE)
+    datos["escalas_medicion"] = re.findall(r'escala\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,20})(?:\s|\.|\,)', texto_tfm, re.IGNORECASE)
     
-    # Escalas de medición
-    if "escalas_medicion" in datos:
-        patron = patrones.get("escalas", r'escala\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,20})(?:\s|\.|\,)')
-        datos["escalas_medicion"] = re.findall(patron, texto_tfm, re.IGNORECASE)
-    
-    # Sectores e industrias
-    if "sectores_industrias" in datos:
-        patron = patrones.get("sectores", r'(?:sector|industria|área|campo|ámbito|dominio)\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)')
-        sectores = re.findall(patron, texto_tfm, re.IGNORECASE)
-        max_sectores = limites.get("sectores_max", 5)
-        datos["sectores_industrias"] = [s.strip() for s in sectores if len(s.strip()) > 3][:max_sectores]
+    # Sectores, industrias y dominios
+    sectores_pattern = r'(?:sector|industria|área|campo|ámbito|dominio)\s+(?:de\s+)?([A-Za-záéíóúñü\s]{3,25})(?:\s|\.|\,)'
+    sectores = re.findall(sectores_pattern, texto_tfm, re.IGNORECASE)
+    datos["sectores_industrias"] = [s.strip() for s in sectores if len(s.strip()) > 3][:5]
     
     # Fuentes citadas
-    if "fuentes_citadas" in datos:
-        patron = patrones.get("fuentes_citadas", r'\(([A-Za-záéíóúñü\s&,]{3,30}),?\s*(\d{4})\)')
-        fuentes = re.findall(patron, texto_tfm)
-        max_fuentes = limites.get("fuentes_citadas_max", 8)
-        datos["fuentes_citadas"] = [f"{autor.strip()} ({año})" for autor, año in fuentes[:max_fuentes]]
+    fuentes_pattern = r'\(([A-Za-záéíóúñü\s&,]{3,30}),?\s*(\d{4})\)'
+    fuentes = re.findall(fuentes_pattern, texto_tfm)
+    datos["fuentes_citadas"] = [f"{autor.strip()} ({año})" for autor, año in fuentes[:8]]
     
     # Limitaciones explícitas
-    if "limitaciones_reconocidas" in datos:
-        limitaciones_patterns = [
-            patrones.get("limitaciones", r'limitaci[oó]n[^.]{5,80}\.'),
-            patrones.get("no_pudo", r'no se (?:pudo|puede|considera)[^.]{5,60}\.'),
-            patrones.get("ausencias", r'(?:falta|ausencia) de[^.]{5,60}\.')
-        ]
-        max_limitaciones = limites.get("limitaciones_max", 2)
-        for patron in limitaciones_patterns:
-            try:
-                limitaciones = re.findall(patron, texto_tfm, re.IGNORECASE)
-                datos["limitaciones_reconocidas"].extend(limitaciones[:max_limitaciones])
-            except re.error:
-                continue
+    limitaciones_patterns = [
+        r'limitaci[oó]n[^.]{5,80}\.',
+        r'no se (?:pudo|puede|considera)[^.]{5,60}\.',
+        r'(?:falta|ausencia) de[^.]{5,60}\.'
+    ]
+    for patron in limitaciones_patterns:
+        limitaciones = re.findall(patron, texto_tfm, re.IGNORECASE)
+        datos["limitaciones_reconocidas"].extend(limitaciones[:2])
     
     # Conclusiones y recomendaciones
-    if "conclusiones_clave" in datos:
-        patron = patrones.get("conclusiones", r'(?:se concluye|en conclusión|finalmente)[^.]{10,80}\.')
-        max_conclusiones = limites.get("conclusiones_max", 3)
-        datos["conclusiones_clave"] = re.findall(patron, texto_tfm, re.IGNORECASE)[:max_conclusiones]
+    datos["conclusiones_clave"] = re.findall(r'(?:se concluye|en conclusión|finalmente)[^.]{10,80}\.', texto_tfm, re.IGNORECASE)[:3]
+    datos["recomendaciones"] = re.findall(r'(?:se recomienda|recomendación)[^.]{10,80}\.', texto_tfm, re.IGNORECASE)[:3]
     
-    if "recomendaciones" in datos:
-        patron = patrones.get("recomendaciones", r'(?:se recomienda|recomendación)[^.]{10,80}\.')
-        max_recomendaciones = limites.get("recomendaciones_max", 3)
-        datos["recomendaciones"] = re.findall(patron, texto_tfm, re.IGNORECASE)[:max_recomendaciones]
+    # Términos técnicos y siglas
+    terminos_tecnicos = re.findall(r'\b[A-Z][a-z]+(?:[A-Z][a-z]+)+\b', texto_tfm)  # CamelCase
+    terminos_tecnicos.extend(re.findall(r'\b[A-Z]{2,6}\b', texto_tfm))  # Siglas
+    datos["terminos_tecnicos"] = list(set(terminos_tecnicos))[:10]
     
-    # Términos técnicos
-    if "terminos_tecnicos" in datos:
-        terminos_tecnicos = []
-        patron_camel = patrones.get("camel_case", r'\b[A-Z][a-z]+(?:[A-Z][a-z]+)+\b')
-        patron_siglas = patrones.get("siglas", r'\b[A-Z]{2,6}\b')
-        
-        try:
-            terminos_tecnicos.extend(re.findall(patron_camel, texto_tfm))
-            terminos_tecnicos.extend(re.findall(patron_siglas, texto_tfm))
-            max_tecnicos = limites.get("terminos_tecnicos_max", 10)
-            datos["terminos_tecnicos"] = list(set(terminos_tecnicos))[:max_tecnicos]
-        except re.error:
-            datos["terminos_tecnicos"] = []
+    # EXTRACCIONES FINANCIERAS AVANZADAS
     
-    # 5. Análisis financiero avanzado usando configuración YAML
-    if "analisis_financiero_tipo" in datos:
-        tipos_analisis_config = config.get("tipos_analisis_financiero", [])
-        for tipo in tipos_analisis_config:
-            if tipo.lower() in texto_tfm.lower():
-                datos["analisis_financiero_tipo"].append(tipo)
+    # Tipos de análisis financiero mencionados
+    tipos_analisis = [
+        'análisis vertical', 'análisis horizontal', 'análisis dupont', 'análisis de ratios',
+        'análisis de sensibilidad', 'análisis de escenarios', 'simulación monte carlo',
+        'análisis costo-beneficio', 'flujo de caja descontado', 'análisis de riesgo'
+    ]
+    for tipo in tipos_analisis:
+        if tipo.lower() in texto_tfm.lower():
+            datos["analisis_financiero_tipo"].append(tipo)
     
-    # Métricas de rendimiento
-    if "metricas_rendimiento" in datos:
-        patron = patrones.get("metricas_rendimiento", r'(?:margen|rentabilidad|rendimiento)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?%?)')
-        try:
-            metricas = re.findall(patron, texto_tfm, re.IGNORECASE)
-            datos["metricas_rendimiento"] = [f"{metrica.strip()}: {valor}" for metrica, valor in metricas]
-        except re.error:
-            datos["metricas_rendimiento"] = []
+    # Métricas de rendimiento específicas
+    metricas_pattern = r'(?:margen|rentabilidad|rendimiento)\s+(?:de\s+)?([a-záéíóúñü\s]+?):\s*(\d+(?:\.\d+)?%?)'
+    metricas = re.findall(metricas_pattern, texto_tfm, re.IGNORECASE)
+    datos["metricas_rendimiento"] = [f"{metrica.strip()}: {valor}" for metrica, valor in metricas]
     
-    # Proyecciones financieras
-    if "proyecciones_financieras" in datos:
-        patron = patrones.get("proyecciones_financieras", r'(?:proyección|previsión|estimación)\s+(?:a\s+)?(\d+\s*años?)')
-        try:
-            proyecciones = re.findall(patron, texto_tfm, re.IGNORECASE)
-            max_proyecciones = limites.get("proyecciones_max", 3)
-            datos["proyecciones_financieras"] = proyecciones[:max_proyecciones]
-        except re.error:
-            datos["proyecciones_financieras"] = []
+    # Proyecciones y horizontes temporales
+    proyecciones_pattern = r'(?:proyección|previsión|estimación)\s+(?:a\s+)?(\d+\s*años?)'
+    proyecciones = re.findall(proyecciones_pattern, texto_tfm, re.IGNORECASE)
+    datos["proyecciones_financieras"] = proyecciones[:3]
     
-    # Criterios de inversión usando configuración YAML
-    if "criterios_inversion" in datos:
-        criterios_config = config.get("criterios_inversion", [])
-        max_criterios = limites.get("criterios_inversion_max", 2)
-        for patron in criterios_config:
-            try:
-                matches = re.findall(patron, texto_tfm, re.IGNORECASE)
-                datos["criterios_inversion"].extend(matches[:max_criterios])
-            except re.error:
-                continue
+    # Criterios de inversión y evaluación
+    criterios_inversion = [
+        r'criterio de (?:aceptación|rechazo):\s*([^.]{10,60})',
+        r'umbral mínimo:\s*(\d+(?:\.\d+)?%?)',
+        r'tasa de descuento:\s*(\d+(?:\.\d+)?%)',
+        r'costo de capital:\s*(\d+(?:\.\d+)?%)',
+        r'beta:\s*(\d+(?:\.\d+)?)',
+        r'prima de riesgo:\s*(\d+(?:\.\d+)?%)'
+    ]
+    for patron in criterios_inversion:
+        matches = re.findall(patron, texto_tfm, re.IGNORECASE)
+        datos["criterios_inversion"].extend(matches[:2])
     
-    # 6. Estadísticas finales y logging
-    if logger and config.get("logging", {}).get("mostrar_estadisticas", True):
-        total_campos = sum(len(v) if isinstance(v, list) else 1 for v in datos.values())
-        campos_con_datos = sum(1 for v in datos.values() if (isinstance(v, list) and len(v) > 0) or (not isinstance(v, list) and v))
-        
-        logger.info(f"📊 EXTRACCIÓN COMPLETADA:")
-        logger.info(f"   📈 Total de campos configurados: {len(datos)}")
-        logger.info(f"   ✅ Campos con datos extraídos: {campos_con_datos}")
-        logger.info(f"   📋 Total de elementos extraídos: {total_campos}")
-        
-        # Mostrar resumen por categorías principales si hay datos
-        categorias_principales = ["metodologias_mencionadas", "conceptos_teoricos", "indicadores_financieros", "sectores_industrias"]
-        for categoria in categorias_principales:
-            if categoria in datos and len(datos[categoria]) > 0:
-                logger.info(f"   🔹 {categoria}: {len(datos[categoria])} elementos")
-    
-    logger.info(f"✅ Extracción de datos específicos completada usando configuración YAML")
+    if logger:
+        logger.info(f"Extraídos datos específicos: {len(datos['numeros_y_porcentajes'])} números, "
+                    f"{len(datos['metodologias_mencionadas'])} metodologías, "
+                    f"{len(datos['conceptos_teoricos'])} conceptos teóricos, "
+                    f"{len(datos['variables_estudiadas'])} variables, "
+                    f"{len(datos['sectores_industrias'])} sectores, "
+                    f"{len(datos['empresas_organizaciones'])} organizaciones") if logger else None
     
     return datos
 
@@ -2366,166 +2099,6 @@ def main() -> int:
     exportar_resultados(resultados, carpeta_salida, problemas_contenido, logger, texto_tfm)
     logger.info("✅ Evaluación finalizada correctamente.")
     return 0
-
-
-def extraer_fragmentos_con_numeros(texto: str, numeros: List[str]) -> List[str]:
-    """
-    Extrae fragmentos del texto que contengan números específicos con contexto REAL.
-    """
-    import re
-    fragmentos = []
-    
-    for numero in numeros[:3]:  # Solo los primeros 3
-        # Patrón más amplio que busca el número con contexto alrededor
-        patron = rf'[^.]*{re.escape(numero)}[^.]*\.'
-        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
-        
-        for match in matches:
-            # Limpiar el fragmento y quitar saltos de línea
-            fragmento = re.sub(r'\s+', ' ', match.strip())
-            
-            # Solo usar fragmentos que tengan suficiente contexto específico
-            if len(fragmento) > 30 and numero in fragmento:
-                # Verificar que no sea solo el número sin contexto
-                palabras_contexto = len([p for p in fragmento.split() if p != numero and len(p) > 2])
-                if palabras_contexto >= 5:  # Al menos 5 palabras de contexto
-                    if len(fragmento) > 150:
-                        fragmento = fragmento[:150] + "..."
-                    fragmentos.append(fragmento)
-                    break  # Solo un fragmento por número
-    
-    return fragmentos
-
-
-def extraer_fragmentos_con_metodologias(texto: str, metodologias: List[str]) -> List[str]:
-    """
-    Extrae fragmentos del texto que contengan metodologías específicas con contexto REAL.
-    """
-    import re
-    fragmentos = []
-    
-    for metodologia in metodologias[:2]:  # Solo las primeras 2
-        # Buscar oraciones completas que contengan la metodología
-        metodo_palabra = metodologia[0] if isinstance(metodologia, tuple) else metodologia
-        patron = rf'[^.]*{re.escape(metodo_palabra)}[^.]*\.'
-        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
-        
-        for match in matches:
-            # Limpiar el fragmento
-            fragmento = re.sub(r'\s+', ' ', match.strip())
-            
-            # Solo usar fragmentos con suficiente contexto específico
-            if len(fragmento) > 40 and metodo_palabra.lower() in fragmento.lower():
-                palabras_contexto = len([p for p in fragmento.split() if len(p) > 3])
-                if palabras_contexto >= 6:  # Al menos 6 palabras significativas
-                    if len(fragmento) > 150:
-                        fragmento = fragmento[:150] + "..."
-                    fragmentos.append(fragmento)
-                    break  # Solo un fragmento por metodología
-    
-    return fragmentos
-
-
-def extraer_fragmento_conclusiones_categoricas(texto: str) -> str:
-    """
-    Extrae un fragmento ESPECÍFICO del texto que contenga conclusiones categóricas REALES.
-    """
-    import re
-    
-    # Patrones más específicos para buscar conclusiones categóricas REALES
-    patrones_especificos = [
-        r'[Ll]os resultados [^.]{30,150}\.',
-        r'[Ss]e demuestra que [^.]{30,150}\.',
-        r'[Ss]e concluye que [^.]{30,150}\.',
-        r'[Ll]os hallazgos [^.]{30,150}\.',
-        r'[Ll]a investigación muestra [^.]{30,150}\.',
-        r'[Ss]e confirma que [^.]{30,150}\.',
-        r'[Qq]ueda evidenciado [^.]{30,150}\.',
-        r'[Ss]e establece que [^.]{30,150}\.',
-        r'[Ee]l análisis revela [^.]{30,150}\.',
-        r'[Ss]e observa que [^.]{30,150}\.'
-    ]
-    
-    for patron in patrones_especificos:
-        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
-        if matches:
-            for match in matches:
-                fragmento = re.sub(r'\s+', ' ', match.strip())
-                # Verificar que tenga contenido específico, no genérico
-                palabras_significativas = len([p for p in fragmento.split() if len(p) > 4])
-                if palabras_significativas >= 8:  # Al menos 8 palabras significativas
-                    return fragmento[:150] + "..." if len(fragmento) > 150 else fragmento
-    
-    # Buscar cualquier oración que contenga términos de resultados con más contexto
-    patrones_flexibles = [
-        r'[^.]*(?:confirm|establec|demuestr|evidenci|valid)[^.]{20,100}\.',
-        r'[^.]*(?:resulta|hallazg|conclus|encuentr)[^.]{20,100}\.',
-        r'[^.]*(?:indica|sugier|señal|revel)[^.]{20,100}\.'
-    ]
-    
-    for patron in patrones_flexibles:
-        matches = re.findall(patron, texto, re.IGNORECASE | re.DOTALL)
-        if matches:
-            for match in matches:
-                fragmento = re.sub(r'\s+', ' ', match.strip())
-                if len(fragmento) > 50:
-                    palabras_significativas = len([p for p in fragmento.split() if len(p) > 4])
-                    if palabras_significativas >= 6:
-                        return fragmento[:150] + "..." if len(fragmento) > 150 else fragmento
-    
-    # ÚLTIMO RECURSO: buscar cualquier oración larga con contenido
-    oraciones_largas = re.findall(r'[^.]{60,200}\.', texto)
-    if oraciones_largas:
-        for oracion in oraciones_largas:
-            oracion_limpia = re.sub(r'\s+', ' ', oracion.strip())
-            # Evitar oraciones que sean solo listas o referencias
-            if not re.search(r'^\s*\d+[\.\))]', oracion_limpia) and len(oracion_limpia.split()) >= 8:
-                return oracion_limpia[:150] + "..." if len(oracion_limpia) > 150 else oracion_limpia
-    
-    # Fallback con fragmento genérico IDENTIFICABLE - SOLO si no se encuentra nada
-    return "los hallazgos confirman la hipótesis de manera concluyente"
-
-
-def verificar_unicidad_preguntas(pregunta: str, historial_preguntas: List[str]) -> bool:
-    """
-    Verifica que una pregunta no sea duplicada comparando extractos específicos.
-    """
-    import re
-    
-    # Extraer el extracto de la pregunta actual (texto entre asteriscos)
-    match_actual = re.search(r'\*(.*?)\*', pregunta)
-    if not match_actual:
-        return True  # Si no tiene extracto, la consideramos válida
-    
-    extracto_actual = match_actual.group(1).strip()
-    
-    # Comparar con preguntas anteriores
-    for pregunta_anterior in historial_preguntas:
-        match_anterior = re.search(r'\*(.*?)\*', pregunta_anterior)
-        if match_anterior:
-            extracto_anterior = match_anterior.group(1).strip()
-            
-            # Si los extractos son muy similares, es potencialmente duplicada
-            if calcular_similitud_extractos(extracto_actual, extracto_anterior) > 0.8:
-                return False
-    
-    return True
-
-
-def calcular_similitud_extractos(extracto1: str, extracto2: str) -> float:
-    """
-    Calcula la similitud entre dos extractos usando comparación de palabras.
-    """
-    palabras1 = set(extracto1.lower().split())
-    palabras2 = set(extracto2.lower().split())
-    
-    if not palabras1 or not palabras2:
-        return 0.0
-    
-    interseccion = len(palabras1.intersection(palabras2))
-    union = len(palabras1.union(palabras2))
-    
-    return interseccion / union if union > 0 else 0.0
 
 
 if __name__ == "__main__":
