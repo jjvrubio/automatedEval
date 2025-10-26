@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Evaluador TFM - SafeFix
+Evaluador TFM
 
-Objetivo:
-- No tocar la versión en Git.
-- Mantener `temperature=0.0` (determinismo), pero garantizar que el prompt 
-  incorpora elementos únicos del documento (hash, frases clave) para que
-  respuestas idénticas no se deban a prompts idénticos por error.
-- Limpiar variables globales usadas por el script original.
-- Añadir logging detallado de selección/lectura/prompt-hash.
-- Usar los YAML de configuración existentes.
+Replica de Evaluador_TFM_SafeFix con las mejoras de diagnóstico, validación YAML,
+exportación en la carpeta del TFM, normalización CSV/JSON, y generación de preguntas
+de clarificación (sin fallbacks; se aborta si hay error).
 
 Uso:
-  /Users/juanjo/.../venv_arm64/bin/python Evaluador_TFM_SafeFix.py
+  venv_arm64/bin/python Evaluador_TFM.py
 
 """
 from __future__ import annotations
@@ -54,9 +49,6 @@ def reset_globals():
 
 # Logger
 def configurar_logger():
-    """Devuelve un logger nulo (no hace nada). Eliminamos uso de logs para simplificar.
-    Mantener la función para compatibilidad con llamadas existentes.
-    """
     class NullLogger:
         def info(self, *args, **kwargs):
             return None
@@ -81,9 +73,6 @@ def cargar_config_yaml() -> Dict[str, Any]:
 
 
 def validar_config_minima(cfg: Dict[str, Any]) -> None:
-    """Verifica que existan las secciones esenciales en los YAML. Si falta, lanza RuntimeError.
-    Requisito: al menos la sección 'sistema' y 'evaluador' deben contener datos.
-    """
     sistema = cfg.get("sistema") or {}
     evaluador = cfg.get("evaluador") or {}
     if not sistema or not evaluador:
@@ -99,8 +88,7 @@ def seleccionar_archivo_pdf_docx(logger: Any) -> Optional[str]:
         logger.error("AppKit no disponible: selección de archivo no funcionará aquí. Error: %s", e)
         return None
     panel = NSOpenPanel.openPanel()
-    # Aceptar tanto PDF como DOCX
-    panel.setAllowedFileTypes_(["pdf", "docx"])  # <--- corregido: lista de extensiones
+    panel.setAllowedFileTypes_( ["pdf", "docx"] )
     panel.setAllowsMultipleSelection_(False)
     panel.setMessage_("Selecciona el TFM (PDF o DOCX)")
     if panel.runModal() == NSModalResponseOK:
@@ -158,25 +146,16 @@ def extraer_frases_clave(texto: str, n: int = 5) -> List[str]:
     return [w for w, _ in items]
 
 
-# Helper para calcular rutas de exportación (intenta crear subcarpeta en la carpeta del TFM)
+# Helper para calcular rutas de exportación
 def paths_para_exportar(ruta_tfm: Optional[str], ts: str, config: Optional[Dict[str, Any]] = None):
-    """Devuelve rutas de salida para csv/json/md.
-    Si la configuración YAML contiene `sistema.archivos_config.nombres_salida`, se usan
-    los nombres definidos allí. En otro caso, se usan los nombres por defecto.
-    Siempre escribe directamente en la carpeta del TFM (sin subcarpeta).
-    """
     if not ruta_tfm:
         raise RuntimeError("No se proporcionó ruta del TFM para exportar")
-
     tfm_dir = Path(ruta_tfm).resolve().parent
-
-    # Valores por defecto (coinciden con convención existente)
     default_names = {
         "csv": "evaluacion_tfm_resultado.csv",
         "json": "evaluacion_tfm_informe.json",
         "markdown": "evaluacion_tfm_informe.md",
     }
-
     try:
         nombres = (config or {}).get("sistema", {}).get("archivos_config", {}).get("nombres_salida", {})
         csv_name = nombres.get("csv") or default_names["csv"]
@@ -186,13 +165,12 @@ def paths_para_exportar(ruta_tfm: Optional[str], ts: str, config: Optional[Dict[
         csv_name = default_names["csv"]
         json_name = default_names["json"]
         md_name = default_names["markdown"]
-
     csv_direct = tfm_dir / csv_name
     json_direct = tfm_dir / json_name
     md_direct = tfm_dir / md_name
     return csv_direct, json_direct, md_direct
 
-# Construir prompt incluyendo hash y frases clave para diferenciación
+
 def construir_prompt(criterio: str, instrucciones: str, texto_tfm: str, doc_hash: str, phrases: List[str]) -> str:
     sample = texto_tfm[:6000]
     prompt = (
@@ -205,7 +183,7 @@ def construir_prompt(criterio: str, instrucciones: str, texto_tfm: str, doc_hash
     )
     return prompt
 
-# Llamada a OpenAI (compatible con distintas versiones)
+
 def obtener_respuesta_openai(prompt: str, config: Dict[str, Any], logger: Any) -> str:
     if logger is None:
         logger = configurar_logger()
@@ -217,7 +195,6 @@ def obtener_respuesta_openai(prompt: str, config: Dict[str, Any], logger: Any) -
         if api_key:
             break
     if not api_key:
-        # No continuar sin clave: lanzar excepción para que el script pare según la política del usuario
         raise RuntimeError(f"No API key encontrada en variables de entorno: {variables_api}")
 
     temperatura = openai_cfg.get("temperatura_por_defecto", 0.0)
@@ -226,7 +203,6 @@ def obtener_respuesta_openai(prompt: str, config: Dict[str, Any], logger: Any) -
 
     try:
         import openai
-        # Prefer new client style
         try:
             client = openai.OpenAI(api_key=api_key)
             logger.info("Usando cliente openai.OpenAI, modelo=%s temp=%s", modelo, temperatura)
@@ -238,7 +214,6 @@ def obtener_respuesta_openai(prompt: str, config: Dict[str, Any], logger: Any) -
             )
             return getattr(resp.choices[0].message, "content", resp.choices[0].message.content)
         except Exception:
-            # Fallback histórico
             logger.info("Fallback a openai.ChatCompletion.create")
             resp = openai.ChatCompletion.create(
                 model=modelo,
@@ -253,9 +228,6 @@ def obtener_respuesta_openai(prompt: str, config: Dict[str, Any], logger: Any) -
 
 
 def obtener_api_key_desde_config(config: Dict[str, Any]) -> str:
-    """Devuelve la API key encontrada en entorno según las variables configuradas en YAML.
-    Lanza RuntimeError si no encuentra ninguna clave.
-    """
     openai_cfg = config.get("sistema", {}).get("openai_config", {})
     variables_api = openai_cfg.get("variables_api_key", ["MI_CLAVE_API_OPENAI", "OPENAI_API_KEY"])
     for v in variables_api:
@@ -264,7 +236,7 @@ def obtener_api_key_desde_config(config: Dict[str, Any]) -> str:
             return val
     raise RuntimeError(f"No API key encontrada en variables de entorno: {variables_api}")
 
-# Evaluación minimalista usando rúbrica en xlsx
+
 def cargar_rubrica_por_defecto(config: Dict[str, Any], logger: Any):
     if logger is None:
         logger = configurar_logger()
@@ -282,6 +254,7 @@ def cargar_rubrica_por_defecto(config: Dict[str, Any], logger: Any):
         logger.exception("Error cargando rúbrica: %s", e)
         return None
 
+
 def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logger: Any) -> List[Dict[str, Any]]:
     resultados = []
     if logger is None:
@@ -297,15 +270,11 @@ def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logg
         criterio = str(row.iloc[0]).strip()
         if not criterio or criterio.lower() in {"nan", "none", ""}:
             continue
-        # Intentar extraer las 4 descripciones de nivel desde la rúbrica
         descripcion_niveles: List[str] = []
         try:
-            # Si la rúbrica tiene al menos 5 columnas, asumimos: [criterio, nivel1, nivel2, nivel3, nivel4, ...]
             if len(row) >= 5:
-                # Tomar las siguientes 4 columnas tras la primera
                 descripcion_niveles = [str(x).strip() for x in row.iloc[1:5]]
             else:
-                # Intentar buscar columnas cuyo nombre sugiera 'nivel' o 'level'
                 cols = list(rubrica_df.columns)
                 cand = []
                 for c in cols[1:]:
@@ -317,7 +286,6 @@ def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logg
         except Exception:
             descripcion_niveles = []
 
-        # Construir prompt incluyendo las descripciones numeradas si existen
         if descripcion_niveles and len(descripcion_niveles) == 4:
             niveles_text = "\n".join([f"{i+1}. {d}" for i, d in enumerate(descripcion_niveles)])
             prompt_extra = (
@@ -332,13 +300,11 @@ def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logg
         prompt_hash = hashlib.md5(prompt.encode("utf-8")).hexdigest()
         logger.info("Evaluando criterio: %s | prompt_hash: %s", criterio, prompt_hash)
         resp = obtener_respuesta_openai(prompt, config, logger)
-        # Intentar parsear JSON, fallback básico
         if not resp:
             logger.error("Respuesta vacía para criterio: %s", criterio)
             continue
         resp_cand = resp.strip()
         try:
-            # Some models return ```json blocks
             if resp_cand.startswith("```json"):
                 resp_cand = resp_cand[7:]
                 if resp_cand.endswith("```"):
@@ -348,7 +314,6 @@ def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logg
                 if resp_cand.endswith("```"):
                     resp_cand = resp_cand[:-3]
             parsed = json.loads(resp_cand)
-            # Normalizar: asegurarnos de que existe 'descripcion_nivel' con el texto correspondiente
             nivel_elegido = parsed.get("nivel")
             try:
                 nivel_idx = int(nivel_elegido) - 1 if nivel_elegido is not None else None
@@ -357,31 +322,21 @@ def evaluar_tfm_minimal(texto_tfm: str, rubrica_df, config: Dict[str, Any], logg
             if nivel_idx is not None and descripcion_niveles and 0 <= nivel_idx < len(descripcion_niveles):
                 parsed.setdefault("descripcion_nivel", descripcion_niveles[nivel_idx])
             else:
-                # Si no pudimos deducir, dejar descripcion_nivel vacía o tomar la que venga en parsed
                 parsed.setdefault("descripcion_nivel", parsed.get("descripcion_nivel") or "")
-
-            # Añadir las descripciones de los 4 niveles al resultado para que JSON y CSV contengan
-            # las mismas columnas/valores y sea posible sincronizarlos.
             for i in range(4):
                 key = f"nivel_{i+1}"
                 parsed.setdefault(key, descripcion_niveles[i] if i < len(descripcion_niveles) else "")
-
             resultados.append(parsed)
             logger.info("Parse OK criterio %s -> nivel %s", criterio, parsed.get("nivel"))
         except Exception:
             logger.exception("No se pudo parsear JSON. Respuesta: %s", resp)
-            # Guardar fallback
             resultados.append({"criterio": criterio, "nivel": None, "justificacion": resp_cand, "descripcion_nivel": ""})
         time.sleep(0.5)
     return resultados
 
-# Exportar resultados
+
 def _generar_markdown(resultados: List[Dict[str, Any]], preguntas: Optional[List[Dict[str, Any]]] = None) -> str:
-    """Genera un informe en Markdown a partir de la lista de resultados.
-    Estructura similar al archivo `evaluacion_tfm_informe.md` adjunto.
-    """
     lines = ["# Informe de Evaluación TFM", ""]
-    # Añadir secciones por criterio
     for r in resultados:
         criterio = r.get('criterio') or ''
         nivel = r.get('nivel') or ''
@@ -397,7 +352,6 @@ def _generar_markdown(resultados: List[Dict[str, Any]], preguntas: Optional[List
         if areas:
             lines.append(f"- **Áreas de mejora**: {areas}")
         lines.append("")
-    # Tabla resumen
     lines.append("## Tabla de Evaluación")
     lines.append("")
     lines.append("| Criterio | Nivel |")
@@ -407,7 +361,6 @@ def _generar_markdown(resultados: List[Dict[str, Any]], preguntas: Optional[List
         nivel = r.get('nivel') or ''
         lines.append(f"| {criterio} | {nivel} |")
     lines.append("")
-    # Preguntas de clarificación (si las hay)
     if preguntas:
         lines.append("## Preguntas de clarificación")
         lines.append("")
@@ -427,14 +380,10 @@ def _generar_markdown(resultados: List[Dict[str, Any]], preguntas: Optional[List
 
 
 def exportar(resultados: List[Dict[str, Any]], texto_tfm: str, ruta_tfm: Optional[str], config: Optional[Dict[str, Any]], logger: Any) -> None:
-    # No hay fallback: se escriben directamente en la carpeta del TFM o se lanza excepción
     csv_path, json_path, md_path = paths_para_exportar(ruta_tfm, time.strftime("%Y%m%d_%H%M%S"), config)
-    # CSV
     import pandas as pd
     try:
-        # Normalizar y ordenar columnas: intentar imponer un esquema útil y estable
         df = pd.DataFrame(resultados)
-        # Columnas preferidas en el CSV para compatibilidad con automatización externa
         preferred = [
             "criterio",
             "nivel",
@@ -447,7 +396,6 @@ def exportar(resultados: List[Dict[str, Any]], texto_tfm: str, ruta_tfm: Optiona
             "areas_mejora",
             "evidencias",
         ]
-        # Añadir columnas faltantes con cadena vacía
         for c in preferred:
             if c not in df.columns:
                 df[c] = ""
@@ -455,15 +403,12 @@ def exportar(resultados: List[Dict[str, Any]], texto_tfm: str, ruta_tfm: Optiona
         df.to_csv(csv_path, index=False, encoding="utf-8")
     except Exception as e:
         raise RuntimeError(f"No se pudo guardar CSV en {csv_path}: {e}")
-    # JSON
     try:
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(resultados, f, ensure_ascii=False, indent=2)
     except Exception as e:
         raise RuntimeError(f"No se pudo guardar JSON en {json_path}: {e}")
-    # MD
     try:
-        # Preguntas no se serializan al CSV/JSON, solo al MD si se han generado
         md_content = _generar_markdown(resultados, preguntas=None)
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(md_content)
@@ -472,28 +417,19 @@ def exportar(resultados: List[Dict[str, Any]], texto_tfm: str, ruta_tfm: Optiona
 
 
 def generar_preguntas_clarificacion(texto_tfm: str, resultados: List[Dict[str, Any]], config: Dict[str, Any], logger: Any) -> List[Dict[str, Any]]:
-    """Genera preguntas de clarificación académica usando las plantillas.
-    Reglas: generar exactamente el número definido en plantillas (por defecto 3). Si falla el parseo JSON
-    se debe lanzar excepción (no fallback).
-    """
     if logger is None:
         logger = configurar_logger()
-    # Cargar plantilla
     plant = (config or {}).get("plantillas", {})
     analisis_cfg = plant.get("analisis_critico") or {}
     numero = analisis_cfg.get("numero_preguntas_exactas") or analisis_cfg.get("numero_preguntas") or 3
-    # Crear prompt usando plantilla si existe
     try:
         plantilla_text = analisis_cfg.get("analisis_profundo")
     except Exception:
         plantilla_text = None
-
     phrases = extraer_frases_clave(texto_tfm, n=6)
     doc_hash = hashlib.md5(texto_tfm.encode("utf-8")).hexdigest()
-
     if plantilla_text:
         prompt = plantilla_text.format(numero_preguntas=numero, numero_preguntas_exactas=numero)
-        # Añadir contexto único
         prompt = (
             f"{prompt}\nDocumento hash: {doc_hash}\nFrases clave: {', '.join(phrases)}\n"
             "Responde en JSON con una lista llamada 'questions' donde cada elemento tiene: question, motivation, hints."
@@ -505,11 +441,9 @@ def generar_preguntas_clarificacion(texto_tfm: str, resultados: List[Dict[str, A
             f"Documento hash: {doc_hash}\nFrases clave: {', '.join(phrases)}\n"
             "Responde en JSON con una lista llamada 'questions'."
         )
-
     resp = obtener_respuesta_openai(prompt, config, logger)
     if not resp:
         raise RuntimeError("No se obtuvo respuesta para generación de preguntas")
-    # Limpiar bloque ```json si existe
     rc = resp.strip()
     if rc.startswith("```json"):
         rc = rc[7:]
@@ -519,13 +453,10 @@ def generar_preguntas_clarificacion(texto_tfm: str, resultados: List[Dict[str, A
         rc = rc[3:]
         if rc.endswith("```"):
             rc = rc[:-3]
-
     parsed = json.loads(rc)
     questions = parsed.get("questions") or parsed.get("questions_list") or parsed.get("questions")
     if not isinstance(questions, list):
         raise RuntimeError("La respuesta del modelo no contiene una lista 'questions' en JSON")
-
-    # Normalizar claves de cada pregunta
     normalized: List[Dict[str, Any]] = []
     for q in questions:
         if not isinstance(q, dict):
@@ -535,8 +466,6 @@ def generar_preguntas_clarificacion(texto_tfm: str, resultados: List[Dict[str, A
             "motivation": q.get("motivation") or q.get("motivacion") or "",
             "hints": q.get("hints") or q.get("pistas") or "",
         })
-
-    # Verificar unicidad simple: comparar texto de pregunta con preguntas previas en resultados (si existieran)
     seen = set()
     uniq: List[Dict[str, Any]] = []
     for q in normalized:
@@ -544,39 +473,31 @@ def generar_preguntas_clarificacion(texto_tfm: str, resultados: List[Dict[str, A
         if not key:
             continue
         if key in seen:
-            # Repetición en la propia lista: considerar esto un error según la política
             raise RuntimeError("Modelo generó preguntas duplicadas")
         seen.add(key)
         uniq.append(q)
-
     if len(uniq) < numero:
         raise RuntimeError(f"Se generaron {len(uniq)} preguntas únicas, se esperaban {numero}")
-
     return uniq[:numero]
 
-# Main
+
 def main() -> int:
     reset_globals()
     logger = configurar_logger()
     config = cargar_config_yaml()
-
-    logger.info("=== Evaluador TFM SafeFix (no modifica Git) ===")
-    # Validar que los YAML mínimos existan y contengan datos
+    logger.info("=== Evaluador TFM ===")
     try:
         validar_config_minima(config)
     except RuntimeError as e:
         logger.error(str(e))
         print(f"ERROR: {e}")
         return 1
-
-    # Validar que exista API key para OpenAI antes de comenzar
     try:
         _ = obtener_api_key_desde_config(config)
     except RuntimeError as e:
         logger.error(str(e))
         print(f"ERROR: {e}")
         return 1
-
     ruta = seleccionar_archivo_pdf_docx(logger)
     if not ruta:
         logger.error("No se seleccionó archivo. Abortando.")
@@ -590,24 +511,20 @@ def main() -> int:
         logger.error("No se pudo cargar rúbrica. Abortando.")
         return 1
     resultados = evaluar_tfm_minimal(texto, rubrica, config, logger)
-    # Generar preguntas de clarificación y escribir solo en el MD
     try:
         preguntas = generar_preguntas_clarificacion(texto, resultados, config, logger)
     except Exception as e:
         logger.error("Generación de preguntas falló: %s", e)
-        # Seguir la política: no usar fallbacks, señalizar error y abortar
         print(f"ERROR: Generación de preguntas falló: {e}")
         return 1
-
-    # Guardar la última ruta leída para que la función exportar pueda escribir junto al TFM
     exportar(resultados, texto, ruta, config, logger)
-    # Reescribir MD incluyendo las preguntas
     csv_path, json_path, md_path = paths_para_exportar(ruta, time.strftime("%Y%m%d_%H%M%S"), config)
     md_content = _generar_markdown(resultados, preguntas=preguntas)
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(md_content)
     logger.info("Evaluación completada. Archivos guardados en la carpeta del TFM.")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
