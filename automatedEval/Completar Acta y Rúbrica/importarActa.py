@@ -71,8 +71,20 @@ def leer_valores_excel(path):
     valores["Contenido"] = str(hoja["J7"].value)
     valores["Defensa"] = str(hoja["J14"].value)
 
-    valores["Acta_EmailSecretario"] = "juanjose.vazquez@unir.net"
-    valores["Contrasena"] = "vaya-toalla1B"
+    # Credenciales: leer de variables de entorno para evitar hardcoding.
+    # Establece ACTA_EMAIL_SECRETARIO y ACTA_PASSWORD en el entorno o en un gestor de secretos.
+    valores["Acta_EmailSecretario"] = os.environ.get("ACTA_EMAIL_SECRETARIO", "juanjose.vazquez@unir.net")
+    valores["Contrasena"] = os.environ.get("ACTA_PASSWORD")
+    # Si no hay contraseña en el entorno, pedirla de forma segura al usuario (oculta)
+    if not valores["Contrasena"]:
+        pw_script = 'display dialog "Introduce la contraseña para el Acta (se guardará sólo en memoria):" default answer "" with hidden answer'
+        pw_result = subprocess.run(['osascript', '-e', pw_script], capture_output=True, text=True)
+        for line in pw_result.stdout.split(','):
+            if 'text returned:' in line:
+                valores["Contrasena"] = line.split(':', 1)[1].strip()
+        if not valores["Contrasena"]:
+            trazar("❌ No se proporcionó contraseña en entorno ni por diálogo. Abortando.")
+            raise ValueError("No password provided for Acta (ACTA_PASSWORD)")
 
     valores["FechaDefensa"] = pedir_fecha_defensa()
     return valores
