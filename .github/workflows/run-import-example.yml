@@ -1,0 +1,65 @@
+name: Run importarActa (example)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ruta_excel:
+        description: 'Ruta POSIX al fichero Excel (opcional para runners self-hosted)'
+        required: false
+      url_formulario:
+        description: 'URL del formulario UNIR (opcional)'
+        required: false
+      fecha_defensa:
+        description: 'Fecha de defensa dd/mm/aaaa (opcional)'
+        required: false
+
+jobs:
+  note:
+    runs-on: ubuntu-latest
+    outputs:
+      message: ${{ steps.set.outputs.msg }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Informational note
+        id: set
+        run: |
+          echo "msg=This workflow demonstrates how to provide secrets to the script."
+          echo "msg"=done
+
+  run-on-self-hosted:
+    # This job is intended to run on a macOS self-hosted runner with GUI access.
+    # Many parts of `importarActa.py` rely on AppleScript dialogs and a browser UI, so
+    # macos-latest runners without GUI will not work for a full run.
+    runs-on: [self-hosted, macos]
+    needs: note
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run importarActa (example, non-interactive if env vars provided)
+        env:
+          ACTA_PASSWORD: ${{ secrets.ACTA_PASSWORD }}
+          ACTA_EMAIL_SECRETARIO: ${{ secrets.ACTA_EMAIL_SECRETARIO }}
+          RUTA_EXCEL_INPUT: ${{ github.event.inputs.ruta_excel }}
+          URL_FORM_INPUT: ${{ github.event.inputs.url_formulario }}
+          FECHA_DEFENSA_INPUT: ${{ github.event.inputs.fecha_defensa }}
+        run: |
+          echo "Starting importarActa with secrets from repo settings..."
+          # Example: run the script; note that the script uses GUI dialogs unless
+          # adapted to accept env vars or CLI args. This job is intended for a
+          # self-hosted macOS runner with GUI and appropriate permissions.
+          python automatedEval/Completar\ Acta\ y\ R\u00fabrica/importarActa.py || true
+
+  ci-note:
+    runs-on: ubuntu-latest
+    needs: [note]
+    steps:
+      - name: Post-run guidance
+        run: |
+          echo "If you need a fully non-interactive CI run, adapt 'importarActa.py' to accept CLI args or env vars for the Excel path, form URL and date; then call it from the workflow with those values."
