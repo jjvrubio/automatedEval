@@ -1,4 +1,5 @@
-#!/bin/zsh
+# desde la raíz del repo
+zsh "scripts de mantenieminto/remove_office_languages.zsh" --dry-run --apps "Word Excel"#!/bin/zsh
 #
 # remove_office_languages_fixed.zsh
 #
@@ -99,6 +100,7 @@ while [[ $# -gt 0 ]]; do
     --backup-dir) BACKUP_DIR="$2"; shift 2 ;;
     --ignore-running) IGNORE_RUNNING=true; shift ;;
     --keep) KEEP_LANGS=( ${(z)2} ); shift 2 ;;
+  --protect) PROTECTED_RUNTIME=${2}; shift 2 ;;
     --apps) APPS=( ${(z)2} ); shift 2 ;;
     -h|--help) show_help; exit 0 ;;
     *) log_error "Opción no reconocida: $1"; show_help; exit 2 ;;
@@ -193,13 +195,23 @@ should_keep_language() { # $1 = nombre como "es.lproj" o "es_ES.lproj"
   base="${base%.lproj}"       # quita sufijo
   local lower=${base:l}
 
-  # Protección adicional: hay ciertos .lproj que son necesarios para Office y no
-  # son estrictamente idiomas (por ejemplo "Base.lproj"). Protegemos esos nombres
-  # explícitamente para evitar romper la aplicación.
-  local PROTECTED=( base )
+  # Lista de nombres/protecciones por defecto (minúsculas). Estos son tokens
+  # que nunca queremos eliminar porque representan recursos no-localización
+  # o carpetas esenciales dentro del bundle.
+  local DEFAULT_PROTECTED=( base dfonts "office themes" metadata.appintents sdx appintents proofingui officeprefsu officeprefsu.bundle )
+
+  # Permite añadir protecciones vía --protect en tiempo de ejecución: si la var
+  # PROTECTED_RUNTIME está definida, la añadimos.
+  local PROTECTED=( ${DEFAULT_PROTECTED[@]} )
+  if [[ -n "$PROTECTED_RUNTIME" ]]; then
+    PROTECTED+=( ${(z)PROTECTED_RUNTIME} )
+  fi
+
+  # Si el nombre exacto está protegido, conservar
   local p
   for p in $PROTECTED[@]; do
-    if [[ "$lower" == "$p" ]]; then
+    local pl=${p:l}
+    if [[ "$lower" == "$pl" || "$lower" == ${pl}_* || "$lower" == ${pl}-* || "$lower" == *${pl}* ]]; then
       return 0
     fi
   done
