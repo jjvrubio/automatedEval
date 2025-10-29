@@ -193,6 +193,17 @@ should_keep_language() { # $1 = nombre como "es.lproj" o "es_ES.lproj"
   base="${base%.lproj}"       # quita sufijo
   local lower=${base:l}
 
+  # Protección adicional: hay ciertos .lproj que son necesarios para Office y no
+  # son estrictamente idiomas (por ejemplo "Base.lproj"). Protegemos esos nombres
+  # explícitamente para evitar romper la aplicación.
+  local PROTECTED=( base )
+  local p
+  for p in $PROTECTED[@]; do
+    if [[ "$lower" == "$p" ]]; then
+      return 0
+    fi
+  done
+
   # Si KEEP_LANGS contiene un prefijo que coincida, conservar
   local k
   for k in $KEEP_LANGS[@]; do
