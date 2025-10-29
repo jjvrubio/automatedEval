@@ -1,4 +1,7 @@
 #!/bin/zsh
+# desde la raíz del repo
+# Ejemplo de ejecución desde la raíz del repo:
+#   zsh "scripts de mantenieminto/remove_office_languages.zsh" --dry-run --apps "Word Excel"
 #
 # remove_office_languages_fixed.zsh
 #
@@ -39,6 +42,14 @@ setopt EXTENDED_GLOB
 setopt NULL_GLOB        # Los patrones sin coincidencias se reducen a vacío (no error)
 unsetopt NOMATCH        # Evita lanzar error si un patrón no coincide
 
+# Guard para evitar re-exec recursivo con sudo si algo sale mal durante la elevación.
+# Si el script se ha re-ejecutado vía sudo y todavía no somos root, abortamos para
+# prevenir bucles infinitos.
+if [[ -n "$__REEXECED_BY_SUDO" && $EUID -ne 0 ]]; then
+  print -r -- "[ERROR] Ya se intentó re-ejecutar con sudo y aún no hay EUID=0. Abortando para evitar bucle." >&2
+  exit 1
+fi
+
 SCRIPT_NAME=${0:t}
 VERSION="1.0.0"
 
@@ -52,13 +63,16 @@ DO_BACKUP=false
 BACKUP_DIR="$HOME/Desktop/OfficeLanguageBackups"
 IGNORE_RUNNING=false
 
+# Ejecutar sin intentar elevar privilegios (útil para dry-run en entornos sin tty)
+NO_SUDO=false
+
 # Idiomas a conservar (prefijos). Puedes usar códigos de 2-3 letras o variantes (en, en_US, es, es_ES, pt, pt_PT).
 # Nota: si quieres excluir es_MX o pt-BR explícitamente, no los pongas en esta lista.
 KEEP_LANGS=( en es pt en_US es_ES pt_PT )
 
 # Aplicaciones a procesar (nombres "cortos")
 DEFAULT_APPS=( Word Excel PowerPoint Outlook OneNote )
-APPS=( ${DEFAULT_APPS[@]} )
+APPS=( "${DEFAULT_APPS[@]}" )
 
 # Rutas candidatas de bundles de Office (por si hay instalaciones en otras carpetas compartidas)
 APP_DIRS=( /Applications )
@@ -98,7 +112,9 @@ while [[ $# -gt 0 ]]; do
     --backup) DO_BACKUP=true; shift ;;
     --backup-dir) BACKUP_DIR="$2"; shift 2 ;;
     --ignore-running) IGNORE_RUNNING=true; shift ;;
+    --no-sudo) NO_SUDO=true; shift ;;
     --keep) KEEP_LANGS=( ${(z)2} ); shift 2 ;;
+  --protect) PROTECTED_RUNTIME=${2}; shift 2 ;;
     --apps) APPS=( ${(z)2} ); shift 2 ;;
     -h|--help) show_help; exit 0 ;;
     *) log_error "Opción no reconocida: $1"; show_help; exit 2 ;;
@@ -111,12 +127,31 @@ KEEP_LANGS=( ${KEEP_LANGS[@]:l} )
 # ===================== Elevación (sudo) =====================
 require_admin() {
   if [[ $EUID -ne 0 ]]; then
+    if [[ "$NO_SUDO" == "true" ]]; then
+      log_warn "NO_SUDO activo: no se intentará elevar con sudo. Algunas operaciones pueden fallar por permisos." 
+      return 0
+    fi
     log_info "Se requieren privilegios administrativos. Reintentando con sudo…"
-    exec sudo -p "[sudo] Contraseña para %u: " -- /bin/zsh "$SCRIPT_PATH" "${ORIGINAL_ARGS[@]}"
+    # Marca en /tmp para detectar re-ejecuciones fallidas y evitar bucles si sudo falla
+    REEXEC_MARKER="/tmp/remove_office_languages_reexec_${USER:-$(id -un)}.marker"
+    if ! touch "$REEXEC_MARKER" 2>/dev/null; then
+      log_warn "No se pudo crear marcador $REEXEC_MARKER (permisos). Se intentará la elevación igualmente."
+    fi
+    # Exportar la marca para el proceso re-ejecutado (además del archivo en /tmp)
+    export __REEXECED_BY_SUDO=1
+    exec env __REEXECED_BY_SUDO=1 sudo -p "[sudo] Contraseña para %u: " -- /bin/zsh "$SCRIPT_PATH" "${ORIGINAL_ARGS[@]}"
   fi
 }
 
 require_admin
+
+# Si alcanzamos aquí como root y existe el marcador de re-ejecución, eliminarlo.
+if [[ $EUID -eq 0 ]]; then
+  REEXEC_MARKER="/tmp/remove_office_languages_reexec_${USER:-$(id -un)}.marker"
+  if [[ -f "$REEXEC_MARKER" ]]; then
+    rm -f "$REEXEC_MARKER" 2>/dev/null || log_warn "No se pudo eliminar marcador $REEXEC_MARKER"
+  fi
+fi
 
 # ===================== Comprobación de procesos en ejecución =====================
 # Coincide solamente con procesos de Office principales
@@ -130,7 +165,7 @@ OFFICE_PROCS=(
 
 check_running_office() {
   local found=false
-  for p in $OFFICE_PROCS[@]; do
+  for p in "${OFFICE_PROCS[@]}"; do
     if pgrep -x "$p" >/dev/null 2>&1; then
       print -r -- "$p en ejecución"
       found=true
@@ -193,14 +228,40 @@ should_keep_language() { # $1 = nombre como "es.lproj" o "es_ES.lproj"
   base="${base%.lproj}"       # quita sufijo
   local lower=${base:l}
 
+  # Lista de nombres/protecciones por defecto (minúsculas). Estos son tokens
+  # que nunca queremos eliminar porque representan recursos no-localización
+  # o carpetas esenciales dentro del bundle.
+  # Lista de nombres/patterns protegidos por defecto (minúsculas). No eliminar.
+  local DEFAULT_PROTECTED=( base dfonts "office themes" metadata.appintents sdx AppIntentsDMResources AppIntentsTMResources ProofingUI OfficePrefsUI )
+
+  # Permite añadir protecciones vía --protect en tiempo de ejecución: si la var
+  # PROTECTED_RUNTIME está definida, la añadimos.
+  local PROTECTED=( "${DEFAULT_PROTECTED[@]}" )
+  if [[ -n "$PROTECTED_RUNTIME" ]]; then
+    PROTECTED+=( ${(z)PROTECTED_RUNTIME} )
+  fi
+
+  # Si el nombre exacto está protegido, conservar (usamos 'case' para evitar
+  # problemas con tokens que contienen espacios y con el '==' que puede dividir palabras).
+  local p
+  for p in "${PROTECTED[@]}"; do
+    local pl=${p:l}
+    case "$lower" in
+      ("$pl"|${pl}_*|${pl}-*|*${pl}*)
+        return 0
+        ;;
+    esac
+  done
+
   # Si KEEP_LANGS contiene un prefijo que coincida, conservar
   local k
-  for k in $KEEP_LANGS[@]; do
+  for k in "${KEEP_LANGS[@]}"; do
     local kl=${k:l}
-    # Coincidencia por prefijo o igualdad completa
-    if [[ "$lower" == "$kl" || "$lower" == ${kl}_* || "$lower" == ${kl}-* ]]; then
-      return 0
-    fi
+    case "$lower" in
+      ("$kl"|${kl}_*|${kl}-*)
+        return 0
+        ;;
+    esac
   done
 
   return 1
@@ -209,12 +270,12 @@ should_keep_language() { # $1 = nombre como "es.lproj" o "es_ES.lproj"
 # ===================== Descubrimiento de bundles de Office =====================
 # Construye APP_PATHS sin usar sustitución de comandos para evitar divisiones por espacios
 APP_PATHS=()
-for short in $APPS[@]; do
+for short in "${APPS[@]}"; do
   local_name="Microsoft ${short}.app"
-  for d in $APP_DIRS[@]; do
+  for d in "${APP_DIRS[@]}"; do
     p="$d/$local_name"
     if [[ -d "$p" ]]; then
-      APP_PATHS+="$p"
+      APP_PATHS+=("$p")
     fi
   done
 done
@@ -225,7 +286,7 @@ if [[ ${#APP_PATHS[@]} -eq 0 ]]; then
 fi
 
 log_info "Aplicaciones detectadas:"
-for a in $APP_PATHS[@]; do
+for a in "${APP_PATHS[@]}"; do
   print -r -- "  - ${a}"
 done
 
@@ -248,7 +309,7 @@ process_app() { # $1 = ruta del .app
   local rel
   local removed_count=0 kept_count=0 notfound_count=0
 
-  for rel in $REL_LANG_DIRS[@]; do
+  for rel in "${REL_LANG_DIRS[@]}"; do
     local base="$app/$rel"
     if [[ ! -d "$base" ]]; then
       (( notfound_count++ ))
@@ -257,8 +318,17 @@ process_app() { # $1 = ruta del .app
 
     # Busca directorios *.lproj (no desciendas demasiado para evitar costes altos)
     local lproj
-    local candidates=( "$base"/**/*.lproj(N/) )
-    for lproj in $candidates[@]; do
+    # Limitar la profundidad del glob para evitar recorrer todo el bundle y posibles
+    # enlaces simbólicos que provoquen recorridos muy costosos. Buscamos en el
+    # nivel directo y un nivel adicional (contenidos comunes).
+    local candidates=( "$base"/*.lproj(N/) "$base"/*/*.lproj(N/) )
+    local processed=0
+    for lproj in "${candidates[@]}"; do
+      (( processed++ ))
+      if (( processed > 5000 )); then
+        log_warn "Se alcanzó el límite de procesados (5000). Interrumpiendo para evitar bucle/recorrido excesivo."
+        break
+      fi
       if should_keep_language "$lproj"; then
         (( kept_count++ ))
         continue
@@ -283,7 +353,7 @@ process_app() { # $1 = ruta del .app
   log_info "Resumen $app: eliminados=$removed_count, conservados=$kept_count, rutas no presentes=$notfound_count"
 }
 
-for app in $APP_PATHS[@]; do
+for app in ${APP_PATHS[@]}; do
   process_app "$app"
 done
 
