@@ -1,4 +1,0 @@
-comm -23 \
-    <(ls "Class exam" | sort) \
-    <(ls "Class exam graded" | sed 's/_graded\.docx$/.docx/' | sort) \
-    > missing_files.txt
