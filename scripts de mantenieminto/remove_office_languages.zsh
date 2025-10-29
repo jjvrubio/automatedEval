@@ -53,6 +53,9 @@ DO_BACKUP=false
 BACKUP_DIR="$HOME/Desktop/OfficeLanguageBackups"
 IGNORE_RUNNING=false
 
+# Ejecutar sin intentar elevar privilegios (útil para dry-run en entornos sin tty)
+NO_SUDO=false
+
 # Idiomas a conservar (prefijos). Puedes usar códigos de 2-3 letras o variantes (en, en_US, es, es_ES, pt, pt_PT).
 # Nota: si quieres excluir es_MX o pt-BR explícitamente, no los pongas en esta lista.
 KEEP_LANGS=( en es pt en_US es_ES pt_PT )
@@ -99,6 +102,7 @@ while [[ $# -gt 0 ]]; do
     --backup) DO_BACKUP=true; shift ;;
     --backup-dir) BACKUP_DIR="$2"; shift 2 ;;
     --ignore-running) IGNORE_RUNNING=true; shift ;;
+    --no-sudo) NO_SUDO=true; shift ;;
     --keep) KEEP_LANGS=( ${(z)2} ); shift 2 ;;
   --protect) PROTECTED_RUNTIME=${2}; shift 2 ;;
     --apps) APPS=( ${(z)2} ); shift 2 ;;
@@ -113,6 +117,10 @@ KEEP_LANGS=( ${KEEP_LANGS[@]:l} )
 # ===================== Elevación (sudo) =====================
 require_admin() {
   if [[ $EUID -ne 0 ]]; then
+    if [[ "$NO_SUDO" == "true" ]]; then
+      log_warn "NO_SUDO activo: no se intentará elevar con sudo. Algunas operaciones pueden fallar por permisos." 
+      return 0
+    fi
     log_info "Se requieren privilegios administrativos. Reintentando con sudo…"
     exec sudo -p "[sudo] Contraseña para %u: " -- /bin/zsh "$SCRIPT_PATH" "${ORIGINAL_ARGS[@]}"
   fi
@@ -198,7 +206,8 @@ should_keep_language() { # $1 = nombre como "es.lproj" o "es_ES.lproj"
   # Lista de nombres/protecciones por defecto (minúsculas). Estos son tokens
   # que nunca queremos eliminar porque representan recursos no-localización
   # o carpetas esenciales dentro del bundle.
-  local DEFAULT_PROTECTED=( base dfonts "office themes" metadata.appintents sdx appintents proofingui officeprefsu officeprefsu.bundle )
+  # Lista de nombres/patterns protegidos por defecto (minúsculas). No eliminar.
+  local DEFAULT_PROTECTED=( base dfonts "office themes" metadata.appintents sdx AppIntentsDMResources AppIntentsTMResources ProofingUI OfficePrefsUI )
 
   # Permite añadir protecciones vía --protect en tiempo de ejecución: si la var
   # PROTECTED_RUNTIME está definida, la añadimos.
