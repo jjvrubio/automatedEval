@@ -1,21 +1,21 @@
-
-
 import argparse
-import subprocess, json, plistlib
+import subprocess
+import plistlib
 from pathlib import Path
 import unicodedata
 import sys
 import os
-import time
 
 UTF8_ENV = dict(os.environ)
 UTF8_ENV.setdefault("LC_ALL", "en_US.UTF-8")
 UTF8_ENV.setdefault("LANG", "en_US.UTF-8")
 
+
 # --- Detectar OneDrive ---
 def _is_onedrive_path(p: Path) -> bool:
     sp = str(p)
     return ("OneDrive" in sp) or ("/Library/CloudStorage/" in sp and "OneDrive-" in sp)
+
 
 # --- Hidratar (forzar descarga) ---
 def _hydrate_if_needed(path: Path) -> None:
@@ -31,10 +31,12 @@ def _hydrate_if_needed(path: Path) -> None:
         # Si falla, no reventamos; algunos placeholders permiten mdls igualmente.
         pass
 
+
 def _mdls_plist(path: Path):
     proc = subprocess.run(
         ["mdls", "-name", "kMDItemUserTags", "-plist", str(path)],
-        capture_output=True, env=UTF8_ENV
+        capture_output=True,
+        env=UTF8_ENV,
     )
     if proc.returncode != 0 or not proc.stdout:
         return None
@@ -46,7 +48,8 @@ def _mdls_plist(path: Path):
             return data[0].get("kMDItemUserTags")
     except Exception:
         return None
-    return None    
+    return None
+
 
 def _coerce_existing_path(p: Path) -> Path:
     """
@@ -66,8 +69,6 @@ def _coerce_existing_path(p: Path) -> Path:
     return Path(unicodedata.normalize("NFC", str(p))).expanduser()
 
 
-
-
 def list_tags_in_folder(folder: Path, recursive: bool = False):
     folder = _coerce_existing_path(folder)
     if not folder.is_dir():
@@ -81,10 +82,20 @@ def list_tags_in_folder(folder: Path, recursive: bool = False):
             except Exception as e:
                 print(f"{p} -> ERROR: {e}", file=sys.stderr)
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Leer etiquetas de Finder (kMDItemUserTags)")
-    parser.add_argument("ruta", help="Ruta de archivo o carpeta (admite caracteres especiales)")
-    parser.add_argument("-r", "--recursive", action="store_true", help="Recorrer recursivamente si es carpeta")
+    parser = argparse.ArgumentParser(
+        description="Leer etiquetas de Finder (kMDItemUserTags)"
+    )
+    parser.add_argument(
+        "ruta", help="Ruta de archivo o carpeta (admite caracteres especiales)"
+    )
+    parser.add_argument(
+        "-r",
+        "--recursive",
+        action="store_true",
+        help="Recorrer recursivamente si es carpeta",
+    )
     args = parser.parse_args()
 
     ruta = Path(args.ruta)
@@ -93,6 +104,7 @@ def main():
     else:
         tags = get_finder_tags(ruta)
         print(tags)
+
 
 if __name__ == "__main__":
     main()
