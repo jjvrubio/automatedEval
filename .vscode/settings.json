@@ -2,8 +2,37 @@
     "python.defaultInterpreterPath": "${workspaceFolder}/venv_${command:python.interpreterArchitecture}/bin/python",
     "python.analysis.extraPaths": [
         "./venv_intel/lib/python3.x/site-packages",
-        "./venv_arm64/lib/python3.x/site-packages"
+        "./venv_arm64/lib/python3.x/site-packages",
+        "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval",
+        "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval/Grading/UNIR Grading"
     ],
     "workbench.colorTheme": "Solarized Light",
-    "workbench.preferredDarkColorTheme": "Default Dark+"
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "python.analysis.typeCheckingMode": "basic",
+"python.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedImport": "warning",
+    "reportUnusedVariable": "warning"
+},
+"python.linting.enabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.linting.mypyEnabled": false,
+  "python.linting.banditEnabled": false,
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {}
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true
+  },
+  "search.exclude": {
+    "**/venv_arm64": true,
+    "**/venv_intel": true,
+    "**/__pycache__": true
+  }
 }

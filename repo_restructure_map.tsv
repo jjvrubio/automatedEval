@@ -1,0 +1,32 @@
+# Formato: tipo<TAB>ruta<TAB>descripcion
+# Estructura objetivo del repositorio en rutas relativas al root.
+# El script ignora lineas vacias y lineas que empiezan por '#'.
+
+dir	01_Educativa	Carpeta padre educativa
+dir	01_Educativa/0101_UNIR	Programas UNIR
+dir	01_Educativa/0101_UNIR/AutomatedEval	Proyecto AutomatedEval
+dir	01_Educativa/0101_UNIR/AutomatedEval/APA Report	Validador APA
+dir	01_Educativa/0101_UNIR/AutomatedEval/Completar Acta y Rúbrica	Automatizacion de actas y rubricas
+dir	01_Educativa/0101_UNIR/AutomatedEval/Grading	Evaluadores por criterio
+dir	01_Educativa/0101_UNIR/AutomatedEval/TFM_Evaluator_Prompt_Package	Paquete de prompts
+dir	01_Educativa/0101_UNIR/AutomatedEval/archive	Archivo historico
+dir	01_Educativa/0102_ESBS	Programas ESBS
+dir	01_Educativa/0102_ESBS/Business Games	Asignatura Business Games
+dir	01_Educativa/0102_ESBS/Business Games/assets	Recursos de Business Games
+dir	02_Profesional	Carpeta padre profesional
+dir	02_Profesional/0201_Convercus	Unidad Convercus
+dir	02_Profesional/0201_Convercus/Estrategia	Linea Estrategia
+dir	02_Profesional/0201_Convercus/Estrategia/editorial	Contenido editorial Estrategia
+dir	02_Profesional/0201_Convercus/Estrategia/assets	Recursos Estrategia
+dir	02_Profesional/0201_Convercus/Comercial	Linea Comercial
+dir	02_Profesional/0201_Convercus/Comercial/editorial	Contenido editorial Comercial
+dir	02_Profesional/0201_Convercus/Comercial/assets	Recursos Comercial
+dir	03_Personal	Carpeta padre personal
+dir	03_Personal/Articulos	Articulos personales
+dir	03_Personal/Articulos/METIS_Growth	Analisis de METIS
+dir	03_Personal/Automaciones	Automatizaciones personales
+dir	03_Personal/Automaciones/doc_processing	Procesamiento documental
+dir	03_Personal/Automaciones/doc_processing/scripts	Scripts de procesamiento
+file	03_Personal/Automaciones/doc_processing/scripts/obsidian2linkedin.py	Script de automatizacion
+dir	03_Personal/Automaciones/logs	Logs de automatizaciones
+dir	03_Personal/Automaciones/mac_automation	Automatizaciones para macOS

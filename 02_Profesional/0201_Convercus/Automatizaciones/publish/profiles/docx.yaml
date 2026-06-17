@@ -1,0 +1,10 @@
+from: markdown+fenced_divs+raw_html
+to: docx
+standalone: true
+lua-filter:
+  - filters/docprep.lua
+# Optional: set default TOC behavior in metadata.
+# Users can override in their markdown front matter.
+metadata:
+  toc: true
+  toc-depth: 3

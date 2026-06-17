@@ -1,0 +1,159 @@
+version: "1.0"
+scope: "analisis_externo"
+strict_mode: true
+
+# 1) Gates: si fallan, limitan el nivel máximo global del análisis externo
+gates:
+  - id: G1_core_blocks
+    description: "Deben existir los 6 bloques del núcleo mínimo"
+    required_blocks:
+      - pestel
+      - porter_5f
+      - mercado_cliente
+      - competidores_alternativas
+      - stakeholders
+      - sintesis_mefe_dafo
+    fail_rules:
+      missing_2_or_more_blocks:
+        max_global_level: 1
+      missing_synthesis_block:
+        max_global_level: 2
+
+  - id: G2_min_evidence
+    description: "Evidencia mínima por bloque: indicadores y fuentes"
+    requirements:
+      per_core_block:
+        min_indicators: 1
+        min_sources: 1
+    fail_rules:
+      any_core_block_without_evidence:
+        max_global_level: 2
+
+  - id: G3_implications_presence
+    description: "Debe existir traducción a implicaciones/decisiones"
+    requirements:
+      min_implications_per_core_block: 1
+    fail_rules:
+      no_implications_in_pestel_or_porter:
+        max_global_level: 2
+
+# 2) Reglas por bloque: suficiencia y calidad
+blocks:
+  pestel:
+    min_factors_total: 8
+    min_dimensions_covered: 4
+    per_factor:
+      indicator_required: true
+      implication_required: true
+    quality_flags:
+      generic_list_without_indicators:
+        max_block_level: 2
+
+  porter_5f:
+    require_all_forces: true
+    per_force:
+      intensity_required: true
+      evidence_required: true
+      min_implications: 1
+      max_implications: 2
+    quality_flags:
+      all_forces_medium_without_justification:
+        max_block_level: 2
+
+  mercado_cliente:
+    min_segments: 3
+    segment_quality:
+      must_be_actionable: true
+      demographic_only_penalty: true
+    min_drivers: 3
+    drivers_require_proxy: true
+    min_barriers: 3
+    each_barrier_requires_mitigation: true
+
+  competidores_alternativas:
+    min_items: 3
+    must_include_non_product_alternative: true
+    comparison_dimensions_min: 4
+    must_conclude_win_conditions: true
+
+  grupos_estrategicos:
+    conditional_required:
+      if_any_keywords:
+        - "premium"
+        - "low cost"
+        - "tier"
+        - "plataforma"
+        - "integrador"
+        - "best-of-breed"
+        - "marketplace"
+    deliverables:
+      axes: 2
+      groups_min: 2
+      groups_max: 4
+      mobility_barriers_required: true
+      strategic_implication_required: true
+
+  vigilancia_tecnologica:
+    conditional_required:
+      if_any_keywords:
+        - "digitalización"
+        - "automatización"
+        - "IA"
+        - "inteligencia artificial"
+        - "plataforma"
+        - "API"
+        - "interoperabilidad"
+        - "ciberseguridad"
+    min_signals: 5
+    prioritization_required: true
+    must_translate_to_risks_and_decisions: true
+
+  stakeholders:
+    min_stakeholders: 8
+    must_have_power_interest_or_equivalent: true
+    critical_stakeholders_require_management_plan: true
+    regulated_sectors_require_regulator: true
+
+  sintesis_mefe_dafo:
+    mefe_efe:
+      min_factors: 8
+      max_factors: 12
+      weights_must_sum_to: 1.0
+      weights_sum_tolerance: 0.05
+      traceability_required: true
+    dafo_externo:
+      must_derive_from_mefe: true
+      no_new_items_allowed: true
+
+# 3) Congruencia profunda (validaciones transversales): condición para nivel 4
+cross_checks:
+  - id: X1_objectives_traceable
+    description: "Objetivos derivados de hallazgos externos priorizados"
+    min_links_objective_to_findings: 2
+    fail_max_global_level: 3
+
+  - id: X2_proposal_anchored
+    description: "Decisiones de diseño ancladas en factores/fuerzas/drivers/stakeholders"
+    min_design_decisions_with_anchors: 3
+    fail_max_global_level: 3
+
+  - id: X3_risk_triangle
+    description: "Amenazas priorizadas -> riesgos -> mitigaciones -> supuestos económico-financieros"
+    required: true
+    fail_max_global_level: 3
+
+# 4) Mapeo orientativo a niveles (ultraestricto)
+levels:
+  1:
+    description: "Insuficiente: faltan bloques, sin evidencia, descriptivo"
+  2:
+    description: "Cumplimiento formal: núcleo incompleto o sin implicaciones/evidencia suficiente"
+  3:
+    description: "Sólido: núcleo completo, evidencia razonable, síntesis coherente, trazabilidad parcial"
+  4:
+    description: "Excelente: congruencia profunda + evidencia robusta + coherencia MEFE↔DAFO + anclaje en propuesta/viabilidad"
+    requirements:
+      all_gates_passed: true
+      all_core_blocks_min_level: 3
+      all_cross_checks_passed: true
+      evidence_density_high: true

@@ -1,0 +1,115 @@
+---
+# ============ Core document metadata (compatible con tu base) ============
+title: "..."
+author: "Juan Vázquez"
+date: "YYYY-MM-DD"
+lang: es
+doc_class: article | blog | brief | memo | report | podcast | slide
+status: draft | review | final
+version: "0.1"
+toc: true
+toc-depth: 3
+
+# ============ Publication identity ============
+content_id: "PUB-YYYYMMDD-<slug>"   # id estable para trazabilidad
+content_series: ""                 # p.ej. "Loyalty Field Notes", "Retail OSINT Briefs"
+content_type: thought_leadership | case_insight | benchmark | how_to | opinion | research_brief
+topic_taxonomy:
+  - Loyalty
+  - Omnichannel
+  - Retail
+  - CRM
+  - Personalization
+audience:
+  - C-level
+  - Marketing
+  - CRM
+  - Digital
+funnel_intent: Awareness | Consideration | Evaluation | Purchase | Expansion
+cta_intent: "Book a call | Request demo | Download | Reply | Share | None"
+
+# ============ Channel & distribution ============
+channel: LinkedIn | Blog | Newsletter | Medium | Press | Webinar | Podcast | ClientEmail
+canonical_url: ""                  # si existe
+campaign:
+  name: ""
+  utm_campaign: ""
+  utm_source: ""
+  utm_medium: ""
+publish:
+  publish_date: ""                 # si difiere de date
+  geo_focus: Iberia | Iberoamérica | Global
+  language_variants: [es, en]      # si hay versión espejo
+  embargo: false
+
+# ============ Account linkage (puente explícito a MEDDICC) ============
+account_links:
+  - account_name: "..."
+    account_alias: "..."
+    jurisdiction: "..."
+    region: "Iberia"
+    country: "Spain | Portugal | ..."
+    account_tier: "A | B | C"
+    crm_system: "Pipedrive | HubSpot | Salesforce | ..."
+    crm_deal_id: ""
+    crm_url: ""
+    meddpicc_doc: "[[MEDDICC_<AccountAlias>]]"     # link a tu ficha
+    meddpicc_stage_at_time: "Validated | ..."
+    sales_stage_at_time: "Qualification | Discovery | Proposal | ..."
+    relationship_heat_at_time: "Neutral | Warm | Friendly | Friction | Cold"
+    intent_note: "Por qué esta publicación es relevante para esta cuenta (1–2 líneas)."
+
+# ============ MEDDICC alignment (qué “ancla” esta pieza) ============
+meddicc_alignment:
+  supports:
+    - Metrics
+    - EconomicBuyer
+    - DecisionCriteria
+    - DecisionProcess
+    - PaperProcess
+    - Pain
+    - Champion
+    - Competition
+  primary_angle: "Pain-to-Metrics | Risk-to-Compliance | Competition-Displacement | ..."
+  objections_addressed:
+    - "Build vs Buy"
+    - "PMS has loyalty module"
+    - "Integration complexity"
+  narrative_assets:
+    one_liner: ""
+    proof_points:
+      - ""
+      - ""
+
+# ============ Evidence & epistemic traceability ============
+claims:
+  - claim_id: "C-001"
+    statement: "..."
+    confidence: High | Medium | Low
+    evidence_ids: ["E-...", "E-..."]
+    notes: ""
+sources:
+  - source_id: "S-001"
+    type: "web | filing | annual_report | interview | internal_note"
+    ref: ""
+evidence_ledger:
+  ledger_note: "[[EvidenceLedger_<AccountAlias>]]"
+  e_ids: []
+  q_ids: []
+
+# ============ Internal ops hooks (opcional, pero útil) ============
+internal:
+  owner: "Juan Vázquez"
+  next_action:
+    date: ""
+    action: ""
+  related_notes:
+    - "[[OSINT_Index_<AccountAlias>]]"
+    - "[[Run_Kickoff_<AccountAlias>]]"
+
+tags:
+  - Publication
+  - MEDDICC-Link
+  - Loyalty
+  - Iberia
+---

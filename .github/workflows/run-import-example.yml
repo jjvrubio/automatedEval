@@ -51,10 +51,10 @@ jobs:
           FECHA_DEFENSA_INPUT: ${{ github.event.inputs.fecha_defensa }}
         run: |
           echo "Starting importarActa with secrets from repo settings..."
-          # Example: run the script; note that the script uses GUI dialogs unless
-          # adapted to accept env vars or CLI args. This job is intended for a
-          # self-hosted macOS runner with GUI and appropriate permissions.
-          python automatedEval/Completar\ Acta\ y\ R\u00fabrica/importarActa.py || true
+          # The script can now consume Excel path, form URL and defense date from
+          # environment variables, but it still requires a macOS self-hosted
+          # runner with GUI and Safari WebDriver available.
+          python "01_Educativa/0101_UNIR/AutomatedEval/Completar Acta y Rúbrica/importarActa.py" || true
 
   ci-note:
     runs-on: ubuntu-latest
@@ -62,4 +62,4 @@ jobs:
     steps:
       - name: Post-run guidance
         run: |
-          echo "If you need a fully non-interactive CI run, adapt 'importarActa.py' to accept CLI args or env vars for the Excel path, form URL and date; then call it from the workflow with those values."
+          echo "This example supports Excel path, form URL and defense date via environment variables. Ensure the self-hosted runner also has GUI access, Safari WebDriver and the required secrets configured."

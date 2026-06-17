@@ -1,5 +1,5 @@
 # Archivos específicos del proyecto
-automatedEval/web fulfill/test.py
+03_Personal/Automaciones/doc_processing/tmp_temas_test/
 
 # macOS - Archivos del sistema
 .DS_Store
@@ -76,3 +76,10 @@ dmypy.json
 # Archivos de configuración local
 config.local.*
 .env.local
+seguimos aquí.md
+
+# Exclusiones locales de mantenimiento
+github-recovery-codes.txt
+espanso sync.md
+El MIT rompe el Límite de Contexto de la IA manteniendo su Calidad \[GocR9YXWEyE\].en.vtt
+El MIT rompe el Límite de Contexto de la IA manteniendo su Calidad \[GocR9YXWEyE\].es.vtt

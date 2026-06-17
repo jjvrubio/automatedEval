@@ -1,0 +1,926 @@
+role: Academic Evaluator
+context: Evaluate Master's Theses (TFM) for UNIR with strict academic rigor. Avoid indulgence. Justify levels and improvements unless Level 4.
+rubric_criteria:
+  total_criteria: 13
+  writing_criteria: 2
+  oral_criteria: 4
+  critical_criteria: 7
+evaluation_model:
+  Portada_Resumen:
+    - Clarity and synthesis
+    - Inclusion of justification, objectives, methodology, conclusions
+    - Appropriate keywords
+  Introduccion_Objetivos:
+    - Clear problem definition and consequences
+    - Context analysis with data and trends
+    - Theoretical framework with academic sources
+    - Benchmarking
+    - Objectives measurable and linked to problem
+  Proyecto:
+    - External analysis with academic models
+    - Internal analysis with VRIO, Value Chain
+    - Coherent and viable solution
+    - Financial viability (ROI, VAN, TIR)
+    - Discussion of risks and contingencies
+  Conclusiones:
+    - Objectives vs results review
+    - Critical reflection
+    - Problems encountered
+    - Future projection
+    - Formal coherence
+  Limitaciones_Amenazas:
+    - Honest recognition of limitations
+    - Identification of risks
+    - Alternatives and contingencies
+    - Coherence with conclusions
+  Referencias_Bibliograficas:
+    - Consistency text-bibliography
+    - Pertinence
+    - APA 7 compliance
+    - Diversity and update
+principles:
+  Level_4: Only if perfect
+  Level_3: Good work with minor flaws
+  Oral_criteria: Always include "Not evaluable (oral)"
+  Exhaustiveness: Evaluate all
+  Tone: Strict and critical
+non_Level_4_conditions:
+  Format_Language: Errors → Max Level 3
+  Summary_Project_Conclusions: Lack of reflection → Max Level 3
+  Analytical_Deficiency: Poor analysis → Max Level 3
+response_format:
+  Per_criterion:
+    - Level
+    - Critical justification
+    - Improvement areas unless Level 4
+  Final_Report:
+    - Summary table
+    - Global conclusion
+    - Three clarification questions
+final_rule: Apply stricter level unless clear justification for higher.
+
+openai:
+  modelo_por_defecto: "gpt-4o-mini"
+  temperatura_por_defecto: 0.0
+  max_tokens:
+    evaluacion: 1500
+    analisis: 1500
+    extendido: 2200
+  variables_api_key:
+    - "MI_CLAVE_API_OPENAI"
+    - "OPENAI_API_KEY"
+
+evaluacion:
+  enviar_documento_completo: true
+
+analisis_extendido:
+  habilitado: true
+  criterios_objetivo: []
+  instrucciones_generales: >-
+    Genera un análisis narrativo exhaustivo que complemente la puntuación. Usa un tono
+    crítico, cita páginas o fragmentos concretos del TFM, desarrolla mínimo tres
+    párrafos y concluye con recomendaciones verificables. No devuelvas JSON ni listas
+    simples; escribe texto continuo con subtítulos cuando proceda.
+  metodologia_por_defecto: >-
+    Redacta el análisis en tres apartados titulados "Adecuación conceptual y teórica",
+    "Viabilidad operativa y de compliance" y "Riesgos, limitaciones y oportunidades".
+    Describe cómo la metodología empleada se fundamenta en literatura académica,
+    evidencia del TFM y marcos regulatorios aplicables. Cita fragmentos del documento y
+    concluye con acciones correctivas o de refuerzo alineadas con estándares de calidad.
+  metodologias_especificas:
+    analisis_externo: >-
+      Evalúa la coherencia del análisis externo (PESTEL, Porter, vigilancia
+      tecnológica, stakeholders) con las fuentes utilizadas. Contrasta la calidad y
+      actualidad de los datos, identifica lagunas metodológicas y discute el impacto en
+      la estrategia. Incluye referencias a normativa sectorial, riesgos geopolíticos y
+      tendencias de mercado relevantes.
+    analisis_interno: >-
+      Examina profundidad y solidez de VRIO, cadena de valor, benchmarking y análisis
+      financiero-organizativo. Verifica cómo se conectan hallazgos internos con la
+      propuesta estratégica, identifica carencias de datos y propone métricas de control
+      interno. Considera cumplimiento normativo (laboral, fiscal, de calidad) y riesgos
+      de capacidades críticas.
+    procesos_fabricacion_operativos:
+      generico: >-
+        Desarrolla el análisis extendido en tres bloques con títulos claros: (1)
+        Adecuación conceptual y teórica de Lean/Six Sigma frente a los objetivos del
+        proyecto; (2) Viabilidad operativa, detallando cómo se estabilizan tiempos de
+        ciclo, capacidad, calidad y nivel de servicio; (3) Riesgos, limitaciones y
+        oportunidades, con referencia a sistemas de seguimiento, tableros y responsables
+        de mantenimiento.
+      regulado: >-
+        Desarrolla el análisis extendido en tres bloques con títulos claros: (1)
+        Adecuación conceptual y teórica de Lean/Six Sigma frente a las obligaciones
+        GMP/FDA/EMA; (2) Viabilidad operativa y de compliance, detallando cómo se
+        preservan ALCOA+, Quality Risk Management (ICH Q9/Q10) y los planes de
+        validación y revalidación; (3) Riesgos, limitaciones y oportunidades, incluyendo
+        referencias a guías FDA, EMA, PIC/S y sinergias con Quality by Design. Para cada
+        bloque cita los fragmentos del TFM (indicando página o sección) y concluye con
+        recomendaciones verificables.
+      servicios_publicos: >-
+        Desarrolla el análisis extendido en tres bloques con títulos claros: (1)
+        Simplificación y digitalización de trámites según Ley 39/2015 y Ley 40/2015, (2)
+        Gobernanza y control interno alineados con ENS/ENI, protección de datos y cartas
+        de servicios, (3) Impacto en la ciudadanía, ROI social y gestión del cambio en
+        funcionarios. Exige métricas de tiempo de respuesta, satisfacción y mecanismos de
+        transparencia.
+      fabricacion_continua: >-
+        Estructura el comentario en tres ejes: (1) Control del proceso continuo y
+        estabilidad estadística (SPC, OEE, alarmas en tiempo real); (2) Integración con
+        mantenimiento, calidad y cumplimiento (PAT, validaciones, redundancias); (3)
+        Riesgos operativos y oportunidades, cuantificando desviaciones, planes CAPA y
+        retorno esperado. Cita datos de parámetros críticos y justifica cómo se asegura
+        la trazabilidad.
+      fabricacion_discreta: >-
+        Ordena el análisis en: (1) Flujo pieza a pieza y balanceo de línea (takt, SMED,
+        Kanban, cuellos de botella); (2) Integración con planificación (MRP/MES, control
+        visual, trazabilidad de componentes); (3) Riesgos y beneficios esperados.
+        Señala métricas de productividad, scrap y lead time, indicando si el diseño
+        propuesto es viable y sostenible.
+      cadena_suministro: >-
+        Divide en: (1) Planificación integral (S&OP, demanda, inventarios segmentados);
+        (2) Diseño de red y resiliencia (capacidad por nodo, proveedores críticos,
+        simulaciones); (3) Riesgos, contingencias y ROI logístico. Exige evidencias de
+        sincronización proveedor-planta-cliente y métricas OTIF, fill-rate, coste total.
+      logistica: >-
+        Redacta en tres apartados: (1) Operación de almacenes (layout, slotting, WMS,
+        productividad pick-pack); (2) Transporte y última milla (rutas, flota, TMS,
+        OTIF); (3) Riesgos y oportunidades. Incluye cifras de capacidad, tiempos de
+        preparación y costes unitarios, evaluando su impacto en la experiencia del
+        cliente.
+      distribucion: >-
+        Organiza en: (1) Estrategia de canales y omnicanalidad (portfolio, sinergias,
+        gobernanza); (2) Nivel de servicio y experiencia (promesa de entrega, indicadores
+        cliente, devoluciones); (3) Riesgos comerciales y sostenibilidad económica.
+        Contrasta datos de participación por canal, coste-servicio y márgenes para
+        validar la propuesta.
+    procesos_logisticos_cadena_suministro: >-
+      Analiza cómo se aplica SCOR, análisis ABC, diagnósticos de última milla y
+      resiliencia de proveedores. Evalúa alineación con GDP (Good Distribution
+      Practices), gestión de riesgos de suministro, continuidad operativa y trazabilidad
+      logística. Identifica cuellos de botella, variabilidad de demanda y planes de
+      contingencia documentados.
+    procesos_administrativos_servicios: >-
+      Revisa el modelado de procesos administrativos y de servicio con SIPOC, BPMN o
+      swimlanes. Evalúa tiempos de ciclo, cargas de trabajo, cumplimiento normativo
+      (protección de datos, calidad de servicio) y evidencia de mejora. Destaca brechas
+      en la documentación y propone indicadores de desempeño y gobernanza.
+    analisis_financiero: >-
+      Profundiza en la calidad del modelo financiero (flujos descontados, VAN, TIR,
+      payback, TCO, escenarios). Verifica supuestos de ingresos, costes, inflación y
+      estructura de capital, discutiendo cumplimiento con principios contables (IFRS,
+      US GAAP) y normativa sectorial. Evalúa sensibilidad, punto de equilibrio, impacto
+      fiscal y riesgos financieros no cubiertos. Propón medidas de mitigación y
+      seguimiento.
+
+  dominios_operativos:
+    orden_prioridad:
+      - regulado
+      - servicios_publicos
+      - fabricacion_continua
+      - fabricacion_discreta
+      - cadena_suministro
+      - logistica
+      - distribucion
+      - operaciones_genericas
+      - generico
+    definiciones:
+      regulado:
+        keywords:
+          - "good manufacturing practice"
+          - "good manufacturing practices"
+          - "gmp"
+          - "alcoa"
+          - "alcoa+"
+          - "food and drug administration"
+          - "fda"
+          - "ema"
+          - "ich q7"
+          - "ich q8"
+          - "ich q9"
+          - "ich q10"
+          - "annex 1"
+          - "pics"
+          - "quality risk management"
+          - "quality by design"
+          - "gdp"
+        metadata_detectada:
+          - procesos_fabricacion_operativos
+        palabras_metadata:
+          - "gmp"
+          - "fda"
+          - "ema"
+          - "ich q9"
+          - "ich q10"
+          - "alcoa"
+          - "alcoa+"
+          - "pics"
+        texto_operaciones: >-
+          Desarrolla el análisis enfatizando la alineación con GMP/FDA/EMA y marcos
+          regulatorios afines. Conecta Lean, Six Sigma, VSM o TOC con ALCOA+, Quality Risk
+          Management (ICH Q9/Q10), planes de validación/revalidación y control de cambios.
+          Exige evidencias de trazabilidad documental, control de proveedores, stock de
+          seguridad y programas de formación obligatoria. Cita guías FDA, EMA, PIC/S y
+          Quality by Design cuando falten salvaguardas regulatorias.
+      servicios_publicos:
+        keywords:
+          - "administracion publica"
+          - "administraciones publicas"
+          - "sector publico"
+          - "servicio publico"
+          - "servicios publicos"
+          - "ayuntamiento"
+          - "ministerio"
+          - "consejeria"
+          - "cabildo"
+          - "tramitacion"
+          - "expediente"
+          - "ley 39 2015"
+          - "ley 40 2015"
+          - "ens"
+          - "eni"
+          - "carta de servicios"
+        metadata_detectada:
+          - procesos_administrativos_servicios
+        alias:
+          - "administracion_publica"
+          - "sector_publico"
+          - "aapp"
+        texto_operaciones: >-
+          Evalúa la mejora de procesos en Administraciones Públicas o servicios ciudadanos.
+          Comprueba que se modelen flujos con SIPOC/BPMN, se midan tiempos de tramitación,
+          cargas de trabajo y cuellos de botella, y que se vinculen las acciones a la Ley
+          39/2015, Ley 40/2015, ENS/ENI, protección de datos y principios de simplificación
+          administrativa. Solicita indicadores de experiencia ciudadana, ROI social,
+          gobernanza y gestión del cambio en funcionarios (formación, roles, cuadros de
+          mando).
+        comentario_operaciones:
+          detectado: >-
+            Analiza el rediseño administrativo en tres apartados: (1) mapeo y simplificación
+            de trámites con SIPOC/BPMN y digitalización, (2) cumplimiento de Ley 39/2015,
+            Ley 40/2015, ENS/ENI y protección de datos, y (3) impacto en la ciudadanía y
+            gobernanza (indicadores de servicio, ROI social, gestión del cambio).
+          falta: >-
+            Indica que falta un enfoque de gestión por procesos en la Administración Pública.
+            Recomienda modelar el flujo con BPMN/SIPOC, medir tiempos de tramitación y cargas,
+            y justificar cumplimiento de Ley 39/2015, ENS/ENI, protección de datos y
+            mecanismos de seguimiento de calidad percibida.
+      fabricacion_continua:
+        keywords:
+          - "manufactura continua"
+          - "produccion continua"
+          - "continuous manufacturing"
+          - "continuous process"
+          - "procesos continuos"
+          - "process industry"
+          - "industria quimica"
+          - "plantas quimicas"
+          - "refineria"
+          - "control estadistico"
+        metadata_detectada:
+          - procesos_fabricacion_operativos
+        texto_operaciones: >-
+          Analiza procesos de flujo continuo asegurando control estadístico, estabilidad de
+          parámetros críticos (temperatura, presión, velocidad) y monitorización en tiempo
+          real. Exige indicadores de OEE, SPC, alarmas capaces de activar planes CAPA y
+          coordinación con mantenimiento predictivo.
+      fabricacion_discreta:
+        keywords:
+          - "manufactura discreta"
+          - "produccion discreta"
+          - "ensamblaje"
+          - "montaje"
+          - "assembly line"
+          - "line balancing"
+          - "produccion en serie"
+          - "maquinado"
+          - "fabricacion de piezas"
+          - "smed"
+          - "kanban"
+        metadata_detectada:
+          - procesos_fabricacion_operativos
+        texto_operaciones: >-
+          Verifica balanceo de línea, takt time, SMED, Kanban y gestión de cuellos. Exige
+          datos de tiempo ciclo estándar, rendimiento por celda, retrabajos y capacidad
+          instalada. Evalúa integración con plan maestro y digitalización (MES, Andon,
+          trazabilidad de componentes).
+      cadena_suministro:
+        keywords:
+          - "cadena de suministro"
+          - "supply chain"
+          - "planificacion de la demanda"
+          - "demand planning"
+          - "sales and operations planning"
+          - "s&op"
+          - "plan maestro de produccion"
+          - "inventory planning"
+          - "resiliencia de suministro"
+        metadata_detectada:
+          - procesos_logisticos_cadena_suministro
+        alias:
+          - "cadena_de_suministro"
+          - "supply_chain"
+        texto_operaciones: >-
+          Conecta la mejora operativa con plan maestro, S&OP, inventarios y gestores de
+          demanda. Pide evaluar sincronización proveedor-planta-cliente, políticas de stock,
+          buffers dinámicos y riesgos de abastecimiento documentados.
+      logistica:
+        keywords:
+          - "logistica"
+          - "logistico"
+          - "logistics"
+          - "almacenaje"
+          - "almacenamiento"
+          - "warehouse"
+          - "warehousing"
+          - "transporte"
+          - "transportation"
+          - "fleet management"
+          - "cross docking"
+          - "hub logistico"
+          - "centro de distribucion"
+        metadata_detectada:
+          - procesos_logisticos_cadena_suministro
+        alias:
+          - "logistics"
+          - "logistic"
+        texto_operaciones: >-
+          Relaciona la intervención con layout de almacenes, slotting, productividad
+          pick-pack, uso de WMS/TMS y seguridad operativa. Revisa análisis de tiempos,
+          capacidad por franja y uso de indicadores OTIF, fill-rate y coste por envío.
+      distribucion:
+        keywords:
+          - "distribucion"
+          - "canales de distribucion"
+          - "omnicanal"
+          - "omnichannel"
+          - "retail"
+          - "ecommerce"
+          - "marketplace"
+          - "last mile"
+          - "click and collect"
+          - "fulfillment"
+        metadata_detectada:
+          - procesos_logisticos_cadena_suministro
+        alias:
+          - "distribution"
+          - "retail"
+        texto_operaciones: >-
+          Evalúa la coherencia del rediseño con la gestión de canales, estrategias
+          omnicanal y promesas de servicio. Solicita indicadores de nivel de servicio,
+          coste por canal, devoluciones y experiencia cliente.
+      operaciones_genericas:
+        keywords:
+          - "lean"
+          - "lean management"
+          - "lean manufacturing"
+          - "lean six sigma"
+          - "six sigma"
+          - "dmaic"
+          - "pdca"
+          - "kaizen"
+          - "value stream"
+          - "value stream mapping"
+          - "teoria de restricciones"
+          - "toc"
+          - "procesos operativos"
+        metadata_detectada:
+          - procesos_fabricacion_operativos
+        texto_operaciones: >-
+          Verifica si el TFM aplica Lean, Six Sigma/DMAIC, Value Stream Mapping o Teoría de
+          Restricciones para rediseñar procesos, eliminar desperdicios y estabilizar la
+          operación. Exige que se cuantifiquen tiempos de ciclo, inventario, capacidad y
+          calidad, que se definan indicadores líder/rezagados y que se describa el sistema
+          de seguimiento (tableros, responsables y cadencia). Evalúa la coherencia entre
+          diagnóstico, contramedidas propuestas, gestión del cambio y mitigación de riesgos
+          operativos.
+        comentario_operaciones:
+          detectado: >-
+            Estructura la valoración en tres bloques: (1) diagnóstico del flujo y
+            desperdicios (VSM, sigma, takt, cuello de botella), (2) implantación y control de
+            métricas operativas (tiempos, capacidad, calidad, servicio) y (3) sostenibilidad
+            del cambio (estandarización, responsables, tableros, control estadístico).
+          falta: >-
+            Declara la ausencia de un enfoque Lean/Six Sigma estructurado. Solicita documentar
+            VSM o SIPOC, análisis de capacidad/variabilidad y planes de seguimiento con
+            indicadores cuantificados para demostrar mejora operativa.
+      generico:
+        alias:
+          - "operaciones_genericas"
+          - "operaciones"
+
+instrucciones_metodologicas:
+  defaults:
+    analisis_externo: >-
+      Analiza si el TFM desarrolla de forma secuencial el PESTEL, las 5 Fuerzas de
+      Porter, los grupos estratégicos, el ciclo de vida sectorial, el perfil de
+      competidores, el estudio de mercado y clientes, la vigilancia tecnológica, el
+      mapeo de stakeholders y la síntesis MEFE/DAFO. Evalúa calidad de datos, uso de
+      indicadores, hallazgos accionables y coherencia entre modelos.
+    analisis_interno: >-
+      Comprueba si se realiza auditoría de recursos, cadena de valor, análisis
+      financiero y organizacional, core competences, benchmarking interno y matriz
+      VRIO. Valora profundidad, evidencia cuantitativa y si se vinculan hallazgos con la
+      MEFI y conclusiones estratégicas.
+    procesos_fabricacion_operativos:
+      generico: >-
+        Verifica si el TFM aplica Lean, Six Sigma/DMAIC, Value Stream Mapping o Teoría de
+        Restricciones para rediseñar procesos, eliminar desperdicios y estabilizar la
+        operación. Exige que se cuantifiquen tiempos de ciclo, inventario, capacidad y
+        calidad, que se definan indicadores líder/rezagados y que se describa el sistema
+        de seguimiento (tableros, responsables y cadencia). Evalúa la coherencia entre
+        diagnóstico, contramedidas propuestas, gestión del cambio y mitigación de riesgos
+        operativos.
+      regulado: >-
+        Verifica si el TFM aplica Lean, Six Sigma/DMAIC, Value Stream Mapping o Teoría de
+        Restricciones en sectores regulados. Exige que la mejora se alinee con GMP/FDA/EMA,
+        principios ALCOA+, gestión del riesgo (ICH Q9/Q10) y planes de validación,
+        cuantificando impacto sin comprometer trazabilidad ni stock de seguridad.
+      servicios_publicos: >-
+        Evalúa la mejora de procesos en Administraciones Públicas o servicios ciudadanos.
+        Comprueba que se modelen flujos con SIPOC/BPMN, se midan tiempos de tramitación,
+        cargas de trabajo y cuellos de botella, y que se vinculen las acciones a la Ley
+        39/2015, Ley 40/2015, ENS/ENI, protección de datos y principios de simplificación
+        administrativa. Solicita indicadores de experiencia ciudadana, ROI social,
+        gobernanza y gestión del cambio en funcionarios (formación, roles, cuadros de
+        mando).
+      fabricacion_continua: >-
+        Revisa control estadístico, estabilidad de parámetros críticos y coordinación con
+        mantenimiento y calidad. Pide indicadores OEE, SPC, alarmas tempranas y planes
+        CAPA que aseguren flujo continuo y cumplimiento.
+      fabricacion_discreta: >-
+        Exige balanceo de línea, takt, SMED, Kanban y control de cuellos. Solicita datos
+        de tiempos estándar, productividad por celda, retrabajos y conexión con el plan
+        maestro o sistemas MES/Andon.
+      cadena_suministro: >-
+        Evalúa cómo la mejora operativa se integra con S&OP, inventarios segmentados y
+        sincronización proveedor-planta-cliente. Pide justificar buffers, políticas de
+        stock y mitigación de riesgos de abastecimiento.
+      logistica: >-
+        Asegúrate de que se vinculen cambios operativos con layout, slotting, WMS/TMS y
+        métricas OTIF, fill-rate y coste por envío. Solicita evidencia de análisis de
+        capacidad, productividad pick-pack y seguridad operativa.
+      distribucion: >-
+        Comprueba que las acciones operativas soporten la estrategia de canales y niveles
+        de servicio. Pide indicadores por canal, coste-servicio, devoluciones y planes de
+        experiencia cliente.
+    procesos_logisticos_cadena_suministro:
+      generico: >-
+        Analiza si se utilizan marcos SCOR, análisis ABC de inventarios y diagnóstico de
+        última milla para priorizar mejoras en la cadena de suministro y los KPI
+        logísticos.
+      cadena_suministro: >-
+        Verifica la existencia de S&OP, planeación de demanda, segmentación ABC/XYZ y
+        simulaciones de red. Exige métricas de resiliencia, lead time total y coste-to-
+        serve.
+      logistica: >-
+        Evalúa layout, slotting, WMS/TMS, productividad pick-pack y dimensionamiento de
+        flota. Solicita indicadores OTIF, uso de capacidad, tiempos muertos y estrategias
+        de cross-docking.
+      distribucion: >-
+        Revisa la gestión omnicanal, acuerdos de nivel de servicio, última milla y
+        devoluciones. Pide cuadros de mando por canal, margen contribución y experiencia
+        cliente.
+    procesos_administrativos_servicios: >-
+      Comprueba si los procesos administrativos o de servicio se modelan con SIPOC, BPMN
+      o swimlanes, se cuantifican tiempos de ciclo y se plantean indicadores de servicio
+      tras el rediseño.
+    procesos_causa_raiz: >-
+      Revisa si se mapean procesos y causas raíz con SIPOC, Ishikawa, Pareto o FMEA, y si
+      se priorizan acciones con datos cuantificados.
+    analisis_financiero: >-
+      Exige un modelo financiero con flujo de caja descontado, VAN, TIR, payback, ROI,
+      ratio beneficio/coste y coste total de propiedad (TCO). Solicita documentar
+      supuestos de inflación, estructura de financiación y análisis de sensibilidad con
+      escenarios base/optimista/pesimista.
+  metodologias_forzadas:
+    analisis_financiero: true
+  mapeo_criterios:
+    analisis_financiero:
+      - "desarrollo específico de la contribución"
+      - "relación entre objetivos, planteamiento, desarrollo y conclusiones"
+      - "proyecto"
+      - "solución propuesta"
+    analisis_externo:
+      - "análisis del entorno"
+      - "marco teórico y contextual"
+      - "diagnóstico estratégico"
+    analisis_interno:
+      - "diagnóstico interno"
+      - "análisis organizativo"
+      - "capacidad de la entidad"
+    procesos_fabricacion_operativos:
+      - "procesos operativos"
+      - "procesos productivos"
+      - "mejora continua"
+      - "lean"
+      - "análisis de procesos"
+      - "mejora de procesos"
+      - "plan de implementación"
+      - "proyecto"
+      - "solución propuesta"
+      - "desarrollo de la solución"
+    procesos_logisticos_cadena_suministro:
+      - "cadena de suministro"
+      - "logística"
+      - "supply chain"
+      - "inventarios"
+    procesos_administrativos_servicios:
+      - "procesos administrativos"
+      - "servicios"
+      - "back office"
+      - "experiencia de servicio"
+  metadata:
+    analisis_externo:
+      palabras_clave:
+        - "pestel"
+        - "porter"
+        - "cinco fuerzas"
+        - "5 fuerzas"
+        - "grupos estrategicos"
+        - "mefe"
+        - "oportunidades"
+        - "amenazas"
+        - "entorno"
+        - "stakeholders externos"
+      critico: true
+      comentario_evaluacion: >-
+        Cuestiona la pertinencia de cada modelo externo seleccionado y si se justifican
+        las fuentes utilizadas (datos, benchmarks, tendencias). Señala incoherencias
+        entre las conclusiones y los resultados de los modelos.
+      comentario_falta: >-
+        Si no hay evidencia de análisis externo (PESTEL, Porter, grupos estratégicos,
+        MEFE), declara explícitamente la omisión, explica por qué compromete el
+        diagnóstico del entorno y qué pasos deberían incorporarse.
+    analisis_interno:
+      palabras_clave:
+        - "vrio"
+        - "cadena de valor"
+        - "recursos"
+        - "capacidades"
+        - "core competence"
+        - "mefi"
+        - "benchmarking"
+        - "fortalezas"
+        - "debilidades"
+      critico: true
+      comentario_evaluacion: >-
+        Analiza si se justifican la selección de recursos y competencias clave, y si los
+        modelos internos vinculan resultados cuantitativos con la estrategia.
+      comentario_falta: >-
+        Cuando no se aplica un análisis interno riguroso (VRIO, cadena de valor,
+        benchmarking interno), remarcar la ausencia y detallar qué información debería
+        haberse desarrollado para fundamentar fortalezas y debilidades.
+    procesos_fabricacion_operativos:
+      palabras_clave:
+        - "lean"
+        - "lean manufacturing"
+        - "lean management"
+        - "lean production"
+        - "lean six sigma"
+        - "kaizen"
+        - "six sigma"
+        - "6 sigma"
+        - "dmaic"
+        - "dmac"
+        - "value stream mapping"
+        - "value stream map"
+        - "vsm"
+        - "toc"
+        - "teoria de restricciones"
+        - "constraint"
+        - "gmp"
+        - "good manufacturing practice"
+        - "good manufacturing practices"
+        - "normas gmp"
+        - "fda"
+        - "food and drug administration"
+        - "normas fda"
+        - "ema"
+        - "fmea"
+        - "5 porques"
+        - "gemba"
+        - "valor agregado"
+        - "cuellos de botella"
+        - "pareto"
+        - "alcoa"
+        - "alcoa+"
+        - "quality risk management"
+        - "qrm"
+        - "ich q9"
+        - "ich q10"
+        - "ich q7"
+        - "ich q8"
+        - "annex 1"
+        - "pics"
+        - "quality by design"
+        - "qbd"
+        - "quality management system"
+        - "oee"
+        - "takt"
+        - "smed"
+        - "kanban"
+        - "mes"
+        - "andon"
+        - "spc"
+        - "capability"
+        - "pat"
+      critico: false
+      comentario_evaluacion: >-
+        Desglosa la justificación en tres secciones numeradas: (1) Adecuación conceptual
+        y teórica de Lean/Six Sigma frente a las obligaciones GMP/FDA (cita autores y
+        páginas del TFM); (2) Viabilidad operativa y de compliance, analizando cómo la
+        propuesta respeta ALCOA+, QRM (ICH Q9/Q10), validaciones, redundancias
+        obligatorias y stock de seguridad; (3) Riesgos, limitaciones y oportunidades,
+        mencionando guías regulatorias (FDA, EMA, PIC/S, Annex 1) y sinergias con QbD o
+        el sistema de calidad. Destaca los fragmentos que sustentan cada punto y exige
+        mitigaciones cuando falten.
+      comentario_falta: >-
+        Cuando no se documentan herramientas de mejora operativa, declara la ausencia
+        como riesgo regulatorio. Recomienda incorporar Lean, Six Sigma (DMAIC), Value
+        Stream Mapping o TOC especificando cómo cumplirían GMP/FDA (ALCOA+, trazabilidad
+        documental, QRM) y qué verificaciones deberían añadirse para mantener la calidad.
+    procesos_logisticos_cadena_suministro:
+      palabras_clave:
+        - "scor"
+        - "supply chain operations reference"
+        - "supply chain"
+        - "cadena de suministro"
+        - "logistica"
+        - "logístico"
+        - "analisis abc"
+        - "clasificacion abc"
+        - "abc"
+        - "ultima milla"
+        - "last mile"
+        - "pareto"
+        - "s&op"
+        - "sales and operations planning"
+        - "planificacion de la demanda"
+        - "warehouse"
+        - "almacenaje"
+        - "wms"
+        - "tms"
+        - "otif"
+        - "fill rate"
+        - "fulfillment"
+      critico: false
+      comentario_evaluacion: >-
+        Evalúa si se modela la cadena de suministro con SCOR, análisis ABC y diagnósticos
+        de última milla para priorizar mejoras logísticas.
+      comentario_falta: >-
+        Si no se analiza la cadena logística, solicita incorporar SCOR, análisis ABC de
+        inventarios y evaluación de última milla para fundamentar la propuesta.
+    procesos_administrativos_servicios:
+      palabras_clave:
+        - "sipoc"
+        - "bpm"
+        - "bpmn"
+        - "business process management"
+        - "business process modeling notation"
+        - "business process modelling notation"
+        - "swimlane"
+        - "service blueprint"
+        - "customer journey"
+      critico: false
+      comentario_evaluacion: >-
+        Comprueba si los procesos administrativos o de servicios se representan con
+        SIPOC, BPMN o swimlanes y si la evidencia respalda los tiempos y cargas
+        declaradas.
+      comentario_falta: >-
+        Si no se documentan estos procesos, pide modelarlos con SIPOC/BPMN/swimlane y
+        detalla cómo medir desempeño y tiempos de ciclo tras la intervención.
+    analisis_financiero:
+      palabras_clave:
+        - "roi"
+        - "retorno"
+        - "van"
+        - "valor actual neto"
+        - "tir"
+        - "tasa interna"
+        - "payback"
+        - "flujo de caja"
+        - "cash flow"
+        - "escenarios"
+        - "total cost of ownership"
+        - "tco"
+        - "coste total de propiedad"
+      critico: true
+      comentario_evaluacion: >-
+        Exige que el análisis financiero explique supuestos, coherencia entre escenarios
+        y sensibilidad, y que los indicadores se utilicen para tomar decisiones.
+      comentario_falta: >-
+        Si no hay evidencias financieras (ROI, VAN, TIR, payback, flujos de caja), indica
+        la omisión y orienta sobre cómo construir un modelo económico que respalde la
+        viabilidad.
+
+rulepacks:
+  analisis_externo:
+    enabled: true
+    strict_mode: true
+    version: "1.0"
+    rules_file: "rules_analisis_externo.yaml"
+    criteria_match:
+      mode: "contains"
+      normalize: true
+    apply_to_criterios:
+      - "Introducción y objetivos"
+      - "Proyecto"
+      - "Estructura y apartados"
+    output_expectations:
+      require_block_diagnostics: true
+      require_gate_reporting: true
+      require_cross_check_reporting: true
+
+
+estructura_superior:
+  keywords_por_categoria:
+    formato:
+      - "portada"
+      - "resumen"
+      - "formato"
+      - "indice"
+      - "índice"
+    portada:
+      - "portada"
+      - "resumen"
+      - "indice"
+      - "índice"
+      - "palabras clave"
+    introduccion:
+      - "introduccion"
+      - "situacion"
+      - "justificacion"
+      - "objetivo"
+      - "objetivos"
+    estructura:
+      - "marco teorico"
+      - "estado de la cuestion"
+      - "diagnostico"
+      - "modelos de gestion"
+    proyecto:
+      - "desarrollo"
+      - "plan de implantacion"
+      - "analisis estrategico"
+      - "modelo as"
+      - "modelo to"
+      - "kpi"
+      - "kpis"
+      - "metodologia"
+      - "proyecto"
+      - "propuesta"
+    conclusiones:
+      - "conclusion"
+      - "conclusiones"
+    limitaciones:
+      - "limitaciones"
+      - "prospectiva"
+      - "futuras lineas"
+      - "futuras líneas"
+    referencias:
+      - "referencias"
+      - "bibliograf"
+    general:
+      - "introduccion"
+      - "marco teorico"
+      - "desarrollo"
+      - "conclusion"
+  mapeo_por_rubrica:
+    default:
+      formato:
+        - "portada"
+        - "resumen"
+        - "formato"
+        - "indice"
+      portada:
+        - "portada"
+        - "resumen"
+        - "indice"
+        - "palabras clave"
+      introduccion:
+        - "introduccion"
+        - "situacion"
+        - "justificacion"
+        - "objetivos"
+      estructura:
+        - "marco teorico"
+        - "estado de la cuestion"
+        - "diagnostico"
+        - "modelos de gestion"
+      proyecto:
+        - "desarrollo"
+        - "plan de implantacion"
+        - "analisis estrategico"
+        - "modelo as"
+        - "modelo to"
+        - "kpis"
+        - "propuesta"
+      conclusiones:
+        - "conclusion"
+        - "conclusiones"
+      limitaciones:
+        - "limitaciones"
+        - "prospectiva"
+        - "futuras lineas"
+      referencias:
+        - "referencias"
+        - "bibliograf"
+      general:
+        - "introduccion"
+        - "marco teorico"
+        - "desarrollo"
+        - "conclusion"
+    mugptd:
+      formato:
+        - "portada"
+        - "formato"
+        - "resumen"
+        - "indice"
+      portada:
+        - "portada"
+        - "resumen"
+        - "abstract"
+        - "palabras clave"
+      introduccion:
+        - "introduccion"
+        - "planteamiento"
+        - "justificacion"
+        - "objetivos"
+        - "proposito"
+      estructura:
+        - "contexto"
+        - "estado del arte"
+        - "marco teorico"
+        - "marco conceptual"
+      proyecto:
+        - "descripcion"
+        - "contribucion"
+        - "desarrollo"
+        - "propuesta"
+        - "modelo"
+        - "plan"
+      conclusiones:
+        - "conclusion"
+        - "conclusiones"
+      limitaciones:
+        - "limitaciones"
+        - "trabajo futuro"
+        - "recomendaciones"
+        - "prospectiva"
+      referencias:
+        - "referencias"
+        - "bibliograf"
+        - "anexo"
+      general:
+        - "introduccion"
+        - "contexto"
+        - "descripcion"
+        - "desarrollo"
+        - "conclusion"
+
+categorias:
+  display_names:
+    formato: "Formato y lenguaje"
+    portada: "Portada, índice y resumen"
+    introduccion: "Introducción y objetivos"
+    estructura: "Contexto y marco teórico"
+    proyecto: "Proyecto y desarrollo"
+    conclusiones: "Conclusiones"
+    limitaciones: "Limitaciones y prospectiva"
+    referencias: "Referencias y anexos"
+    general: "Análisis adicional"
+  instrucciones_criterio_extendido:
+    formato: >-
+      Organiza la respuesta con los encabezados 'Consistencia formal', 'Evidencias detectadas' y
+      'Acciones correctivas'. Describe estilo, ortografía, tipografía y cumplimiento de normas de
+      redacción académica. Cita ejemplos concretos del documento y explica por qué afectan a la
+      percepción académica.
+    portada: >-
+      Redacta tres apartados titulados 'Portada y metadatos', 'Índice y navegación' y 'Resumen y
+      palabras clave'. Valora adhesión a la guía UNIR, coherencia entre encabezados y paginación,
+      y precisión del resumen.
+    introduccion: >-
+      Estructura el análisis en 'Planteamiento del problema', 'Objetivos y alcance' y 'Metodología
+      declarada'. Relaciona cada punto con la estrategia del trabajo e indica qué datos o
+      referencias respaldan las afirmaciones.
+    estructura: >-
+      Utiliza los apartados 'Coherencia entre secciones', 'Cobertura de modelos' y 'Lagunas
+      prioritarias'. Evalúa continuidad lógica del relato y ausencia de modelos exigidos.
+    conclusiones: >-
+      Divide el informe en 'Revisión de objetivos', 'Consistencia argumental' y 'Proyección y
+      preguntas abiertas'. Señala discrepancias entre resultados y objetivos, y propone
+      aclaraciones.
+    limitaciones: >-
+      Organiza en 'Identificación de riesgos', 'Planes de contingencia' y 'Pasos siguientes'.
+      Destaca qué amenazas quedan sin cuantificar y qué mitigaciones requiere el proyecto.
+    referencias: >-
+      Presenta los apartados 'Consistencia cita-bibliografía', 'Cobertura temática' y 'Correcciones
+      sugeridas'. Verifica normas APA y diversidad de fuentes.
+    proyecto: >-
+      Segmenta el análisis en 'Diagnóstico integral', 'Aplicación metodológica' y 'Viabilidad
+      cuantitativa'. Conecta los hallazgos externo/interno con la solución y con los modelos
+      financieros exigidos.
+    general: >-
+      Organiza el comentario en tres bloques con subtítulos claros. Explica qué evidencias sostienen
+      la puntuación, qué brechas persisten y qué acciones son prioritarias.
+goal: Homogeneous, critical, rigorous TFM evaluations.

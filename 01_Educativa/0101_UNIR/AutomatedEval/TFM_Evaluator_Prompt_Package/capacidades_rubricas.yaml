@@ -1,0 +1,191 @@
+# capacidades_rubricas.yaml
+# Objetivo:
+# - Definir "capacidades canónicas" (lo que queremos comprobar metodológicamente)
+# - Mapear cada capacidad a los criterios concretos de cada rúbrica (MUDPE, MUGPTD, ...)
+# - Permitir que los rulepacks usen apply_to_capacidades (no apply_to_criterios)
+
+version: 1
+
+canonical_capabilities:
+
+  analisis_interno:
+    descripcion: >
+      Diagnóstico interno triangulado (capacidades + actividades/procesos + síntesis),
+      orientado a explicar causas y restricciones internas que condicionan la propuesta.
+    outputs_minimos:
+      # Ajusta por dominio, pero exige al menos 3 artefactos verificables.
+      - "Mapa de actividades/procesos (Cadena de valor / BPMN / VSM) con al menos 1 proceso crítico."
+      - "Causalidad: priorización + causa raíz (Ishikawa/5-Why/Pareto) con métricas."
+      - "Síntesis: MEFI (o equivalente) con factores internos ponderados y justificados."
+    capas_transversales:
+      pertinencia:
+        debe_demostrar:
+          - "Pregunta diagnóstica explícita (qué responde el/los modelos)."
+          - "Vínculo directo con objetivos del TFM."
+      evidencia:
+        debe_demostrar:
+          - "Datos o trazas internas (KPIs, registros, muestras de expedientes, logs, etc.)."
+          - "Triangulación mínima (al menos 2 fuentes: cuantitativa + cualitativa/documental)."
+
+  control_riesgo:
+    descripcion: >
+      Capa de control, riesgo, cumplimiento y verificabilidad. Incluye COSO y/o FMEA
+      cuando son pertinentes al dominio (sector público, salud, cadena de frío, industria, etc.).
+    subcomponentes:
+      - coso
+      - fmea
+    outputs_minimos:
+      - "Matriz Riesgo→Control→Evidencia→Responsable→Frecuencia→Monitoring (COSO instanciado)."
+      - "FMEA/PFMEA para 1 proceso crítico con S-O-D y priorización (RPN o AP) y acciones."
+
+  viabilidad_economico_financiera:
+    descripcion: >
+      Capacidad de justificar el proyecto en términos de coste/beneficio, inversión,
+      retorno y sensibilidad (cuando el TFM plantea una implantación o cambio con coste).
+    outputs_minimos:
+      - "Modelo de costes (TCO o equivalente) con supuestos."
+      - "ROI/VAN/TIR (según proceda) y sensibilidad básica."
+
+  marco_teorico_metodologico:
+    descripcion: >
+      Marco teórico/metodológico que soporta el proyecto (estado del arte, referencias,
+      justificación de métodos elegidos y coherencia con el problema).
+    outputs_minimos:
+      - "Selección justificada de metodologías con referencias."
+      - "Estado del arte/benchmarking y encaje con el caso."
+
+  coherencia_global:
+    descripcion: >
+      Trazabilidad y alineación profunda: problema→objetivos→método→desarrollo→resultados→conclusiones.
+    outputs_minimos:
+      - "Relación explícita objetivos↔resultados y reflexión crítica."
+
+  presentacion_defensa:
+    descripcion: >
+      Componentes de defensa/ exposición (si aplica en la rúbrica).
+    outputs_minimos:
+      - "Estructura de presentación coherente, dominio y comunicación."
+
+# -------------------------------------------------------------------
+# Rúbricas: catálogo de criterios y mapeo capacidad→criterios (por perfil)
+# Nota: usamos IDs internos estables + patrones match para localizar títulos reales
+# dentro del Excel (si el texto incluye saltos de línea, porcentajes, etc.).
+# -------------------------------------------------------------------
+
+rubricas:
+
+  MUDPE:
+    criterios:
+      - id: formato_lenguaje
+        match: '(?i)^Formato y lenguaje'
+      - id: estructura_apartados
+        match: '(?i)^Estructura/apartados'
+      - id: portada_indice_resumen
+        match: '(?i)^Portada,\s*índice y resumen'
+      - id: introduccion_objetivos
+        match: '(?i)^Introducción/objetivos'
+      - id: proyecto
+        match: '(?i)^Proyecto'
+      - id: visuales
+        match: '(?i)^Fotografías,\s*ilustraciones,\s*tablas'
+      - id: conclusiones
+        match: '(?i)^Conclusiones'
+      - id: limitaciones_amenazas_alternativas
+        match: '(?i)^Limitaciones,\s*principales amenazas'
+      - id: referencias_bibliograficas
+        match: '(?i)^Referencias bibliográficas'
+      - id: presentacion_exposicion
+        match: '(?i)^Presentación del'
+      - id: estructura_formato_presentacion
+        match: '(?i)^Estructura y formato de la presentación'
+      - id: dominio_contenido
+        match: '(?i)^Dominio del contenido'
+      - id: comunicacion_tribunal
+        match: '(?i)^Comunicación\s*\(verbal y no verbal\)'
+
+    capability_to_criterios:
+      analisis_interno:
+        - introduccion_objetivos
+        - proyecto
+        - estructura_apartados
+      control_riesgo:
+        - proyecto
+        - limitaciones_amenazas_alternativas
+        - conclusiones
+      viabilidad_economico_financiera:
+        - proyecto
+        - conclusiones
+      marco_teorico_metodologico:
+        - estructura_apartados
+        - introduccion_objetivos
+      coherencia_global:
+        - introduccion_objetivos
+        - proyecto
+        - conclusiones
+      presentacion_defensa:
+        - presentacion_exposicion
+        - estructura_formato_presentacion
+        - dominio_contenido
+        - comunicacion_tribunal
+
+  MUGPTD:
+    criterios:
+      - id: estilo_formato_academico
+        match: '(?i)^Estilo y formato académico'
+      - id: estructura_apartados
+        match: '(?i)^Estructura/apartados'
+      - id: alcance
+        match: '(?i)^Alcance'
+      - id: marco_teorico_referencias
+        match: '(?i)^Marco Teórico y referencias'
+      - id: desarrollo_contribucion
+        match: '(?i)^Desarrollo específico de la contribución'
+      - id: coherencia_objetivos_desarrollo_conclusiones
+        match: '(?i)^Relación entre objetivos,\s*planteamiento,\s*desarrollo y conclusiones'
+      - id: presentacion_exposicion
+        match: '(?i)^Presentación del'
+      - id: dominio_contenido
+        match: '(?i)^Dominio del contenido'
+
+    capability_to_criterios:
+      analisis_interno:
+        - desarrollo_contribucion
+        - coherencia_objetivos_desarrollo_conclusiones
+        - estructura_apartados
+        - alcance
+      control_riesgo:
+        - desarrollo_contribucion
+        - coherencia_objetivos_desarrollo_conclusiones
+      viabilidad_economico_financiera:
+        - desarrollo_contribucion
+        - coherencia_objetivos_desarrollo_conclusiones
+      marco_teorico_metodologico:
+        - marco_teorico_referencias
+        - estructura_apartados
+      coherencia_global:
+        - coherencia_objetivos_desarrollo_conclusiones
+        - desarrollo_contribucion
+      presentacion_defensa:
+        - presentacion_exposicion
+        - dominio_contenido
+
+# -------------------------------------------------------------------
+# Rulepacks: ahora apuntan a capacidades canónicas (no a criterios).
+# El motor resolverá capacidades → criterios de la rúbrica activa.
+# -------------------------------------------------------------------
+
+rulepacks:
+
+  analisis_interno:
+    enabled: true
+    strict_mode: true
+    rules_file: "rules_analisis_interno.yaml"
+    apply_to_capacidades:
+      - analisis_interno
+      - control_riesgo
+    output_expectations:
+      require_block_diagnostics: true
+      require_gate_reporting: true
+      require_cross_check_reporting: true
+      require_pertinencia_reporting: true
+      require_evidencia_reporting: true

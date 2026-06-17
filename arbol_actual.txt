@@ -1,0 +1,366 @@
+jjvrubio/
+├── .cache/
+├── .github/
+│   ├── workflows/
+│   │   └── run-import-example.yml
+│   ├── .DS_Store
+│   └── copilot-instructions.md
+├── .vscode/
+│   ├── launch.json
+│   └── settings.json
+├── 01_Educativa/
+│   ├── 0101_UNIR/
+│   │   ├── Asignaturas/
+│   │   │   ├── Ecosistema Digital y Tecnologías Disruptivas/
+│   │   │   ├── Gestión de la Cultura y el Talento Digital/
+│   │   │   └── Transformar desde Operaciones y Servicio al Cliente/
+│   │   ├── AutomatedEval/
+│   │   │   ├── APA Report/
+│   │   │   │   ├── APA 7 compliance description.md
+│   │   │   │   ├── check APA compliance in english json.py
+│   │   │   │   ├── check APA compliance in english markdown.py
+│   │   │   │   ├── check APA compliance in spanish json.py
+│   │   │   │   ├── check APA compliance in spanish markdown.py
+│   │   │   │   ├── check refernces compliance to APA 7.py
+│   │   │   │   ├── citation_checking.py
+│   │   │   │   ├── config_referencias.py
+│   │   │   │   ├── Corrige y ensambla referecias APA.py
+│   │   │   │   ├── ejemplo_informe.json
+│   │   │   │   ├── ejemplo_informe.md
+│   │   │   │   ├── ejemplos_uso.py
+│   │   │   │   ├── export extracted references to JSON.py
+│   │   │   │   ├── header_footer_debug.txt
+│   │   │   │   ├── Hints.md
+│   │   │   │   ├── import re.py
+│   │   │   │   ├── instalar_sistema.sh
+│   │   │   │   ├── Prompt to APA citation analysis.md
+│   │   │   │   ├── README.md
+│   │   │   │   ├── README_REFERENCIAS.md
+│   │   │   │   ├── references extracted from Word.py
+│   │   │   │   ├── references extratected from PDF.py
+│   │   │   │   ├── references extrated from UNIR TFM.py
+│   │   │   │   ├── referencias_validator.py
+│   │   │   │   ├── requirements_referencias.txt
+│   │   │   │   ├── script_extract
+│   │   │   │   ├── SISTEMA_COMPLETADO.md
+│   │   │   │   ├── specs for APA reporting.md
+│   │   │   │   ├── test assembling short.py
+│   │   │   │   ├── test salida referencias.py
+│   │   │   │   ├── testing detector.py
+│   │   │   │   ├── testing extraction.py
+│   │   │   │   ├── try with Claude.py
+│   │   │   │   ├── utils_referencias.py
+│   │   │   │   ├── validador_apa_completo.py
+│   │   │   │   ├── validar_citas_openai.py
+│   │   │   │   ├── validate APA refences in Thesis.py
+│   │   │   │   └── verificador_apa_tfm.py
+│   │   │   ├── archive/
+│   │   │   │   └── UNIR_Grading/
+│   │   │   │       ├── .gitignore
+│   │   │   │       ├── cambios.md
+│   │   │   │       ├── integrador_tfm_apa.py
+│   │   │   │       ├── prueba_integracion_tfm_apa.py
+│   │   │   │       ├── README_Evaluador_TFM.md
+│   │   │   │       └── SOLUCION_DUPLICACION_PREGUNTAS.md
+│   │   │   ├── cloning_word_teamplate/
+│   │   │   │   ├── _actualizados_sin_vba/
+│   │   │   │   │   └── TEMA 1_ACTUALIZADO_TEST.docx
+│   │   │   │   ├── render_clon_fuerte/
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── TEMA 1.docx
+│   │   │   │   ├── TEMA 2.docx
+│   │   │   │   ├── TEMA 2_CLON_FUERTE.docx
+│   │   │   │   ├── TEMA 2_CLON_FUERTE_suffix_test.docx
+│   │   │   │   └── tema_2_rev.docx
+│   │   │   ├── Completar Acta y Rúbrica/
+│   │   │   │   ├── all XLXS to a folder.app/
+│   │   │   │   │   └── Contents/
+│   │   │   │   │       ├── _CodeSignature/
+│   │   │   │   │       │   └── CodeResources
+│   │   │   │   │       ├── MacOS/
+│   │   │   │   │       │   └── applet
+│   │   │   │   │       ├── Resources/
+│   │   │   │   │       │   ├── Scripts/
+│   │   │   │   │       │   │   └── main.scpt
+│   │   │   │   │       │   ├── applet.icns
+│   │   │   │   │       │   └── applet.rsrc
+│   │   │   │   │       ├── Info.plist
+│   │   │   │   │       └── PkgInfo
+│   │   │   │   ├── all XLXS to a folder.scptd/
+│   │   │   │   │   └── Contents/
+│   │   │   │   │       └── Resources/
+│   │   │   │   │           └── Scripts/
+│   │   │   │   │               └── main.scpt
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── all XLXS to a folder.applescript
+│   │   │   │   ├── automatic web fields fill.py
+│   │   │   │   ├── copy all XLXS to a folder.applescript
+│   │   │   │   ├── Export_Rubrica_To_PDF.bas
+│   │   │   │   ├── importarActa.env.example
+│   │   │   │   ├── importarActa.py
+│   │   │   │   ├── importarRubrica.py
+│   │   │   │   ├── importarRubrica_EDGE.py
+│   │   │   │   ├── importarRubrica_SAFARI.py
+│   │   │   │   ├── importarRubrica_SAFARI_seleccion_con_trazas_locales.py
+│   │   │   │   ├── macro_code.bas
+│   │   │   │   ├── msedgedriver
+│   │   │   │   ├── README.md
+│   │   │   │   ├── README_EXPORT_RUBRICA.md
+│   │   │   │   ├── README_SECRETS.md
+│   │   │   │   ├── README_XLSX_TO_PDF.md
+│   │   │   │   ├── Sub ExportWorksheetsToPDF().vb
+│   │   │   │   ├── test.py
+│   │   │   │   ├── webfulfill_tfm_unir.md
+│   │   │   │   └── worksheet-a-PDF.applescript
+│   │   │   ├── function_call_agent/
+│   │   │   │   ├── functions/
+│   │   │   │   │   ├── extractors.py
+│   │   │   │   │   └── function_schemas.json
+│   │   │   │   ├── utils/
+│   │   │   │   │   └── logger.py
+│   │   │   │   └── .DS_Store
+│   │   │   ├── Grading/
+│   │   │   │   ├── UNIR Grading/
+│   │   │   │   │   ├── resultados_safe/
+│   │   │   │   │   ├── .DS_Store
+│   │   │   │   │   ├── Evaluador_TFM.py
+│   │   │   │   │   ├── Evaluador_TFM_Integrado_ultraestricto.py
+│   │   │   │   │   ├── Evaluador_TFM_Integrado_ultraestricto_UPDATED.py
+│   │   │   │   │   ├── Evaluador_TFM_Refactorizado.py
+│   │   │   │   │   ├── Evaluador_TFM_SafeFix.py
+│   │   │   │   │   ├── NOTA_ventana_prompt.md
+│   │   │   │   │   ├── README_Evaluador_TFM.md
+│   │   │   │   │   └── test_variabilidad_evaluador.py
+│   │   │   │   └── .DS_Store
+│   │   │   ├── TFM_Evaluator_Prompt_Package/
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── ANALISIS_FACTORIZACIONES_COMPLETO.md
+│   │   │   │   ├── capacidades_rubricas.yaml
+│   │   │   │   ├── configuracion_extraccion_datos.yaml
+│   │   │   │   ├── configuracion_sistema_tfm.yaml
+│   │   │   │   ├── ejemplo preguntas.md
+│   │   │   │   ├── FICHA DE MODELOS DE ANÁLISIS PARA LA EVALUACIÓN DE TFM.md
+│   │   │   │   ├── instrucciones detalladas para la evaluación del TFM.md
+│   │   │   │   ├── Instrucciones ultraestrictas Evaluacion_TFM_UNIR.md
+│   │   │   │   ├── plantillas_analisis_critico.yaml
+│   │   │   │   ├── plantillas_preguntas.yaml
+│   │   │   │   ├── Prompt en modo humano.md
+│   │   │   │   ├── PROMPT MAESTRO - con bloqueo estructural MUDPE.md
+│   │   │   │   ├── Prompt para lanzar la evaluación.md
+│   │   │   │   ├── PROTOCOLO_EVALUACION_TFM_ULTRAESTRICTO_UNIR.md
+│   │   │   │   ├── REFACTORIZACION_EXTRACCION_DATOS.md
+│   │   │   │   ├── rubrica MUDPE.xlsx
+│   │   │   │   ├── rubrica MUGPTD.xlsx
+│   │   │   │   ├── rubrica.csv
+│   │   │   │   ├── rubrica.xlsx
+│   │   │   │   ├── rules_analisis_externo.yaml
+│   │   │   │   ├── TFM_Evaluacion_Despliegue_Automatizacion.md
+│   │   │   │   ├── TFM_Evaluator_Prompt.json
+│   │   │   │   ├── TFM_Evaluator_Prompt.md
+│   │   │   │   ├── TFM_Evaluator_Prompt.yaml
+│   │   │   │   ├── TFM_Evaluator_Prompt_Package.zip
+│   │   │   │   └── Ultraestricto.md
+│   │   │   ├── .DS_Store
+│   │   │   ├── autoEval.py
+│   │   │   ├── bitácora.md
+│   │   │   ├── importarRubrica.py
+│   │   │   ├── selección y lectura de TFM.py
+│   │   │   └── WIP_AUTOFIX.md
+│   │   └── .DS_Store
+│   ├── 0102_ESBS/
+│   │   ├── Asignaturas/
+│   │   │   ├── Business Games/
+│   │   │   ├── Consumer Market Research/
+│   │   │   └── Plagiarism & AI/
+│   │   ├── AutomatedEval/
+│   │   │   └── Grading/
+│   │   │       ├── ESBS Grading/
+│   │   │       │   ├── esbs_grader/
+│   │   │       │   │   ├── config.yaml
+│   │   │       │   │   ├── configuracion_evaluacion copia.json
+│   │   │       │   │   ├── configuracion_evaluacion.json
+│   │   │       │   │   ├── configuracion_evaluacion_minimal.json
+│   │   │       │   │   ├── Estructura TFM ESBS y detalles.md
+│   │   │       │   │   ├── rubric.schema.json
+│   │   │       │   │   ├── rubrica TFM ESBS.xlsx
+│   │   │       │   │   ├── rubrica_estructurada.json
+│   │   │       │   │   └── strict_grading_instructions.md
+│   │   │       │   ├── .DS_Store
+│   │   │       │   ├── .gitignore
+│   │   │       │   ├── dividir_tfm_bloques.py
+│   │   │       │   ├── ESBS writing grades to worksheet
+│   │   │       │   ├── ESBS_evaluacion_batch.py
+│   │   │       │   ├── ESBS_evaluacion_individual.md
+│   │   │       │   ├── ESBS_evaluacion_individual.py
+│   │   │       │   ├── ESBS_evaluacion_individual_PDF.py
+│   │   │       │   ├── ESBS_evaluacion_individual_shortTFM.py
+│   │   │       │   ├── rubric.schema.json
+│   │   │       │   ├── segmentador_secciones_tfm.py
+│   │   │       │   ├── strict_grading_instructions.md
+│   │   │       │   ├── temporal.py
+│   │   │       │   ├── test
+│   │   │       │   └── ultra_strict_grader_esbs.py
+│   │   │       ├── palabras clave/
+│   │   │       │   ├── eval_keywords.py
+│   │   │       │   └── instrucciones para evaluar palabras clave.md
+│   │   │       └── preguntas/
+│   │   │           └── generate_questions.py
+│   │   └── .DS_Store
+│   └── .DS_Store
+├── 02_Profesional/
+│   └── 0201_Convercus/
+│       └── Automatizaciones/
+│           ├── osint_ccus/
+│           │   ├── modules/
+│           │   │   ├── __init__.py
+│           │   │   ├── brain.py
+│           │   │   ├── collector.py
+│           │   │   ├── hunter.py
+│           │   │   ├── macos_dialogs.py
+│           │   │   ├── prompt_parser.py
+│           │   │   └── reporter.py
+│           │   ├── prompts/
+│           │   │   ├── 01_system.md
+│           │   │   ├── 02_trigger.md
+│           │   │   ├── 03_analysis.md
+│           │   │   ├── 04_synthesis.md
+│           │   │   └── 05_report.md
+│           │   ├── .DS_Store
+│           │   ├── .env.example
+│           │   ├── Construir tu propio Notebook Inteligent.md
+│           │   ├── guia construir osint.md
+│           │   ├── osint-prospects.py
+│           │   └── README.md
+│           ├── publicando/
+│           │   ├── pandoc/
+│           │   │   ├── profiles/
+│           │   │   │   ├── aliases.sh
+│           │   │   │   ├── doc-long.yaml
+│           │   │   │   ├── docx-short.yaml
+│           │   │   │   └── pdf-long.yaml
+│           │   │   ├── .DS_Store
+│           │   │   └── pandoc-meta.yaml
+│           │   ├── Posting/
+│           │   │   ├──  publicar desde Obsidian + Pandoc hacia Substack y LinkedIn.md
+│           │   │   ├── blog.yaml
+│           │   │   ├── linkedin.yaml
+│           │   │   ├── plantilla pulse copy.docx
+│           │   │   ├── plantilla_pulse.docx
+│           │   │   ├── plantilla_pulse_vacia.docx
+│           │   │   ├── publicación en Pulse detallada.md
+│           │   │   └── substack.yaml
+│           │   ├── TFE/
+│           │   │   ├── Adoptar estilos Word.md
+│           │   │   ├── apa-7th-edition.csl
+│           │   │   ├── convertir-a-word.sh
+│           │   │   ├── docprep.lua
+│           │   │   ├── documentacion_proyecto_conversor.md
+│           │   │   ├── leccion-academica.yaml
+│           │   │   ├── portada.lua
+│           │   │   └── Referencias.docx
+│           │   ├── .DS_Store
+│           │   ├── Alineación del ToC con estándares editoriales.md
+│           │   ├── Esquema canónico de encabezados para investigación.md
+│           │   ├── Filtro Lua para nivel TOC.md
+│           │   ├── Integración del ToC y la estructura con notas académicas.md
+│           │   ├── linkedin.yaml
+│           │   ├── pandoc-obsidian-wrapper.sh
+│           │   ├── sync_from_icloud.sh
+│           │   ├── sync_icloud.md
+│           │   ├── toc-policy-bis.lua
+│           │   └── toc-policy.lua
+│           └── publish/
+│               ├── filters/
+│               │   └── docprep.lua
+│               ├── profiles/
+│               │   └── docx.yaml
+│               ├── templates/
+│               │   ├── .DS_Store
+│               │   ├── frontmatter publication conecctions.yaml
+│               │   ├── frontmatter publication.yaml
+│               │   └── frontmatter.yaml
+│               ├── .DS_Store
+│               ├── convert.sh
+│               └── README.md
+├── 03_Personal/
+│   ├── Articulos/
+│   │   └── METIS_Growth/
+│   │       ├── ab testing performance.r
+│   │       ├── L1 - P3.py
+│   │       ├── L1 P2 Corrective Action Plan.py
+│   │       ├── L1 P4-1 Communication Needs Mapping Rubric
+│   │       ├── L1 P4-2 Rubric Structured Update Mechanisms.py
+│   │       ├── L1 P4-3 Rubric Feedbaack loops.py
+│   │       ├── L1 P4-5 templates main deliveables.py
+│   │       ├── L1 P4-6 Metrics Templates.py
+│   │       ├── L2 P1 channel mapping.py
+│   │       ├── L2 P1 cultural analysis report.py
+│   │       ├── L2 P1 ethnographic research.py
+│   │       ├── L2 P1 influencers engagement plan.py
+│   │       ├── L2 P1 research objective document.py
+│   │       ├── Lead prioritization chart.py
+│   │       ├── templates for BATNA negotiation.py
+│   │       └── templates L1 P1.py
+│   ├── Automaciones/
+│   │   ├── doc_processing/
+│   │   ├── logs/
+│   │   │   ├── thesis_analyzer_20250114_003444.log
+│   │   │   ├── thesis_analyzer_20250114_003519.log
+│   │   │   ├── thesis_analyzer_20250114_003535.log
+│   │   │   ├── thesis_analyzer_20250114_003625.log
+│   │   │   ├── thesis_analyzer_20250114_005844.log
+│   │   │   └── thesis_analyzer_20250114_010253.log
+│   │   ├── mac_automation/
+│   │   │   └── scripts_de_apoyo/
+│   │   │       ├── actualizar_temas_sin_vba.py
+│   │   │       ├── actualizar_temas_word_vba.bas
+│   │   │       ├── actualizar_temas_word_vba.md
+│   │   │       ├── adjust_svg_dpi.py
+│   │   │       ├── all XLXS to a folder.applescript
+│   │   │       ├── aplicar_estilos_docx.py
+│   │   │       ├── clean_footer.py
+│   │   │       ├── clean_notes_content.py
+│   │   │       ├── clean_streak_notes.py
+│   │   │       ├── clon_fuerte_tema.py
+│   │   │       ├── com.convercus.sync.daily.plist
+│   │   │       ├── comparar carpetas de Metis.sh
+│   │   │       ├── comparar_docx.py
+│   │   │       ├── compararm dos carpetas y generar diferencias
+│   │   │       ├── copiar_temas_rev_y_zip.zsh
+│   │   │       ├── crear_jerarquia_beyond_trade.sh
+│   │   │       ├── De Streak a Apollo avance.json
+│   │   │       ├── diagnostico_mail.applescript
+│   │   │       ├── export_contacts_to_csv.applescript
+│   │   │       ├── export_streak_mail.applescript
+│   │   │       ├── export_streak_mail.py
+│   │   │       ├── export_streak_mail_fixed.applescript
+│   │   │       ├── extraer anexo de mail.applescript
+│   │   │       ├── extraer últimos contactos.applescript
+│   │   │       ├── filter_notes_by_prefix.py
+│   │   │       ├── fix_and_filter.py
+│   │   │       ├── generar_docx_desde_lista.sh
+│   │   │       ├── insert_svgs_into_pptx.py
+│   │   │       ├── leer etiqueta finder.py
+│   │   │       ├── README.md
+│   │   │       ├── reestructurar_repo.sh
+│   │   │       ├── remove_duplicates.py
+│   │   │       ├── remove_office_languages.zsh
+│   │   │       ├── start_shell.sh
+│   │   │       ├── sync_convercus_daily.sh
+│   │   │       └── sync_metis.sh
+│   │   └── .DS_Store
+│   └── .DS_Store
+├── -name
+├── .DS_Store
+├── .gitignore
+├── arbol_actual.txt
+├── automatedEval_backup_20251026_211903.zip
+├── El MIT rompe el Límite de Contexto de la IA manteniendo su Calidad [GocR9YXWEyE].en.vtt
+├── El MIT rompe el Límite de Contexto de la IA manteniendo su Calidad [GocR9YXWEyE].es.vtt
+├── espanso sync.md
+├── github-recovery-codes.txt
+├── modulos-arm.txt
+├── modulos-intel.txt
+├── repo_restructure_map.tsv
+├── requirements.txt
+└── seguimos aquí.md

@@ -1,0 +1,14 @@
+---
+# Minimal front matter for docx conversion.
+# Add any custom fields you want to carry through.
+
+title: "Title"
+author: "Author"
+date: "YYYY-MM-DD"
+lang: en
+# Set TOC behavior.
+toc: true
+toc-depth: 3
+# Optional class values if you use them in other filters.
+doc_category: report
+---
