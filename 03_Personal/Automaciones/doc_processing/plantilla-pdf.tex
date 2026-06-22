@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{graphicx}
+
+% Escalado de imágenes: pandoc 3.7 envuelve cada \includegraphics con \pandocbounded
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+% --- Callouts / admonitions (usados por callouts.lua) ---
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newtcolorbox{callout}[2]{%
+  breakable,
+  colback=#1!6!white,
+  colframe=#1!70!black,
+  coltitle=white,
+  fonttitle=\bfseries,
+  title={#2},
+  left=2mm, right=2mm, top=1mm, bottom=1mm,
+  boxrule=0.6pt,
+}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\setmainfont{Arial}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{$if(header-left)$$header-left$$endif$}
+\fancyhead[C]{$if(header-center)$$header-center$$endif$}
+\fancyhead[R]{$if(header-right)$$header-right$$endif$}
+
+\fancyfoot[L]{$if(footer-left)$$footer-left$$endif$}
+\fancyfoot[C]{$if(footer-center)$$footer-center$$else$\thepage$endif$}
+\fancyfoot[R]{$if(footer-right)$$footer-right$$endif$}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
+\begin{document}
+
+$if(title)$
+\maketitle
+$endif$
+
+$body$
+
+\end{document}
