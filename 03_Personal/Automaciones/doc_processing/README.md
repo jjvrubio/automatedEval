@@ -50,6 +50,65 @@ Argumentos:
   "/ruta/a/imagenes"
 ```
 
+### Cabeceras y pies de página
+
+La plantilla lee cabeceras y pies desde el YAML front matter del Markdown mediante metadatos de Pandoc.
+
+Variables soportadas:
+
+- `header-left`
+- `header-center`
+- `header-right`
+- `footer-left`
+- `footer-center`
+- `footer-right`
+
+Ejemplo:
+
+```yaml
+---
+title: "Título del artículo"
+author: "Convercus"
+date: "2026"
+
+header-left: "Convercus"
+header-center: ""
+header-right: "Beyond Trade"
+
+footer-left: "Documento interno"
+footer-center: "\\thepage\\ de \\pageref{LastPage}"
+footer-right: "2026"
+---
+```
+
+Notas:
+
+- Si `footer-center` se omite, la plantilla usa `\thepage`.
+- Para numeración `Página X de Y`, usa `\\thepage\\ de \\pageref{LastPage}` en YAML.
+- La plantilla fuerza `fancy` también después de `\maketitle`, por lo que cabeceras y pies aparecen en la primera página cuando hay título.
+
+### Prueba de cabeceras y pies
+
+El archivo `header-footer-test.md` verifica que los metadatos YAML llegan a la plantilla.
+
+Generar el PDF de prueba:
+
+```bash
+./build-pdf.sh header-footer-test.md header-footer-test.pdf
+```
+
+Verificar por extracción de texto:
+
+```bash
+TMP=$(mktemp)
+pdftotext header-footer-test.pdf "$TMP"
+grep -n 'HFTEST-' "$TMP"
+grep -nE '[0-9]+ de [0-9]+' "$TMP"
+rm -f "$TMP"
+```
+
+El PDF generado `header-footer-test.pdf` está excluido de git porque es un artefacto reproducible.
+
 ### Notas
 
 - El Markdown original no se modifica.
