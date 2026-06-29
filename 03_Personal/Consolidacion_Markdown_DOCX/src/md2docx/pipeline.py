@@ -8,6 +8,25 @@ from .pandoc_runner import build_pandoc_command, run_pandoc
 from .postprocess import maybe_apply_style_template
 
 
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
+
+
+def _collect_markdown_image_dirs(md_parent: Path) -> list[Path]:
+    """Recolecta carpetas locales con imagenes bajo el directorio del markdown.
+
+    Permite resolver embeds de Obsidian con nombre corto (`![[imagen.svg]]`)
+    cuando los binarios viven en subcarpetas (p. ej. `visual_system_*`).
+    """
+    if not md_parent.exists():
+        return []
+
+    image_dirs: set[Path] = {md_parent}
+    for ext in IMAGE_EXTENSIONS:
+        for image_path in md_parent.rglob(f"*{ext}"):
+            image_dirs.add(image_path.parent)
+    return sorted(image_dirs)
+
+
 @dataclass
 class BuildOptions:
     input_md: Path | list[Path]
@@ -30,8 +49,9 @@ def run_build(project_root: Path, opts: BuildOptions) -> None:
     resource_paths = list(profile.resource_path or [])
     for input_md in input_files:
         parent = input_md.parent
-        if parent not in resource_paths:
-            resource_paths.append(parent)
+        for image_dir in _collect_markdown_image_dirs(parent):
+            if image_dir not in resource_paths:
+                resource_paths.append(image_dir)
     profile.resource_path = resource_paths or None
 
     command = build_pandoc_command(
@@ -43,7 +63,14 @@ def run_build(project_root: Path, opts: BuildOptions) -> None:
     )
     run_pandoc(command)
 
-    style_template = opts.style_template or profile.style_template
+    # Si no se fuerza --style-template, reutilizamos la plantilla de referencia
+    # para que el DOCX final herede estilos reales del documento base.
+    style_template = (
+        opts.style_template
+        or profile.style_template
+        or opts.reference_doc
+        or profile.reference_doc
+    )
     maybe_apply_style_template(
         output_docx=opts.output_docx,
         style_template=style_template,

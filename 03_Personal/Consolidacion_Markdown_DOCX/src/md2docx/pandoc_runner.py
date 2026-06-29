@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -81,8 +82,29 @@ def run_pandoc(command: list[str]) -> None:
         raise RuntimeError("No se encontro pandoc en PATH.")
 
     result = subprocess.run(command, capture_output=True, text=True, check=False)
+    stderr = result.stderr.strip()
+
+    # Pandoc puede devolver 0 y aun asi reportar recursos no resueltos.
+    # Lo mostramos de forma resumida para que el usuario vea que faltan imagenes.
+    missing_resources: list[str] = []
+    for line in stderr.splitlines() if stderr else []:
+        marker = "Could not fetch resource "
+        if marker in line:
+            resource = line.split(marker, 1)[1].split(":", 1)[0].strip()
+            if resource:
+                missing_resources.append(resource)
+
+    if missing_resources:
+        unique_resources = sorted(set(missing_resources))
+        print(
+            f"Aviso: Pandoc no pudo resolver {len(unique_resources)} recurso(s).",
+            file=sys.stderr,
+        )
+        for resource in unique_resources:
+            print(f" - {resource}", file=sys.stderr)
+
     if result.returncode != 0:
-        stderr = result.stderr.strip() or "(sin stderr)"
+        stderr = stderr or "(sin stderr)"
         stdout = result.stdout.strip() or "(sin stdout)"
         raise RuntimeError(
             "Pandoc fallo durante la conversion.\n"
