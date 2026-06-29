@@ -1,0 +1,6 @@
+extends: base_docx
+toc_depth: 2
+metadata:
+  doc_type: commercial_proposal
+  status: draft
+  brand: Convercus

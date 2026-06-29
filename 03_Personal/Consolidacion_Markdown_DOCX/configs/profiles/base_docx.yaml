@@ -1,0 +1,14 @@
+from: markdown+yaml_metadata_block+fenced_divs+bracketed_spans+mark+pipe_tables+multiline_tables+grid_tables+raw_html
+to: docx
+standalone: true
+toc: true
+toc_depth: 3
+citeproc: false
+lua_filters:
+  - filters/obsidian-docx.lua
+  - filters/docprep.lua
+reference_doc: assets/templates/plantilla_pulse.docx
+metadata:
+  lang: es
+  toc: true
+  toc-depth: 3

@@ -1,0 +1,4 @@
+extends: research_article
+metadata:
+  doc_type: academic_paper
+  link-citations: true

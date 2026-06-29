@@ -1,0 +1,4 @@
+extends: commercial_proposal
+metadata:
+  doc_type: economic_offer
+  status: draft

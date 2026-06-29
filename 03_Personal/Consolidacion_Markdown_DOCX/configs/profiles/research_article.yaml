@@ -1,0 +1,7 @@
+extends: base_docx
+toc_depth: 3
+citeproc: true
+csl: assets/csl/apa-7th-edition.csl
+metadata:
+  doc_type: research_article
+  link-citations: true

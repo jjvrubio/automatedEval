@@ -1,0 +1,40 @@
+Inventario de archivos consolidados
+
+00_CONSOLIDACION_Y_PLAN.md
+00_INVENTARIO_ARCHIVOS.txt
+01_publish_minimo/README.md
+01_publish_minimo/convert.sh
+01_publish_minimo/docprep.lua
+01_publish_minimo/docx.yaml
+01_publish_minimo/frontmatter publication.yaml
+01_publish_minimo/frontmatter.yaml
+02_publicando_pipeline/aliases.sh
+02_publicando_pipeline/doc-long.yaml
+02_publicando_pipeline/docx-short.yaml
+02_publicando_pipeline/linkedin.yaml
+02_publicando_pipeline/pandoc-meta.yaml
+02_publicando_pipeline/pandoc-obsidian-wrapper.sh
+02_publicando_pipeline/toc-policy-bis.lua
+02_publicando_pipeline/toc-policy.lua
+03_tfe_pipeline/Adoptar estilos Word.md
+03_tfe_pipeline/apa-7th-edition.csl
+03_tfe_pipeline/convertir-a-word.sh
+03_tfe_pipeline/docprep.lua
+03_tfe_pipeline/documentacion_proyecto_conversor.md
+03_tfe_pipeline/leccion-academica.yaml
+03_tfe_pipeline/portada.lua
+04_postprocessing_docx/aplicar_estilos_docx.py
+04_postprocessing_docx/comparar_docx.py
+04_postprocessing_docx/generar_docx_desde_lista.sh
+05_plantillas/blog.yaml
+05_plantillas/linkedin.yaml
+05_plantillas/plantilla_pulse.docx
+05_plantillas/plantilla_pulse_vacia.docx
+05_plantillas/substack.yaml
+06_documentacion/ publicar desde Obsidian + Pandoc hacia Substack y LinkedIn.md
+06_documentacion/Alineación del ToC con estándares editoriales.md
+06_documentacion/Esquema canónico de encabezados para investigación.md
+06_documentacion/Filtro Lua para nivel TOC.md
+06_documentacion/publicación en Pulse detallada.md
+07_referencia_personal/README.md
+07_referencia_personal/callouts.lua

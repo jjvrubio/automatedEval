@@ -1,0 +1,8 @@
+from: markdown+yaml_metadata_block+fenced_divs+bracketed_spans+mark
+to: docx
+standalone: true
+defaults_file: assets/defaults/docx-short.yaml
+lua_filters:
+  - filters/obsidian-docx.lua
+metadata_file: assets/metadata/substack.yaml
+reference_doc: assets/templates/plantilla_pulse.docx

@@ -1,0 +1,5 @@
+extends: teaching_material
+metadata_file: assets/metadata/leccion-academica.yaml
+metadata:
+  doc_type: master_lesson
+  link-citations: true

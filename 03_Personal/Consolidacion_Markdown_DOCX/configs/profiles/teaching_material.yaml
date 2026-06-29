@@ -1,0 +1,11 @@
+extends: base_docx
+toc_depth: 3
+citeproc: true
+csl: assets/csl/apa-7th-edition.csl
+lua_filters:
+  - filters/obsidian-docx.lua
+  - filters/portada.lua
+  - filters/docprep.lua
+metadata:
+  doc_type: teaching_material
+  link-citations: true

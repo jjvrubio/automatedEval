@@ -1,0 +1,6 @@
+extends: research_article
+metadata:
+  doc_type: long_article
+  brand: Convercus
+resource_path:
+  - "/Users/juanjo/Library/CloudStorage/OneDrive-ConvercusGmbH/Convercus/Articles & Posts"

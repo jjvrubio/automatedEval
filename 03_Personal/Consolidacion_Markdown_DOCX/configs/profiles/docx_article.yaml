@@ -1,0 +1,3 @@
+extends: research_article
+metadata:
+  doc_type: long_article

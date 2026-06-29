@@ -1,0 +1,14 @@
+citeproc: true
+csl: "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/publicando/TFE/apa-7th-edition.csl"
+bibliography:
+  - "/Users/juanjo/Library/Mobile Documents/iCloud~md~obsidian/Documents/Artificial Intelligence/Mi biblioteca.bib"
+
+metadata:
+  lang: es-ES
+
+resource-path:
+  - .
+  - ${.}
+  - ${.}/..
+  - ${.}/../bib
+  - ${.}/../styles

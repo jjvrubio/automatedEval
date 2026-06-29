@@ -1,0 +1,4 @@
+extends: teaching_material
+metadata:
+  doc_type: master_lesson
+  link-citations: true
