@@ -35,13 +35,13 @@ El JSON se genera en UTF-8 y escapa los caracteres especiales para que puedas tr
 Uso típico:
 
 ```bash
-python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/adjust_svg_dpi.py" ~/ruta/a/los/svg --recursive
+python3 "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/adjust_svg_dpi.py" ~/ruta/a/los/svg --recursive
 ```
 
 Eso genera copias con sufijo `-96dpi.svg`. Si quieres sobrescribir los originales:
 
 ```bash
-python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/adjust_svg_dpi.py" ~/ruta/a/los/svg --recursive --in-place
+python3 "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/adjust_svg_dpi.py" ~/ruta/a/los/svg --recursive --in-place
 ```
 
 Notas:
@@ -58,7 +58,7 @@ Notas:
 Uso típico:
 
 ```bash
-python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/insert_svgs_into_pptx.py" \
+python3 "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/insert_svgs_into_pptx.py" \
 	"/ruta/a/slides" \
 	"/ruta/a/presentacion.pptx"
 ```
@@ -66,7 +66,7 @@ python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/insert_svgs_in
 Eso genera una copia del `.pptx` original con sufijo `-with-svg-slides.pptx`. Para procesar carpetas anidadas:
 
 ```bash
-python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/insert_svgs_into_pptx.py" \
+python3 "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/insert_svgs_into_pptx.py" \
 	"/ruta/a/slides" \
 	"/ruta/a/presentacion.pptx" \
 	--recursive
@@ -80,7 +80,7 @@ python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/insert_svgs_in
 Uso tipico:
 
 ```bash
-python3 "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/comparar_docx.py" \
+python3 "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/comparar_docx.py" \
 	"/ruta/original.docx" \
 	"/ruta/revisado.docx" \
 	--salida "/ruta/comparativa.md"
@@ -100,13 +100,13 @@ Notas:
 Uso recomendado:
 
 ```bash
-bash "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh"
+bash "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh"
 ```
 
 Ese comando hace simulacion (`dry-run`) y no mueve nada. Para aplicar cambios reales:
 
 ```bash
-bash "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh" --apply
+bash "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh" --apply
 ```
 
 Notas:
@@ -139,19 +139,19 @@ Reducir el tamaño de instalaciones de Office eliminando localizaciones no neces
 1. Ejecuta en modo simulación (sin sudo) para verificar la lista de eliminaciones propuestas:
 
 ```bash
-zsh "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --dry-run --no-sudo --apps "Word Excel"
+zsh "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --dry-run --no-sudo --apps "Word Excel"
 ```
 
 1. Revisa la salida. Si identificas rutas que quieras proteger, puedes pasarlas con `--protect` (espacio-separadas):
 
 ```bash
-zsh "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --dry-run --no-sudo --apps "Word Excel" --protect "sdx 'Office Themes'"
+zsh "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --dry-run --no-sudo --apps "Word Excel" --protect "sdx 'Office Themes'"
 ```
 
 1. Si estás satisfecho y quieres aplicar cambios, haz un respaldo y ejecuta sin `--dry-run` (se te pedirá sudo si es necesario):
 
 ```bash
-zsh "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --backup --backup-dir "$HOME/Desktop/OfficeBackups" --apps "Word Excel"
+zsh "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/remove_office_languages.zsh" --backup --backup-dir "$HOME/Desktop/OfficeBackups" --apps "Word Excel"
 ```
 
 

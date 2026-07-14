@@ -8,7 +8,7 @@ APPLY=false
 usage() {
   cat <<'EOF'
 Uso:
-  bash "03_Personal/Automaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh" [opciones]
+  bash "03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh" [opciones]
 
 Opciones:
   --root <ruta>      Root del repositorio (default: directorio actual)
@@ -123,5 +123,5 @@ echo "  Errores: $error_count"
 if [[ "$APPLY" == false ]]; then
   echo
   echo "Para aplicar cambios reales:"
-  echo "  bash \"03_Personal/Automaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh\" --root \"$ROOT_DIR\" --map \"$MAP_FILE\" --apply"
+  echo "  bash \"03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/reestructurar_repo.sh\" --root \"$ROOT_DIR\" --map \"$MAP_FILE\" --apply"
 fi

@@ -181,7 +181,7 @@ Verifica:
 |-------|-----------|--------|
 | Agregar criterio UNIR | `01_Educativa/0101_UNIR/AutomatedEval/Grading/UNIR Grading/` | YAML config + prompt |
 | Nueva validación APA | `01_Educativa/0101_UNIR/AutomatedEval/APA Report/` | Regex pattern + test |
-| Script macOS nativo | `03_Personal/Automaciones/mac_automation/scripts_de_apoyo/` | NSOpenPanel + Cocoa |
+| Script macOS nativo | `03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/` | NSOpenPanel + Cocoa |
 | Pipeline Pandoc | `02_Profesional/0201_Convercus/Automatizaciones/publicando/` | YAML profile + Lua filter |
 | Busca OSINT | `02_Profesional/0201_Convercus/Automatizaciones/osint_ccus/osint-prospects.py` | SerpAPI → Gemini |
 
@@ -205,7 +205,7 @@ Ver `01_Educativa/0101_UNIR/AutomatedEval/bitácora.md` para historial de decisi
 - Archivos YAML de configuración por plataforma (`linkedin.yaml`, etc.)
 - Subdirectorios `Posting/` y `TFE/` para variantes específicas
 
-### `03_Personal/Automaciones/mac_automation/scripts_de_apoyo/`: Utilidades macOS
+### `03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/`: Utilidades macOS
 - **AppleScript**: `export_contacts_to_csv.applescript`, `export_streak_mail.applescript` (integración Contactos/Mail)
 - **Python**: Limpieza de JSON (`clean_streak_notes.py`, `filter_notes_by_prefix.py`, `fix_and_filter.py`)
 - **Shell**: `remove_office_languages.zsh` (limpieza bundles Office), `comparar carpetas de Metis.sh`
@@ -218,5 +218,5 @@ Ver `01_Educativa/0101_UNIR/AutomatedEval/bitácora.md` para historial de decisi
 
 ## Referencias clave
 - [APA Report README](01_Educativa/0101_UNIR/AutomatedEval/APA Report/README.md) - Documentación del validador independiente
-- [Scripts de apoyo README](03_Personal/Automaciones/mac_automation/scripts_de_apoyo/README.md) - Guía de utilidades macOS
+- [Scripts de apoyo README](03_Personal/Automatizaciones/mac_automation/scripts_de_apoyo/README.md) - Guía de utilidades macOS
 - `01_Educativa/0101_UNIR/AutomatedEval/bitácora.md` - Historial de desarrollo y decisiones arquitectónicas

@@ -24,9 +24,9 @@ dir	02_Profesional/0201_Convercus/Comercial/assets	Recursos Comercial
 dir	03_Personal	Carpeta padre personal
 dir	03_Personal/Articulos	Articulos personales
 dir	03_Personal/Articulos/METIS_Growth	Analisis de METIS
-dir	03_Personal/Automaciones	Automatizaciones personales
-dir	03_Personal/Automaciones/doc_processing	Procesamiento documental
-dir	03_Personal/Automaciones/doc_processing/scripts	Scripts de procesamiento
-file	03_Personal/Automaciones/doc_processing/scripts/obsidian2linkedin.py	Script de automatizacion
-dir	03_Personal/Automaciones/logs	Logs de automatizaciones
-dir	03_Personal/Automaciones/mac_automation	Automatizaciones para macOS
+dir	03_Personal/Automatizaciones	Automatizaciones personales
+dir	03_Personal/Automatizaciones/doc_processing	Procesamiento documental
+dir	03_Personal/Automatizaciones/doc_processing/scripts	Scripts de procesamiento
+file	03_Personal/Automatizaciones/doc_processing/scripts/obsidian2linkedin.py	Script de automatizacion
+dir	03_Personal/Automatizaciones/logs	Logs de automatizaciones
+dir	03_Personal/Automatizaciones/mac_automation	Automatizaciones para macOS
