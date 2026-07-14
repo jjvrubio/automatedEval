@@ -1,0 +1,2 @@
+# 03_Personal/Automatizaciones/svg_to_pptx
+python-pptx==1.0.2

@@ -1,0 +1,4 @@
+# 03_Personal/Consolidacion_Markdown_DOCX
+PyYAML==6.0.3
+# Needed for scripts/generate_sf_symbols.py
+pyobjc-framework-Cocoa==11.0

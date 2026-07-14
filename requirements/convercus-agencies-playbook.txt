@@ -1,0 +1,2 @@
+# 02_Profesional/0201_Convercus/Automatizaciones/Agencies Playbook
+openai==2.36.0

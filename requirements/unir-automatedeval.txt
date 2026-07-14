@@ -1,0 +1,13 @@
+# 01_Educativa/0101_UNIR/AutomatedEval
+lxml==5.4.0
+openai==2.36.0
+openpyxl==3.1.5
+pandas==2.2.3
+pdfminer.six==20250506
+pdfplumber==0.11.7
+pyobjc-framework-Cocoa==11.0
+pyobjc-framework-Quartz==11.0
+python-docx==1.1.2
+python-dotenv==1.2.1
+PyYAML==6.0.3
+selenium==4.32.0

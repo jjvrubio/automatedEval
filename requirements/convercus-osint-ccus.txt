@@ -1,0 +1,8 @@
+# 02_Profesional/0201_Convercus/Automatizaciones/osint_ccus
+beautifulsoup4==4.14.3
+google-genai==1.57.0
+google_search_results==2.4.2
+pdfplumber==0.11.7
+pyobjc-framework-Cocoa==11.0
+python-dotenv==1.2.1
+requests==2.32.3

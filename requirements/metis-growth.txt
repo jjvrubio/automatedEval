@@ -1,0 +1,8 @@
+# 03_Personal/Articulos/METIS_Growth
+numpy==2.2.5
+openpyxl==3.1.5
+pandas==2.2.3
+python-docx==1.1.2
+# Optional, not installed in the current environment:
+# matplotlib
+# ace_tools (environment-specific helper module, not a standard pip package)
