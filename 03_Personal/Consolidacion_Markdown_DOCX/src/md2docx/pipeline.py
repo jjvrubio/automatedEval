@@ -5,7 +5,7 @@ from pathlib import Path
 
 from .config import load_profile
 from .pandoc_runner import build_pandoc_command, run_pandoc
-from .postprocess import maybe_apply_style_template
+from .postprocess import extract_commercial_cover, maybe_apply_style_template
 
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
@@ -75,4 +75,10 @@ def run_build(project_root: Path, opts: BuildOptions) -> None:
         output_docx=opts.output_docx,
         style_template=style_template,
         project_root=project_root,
+        cover_template=profile.cover_template,
+        cover_fields=(
+            extract_commercial_cover(input_files[0])
+            if profile.cover_template
+            else None
+        ),
     )

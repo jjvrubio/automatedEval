@@ -6,6 +6,7 @@ toc_depth: 3
 citeproc: false
 lua_filters:
   - filters/obsidian-docx.lua
+  - filters/page-section-breaks.lua
   - filters/docprep.lua
 reference_doc: assets/templates/plantilla_pulse.docx
 metadata:

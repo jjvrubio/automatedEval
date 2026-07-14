@@ -1,5 +1,12 @@
 extends: base_docx
 toc_depth: 2
+reference_doc: assets/templates/plantilla_oferta.docx
+cover_template: assets/templates/plantilla_oferta.docx
+lua_filters:
+  - filters/commercial-cover.lua
+  - filters/obsidian-docx.lua
+  - filters/page-section-breaks.lua
+  - filters/docprep.lua
 metadata:
   doc_type: commercial_proposal
   status: draft

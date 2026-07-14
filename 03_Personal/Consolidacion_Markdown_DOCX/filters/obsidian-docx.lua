@@ -1,11 +1,24 @@
 -- obsidian-docx.lua
 -- Normalizes common Obsidian syntax for DOCX output.
 --
--- The filter keeps the output in Pandoc's document model instead of emitting
--- raw OpenXML. Callouts use a built-in Word style by default so they render
--- acceptably with generic reference DOCX files.
+-- Callouts are wrapped in a one-cell Word table.  A private text marker lets
+-- the Python postprocessor apply the final colour and Apple Symbols icon while
+-- all body blocks remain normal Pandoc content (lists, links, images, etc.).
 
 local pandoc = require("pandoc")
+
+local script_dir = PANDOC_SCRIPT_FILE and PANDOC_SCRIPT_FILE:match("^(.*[/\\])") or "filters/"
+local sf_symbols_dir = script_dir .. "../assets/icons/sf-symbols/"
+
+local callout_icons = {
+  abstract = "note", attention = "warning", bug = "danger", caution = "warning",
+  check = "success", cite = "quote", danger = "danger", done = "success",
+  error = "danger", example = "example", fail = "danger", failure = "danger",
+  faq = "question", help = "question", hint = "tip", important = "danger",
+  info = "info", missing = "warning", note = "note", question = "question",
+  quote = "quote", success = "success", summary = "note", tip = "tip",
+  tldr = "note", todo = "info", warning = "warning",
+}
 
 local callout_titles = {
   abstract = "Resumen",
@@ -46,40 +59,6 @@ local function callout_label(kind)
   return callout_titles[kind:lower()] or titlecase(kind)
 end
 
-local function style_name(kind)
-  local k = kind:lower()
-  local styles = {
-    abstract = "Callout Note",
-    attention = "Callout Attention",
-    bug = "Callout Danger",
-    caution = "Callout Warning",
-    check = "Callout Success",
-    cite = "Callout Quote",
-    danger = "Callout Danger",
-    done = "Callout Success",
-    error = "Callout Danger",
-    example = "Callout Example",
-    fail = "Callout Danger",
-    failure = "Callout Danger",
-    faq = "Callout Question",
-    help = "Callout Question",
-    hint = "Callout Hint",
-    important = "Callout Important",
-    info = "Callout Info",
-    missing = "Callout Warning",
-    note = "Callout Note",
-    question = "Callout Question",
-    quote = "Callout Quote",
-    success = "Callout Success",
-    summary = "Callout Note",
-    tip = "Callout Tip",
-    tldr = "Callout Note",
-    todo = "Callout Info",
-    warning = "Callout Warning",
-  }
-  return styles[k] or "Callout Note"
-end
-
 local function is_image_target(target)
   local lower = target:lower()
   return lower:match("%.png$") or lower:match("%.jpe?g$") or lower:match("%.gif$")
@@ -99,26 +78,38 @@ local function image_from_obsidian_target(target)
 end
 
 local function as_callout(kind, title_inlines, body_blocks)
+  kind = kind:lower()
   local title = title_inlines
   if not title or #title == 0 then
     title = { pandoc.Str(callout_label(kind)) }
   end
 
+  local marker = "[MD2DOCX_CALLOUT:" .. kind .. "]"
+  local icon_name = callout_icons[kind] or "info"
+  local icon = pandoc.Image(
+    {},
+    sf_symbols_dir .. icon_name .. ".png",
+    "",
+    pandoc.Attr("", { "sf-symbol", "sf-symbol-" .. icon_name }, {
+      width = "0.18in",
+      height = "0.18in",
+    })
+  )
   local blocks = {
-    pandoc.Para({ pandoc.Strong(title) }),
+    pandoc.RawBlock("openxml", [[
+<w:tbl>
+  <w:tblPr><w:tblW w:w="5000" w:type="pct"/></w:tblPr>
+  <w:tr><w:tc><w:tcPr><w:tcW w:w="5000" w:type="pct"/></w:tcPr>
+]]),
+    pandoc.Para({
+      pandoc.Str(marker), pandoc.Space(), icon, pandoc.Space(), pandoc.Strong(title)
+    }),
   }
   for _, block in ipairs(body_blocks) do
     blocks[#blocks + 1] = block
   end
-
-  return pandoc.Div(
-    blocks,
-    pandoc.Attr(
-      "",
-      { "callout", "callout-" .. kind:lower() },
-      { ["custom-style"] = style_name(kind) }
-    )
-  )
+  blocks[#blocks + 1] = pandoc.RawBlock("openxml", "</w:tc></w:tr></w:tbl>")
+  return blocks
 end
 
 local function strip_leading_breaks(inlines)
@@ -144,7 +135,11 @@ function BlockQuote(el)
   for i = 2, #first.content do
     rest[#rest + 1] = first.content[i]
   end
-  strip_leading_breaks(rest)
+  -- A Space means a custom title on the marker line. A SoftBreak means the
+  -- next line is body content and must remain as the title/body separator.
+  while rest[1] and rest[1].t == "Space" do
+    table.remove(rest, 1)
+  end
 
   local title_inlines = {}
   local body_inlines = {}

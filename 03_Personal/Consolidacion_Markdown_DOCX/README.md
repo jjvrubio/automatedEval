@@ -63,7 +63,8 @@ python md2docx.py profiles
 - `research_article`: articulos de investigacion, ensayos largos y piezas con
   citas. Activa `citeproc`, APA 7 e indice de profundidad 3.
 - `commercial_proposal`: propuestas comerciales y ofertas. Usa indice corto,
-  metadatos de propuesta y marca Convercus.
+  metadatos de propuesta, marca Convercus y la plantilla especifica
+  `assets/templates/plantilla_oferta.docx`.
 - `teaching_material`: material docente, lecciones y temas. Activa portada,
   `citeproc`, APA 7 e indice de profundidad 3.
 
@@ -74,8 +75,31 @@ Los tres perfiles heredan de `base_docx`, que define:
 - filtro `filters/obsidian-docx.lua` para callouts, resaltados e imagenes
   `![[...]]`;
 - filtro comun de indice `filters/docprep.lua`;
-- plantilla Word comun
-  `assets/templates/plantilla_pulse.docx`.
+- plantilla Word predeterminada `assets/templates/plantilla_pulse.docx`. El
+  perfil `commercial_proposal` la sustituye por `plantilla_oferta.docx`.
+
+### Portada de propuestas comerciales
+
+`commercial_proposal` conserva y completa la portada nativa de
+`plantilla_oferta.docx`. El bloque inicial del Markdown debe seguir esta
+estructura:
+
+```markdown
+# Subtitulo de la propuesta
+# Titulo o nombre del cliente/proyecto
+## Linea secundaria o caso de uso
+
+> **Cliente final:** Ejemplo
+> **Fecha:** 13 de julio de 2026
+> **Version:** v0.2
+
+---
+```
+
+El segundo `#` rellena el título, el primero rellena el subtítulo y el primer
+`##`, junto con las líneas de control documental citadas con `>`, aparece
+debajo. El filtro retira este bloque del cuerpo para evitar duplicados. El año
+se obtiene de `date` en el frontmatter.
 
 ## Compatibilidad
 
@@ -115,9 +139,31 @@ Las citas ZotLit/Zotero deben quedar en sintaxis Pandoc, por ejemplo
 El filtro `filters/obsidian-docx.lua` normaliza:
 
 - Resaltados `==texto==` hacia resaltado nativo de Word.
-- Callouts `>[!note]`, `>[!warning]`, etc. hacia estilos Word `Callout ...`.
+- Callouts `>[!note]`, `>[!warning]`, etc. hacia tablas Word de una celda,
+  con fondo suave, borde lateral por tipo e iconos gráficos de `SF Symbols`.
 - Admonitions en bloques `ad-note`, `ad-warning`, etc. hacia el mismo tratamiento que los callouts.
 - Embeds de imagen Obsidian `![[imagen.png]]` hacia imagenes DOCX, usando `resource_path`.
+
+## Saltos de pagina y de seccion
+
+El filtro `filters/page-section-breaks.lua` interpreta las lineas horizontales
+Markdown como instrucciones de maquetacion para Word:
+
+```markdown
+---
+```
+
+Una linea genera un salto de pagina normal.
+
+```markdown
+---
+---
+```
+
+Dos lineas consecutivas generan un salto de seccion de tipo **Pagina
+siguiente**. Puede haber una linea en blanco entre ambas: Pandoc sigue
+considerandolas consecutivas mientras no exista otro contenido. Los
+delimitadores `---` del frontmatter YAML no se transforman.
 
 El flujo canonico usa `plantilla_pulse.docx`. Si necesitas probar otra plantilla
 sin tocar perfiles:

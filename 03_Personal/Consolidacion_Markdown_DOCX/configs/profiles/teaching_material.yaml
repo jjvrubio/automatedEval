@@ -4,6 +4,7 @@ citeproc: true
 csl: assets/csl/apa-7th-edition.csl
 lua_filters:
   - filters/obsidian-docx.lua
+  - filters/page-section-breaks.lua
   - filters/portada.lua
   - filters/docprep.lua
 metadata:

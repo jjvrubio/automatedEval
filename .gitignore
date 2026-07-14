@@ -55,6 +55,7 @@ logs/
 *.swp
 *.swo
 *~
+~$*.docx
 
 # Jupyter Notebook
 .ipynb_checkpoints
