@@ -72,8 +72,10 @@ def parse_args() -> argparse.Namespace:
         "--output",
         "-o",
         type=Path,
-        default=Path("output/svg-deck.pptx"),
-        help="PPTX output path. Default: output/svg-deck.pptx",
+        help=(
+            "PPTX output path. Default: if input is a single directory, "
+            "create <directory>/<directory-name>.pptx; otherwise output/svg-deck.pptx."
+        ),
     )
     parser.add_argument(
         "--recursive",
@@ -141,6 +143,17 @@ def collect_svgs(inputs: Iterable[str], recursive: bool, pattern: str) -> list[P
 
     unique_paths = list(dict.fromkeys(paths))
     return sorted(unique_paths, key=ordinal_sort_key)
+
+
+def default_output_path(inputs: Iterable[str]) -> Path:
+    input_paths = [Path(raw_input).expanduser() for raw_input in inputs]
+    if len(input_paths) == 1:
+        input_path = input_paths[0]
+        if input_path.is_dir():
+            return input_path / f"{input_path.name}.pptx"
+        if input_path.is_file() and input_path.suffix.lower() == ".svg":
+            return input_path.with_suffix(".pptx")
+    return Path("output/svg-deck.pptx")
 
 
 def strip_ns(tag: str) -> str:
@@ -285,7 +298,7 @@ def main() -> int:
         print(f"Template does not exist: {args.template}", file=sys.stderr)
         return 1
 
-    output_path = args.output.expanduser()
+    output_path = args.output.expanduser() if args.output else default_output_path(args.inputs)
     manifest_path = args.manifest.expanduser() if args.manifest else output_path.with_suffix(".manifest.json")
 
     try:

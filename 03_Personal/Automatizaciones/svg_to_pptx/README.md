@@ -24,9 +24,10 @@ Procesar una carpeta completa:
 
 ```bash
 venv_arm64/bin/python "03_Personal/Automatizaciones/svg_to_pptx/svg_to_pptx.py" \
-  "/ruta/a/carpeta_svg" \
-  --output "03_Personal/Automatizaciones/svg_to_pptx/output/deck.pptx"
+  "/ruta/a/carpeta_svg"
 ```
+
+Eso genera `/ruta/a/carpeta_svg/carpeta_svg.pptx` y su manifiesto junto al PPTX.
 
 Procesar una lista concreta de SVG:
 
