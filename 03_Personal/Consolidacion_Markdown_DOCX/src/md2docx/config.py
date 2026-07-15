@@ -32,6 +32,7 @@ class ProfileConfig:
     extra_args: list[str] | None = None
     style_template: Path | None = None
     cover_template: Path | None = None
+    cover_mode: str | None = None
 
 
 def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
@@ -254,6 +255,7 @@ def load_profile(project_root: Path, profile_name: str) -> ProfileConfig:
         extra_args=_read_str_list(raw, "extra_args"),
         style_template=_resolve_optional_path(project_root, raw.get("style_template")),
         cover_template=_resolve_optional_path(project_root, raw.get("cover_template")),
+        cover_mode=raw.get("cover_mode"),
     )
 
 

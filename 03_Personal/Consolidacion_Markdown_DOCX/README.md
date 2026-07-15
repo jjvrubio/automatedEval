@@ -85,8 +85,12 @@ Los tres perfiles heredan de `base_docx`, que define:
 estructura:
 
 ```markdown
+---
+title: "Titulo o nombre del cliente/proyecto"
+date: "2026-07-15"
+---
+
 # Subtitulo de la propuesta
-# Titulo o nombre del cliente/proyecto
 ## Linea secundaria o caso de uso
 
 > **Cliente final:** Ejemplo
@@ -96,10 +100,30 @@ estructura:
 ---
 ```
 
-El segundo `#` rellena el título, el primero rellena el subtítulo y el primer
-`##`, junto con las líneas de control documental citadas con `>`, aparece
-debajo. El filtro retira este bloque del cuerpo para evitar duplicados. El año
-se obtiene de `date` en el frontmatter.
+`title` es la fuente canónica del título y rellena la portada. El primer `#`
+rellena el subtítulo y el primer `##`, junto con las líneas de control
+documental citadas con `>`, aparece debajo. El filtro retira este bloque del
+cuerpo para evitar duplicados. El año se obtiene de `date` en el frontmatter.
+Como compatibilidad, si falta `title`, el segundo `#` se usa como título.
+
+### Portada de artículos Convercus
+
+`docx_convercus_article` inserta la portada nativa de
+`assets/templates/plantilla_pulse.docx` y rellena sus controles de título,
+subtítulo, autor y año desde el frontmatter:
+
+```yaml
+---
+title: "Título del artículo"
+subtitle: "Subtítulo del artículo"
+author: "Nombre o marca"
+date: "2026-07-15"
+---
+```
+
+Las claves inglesas son las canónicas. Para mantener compatibles los
+documentos existentes también se aceptan `titulo`, `subtitulo`, `autor` y
+`fecha`. La portada termina con un salto de página y precede al índice.
 
 ## Compatibilidad
 
@@ -129,6 +153,11 @@ resource_path:
   - "/ruta/al/vault/obsidian"
 ---
 ```
+
+El campo `title` se usa como título visible del artículo, oferta, material
+docente o documento general. En propuestas comerciales también alimenta el
+control de título de la portada Word y la propiedad interna de título del
+DOCX.
 
 Las citas ZotLit/Zotero deben quedar en sintaxis Pandoc, por ejemplo
 `[@clave2026]` o `[@clave2026, p. 42]`. Los perfiles APA 7 activan
@@ -164,6 +193,50 @@ Dos lineas consecutivas generan un salto de seccion de tipo **Pagina
 siguiente**. Puede haber una linea en blanco entre ambas: Pandoc sigue
 considerandolas consecutivas mientras no exista otro contenido. Los
 delimitadores `---` del frontmatter YAML no se transforman.
+
+Además, el postprocesado inserta automáticamente un salto de sección de tipo
+**Página siguiente** después de cada campo Word de tabla de contenidos
+(`TOC`), índice de ilustraciones, índice de tablas o índice de términos
+(`INDEX`). Si el documento ya contiene ese salto, no se duplica.
+
+## Control documental opcional
+
+Para añadir una última página con el control del documento, actívala en el
+frontmatter:
+
+```yaml
+---
+title: "Título del documento"
+version: "v1.0"
+status: final
+date: "2026-07-15"
+author: "Nombre o marca"
+document_control: true
+---
+```
+
+La página se genera cuando el valor es `true` o `activo`. Si la clave no existe
+o vale `false`, no se genera. También se acepta el alias `control_documento`.
+La tabla incorpora únicamente los campos presentes, y en este orden: título,
+subtítulo, idioma, fecha, versión, estado y tags. Se aceptan sus nombres en
+inglés y español (`title`/`titulo`, `subtitle`/`subtitulo`,
+`language`/`idioma`, `date`/`fecha`, `status`/`estado` y
+`tags`/`etiquetas`).
+
+La modalidad avanzada permite sustituir los campos estándar:
+
+```yaml
+document_control:
+  enabled: true
+  heading: "Ficha de publicación"
+  include_standard_fields: false
+  fields:
+    Propietario: "Equipo editorial"
+    Canal: "Web"
+```
+
+También se aceptan `generar`, `titulo_pagina`, `incluir_campos_estandar` y
+`campos` como aliases españoles dentro del bloque.
 
 El flujo canonico usa `plantilla_pulse.docx`. Si necesitas probar otra plantilla
 sin tocar perfiles:

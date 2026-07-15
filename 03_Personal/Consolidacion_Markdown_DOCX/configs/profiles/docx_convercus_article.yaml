@@ -1,4 +1,6 @@
 extends: research_article
+cover_template: assets/templates/plantilla_pulse.docx
+cover_mode: metadata
 metadata:
   doc_type: long_article
   brand: Convercus

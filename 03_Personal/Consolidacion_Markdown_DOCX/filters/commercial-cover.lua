@@ -6,7 +6,7 @@
 --
 -- Estructura esperada:
 --   # Subtitulo
---   # Titulo
+--   # Titulo heredado (opcional si el YAML define title)
 --   ## Linea secundaria
 --   > Control documental opcional
 --   ---
@@ -19,7 +19,7 @@ function Pandoc(doc)
   for index, block in ipairs(doc.blocks) do
     if block.t == "Header" and block.level == 1 then
       level_one_count = level_one_count + 1
-    elseif block.t == "Header" and block.level == 2 and level_one_count >= 2 then
+    elseif block.t == "Header" and block.level == 2 and level_one_count >= 1 then
       found_secondary = true
     elseif block.t == "HorizontalRule" and found_secondary then
       boundary = index
