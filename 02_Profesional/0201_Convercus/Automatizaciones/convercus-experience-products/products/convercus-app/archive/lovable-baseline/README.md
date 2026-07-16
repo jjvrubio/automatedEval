@@ -1,5 +1,8 @@
 # Guía de trabajo: Convercus y Lovable
 
+> [!warning] Baseline histórica
+> Este documento conserva la etapa en la que Lovable era la herramienta prevista para construir la demo. Ya no gobierna la implementación: la App se desarrollará directamente con Codex dentro de `products/convercus-app`. Sus análisis de API y decisiones visuales siguen siendo material de referencia.
+
 ## Propósito
 
 Este documento resume cómo utilizar Lovable para crear una simulación de la aplicación de Convercus y cómo puede ayudar Codex durante el diseño, la integración y la evolución del proyecto.

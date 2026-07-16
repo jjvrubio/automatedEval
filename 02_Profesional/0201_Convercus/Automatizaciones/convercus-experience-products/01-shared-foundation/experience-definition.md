@@ -1,5 +1,8 @@
 # Comprensión conceptual de Experiences en Convercus
 
+> [!important] Fuente conceptual de referencia
+> Este documento, incluidas sus precisiones y callouts, gobierna la comprensión de Experiences para Convercus App y Experience Builder. Si otra documentación del programa entra en contradicción con él, prevalece este documento hasta que una decisión posterior quede registrada explícitamente.
+
 ## Propósito de este documento
 
 Este documento recoge una comprensión de trabajo sobre **Experiences**, la funcionalidad de Convercus destinada a orquestar experiencias de cliente. Está escrito para poder leerse de forma continua, revisar el razonamiento y detectar términos que todavía necesiten precisión.

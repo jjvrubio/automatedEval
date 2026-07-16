@@ -1,5 +1,8 @@
 # Comprensión conceptual de Experiences en Convercus
 
+> [!warning] Documento supersedido
+> Esta versión se conserva como evidencia del desarrollo conceptual anterior. La referencia vigente es `01-shared-foundation/experience-definition.md`, que incorpora las precisiones y callouts posteriores.
+
 ## Propósito de este documento
 
 Este documento recoge una comprensión de trabajo sobre **Experiences**, la funcionalidad de Convercus destinada a orquestar experiencias de cliente. Está escrito para poder leerse de forma continua, revisar el razonamiento y detectar términos que todavía necesiten precisión.
