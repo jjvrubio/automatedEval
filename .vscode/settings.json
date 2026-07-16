@@ -1,5 +1,5 @@
 {
-    "python.defaultInterpreterPath": "${workspaceFolder}/venv_${command:python.interpreterArchitecture}/bin/python",
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv_arm64/bin/python",
     "python.analysis.extraPaths": [
         "./venv_intel/lib/python3.x/site-packages",
         "./venv_arm64/lib/python3.x/site-packages",
@@ -7,7 +7,7 @@
         "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval/Grading/UNIR Grading"
     ],
     "workbench.colorTheme": "Solarized Light",
-    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredDarkColorTheme": "Dark+",
     "python.analysis.typeCheckingMode": "basic",
 "python.analysis.diagnosticSeverityOverrides": {
     "reportUnusedImport": "warning",

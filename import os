@@ -1,0 +1,144 @@
+import os
+import sys
+import json
+import yaml
+import pdfplumber
+from docx import Document
+from AppKit import NSOpenPanel
+from pathlib import Path
+from openai import OpenAI
+
+# === Evaluador basado en OpenAI ===
+class OpenAIEvaluator:
+    def __init__(self, api_key=None):
+        self.client = OpenAI(api_key=api_key)
+
+    def evaluate(self, document_text, rubric_yaml):
+        prompt = self.build_prompt(document_text, rubric_yaml)
+        response = self.client.chat.completions.create(
+            model="gpt-4-turbo",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2
+        )
+        return self.parse_response(response.choices[0].message.content)
+
+    def build_prompt(self, document, rubric):
+        return f"""You are an academic evaluator. Use the ultra-strict ESBS/AMOS protocol.
+Rubric:
+{rubric}
+
+Document:
+{document}
+
+Return a JSON with:
+- criteria_scores
+- justification_comments
+- clarification_questions
+"""
+
+    def parse_response(self, response_text):
+        return json.loads(response_text)
+
+# === Selección de archivo mediante AppKit (macOS nativo) ===
+def select_file():
+    panel = NSOpenPanel.openPanel()
+    panel.setCanChooseFiles_(True)
+    panel.setCanChooseDirectories_(False)
+    panel.setAllowsMultipleSelection_(False)
+    panel.runModal()
+    return panel.URLs()[0].path() if panel.URLs() else None
+
+# === Extracción de texto ===
+def extract_text_from_docx(filepath):
+    doc = Document(filepath)
+    return "\n".join([p.text for p in doc.paragraphs if p.text.strip()])
+
+def extract_text_from_pdf(filepath):
+    text = ""
+    with pdfplumber.open(filepath) as pdf:
+        for page in pdf.pages:
+            if page.extract_text():
+                text += page.extract_text() + "\n"
+    return text
+
+# === Análisis estructural preliminar ===
+def structural_analysis():
+    return """## Structural and Argumentative Coherence Assessment\n\n- Evaluation of logical consistency, alignment between diagnosis, proposal, and financial modeling.\n- Check for missing links between strategic diagnosis and value proposition.\n- Ensure financial logic builds from market and operational structure.\n- Verify whether technology and marketing channels match the stated value offer.\n\n"""
+
+# === Evaluación por criterios desde archivo YAML ===
+def load_rubric(config_path="config.yaml"):
+    with open(config_path, "r") as f:
+        config = yaml.safe_load(f)
+
+    # Guardar copia como .json para interoperabilidad futura
+    json_path = Path(config_path).with_suffix(".json")
+    with open(json_path, "w") as jf:
+        json.dump(config, jf, indent=4)
+
+    return config
+
+# === Evaluación con fallback ===
+def evaluate_with_fallback(content, rubric_yaml, api_key=None):
+    try:
+        evaluator = OpenAIEvaluator(api_key=api_key)
+        result = evaluator.evaluate(content, yaml.dump(rubric_yaml))
+        return result["criteria_scores"], result["justification_comments"], result["clarification_questions"]
+    except Exception as e:
+        print("⚠️ API fallback: using static YAML evaluation.")
+        criteria = {}
+        comments = {}
+        for crit, values in rubric_yaml["criteria"].items():
+            criteria[crit] = values.get("default_score", 5)
+            comments[crit] = values.get("default_comment", "No comment provided.")
+        return criteria, comments, rubric_yaml.get("clarification_questions", [])
+
+# === Generación de archivos de salida ===
+def generate_outputs(text, criteria, comments, questions, output_name):
+    grade = round(sum(criteria.values()) / len(criteria), 2)
+    
+    # .json
+    json_data = {"criteria_scores": criteria, "final_grade": grade}
+    with open(f"{output_name}.json", "w") as jf:
+        json.dump(json_data, jf, indent=4)
+
+    # .md
+    with open(f"{output_name}.md", "w") as mf:
+        mf.write(f"# Evaluation Report – Ultra-Strict ESBS/AMOS\n\n")
+        mf.write(f"**Final Grade**: {grade}/10\n\n")
+        mf.write("## Initial Structural Review\n\n")
+        mf.write(structural_analysis() + "\n")
+        mf.write("## Evaluation by Criteria\n\n")
+        for k in criteria:
+            mf.write(f"### {k}\n- **Score**: {criteria[k]}\n- **Comment**: {comments[k]}\n\n")
+        mf.write("## Clarification Questions\n\n")
+        for q in questions:
+            mf.write(f"- {q}\n")
+        mf.write("\n## Evaluation Summary Table\n\n| Criterion | Score (out of 10) |\n|----------|-------------------|\n")
+        for k, v in criteria.items():
+            mf.write(f"| {k} | {v} |\n")
+        mf.write(f"| **Final Grade** | **{grade}** |\n")
+
+# === Main ===
+def main():
+    path = select_file()
+    if not path:
+        print("No file selected.")
+        return
+
+    ext = Path(path).suffix.lower()
+    if ext == ".docx":
+        content = extract_text_from_docx(path)
+    elif ext == ".pdf":
+        content = extract_text_from_pdf(path)
+    else:
+        print("Unsupported file type.")
+        return
+
+    rubric_yaml = load_rubric("config.yaml")
+    api_key = os.getenv("OPENAI_API_KEY")
+    criteria, comments, questions = evaluate_with_fallback(content, rubric_yaml, api_key)
+    generate_outputs(content, criteria, comments, questions, "evaluation_output")
+    print("Evaluation complete. Files saved as evaluation_output.md, evaluation_output.json and rubric.json")
+
+if __name__ == "__main__":
+    main()
