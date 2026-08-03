@@ -1,7 +1,24 @@
+---
+title: "Comprensión conceptual de Experiences en Convercus"
+aliases:
+- "Interpretación de producto de Experiences"
+- "Comprensión de Experiences para App y Builder"
+language: es
+version: "v0.1"
+status: "interpretación de trabajo"
+date: "2026-07-17"
+project: "Convercus Experience Products"
+document_type: "interpretación conceptual de producto"
+scope: "lenguaje común sobre Experiences para diseño, comunicación e implementación subordinada"
+repository_role: "interpretación pedagógica compartida entre App y Builder"
+semantic_authority: "interpretación subordinada; no es fuente ontológica"
+tes_baseline: "TES_CONVERCUS_BUILDER_2026_07_R1"
+---
+
 # Comprensión conceptual de Experiences en Convercus
 
-> [!important] Fuente conceptual de referencia
-> Este documento, incluidas sus precisiones y callouts, gobierna la comprensión de Experiences para Convercus App y Experience Builder. Si otra documentación del programa entra en contradicción con él, prevalece este documento hasta que una decisión posterior quede registrada explícitamente.
+> [!important] Interpretación de producto subordinada
+> Este documento conserva una comprensión de trabajo útil para App y Builder, pero no es una fuente ontológica autónoma. Debe leerse bajo la baseline congelada del contrato semántico y la autoridad externa del TES. Ante una contradicción, se aplica la precedencia definida por la gobernanza y se abre una evaluación; no se corrige el significado desde este documento.
 
 ## Propósito de este documento
 

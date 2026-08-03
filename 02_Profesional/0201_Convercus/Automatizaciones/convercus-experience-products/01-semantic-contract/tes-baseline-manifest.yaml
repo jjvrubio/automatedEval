@@ -1,0 +1,181 @@
+schema_version: 2
+baseline_id: TES_CONVERCUS_BUILDER_2026_07_R1
+baseline_name: TES Convercus Builder
+status: frozen
+frozen_at: 2026-07-17
+previous_baseline:
+  id: TES-BUILDER-2026-07
+  manifest: tes-baseline-manifest.TES-BUILDER-2026-07.yaml
+
+naming_note:
+  builder_meaning: marco de construcción de productos y capacidades sobre Convercus
+  not_equivalent_to:
+    - TES Experience Builder
+    - Experience Builder product
+
+authority:
+  system: TES
+  location: external
+  repository_is_authoritative: false
+  product_contract_is_derivative: true
+
+scope:
+  purpose: construcción de productos y capacidades sobre Convercus bajo fundamento TES
+  semantic_coverage:
+    - acción situada
+    - arquitectura experiencial reconstruible
+    - sujetos participantes
+    - realización editorial y visual
+    - validación metodológica
+    - medición y aprendizaje experiencial
+  outside_tes_authority:
+    - puntos
+    - niveles
+    - cupones genéricos
+    - beneficios genéricos
+    - campañas
+    - comunicaciones no experienciales
+    - capacidades técnicas de Workflows
+
+applicability:
+  convercus_loyalty_core:
+    tes_application: conditional
+    description: puede operar sin formular sus capacidades como Experiences
+  convercus_experiences:
+    tes_application: required
+    description: toda capacidad presentada como Experience debe cumplir la baseline
+  tes_experience_builder:
+    tes_application: required
+    description: diseña, valida y publica Experiences bajo TES
+  future_convercus_products:
+    tes_application: scoped
+    description: cada producto declara qué conceptos TES cruzan su frontera
+
+source_root: /Users/juanjo/Library/CloudStorage/OneDrive-ConvercusGmbH/Convercus/CX experience builder
+
+source_sets:
+  operational_map:
+    - document: LEEME
+      version: v2.2
+  core_irreducible:
+    - document: TES_Ontologia_Accion_Situada
+      version: v2.0
+    - document: TES_Telar_Omnimentalidad
+      version: v2.0
+    - document: TES_Experience_Ledger
+      version: v2.0
+    - document: TES_Telar_Editorial_Situado
+      version: v2.0
+    - document: TES_Politica_Realizacion_Editorial
+      version: v2.0
+    - document: TES_Guia_Produccion_Visual
+      version: v2.1
+    - document: TES_Protocolo_Validacion
+      version: v2.1
+    - document: TES_Gobernanza_Documental
+      version: v3.1
+    - document: TES_Lexico
+      version: v3.1
+  foundational_reference:
+    - document: TES_Constituyente
+      version: v1.4
+  compatible_subordinate_developments:
+    - document: TES_Ecosistema_Sujetos_Participantes
+      version: v1.2
+    - document: TES_Anexo_Inventario_Figuras_Subjetivas
+      version: v1.1
+  externalized_measurement:
+    - document: TES_KPI_Dictionary
+      version: v3.0
+    - document: TES_KPI_Sectores
+      version: v1.0
+  applied_non_normative:
+    - document: TES_Matriz_Arquetipos_Propension_Ordinal_Sectorial
+      version: v0.2
+  carried_forward_product_contract:
+    - document: 01-guia-contrato-semantico
+      version: v0.2
+    - document: 02-subjects-contract
+      version: v0.2
+
+imported_artifacts:
+  - path: source-excerpts/LEEME.md
+    sha256: 5b07bf5d43106652a2b37d91e61bbcb4883867a908e9c6370b3f7ba8eef2f7b3
+    role: tes_operational_map
+  - path: source-excerpts/TES_Ontologia_Accion_Situada.md
+    sha256: 6d980ac76d3b0edc7a2f292960fda5dade8be5c279695e4f1697ddfc13d97d7a
+    role: core_ontology
+  - path: source-excerpts/TES_Telar_Omnimentalidad.md
+    sha256: 615f9c88fb1369a9ec45e44d48a6f2591362f4bc718b510e3ed7ca8cb502bd7d
+    role: core_strategic_synthesis
+  - path: source-excerpts/TES_Experience_Ledger.md
+    sha256: 99c12399fc788a1eec1e637db666a28ee524a6387f19a850494084846b42f0b2
+    role: core_experience_operation
+  - path: source-excerpts/TES_Telar_Editorial_Situado.md
+    sha256: 4bfc19f6299b7583cd8feb3dd39ac4f5f1600fced949ef474b4b590d7509d30c
+    role: core_editorial_translation
+  - path: source-excerpts/TES_Politica_Realizacion_Editorial.md
+    sha256: 49ded0d1edb51cfa4effc93e85553ed76226e750277b9a580a3c73d6d06ed0f4
+    role: core_surface_realization
+  - path: source-excerpts/TES_Guia_Produccion_Visual.md
+    sha256: c48f1f4e7b0e183affb55b5663982c6e9b15fb61f639579f0c7acdbbe16ac1fb
+    role: core_visual_production
+  - path: source-excerpts/TES_Protocolo_Validacion.md
+    sha256: 8568af46172a732407140231baf9feafb915a782894624624bc42f0d812931e7
+    role: core_validation
+  - path: source-excerpts/TES_Gobernanza_Documental.md
+    sha256: 2a7093db656f03195e030afe8ad9ca4520c83f9c4074c6d88dfc84680de46ba3
+    role: core_governance
+  - path: source-excerpts/TES_Lexico.md
+    sha256: da605bfb8e46cf2a5e99f98bd70f172a69c53fe6629283fd64d3ff917d0856b5
+    role: core_lexicon
+  - path: source-excerpts/TES_Constituyente.md
+    sha256: a52618ed1d8bb951cb14481465fb2f73859a0adfa230602ae767f1ba5a544592
+    role: foundational_reference
+  - path: source-excerpts/TES_Ecosistema_Sujetos_Participantes.md
+    sha256: e5b95c74b93af17eab2454db30b523674c0ea36b8d2e85fc15e05b802d9a7e2d
+    role: compatible_subject_ecosystem
+  - path: source-excerpts/TES_Anexo_Inventario_Figuras_Subjetivas.md
+    sha256: daec16e53cc3f8ef5dfb6387b448e56f18d83a42d47230015e05813dcc4f1ac2
+    role: subordinate_subject_inventory
+  - path: source-excerpts/TES_KPI_Dictionary.md
+    sha256: 9922bdc7b6468fe03fdaaba7f6f28c8fe089ff322e5ebdd7fd493780ee8cf8b5
+    role: externalized_measurement_dictionary
+  - path: source-excerpts/TES_KPI_Sectores.md
+    sha256: 23eae9ebb1c4ea8aaee72f97842d4cc564e85f268d55a2620bb75f361dd07d2e
+    role: externalized_sector_measurement
+  - path: source-excerpts/TES_Matriz_Arquetipos_Propension_Ordinal.md
+    sha256: dda900b553cde2849563741fbff8d80360671a7fb99ef591588749c9c8969307
+    role: applied_non_normative_archetype_matrix
+  - path: source-excerpts/package-README.md
+    sha256: eb93ea2637db2a64bc536fab5618261108ccaa81f5c50cfc83b2b383368e850c
+    role: legacy_package_integration_guide
+  - path: source-excerpts/package-MANIFEST.md
+    sha256: c6b6ec558f04b7629385a998dff8dd35c06f573b49f5aa874d18579a7df6ce60
+    role: legacy_package_inventory
+  - path: source-excerpts/01-guia-contrato-semantico.md
+    sha256: cde374cc271317493f3290d4d0bdc520161f0d98ef2b563159d560f1d9899c26
+    role: carried_forward_semantic_contract_guide
+  - path: source-excerpts/02-subjects-contract.md
+    sha256: 513cba447289047a964a6966465fe95c8aa9ea3b60037e17ec0984f08ea3423f
+    role: carried_forward_builder_subjects_contract
+  - path: ../products/experience-builder/docs/data-model/schemas/subjects.schema.json
+    sha256: efe57a9392d9bfc5c036d48defb89e6842c2ca909c3a0b8902ba7019ec2ba506
+    role: carried_forward_builder_technical_schema
+  - path: ../products/experience-builder/docs/data-model/examples/subjects.example.json
+    sha256: 2e9a11a5e7c8944fbd9e352b1fa1d802bbece5ef460465215ef1c7b34403ea08
+    role: carried_forward_builder_technical_example
+
+known_source_observations:
+  - document: TES_Telar_Omnimentalidad
+    issue: embedded_editorial_annotation_about_archetype
+    product_effect: no_silent_resolution
+  - document: TES_Ontologia_Accion_Situada
+    issue: embedded_editorial_annotation_about_reconstruction_scope
+    product_effect: no_silent_resolution
+
+update_policy:
+  automatic_updates: false
+  impact_review_required: true
+  source_references_auto_migrate: false
+  frozen_artifacts_are_immutable: true

@@ -1,0 +1,157 @@
+schema_version: 1
+brand_id: convercus
+name: Convercus
+
+source:
+  status: official_palette_with_accessible_product_roles
+  supplied_at: "2026-07-17"
+  palette_reference: "assets/paleta colores convercus.md"
+  color_precedence: hex
+  color_precedence_reason: "Los HEX coinciden con los colores utilizados por el SVG principal; algunos valores RGB del documento presentan contradicciones."
+
+logos:
+  primary: "assets/Convercus Logo RGB.svg"
+  reversed: "assets/Convercus Logo White.svg"
+
+colors:
+  primitives:
+    tech_blue: "#0AEFFF"
+    tech_blue_light: "#CEFBFF"
+    mid_blue: "#092BFD"
+    mid_blue_light: "#CDD4FE"
+    ultramarine_blue: "#090685"
+    ultramarine_blue_light: "#CDCDE6"
+    berry_red: "#F72585"
+    berry_red_light: "#FDD3E6"
+    black: "#000000"
+    white: "#FFFFFF"
+    warm_grey: "#F1F1F1"
+    logo_ink: "#333333"
+
+  roles:
+    primary: "#090685"
+    primary_action: "#092BFD"
+    accent: "#0AEFFF"
+    highlight: "#F72585"
+    background: "#FFFFFF"
+    surface: "#F1F1F1"
+    surface_tinted: "#CEFBFF"
+    text: "#333333"
+    text_strong: "#000000"
+    text_muted: "#5F5F5F"
+    border: "#CDCDE6"
+    focus_ring: "#092BFD"
+
+  on_color:
+    on_primary: "#FFFFFF"
+    on_primary_action: "#FFFFFF"
+    on_accent: "#000000"
+    on_highlight: "#000000"
+    on_light_surface: "#000000"
+
+  functional:
+    info:
+      background: "#092BFD"
+      foreground: "#FFFFFF"
+      provenance: brand_primitive
+    success:
+      background: "#176B3A"
+      foreground: "#FFFFFF"
+      provenance: accessible_functional_derivative
+    warning:
+      background: "#7A4B00"
+      foreground: "#FFFFFF"
+      provenance: accessible_functional_derivative
+    error:
+      background: "#A30F55"
+      foreground: "#FFFFFF"
+      provenance: accessible_derivative_of_berry_red
+
+accessibility:
+  target: WCAG_2_2_AA
+  minimum_normal_text_contrast: 4.5
+  verified_pairs:
+    - foreground: "#FFFFFF"
+      background: "#090685"
+      contrast_ratio: 15.26
+    - foreground: "#FFFFFF"
+      background: "#092BFD"
+      contrast_ratio: 7.57
+    - foreground: "#000000"
+      background: "#0AEFFF"
+      contrast_ratio: 14.80
+    - foreground: "#000000"
+      background: "#F72585"
+      contrast_ratio: 5.56
+    - foreground: "#333333"
+      background: "#FFFFFF"
+      contrast_ratio: 12.63
+    - foreground: "#5F5F5F"
+      background: "#FFFFFF"
+      contrast_ratio: 6.39
+    - foreground: "#FFFFFF"
+      background: "#176B3A"
+      contrast_ratio: 6.56
+    - foreground: "#FFFFFF"
+      background: "#7A4B00"
+      contrast_ratio: 7.41
+    - foreground: "#FFFFFF"
+      background: "#A30F55"
+      contrast_ratio: 7.62
+
+typography:
+  primary:
+    family: "Sofia Sans"
+    role: ui_and_body
+    fallback: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    variable: true
+    weight_range: [100, 900]
+    styles:
+      normal:
+        path: "assets/fonts/sofia-sans/SofiaSans-VariableFont_wght.ttf"
+        format: truetype
+      italic:
+        path: "assets/fonts/sofia-sans/SofiaSans-Italic-VariableFont_wght.ttf"
+        format: truetype
+    static_source: "assets/fonts/sofia-sans/static"
+    license:
+      status: verified
+      type: SIL_OFL_1_1
+      path: "assets/fonts/sofia-sans/OFL.txt"
+    runtime_status: available_offline
+    optimization_note: "Convertir las variables TTF a WOFF2 antes de producción si la cadena de build no realiza la optimización."
+
+  secondary:
+    family: "Futura LT Pro"
+    role: display_and_brand_emphasis
+    fallback: "Avenir Next, Avenir, Montserrat, system-ui, sans-serif"
+    variable: false
+    styles:
+      book:
+        path: "assets/fonts/Futura/WOFF2/Futura Book.woff2"
+        format: woff2
+        weight: 400
+        style: normal
+      book_italic:
+        path: "assets/fonts/Futura/WOFF2/Futura Book Oblique.woff2"
+        format: woff2
+        weight: 400
+        style: italic
+      medium:
+        path: "assets/fonts/Futura/WOFF2/Futura Medium.woff2"
+        format: woff2
+        weight: 500
+        style: normal
+      bold:
+        path: "assets/fonts/Futura/WOFF2/Futura Bold.woff2"
+        format: woff2
+        weight: 700
+        style: normal
+    complete_woff2_source: "assets/fonts/Futura/WOFF2"
+    desktop_otf_source: "assets/fonts/Futura/OTF"
+    source_archive: "assets/fonts/Futura/Futura-Font.zip"
+    license:
+      status: unverified
+      type: proprietary_or_unknown
+      path: null
+    runtime_status: blocked_for_distribution_until_license_verified

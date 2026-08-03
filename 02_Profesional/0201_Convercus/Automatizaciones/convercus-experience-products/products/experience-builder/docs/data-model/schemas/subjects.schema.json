@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/tes-experience-builder/subjects.schema.json",
+  "title": "TES Experience Builder Subject System",
+  "type": "object",
+  "required": [
+    "subject_system"
+  ],
+  "properties": {
+    "subject_system": {
+      "type": "object",
+      "required": [
+        "status",
+        "semantic_baseline_id",
+        "archetype",
+        "loyalty_profile",
+        "actors"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "empty",
+            "incomplete",
+            "provisional",
+            "valid",
+            "blocked",
+            "outdated_reference"
+          ]
+        },
+        "semantic_baseline_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype": {
+          "$ref": "#/$defs/archetypeReference"
+        },
+        "archetype_instantiation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/archetypeInstantiation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "loyalty_profile": {
+          "$ref": "#/$defs/loyaltyProfile"
+        },
+        "actors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/actor"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "sourceReference": {
+      "type": "object",
+      "required": [
+        "source_document",
+        "source_version",
+        "catalogue_version",
+        "reference_status"
+      ],
+      "properties": {
+        "source_document": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalogue_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "deprecated",
+            "withdrawn",
+            "candidate"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "archetypeReference": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "is_primary",
+        "selection_status",
+        "rationale",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_primary": {
+          "const": true
+        },
+        "selection_status": {
+          "type": "string",
+          "enum": [
+            "provisional",
+            "validated"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/sourceReference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "archetypeInstantiation": {
+      "type": "object",
+      "required": [
+        "id",
+        "archetype_id",
+        "context_name",
+        "transformation_relevance"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transformation_relevance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_motivations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "expected_frictions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "recognition_signals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "progression_hypothesis": {
+          "type": "string"
+        },
+        "designer_rationale": {
+          "type": "string"
+        },
+        "evidence_notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "loyaltyProfile": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "relationship_objective",
+        "relationship_dimensions",
+        "initial_state",
+        "desired_state",
+        "observable_behaviours",
+        "frictions",
+        "archetype_id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "continuity",
+              "preference",
+              "trust",
+              "recurrence",
+              "adherence",
+              "prescription",
+              "combined"
+            ]
+          }
+        },
+        "initial_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "desired_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observable_behaviours": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "frictions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "context_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype_alignment": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "provisional",
+            "validated"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "actor_type",
+        "role_description",
+        "is_primary",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_type": {
+          "type": "string",
+          "enum": [
+            "structural",
+            "operational",
+            "circumstantial"
+          ]
+        },
+        "role_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_primary": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "inactive"
+          ]
+        },
+        "structural_capacity": {
+          "type": "string"
+        },
+        "influence_scope": {
+          "type": "string"
+        },
+        "operational_actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "intervention_channels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "linked_loyalty_profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "participation_scope": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "actor_type": {
+                "const": "circumstantial"
+              }
+            },
+            "required": [
+              "actor_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "linked_loyalty_profile_id",
+              "participation_scope"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "actor_type": {
+                "const": "structural"
+              }
+            },
+            "required": [
+              "actor_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "structural_capacity",
+              "influence_scope"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "actor_type": {
+                "const": "operational"
+              }
+            },
+            "required": [
+              "actor_type"
+            ]
+          },
+          "then": {
+            "required": [
+              "operational_actions",
+              "intervention_channels"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

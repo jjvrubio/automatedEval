@@ -1,0 +1,115 @@
+{
+  "subject_system": {
+    "status": "valid",
+    "semantic_baseline_id": "TES-BUILDER-2026-07",
+    "archetype": {
+      "id": "arch-planificador-asegurador",
+      "label": "Planificador asegurador",
+      "is_primary": true,
+      "selection_status": "validated",
+      "rationale": "La experiencia busca transformar incertidumbre funcional en continuidad previsible mediante hitos y evidencia verificable.",
+      "source": {
+        "source_document": "TES_Matriz_Arquetipos_Propension_Ordinal_Sectorial",
+        "source_version": "v0.2",
+        "catalogue_version": "2026-07",
+        "reference_status": "active"
+      }
+    },
+    "archetype_instantiation": {
+      "id": "arch-inst-001",
+      "archetype_id": "arch-planificador-asegurador",
+      "context_name": "Planificador de movilidad cotidiana",
+      "transformation_relevance": "Necesita comprender el recorrido, anticipar condiciones y reconocer avances verificables.",
+      "expected_motivations": [
+        "previsibilidad",
+        "control comprensible",
+        "continuidad"
+      ],
+      "expected_frictions": [
+        "incertidumbre sobre el efecto de sus acciones",
+        "falta de trazabilidad del progreso"
+      ],
+      "recognition_signals": [
+        "estado visible",
+        "hitos confirmados",
+        "explicación del siguiente paso"
+      ],
+      "progression_hypothesis": "La visibilidad de la progresión y la confirmación de evidencias aumentan la continuidad.",
+      "designer_rationale": "La lógica estructural encaja con un recorrido basado en acumulación verificable y reducción de incertidumbre.",
+      "evidence_notes": "Se contrastará mediante recurrencia y continuidad de participación."
+    },
+    "loyalty_profile": {
+      "id": "lp-001",
+      "name": "Viajero habitual con interés sostenible",
+      "description": "Usuario identificado que utiliza regularmente una línea y puede modificar gradualmente sus decisiones de movilidad.",
+      "relationship_objective": "Estructurar continuidad y preferencia por hábitos de movilidad sostenible.",
+      "relationship_dimensions": [
+        "continuity",
+        "preference",
+        "recurrence"
+      ],
+      "initial_state": "Uso habitual sin reconocimiento explícito del impacto acumulado.",
+      "desired_state": "Participación recurrente con comprensión y reconocimiento del progreso sostenible.",
+      "observable_behaviours": [
+        "viaja en la línea seleccionada",
+        "completa retos",
+        "consulta su progreso"
+      ],
+      "frictions": [
+        "impacto poco visible",
+        "beneficio percibido a largo plazo"
+      ],
+      "context_conditions": [
+        "identificación mediante tarjeta",
+        "procesamiento diario de viajes"
+      ],
+      "evidence_requirements": [
+        "viaje validado",
+        "usuario consentido",
+        "reto completado"
+      ],
+      "archetype_id": "arch-planificador-asegurador",
+      "archetype_alignment": "La experiencia ofrece previsibilidad, estados visibles y confirmación de hitos.",
+      "status": "validated"
+    },
+    "actors": [
+      {
+        "id": "actor-circ-001",
+        "name": "Viajero participante",
+        "actor_type": "circumstantial",
+        "role_description": "Actualiza el recorrido mediante sus viajes y participación en retos.",
+        "is_primary": true,
+        "status": "active",
+        "linked_loyalty_profile_id": "lp-001",
+        "participation_scope": "Recorrido completo"
+      },
+      {
+        "id": "actor-struct-001",
+        "name": "Operador de transporte",
+        "actor_type": "structural",
+        "role_description": "Define las condiciones de operación y aporta la evidencia de viajes.",
+        "is_primary": false,
+        "status": "active",
+        "structural_capacity": "Gobierno de la operación y disponibilidad de datos",
+        "influence_scope": "Línea, zona y sistema de identificación"
+      },
+      {
+        "id": "actor-op-001",
+        "name": "Equipo de experiencia",
+        "actor_type": "operational",
+        "role_description": "Configura retos, revisa incidencias y sostiene la experiencia.",
+        "is_primary": false,
+        "status": "active",
+        "operational_actions": [
+          "configurar retos",
+          "revisar validaciones",
+          "gestionar incidencias"
+        ],
+        "intervention_channels": [
+          "backoffice",
+          "widget web"
+        ]
+      }
+    ]
+  }
+}

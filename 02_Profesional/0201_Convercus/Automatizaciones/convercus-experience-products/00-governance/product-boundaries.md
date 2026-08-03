@@ -1,75 +1,65 @@
-# Límites de producto
+---
+title: "Límites ontológicos, funcionales y técnicos"
+aliases:
+- "Límites de producto Convercus Experience Products"
+language: es
+version: "v0.1"
+status: "activo"
+date: "2026-07-17"
+project: "Convercus Experience Products"
+document_type: "política de gobernanza"
+scope: "separación de autoridad TES, traducción funcional, implementación técnica y responsabilidades de producto"
+repository_role: "norma de no invasión y delimitación entre productos"
+semantic_authority: "producto subordinado a TES"
+tes_baseline: "TES_CONVERCUS_BUILDER_2026_07_R1"
+---
 
-## Propósito
+# Límites ontológicos, funcionales y técnicos
 
-Este documento evita que Convercus App y Experience Builder se conviertan accidentalmente en un único producto o se condicionen mutuamente de forma prematura.
+## Regla de no invasión
 
-## Convercus App
+> El TES Experience Builder y Convercus App no crean, redefinen ni corrigen conceptos ontológicos del TES.
 
-La App está dirigida al cliente o miembro del programa. Su primera finalidad es proporcionar una demostración comercial mobile-first, estable y repetible.
+Toda entidad, campo o componente introducido en el repositorio debe clasificarse como una de estas categorías:
 
-Pertenece a la App:
+1. derivación directa de un concepto TES;
+2. traducción funcional de varios conceptos TES;
+3. construcción propia del producto;
+4. capacidad técnica;
+5. elemento de interfaz.
 
-- Inicio y perfil de miembro.
-- Puntos, niveles y membresías.
-- Cupones y beneficios.
-- Noticias y actividad.
-- Intervenciones y próximas acciones.
-- Participaciones en Experiences.
-- Panel interno de simulación para demos.
-- Adaptadores mock, simulation y staging.
+La clasificación debe quedar en su contrato, decisión o especificación. Las construcciones propias del producto no adquieren por ello estatuto ontológico dentro del TES.
 
-No pertenece a la App:
+## Tres niveles de decisión
 
-- Crear o publicar definiciones de Experiences.
-- Editar visualmente Workflows.
-- Configurar reglas técnicas de ejecución.
-- Administrar versiones de Experiences.
-- Mostrar conceptos TES internos sin traducción.
+### Nivel ontológico TES
 
-## Experience Builder
+Responde qué son una acción situada, una Experience, un ecosistema, una secuencia, un arquetipo, la progresión o la medición. Su autoridad pertenece exclusivamente al TES.
 
-El Builder está dirigido a diseñadores, consultores, marketers y operadores que configuran Experiences.
+### Nivel funcional de producto
 
-Pertenece al Builder:
+Responde qué introduce el diseñador, qué guarda el sistema, qué aparece en el inspector, qué puede conectarse, qué se valida, qué se simula y qué es obligatorio. Gobierna la especificación de cada producto, bajo obediencia al contrato semántico.
 
-- Experiencia candidata.
-- Reconocimiento o formulación del patrón.
-- Diseño de secuencia y progresión.
-- Eventos, evidencias y reglas.
-- Intervenciones, incentivos y recompensas.
-- Resultados, medición y aprendizaje.
-- Simulación y validación técnica.
-- Mapeo a Workflows.
-- Publicación y versionado.
+### Nivel técnico
 
-No pertenece al Builder:
+Responde qué JSON representa una entidad, qué campos son obligatorios, qué eventos llegan por API, qué reglas pueden ejecutarse y qué requiere middleware. Gobiernan el modelo de datos, las capacidades verificadas de plataforma y la arquitectura técnica.
 
-- Ser la aplicación cotidiana del miembro.
-- Convertirse en un dashboard genérico de campañas.
-- Equiparar una Experience con un Workflow.
-- Gobernar la navegación o presentación de la App.
+## Límites entre productos
+
+### Convercus App
+
+Pertenece a la App la participación vivida: perfil, puntos, niveles, cupones, beneficios, noticias, intervenciones, próximas acciones, progresión visible y simulación de demos.
+
+No pertenece a la App crear definiciones ontológicas, editar Workflows, publicar Experiences ni importar automáticamente el modelo de autoría del Builder.
+
+### TES Experience Builder
+
+Pertenece al Builder la traducción funcional que permite formular, diseñar, simular, validar, mapear a Workflows, publicar y versionar Experiences.
+
+No pertenece al Builder gobernar el TES, convertir candidatos en canon, ser la aplicación cotidiana del miembro ni equiparar una Experience con un Workflow.
 
 ## Base compartida
 
-Pueden compartirse:
+Solo se comparten de forma deliberada contratos semánticos congelados, identificadores, escenarios, contratos de integración y activos realmente comunes. No se comparten por defecto navegación, estado de interfaz, componentes complejos, operaciones, permisos ni esquemas técnicos específicos de un producto.
 
-- Definiciones de dominio.
-- Léxico y política terminológica.
-- Identificadores estables.
-- Escenarios canónicos.
-- Fixtures separados por definición y participación.
-- Contratos de API.
-- Identidad de marca y primitivas visuales realmente comunes.
-
-No se comparten por defecto:
-
-- Navegación.
-- Estado de interfaz.
-- Componentes complejos.
-- Ciclos de vida de pantalla.
-- Permisos y operaciones.
-
-## Regla de independencia
-
-La App puede simular participaciones sin que el Builder esté implementado. El Builder puede diseñar definiciones sin depender de los componentes de la App. La convergencia debe producirse mediante contratos compartidos versionados.
+La App puede simular participaciones sin que el Builder esté implementado. El Builder puede diseñar definiciones sin depender de componentes de la App.

@@ -1,7 +1,7 @@
 # Comprensión conceptual de Experiences en Convercus
 
 > [!warning] Documento supersedido
-> Esta versión se conserva como evidencia del desarrollo conceptual anterior. La referencia vigente es `01-shared-foundation/experience-definition.md`, que incorpora las precisiones y callouts posteriores.
+> Esta versión se conserva como evidencia del desarrollo conceptual anterior. La interpretación posterior está en `01-semantic-contract/product-interpretations/experience-understanding.md`, subordinada al contrato semántico versionado y a la autoridad TES.
 
 ## Propósito de este documento
 

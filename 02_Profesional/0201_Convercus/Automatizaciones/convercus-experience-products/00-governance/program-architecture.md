@@ -1,3 +1,19 @@
+---
+title: "Arquitectura conjunta: Convercus App y Experience Builder"
+aliases:
+- "Arquitectura del programa Convercus Experience Products"
+language: es
+version: "v0.1"
+status: "activo"
+date: "2026-07-17"
+project: "Convercus Experience Products"
+document_type: "arquitectura de programa"
+scope: "relación estructural, independencia y activos compartidos de Convercus App y Experience Builder"
+repository_role: "documento rector de arquitectura conjunta"
+semantic_authority: "producto subordinado a TES"
+tes_baseline: "TES_CONVERCUS_BUILDER_2026_07_R1"
+---
+
 # Arquitectura conjunta: Convercus App y Experience Builder
 
 ## Estatuto del documento
@@ -7,7 +23,9 @@ Este documento amplía la propuesta estructural del TES Experience Builder para 
 1. **Convercus App**, dirigida al cliente final y prioritaria para demostraciones comerciales.
 2. **Experience Builder**, dirigido a quienes diseñan y operan Experiences y estratégico como capacidad diferencial.
 
-No se trata de fusionar ambos productos ni de convertir la App en una vista secundaria del Builder. La propuesta consiste en yuxtaponerlos dentro de un programa común, conservar sus límites y compartir únicamente los fundamentos, contratos y activos que realmente pertenezcan a ambos.
+No se trata de fusionar ambos productos ni de convertir la App en una vista secundaria del Builder. La propuesta consiste en yuxtaponerlos dentro de un programa común, conservar sus límites y compartir únicamente el contrato semántico, las traducciones funcionales y los activos que realmente pertenezcan a ambos.
+
+El programa está anclado en el TES, sistema ontológico y editorial autónomo que permanece fuera de este repositorio y conserva siempre la autoridad. El código no incorpora su núcleo: trabaja contra una derivación controlada y versionada.
 
 ## Tesis estructural
 
@@ -102,7 +120,7 @@ evento significativo
 
 ## Papeles de cada espacio de trabajo
 
-VS Code debe convertirse en el espacio operativo y la fuente de verdad del programa, mientras que Lunacy, Pixelmator Pro, SVG y otras herramientas conservan funciones especializadas.
+VS Code debe convertirse en el espacio operativo y la fuente de verdad de las especificaciones y artefactos de producto. No es la fuente de autoridad ontológica, que continúa en el TES externo. Lunacy, Pixelmator Pro, SVG y otras herramientas conservan funciones especializadas.
 
 | Espacio | Función |
 |---|---|
@@ -119,7 +137,7 @@ VS Code debe convertirse en el espacio operativo y la fuente de verdad del progr
 La incorporación de la App exige distinguir cuatro ámbitos:
 
 1. **TES**, como sistema ontológico y editorial amplio.
-2. **Fundamento de producto**, como derivación mínima necesaria para operar Experiences.
+2. **Contrato semántico de producto**, como derivación TES mínima, congelada y versionada.
 3. **Convercus App**, como experiencia de cliente y demostrador comercial.
 4. **Experience Builder**, como herramienta de diseño y gobierno.
 
@@ -146,15 +164,13 @@ convercus-experience-products/
 │   ├── versioning-policy.md
 │   └── source-precedence.md
 │
-├── 01-shared-foundation/
+├── 01-semantic-contract/
 │   ├── README.md
-│   ├── source-map.md
-│   ├── experience-definition.md
-│   ├── subject-system.md
-│   ├── experience-ledger-mapping.md
-│   ├── incentives-and-rewards.md
-│   ├── workflows-relationship.md
-│   └── glossary-product.md
+│   ├── tes-baseline-manifest.yaml
+│   ├── semantic-impact-log.md
+│   ├── product-observations-log.md
+│   ├── source-excerpts/
+│   └── product-interpretations/
 │
 ├── 02-shared-contracts/
 │   ├── experience-domain/
@@ -226,15 +242,15 @@ La carpeta `00-governance` debe establecer:
 
 El documento `product-boundaries.md` será especialmente importante.
 
-## Fundamento compartido
+## Contrato semántico de producto
 
-`01-shared-foundation` debe contener la traducción mínima del TES y de la comprensión de Experiences necesaria para ambos productos.
+`01-semantic-contract` contiene la derivación mínima del TES aceptada para una baseline concreta. No es un fundamento autónomo ni una copia del núcleo TES. Sus extractos conservan procedencia y hash; cualquier cambio posterior se somete a evaluación de impacto.
 
-Su definición operativa de referencia será:
+Una interpretación de producto útil, siempre subordinada al contrato, será:
 
 > Experiences es la capacidad de Convercus para configurar y operar transformaciones situadas: reconoce eventos significativos y patrones, los ordena en secuencias con progresión, coordina intervenciones según el estado de cada participación y permite distinguir resultado, medición y aprendizaje.
 
-Esta capa no debe contener decisiones de pantalla específicas de ninguno de los productos.
+Esta capa no debe contener decisiones de pantalla específicas de ninguno de los productos ni construcciones técnicas presentadas como conceptos TES.
 
 ## Contratos compartidos
 
@@ -478,12 +494,12 @@ La primera versión de la App simulará este ciclo sin requerir que el Builder e
 ### Carril A — App urgente
 
 ```text
-A0. Consolidar alcance y referencias.
-A1. Crear aplicación React/TypeScript mobile-first.
+A0. Consolidar alcance y referencias. [completado]
+A1. Crear aplicación React/TypeScript mobile-first y modo de presentación iPhone. [completado]
 A2. Implementar puntos, cupones, noticias y perfil con mocks.
 A3. Incorporar motor de simulación de Experiences/Workflows.
 A4. Implementar escenarios canónicos.
-A5. Validar y preparar guion de demo.
+A5. Validar, preparar guion de demo e instalar y probar la PWA en un iPhone real.
 A6. Conectar staging por módulos.
 ```
 
@@ -525,11 +541,14 @@ convercus-experience-products/
 ├── 00-governance/
 │   ├── product-boundaries.md
 │   └── source-precedence.md
-├── 01-shared-foundation/
-│   ├── experience-definition.md
-│   └── workflows-relationship.md
+├── 01-semantic-contract/
+│   ├── README.md
+│   ├── tes-baseline-manifest.yaml
+│   ├── source-excerpts/
+│   └── product-interpretations/
 ├── 02-shared-contracts/
-│   └── experience-domain/
+│   ├── experience-domain/
+│   └── workflows-relationship.md
 ├── 03-shared-assets/
 │   └── scenarios/
 └── products/
@@ -566,7 +585,7 @@ La idea rectora queda ampliada así:
 
 > **VS Code organiza y gobierna.**
 >
-> **El TES fundamenta.**
+> **El TES define y conserva la autoridad ontológica.**
 >
 > **El Builder diseña y valida.**
 >

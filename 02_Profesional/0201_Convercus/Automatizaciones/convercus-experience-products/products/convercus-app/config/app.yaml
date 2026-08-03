@@ -1,0 +1,10 @@
+schema_version: 1
+app_id: convercus-app
+name: Convercus
+default_locale: es
+brand_id: convercus
+brand_source: ../../../03-shared-assets/brands/convercus/brand.yaml
+default_data_mode: mock
+tes_baseline: TES_CONVERCUS_BUILDER_2026_07_R1
+experience_support: conditional
+

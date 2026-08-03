@@ -1,0 +1,40 @@
+schema_version: 1
+baseline_id: TES-BUILDER-2026-07
+status: frozen
+frozen_at: 2026-07-16
+authority:
+  system: TES
+  location: external
+  repository_is_authoritative: false
+package:
+  id: TES_Experience_Builder_Paquete_Cristalizacion_v0_2
+  version: v0.2
+  source_root: /Users/juanjo/Library/CloudStorage/OneDrive-ConvercusGmbH/Convercus/CX experience builder/TES_Experience_Builder_Paquete_Cristalizacion_v0_2
+tes_sources_declared_by_package:
+  ontology: TES_Ontologia_Accion_Situada v2.0
+  experience_ledger: TES_Experience_Ledger v2.0
+  lexicon: TES_Lexico v3.1
+  subject_ecosystem: TES_Ecosistema_Sujetos_Participantes v1.2
+imported_artifacts:
+  - path: source-excerpts/package-README.md
+    sha256: eb93ea2637db2a64bc536fab5618261108ccaa81f5c50cfc83b2b383368e850c
+    role: package_integration_guide
+  - path: source-excerpts/package-MANIFEST.md
+    sha256: c6b6ec558f04b7629385a998dff8dd35c06f573b49f5aa874d18579a7df6ce60
+    role: package_inventory
+  - path: source-excerpts/01-guia-contrato-semantico.md
+    sha256: cde374cc271317493f3290d4d0bdc520161f0d98ef2b563159d560f1d9899c26
+    role: semantic_contract_guide
+  - path: source-excerpts/02-subjects-contract.md
+    sha256: 513cba447289047a964a6966465fe95c8aa9ea3b60037e17ec0984f08ea3423f
+    role: builder_subjects_contract
+  - path: ../products/experience-builder/docs/data-model/schemas/subjects.schema.json
+    sha256: efe57a9392d9bfc5c036d48defb89e6842c2ca909c3a0b8902ba7019ec2ba506
+    role: builder_technical_schema
+  - path: ../products/experience-builder/docs/data-model/examples/subjects.example.json
+    sha256: 2e9a11a5e7c8944fbd9e352b1fa1d802bbece5ef460465215ef1c7b34403ea08
+    role: builder_technical_example
+update_policy:
+  automatic_updates: false
+  impact_review_required: true
+  source_references_auto_migrate: false

@@ -1,0 +1,15 @@
+.DS_Store
+**/.DS_Store
+.obsidian/
+**/.obsidian/
+node_modules/
+dist/
+coverage/
+.vite/
+*.local
+*.log
+playwright-report/
+test-results/
+
+# Fuente de referencia con licencia de distribución no verificada.
+03-shared-assets/brands/convercus/assets/fonts/Futura/
