@@ -1,0 +1,5 @@
+metric,tag,unit,start,end,value,form,filed,accession,fy,fp,ticker,cik,taxonomy,source_url
+revenue,RevenueFromContractWithCustomerExcludingAssessedTax,USD,2023-01-01,2023-12-31,1000.0,10-K,2024-02-01,0001-23,2023,FY,TEST,1,us-gaap,https://www.sec.gov/Archives/edgar/data/1/000123/
+revenue,RevenueFromContractWithCustomerExcludingAssessedTax,USD,2024-01-01,2024-12-31,1200.0,10-K,2025-02-01,0001-24,2024,FY,TEST,1,us-gaap,https://www.sec.gov/Archives/edgar/data/1/000124/
+operating_income,OperatingIncomeLoss,USD,2023-01-01,2023-12-31,150.0,10-K,2024-02-01,0001-23,2023,FY,TEST,1,us-gaap,https://www.sec.gov/Archives/edgar/data/1/000123/
+operating_income,OperatingIncomeLoss,USD,2024-01-01,2024-12-31,120.0,10-K,2025-02-01,0001-24,2024,FY,TEST,1,us-gaap,https://www.sec.gov/Archives/edgar/data/1/000124/

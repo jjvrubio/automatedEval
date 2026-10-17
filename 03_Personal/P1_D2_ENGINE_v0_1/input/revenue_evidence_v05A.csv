@@ -1,0 +1,14 @@
+ticker,diagnostic_cause,diagnostic_confidence,source_accession,source_statement_label,source_statement_value,validated_total_tag,includes_derivative_gains_in_operating_revenues,evidence_note
+AAON,A_alternative_standard_total_revenue_tag,high,,Net sales,1442076000,,,Audited consolidated statement reconciles to the standard including-assessed-tax concept
+BV,A_alternative_standard_total_revenue_tag,high,,Net service revenues,2672800000,,,Audited consolidated statement reconciles to the standard including-assessed-tax concept
+EMAT,E_latest_period_context_mismatch,moderate,,,,,FY2025 filing reflects the pre-combination SPAC; business combination closed 2026-01-05
+EVRG,D_multiple_total_concepts_semantically_different,high,,Operating revenues,5961600000,Revenues,true,10-K Note 13 says derivative fair-value changes of $41.8M are classified within operating revenues; the statement separately reports other income/expense
+FRNM,F_true_no_revenue_or_pre_revenue,high,,No operating business revenue,0,,,Reviewed 10-K describes no operating activity; trust returns are non-operating
+HYMC,F_true_no_revenue_or_pre_revenue,high,,No commercial revenue,0,,,Reviewed 10-K reports no revenue while production has not resumed
+IDT,A_alternative_standard_total_revenue_tag,high,,Revenue,1297960000,,,Annual consolidated revenue reconciles to the standard including-assessed-tax concept
+IMVT,F_true_no_revenue_or_pre_revenue,high,,No product revenue,0,,,10-K states that no product revenue has been generated
+LFUS,A_alternative_standard_total_revenue_tag,high,,Net sales,2386294000,,,Audited consolidated net sales reconcile to the standard including-assessed-tax concept
+MATW,A_alternative_standard_total_revenue_tag,high,,Net sales,1497689000,,,Audited consolidated net sales reconcile to the standard including-assessed-tax concept
+PXED,E_latest_period_context_mismatch,moderate,0001193125-25-289786,,,,,Companyfacts cache has no comparable latest annual context for the current registrant; the referenced 10-K is for FY2025 ended 2025-08-31
+RRC,D_multiple_total_concepts_semantically_different,high,,Total revenues and other income,3115515000,,,Includes material derivative gains outside customer-contract revenue; retain ambiguity
+WEX,C_component_vs_total_conflict,high,,Total revenues,2660800000,,,Customer-contract and non-customer-contract revenue components reconcile to consolidated total

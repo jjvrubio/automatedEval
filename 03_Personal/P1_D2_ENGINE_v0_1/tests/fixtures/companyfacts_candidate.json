@@ -1,0 +1,18 @@
+{
+  "facts": {
+    "us-gaap": {
+      "RevenueFromContractWithCustomerExcludingAssessedTax": {
+        "units": {"USD": [
+          {"start":"2023-01-01","end":"2023-12-31","val":1000,"accn":"0001-23","fy":2023,"fp":"FY","form":"10-K","filed":"2024-02-01"},
+          {"start":"2024-01-01","end":"2024-12-31","val":1200,"accn":"0001-24","fy":2024,"fp":"FY","form":"10-K","filed":"2025-02-01"}
+        ]}
+      },
+      "OperatingIncomeLoss": {
+        "units": {"USD": [
+          {"start":"2023-01-01","end":"2023-12-31","val":150,"accn":"0001-23","fy":2023,"fp":"FY","form":"10-K","filed":"2024-02-01"},
+          {"start":"2024-01-01","end":"2024-12-31","val":120,"accn":"0001-24","fy":2024,"fp":"FY","form":"10-K","filed":"2025-02-01"}
+        ]}
+      }
+    }
+  }
+}

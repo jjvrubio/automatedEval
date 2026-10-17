@@ -1,0 +1,101 @@
+.
+├── AGENTS.md
+├── CODEX_TASK_01.md
+├── CODEX_TASK_02.md
+├── CODEX_TASK_02_RETRY.md
+├── CODEX_TASK_03.md
+├── CODEX_TASK_04.md
+├── CODEX_TASK_04A.md
+├── CODEX_TASK_04A_R1.md
+├── CODEX_TASK_04A_R2.md
+├── CODEX_TASK_05A.md
+├── CODEX_TASK_05A_REPORT.md
+├── CODEX_TASK_05B.md
+├── cribador.txt
+├── D2_diagnostics_v05A.md
+├── docs
+│   ├── 12_Contrato_datos_SEC_D2.md
+│   ├── 13_Algoritmo_P1_D2_anual.md
+│   ├── 14_Contrato_Revenue_SEC_v0_2.md
+│   ├── C4_D2_Crecimiento_vs_margen.md
+│   └── DECISIONS.md
+├── input
+│   ├── revenue_evidence_v05A.csv
+│   ├── tickers_technical.csv
+│   ├── universe_p1_50.csv
+│   ├── universe_p1_50_TEMPLATE.csv
+│   ├── universe_p1_50_v04A_r1.csv
+│   ├── universe_p1_50_v04A_r2.csv
+│   └── universe_p1_50_v04A_topcap.csv
+├── nasdaq_screener_1791296955512.csv
+├── output
+│   ├── CODEX_TASK_02_REPORT.md
+│   ├── CODEX_TASK_03_REPORT.md
+│   ├── CODEX_TASK_04.md
+│   ├── CODEX_TASK_04_REPORT.md
+│   ├── CODEX_TASK_04A_R1_REPORT.md
+│   ├── CODEX_TASK_04A_R2_REPORT.md
+│   ├── CODEX_TASK_04A_REPORT.md
+│   ├── CODEX_TASK_05B_REPORT.md
+│   ├── D2_diagnostics.md
+│   ├── D2_diagnostics_v02.md
+│   ├── D2_diagnostics_v03.md
+│   ├── D2_diagnostics_v04.md
+│   ├── D2_diagnostics_v05A.md
+│   ├── D2_diagnostics_v05B.md
+│   ├── D2_flag_consistency_audit_v05B.csv
+│   ├── D2_provenance.csv
+│   ├── D2_provenance_v02.csv
+│   ├── D2_provenance_v03.csv
+│   ├── D2_provenance_v04.csv
+│   ├── D2_provenance_v05A.csv
+│   ├── D2_provenance_v05B.csv
+│   ├── D2_results.csv
+│   ├── D2_results_v02.csv
+│   ├── D2_results_v03.csv
+│   ├── D2_results_v04.csv
+│   ├── D2_results_v05A.csv
+│   ├── D2_results_v05B.csv
+│   ├── NASDAQ_SOURCE_PROFILE.md
+│   ├── P1_universe_audit_v04A.csv
+│   ├── P1_universe_audit_v04A_r1.csv
+│   ├── P1_universe_audit_v04A_r2.csv
+│   ├── P1_universe_diagnostics_v04A.md
+│   ├── P1_universe_diagnostics_v04A_r1.md
+│   ├── P1_universe_diagnostics_v04A_r2.md
+│   ├── P1_universe_v04.csv
+│   ├── P1_universe_v05A.csv
+│   ├── P1_universe_v05B.csv
+│   ├── Revenue_tag_decisions_v05A.csv
+│   └── Revenue_unknown_diagnostics_v05A.csv
+├── output_demo
+│   ├── D2_provenance_demo.csv
+│   ├── D2_results_demo.csv
+│   └── README.md
+├── PROTOTYPE_STATUS.md
+├── pyproject.toml
+├── README.md
+├── run_d2.py
+├── scripts
+│   ├── build_universe_p1_50.py
+│   ├── demo_fixture.py
+│   ├── rebalance_universe_p1_50_r1.py
+│   ├── rebalance_universe_p1_50_r2.py
+│   ├── run_flag_reconciliation_v05b.py
+│   └── run_universe_d2_v04.py
+├── src
+│   ├── p1_d2_engine
+│   └── p1_d2_engine.egg-info
+├── tests
+│   ├── fixtures
+│   ├── test_d2_engine.py
+│   ├── test_fact_resolver.py
+│   ├── test_nasdaq_universe.py
+│   ├── test_pilot_v04.py
+│   ├── test_revenue_v05a.py
+│   ├── test_signal_flags_v05b.py
+│   ├── test_universe_eligibility.py
+│   ├── test_validators.py
+│   └── validation
+├── TRANSFERENCIA_HILO_P1_D2_v05A.md
+└── TRANSFERENCIA_HILO_P1_D2_v05B.md

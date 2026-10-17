@@ -1,0 +1,2 @@
+ticker,cik,company,status,reason,revenue_tag,fy_t_end,fy_t_minus_1_end,revenue_fy_t,revenue_fy_t_minus_1,revenue_growth_fy_yoy,operating_income_fy_t,operating_income_fy_t_minus_1,operating_margin_fy_t,operating_margin_fy_t_minus_1,om_delta_pp,candidate_d2,strong_signal
+TEST,1,Synthetic Test Co,candidate,,RevenueFromContractWithCustomerExcludingAssessedTax,2024-12-31,2023-12-31,1200.0,1000.0,0.19999999999999996,120.0,150.0,0.1,0.15,-4.999999999999999,True,False
