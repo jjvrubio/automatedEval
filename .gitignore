@@ -94,3 +94,9 @@ El MIT rompe el Límite de Contexto de la IA manteniendo su Calidad \[GocR9YXWEy
 02_Profesional/0201_Convercus/Automatizaciones/Agencies Playbook/physical-pos-research-results.csv
 02_Profesional/0201_Convercus/Automatizaciones/Agencies Playbook/physical-pos-research-results.jsonl
 02_Profesional/0201_Convercus/Automatizaciones/Agencies Playbook/physical-pos-research-summary.json
+.aider*
+
+# Copias locales y manifiesto vacío sin proyecto npm en la raíz.
+/03_Personal/P1_D2_ENGINE_v0_1.zip
+/02_Profesional/0201_Convercus/Automatizaciones/Agencies Playbook/apollo-accounts-export.backup-before-stage1-update.csv
+/package-lock.json

@@ -1,29 +1,21 @@
 {
-    "python.defaultInterpreterPath": "${workspaceFolder}/venv_arm64/bin/python",
-    "python.analysis.extraPaths": [
-        "./venv_intel/lib/python3.x/site-packages",
-        "./venv_arm64/lib/python3.x/site-packages",
-        "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval",
-        "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval/Grading/UNIR Grading"
-    ],
-    "workbench.colorTheme": "Solarized Light",
-    "workbench.preferredDarkColorTheme": "Dark+",
-    "python.analysis.typeCheckingMode": "basic",
-"python.analysis.diagnosticSeverityOverrides": {
+  "python.defaultInterpreterPath": "${workspaceFolder}/venv_arm64/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval",
+    "${workspaceFolder}/01_Educativa/0101_UNIR/AutomatedEval/Grading/UNIR Grading"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.diagnosticSeverityOverrides": {
     "reportUnusedImport": "warning",
     "reportUnusedVariable": "warning"
-},
-"python.linting.enabled": false,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": false,
-  "python.linting.mypyEnabled": false,
-  "python.linting.banditEnabled": false,
-  "python.formatting.provider": "none",
+  },
   "[python]": {
     "editor.defaultFormatter": null,
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {}
   },
+  "workbench.colorTheme": "Light+",
+  "workbench.preferredDarkColorTheme": "Dark+",
   "files.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
@@ -34,5 +26,15 @@
     "**/venv_arm64": true,
     "**/venv_intel": true,
     "**/__pycache__": true
+  },
+  "chat.tools.terminal.autoApprove": {
+    ".": true,
+    "osascript": true,
+    "/^python3 move_sent_messages\\.py --app mail --account \"convercus\" --source \"Elementos enviados\" --dest \"Por Apollo\" --subject-contains \"Convercus e o seu\" --dry-run$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "printf": true,
+    "test": true
   }
 }

@@ -1,0 +1,51 @@
+.
+├── -name
+├── 01_Educativa
+│   ├── 0101_UNIR
+│   └── 0102_ESBS
+├── 02_Profesional
+│   └── 0201_Convercus
+├── 03_Personal
+│   ├── Articulos
+│   ├── Consolidacion_Markdown_DOCX
+│   ├── P1_D2_ENGINE_v0_1
+│   ├── P1_D2_ENGINE_v0_1.zip
+│   └── small_tools
+├── arbol_actual.txt
+├── automatedEval_backup_20251026_211903.zip
+├── convercus_fodlers.txt
+├── 'espanso sync.md'
+├── find_duplicates.zsh
+├── github-recovery-codes.txt
+├── 'import os'
+├── modulos-arm.txt
+├── modulos-intel.txt
+├── package-lock.json
+├── releases
+│   └── v1.0.0-maintenance.md
+├── repo_restructure_map.tsv
+├── requirements
+│   ├── convercus-agencies-playbook.txt
+│   ├── convercus-osint-ccus.txt
+│   ├── esbs-automatedeval.txt
+│   ├── mac-automation.txt
+│   ├── md2docx.txt
+│   ├── metis-growth.txt
+│   ├── svg-to-pptx.txt
+│   └── unir-automatedeval.txt
+├── requirements.txt
+├── 'seguimos aquí.md'
+├── sports_season_loyalty_dataset_v0_1.json
+├── venv_arm64
+│   ├── bin
+│   ├── docx-template
+│   ├── etc
+│   ├── include
+│   ├── lib
+│   ├── pyvenv.cfg
+│   └── share
+└── venv_intel
+    ├── bin
+    ├── include
+    ├── lib
+    └── pyvenv.cfg
