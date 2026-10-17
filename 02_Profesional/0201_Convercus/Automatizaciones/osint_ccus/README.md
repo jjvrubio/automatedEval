@@ -1,208 +1,257 @@
-# Módulo OSINT: El Analista Fantasma
+# `osint_ccus`
 
-Sistema automatizado de inteligencia competitiva y prospección comercial basado en la arquitectura RAG (Retrieval-Augmented Generation).
+Pipeline agéntico de investigación OSINT por lotes para validar compañías y
+priorizar oportunidades comerciales.
 
-## 🎯 Propósito
+El flujo activo utiliza la OpenAI Responses API con búsqueda web. No requiere
+NotebookLM, Gemini ni SerpAPI.
 
-Construir un "Notebook Inteligente" usando la API de Gemini 1.5 Pro para automatizar la investigación OSINT, análisis de oportunidades comerciales y generación de informes ejecutivos.
+## Flujo
 
-## 🏗️ Arquitectura
-
-El sistema implementa 4 módulos especializados:
-
-### 1. El Cazador (`modules/hunter.py`)
-- **Función**: Búsqueda automática de fuentes relevantes
-- **API**: SerpAPI (Google Search)
-- **Output**: Lista de URLs filtradas por relevancia
-
-### 2. El Recolector (`modules/collector.py`)
-- **Función**: Extracción de contenido desde URLs
-- **Capacidades**: 
-  - Scraping HTML (BeautifulSoup)
-  - Extracción PDF (pdfplumber)
-  - Rate limiting automático
-- **Output**: Texto limpio listo para análisis
-
-### 3. El Cerebro (`modules/brain.py`)
-- **Función**: Análisis secuencial con LLM
-- **Modelo**: Gemini 1.5 Pro (2M tokens de contexto)
-- **Características**:
-  - Carga de prompts desde archivos Markdown
-  - Análisis multi-fase con contexto acumulativo
-  - Temperatura baja (0.1) para precisión analítica
-
-### 4. El Reportero (`modules/reporter.py`)
-- **Función**: Generación de informes estructurados
-- **Formatos**: Markdown (con front matter YAML), JSON
-- **Características**: 
-  - Templates configurables
-  - Índices automáticos
-  - Exportación futura a DOCX/PowerPoint
-
-## 📁 Estructura de Directorios
-
-```
-osint_ccus/
-├── main.py                    # Orquestador principal
-├── modules/
-│   ├── hunter.py             # Módulo de búsqueda
-│   ├── collector.py          # Extractor de contenido
-│   ├── brain.py              # Motor de análisis con Gemini
-│   └── reporter.py           # Generador de reportes
-├── prompts/
-│   ├── 01_system.md          # Contexto y rol del analista
-│   ├── 02_trigger.md         # Prompt de búsqueda inicial
-│   ├── 03_analysis.md        # Diagnóstico estratégico
-│   ├── 04_synthesis.md       # Construcción de narrativa
-│   └── 05_report.md          # Template de reporte final
-├── reports/                  # Salida de análisis
-├── .env                      # Variables de entorno (no versionado)
-└── README.md                 # Este archivo
+```text
+CSV
+ |
+ v
+Etapa 1A: empleados >100 y puntos de venta/servicio >10
+ |
+ v
+Etapa 1B: facturación >15M EUR
+ |
+ v
+ELIGIBLE
+ |
+ v
+Etapa 2: tecnología + corporativo + expansión
+ |
+ v
+Informe de potencialidad
 ```
 
-## ⚙️ Configuración
+Etapa 2 solo procesa compañías cuya decisión final de Etapa 1 sea `ELIGIBLE`.
+MEDDPICC no es necesario para ejecutar las Etapas 1 y 2.
 
-### 1. Variables de Entorno
+La arquitectura completa y la futura puerta de cualificación MEDDPICC están en
+[ARQUITECTURA_AGENTICA.md](ARQUITECTURA_AGENTICA.md).
 
-Crear archivo `.env` en el directorio `osint_ccus/`:
+## Entrada
+
+El CSV debe contener:
+
+| Columna | Descripción |
+|---|---|
+| `Company Name` | Nombre comercial |
+| `# Employees` | Plantilla de referencia |
+| `Website` | Sitio web oficial |
+| `Company Linkedin Url` | LinkedIn corporativo |
+| `Number of Retail Locations` | Puntos de venta o servicio |
+
+Se acepta `company Name` como alias. Las columnas adicionales se conservan.
+
+## Configuración
+
+Copia el ejemplo de entorno y añade tu clave:
+
+```bash
+cd "$OSINT_DIR"
+cp .env.example .env
+```
+
+Contenido:
 
 ```env
-MI_CLAVE_API_SERPAPI=tu_clave_serpapi
-MI_CLAVE_API_GEMINI=tu_clave_gemini
+OPENAI_API_KEY=tu_clave_openai
 ```
 
-### 2. Dependencias
+El modelo predeterminado de los investigadores es `gpt-5.6-terra`.
 
-Instalar paquetes necesarios:
+## Rutas
+
+### Documentos
+
+Los documentos se guardan junto al CSV, agrupados por compañía:
+
+```text
+<carpeta-del-CSV>/
+├── empresas.csv
+└── <Nombre comercial>/
+    ├── 01 - Elegibilidad/
+    │   └── Resultado Etapa 1.md
+    └── 02 - Potencialidad/
+        ├── Informe de potencialidad.md
+        ├── Investigación/
+        │   ├── Tecnología.json
+        │   ├── Corporativo.json
+        │   └── Expansión.json
+        └── Fuentes aportadas/
+```
+
+Etapa 1 genera su documento independientemente de Etapa 2. Etapa 2 solo
+publica un informe cuando han terminado sus tres investigadores.
+
+Puede forzarse otra raíz documental en ambos comandos mediante:
+
+```text
+--accounts-output-root "/otra/ruta"
+```
+
+### Estado técnico
+
+El estado reanudable se guarda en:
+
+```text
+$OSINT_DIR/.runtime/runs/<ejecución>/
+```
+
+Incluye SQLite, manifiestos, auditorías y exportaciones CSV. `RUN_DIR` no es una
+carpeta de documentos; permite que Etapa 2 recupere el trabajo de Etapa 1.
+
+## Ejecución completa
+
+Define el CSV y una carpeta de ejecución:
 
 ```bash
-cd /Users/juanjo/Documents/Personal/JJVR/automatizaciones
-source venv_arm64/bin/activate  # o venv_intel según tu arquitectura
-
-pip install serpapi google-generativeai pdfplumber requests beautifulsoup4 python-dotenv
+CSV="/ruta/al/archivo.csv"
+RUN_DIR="$OSINT_DIR/.runtime/runs/$(date +%Y%m%d_%H%M%S)_lote"
 ```
 
-### 3. Verificar Estructura
+### Etapa 1
+
+Ejecuta 1A y 1B para todas las filas:
 
 ```bash
-cd osint_ccus
-python -m modules.hunter    # Test del cazador
-python -m modules.collector # Test del recolector
-python -m modules.brain     # Test del cerebro
+python3 "$OSINT_DIR/stage1_cli.py" \
+  --stage all \
+  --input "$CSV" \
+  --output-dir "$RUN_DIR" \
+  --retry-errors
 ```
 
-## 🚀 Uso
+En `stage1_cli.py`, `--stage all` significa solamente **Etapa 1A + Etapa 1B**.
 
-### Ejecución del Sistema
+### Etapa 2
 
 ```bash
-cd osint_ccus
-python osint-prospects.py
+python3 "$OSINT_DIR/stage2_cli.py" \
+  --input "$CSV" \
+  --stage1-output-dir "$RUN_DIR" \
+  --retry-errors
 ```
 
-El script presenta una interfaz interactiva con diálogos nativos de macOS.
+No es necesario pasar MEDDPICC.
 
-### Flujo de Ejecución
+## Prueba limitada
 
-1. **Búsqueda**: Genera queries estratégicas y busca fuentes (SerpAPI)
-2. **Recolección**: Descarga y extrae contenido (HTML + PDF)
-3. **Análisis**: Ejecuta 5 prompts secuenciales con Gemini:
-   - System (contexto)
-   - Trigger (extracción de datos)
-   - Analysis (scoring + SWOT)
-   - Synthesis (narrativa comercial)
-   - Report (documento final)
-4. **Reporte**: Genera Markdown estructurado en `reports/`
+Para investigar únicamente la primera fila:
 
-## 📊 Output Esperado
-El sistema guía al usuario a través de diálogos nativos de macOS:
+```bash
+python3 "$OSINT_DIR/stage1_cli.py" \
+  --stage all \
+  --input "$CSV" \
+  --output-dir "$RUN_DIR" \
+  --limit 1
 
-1. **Carga de Configuración**: Lee system prompt y escenarios desde `Instrucción para Gems.md`
-2. **Selección de Escenario**: Dropdown con 4 opciones (Expansión, Consolidación, M&A, Turnaround)
-3. **Datos de Empresa**: Campos para nombre de empresa y contexto adicional
-4. **Confirmación**: Diálogo de confirmación antes de consumir créditos API
-5. **Ejecución del Pipeline**:
-   - Búsqueda de fuentes (SerpAPI)
-   - Extracción de contenido (HTML + PDF)
-   - Análisis multi-fase con Gemini (5 prompts secuenciales)
-   - Generación de reporte Markdown
-6. **Finalización**: Diálogo con ruta al reporte generado
-- **Fuentes**: URLs consultadas con descripción
-
-Archivo típico: `reporte_Inditex_20260111_153045.md`
-
-## 🔧 Personalización
-
-### Modificar Prompts
-
-Editar archivos en `prompts/`:
-- Ajustar scoring de fit estratégico
-- Cambiar framework analítico (SWOT → Porter's 5 Forces)
-- Personalizar templates de reporte
-
-### Ajustar Búsqueda
-
-En `main.py`, modificar `keywords`:
-
-```python
-keywords = [
-    "innovación tecnológica",
-    "funding ronda inversión",
-    "asociaciones estratégicas"
-]
+python3 "$OSINT_DIR/stage2_cli.py" \
+  --input "$CSV" \
+  --stage1-output-dir "$RUN_DIR" \
+  --limit 1
 ```
 
-### Extender Capacidades
+## Simulación sin llamadas API
 
-- **Nuevos extractores**: Implementar `_extract_xlsx()` en `collector.py`
-- **Análisis adicional**: Agregar `06_competitive.md` en `prompts/`
-- **Export avanzado**: Implementar `generate_pptx()` en `reporter.py`
+```bash
+python3 "$OSINT_DIR/stage1_cli.py" \
+  --stage all \
+  --input "$CSV" \
+  --output-dir "$RUN_DIR" \
+  --dry-run
 
-## 📈 Comparación con NotebookLM
+python3 "$OSINT_DIR/stage2_cli.py" \
+  --input "$CSV" \
+  --stage1-output-dir "$RUN_DIR" \
+  --dry-run
+```
 
-| Característica | NotebookLM (Web) | Analista Fantasma |
-|----------------|------------------|-------------------|
-| **Interfaz** | GUI arrastrar/soltar | CLI automatizado |
-| **Fuentes** | Manual (upload) | Automático (búsqueda) |
-| **Contexto** | ~500K tokens | 2M tokens (Gemini 1.5 Pro) |
-| **Análisis** | Single-pass | Multi-fase secuencial |
-| **Prompts** | Predefinidos | Personalizables (Markdown) |
-| **Output** | Chat interactivo | Markdown ejecutivo |
-| **Integración** | Ninguna | Pipeline programático |
+## Reanudación
 
-## 🛠️ Solución de Problemas
+Reutiliza el mismo `RUN_DIR`.
 
-### Error: "Faltan claves en .env"
-- Verificar que `.env` existe en `osint_ccus/`
-- Confirmar nombres de variables: `MI_CLAVE_API_SERPAPI`, `MI_CLAVE_API_GEMINI`
+- Sin opciones adicionales, se omiten los trabajos ya terminados.
+- `--retry-errors` repite solo los fallos.
+- `--force` repite el alcance seleccionado.
 
-### Error: "pdf_support_missing"
-- Instalar: `pip install pdfplumber`
+Si un investigador de Etapa 2 falla, los otros resultados se conservan. El
+informe se publica cuando tecnología, corporativo y expansión están en `ok`.
 
-### Pocas fuentes encontradas
-- Ajustar `config.max_sources` en `main.py`
-- Modificar queries en `keywords`
+## Umbrales y decisiones
 
-### Rate limiting de APIs
-- Aumentar `scrape_delay` en `Config`
-- Considerar implementar retry logic en `hunter.py`
+Los umbrales son estrictos:
 
-## 📚 Referencias
+- `100` empleados falla; `101` pasa.
+- `10` puntos falla; `11` pasa.
+- `15.000.000 EUR` falla; una cifra superior pasa.
 
-- [Gemini API Docs](https://ai.google.dev/docs)
-- [SerpAPI Python Client](https://serpapi.com/integrations/python)
-- [pdfplumber Documentation](https://github.com/jsvine/pdfplumber)
+Una discrepancia numérica no implica automáticamente `CONFLICTING`. Si todas
+las fuentes creíbles quedan por encima del umbral, la decisión es
+`VERIFIED_PASS` y la diferencia se conserva como trazabilidad.
 
-## 🔄 Próximas Mejoras
+## Cobertura de Etapa 2
 
-- [ ] Export a PowerPoint (`python-pptx`)
-- [ ] Análisis de sentimiento en redes sociales
-- [ ] Integración con LinkedIn API para perfiles
-- [ ] Cache de búsquedas para evitar re-procesamiento
-- [ ] UI web con Flask/Streamlit para no-técnicos
+Los tres investigadores cubren:
 
----
+1. tecnología y experiencia de cliente;
+2. cambios corporativos y liderazgo;
+3. expansión y distribución.
 
-**Autor**: Sistema Automatizado  
-**Última actualización**: 2026-01-11  
-**Versión**: 1.0
+El investigador tecnológico adapta su búsqueda al sector:
+
+- retail: Martech, CRM/CDP, fidelización, IA, TPV/POS, ERP, OMS, WMS, PIM,
+  inventario y omnicanalidad;
+- hoteles: PMS, reservas/CRS, channel manager, RMS, reputación y TPV;
+- restauración: TPV, reservas, KDS, delivery, inventario y fidelización;
+- transporte urbano: ticketing, pagos, MaaS, CRM e información al viajero.
+
+Se excluyen banca, seguros, seguridad y administraciones públicas. Los
+operadores de transporte urbano constituyen una excepción permitida, incluso
+con propiedad pública.
+
+## Salidas técnicas de Etapa 1
+
+```text
+stage1_enriched.csv
+stage1_pass_1a.csv
+stage1_eligible.csv
+stage1_audit.jsonl
+stage1_summary.md
+stage1_state.sqlite3
+```
+
+El CSV original no se sobrescribe automáticamente. La escritura sobre el
+original debe ser explícita y contar con copia de seguridad.
+
+## Pruebas
+
+```bash
+cd "$OSINT_DIR"
+PYTHONPYCACHEPREFIX=/private/tmp/osint_ccus_pycache \
+  python3 -m unittest discover -s tests -q
+```
+
+## Código activo
+
+```text
+osint_ccus/
+├── stage1_cli.py
+├── stage2_cli.py
+├── stage1/
+├── stage2/
+├── tests/
+├── ARQUITECTURA_AGENTICA.md
+└── README.md
+```
+
+El prototipo anterior basado en Gemini y SerpAPI se conserva únicamente como
+referencia histórica en:
+
+```text
+archive/legacy-gemini-serpapi/
+```
