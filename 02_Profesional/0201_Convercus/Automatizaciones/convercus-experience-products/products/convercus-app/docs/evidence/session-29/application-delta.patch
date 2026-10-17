@@ -1,0 +1,18 @@
+--- a/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
++++ b/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
+@@ -146,9 +146,12 @@
+       // H27 local absence: no supplied label means no display text. The subject
+       // still comes from Scenario; this is not a general product fallback policy.
+       label: subjectPresentations.find(({ subjectRef }) => subjectRef === id)?.label ?? "",
+-      status: subjectStates[id] === "enabled"
+-        ? id === "subject-p1" ? "Alistada y habilitada" : "Habilitado por ti"
+-        : id === "subject-p1" ? "Sin alistar" : "Sin habilitar",
++      // H29: present operational state only; no actor, viewer or personal gender.
++      status: ({
++        "not-enlisted": "Estado: sin alistar",
++        "not-enabled": "Estado: sin habilitar",
++        enabled: "Estado: habilitado",
++      })[subjectStates[id]] ?? "",
+       clueCount: evaluation.evidence.filter((item) => item.subjects.some((subject) => subject.id === id)).length,
+     })),
+     state: complete ? "complete" : discoveredClueCount > 0 ? "exploring" : enlisted ? "active" : "ready",

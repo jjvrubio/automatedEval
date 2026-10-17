@@ -1,0 +1,36 @@
+{
+  "session": 33,
+  "baselineCheck": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": {
+      "files": 26,
+      "passed": 94
+    },
+    "buildPWA": "PASS"
+  },
+  "finalCheck": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": {
+      "files": 27,
+      "passed": 95
+    },
+    "buildPWA": "PASS"
+  },
+  "currentAppRuns": 16,
+  "currentAppFramesIncludingReset": 89,
+  "currentAppDOMCaptures": 267,
+  "previousAppComparisonRuns": 4,
+  "previousAppFramesIncludingReset": 17,
+  "previousAppDOMCaptures": 51,
+  "isolatedCurrentAppReadModelObservations": 2,
+  "requiredReportSectionsVerified": 47,
+  "localReportLinksVerified": 8,
+  "traceSourceHashesVerified": true,
+  "unexpectedInheritedSourceChanges": [],
+  "domIntegrationVerification": "EXECUTED",
+  "browserVisualValidation": "NOT EXECUTED",
+  "reportSha256": "ea6c13ae8288e4a1b2965fbe9c554b83c081b1de23a4f47d3aea400369101401",
+  "traceSha256": "4b41f2df60ac6620a82b673df30074f1163501e6ac79862cd4b0342b69d07163"
+}

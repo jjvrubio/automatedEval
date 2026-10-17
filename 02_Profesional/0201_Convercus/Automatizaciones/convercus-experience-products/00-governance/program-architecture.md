@@ -2,10 +2,11 @@
 title: "Arquitectura conjunta: Convercus App y Experience Builder"
 aliases:
 - "Arquitectura del programa Convercus Experience Products"
+- "Demo Factory Architecture v0.5"
 language: es
-version: "v0.1"
+version: "v0.5"
 status: "activo"
-date: "2026-07-17"
+date: "2026-09-04"
 project: "Convercus Experience Products"
 document_type: "arquitectura de programa"
 scope: "relación estructural, independencia y activos compartidos de Convercus App y Experience Builder"
@@ -109,14 +110,16 @@ En la App, una Experience puede manifestarse mediante una noticia, una recomenda
 En el Builder, el Workflow es parte de la ejecutabilidad, pero no sustituye la cadena experiencial completa:
 
 ```text
-evento significativo
-→ patrón
-→ secuencia
-→ progresión
-→ resultado observado
-→ medición
-→ aprendizaje reutilizable
+Event
+→ Pattern
+→ Sequence
+→ Progression
+→ Result
+→ Measurement
+→ Learning
 ```
+
+La cadena expresa la referencia TES; no prescribe interfaces, DTOs, stores ni contratos software independientes.
 
 ## Papeles de cada espacio de trabajo
 
@@ -143,7 +146,99 @@ La incorporación de la App exige distinguir cuatro ámbitos:
 
 El repositorio no debe duplicar el núcleo completo del TES. Debe contener referencias controladas, decisiones aplicables a producto, trazabilidad y contratos derivados.
 
-## Jerarquía recomendada
+## Baseline arquitectónica v0.5
+
+Esta versión consolida las fronteras aceptadas en ADR-001–005 y la evidencia de Sessions 5, 7, 11 y 13. No convierte los mecanismos de esos experimentos en componentes normativos.
+
+La arquitectura contiene dos flujos distintos que convergen. La composición resuelve qué demo y runtime son efectivos. La evaluación contextual deriva un claim desde inputs semánticos/situados y evidencia factual. La evidencia no se fuerza dentro de la cadena de composición.
+
+```text
+FLUJO DE COMPOSICIÓN — ACCEPTED
+
+TES semantic authority
+        ↓ trazabilidad
+Product interpretations and governed Experience references
+        (distinct roles; maturity may differ)
+        ↓ referenced or instantiated by
+Scenario
+        ↓ separado de
+Demo Script ──public action──→ Runtime boundary
+        ↓
+Desired Demo Composition
+        ↓ bootstrap / capability resolution
+Effective Demo Composition
+        ↓
+Runtime state ──projection──→ AppSnapshot / Activity / UI
+
+
+FLUJO DE EVALUACIÓN CONTEXTUAL — ACCEPTED BOUNDARY
+
+Product semantic premises + situated context
+                         ↘
+                          Contextual evaluation
+                         ↗
+Neutral factual evidence + other authoritative premises in scope
+                                      ↓
+                         Derived evaluation claim
+                                      ↓
+                  Runtime/read-model use when applicable
+
+POSSIBLE FUTURE RELATION — UNRESOLVED
+
+Derived evaluation claim - - ? - -> [TES Event recognition boundary]
+                                  (not a required gate; inputs and authority undecided)
+```
+
+El uso de un claim en runtime o read models no requiere reconocimiento de Evento TES por defecto. La relación lateral mostrada no afirma que el claim derivado sea el input único ni suficiente de una futura frontera de reconocimiento.
+
+La convergencia no crea una capa soberana de autoridad. Las premisas pueden proceder de fuentes diferentes y cada una conserva su competencia, scope, procedencia y madurez. El claim derivado no puede superar esos límites conjuntamente. Una ausencia solo puede sostener una exclusión cuando existe base suficiente para excluir dentro del scope evaluado; knowledge insuficiente no se degrada a un negativo por conveniencia.
+
+### ACCEPTED
+
+- TES gobierna significado e invariantes semánticos; producto y técnica gobiernan sus traducciones sin redefinirlo (ADR-001).
+- Composición, estado de runtime y read models son responsabilidades lógicamente separadas; Activity permanece como proyección (ADR-002).
+- La intención solicitada y la composición efectiva resuelta son distintas (ADR-003).
+- Experience Definition, Scenario y Demo Script conservan responsabilidades separadas; las acciones atraviesan una frontera pública cuyo comportamiento posee y valida el runtime (ADR-004).
+- Evidencia factual neutral y evaluación relativa a Experience son distintas. El claim derivado queda acotado por sus premisas; insuficiencia no equivale a negativo; relevancia contextual no equivale a reconocimiento de Evento TES; Activity no origina ni fortalece autoridad (ADR-005).
+
+### SUPPORTED
+
+- La evaluación experimental puede mantener Evidence y ExperienceContext constantes y producir un claim distinto cuando cambia la autoridad clasificatoria disponible dentro de scope.
+- La evaluación contextual probada no necesita branches por identificador de Experience, Activity, reconocimiento de Evento TES, taxonomy engine, registry ni provider architecture.
+
+`SUPPORTED` registra evidencia experimental reproducible. No convierte las formas TypeScript utilizadas para obtenerla en arquitectura aceptada.
+
+### PROVISIONAL
+
+- La forma concreta de los inputs y outputs de evaluación, sus códigos, referencias y trazabilidad.
+- La materialización y composición runtime de fuentes autoritativas.
+- La representación de madurez de las Product Experience Definitions y de sus claims derivados.
+- Los contratos actuales de `ExperienceDefinition`, Scenario, acciones, checkpoints, evidence y evaluation outcomes.
+- La frontera que conecte eventualmente una evaluación con consumers de runtime o proyecciones productivas.
+
+`PROVISIONAL` expresa utilidad parcial o evidencia limitada; no identifica servicios o aggregates que deban construirse.
+
+### UNRESOLVED
+
+- Topología de fuentes de autoridad clasificatoria.
+- Taxonomías compartidas o alineación entre taxonomías.
+- Autoridad, versionado y acreditación de mappings semánticos.
+- Acreditación de autoridades, confianza, suficiencia y exhaustividad.
+- Precedencia y resolución de claims conflictivos.
+- Frontera y autoridad de reconocimiento de Eventos TES.
+- Naming y representación de madurez de `ExperienceDefinition` candidata, validada y runtime.
+- Preservación y UX de evaluaciones no resueltas en Activity y otras superficies.
+- Contratos con APIs reales, persistencia, auditoría o reevaluación histórica.
+
+Nada en `UNRESOLVED` representa un componente productivo existente. En particular, v0.5 no introduce `Authority Service`, `Classification Authority Layer`, registry, provider universal ni aggregate `AvailableAuthority`.
+
+### NON-NORMATIVE / FUTURE PRODUCT DIRECTION
+
+Las descripciones heredadas de capacidades, pantallas, estructuras de carpetas, escenarios potenciales, modos de datos, flujos futuros, roadmaps y secuencias de entrega conservan visión de producto e historia de planificación. No son arquitectura aceptada por aparecer en este documento activo. Sus verbos prospectivos expresan dirección o hipótesis y quedan subordinados a `ACCEPTED`, `SUPPORTED`, `PROVISIONAL` y `UNRESOLVED`.
+
+En una revisión futura podrá separarse program architecture, product vision y roadmaps. Esa reorganización no forma parte de v0.5 ni de este parche.
+
+## Jerarquía histórica/prospectiva — NON-NORMATIVE PRODUCT DIRECTION
 
 En lugar de crear un repositorio centrado exclusivamente en el Builder, conviene utilizar una raíz que reconozca el programa de dos productos:
 
@@ -174,13 +269,7 @@ convercus-experience-products/
 │
 ├── 02-shared-contracts/
 │   ├── experience-domain/
-│   ├── events/
-│   ├── workflows/
-│   ├── incentives/
-│   ├── rewards/
-│   ├── measurements/
-│   ├── learning/
-│   └── api/
+│   └── workflows-relationship.md
 │
 ├── 03-shared-assets/
 │   ├── brand/
@@ -254,27 +343,17 @@ Esta capa no debe contener decisiones de pantalla específicas de ninguno de los
 
 ## Contratos compartidos
 
-`02-shared-contracts` debe expresar modelos y contratos sin acoplarlos a una interfaz.
-
-Una primera división podría ser:
+Los contratos compartidos solo se incorporan cuando una responsabilidad reutilizable entre App y Builder ha sido demostrada y existe realmente en el repositorio. La existencia de un concepto TES no implica por sí misma que deba materializarse como interfaz, DTO, store o contrato técnico independiente.
 
 ```text
-ExperienceDefinition
-ExperienceParticipation
-SignificantEvent
-PatternHypothesis
-Sequence
-ProgressionState
-Intervention
-Incentive
-Reward
-ObservedOutcome
-Measurement
-ReusableLearning
-WorkflowReference
+Current shared contracts
+→ only those actually demonstrated and present
+
+Future shared contracts
+→ evidence-driven
 ```
 
-El Builder produce o modifica definiciones. La App consulta o representa participaciones. Ambos pueden utilizar los mismos identificadores y vocabulario sin compartir componentes de interfaz.
+La futura colaboración entre Builder y App puede reutilizar identificadores o vocabulario sin presuponer desde ahora una lista de contratos compartidos.
 
 ## Activos compartidos
 
@@ -351,15 +430,16 @@ Staging
 
 El modo mock debe seguir disponible aunque se active staging, para asegurar una demostración repetible.
 
-### Escenarios iniciales
+### Escenarios potenciales y conceptos comerciales — NON-NORMATIVE PRODUCT DIRECTION
 
-La App debe demostrar, al menos:
+El backlog histórico de demo incluye elementos con estatutos semánticos diferentes:
 
-- Circuito de decisión: ocasión.
-- Maratón de Temporada.
-- Desafío Activo o Aventura Familiar.
+- **Circuito de decisión: ocasión:** hipótesis de trabajo y escenario canónico inicial según su documentación vigente; esta mención no añade validación semántica.
+- **Aventura Familiar:** Product Experience Definition candidate, `READY WITH EXPLICIT GAPS`, no ejecutable e interpretada contra TES.
+- **Desafío Activo:** Product Experience Definition candidate, `READY WITH EXPLICIT GAPS`, no ejecutable e interpretada contra TES.
+- **Maratón de Temporada:** concepto comercial/campaña/reto de fidelización; no asumir que sea una Experience validada.
 
-Cada escenario debe poder reconstruirse como transformación y no solamente como secuencia de pantallas.
+La inclusión en una demo no modifica el estatuto semántico del artefacto. Cualquier narración presentada como Experience debe justificar su transformación y no limitarse a una secuencia de pantallas.
 
 ### Panel interno de simulación
 
@@ -460,7 +540,7 @@ No debe gobernar el modelo de dominio ni la arquitectura del nuevo prototipo.
 | Workflow visual | No | Propio del Builder |
 | Panel de simulación | Parcialmente | Diferente profundidad y propósito |
 
-## Flujo futuro entre productos
+## Flujo futuro entre productos — NON-NORMATIVE PRODUCT DIRECTION
 
 Cuando ambos productos maduren, el flujo deseable será:
 
@@ -489,7 +569,7 @@ Builder
 
 La primera versión de la App simulará este ciclo sin requerir que el Builder esté implementado.
 
-## Dos carriles de desarrollo
+## Dos carriles de desarrollo — NON-NORMATIVE PRODUCT DIRECTION
 
 ### Carril A — App urgente
 
@@ -497,7 +577,7 @@ La primera versión de la App simulará este ciclo sin requerir que el Builder e
 A0. Consolidar alcance y referencias. [completado]
 A1. Crear aplicación React/TypeScript mobile-first y modo de presentación iPhone. [completado]
 A2. Implementar puntos, cupones, noticias y perfil con mocks.
-A3. Incorporar motor de simulación de Experiences/Workflows.
+A3. Incorporar comportamientos de simulación acotados a escenarios demostrados, mediante runtime boundaries reversibles y sin asumir un Experience engine o rules engine general.
 A4. Implementar escenarios canónicos.
 A5. Validar, preparar guion de demo e instalar y probar la PWA en un iPhone real.
 A6. Conectar staging por módulos.
@@ -518,7 +598,7 @@ B7. Mapear y ejecutar Workflows reales.
 
 El carril B no debe bloquear A. Las decisiones compartidas mínimas se fijan como contratos provisionales versionados y se revisan explícitamente cuando el Builder avance.
 
-## Secuencia inmediata recomendada
+## Secuencia inmediata recomendada — NON-NORMATIVE PRODUCT DIRECTION
 
 ```text
 1. Adoptar el marco de dos productos.
@@ -531,7 +611,7 @@ El carril B no debe bloquear A. Las decisiones compartidas mínimas se fijan com
 8. Mantener una lista explícita de decisiones compartidas provisionales.
 ```
 
-## Estructura mínima para empezar
+## Estructura mínima para empezar — NON-NORMATIVE PRODUCT DIRECTION
 
 La jerarquía completa no debe convertirse en trabajo burocrático. Para comenzar la App basta con:
 
@@ -575,7 +655,7 @@ Las demás carpetas se crearán cuando exista trabajo real que depositar en ella
 7. Ningún avance del Builder retrasa el modo mock de la App.
 8. Ningún dato sensible de staging se introduce en el frontend.
 
-## Resultado esperado
+## Resultado esperado — NON-NORMATIVE PRODUCT DIRECTION
 
 La estructura propuesta permite que la App avance con urgencia comercial sin perder la dirección estratégica del Builder.
 

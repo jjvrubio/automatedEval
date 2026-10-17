@@ -1,0 +1,15 @@
+{
+  "firstAttempt": "browser-attempt-1/report.json",
+  "functionalPhasesCompleted": 20,
+  "pageErrors": [],
+  "consoleFailure": "GET /favicon.ico 404",
+  "inspectionFinding": {
+    "mobileRegistrationErrorY": -1466.46875,
+    "viewportHeight": 844,
+    "cause": "Feedback above entire page while action was below event cards",
+    "fix": "Feedback rendered next to active journey and focused on rejection; runtime validation unchanged"
+  },
+  "resourceFix": "Sports composition supplies its resolved brand logo as favicon. Existing compositions unchanged.",
+  "screenshotNote": "A transformed fixed skip link appeared inside full-page screenshots taken from a scrolled viewport; actual viewport bounds were y=-56.8..-13.8. Final screenshots start at scroll 0; keyboard skip link receives readable brand on-primary token.",
+  "humanUXAcceptance": "NOT EXECUTED"
+}

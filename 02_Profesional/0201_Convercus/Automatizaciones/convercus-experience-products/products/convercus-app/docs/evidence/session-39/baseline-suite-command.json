@@ -1,0 +1,16 @@
+{
+  "name": "baseline-suite",
+  "startedAt": "2026-09-22T17:24:52.919Z",
+  "finishedAt": "2026-09-22T17:25:02.192Z",
+  "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+  "args": [
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--reporter=json",
+    "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/baseline-suite-results.json"
+  ],
+  "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+  "exitCode": 0,
+  "signal": null,
+  "error": null
+}

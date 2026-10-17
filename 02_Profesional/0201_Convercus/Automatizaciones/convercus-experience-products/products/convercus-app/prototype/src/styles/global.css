@@ -332,3 +332,29 @@ h1, h2, h3 { color: var(--color-text-strong); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Focused navigation for the local Family Adventure demo. */
+.app-shell--adventure { max-width: 64rem; }
+.adventure-account { color: var(--color-text-muted); font-size: .85rem; }
+.adventure-nav { position: sticky; top: 4.25rem; z-index: 15; display: flex; gap: .35rem; padding: .7rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-background); }
+.adventure-nav a { flex: 1; max-width: 15rem; padding: .8rem .5rem; border-radius: .75rem; color: var(--color-text-muted); text-align: center; text-decoration: none; font-size: .9rem; font-weight: 700; }
+.adventure-nav a.active { background: var(--color-primary); color: var(--color-on-primary); }
+.adventure-page { display: grid; gap: 1.5rem; max-width: 54rem; margin: auto; padding: 1.5rem 1.1rem; }
+.adventure-heading h1 { margin-bottom: .6rem; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.adventure-heading p:last-child { margin-bottom: 0; color: var(--color-text-muted); line-height: 1.5; }
+.adventure-next { padding: 1.4rem; border: 1px solid var(--color-border); border-radius: 1.2rem; background: var(--color-surface-tinted); }
+.adventure-message { margin: .6rem 0 1.2rem; font-size: 1.1rem; line-height: 1.5; }
+.adventure-next button { display: flex; align-items: center; justify-content: center; gap: .8rem; width: 100%; min-height: 3rem; line-height: 1.4; }
+.adventure-count { margin: 1rem 0 0; color: var(--color-text-muted); font-size: .85rem; }
+.adventure-guests { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.adventure-guest { padding: 1rem; border: 1px solid var(--color-border); border-radius: .9rem; background: white; }
+.adventure-guest h2, .adventure-guest h3 { margin-bottom: .6rem; font-size: 1rem; }
+.adventure-guest p { margin: 0; font-size: .9rem; line-height: 1.6; overflow-wrap: anywhere; }
+.adventure-session { margin: 1rem 0 0; color: var(--color-text-muted); font-size: .85rem; line-height: 1.5; }
+.adventure-evidence { padding-left: 1.3rem; line-height: 1.8; overflow-wrap: anywhere; }
+.adventure-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 1.1rem; padding: 1.2rem 0; border-top: 1px solid var(--color-border); }
+.adventure-tools p { margin: 0; color: var(--color-text-muted); font-size: .8rem; }
+.adventure-tools button { border: 0; background: transparent; cursor: pointer; padding: .6rem; }
+.adventure-error { margin: 1rem; color: #9b2525; }
+.app-shell--adventure #main-content { scroll-margin-top: 9rem; }
+.app-shell--adventure .system-list div { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }

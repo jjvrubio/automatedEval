@@ -1,0 +1,6055 @@
+{
+  "session": 31,
+  "status": "SOURCE-INSPECTION ONLY; exhaustive syntactic capture, includes non-copy technical tokens; semantic classification in session report",
+  "files": [
+    {
+      "file": "src/app/App.tsx",
+      "sha256": "90e16092157fa23b29da837dd86cd1b9ab0a0cc84f815eb14576abbc84ebc828"
+    },
+    {
+      "file": "src/main.tsx",
+      "sha256": "cb88ce48d25e4dfe894e0483efbdd495b77e2460e802a66cdbb7e43934e5fd9f"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "sha256": "4de4f5a108fc3dec5c9e68a02f046ea0dcfed40538f9121da5140531b76f48c4"
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "sha256": "d0b43cd8288b51482fcdac2a14ad1a6a53513f467e6301535070782965a6ed9e"
+    }
+  ],
+  "entryCount": 670,
+  "entries": [
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 1,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 2,
+      "column": 59,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react-router-dom\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 8,
+      "column": 8,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/demo-factory/contracts\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 9,
+      "column": 31,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/ui/FeedbackState\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 10,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/ui/Icon\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "formatPoints",
+      "line": 13,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "NewExpression",
+      "expression": "\"es-ES\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 26,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"section-heading\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 28,
+      "column": 9,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{eyebrow && <p className=\"eyebrow\">{eyebrow}</p>}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 28,
+      "column": 34,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 28,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{eyebrow}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 29,
+      "column": 13,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{title}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 31,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{linkTo && (\n        <Link className=\"text-link\" to={linkTo}>\n          Ver todo <Icon name=\"arrow\" size={16} />\n        </Link>\n      )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 32,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"text-link\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 32,
+      "column": 40,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{linkTo}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 33,
+      "column": 11,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Ver todo "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 33,
+      "column": 31,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"arrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SectionHeading",
+      "line": 33,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{16}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 42,
+      "column": 24,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`coupon-card coupon-card--${coupon.tone}${featured ? \" coupon-card--featured\" : \"\"}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 42,
+      "column": 25,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`coupon-card coupon-card--${coupon.tone}${featured ? \" coupon-card--featured\" : \"\"}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 42,
+      "column": 78,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\" coupon-card--featured\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 42,
+      "column": 105,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 43,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-card__topline\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 44,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-card__icon\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 44,
+      "column": 57,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 45,
+      "column": 22,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{coupon.icon}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 45,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{22}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 47,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-card__tag\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 47,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupon.tag}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 50,
+      "column": 13,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupon.title}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 51,
+      "column": 12,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupon.description}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 53,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-card__footer\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 54,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupon.validUntil}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 55,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 55,
+      "column": 45,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"arrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "CouponCard",
+      "line": 55,
+      "column": 58,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 65,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 66,
+      "column": 15,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Aún no hay actividad\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 67,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Tus movimientos y novedades aparecerán aquí.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 73,
+      "column": 20,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`activity-list${compact ? \" activity-list--compact\" : \"\"}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 73,
+      "column": 21,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`activity-list${compact ? \" activity-list--compact\" : \"\"}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 73,
+      "column": 47,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\" activity-list--compact\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 73,
+      "column": 75,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 74,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{items.map((item) => (\n        <article className=\"activity-item\" key={item.id}>\n          <span className={`activity-item__icon activity-item__icon--${item.tone}`} aria-hidden=\"true\">\n            <Icon name={item.icon} size={20} />\n          </span>\n          <div className=\"activity-item__content\">\n            <div className=\"activity-item__heading\">\n              <h3>{item.title}</h3>\n              {item.points !== undefined && (\n                <strong className={item.points >= 0 ? \"points-positive\" : \"\"}>\n                  {item.points >= 0 ? \"+\" : \"\"}{item.points} pts\n                </strong>\n              )}\n            </div>\n            <p>{item.description}</p>\n            <time dateTime={item.occurredAt}>{item.displayDate}</time>\n          </div>\n        </article>\n      ))}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 75,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-item\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 75,
+      "column": 48,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{item.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 76,
+      "column": 27,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`activity-item__icon activity-item__icon--${item.tone}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 76,
+      "column": 28,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`activity-item__icon activity-item__icon--${item.tone}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 76,
+      "column": 97,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 77,
+      "column": 24,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{item.icon}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 77,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{20}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 79,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-item__content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 80,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-item__heading\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 81,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.title}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 82,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.points !== undefined && (\n                <strong className={item.points >= 0 ? \"points-positive\" : \"\"}>\n                  {item.points >= 0 ? \"+\" : \"\"}{item.points} pts\n                </strong>\n              )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 83,
+      "column": 35,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{item.points >= 0 ? \"points-positive\" : \"\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 83,
+      "column": 55,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"points-positive\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 83,
+      "column": 75,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 84,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.points >= 0 ? \"+\" : \"\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 84,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"+\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 84,
+      "column": 45,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 84,
+      "column": 48,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.points}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 84,
+      "column": 62,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "pts\n                "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 88,
+      "column": 16,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.description}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 89,
+      "column": 28,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{item.occurredAt}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityList",
+      "line": 89,
+      "column": 46,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.displayDate}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 111,
+      "column": 16,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 111,
+      "column": 41,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-page\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 112,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-heading\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 113,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 113,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Mi aventura · Aurora Stay"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 114,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 114,
+      "column": 36,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.huntName}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 115,
+      "column": 14,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Busca las pistas del jardín y de la fuente durante tu estancia."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 117,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-next\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 117,
+      "column": 61,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"next-action-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 118,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 118,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"next-action-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 118,
+      "column": 57,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{guestActionLabel ? \"Tu siguiente paso\" : \"Resultado de la aventura\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 118,
+      "column": 77,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"Tu siguiente paso\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 118,
+      "column": 99,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"Resultado de la aventura\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 119,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-message\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 119,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"status\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 119,
+      "column": 58,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.message}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{guestActionLabel && <button className=\"secondary-action\" type=\"button\" onClick={guestAction}>{guestActionLabel}<Icon name=\"arrow\" size={18} /></button>}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 50,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"secondary-action\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 74,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"button\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 91,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{guestAction}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 105,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{guestActionLabel}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 134,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"arrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 120,
+      "column": 147,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 121,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-count\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 121,
+      "column": 42,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.discoveredClueCount}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 121,
+      "column": 74,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.discoveredClueCount === 1 ? \"pista descubierta\" : \"pistas descubiertas\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 121,
+      "column": 113,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"pista descubierta\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 121,
+      "column": 135,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"pistas descubiertas\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 123,
+      "column": 34,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"guests-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 124,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"guests-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 124,
+      "column": 33,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Quién puede explorar"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 125,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-guests\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 126,
+      "column": 13,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.subjects.map((subject) => (\n              <article className=\"adventure-guest\" key={subject.id}>\n                <h3>{subject.label}</h3>\n                <p>{subject.status} · {subject.clueCount} {subject.clueCount === 1 ? \"pista aportada\" : \"pistas aportadas\"}</p>\n              </article>\n            ))}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 127,
+      "column": 34,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-guest\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 127,
+      "column": 56,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{subject.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 128,
+      "column": 21,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.label}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 20,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.status}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 37,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 39,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.clueCount}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 59,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.clueCount === 1 ? \"pista aportada\" : \"pistas aportadas\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 86,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"pista aportada\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 129,
+      "column": 105,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"pistas aportadas\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 133,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-session\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 133,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{adventure.sessionLabel}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 140,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 140,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-stack home-page\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 141,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"welcome-row\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 141,
+      "column": 56,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"welcome-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 143,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 143,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Buenos días"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 144,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"welcome-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 144,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Hola, "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 144,
+      "column": 40,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.name}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 146,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"icon-button\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 146,
+      "column": 42,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 146,
+      "column": 65,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Ver notificaciones y actividad\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 147,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"bell\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 147,
+      "column": 34,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{22}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 148,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"notification-dot\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 148,
+      "column": 58,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 152,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 152,
+      "column": 52,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Resumen de fidelización\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 153,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card__glow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 153,
+      "column": 57,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 154,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card__heading\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 156,
+      "column": 29,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card__label\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 156,
+      "column": 51,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Tu saldo"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 157,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card__points\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 157,
+      "column": 49,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{formatPoints(member.points)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 157,
+      "column": 86,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "pts"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 159,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"level-badge\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 159,
+      "column": 52,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"sparkles\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 159,
+      "column": 68,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{15}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 159,
+      "column": 76,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.level}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 161,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"progress-block\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 162,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"progress-block__labels\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 163,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.progress}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 163,
+      "column": 36,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "% hacia "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 163,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.nextLevel}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 164,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{formatPoints(member.pointsToNextLevel)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 164,
+      "column": 60,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "pts restantes"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"progress-track\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 48,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"progressbar\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 76,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{member.progress}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 108,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{0}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 126,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{100}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 143,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`Progreso hacia ${member.nextLevel}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 166,
+      "column": 144,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`Progreso hacia ${member.nextLevel}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 167,
+      "column": 25,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{{ width: `${member.progress}%` }}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 167,
+      "column": 35,
+      "kind": "TemplateExpression",
+      "parent": "PropertyAssignment",
+      "expression": "`${member.progress}%`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 170,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"balance-card__action\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 170,
+      "column": 51,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 171,
+      "column": 11,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Ver mi cuenta "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 171,
+      "column": 36,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"arrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 171,
+      "column": 49,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 176,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"quick-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 177,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"sr-only\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 177,
+      "column": 36,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"quick-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 177,
+      "column": 50,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Accesos rápidos"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 178,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"quick-actions\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 179,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/benefits\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 179,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"ticket\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 179,
+      "column": 63,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{23}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 179,
+      "column": 77,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Mis cupones"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 180,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 180,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 180,
+      "column": 65,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{23}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 180,
+      "column": 79,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Actividad"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 181,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 181,
+      "column": 48,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"user\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 181,
+      "column": 60,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{23}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 181,
+      "column": 74,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Mi perfil"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 182,
+      "column": 32,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{!snapshot.guestPerspective}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 182,
+      "column": 64,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/?demo=hospitality-family-adventure\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 182,
+      "column": 119,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"compass\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 182,
+      "column": 134,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{23}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 182,
+      "column": 148,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Búsqueda del tesoro"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 186,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"benefits-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 187,
+      "column": 33,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Para ti\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 187,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Beneficios destacados\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 187,
+      "column": 80,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/benefits\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 188,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-grid\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 188,
+      "column": 41,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"benefits-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 189,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupons.slice(0, 2).map((coupon, index) => (\n            <CouponCard coupon={coupon} featured={index === 0} key={coupon.id} />\n          ))}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 190,
+      "column": 32,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{coupon}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 190,
+      "column": 50,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{index === 0}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 190,
+      "column": 68,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{coupon.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 195,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"story-card\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 195,
+      "column": 55,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"story-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 196,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"story-card__art\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 196,
+      "column": 54,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 197,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"sparkles\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 197,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{34}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 199,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"story-card__content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 200,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 200,
+      "column": 34,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{news[0]?.category}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 201,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"story-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 201,
+      "column": 32,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{news[0]?.title}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 202,
+      "column": 14,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{news[0]?.summary}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 203,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"secondary-action\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 203,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/benefits\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 203,
+      "column": 61,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Descubrir más"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 207,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 208,
+      "column": 31,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Actividad reciente\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 208,
+      "column": 59,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 209,
+      "column": 17,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "HomePage",
+      "line": 209,
+      "column": 54,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{activity.slice(0, 2)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 217,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 217,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-stack\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 218,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-header\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 219,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 219,
+      "column": 32,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Tu selección"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 220,
+      "column": 13,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Beneficios"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 221,
+      "column": 12,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Ventajas disponibles para disfrutar ahora y propuestas seleccionadas para ti."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 223,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"filter-row\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 223,
+      "column": 46,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Filtros de beneficios\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 224,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"filter-chip filter-chip--active\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 224,
+      "column": 59,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Todos"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 225,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"filter-chip\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 225,
+      "column": 39,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Disponibles"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 226,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"filter-chip\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 226,
+      "column": 39,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Próximamente"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 228,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-list-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 229,
+      "column": 31,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`${coupons.length} beneficios disponibles`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 229,
+      "column": 32,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`${coupons.length} beneficios disponibles`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 230,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"sr-only\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 230,
+      "column": 36,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-list-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 230,
+      "column": 56,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Listado de beneficios"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 231,
+      "column": 9,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupons.length > 0 ? (\n          <div className=\"coupon-grid coupon-grid--catalog\">\n            {coupons.map((coupon, index) => <CouponCard coupon={coupon} featured={index === 0} key={coupon.id} />)}\n          </div>\n        ) : (\n          <FeedbackState icon=\"ticket\" title=\"No hay beneficios disponibles\" description=\"Vuelve pronto para descubrir nuevas ventajas.\" />\n        )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 232,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"coupon-grid coupon-grid--catalog\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 233,
+      "column": 13,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{coupons.map((coupon, index) => <CouponCard coupon={coupon} featured={index === 0} key={coupon.id} />)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 233,
+      "column": 64,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{coupon}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 233,
+      "column": 82,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{index === 0}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 233,
+      "column": 100,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{coupon.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 236,
+      "column": 31,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"ticket\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 236,
+      "column": 46,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"No hay beneficios disponibles\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "BenefitsPage",
+      "line": 236,
+      "column": 90,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Vuelve pronto para descubrir nuevas ventajas.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 245,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 245,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-stack\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 246,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-header\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 247,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 247,
+      "column": 32,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Todo al día"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 248,
+      "column": 13,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Actividad"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 249,
+      "column": 12,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Consulta tus puntos, beneficios y últimas interacciones."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 251,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-list-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 252,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"section-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 252,
+      "column": 42,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"activity-list-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 252,
+      "column": 64,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Últimos movimientos"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ActivityPage",
+      "line": 253,
+      "column": 29,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{activity}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 259,
+      "column": 56,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"member\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 261,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 261,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-stack\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 262,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"profile-header\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 263,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"profile-avatar profile-avatar--large\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 263,
+      "column": 76,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 263,
+      "column": 83,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.initials}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 265,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 265,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Mi perfil"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 266,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.fullName}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 267,
+      "column": 14,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Miembro desde "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 267,
+      "column": 28,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.memberSince}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 271,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"membership-card\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 271,
+      "column": 60,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"membership-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 273,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"membership-card__label\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 273,
+      "column": 52,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Nivel actual"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 274,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"membership-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 274,
+      "column": 37,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{member.level}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 276,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"sparkles\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 276,
+      "column": 36,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{28}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 277,
+      "column": 20,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{formatPoints(member.points)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 277,
+      "column": 50,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "puntos"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 277,
+      "column": 66,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "disponibles para tus próximas ventajas."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 280,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"account-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 281,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"section-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 281,
+      "column": 42,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"account-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 281,
+      "column": 58,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Tu cuenta"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 282,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"settings-list\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 283,
+      "column": 33,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"user\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 283,
+      "column": 45,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{20}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 283,
+      "column": 72,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Datos personales"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 283,
+      "column": 104,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Nombre, idioma y preferencias"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 284,
+      "column": 33,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"bell\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 284,
+      "column": 45,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{20}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 284,
+      "column": 72,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Comunicaciones"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 284,
+      "column": 102,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Noticias y notificaciones"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/showcase\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"phone\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 62,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{20}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 89,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Vista iPhone"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 117,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Modo de presentación comercial"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 172,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"chevron\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 285,
+      "column": 187,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/system\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 47,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"settings\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 63,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{20}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 90,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Estado de la demo"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 123,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Información técnica y capacidades"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 181,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"chevron\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "ProfilePage",
+      "line": 286,
+      "column": 196,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 295,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"showcase-page\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 296,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"showcase-toolbar\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 298,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 298,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Modo de presentación"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 299,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{runtime.brand.name}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 299,
+      "column": 36,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "en iPhone"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 301,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"showcase-close\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 301,
+      "column": 45,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 302,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"close\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 302,
+      "column": 35,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{19}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 303,
+      "column": 17,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Salir"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 308,
+      "column": 19,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-stage\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 309,
+      "column": 20,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`Simulación visual de ${runtime.brand.name} en un iPhone`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 309,
+      "column": 21,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`Simulación visual de ${runtime.brand.name} en un iPhone`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 311,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 312,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__speaker\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 312,
+      "column": 64,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 313,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__button iphone-device__button--action\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 313,
+      "column": 93,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 314,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__button iphone-device__button--volume-up\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 314,
+      "column": 96,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 315,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__button iphone-device__button--volume-down\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 315,
+      "column": 98,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 316,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__button iphone-device__button--power\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 316,
+      "column": 92,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 318,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__screen\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 319,
+      "column": 17,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`/?demo=${encodeURIComponent(runtime.manifest.demoId)}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 319,
+      "column": 18,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`/?demo=${encodeURIComponent(runtime.manifest.demoId)}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 320,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`${runtime.brand.name} — vista iPhone`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 320,
+      "column": 20,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`${runtime.brand.name} — vista iPhone`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 322,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"iphone-device__home-indicator\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 322,
+      "column": 71,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 326,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"showcase-note\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "IPhoneShowcase",
+      "line": 327,
+      "column": 9,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Simulación visual a 393 × 852 px. La validación en un iPhone real se realizará en A5.\n      "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 347,
+      "column": 16,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 347,
+      "column": 41,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-page\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 348,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-heading\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 349,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 349,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Supervisión"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 350,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"supervision-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 350,
+      "column": 38,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Estado de la aventura"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 351,
+      "column": 14,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Observa lo que cambia al actuar en «Mi aventura». Cambiar de vista conserva la sesión."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 353,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-guests\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 353,
+      "column": 58,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Sujetos existentes\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 354,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.subjects.map((subject) => (\n            <article className=\"adventure-guest\" key={subject.id}>\n              <h2>{subject.id === \"subject-p1\" ? \"P1 · Lucía\" : \"P2 · Huésped 2\"}</h2>\n              <p>{subject.id} · exists: {String(subject.exists)} · {subject.operationalState} · Evidence: {subject.evidenceCount}</p>\n            </article>\n          ))}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 355,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-guest\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 355,
+      "column": 54,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{subject.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 356,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.id === \"subject-p1\" ? \"P1 · Lucía\" : \"P2 · Huésped 2\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 356,
+      "column": 35,
+      "kind": "StringLiteral",
+      "parent": "BinaryExpression",
+      "expression": "\"subject-p1\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 356,
+      "column": 50,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"P1 · Lucía\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 356,
+      "column": 65,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"P2 · Huésped 2\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 18,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 31,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· exists: "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{String(subject.exists)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 66,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 68,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.operationalState}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 95,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· Evidence: "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 357,
+      "column": 107,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{subject.evidenceCount}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 361,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-panel\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 361,
+      "column": 54,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Evaluación compartida\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 362,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-list\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 363,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Cuenta/sesión operativa"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 363,
+      "column": 54,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.sessionSubjectRef}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 364,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Criterio K"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 364,
+      "column": 41,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "A AND (B OR C)"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 365,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Evidence recibida"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 365,
+      "column": 48,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.evidence.length}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 366,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Admisibilidad conjunta"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 366,
+      "column": 53,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.jointAdmissibility}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 367,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Suficiencia K"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 367,
+      "column": 44,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.sufficiency}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 368,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Afirmación derivada"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 368,
+      "column": 50,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.derivedClaim}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 371,
+      "column": 34,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"evidence-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 372,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"evidence-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 372,
+      "column": 35,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Evidence y atribución"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 373,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.evidence.length === 0 ? <p>Todavía no hay Evidence. Alistarse o activar a un huésped no aporta pistas.</p> : (\n            <ul className=\"adventure-evidence\">{supervision.evidence.map((item) => <li key={item.id}>{item.id} · {item.subjectRefs.join(\", \")} · {item.provenance}</li>)}</ul>\n          )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 373,
+      "column": 51,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Todavía no hay Evidence. Alistarse o activar a un huésped no aporta pistas."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-evidence\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 48,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{supervision.evidence.map((item) => <li key={item.id}>{item.id} · {item.subjectRefs.join(\", \")} · {item.provenance}</li>)}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 92,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{item.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 102,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.id}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 112,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 114,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.subjectRefs.join(\", \")}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 137,
+      "kind": "StringLiteral",
+      "parent": "CallExpression",
+      "expression": "\", \""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 144,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "· "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 374,
+      "column": 146,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{item.provenance}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 389,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 389,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-stack\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 390,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"page-header page-header--internal\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 391,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 391,
+      "column": 32,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Panel interno"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 392,
+      "column": 13,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Estado de la demo"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 393,
+      "column": 12,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Información para preparar y verificar la demostración."
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 395,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-panel\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 395,
+      "column": 52,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Estado del sistema\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 396,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-list\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 397,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Demo"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 397,
+      "column": 33,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{runtime.manifest.demoId}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 398,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Marca"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 398,
+      "column": 34,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{runtime.brand.name}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 399,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Datos"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 399,
+      "column": 50,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"technical-badge\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 399,
+      "column": 68,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{capabilityStatuses.join(\" + \")}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 399,
+      "column": 93,
+      "kind": "StringLiteral",
+      "parent": "CallExpression",
+      "expression": "\" + \""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 400,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Red"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 400,
+      "column": 32,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{isOnline ? \"disponible\" : \"sin conexión\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 400,
+      "column": 44,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"disponible\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 400,
+      "column": 59,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"sin conexión\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 401,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Baseline"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 401,
+      "column": 37,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{runtime.experience?.tesBaseline ?? \"No aplica a esta demo\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 401,
+      "column": 73,
+      "kind": "StringLiteral",
+      "parent": "BinaryExpression",
+      "expression": "\"No aplica a esta demo\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 402,
+      "column": 20,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Futura"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 402,
+      "column": 35,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "bloqueada hasta verificar licencia"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 405,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{scriptStep && snapshot.scenario && (\n        <section className=\"system-panel\" aria-labelledby=\"presenter-action-title\">\n          <p className=\"eyebrow\">Control de presentación</p>\n          <h2 id=\"presenter-action-title\">Escenario actual</h2>\n          <dl className=\"system-list\">\n            <div><dt>Checkpoint</dt><dd>{snapshot.scenario.checkpoint}</dd></div>\n            <div><dt>Resultado esperado</dt><dd>{scriptStep.expectedCheckpoint}</dd></div>\n          </dl>\n          <button\n            className=\"secondary-action\"\n            type=\"button\"\n            disabled={!actionAvailable}\n            onClick={onPresenterAction}\n          >\n            {scriptStep.presenterLabel}\n          </button>\n          {actionError && <p role=\"alert\">{actionError}</p>}\n        </section>\n      )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 406,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-panel\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 406,
+      "column": 59,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"presenter-action-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 407,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"eyebrow\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 407,
+      "column": 34,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Control de presentación"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 408,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"presenter-action-title\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 408,
+      "column": 43,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Escenario actual"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 409,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"system-list\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 410,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Checkpoint"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 410,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{snapshot.scenario.checkpoint}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 411,
+      "column": 22,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Resultado esperado"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 411,
+      "column": 49,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{scriptStep.expectedCheckpoint}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 414,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"secondary-action\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 415,
+      "column": 18,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"button\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 416,
+      "column": 22,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{!actionAvailable}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 417,
+      "column": 21,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{onPresenterAction}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 419,
+      "column": 13,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{scriptStep.presenterLabel}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 421,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{actionError && <p role=\"alert\">{actionError}</p>}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 421,
+      "column": 35,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"alert\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 421,
+      "column": 43,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{actionError}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 424,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"back-link\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 424,
+      "column": 38,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 424,
+      "column": 60,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"arrowBack\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 424,
+      "column": 77,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{18}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "SystemPage",
+      "line": 424,
+      "column": 85,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Volver al perfil"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 430,
+      "column": 9,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"/\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 430,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Inicio\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 430,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"home\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 431,
+      "column": 9,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"/benefits\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 431,
+      "column": 29,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Beneficios\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 431,
+      "column": 49,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"ticket\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 432,
+      "column": 9,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"/activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 432,
+      "column": 29,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Actividad\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 432,
+      "column": 48,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 433,
+      "column": 9,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 433,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Perfil\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "<module>",
+      "line": 433,
+      "column": 44,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"user\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 451,
+      "column": 22,
+      "kind": "TemplateExpression",
+      "parent": "VariableDeclaration",
+      "expression": "`?demo=${runtime.manifest.demoId}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 453,
+      "column": 20,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`app-shell${isAdventure ? \" app-shell--adventure\" : \"\"}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 453,
+      "column": 21,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`app-shell${isAdventure ? \" app-shell--adventure\" : \"\"}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 453,
+      "column": 47,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\" app-shell--adventure\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 453,
+      "column": 73,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 454,
+      "column": 20,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"skip-link\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 454,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"#main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 454,
+      "column": 53,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Saltar al contenido"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 455,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"topbar\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 456,
+      "column": 18,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`/${demoSearch}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 456,
+      "column": 19,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`/${demoSearch}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 456,
+      "column": 48,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Ir al inicio\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 458,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"brand-logo\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 459,
+      "column": 17,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime.brand.logoUrl}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 460,
+      "column": 17,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime.brand.name}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 463,
+      "column": 9,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{isAdventure ? <span className=\"adventure-account\">Cuenta de {snapshot.member.name}</span> : (\n          <Link className=\"profile-avatar\" to=\"/profile\" aria-label=\"Abrir perfil\">{snapshot.member.initials}</Link>\n        )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 463,
+      "column": 40,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-account\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 463,
+      "column": 60,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Cuenta de "
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 463,
+      "column": 70,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{snapshot.member.name}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 464,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"profile-avatar\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 464,
+      "column": 47,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 464,
+      "column": 69,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Abrir perfil\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 464,
+      "column": 84,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{snapshot.member.initials}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 468,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{isAdventure && (\n        <>\n          <nav className=\"adventure-nav\" aria-label=\"Navegación de la aventura\">\n            <NavLink to={`/${demoSearch}`} end>Mi aventura</NavLink>\n            <NavLink to={`/activity${demoSearch}`}>Actividad</NavLink>\n            <NavLink to={`/system${demoSearch}`}>Supervisión</NavLink>\n          </nav>\n          {actionError && <p className=\"adventure-error\" role=\"alert\">{actionError}</p>}\n        </>\n      )}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 470,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-nav\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 470,
+      "column": 53,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Navegación de la aventura\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 471,
+      "column": 25,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`/${demoSearch}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 471,
+      "column": 26,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`/${demoSearch}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 471,
+      "column": 48,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Mi aventura"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 472,
+      "column": 25,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`/activity${demoSearch}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 472,
+      "column": 26,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`/activity${demoSearch}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 472,
+      "column": 52,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Actividad"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 473,
+      "column": 25,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`/system${demoSearch}`}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 473,
+      "column": 26,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`/system${demoSearch}`"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 473,
+      "column": 50,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Supervisión"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 475,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxFragment",
+      "expression": "{actionError && <p className=\"adventure-error\" role=\"alert\">{actionError}</p>}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 475,
+      "column": 40,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-error\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 475,
+      "column": 63,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"alert\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 475,
+      "column": 71,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{actionError}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 479,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 479,
+      "column": 33,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{<HomePage snapshot={snapshot} guestAction={onPresenterAction} guestActionLabel={guestActionLabel} />}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 479,
+      "column": 53,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 479,
+      "column": 76,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{onPresenterAction}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 479,
+      "column": 113,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{guestActionLabel}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 480,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/benefits\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 480,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{<BenefitsPage coupons={snapshot.coupons} />}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 480,
+      "column": 64,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot.coupons}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 481,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/activity\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 481,
+      "column": 41,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{<ActivityPage activity={snapshot.activity} />}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 481,
+      "column": 65,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot.activity}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 482,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/profile\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 482,
+      "column": 40,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{<ProfilePage member={snapshot.member} />}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 482,
+      "column": 61,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot.member}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 484,
+      "column": 16,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"/system\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 485,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{\n            <SystemPage\n              runtime={runtime}\n              snapshot={snapshot}\n              actionError={actionError}\n              onPresenterAction={onPresenterAction}\n            />\n          }"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 487,
+      "column": 23,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 488,
+      "column": 24,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 489,
+      "column": 27,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{actionError}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 490,
+      "column": 33,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{onPresenterAction}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"*\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 33,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{<FeedbackState icon=\"compass\" title=\"Esta página no existe\" description=\"Vuelve al inicio para seguir explorando.\" action={{ label: \"Ir al inicio\", to: \"/\" }} />}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 54,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"compass\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 70,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Esta página no existe\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 106,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Vuelve al inicio para seguir explorando.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 156,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{{ label: \"Ir al inicio\", to: \"/\" }}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 166,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Ir al inicio\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 494,
+      "column": 186,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"/\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 497,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{isAdventure ? (\n        <footer className=\"adventure-tools\">\n          <p>Demo · hallazgos simulados</p>\n          <button className=\"text-link\" type=\"button\" onClick={onReset}>Reiniciar aventura</button>\n        </footer>\n      ) : <nav className=\"bottom-nav\" aria-label=\"Navegación principal\">\n        {navigation.map(({ to, label, icon }) => (\n          <NavLink to={to} end={to === \"/\"} key={to}>\n            <Icon name={icon} size={22} />\n            <span>{label}</span>\n          </NavLink>\n        ))}\n      </nav>}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 498,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"adventure-tools\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 499,
+      "column": 14,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Demo · hallazgos simulados"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 500,
+      "column": 29,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"text-link\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 500,
+      "column": 46,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"button\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 500,
+      "column": 63,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{onReset}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 500,
+      "column": 73,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "Reiniciar aventura"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 502,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"bottom-nav\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 502,
+      "column": 50,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Navegación principal\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 503,
+      "column": 9,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{navigation.map(({ to, label, icon }) => (\n          <NavLink to={to} end={to === \"/\"} key={to}>\n            <Icon name={icon} size={22} />\n            <span>{label}</span>\n          </NavLink>\n        ))}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 504,
+      "column": 23,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{to}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 504,
+      "column": 32,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{to === \"/\"}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 504,
+      "column": 40,
+      "kind": "StringLiteral",
+      "parent": "BinaryExpression",
+      "expression": "\"/\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 504,
+      "column": 49,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{to}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 505,
+      "column": 24,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{icon}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 505,
+      "column": 36,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{22}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "AppShell",
+      "line": 506,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{label}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 524,
+      "column": 29,
+      "kind": "StringLiteral",
+      "parent": "BinaryExpression",
+      "expression": "\"/showcase\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 525,
+      "column": 36,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 529,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"warning\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 529,
+      "column": 48,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"No hemos podido cargar la App\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 529,
+      "column": 92,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Comprueba la conexión e inténtalo de nuevo.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 529,
+      "column": 145,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{{ label: \"Reintentar\", onClick: () => window.location.reload() }}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 529,
+      "column": 155,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"Reintentar\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 533,
+      "column": 41,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Preparando tu espacio\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 533,
+      "column": 77,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"Estamos cargando tus beneficios.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 549,
+      "column": 13,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"No se pudo ejecutar la acción de presentación.\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 556,
+      "column": 16,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{snapshot}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 557,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 558,
+      "column": 19,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{actionError}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 559,
+      "column": 25,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runPresenterAction}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 560,
+      "column": 15,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{async () => {\n        setActionError(undefined);\n        try {\n          setSnapshot(await runtime.provider.reset());\n          document.getElementById(\"main-content\")?.scrollIntoView?.({ block: \"start\" });\n        }\n        catch { setActionError(\"No se pudo reiniciar la aventura.\"); }\n      }}"
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 564,
+      "column": 35,
+      "kind": "StringLiteral",
+      "parent": "CallExpression",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 564,
+      "column": 78,
+      "kind": "StringLiteral",
+      "parent": "PropertyAssignment",
+      "expression": "\"start\""
+    },
+    {
+      "file": "src/app/App.tsx",
+      "component": "App",
+      "line": 566,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "CallExpression",
+      "expression": "\"No se pudo reiniciar la aventura.\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 1,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 2,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react-dom/client\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 3,
+      "column": 31,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react-router-dom\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 4,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"virtual:pwa-register\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 5,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/app/App\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 10,
+      "column": 8,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/demo-factory/bootstrap\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 11,
+      "column": 8,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/styles/fonts.css\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 12,
+      "column": 8,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"@/styles/global.css\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 16,
+      "column": 38,
+      "kind": "StringLiteral",
+      "parent": "CallExpression",
+      "expression": "\"root\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 19,
+      "column": 19,
+      "kind": "StringLiteral",
+      "parent": "NewExpression",
+      "expression": "\"No se encontró el contenedor raíz de Demo Factory.\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 25,
+      "column": 20,
+      "kind": "TemplateExpression",
+      "parent": "BinaryExpression",
+      "expression": "`${runtime.brand.name} — Demo`"
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 30,
+      "column": 22,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{runtime}"
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 35,
+      "column": 60,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"Error de configuración desconocido.\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 37,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"feedback-state feedback-state--page\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 37,
+      "column": 64,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"alert\""
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 38,
+      "column": 11,
+      "kind": "JsxText",
+      "parent": "JsxElement",
+      "expression": "No se pudo iniciar la demo"
+    },
+    {
+      "file": "src/main.tsx",
+      "component": "<module>",
+      "line": 39,
+      "column": 10,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{message}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "<module>",
+      "line": 1,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"react-router-dom\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "<module>",
+      "line": 2,
+      "column": 37,
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration",
+      "expression": "\"./Icon\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 11,
+      "column": 10,
+      "kind": "StringLiteral",
+      "parent": "BindingElement",
+      "expression": "\"compass\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 24,
+      "column": 14,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"main-content\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 24,
+      "column": 39,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"feedback-state\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 24,
+      "column": 66,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"polite\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 24,
+      "column": 85,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{loading}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 25,
+      "column": 23,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{`feedback-state__icon${loading ? \" feedback-state__icon--loading\" : \"\"}`}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 25,
+      "column": 24,
+      "kind": "TemplateExpression",
+      "parent": "JsxExpression",
+      "expression": "`feedback-state__icon${loading ? \" feedback-state__icon--loading\" : \"\"}`"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 25,
+      "column": 57,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\" feedback-state__icon--loading\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 25,
+      "column": 92,
+      "kind": "StringLiteral",
+      "parent": "ConditionalExpression",
+      "expression": "\"\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 26,
+      "column": 9,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{loading ? <span className=\"spinner\" aria-hidden=\"true\" /> : <Icon name={icon} size={30} />}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 26,
+      "column": 36,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"spinner\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 26,
+      "column": 58,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 26,
+      "column": 81,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{icon}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 26,
+      "column": 93,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{30}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 28,
+      "column": 11,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{title}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 29,
+      "column": 10,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{description}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 30,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{action?.to && <Link className=\"primary-action\" to={action.to}>{action.label}</Link>}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 30,
+      "column": 38,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"primary-action\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 30,
+      "column": 58,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{action.to}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 30,
+      "column": 70,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{action.label}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 31,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{action?.onClick && <button className=\"primary-action\" type=\"button\" onClick={action.onClick}>{action.label}</button>}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 31,
+      "column": 45,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"primary-action\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 31,
+      "column": 67,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"button\""
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 31,
+      "column": 84,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{action.onClick}"
+    },
+    {
+      "file": "src/ui/FeedbackState.tsx",
+      "component": "FeedbackState",
+      "line": 31,
+      "column": 101,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{action.label}"
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 2,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"activity\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 3,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"arrow\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 4,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"arrowBack\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 5,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"bell\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 6,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"chevron\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 7,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"compass\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 8,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"close\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 9,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"gift\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 10,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"home\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 11,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"phone\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 12,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"settings\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 13,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"sparkles\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 14,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"star\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 15,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"ticket\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 16,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"user\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "<module>",
+      "line": 17,
+      "column": 5,
+      "kind": "StringLiteral",
+      "parent": "LiteralType",
+      "expression": "\"warning\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 21,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m3 10 9-7 9 7\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 21,
+      "column": 46,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M5 9v11h14V9\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 21,
+      "column": 70,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M9 20v-6h6v6\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 22,
+      "column": 23,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M3 8a2 2 0 0 0 0 4v5h18v-5a2 2 0 0 0 0-4V3H3Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 22,
+      "column": 80,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M13 7h4M13 11h4M13 15h2\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 23,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M4 19V9M10 19V5M16 19v-7M22 19V8\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 23,
+      "column": 69,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M2 19h22\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 24,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 24,
+      "column": 32,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"8\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 24,
+      "column": 38,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"4\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 24,
+      "column": 51,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M4.5 21a7.5 7.5 0 0 1 15 0\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 25,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 25,
+      "column": 80,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M10 21h4\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 26,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M5 12h14\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 26,
+      "column": 42,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m14 7 5 5-5 5\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 27,
+      "column": 26,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M19 12H5\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 27,
+      "column": 46,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m10 7-5 5 5 5\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 28,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m9 6 6 6-6 6\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 29,
+      "column": 25,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 29,
+      "column": 92,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m5 14 .8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 29,
+      "column": 154,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m19 13 .7 1.8 1.8.7-1.8.7L19 18l-.7-1.8-1.8-.7 1.8-.7Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 30,
+      "column": 19,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 31,
+      "column": 21,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M4 10h16v11H4zM2 6h20v4H2zM12 6v15\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 31,
+      "column": 67,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M12 6H8.5A2.5 2.5 0 1 1 11 3.5ZM12 6h3.5A2.5 2.5 0 1 0 13 3.5Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 32,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 32,
+      "column": 36,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 32,
+      "column": 43,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"3\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 32,
+      "column": 56,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3A1.7 1.7 0 0 0 10 3v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 33,
+      "column": 27,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 33,
+      "column": 35,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 33,
+      "column": 42,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"9\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 33,
+      "column": 55,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m15.5 8.5-2 5-5 2 2-5Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 34,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"m6 6 12 12M18 6 6 18\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"6\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 28,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"2\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 38,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"12\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 50,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"20\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 58,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"3\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 35,
+      "column": 71,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M10 5h4M11 19h2\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 36,
+      "column": 24,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M12 3 2.5 20h19Z\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 36,
+      "column": 52,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"M12 9v5M12 17h.01\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 22,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"true\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 35,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{size}"
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 49,
+      "kind": "JsxExpression",
+      "parent": "JsxAttribute",
+      "expression": "{size}"
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 64,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"0 0 24 24\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 81,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"none\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 95,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"currentColor\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 122,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"1.8\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 142,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"round\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 40,
+      "column": 165,
+      "kind": "StringLiteral",
+      "parent": "JsxAttribute",
+      "expression": "\"round\""
+    },
+    {
+      "file": "src/ui/Icon.tsx",
+      "component": "Icon",
+      "line": 41,
+      "column": 7,
+      "kind": "JsxExpression",
+      "parent": "JsxElement",
+      "expression": "{paths[name]}"
+    }
+  ]
+}

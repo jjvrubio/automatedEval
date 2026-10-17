@@ -1,0 +1,52 @@
+{
+  "session": 35,
+  "checkedAt": "2026-09-18T21:09:54.675678+00:00",
+  "baselineFiles": 405,
+  "unchangedFiles": 387,
+  "applicationChanged": [
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/bootstrap.ts",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "historicalHarnessChanged": [
+    "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/pre-delta-position-h30.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-journey-h30.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts"
+  ],
+  "unexpectedSourceChanges": [],
+  "missingFiles": [],
+  "byteIdenticalArchiveByOriginalPath": {
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/mock-adapter.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/bootstrap.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/bootstrap.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/vertical-evaluation.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/account-sourced-guest-h28.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/composition-boundary-h21.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/experience-stable-selection-h22.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-introductory-framing-h32.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/family-adventure-vertical.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-session-subject-h34.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-subject-status-h29.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-supervision-subject-h33.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/pre-delta-position-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/pre-delta-position-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-journey-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-journey-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-guest-provenance-h26.test.ts.txt"
+  },
+  "AppByteIdentical": true,
+  "governanceSemanticAndPreviousEvidencePreserved": true
+}

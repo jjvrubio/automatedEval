@@ -1,0 +1,4474 @@
+{
+  "session": 39,
+  "recordedAt": "2026-09-22T17:27:30.124Z",
+  "productState": "PRE-DELTA; NO PRODUCT CHANGES",
+  "method": "Current App, real providers, BrowserRouter and jsdom DOM clicks. Generic reload boundary explicitly modeled, not browser-executed.",
+  "browserVisualInspection": "NOT EXECUTED: in-app browser execution tool unavailable",
+  "sourceHashes": {
+    "src/app/App.tsx": "cde3b490f05d42bf11abff185f09b9be5e8828897cc0a96a1c064a964a99b8ef",
+    "src/main.tsx": "cb88ce48d25e4dfe894e0483efbdd495b77e2460e802a66cdbb7e43934e5fd9f",
+    "src/demo-factory/bootstrap.ts": "6388ada8fde7ea4b043d6f5c75f8fa925f213499350ffd6f0dd038e7caa1cd54",
+    "src/demo-factory/manifests.ts": "61123b910189581eec6b785c365d9aef9c6ba4cdfcb757312189e08da6dac083"
+  },
+  "harnessSha256": "286976e4fb53a6e56c0644dd3f3b5ef750cfdad661307e147463a1aa0af6515c",
+  "rows": [
+    {
+      "composition": "retail-baseline",
+      "manifestDemoId": "retail-baseline",
+      "initialRoute": "/?demo=retail-baseline",
+      "guestPerspective": "ABSENT",
+      "selectedLabel": "Búsqueda del tesoro",
+      "fixedGenericLinkRendered": true,
+      "href": "/?demo=hospitality-family-adventure",
+      "reloadDocument": true,
+      "reloadDocumentEvidence": "Source expression !snapshot.guestPerspective is true; click not intercepted by BrowserRouter",
+      "runtimeBefore": "retail-baseline",
+      "runtimeAfter": "hospitality-family-adventure",
+      "urlBefore": "/?demo=retail-baseline",
+      "urlAfter": "/?demo=hospitality-family-adventure",
+      "urlCompositionBefore": "retail-baseline",
+      "urlCompositionAfter": "hospitality-family-adventure",
+      "visibleCompositionEvidenceAfter": {
+        "brand": "Aurora Stay",
+        "title": "Aventura Familiar",
+        "framing": "Una aventura de pistas entre el jardín y la fuente.",
+        "account": "Cuenta de Lucía",
+        "guestLabels": [
+          "Lucía",
+          "Huésped 2"
+        ],
+        "message": "La aventura está disponible. Alistamiento pendiente.",
+        "clueCount": "0 pistas descubiertas"
+      },
+      "targetSource": "HomePage generic entry destination literal hospitality-family-adventure",
+      "sourceAuthority": "Existing intentional entry to A; NOT current-composition identity",
+      "before": {
+        "route": "/?demo=retail-baseline",
+        "urlDemoId": "retail-baseline",
+        "runtimeDemoId": "retail-baseline",
+        "snapshot": {
+          "member": {
+            "id": "member-demo-001",
+            "name": "Alex",
+            "fullName": "Alex Martín",
+            "initials": "AM",
+            "level": "Essential",
+            "nextLevel": "Plus",
+            "points": 1240,
+            "progress": 62,
+            "pointsToNextLevel": 760,
+            "memberSince": "marzo de 2024"
+          },
+          "coupons": [
+            {
+              "id": "coupon-welcome",
+              "title": "20% de bienvenida",
+              "description": "Disfruta tu ventaja en la próxima compra.",
+              "validUntil": "Hasta el 30 ago",
+              "tag": "Para ti",
+              "tone": "cyan",
+              "icon": "gift"
+            },
+            {
+              "id": "coupon-double-points",
+              "title": "Puntos x2",
+              "description": "Duplica tus puntos durante todo el fin de semana.",
+              "validUntil": "Este fin de semana",
+              "tag": "Especial",
+              "tone": "pink",
+              "icon": "sparkles"
+            },
+            {
+              "id": "coupon-member",
+              "title": "Envío sin coste",
+              "description": "Una ventaja exclusiva por ser miembro Essential.",
+              "validUntil": "Hasta el 15 sep",
+              "tag": "Essential",
+              "tone": "blue",
+              "icon": "ticket"
+            }
+          ],
+          "news": [
+            {
+              "id": "news-new-season",
+              "category": "Novedades",
+              "title": "Una nueva temporada para descubrir",
+              "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+            }
+          ],
+          "activity": [
+            {
+              "id": "activity-purchase",
+              "title": "Compra registrada",
+              "description": "Tus puntos ya están disponibles.",
+              "occurredAt": "2026-08-02T17:30:00Z",
+              "displayDate": "2 ago, 17:30",
+              "points": 120,
+              "provenance": "mocked",
+              "tone": "cyan",
+              "icon": "star"
+            },
+            {
+              "id": "activity-coupon",
+              "title": "Nuevo beneficio",
+              "description": "Has recibido tu cupón de bienvenida.",
+              "occurredAt": "2026-08-01T09:15:00Z",
+              "displayDate": "1 ago, 09:15",
+              "provenance": "mocked",
+              "tone": "pink",
+              "icon": "gift"
+            },
+            {
+              "id": "activity-profile",
+              "title": "Perfil actualizado",
+              "description": "Tus preferencias se han guardado correctamente.",
+              "occurredAt": "2026-07-28T11:00:00Z",
+              "displayDate": "28 jul, 11:00",
+              "provenance": "mocked",
+              "tone": "blue",
+              "icon": "user"
+            }
+          ]
+        },
+        "visible": {
+          "brand": "Convercus",
+          "title": "Hola, Alex",
+          "framing": null,
+          "account": null,
+          "guestLabels": [],
+          "message": null,
+          "clueCount": null
+        },
+        "href": "/?demo=hospitality-family-adventure",
+        "selectedDOM": "<a href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\"><span><svg aria-hidden=\"true\" width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5Z\"></path></svg></span>Búsqueda del tesoro</a>"
+      },
+      "phases": [
+        {
+          "phase": "intentional-entry-to-A",
+          "urlBefore": "/?demo=retail-baseline",
+          "urlImmediatelyAfterInterceptedClick": "/?demo=retail-baseline",
+          "urlAfter": "/?demo=hospitality-family-adventure",
+          "runtimeBefore": "retail-baseline",
+          "runtimeAfter": "hospitality-family-adventure",
+          "href": "/?demo=hospitality-family-adventure",
+          "browserRouterPreventedDefault": false,
+          "sameProvider": false,
+          "originalProviderUnchanged": true,
+          "resetCalls": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "member-demo-001",
+              "name": "Alex",
+              "fullName": "Alex Martín",
+              "initials": "AM",
+              "level": "Essential",
+              "nextLevel": "Plus",
+              "points": 1240,
+              "progress": 62,
+              "pointsToNextLevel": 760,
+              "memberSince": "marzo de 2024"
+            },
+            "coupons": [
+              {
+                "id": "coupon-welcome",
+                "title": "20% de bienvenida",
+                "description": "Disfruta tu ventaja en la próxima compra.",
+                "validUntil": "Hasta el 30 ago",
+                "tag": "Para ti",
+                "tone": "cyan",
+                "icon": "gift"
+              },
+              {
+                "id": "coupon-double-points",
+                "title": "Puntos x2",
+                "description": "Duplica tus puntos durante todo el fin de semana.",
+                "validUntil": "Este fin de semana",
+                "tag": "Especial",
+                "tone": "pink",
+                "icon": "sparkles"
+              },
+              {
+                "id": "coupon-member",
+                "title": "Envío sin coste",
+                "description": "Una ventaja exclusiva por ser miembro Essential.",
+                "validUntil": "Hasta el 15 sep",
+                "tag": "Essential",
+                "tone": "blue",
+                "icon": "ticket"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-new-season",
+                "category": "Novedades",
+                "title": "Una nueva temporada para descubrir",
+                "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+              }
+            ],
+            "activity": [
+              {
+                "id": "activity-purchase",
+                "title": "Compra registrada",
+                "description": "Tus puntos ya están disponibles.",
+                "occurredAt": "2026-08-02T17:30:00Z",
+                "displayDate": "2 ago, 17:30",
+                "points": 120,
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "star"
+              },
+              {
+                "id": "activity-coupon",
+                "title": "Nuevo beneficio",
+                "description": "Has recibido tu cupón de bienvenida.",
+                "occurredAt": "2026-08-01T09:15:00Z",
+                "displayDate": "1 ago, 09:15",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "gift"
+              },
+              {
+                "id": "activity-profile",
+                "title": "Perfil actualizado",
+                "description": "Tus preferencias se han guardado correctamente.",
+                "occurredAt": "2026-07-28T11:00:00Z",
+                "displayDate": "28 jul, 11:00",
+                "provenance": "mocked",
+                "tone": "blue",
+                "icon": "user"
+              }
+            ]
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visibleAfter": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "method": "Actual DOM click reaches document-navigation boundary; native reload NOT executed. Explicit unmount + URL update + current selectDemoId/resolveDemo + new App models existing main.tsx bootstrap."
+        }
+      ]
+    },
+    {
+      "composition": "hospitality-stay",
+      "manifestDemoId": "hospitality-stay",
+      "initialRoute": "/?demo=hospitality-stay",
+      "guestPerspective": "ABSENT",
+      "selectedLabel": "Búsqueda del tesoro",
+      "fixedGenericLinkRendered": true,
+      "href": "/?demo=hospitality-family-adventure",
+      "reloadDocument": true,
+      "reloadDocumentEvidence": "Source expression !snapshot.guestPerspective is true; click not intercepted by BrowserRouter",
+      "runtimeBefore": "hospitality-stay",
+      "runtimeAfter": "hospitality-family-adventure",
+      "urlBefore": "/?demo=hospitality-stay",
+      "urlAfter": "/?demo=hospitality-family-adventure",
+      "urlCompositionBefore": "hospitality-stay",
+      "urlCompositionAfter": "hospitality-family-adventure",
+      "visibleCompositionEvidenceAfter": {
+        "brand": "Aurora Stay",
+        "title": "Aventura Familiar",
+        "framing": "Una aventura de pistas entre el jardín y la fuente.",
+        "account": "Cuenta de Lucía",
+        "guestLabels": [
+          "Lucía",
+          "Huésped 2"
+        ],
+        "message": "La aventura está disponible. Alistamiento pendiente.",
+        "clueCount": "0 pistas descubiertas"
+      },
+      "targetSource": "HomePage generic entry destination literal hospitality-family-adventure",
+      "sourceAuthority": "Existing intentional entry to A; NOT current-composition identity",
+      "before": {
+        "route": "/?demo=hospitality-stay",
+        "urlDemoId": "hospitality-stay",
+        "runtimeDemoId": "hospitality-stay",
+        "snapshot": {
+          "member": {
+            "id": "guest-lucia-vega",
+            "name": "Lucía",
+            "fullName": "Lucía Vega",
+            "initials": "LV",
+            "level": "Voyager",
+            "nextLevel": "Luminary",
+            "points": 3480,
+            "progress": 48,
+            "pointsToNextLevel": 520,
+            "memberSince": "enero de 2025"
+          },
+          "coupons": [
+            {
+              "id": "service-late-checkout",
+              "title": "Late check-out",
+              "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+              "validUntil": "Estancia actual",
+              "tag": "Aurora Lisboa",
+              "tone": "cyan",
+              "icon": "home"
+            },
+            {
+              "id": "service-breakfast",
+              "title": "Desayuno de bienvenida",
+              "description": "Una invitación para compartir con tus acompañantes.",
+              "validUntil": "Hasta el 13 sep",
+              "tag": "Para tu estancia",
+              "tone": "pink",
+              "icon": "sparkles"
+            }
+          ],
+          "news": [
+            {
+              "id": "news-lisbon-arrival",
+              "category": "Tu llegada",
+              "title": "Lisboa empieza en Aurora",
+              "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+            }
+          ],
+          "activity": [
+            {
+              "id": "stay-confirmed",
+              "title": "Estancia confirmada",
+              "description": "Aurora Lisboa · 12–15 septiembre.",
+              "occurredAt": "2026-09-01T10:20:00Z",
+              "displayDate": "1 sept, 10:20",
+              "provenance": "mocked",
+              "tone": "cyan",
+              "icon": "home"
+            },
+            {
+              "id": "service-selected",
+              "title": "Preferencia guardada",
+              "description": "La habitación se preparará con una cuna de viaje.",
+              "occurredAt": "2026-09-02T08:45:00Z",
+              "displayDate": "2 sept, 08:45",
+              "provenance": "mocked",
+              "tone": "pink",
+              "icon": "sparkles"
+            }
+          ],
+          "scenario": {
+            "checkpoint": "pre-arrival-confirmed",
+            "availableActionId": "confirm-arrival"
+          }
+        },
+        "visible": {
+          "brand": "Aurora Stay",
+          "title": "Hola, Lucía",
+          "framing": null,
+          "account": null,
+          "guestLabels": [],
+          "message": null,
+          "clueCount": null
+        },
+        "href": "/?demo=hospitality-family-adventure",
+        "selectedDOM": "<a href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\"><span><svg aria-hidden=\"true\" width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5Z\"></path></svg></span>Búsqueda del tesoro</a>"
+      },
+      "phases": [
+        {
+          "phase": "intentional-entry-to-A",
+          "urlBefore": "/?demo=hospitality-stay",
+          "urlImmediatelyAfterInterceptedClick": "/?demo=hospitality-stay",
+          "urlAfter": "/?demo=hospitality-family-adventure",
+          "runtimeBefore": "hospitality-stay",
+          "runtimeAfter": "hospitality-family-adventure",
+          "href": "/?demo=hospitality-family-adventure",
+          "browserRouterPreventedDefault": false,
+          "sameProvider": false,
+          "originalProviderUnchanged": true,
+          "resetCalls": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "pre-arrival-confirmed",
+              "availableActionId": "confirm-arrival"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visibleAfter": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "method": "Actual DOM click reaches document-navigation boundary; native reload NOT executed. Explicit unmount + URL update + current selectDemoId/resolveDemo + new App models existing main.tsx bootstrap."
+        }
+      ]
+    },
+    {
+      "composition": "hospitality-family-adventure",
+      "manifestDemoId": "hospitality-family-adventure",
+      "initialRoute": "/?demo=hospitality-family-adventure",
+      "guestPerspective": "PRESENT",
+      "selectedLabel": "Mi aventura",
+      "fixedGenericLinkRendered": false,
+      "href": "/?demo=hospitality-family-adventure",
+      "reloadDocument": false,
+      "reloadDocumentEvidence": "NavLink omits reloadDocument; click intercepted by BrowserRouter",
+      "runtimeBefore": "hospitality-family-adventure",
+      "runtimeAfter": "hospitality-family-adventure",
+      "urlBefore": "/?demo=hospitality-family-adventure",
+      "urlAfter": "/?demo=hospitality-family-adventure",
+      "urlCompositionBefore": "hospitality-family-adventure",
+      "urlCompositionAfter": "hospitality-family-adventure",
+      "visibleCompositionEvidenceAfter": {
+        "brand": "Aurora Stay",
+        "title": "Aventura Familiar",
+        "framing": "Una aventura de pistas entre el jardín y la fuente.",
+        "account": "Cuenta de Lucía",
+        "guestLabels": [
+          "Lucía",
+          "Huésped 2"
+        ],
+        "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+        "clueCount": "1 pista descubierta"
+      },
+      "targetSource": "AppShell demoSearch consumes runtime.manifest.demoId",
+      "sourceAuthority": "Already resolved composition execution identity; NOT a universal routing relation",
+      "before": {
+        "route": "/?demo=hospitality-family-adventure",
+        "urlDemoId": "hospitality-family-adventure",
+        "runtimeDemoId": "hospitality-family-adventure",
+        "snapshot": {
+          "member": {
+            "id": "guest-lucia-vega",
+            "name": "Lucía",
+            "fullName": "Lucía Vega",
+            "initials": "LV",
+            "level": "Voyager",
+            "nextLevel": "Luminary",
+            "points": 3480,
+            "progress": 48,
+            "pointsToNextLevel": 520,
+            "memberSince": "enero de 2025"
+          },
+          "coupons": [
+            {
+              "id": "service-late-checkout",
+              "title": "Late check-out",
+              "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+              "validUntil": "Estancia actual",
+              "tag": "Aurora Lisboa",
+              "tone": "cyan",
+              "icon": "home"
+            },
+            {
+              "id": "service-breakfast",
+              "title": "Desayuno de bienvenida",
+              "description": "Una invitación para compartir con tus acompañantes.",
+              "validUntil": "Hasta el 13 sep",
+              "tag": "Para tu estancia",
+              "tone": "pink",
+              "icon": "sparkles"
+            }
+          ],
+          "news": [
+            {
+              "id": "news-lisbon-arrival",
+              "category": "Tu llegada",
+              "title": "Lisboa empieza en Aurora",
+              "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+            }
+          ],
+          "activity": [
+            {
+              "id": "stay-confirmed",
+              "title": "Estancia confirmada",
+              "description": "Aurora Lisboa · 12–15 septiembre.",
+              "occurredAt": "2026-09-01T10:20:00Z",
+              "displayDate": "1 sept, 10:20",
+              "provenance": "mocked",
+              "tone": "cyan",
+              "icon": "home"
+            },
+            {
+              "id": "service-selected",
+              "title": "Preferencia guardada",
+              "description": "La habitación se preparará con una cuna de viaje.",
+              "occurredAt": "2026-09-02T08:45:00Z",
+              "displayDate": "2 sept, 08:45",
+              "provenance": "mocked",
+              "tone": "pink",
+              "icon": "sparkles"
+            }
+          ],
+          "scenario": {
+            "checkpoint": "ready",
+            "availableActionId": "enlist-p1"
+          },
+          "guestPerspective": {
+            "huntName": "Aventura Familiar",
+            "sessionLabel": "Cuenta de Lucía",
+            "subjects": [
+              {
+                "id": "subject-p1",
+                "label": "Lucía",
+                "status": "Estado: sin alistar",
+                "clueCount": 0
+              },
+              {
+                "id": "subject-p2",
+                "label": "Huésped 2",
+                "status": "Estado: sin habilitar",
+                "clueCount": 0
+              }
+            ],
+            "state": "ready",
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "discoveredClueCount": 0
+          },
+          "supervisionPerspective": {
+            "sessionSubjectRef": "subject-p1",
+            "subjects": [
+              {
+                "id": "subject-p1",
+                "exists": true,
+                "operationalState": "not-enlisted",
+                "evidenceCount": 0
+              },
+              {
+                "id": "subject-p2",
+                "exists": true,
+                "operationalState": "not-enabled",
+                "evidenceCount": 0
+              }
+            ],
+            "evidence": [],
+            "jointAdmissibility": "cannot-currently-establish",
+            "sufficiency": "not-attempted",
+            "derivedClaim": "not-produced"
+          }
+        },
+        "visible": {
+          "brand": "Aurora Stay",
+          "title": "Aventura Familiar",
+          "framing": "Una aventura de pistas entre el jardín y la fuente.",
+          "account": "Cuenta de Lucía",
+          "guestLabels": [
+            "Lucía",
+            "Huésped 2"
+          ],
+          "message": "La aventura está disponible. Alistamiento pendiente.",
+          "clueCount": "0 pistas descubiertas"
+        },
+        "href": "/?demo=hospitality-family-adventure",
+        "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\">Mi aventura</a>"
+      },
+      "phases": [
+        {
+          "phase": "initial-home",
+          "urlBefore": "/?demo=hospitality-family-adventure",
+          "urlAfter": "/?demo=hospitality-family-adventure",
+          "runtimeBefore": "hospitality-family-adventure",
+          "runtimeAfter": "hospitality-family-adventure",
+          "href": "/?demo=hospitality-family-adventure",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "visibleAfter": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        },
+        {
+          "phase": "progressed-home",
+          "urlBefore": "/?demo=hospitality-family-adventure",
+          "urlAfter": "/?demo=hospitality-family-adventure",
+          "runtimeBefore": "hospitality-family-adventure",
+          "runtimeAfter": "hospitality-family-adventure",
+          "href": "/?demo=hospitality-family-adventure",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "visibleAfter": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        },
+        {
+          "phase": "return-from-activity",
+          "urlBefore": "/activity?demo=hospitality-family-adventure",
+          "urlAfter": "/?demo=hospitality-family-adventure",
+          "runtimeBefore": "hospitality-family-adventure",
+          "runtimeAfter": "hospitality-family-adventure",
+          "href": "/?demo=hospitality-family-adventure",
+          "selectedDOM": "<a class=\"\" href=\"/?demo=hospitality-family-adventure\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Aurora Stay",
+            "title": "Actividad",
+            "framing": null,
+            "account": "Cuenta de Lucía",
+            "guestLabels": [],
+            "message": null,
+            "clueCount": null
+          },
+          "visibleAfter": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        }
+      ]
+    },
+    {
+      "composition": "hospitality-family-adventure-costa",
+      "manifestDemoId": "hospitality-family-adventure-costa",
+      "initialRoute": "/?demo=hospitality-family-adventure-costa",
+      "guestPerspective": "PRESENT",
+      "selectedLabel": "Mi aventura",
+      "fixedGenericLinkRendered": false,
+      "href": "/?demo=hospitality-family-adventure-costa",
+      "reloadDocument": false,
+      "reloadDocumentEvidence": "NavLink omits reloadDocument; click intercepted by BrowserRouter",
+      "runtimeBefore": "hospitality-family-adventure-costa",
+      "runtimeAfter": "hospitality-family-adventure-costa",
+      "urlBefore": "/?demo=hospitality-family-adventure-costa",
+      "urlAfter": "/?demo=hospitality-family-adventure-costa",
+      "urlCompositionBefore": "hospitality-family-adventure-costa",
+      "urlCompositionAfter": "hospitality-family-adventure-costa",
+      "visibleCompositionEvidenceAfter": {
+        "brand": "Costa Clara Resort",
+        "title": "Aventura Familiar",
+        "framing": "Una aventura de pistas entre el mirador y el patio.",
+        "account": "Cuenta de Inés",
+        "guestLabels": [
+          "Inés",
+          "Mateo"
+        ],
+        "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+        "clueCount": "1 pista descubierta"
+      },
+      "targetSource": "AppShell demoSearch consumes runtime.manifest.demoId",
+      "sourceAuthority": "Already resolved composition execution identity; NOT a universal routing relation",
+      "before": {
+        "route": "/?demo=hospitality-family-adventure-costa",
+        "urlDemoId": "hospitality-family-adventure-costa",
+        "runtimeDemoId": "hospitality-family-adventure-costa",
+        "snapshot": {
+          "member": {
+            "id": "guest-ines-costa",
+            "name": "Inés",
+            "fullName": "Inés Costa",
+            "initials": "IC",
+            "level": "Voyager",
+            "nextLevel": "Luminary",
+            "points": 3480,
+            "progress": 48,
+            "pointsToNextLevel": 520,
+            "memberSince": "enero de 2025"
+          },
+          "coupons": [
+            {
+              "id": "costa-late-checkout",
+              "title": "Salida tranquila",
+              "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+              "validUntil": "Estancia actual",
+              "tag": "Costa Clara Resort",
+              "tone": "blue",
+              "icon": "home"
+            }
+          ],
+          "news": [
+            {
+              "id": "costa-adventure-introduction",
+              "category": "Tu estancia",
+              "title": "Inés y Mateo en Costa Clara",
+              "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+            }
+          ],
+          "activity": [
+            {
+              "id": "costa-stay-confirmed",
+              "title": "Estancia confirmada",
+              "description": "Costa Clara Resort · reserva CC-205.",
+              "occurredAt": "2026-09-01T10:20:00Z",
+              "displayDate": "1 sept, 10:20",
+              "provenance": "mocked",
+              "tone": "cyan",
+              "icon": "home"
+            }
+          ],
+          "scenario": {
+            "checkpoint": "ready",
+            "availableActionId": "enlist-p1"
+          },
+          "guestPerspective": {
+            "huntName": "Aventura Familiar",
+            "sessionLabel": "Cuenta de Inés",
+            "subjects": [
+              {
+                "id": "subject-p1",
+                "label": "Inés",
+                "status": "Estado: sin alistar",
+                "clueCount": 0
+              },
+              {
+                "id": "subject-p2",
+                "label": "Mateo",
+                "status": "Estado: sin habilitar",
+                "clueCount": 0
+              }
+            ],
+            "state": "ready",
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "discoveredClueCount": 0
+          },
+          "supervisionPerspective": {
+            "sessionSubjectRef": "subject-p1",
+            "subjects": [
+              {
+                "id": "subject-p1",
+                "exists": true,
+                "operationalState": "not-enlisted",
+                "evidenceCount": 0
+              },
+              {
+                "id": "subject-p2",
+                "exists": true,
+                "operationalState": "not-enabled",
+                "evidenceCount": 0
+              }
+            ],
+            "evidence": [],
+            "jointAdmissibility": "cannot-currently-establish",
+            "sufficiency": "not-attempted",
+            "derivedClaim": "not-produced"
+          }
+        },
+        "visible": {
+          "brand": "Costa Clara Resort",
+          "title": "Aventura Familiar",
+          "framing": "Una aventura de pistas entre el mirador y el patio.",
+          "account": "Cuenta de Inés",
+          "guestLabels": [
+            "Inés",
+            "Mateo"
+          ],
+          "message": "La aventura está disponible. Alistamiento pendiente.",
+          "clueCount": "0 pistas descubiertas"
+        },
+        "href": "/?demo=hospitality-family-adventure-costa",
+        "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure-costa\" data-discover=\"true\">Mi aventura</a>"
+      },
+      "phases": [
+        {
+          "phase": "initial-home",
+          "urlBefore": "/?demo=hospitality-family-adventure-costa",
+          "urlAfter": "/?demo=hospitality-family-adventure-costa",
+          "runtimeBefore": "hospitality-family-adventure-costa",
+          "runtimeAfter": "hospitality-family-adventure-costa",
+          "href": "/?demo=hospitality-family-adventure-costa",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure-costa\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "visibleAfter": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        },
+        {
+          "phase": "progressed-home",
+          "urlBefore": "/?demo=hospitality-family-adventure-costa",
+          "urlAfter": "/?demo=hospitality-family-adventure-costa",
+          "runtimeBefore": "hospitality-family-adventure-costa",
+          "runtimeAfter": "hospitality-family-adventure-costa",
+          "href": "/?demo=hospitality-family-adventure-costa",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=hospitality-family-adventure-costa\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del mirador encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del mirador encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "visibleAfter": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        },
+        {
+          "phase": "return-from-activity",
+          "urlBefore": "/activity?demo=hospitality-family-adventure-costa",
+          "urlAfter": "/?demo=hospitality-family-adventure-costa",
+          "runtimeBefore": "hospitality-family-adventure-costa",
+          "runtimeAfter": "hospitality-family-adventure-costa",
+          "href": "/?demo=hospitality-family-adventure-costa",
+          "selectedDOM": "<a class=\"\" href=\"/?demo=hospitality-family-adventure-costa\" data-discover=\"true\">Mi aventura</a>",
+          "browserRouterPreventedDefault": true,
+          "sameProvider": true,
+          "resetCalls": 0,
+          "actionCallsDuringNavigation": 0,
+          "snapshotBefore": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del mirador encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "snapshotAfter": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del mirador encontrada",
+                "description": "Hallazgo registrado.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: habilitado",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "visibleBefore": {
+            "brand": "Costa Clara Resort",
+            "title": "Actividad",
+            "framing": null,
+            "account": "Cuenta de Inés",
+            "guestLabels": [],
+            "message": null,
+            "clueCount": null
+          },
+          "visibleAfter": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+            "clueCount": "1 pista descubierta"
+          },
+          "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+        }
+      ]
+    }
+  ],
+  "renameControls": [
+    {
+      "sourceId": "hospitality-family-adventure",
+      "renamedId": "h39-opaque-composition-x",
+      "scope": "In-memory fixture only: manifest catalog key and demoId renamed; same structural role/artifacts. Not arbitrary-demo support.",
+      "result": {
+        "composition": "h39-opaque-composition-x",
+        "manifestDemoId": "h39-opaque-composition-x",
+        "initialRoute": "/?demo=h39-opaque-composition-x",
+        "guestPerspective": "PRESENT",
+        "selectedLabel": "Mi aventura",
+        "fixedGenericLinkRendered": false,
+        "href": "/?demo=h39-opaque-composition-x",
+        "reloadDocument": false,
+        "reloadDocumentEvidence": "NavLink omits reloadDocument; click intercepted by BrowserRouter",
+        "runtimeBefore": "h39-opaque-composition-x",
+        "runtimeAfter": "h39-opaque-composition-x",
+        "urlBefore": "/?demo=h39-opaque-composition-x",
+        "urlAfter": "/?demo=h39-opaque-composition-x",
+        "urlCompositionBefore": "h39-opaque-composition-x",
+        "urlCompositionAfter": "h39-opaque-composition-x",
+        "visibleCompositionEvidenceAfter": {
+          "brand": "Aurora Stay",
+          "title": "Aventura Familiar",
+          "framing": "Una aventura de pistas entre el jardín y la fuente.",
+          "account": "Cuenta de Lucía",
+          "guestLabels": [
+            "Lucía",
+            "Huésped 2"
+          ],
+          "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+          "clueCount": "1 pista descubierta"
+        },
+        "targetSource": "AppShell demoSearch consumes runtime.manifest.demoId",
+        "sourceAuthority": "Already resolved composition execution identity; NOT a universal routing relation",
+        "before": {
+          "route": "/?demo=h39-opaque-composition-x",
+          "urlDemoId": "h39-opaque-composition-x",
+          "runtimeDemoId": "h39-opaque-composition-x",
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Lucía",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Lucía",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visible": {
+            "brand": "Aurora Stay",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el jardín y la fuente.",
+            "account": "Cuenta de Lucía",
+            "guestLabels": [
+              "Lucía",
+              "Huésped 2"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "href": "/?demo=h39-opaque-composition-x",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-x\" data-discover=\"true\">Mi aventura</a>"
+        },
+        "phases": [
+          {
+            "phase": "initial-home",
+            "urlBefore": "/?demo=h39-opaque-composition-x",
+            "urlAfter": "/?demo=h39-opaque-composition-x",
+            "runtimeBefore": "h39-opaque-composition-x",
+            "runtimeAfter": "h39-opaque-composition-x",
+            "href": "/?demo=h39-opaque-composition-x",
+            "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-x\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "ready",
+                "availableActionId": "enlist-p1"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: sin alistar",
+                    "clueCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "ready",
+                "message": "La aventura está disponible. Alistamiento pendiente.",
+                "discoveredClueCount": 0
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "not-enlisted",
+                    "evidenceCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted",
+                "derivedClaim": "not-produced"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "ready",
+                "availableActionId": "enlist-p1"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: sin alistar",
+                    "clueCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "ready",
+                "message": "La aventura está disponible. Alistamiento pendiente.",
+                "discoveredClueCount": 0
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "not-enlisted",
+                    "evidenceCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted",
+                "derivedClaim": "not-produced"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Aurora Stay",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el jardín y la fuente.",
+              "account": "Cuenta de Lucía",
+              "guestLabels": [
+                "Lucía",
+                "Huésped 2"
+              ],
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "clueCount": "0 pistas descubiertas"
+            },
+            "visibleAfter": {
+              "brand": "Aurora Stay",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el jardín y la fuente.",
+              "account": "Cuenta de Lucía",
+              "guestLabels": [
+                "Lucía",
+                "Huésped 2"
+              ],
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "clueCount": "0 pistas descubiertas"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          },
+          {
+            "phase": "progressed-home",
+            "urlBefore": "/?demo=h39-opaque-composition-x",
+            "urlAfter": "/?demo=h39-opaque-composition-x",
+            "runtimeBefore": "h39-opaque-composition-x",
+            "runtimeAfter": "h39-opaque-composition-x",
+            "href": "/?demo=h39-opaque-composition-x",
+            "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-x\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-a-p1",
+                  "title": "Pista del jardín encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-a-p1",
+                  "title": "Pista del jardín encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Aurora Stay",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el jardín y la fuente.",
+              "account": "Cuenta de Lucía",
+              "guestLabels": [
+                "Lucía",
+                "Huésped 2"
+              ],
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "visibleAfter": {
+              "brand": "Aurora Stay",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el jardín y la fuente.",
+              "account": "Cuenta de Lucía",
+              "guestLabels": [
+                "Lucía",
+                "Huésped 2"
+              ],
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          },
+          {
+            "phase": "return-from-activity",
+            "urlBefore": "/activity?demo=h39-opaque-composition-x",
+            "urlAfter": "/?demo=h39-opaque-composition-x",
+            "runtimeBefore": "h39-opaque-composition-x",
+            "runtimeAfter": "h39-opaque-composition-x",
+            "href": "/?demo=h39-opaque-composition-x",
+            "selectedDOM": "<a class=\"\" href=\"/?demo=h39-opaque-composition-x\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-a-p1",
+                  "title": "Pista del jardín encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-lucia-vega",
+                "name": "Lucía",
+                "fullName": "Lucía Vega",
+                "initials": "LV",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "service-late-checkout",
+                  "title": "Late check-out",
+                  "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Aurora Lisboa",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-breakfast",
+                  "title": "Desayuno de bienvenida",
+                  "description": "Una invitación para compartir con tus acompañantes.",
+                  "validUntil": "Hasta el 13 sep",
+                  "tag": "Para tu estancia",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "news": [
+                {
+                  "id": "news-lisbon-arrival",
+                  "category": "Tu llegada",
+                  "title": "Lisboa empieza en Aurora",
+                  "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-a-p1",
+                  "title": "Pista del jardín encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Aurora Lisboa · 12–15 septiembre.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                },
+                {
+                  "id": "service-selected",
+                  "title": "Preferencia guardada",
+                  "description": "La habitación se preparará con una cuna de viaje.",
+                  "occurredAt": "2026-09-02T08:45:00Z",
+                  "displayDate": "2 sept, 08:45",
+                  "provenance": "mocked",
+                  "tone": "pink",
+                  "icon": "sparkles"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Lucía",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Lucía",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Huésped 2",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Aurora Stay",
+              "title": "Actividad",
+              "framing": null,
+              "account": "Cuenta de Lucía",
+              "guestLabels": [],
+              "message": null,
+              "clueCount": null
+            },
+            "visibleAfter": {
+              "brand": "Aurora Stay",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el jardín y la fuente.",
+              "account": "Cuenta de Lucía",
+              "guestLabels": [
+                "Lucía",
+                "Huésped 2"
+              ],
+              "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "hospitality-family-adventure-costa",
+      "renamedId": "h39-opaque-composition-y",
+      "scope": "In-memory fixture only: manifest catalog key and demoId renamed; same structural role/artifacts. Not arbitrary-demo support.",
+      "result": {
+        "composition": "h39-opaque-composition-y",
+        "manifestDemoId": "h39-opaque-composition-y",
+        "initialRoute": "/?demo=h39-opaque-composition-y",
+        "guestPerspective": "PRESENT",
+        "selectedLabel": "Mi aventura",
+        "fixedGenericLinkRendered": false,
+        "href": "/?demo=h39-opaque-composition-y",
+        "reloadDocument": false,
+        "reloadDocumentEvidence": "NavLink omits reloadDocument; click intercepted by BrowserRouter",
+        "runtimeBefore": "h39-opaque-composition-y",
+        "runtimeAfter": "h39-opaque-composition-y",
+        "urlBefore": "/?demo=h39-opaque-composition-y",
+        "urlAfter": "/?demo=h39-opaque-composition-y",
+        "urlCompositionBefore": "h39-opaque-composition-y",
+        "urlCompositionAfter": "h39-opaque-composition-y",
+        "visibleCompositionEvidenceAfter": {
+          "brand": "Costa Clara Resort",
+          "title": "Aventura Familiar",
+          "framing": "Una aventura de pistas entre el mirador y el patio.",
+          "account": "Cuenta de Inés",
+          "guestLabels": [
+            "Inés",
+            "Mateo"
+          ],
+          "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+          "clueCount": "1 pista descubierta"
+        },
+        "targetSource": "AppShell demoSearch consumes runtime.manifest.demoId",
+        "sourceAuthority": "Already resolved composition execution identity; NOT a universal routing relation",
+        "before": {
+          "route": "/?demo=h39-opaque-composition-y",
+          "urlDemoId": "h39-opaque-composition-y",
+          "runtimeDemoId": "h39-opaque-composition-y",
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Cuenta de Inés",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Inés",
+                  "status": "Estado: sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Mateo",
+                  "status": "Estado: sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "visible": {
+            "brand": "Costa Clara Resort",
+            "title": "Aventura Familiar",
+            "framing": "Una aventura de pistas entre el mirador y el patio.",
+            "account": "Cuenta de Inés",
+            "guestLabels": [
+              "Inés",
+              "Mateo"
+            ],
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "clueCount": "0 pistas descubiertas"
+          },
+          "href": "/?demo=h39-opaque-composition-y",
+          "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-y\" data-discover=\"true\">Mi aventura</a>"
+        },
+        "phases": [
+          {
+            "phase": "initial-home",
+            "urlBefore": "/?demo=h39-opaque-composition-y",
+            "urlAfter": "/?demo=h39-opaque-composition-y",
+            "runtimeBefore": "h39-opaque-composition-y",
+            "runtimeAfter": "h39-opaque-composition-y",
+            "href": "/?demo=h39-opaque-composition-y",
+            "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-y\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "ready",
+                "availableActionId": "enlist-p1"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: sin alistar",
+                    "clueCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "ready",
+                "message": "La aventura está disponible. Alistamiento pendiente.",
+                "discoveredClueCount": 0
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "not-enlisted",
+                    "evidenceCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted",
+                "derivedClaim": "not-produced"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "ready",
+                "availableActionId": "enlist-p1"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: sin alistar",
+                    "clueCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "ready",
+                "message": "La aventura está disponible. Alistamiento pendiente.",
+                "discoveredClueCount": 0
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "not-enlisted",
+                    "evidenceCount": 0
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted",
+                "derivedClaim": "not-produced"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Costa Clara Resort",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el mirador y el patio.",
+              "account": "Cuenta de Inés",
+              "guestLabels": [
+                "Inés",
+                "Mateo"
+              ],
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "clueCount": "0 pistas descubiertas"
+            },
+            "visibleAfter": {
+              "brand": "Costa Clara Resort",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el mirador y el patio.",
+              "account": "Cuenta de Inés",
+              "guestLabels": [
+                "Inés",
+                "Mateo"
+              ],
+              "message": "La aventura está disponible. Alistamiento pendiente.",
+              "clueCount": "0 pistas descubiertas"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          },
+          {
+            "phase": "progressed-home",
+            "urlBefore": "/?demo=h39-opaque-composition-y",
+            "urlAfter": "/?demo=h39-opaque-composition-y",
+            "runtimeBefore": "h39-opaque-composition-y",
+            "runtimeAfter": "h39-opaque-composition-y",
+            "href": "/?demo=h39-opaque-composition-y",
+            "selectedDOM": "<a aria-current=\"page\" class=\"active\" href=\"/?demo=h39-opaque-composition-y\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "title": "Pista del mirador encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "title": "Pista del mirador encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Costa Clara Resort",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el mirador y el patio.",
+              "account": "Cuenta de Inés",
+              "guestLabels": [
+                "Inés",
+                "Mateo"
+              ],
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "visibleAfter": {
+              "brand": "Costa Clara Resort",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el mirador y el patio.",
+              "account": "Cuenta de Inés",
+              "guestLabels": [
+                "Inés",
+                "Mateo"
+              ],
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          },
+          {
+            "phase": "return-from-activity",
+            "urlBefore": "/activity?demo=h39-opaque-composition-y",
+            "urlAfter": "/?demo=h39-opaque-composition-y",
+            "runtimeBefore": "h39-opaque-composition-y",
+            "runtimeAfter": "h39-opaque-composition-y",
+            "href": "/?demo=h39-opaque-composition-y",
+            "selectedDOM": "<a class=\"\" href=\"/?demo=h39-opaque-composition-y\" data-discover=\"true\">Mi aventura</a>",
+            "browserRouterPreventedDefault": true,
+            "sameProvider": true,
+            "resetCalls": 0,
+            "actionCallsDuringNavigation": 0,
+            "snapshotBefore": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "title": "Pista del mirador encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "snapshotAfter": {
+              "member": {
+                "id": "guest-ines-costa",
+                "name": "Inés",
+                "fullName": "Inés Costa",
+                "initials": "IC",
+                "level": "Voyager",
+                "nextLevel": "Luminary",
+                "points": 3480,
+                "progress": 48,
+                "pointsToNextLevel": 520,
+                "memberSince": "enero de 2025"
+              },
+              "coupons": [
+                {
+                  "id": "costa-late-checkout",
+                  "title": "Salida tranquila",
+                  "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                  "validUntil": "Estancia actual",
+                  "tag": "Costa Clara Resort",
+                  "tone": "blue",
+                  "icon": "home"
+                }
+              ],
+              "news": [
+                {
+                  "id": "costa-adventure-introduction",
+                  "category": "Tu estancia",
+                  "title": "Inés y Mateo en Costa Clara",
+                  "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+                }
+              ],
+              "activity": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "title": "Pista del mirador encontrada",
+                  "description": "Hallazgo registrado.",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "displayDate": "12 sept, 10:00",
+                  "provenance": "simulated",
+                  "tone": "blue",
+                  "icon": "activity"
+                },
+                {
+                  "id": "costa-stay-confirmed",
+                  "title": "Estancia confirmada",
+                  "description": "Costa Clara Resort · reserva CC-205.",
+                  "occurredAt": "2026-09-01T10:20:00Z",
+                  "displayDate": "1 sept, 10:20",
+                  "provenance": "mocked",
+                  "tone": "cyan",
+                  "icon": "home"
+                }
+              ],
+              "scenario": {
+                "checkpoint": "clue-a-discovered",
+                "availableActionId": "activate-p2"
+              },
+              "guestPerspective": {
+                "huntName": "Aventura Familiar",
+                "sessionLabel": "Cuenta de Inés",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "label": "Inés",
+                    "status": "Estado: habilitado",
+                    "clueCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "label": "Mateo",
+                    "status": "Estado: sin habilitar",
+                    "clueCount": 0
+                  }
+                ],
+                "state": "exploring",
+                "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+                "discoveredClueCount": 1
+              },
+              "supervisionPerspective": {
+                "sessionSubjectRef": "subject-p1",
+                "subjects": [
+                  {
+                    "id": "subject-p1",
+                    "exists": true,
+                    "operationalState": "enabled",
+                    "evidenceCount": 1
+                  },
+                  {
+                    "id": "subject-p2",
+                    "exists": true,
+                    "operationalState": "not-enabled",
+                    "evidenceCount": 0
+                  }
+                ],
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "subjectRefs": [
+                      "subject-p1"
+                    ],
+                    "type": "treasure_hunt.marker-a",
+                    "provenance": "demo-control"
+                  }
+                ],
+                "jointAdmissibility": "established",
+                "sufficiency": "not-established",
+                "derivedClaim": "not-established"
+              }
+            },
+            "visibleBefore": {
+              "brand": "Costa Clara Resort",
+              "title": "Actividad",
+              "framing": null,
+              "account": "Cuenta de Inés",
+              "guestLabels": [],
+              "message": null,
+              "clueCount": null
+            },
+            "visibleAfter": {
+              "brand": "Costa Clara Resort",
+              "title": "Aventura Familiar",
+              "framing": "Una aventura de pistas entre el mirador y el patio.",
+              "account": "Cuenta de Inés",
+              "guestLabels": [
+                "Inés",
+                "Mateo"
+              ],
+              "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+              "clueCount": "1 pista descubierta"
+            },
+            "method": "Actual DOM click + BrowserRouter + jsdom history; no reload simulation"
+          }
+        ]
+      }
+    }
+  ],
+  "gate": "B-to-A problem assumption not reproduced; existing Family Adventure link already consumes effective identity. STOP / PRODUCT DELTA NONE.",
+  "qualification": "Read alongside test results; a trace alone does not imply assertions passed. No human/commercial/browser acceptance."
+}

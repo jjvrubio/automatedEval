@@ -1,0 +1,29 @@
+{
+  "delta": "VISUAL DELTA 01",
+  "verdict": "COMPLETED \u2192 READY FOR HUMAN UX CHALLENGE",
+  "scope": "Brisa Sport colours only",
+  "modifiedProductFiles": [
+    "products/convercus-app/prototype/src/styles/sports-season.css",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/brisa-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/artifacts.ts"
+  ],
+  "sourceHashes": {
+    "products/convercus-app/prototype/src/styles/sports-season.css": "83571b5e3358ec36cb0eae8745a8d1c1b13499b1ca524508d379248242b99e6e",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/brisa-logo.svg": "6df869f829b7263a89e6b39963e492638c38f0a1c08a4c68a71f729f6d1c4193",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/artifacts.ts": "9a28fa0380aa127fb9b5d0ea3a2bcd1488d86b843c6b98264c2509f82c0d13f6"
+  },
+  "runtimeIdenticalToBuild01": true,
+  "sportsTestsPassed": 17,
+  "fullSuite": {
+    "numPassedTests": 112,
+    "numFailedTests": 18,
+    "numPendingTests": 0
+  },
+  "sameHistoricalFailures": true,
+  "browserPhasesPassed": 20,
+  "contrastStatus": "PASS",
+  "contrastTextSamples": 322,
+  "documentLocalLinksChecked": 16,
+  "missingLinks": [],
+  "humanUXAcceptance": "NOT EXECUTED"
+}

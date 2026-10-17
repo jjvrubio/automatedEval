@@ -1,19 +1,25 @@
 import { describe, expect, it } from "vitest";
-import type { SignificantEvent } from "@/domain/contracts";
+import type { DemoAction } from "@/demo-factory/contracts";
+import { retailFixture } from "@/demo-factory/fixtures";
 import { MockDataAdapter } from "./mock-adapter";
 
-const event: SignificantEvent = {
-  id: "event-a0",
-  type: "demo.started",
-  occurredAt: "2026-08-03T10:00:00Z",
-  source: "test",
-  reliability: "confirmed",
-  properties: { deterministic: true },
+const action: DemoAction = {
+  type: "scenario_action",
+  actionId: "test-action",
+  evidence: {
+    id: "evidence-a0",
+    type: "demo.started",
+    occurredAt: "2026-08-03T10:00:00Z",
+    source: "test",
+    reliability: "confirmed",
+    subjects: [],
+    contexts: [],
+  },
 };
 
 describe("MockDataAdapter", () => {
   it("isolates its internal state from returned snapshots", async () => {
-    const adapter = new MockDataAdapter();
+    const adapter = new MockDataAdapter(retailFixture);
     const snapshot = await adapter.getSnapshot();
 
     snapshot.member.points = 0;
@@ -25,11 +31,12 @@ describe("MockDataAdapter", () => {
     });
   });
 
-  it("dispatches events and resets deterministically", async () => {
-    const adapter = new MockDataAdapter();
+  it("rejects Scenario actions when no Scenario is configured", async () => {
+    const adapter = new MockDataAdapter(retailFixture);
 
-    const dispatched = await adapter.dispatch(event);
-    expect(dispatched.activity[0]).toMatchObject({ id: event.id, title: event.type });
+    await expect(adapter.executeAction(action)).rejects.toThrow(
+      "Acción de Scenario no permitida",
+    );
     await expect(adapter.reset()).resolves.toMatchObject({
       member: { id: "member-demo-001", points: 1240 },
       activity: expect.arrayContaining([expect.objectContaining({ id: "activity-purchase" })]),

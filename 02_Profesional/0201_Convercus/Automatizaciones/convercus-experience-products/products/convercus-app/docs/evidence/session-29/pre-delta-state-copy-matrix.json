@@ -1,0 +1,222 @@
+{
+  "capturedAt": "2026-09-16T17:27:02.375825+00:00",
+  "source": "H28 execution trace plus source inspection of Scenario, adapter and projector before delta",
+  "rows": [
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "not-enlisted",
+      "phase": "initial",
+      "currentStatusCopy": "Sin alistar",
+      "justified": "Ausencia de alistamiento en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "initial",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "enlist-p1",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "enlist-p1",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "discover-clue-a",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "discover-clue-a",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "activate-p2",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "enabled",
+      "phase": "activate-p2",
+      "currentStatusCopy": "Habilitado por ti",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "discover-clue-b",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "enabled",
+      "phase": "discover-clue-b",
+      "currentStatusCopy": "Habilitado por ti",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p1",
+      "operationalState": "not-enlisted",
+      "phase": "reset",
+      "currentStatusCopy": "Sin alistar",
+      "justified": "Ausencia de alistamiento en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "A",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "reset",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "not-enlisted",
+      "phase": "initial",
+      "currentStatusCopy": "Sin alistar",
+      "justified": "Ausencia de alistamiento en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "initial",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "enlist-p1",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "enlist-p1",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "discover-clue-a",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "discover-clue-a",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "activate-p2",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "enabled",
+      "phase": "activate-p2",
+      "currentStatusCopy": "Habilitado por ti",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "enabled",
+      "phase": "discover-clue-b",
+      "currentStatusCopy": "Alistada y habilitada",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "enabled",
+      "phase": "discover-clue-b",
+      "currentStatusCopy": "Habilitado por ti",
+      "justified": "Habilitación operacional presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p1",
+      "operationalState": "not-enlisted",
+      "phase": "reset",
+      "currentStatusCopy": "Sin alistar",
+      "justified": "Ausencia de alistamiento en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    },
+    {
+      "composition": "B",
+      "subjectRef": "subject-p2",
+      "operationalState": "not-enabled",
+      "phase": "reset",
+      "currentStatusCopy": "Sin habilitar",
+      "justified": "Ausencia de habilitación en el estado presente",
+      "notJustified": "Causa, actor, viewer, género personal, lugar, narrativa; enabled tampoco distingue alistamiento de activación"
+    }
+  ]
+}

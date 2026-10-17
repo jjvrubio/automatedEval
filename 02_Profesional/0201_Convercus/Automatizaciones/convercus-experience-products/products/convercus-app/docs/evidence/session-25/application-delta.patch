@@ -1,0 +1,130 @@
+--- H24/products/convercus-app/prototype/src/demo/mock-adapter.ts
++++ H25/products/convercus-app/prototype/src/demo/mock-adapter.ts
+@@ -7,6 +7,7 @@
+   DemoProvider,
+   DemoEnableAction,
+   DemoSubjectState,
++  DemoScript,
+   ScenarioDefinition,
+ } from "@/demo-factory/contracts";
+ import {
+@@ -93,15 +94,18 @@
+   private readonly initialFixture: DemoFixture;
+   private fixture: DemoFixture;
+   private readonly scenario?: ScenarioDefinition;
++  // H25 presentation dependency only; Scenario and public action still govern acceptance.
++  private readonly script?: DemoScript;
+   private checkpoint?: string;
+   private evidence: DemoAction["evidence"][] = [];
+   private subjectStates: Record<string, DemoSubjectState> = {};
+   private evaluation = evaluateVerticalEvidence([]);
+ 
+-  constructor(fixture: DemoFixture, scenario?: ScenarioDefinition) {
++  constructor(fixture: DemoFixture, scenario?: ScenarioDefinition, script?: DemoScript) {
+     this.initialFixture = structuredClone(fixture);
+     this.fixture = structuredClone(fixture);
+     this.scenario = scenario ? structuredClone(scenario) : undefined;
++    this.script = script ? structuredClone(script) : undefined;
+     this.checkpoint = scenario?.initialCheckpoint;
+     this.subjectStates = structuredClone(scenario?.initialSubjectStates ?? {});
+   }
+@@ -163,15 +167,17 @@
+       }
+       this.evidence.push(structuredClone(evidence));
+       if (this.scenario?.experienceRef === "experience:family-adventure@1") this.evaluation = evaluateVerticalEvidence(this.evidence, this.scenario.contexts);
+-      this.fixture.activityRecords.unshift({
++      // H25 local experimental absence behavior, not a product fallback policy:
++      // an accepted enabled-subject Evidence action without presentation adds no
++      // situated Activity record. Generic Activity retains its existing behavior.
++      const presentation = configuredAction?.requiresEnabledSubject
++        ? this.script?.steps.find((step) => step.action.actionId === action.actionId)?.activityPresentation
++        : { title: evidence.type, description: `Evidencia recibida desde ${evidence.source}.` };
++      if (presentation) this.fixture.activityRecords.unshift({
+         id: evidence.id,
+         kind: "evidence",
+-        title: configuredAction?.requiresEnabledSubject
+-          ? subjectRef === "subject-p1" ? "Pista del jardín encontrada" : "Pista de la fuente encontrada"
+-          : evidence.type,
+-        description: configuredAction?.requiresEnabledSubject
+-          ? subjectRef === "subject-p1" ? "Hallazgo aportado por ti." : "Hallazgo atribuido al huésped 2, registrado desde tu cuenta."
+-          : `Evidencia recibida desde ${evidence.source}.`,
++        title: presentation.title,
++        description: presentation.description,
+         occurredAt: evidence.occurredAt,
+         provenance: "simulated",
+       });
+--- H24/products/convercus-app/prototype/src/demo-factory/contracts.ts
++++ H25/products/convercus-app/prototype/src/demo-factory/contracts.ts
+@@ -221,6 +221,13 @@
+   steps: Array<{
+     id: string;
+     presenterLabel: string;
++    // H25: EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED.
++    // Presentation after an accepted Evidence action, never factual authority.
++    // Independent of presenterLabel (the before-action affordance).
++    activityPresentation?: {
++      title: string;
++      description: string;
++    };
+     expectedCheckpoint: string;
+     action: DemoAction | DemoEnableAction;
+   }>;
+--- H24/products/convercus-app/prototype/src/demo-factory/bootstrap.ts
++++ H25/products/convercus-app/prototype/src/demo-factory/bootstrap.ts
+@@ -160,7 +160,7 @@
+     experience,
+     scenario,
+     script,
+-    provider: new MockDataAdapter(fixture, scenario),
++    provider: new MockDataAdapter(fixture, scenario, script),
+     capabilities: resolveCapabilities(manifest),
+   };
+ }
+--- H24/products/convercus-app/prototype/src/demo-factory/artifacts.ts
++++ H25/products/convercus-app/prototype/src/demo-factory/artifacts.ts
+@@ -190,6 +190,10 @@
+       {
+         id: "discover-clue-a",
+         presenterLabel: "Encontrar la pista del jardín · yo",
++        activityPresentation: {
++          title: "Pista del jardín encontrada",
++          description: "Hallazgo aportado por ti.",
++        },
+         expectedCheckpoint: "clue-a-discovered",
+         action: {
+           type: "scenario_action",
+@@ -221,6 +225,10 @@
+       {
+         id: "discover-clue-b",
+         presenterLabel: "Encontrar la pista de la fuente · huésped 2",
++        activityPresentation: {
++          title: "Pista de la fuente encontrada",
++          description: "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
++        },
+         expectedCheckpoint: "adventure-established",
+         action: {
+           type: "scenario_action",
+--- H24/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
++++ H25/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
+@@ -101,6 +101,10 @@
+       {
+         id: "discover-clue-a",
+         presenterLabel: "Encontrar la pista del mirador · Inés",
++        activityPresentation: {
++          title: "Pista del mirador encontrada",
++          description: "Hallazgo aportado por Inés.",
++        },
+         expectedCheckpoint: "clue-a-discovered",
+         action: {
+           type: "scenario_action",
+@@ -132,6 +136,10 @@
+       {
+         id: "discover-clue-b",
+         presenterLabel: "Encontrar la pista del patio · Mateo",
++        activityPresentation: {
++          title: "Pista del patio encontrada",
++          description: "Hallazgo atribuido a Mateo, registrado desde la cuenta de Inés.",
++        },
+         expectedCheckpoint: "adventure-established",
+         action: {
+           type: "scenario_action",

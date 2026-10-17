@@ -1,0 +1,58 @@
+{
+  "session": 36,
+  "method": "direct read and hash comparison; NOT runtime execution",
+  "sources": {
+    "src/demo-factory/bootstrap.ts": {
+      "expectedS35": "6388ada8fde7ea4b043d6f5c75f8fa925f213499350ffd6f0dd038e7caa1cd54",
+      "current": "6388ada8fde7ea4b043d6f5c75f8fa925f213499350ffd6f0dd038e7caa1cd54",
+      "matches": true
+    },
+    "src/demo/mock-adapter.ts": {
+      "expectedS35": "6e688118327e9f36ee55c23b6d100409e4f7cb01f668ad2152a5bde2c6912b35",
+      "current": "6e688118327e9f36ee55c23b6d100409e4f7cb01f668ad2152a5bde2c6912b35",
+      "matches": true
+    },
+    "src/demo-factory/vertical-evaluation.ts": {
+      "expectedS35": "e021823511336bfa31699120bb3ed9d039362ea97b787a155b89c895328891fd",
+      "current": "e021823511336bfa31699120bb3ed9d039362ea97b787a155b89c895328891fd",
+      "matches": true
+    },
+    "src/app/App.tsx": {
+      "expectedS35": "cde3b490f05d42bf11abff185f09b9be5e8828897cc0a96a1c064a964a99b8ef",
+      "current": "cde3b490f05d42bf11abff185f09b9be5e8828897cc0a96a1c064a964a99b8ef",
+      "matches": true
+    },
+    "src/demo-factory/experience-sourced-guest-name-h35.test.ts": {
+      "expectedS35": "39b1ce7285bc28f910e4bd55ded87453bef24e1a8d7e42c9fee28201790b1e27",
+      "current": "39b1ce7285bc28f910e4bd55ded87453bef24e1a8d7e42c9fee28201790b1e27",
+      "matches": true
+    },
+    "src/demo-factory/contracts.ts": {
+      "expectedS35UnchangedBaseline": "60a58bdbee08ed21760bda8805b4b23376440623f949561ed958ac8464983c64",
+      "current": "60a58bdbee08ed21760bda8805b4b23376440623f949561ed958ac8464983c64",
+      "matches": true
+    },
+    "src/demo-factory/artifacts.ts": {
+      "expectedS35UnchangedBaseline": "96e14628e93f2da9bd50da7c5f71c5f4d5db048960eb20659d4452a035518d53",
+      "current": "96e14628e93f2da9bd50da7c5f71c5f4d5db048960eb20659d4452a035518d53",
+      "matches": true
+    },
+    "src/demo-factory/costa-artifacts.ts": {
+      "expectedS35UnchangedBaseline": "19b8dbb4571268a4513251212616d19bba324d0f8764eaed74ccb598864cb97c",
+      "current": "19b8dbb4571268a4513251212616d19bba324d0f8764eaed74ccb598864cb97c",
+      "matches": true
+    },
+    "src/demo-factory/fixtures.ts": {
+      "expectedS35UnchangedBaseline": "c855079b5601705b243c01bcfc11f54a41f58834bb83e9c558585c4ed820b791",
+      "current": "c855079b5601705b243c01bcfc11f54a41f58834bb83e9c558585c4ed820b791",
+      "matches": true
+    },
+    "src/demo-factory/manifests.ts": {
+      "expectedS35UnchangedBaseline": "61123b910189581eec6b785c365d9aef9c6ba4cdfcb757312189e08da6dac083",
+      "current": "61123b910189581eec6b785c365d9aef9c6ba4cdfcb757312189e08da6dac083",
+      "matches": true
+    }
+  },
+  "currentRuntimeExecution": "NOT EXECUTED",
+  "currentSuiteExecution": "NOT EXECUTED"
+}

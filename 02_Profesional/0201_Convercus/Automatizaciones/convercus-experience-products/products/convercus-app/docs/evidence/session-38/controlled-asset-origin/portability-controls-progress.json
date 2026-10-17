@@ -1,0 +1,207 @@
+{
+  "temp": "/private/tmp/convercus-h38-portability-MfXA73",
+  "conditions": [
+    {
+      "name": "absence",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent",
+      "code": 0,
+      "milliseconds": 3015,
+      "passed": 4,
+      "failed": 0,
+      "failedSuites": 0,
+      "tests": [
+        {
+          "file": "demo-factory/activity-attribution-reduction-h37.test.ts",
+          "name": "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "log": "absence.log",
+      "reporter": "absence-results.json"
+    },
+    {
+      "name": "presence",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-b-present",
+      "code": 0,
+      "milliseconds": 2550,
+      "passed": 4,
+      "failed": 0,
+      "failedSuites": 0,
+      "tests": [
+        {
+          "file": "demo-factory/activity-attribution-reduction-h37.test.ts",
+          "name": "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "log": "presence.log",
+      "reporter": "presence-results.json"
+    },
+    {
+      "name": "unknown-file",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent",
+      "code": 0,
+      "milliseconds": 1222,
+      "passed": 3,
+      "failed": 0,
+      "failedSuites": 0,
+      "tests": [
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "log": "unknown-file.log",
+      "reporter": "unknown-file-results.json"
+    },
+    {
+      "name": "material-mutation",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent",
+      "code": 1,
+      "milliseconds": 1089,
+      "passed": 0,
+      "failed": 3,
+      "failedSuites": 6,
+      "tests": [
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: Frozen file: products/convercus-app/prototype/src/demo/mock-adapter.ts: expected '626b56edbe151a032f9cb2b06080f4454cbe5…' to be '2329da2c2bf75683fe7fc04910d3fed0097d2…' // Object.is equality\n    at /private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts:70:125\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2955:64"
+          ]
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: expected '626b56edbe151a032f9cb2b06080f4454cbe5…' to be '2329da2c2bf75683fe7fc04910d3fed0097d2…' // Object.is equality\n    at /private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts:66:38\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2955:64"
+          ]
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: products/convercus-app/prototype/src/demo-factory/test-fixtures/h21/mock-adapter.ts: expected '626b56edbe151a032f9cb2b06080f4454cbe5…' to be '2329da2c2bf75683fe7fc04910d3fed0097d2…' // Object.is equality\n    at /private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts:45:160\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2955:64"
+          ]
+        }
+      ],
+      "log": "material-mutation.log",
+      "reporter": "material-mutation-results.json"
+    },
+    {
+      "name": "material-removal",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent",
+      "code": 1,
+      "milliseconds": 1287,
+      "passed": 0,
+      "failed": 1,
+      "failedSuites": 4,
+      "tests": [
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "failed",
+          "failureMessages": [
+            "Error: ENOENT: no such file or directory, open '/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/test-fixtures/h21/mock-adapter.ts'\n    at Object.openSync (node:fs:560:18)\n    at readFileSync (node:fs:444:35)\n    at readHistoricalH36FileSync (/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts:12:10)\n    at Module.readHistoricalH34FileSync (/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts:12:10)\n    at /private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts:45:23\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)"
+          ]
+        }
+      ],
+      "log": "material-removal.log",
+      "reporter": "material-removal-results.json"
+    },
+    {
+      "name": "current-source-mutation",
+      "environment": "/private/tmp/convercus-h38-portability-MfXA73/environment-a-absent",
+      "code": 1,
+      "milliseconds": 1245,
+      "passed": 3,
+      "failed": 1,
+      "failedSuites": 1,
+      "tests": [
+        {
+          "file": "demo-factory/activity-attribution-reduction-h37.test.ts",
+          "name": "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: src/demo/mock-adapter.ts: expected '3de1e3e310624c3ba75db6b75415fc0a1d89f…' to be '6e688118327e9f36ee55c23b6d100409e4f7c…' // Object.is equality\n    at /private/tmp/convercus-h38-portability-MfXA73/environment-a-absent/products/convercus-app/prototype/src/demo-factory/activity-attribution-reduction-h37.test.ts:59:24\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:2955:64"
+          ]
+        },
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "log": "current-source-mutation.log",
+      "reporter": "current-source-mutation-results.json"
+    }
+  ]
+}

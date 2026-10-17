@@ -1,0 +1,67 @@
+{
+  "session": 37,
+  "verifiedAt": "2026-09-21T15:22:09.695Z",
+  "H37": "SUPPORTED WITH QUALIFICATION",
+  "noNewRelation": "SUFFICIENT",
+  "baseline": {
+    "parallelTests": {
+      "files": 29,
+      "passed": 94,
+      "failed": 3
+    },
+    "initialBundledNode": "STARTUP ERROR; zero tests"
+  },
+  "final": {
+    "parallelTests": {
+      "files": 30,
+      "passed": 95,
+      "failed": 3
+    },
+    "newFailures": [],
+    "unchangedFailingTests": [
+      "src/demo-factory/composition-boundary-h21.test.ts",
+      "src/demo-factory/experience-stable-selection-h22.test.ts",
+      "src/demo-factory/situated-evaluation-context-h23.test.ts"
+    ],
+    "failureReason": "ENOENT 00-governance/.DS_Store before journey checks; inherited Mac metadata dependency",
+    "serialTests": "NOT EXECUTED: deterministic missing file, no timeouts",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "buildPWA": "PASS",
+    "overallSuiteExitCode": 1
+  },
+  "timeoutsOrAssertionsRelaxed": false,
+  "testRunnerConfigurationChanged": false,
+  "historicalHarnessesModified": 4,
+  "existingHistoricalReadersModified": 1,
+  "archivedSourceRoutesAdded": 7,
+  "runtimeArchiveCopiesAdded": 2,
+  "currentHarnessesAdded": 1,
+  "currentAppRuns": 14,
+  "currentAppFrames": 77,
+  "currentAppDOMCaptures": 231,
+  "isolatedAppObservations": 6,
+  "rejectedOccurrenceControls": 16,
+  "historicalRunsCountedAsCurrent": 0,
+  "domIntegrationVerification": "EXECUTED",
+  "browserVisualValidation": "NOT EXECUTED",
+  "requiredReportSectionsVerified": 46,
+  "preDeltaFragmentUnits": 22,
+  "localReportLinksVerified": 20,
+  "traceSourceHashesVerified": true,
+  "inheritedFilesUnchanged": 447,
+  "unexpectedInheritedSourceChanges": [],
+  "traceSha256": "8e1b9c0db2ddf764a7df6e5f24c92c74392ef01840e82f5058ba6354c4624de9",
+  "reportSha256": "29e9ecd9c7b01a177f7c51c445e37f7afaf69c77eede0ae21f7f811adab6d5b0",
+  "preDeltaMatrixSha256": "9ec3249865ab753e6e4e492da646a6aafd22a5b7c9a1b7b94508b4cd2c5f549d",
+  "nodeRuntime": {
+    "version": "v24.14.0",
+    "location": "/private/tmp/node-v24.14.0-darwin-arm64",
+    "origin": "https://nodejs.org/dist/v24.14.0/node-v24.14.0-darwin-arm64.tar.gz",
+    "sha256": "a1a54f46a750d2523d628d924aab61758a51c9dad3e0238beb14141be9615dd3",
+    "projectDependenciesChanged": false
+  },
+  "historicalH36Verdict": "PRESERVED / FALSIFIED",
+  "promotionGate": "CLOSED",
+  "nextMaterialPressure": "OBSERVED BUT NOT SELECTED"
+}

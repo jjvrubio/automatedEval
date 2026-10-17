@@ -1,0 +1,43 @@
+{
+  "temp": "/private/tmp/convercus-h38-portability-xBPaA4",
+  "conditions": [
+    {
+      "name": "absence",
+      "environment": "/private/tmp/convercus-h38-portability-xBPaA4/environment-a-absent",
+      "code": 1,
+      "milliseconds": 2978,
+      "passed": 3,
+      "failed": 1,
+      "tests": [
+        {
+          "file": "demo-factory/activity-attribution-reduction-h37.test.ts",
+          "name": "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: expected [ …(2) ] to deeply equal [ …(2) ]\n    at /private/tmp/convercus-h38-portability-xBPaA4/environment-a-absent/products/convercus-app/prototype/src/demo-factory/activity-attribution-reduction-h37.test.ts:381:49\n    at file:///Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "file": "demo-factory/composition-boundary-h21.test.ts",
+          "name": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/experience-stable-selection-h22.test.ts",
+          "name": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "file": "demo-factory/situated-evaluation-context-h23.test.ts",
+          "name": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "log": "absence.log",
+      "reporter": "absence-results.json"
+    }
+  ]
+}

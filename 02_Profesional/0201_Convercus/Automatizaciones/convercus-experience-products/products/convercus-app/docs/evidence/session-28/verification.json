@@ -1,0 +1,88 @@
+{
+  "recordedAt": "2026-09-16T17:16:25.386053+00:00",
+  "result": "PASS",
+  "baselineFileCount": 191,
+  "unchangedExistingFiles": 188,
+  "changedExistingFiles": [
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "historicalArchivesByteIdentical": true,
+  "runtimeDeltaFiles": [
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "instrumentationOnlyExistingFile": "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts",
+  "requiredReportSections": [
+    "H27 CONSOLIDATED INPUT",
+    "H28 HYPOTHESIS",
+    "VARIABLE UNDER TEST",
+    "EXISTING ACCOUNT SOURCE",
+    "ACCOUNT / SUBJECT / SESSION SEPARATION",
+    "SOURCE AND HOST ANALYSIS",
+    "THREADING PATH",
+    "BASELINE",
+    "CODE DELTA",
+    "A CONTROL",
+    "B CONTROL",
+    "ACCOUNT DECOUPLING CONTROL",
+    "INVERSE DECOUPLING CONTROL",
+    "REPRESENTATION INDEPENDENCE CONTROL",
+    "EXECUTION TRACE",
+    "L3a RESULT",
+    "L3b STATUS",
+    "L3c STATUS",
+    "L4 STATUS",
+    "L5 STATUS",
+    "FALSIFICATION ANALYSIS",
+    "H28 VERDICT",
+    "ARCHITECTURAL CONSEQUENCE",
+    "SEMANTIC CONSEQUENCE",
+    "ARTIFACT QUARANTINE",
+    "WHAT H28 DOES NOT PROVE",
+    "REMAINING PRESSURES"
+  ],
+  "allReportLinksResolve": true,
+  "baselineTests": {
+    "passed": 89,
+    "files": 21
+  },
+  "historicalDirectedRegression": {
+    "passed": 17,
+    "files": 8,
+    "exitCode": 0
+  },
+  "fullCheck": {
+    "command": "npm run check",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": 90,
+    "testFiles": 22,
+    "build": "PASS",
+    "exitCode": 0
+  },
+  "principalRun": {
+    "command": "H28_RECORD_PATH=../docs/evidence/session-28/execution-trace.json npm test -- src/demo-factory/account-sourced-guest-h28.test.ts",
+    "passed": 1,
+    "exitCode": 0,
+    "recordedAt": "2026-09-16T17:12:50.496Z",
+    "familyAdventureSequences": 12,
+    "snapshotObservationsIncludingReset": 72,
+    "genericDemos": [
+      "retail-baseline",
+      "hospitality-stay"
+    ]
+  },
+  "artifactSha256": {
+    "products/convercus-app/docs/evidence/session-28/baseline.json": "83b177a7f39f7814689196f5f10e87c002438ce998c1d4db2997e2961c5381f1",
+    "products/convercus-app/docs/evidence/session-28/execution-trace.json": "87ac0498724cfd68b11c46864aaca7435ca29bf6bce1c219f1e55ffbbb0e0007",
+    "products/convercus-app/docs/evidence/session-28/application-delta.patch": "338d8a22f92183559d7382a3984ab97735670e24725e7dad67e13755f61d20f1",
+    "products/convercus-app/docs/session-28-account-sourced-guest-presentation.md": "d8da9bef8b8e4355f06247e5d29538d5881eb0fc202c481cf0b0db868e2050ac",
+    "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "6890e32d779cace4f6ca136551831156abb328aea7dae237542da1cd40357e2c"
+  },
+  "browserValidation": "NOT PERFORMED; execution and source inspection only",
+  "governance": "Architecture v0.5 ACTIVE, ADR001–005 ACCEPTED, TES and PSC unchanged; P01 OPEN/EVIDENCE-BACKED, P02 NOT CREATED",
+  "quarantine": "H25/H27 EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED",
+  "nextPressure": "OBSERVED / NOT SELECTED; H29 NOT OPENED"
+}

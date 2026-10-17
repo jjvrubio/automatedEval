@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "css": "Only colour values changed; two new scoped background declarations; all non-colour declarations identical.",
+  "artifacts": "Only cssVariables colour entries changed; font, brand identity, scenario, functional data and manifest identical.",
+  "svg": "Only 3 fill colours changed; geometry, dimensions and text identical."
+}

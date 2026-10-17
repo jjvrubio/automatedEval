@@ -1,0 +1,49 @@
+{
+  "verifiedAt": "2026-09-14T17:27:41.514721+00:00",
+  "baselineFilesPreserved": 162,
+  "expectedChangedFiles": [
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "archivedOriginalsVerified": 9,
+  "prechangeSuite": {
+    "tests": 88,
+    "files": 20,
+    "result": "PASS"
+  },
+  "focalH27": {
+    "tests": 1,
+    "result": "PASS",
+    "verdict": "SUPPORTED WITH QUALIFICATION"
+  },
+  "historicalAndVerticalRegression": {
+    "tests": 16,
+    "files": 7,
+    "result": "PASS",
+    "H26": "FALSIFIED / unchanged"
+  },
+  "fullCheck": {
+    "command": "npm run check",
+    "tests": 89,
+    "files": 21,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "testsResult": "PASS",
+    "build": "PASS",
+    "exitCode": 0
+  },
+  "reportRequiredSectionsVerified": 30,
+  "artifactSha256": {
+    "baseline.json": "2e66d86f8a41031948f616041132079663acb909f6dc2d06d34d88b75c6dd075",
+    "execution-trace.json": "75c2af28bd43bc3c40f604a219a0c4b6a03d08f3c264d02e8605cc4044151f39",
+    "application-delta.patch": "b55d851c0592a307dd5ebe1f1db07dd93f565a3c93b052d10eacfa0a2c3af3fc",
+    "session-27-explicit-situated-subject-representation.md": "9901e8e55effdcb03bb243fed91c3e94097ab4e0a3e15b17aa3a03a68cc1d592"
+  }
+}

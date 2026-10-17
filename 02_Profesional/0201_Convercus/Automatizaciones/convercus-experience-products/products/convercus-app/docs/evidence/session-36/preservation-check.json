@@ -1,0 +1,16 @@
+{
+  "session": 36,
+  "checkedAt": "2026-09-19T09:34:19.171754+00:00",
+  "baselineFiles": 445,
+  "unchangedInheritedFiles": 445,
+  "changedInheritedFiles": [],
+  "missingInheritedFiles": [],
+  "productDelta": "NONE",
+  "testInfrastructureDelta": "NONE",
+  "governanceAndSemanticDelta": "NONE",
+  "newArtifactsScope": [
+    "products/convercus-app/docs/session-36-presentation-authority-provenance-stratification-audit.md",
+    "products/convercus-app/docs/evidence/session-36/"
+  ],
+  "historicalEvidencePreserved": true
+}

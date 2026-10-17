@@ -1,0 +1,5213 @@
+{
+  "states": [
+    {
+      "state": "initial with keyboard focus",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada deportiva · Septiembre — noviembre 2026",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Abierta también a personas ajenas al club",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sal.Muévete.Conecta.",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Conecta.",
+          "foreground": [
+            10,
+            239,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 10.755577338065404,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante simulado · Externo al club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participar no te da de alta.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un programa, distintas formas de participar",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los eventos de la temporada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "3 disciplinas",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Recorrido disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre · Paseo del litoral · 5 km",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Elegir Carrera",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un horizonte compartido",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre · Escuela de vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vóley playa",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Nos vemos en la arena",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre · Playa deportiva",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en e",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": [
+        {
+          "role": "keyboard focus against surrounding surface",
+          "ratio": 6.698687511461126,
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "state": "registration error",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada deportiva · Septiembre — noviembre 2026",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Abierta también a personas ajenas al club",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sal.Muévete.Conecta.",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Conecta.",
+          "foreground": [
+            10,
+            239,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 10.755577338065404,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante simulado · Externo al club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participar no te da de alta.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un programa, distintas formas de participar",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los eventos de la temporada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "3 disciplinas",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Recorrido disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre · Paseo del litoral · 5 km",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera seleccionada",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un horizonte compartido",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre · Escuela de vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vóley playa",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Nos vemos en la arena",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre · Playa deportiva",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en e",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Tu participación · Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "¿Cómo quieres participar esta vez?",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Social",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Compartir el recorrido y disfrutar en compañía.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Bienestar",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Dedicarte un momento y moverte a tu ritmo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La elección se aplica a este evento. No define tu perfil ni te incorpora al club.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Confirmar inscripción",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            43,
+            253
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Elige Social o Bienestar para confirmar la inscripción.",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": []
+    },
+    {
+      "state": "selected modality",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada deportiva · Septiembre — noviembre 2026",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Abierta también a personas ajenas al club",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sal.Muévete.Conecta.",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Conecta.",
+          "foreground": [
+            10,
+            239,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 10.755577338065404,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante simulado · Externo al club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participar no te da de alta.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un programa, distintas formas de participar",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los eventos de la temporada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "3 disciplinas",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Recorrido disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre · Paseo del litoral · 5 km",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera seleccionada",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un horizonte compartido",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre · Escuela de vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vóley playa",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Nos vemos en la arena",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre · Playa deportiva",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en e",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Tu participación · Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "¿Cómo quieres participar esta vez?",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Social",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Compartir el recorrido y disfrutar en compañía.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Bienestar",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Dedicarte un momento y moverte a tu ritmo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La elección se aplica a este evento. No define tu perfil ni te incorpora al club.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Confirmar inscripción",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Elige Social o Bienestar para confirmar la inscripción.",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": [
+        {
+          "role": "selected option border",
+          "ratio": 13.508455469010432
+        }
+      ]
+    },
+    {
+      "state": "effort error",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada deportiva · Septiembre — noviembre 2026",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Abierta también a personas ajenas al club",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sal.Muévete.Conecta.",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Conecta.",
+          "foreground": [
+            10,
+            239,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 10.755577338065404,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante simulado · Externo al club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participar no te da de alta.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un programa, distintas formas de participar",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los eventos de la temporada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "3 disciplinas",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Recorrido disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre · Paseo del litoral · 5 km",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un horizonte compartido",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre · Escuela de vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vóley playa",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Nos vemos en la arena",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre · Playa deportiva",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en e",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Tu participación · Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Inscripción confirmada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Modalidad Bienestar · Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Registrada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Registra tu presencia",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Check-in simulado registrado. No acredita asistencia física real.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Comparte tu esfuerzo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "¿Cómo has sentido el esfuerzo?",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Suave",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Medio",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Intenso",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Es tu declaración, separada de la presencia. Los tres niveles reciben el mismo reconocimiento.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Registrar esfuerzo",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            43,
+            253
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Elige un esfuerzo: suave, medio o intenso.",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": []
+    },
+    {
+      "state": "recognition",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada deportiva · Septiembre — noviembre 2026",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Abierta también a personas ajenas al club",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sal.Muévete.Conecta.",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Conecta.",
+          "foreground": [
+            10,
+            239,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 10.755577338065404,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante simulado · Externo al club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participar no te da de alta.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un programa, distintas formas de participar",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los eventos de la temporada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "3 disciplinas",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Recorrido disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre · Paseo del litoral · 5 km",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "27 de septiembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un horizonte compartido",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre · Escuela de vela",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "17 de octubre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sólo informativo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Vóley playa",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Nos vemos en la arena",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre · Playa deportiva",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "7 de noviembre",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en e",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Sin inscripción disponible en esta demo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Tu participación · Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "01",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Inscripción confirmada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Modalidad Bienestar · Lea Martín",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Registrada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Registra tu presencia",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Check-in simulado registrado. No acredita asistencia física real.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulada",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Comparte tu esfuerzo",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Esfuerzo intenso · autodeclarado, sin medición externa.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Autodeclarado",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Tu primera insignia de Carrera",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Primeros kilómetros",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participa",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una invitación, una nueva decisión",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La próxima salida puede ser el comienzo de algo más.",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta c",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Conocer Club Brisa",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La temporada continúa",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Esta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del progra",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": [
+        {
+          "role": "recognition symbol",
+          "ratio": 5.558149559169136
+        }
+      ]
+    },
+    {
+      "state": "CRM",
+      "texts": [
+        {
+          "text": "Saltar al contenido",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Demo · marca y personas ficticias",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Participante",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 6.698687511461126,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            255,
+            255,
+            255
+          ],
+          "background": [
+            9,
+            6,
+            133
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Marketing / CRM",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La participación, con contexto.",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "La misma persona y los mismos registros. Una oportunidad para iniciar una relación con el club.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "01 · Datos de escenario ficticio",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Lea Martín",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Estado de club",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Externo · no pertenece al club",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Relación como cliente",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "No establecida",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Temporada",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Una temporada para moverse",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Periodo",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Septiembre — noviembre 2026",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Persona y calendario proceden de datos ficticios. No hay autenticación real.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "02 · Registros de esta ejecución",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Inscripción y aportaciones",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Evento",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Kilómetros en compañía",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Disciplina",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Carrera",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Modalidad elegida",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Bienestar",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Inscripción",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Aceptada · elección de esta participación",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "La inscripción no acredita presencia ni esfuerzo.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Presencia · check-in simulado",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Aceptada sólo dentro de la simulación. Sin acreditación física.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Origen: simulated-check-in · 11:30:14",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "11:30:14",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Esfuerzo · intenso",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Autodeclarado por el participante. Sin medición externa.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Origen: participant-self-report · 11:30:14",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "11:30:14",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "03 · Reconocimiento derivado local",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Primeros kilómetros",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 15.257676977174187,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participa",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Los tres niveles de esfuerzo satisfacen el mismo requisito. No se infiere rendimiento ni intención d",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Criterio y referencias",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "04 · Oportunidad comercial",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Invitación al club disponible",
+          "foreground": [
+            9,
+            6,
+            133
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 13.508455469010432,
+          "minimum": 3,
+          "pass": true
+        },
+        {
+          "text": "La participación de Lea Martín permite proponer conocer Club Brisa.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Estado de club: externo. Sin alta, consentimiento, conversión ni lead enviado.",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "externo",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 11.186150148137422,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Continuidad registrada: primera participación reconocida en esta temporada. No se ha ejecutado una s",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            241,
+            241,
+            241
+          ],
+          "ratio": 5.65342100821945,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Contraste de diseño · miembro y competición, sin ejecutar",
+          "foreground": [
+            51,
+            51,
+            51
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 12.63465434445799,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.",
+          "foreground": [
+            95,
+            95,
+            95
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 6.385487353255615,
+          "minimum": 4.5,
+          "pass": true
+        },
+        {
+          "text": "Reiniciar demo",
+          "foreground": [
+            9,
+            43,
+            253
+          ],
+          "background": [
+            255,
+            255,
+            255
+          ],
+          "ratio": 7.5661063143284615,
+          "minimum": 4.5,
+          "pass": true
+        }
+      ],
+      "graphicChecks": []
+    }
+  ],
+  "checks": [
+    "Phone entry renders the same composition without horizontal overflow."
+  ],
+  "limitations": "Local colour checks, not a general accessibility audit. Solid computed backgrounds; disabled controls excluded. Decorative SVG and phone hardware reviewed visually.",
+  "status": "PASS"
+}

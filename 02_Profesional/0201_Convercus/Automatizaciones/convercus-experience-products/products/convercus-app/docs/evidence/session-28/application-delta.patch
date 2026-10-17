@@ -1,0 +1,30 @@
+--- a/products/convercus-app/prototype/src/demo/mock-adapter.ts
++++ b/products/convercus-app/prototype/src/demo/mock-adapter.ts
+@@ -81,7 +81,7 @@
+   }
+ 
+   if (scenario?.experienceRef === "experience:family-adventure@1") {
+-    snapshot.guestPerspective = projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations);
++    snapshot.guestPerspective = projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations, fixture.member.name);
+     snapshot.supervisionPerspective = projectSupervisionPerspective(
+       evaluation, scenario.subjects, subjectStates, scenario.operationalSessionSubjectRef,
+     );
+--- a/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
++++ b/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
+@@ -132,13 +132,15 @@
+   subjects: readonly SubjectReference[] = [],
+   subjectStates: Record<string, DemoSubjectState> = {},
+   subjectPresentations: DemoScript["subjectPresentations"] = [],
++  // H28: existing account display source only, never subject/viewer identity.
++  accountName = "",
+ ): GuestPerspectiveReadModel {
+   const discoveredClueCount = evaluation.evidence.length;
+   const complete = evaluation.sufficiency === "established";
+   const enlisted = subjectStates["subject-p1"] === "enabled";
+   return {
+     huntName: "Aventura Familiar",
+-    sessionLabel: "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
++    sessionLabel: `Cuenta de ${accountName}`,
+     subjects: subjects.map(({ id }) => ({
+       id,
+       // H27 local absence: no supplied label means no display text. The subject

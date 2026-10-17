@@ -1,0 +1,64 @@
+{
+  "result": "PASS",
+  "people": [
+    {
+      "person": "P01",
+      "transactions": 8,
+      "grossEUR": "511.75",
+      "membership": "non_member",
+      "pointsBalance": null,
+      "actualLevel": null
+    },
+    {
+      "person": "P02",
+      "transactions": 8,
+      "grossEUR": "731.20",
+      "membership": "active",
+      "pointsBalance": 731,
+      "actualLevel": {
+        "level_id": "PRO",
+        "name": "Pro"
+      }
+    },
+    {
+      "person": "P03",
+      "transactions": 0,
+      "grossEUR": "0",
+      "membership": "non_member",
+      "pointsBalance": null,
+      "actualLevel": null
+    }
+  ],
+  "counterfactual": {
+    "counterfactual_id": "CF-P01-2026-09",
+    "person_id": "P01",
+    "program_id": "BRISA-CLUB",
+    "basis_transaction_ids": [
+      "TX-P01-001",
+      "TX-P01-002",
+      "TX-P01-003",
+      "TX-P01-004",
+      "TX-P01-005",
+      "TX-P01-006",
+      "TX-P01-007",
+      "TX-P01-008"
+    ],
+    "basis_amount": 511.75,
+    "currency": "EUR",
+    "hypothetical_points": 511,
+    "hypothetical_level": {
+      "level_id": "ACTIVE",
+      "name": "Active"
+    },
+    "hypothetical_benefits": [
+      "Acceso anticipado a colecciones seleccionadas",
+      "Cup\u00f3n de nivel del 10% en equipamiento deportivo seleccionado"
+    ],
+    "rule_set_version": "sports-season-demo-0.1",
+    "calculated_at": "2026-09-25T10:00:00+02:00",
+    "source": "derived",
+    "display_disclaimer": "Simulaci\u00f3n: estos puntos, nivel y beneficios no han sido obtenidos realmente."
+  },
+  "consistentReferences": true,
+  "noReconciliation": true
+}

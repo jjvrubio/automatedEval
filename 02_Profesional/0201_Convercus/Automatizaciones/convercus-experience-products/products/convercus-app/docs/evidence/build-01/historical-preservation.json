@@ -1,0 +1,68 @@
+{
+  "receivedFileCount": 697,
+  "materialReceived": 685,
+  "materialUnchanged": 680,
+  "intentionalProductDelta": [
+    {
+      "path": "products/convercus-app/prototype/src/main.tsx",
+      "beforeSha256": "cb88ce48d25e4dfe894e0483efbdd495b77e2460e802a66cdbb7e43934e5fd9f",
+      "afterSha256": "1f07f3e51bdcda2d405ae248343c29e9b38277656356fc3c8367f18b3c1aadcd",
+      "oldBytesPreservedIn": "pre-build-sources.tar.gz"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/app/App.tsx",
+      "beforeSha256": "cde3b490f05d42bf11abff185f09b9be5e8828897cc0a96a1c064a964a99b8ef",
+      "afterSha256": "c74f98087ba188cea1e11499448ed4040fd781af5cdef5ae34e8b7a779644640",
+      "oldBytesPreservedIn": "pre-build-sources.tar.gz"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/contracts.ts",
+      "beforeSha256": "60a58bdbee08ed21760bda8805b4b23376440623f949561ed958ac8464983c64",
+      "afterSha256": "02a27b7da364b8468b66b472d156b802a8981485f92ff2f0c820c79ef32d347d",
+      "oldBytesPreservedIn": "pre-build-sources.tar.gz"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "beforeSha256": "61123b910189581eec6b785c365d9aef9c6ba4cdfcb757312189e08da6dac083",
+      "afterSha256": "59cb5f6d1e5f368e9825783e6e2009ddf0ada94429a116eb851c8aaeb955e9a5",
+      "oldBytesPreservedIn": "pre-build-sources.tar.gz"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/bootstrap.ts",
+      "beforeSha256": "6388ada8fde7ea4b043d6f5c75f8fa925f213499350ffd6f0dd038e7caa1cd54",
+      "afterSha256": "834fedc330e3938a37161d2f49ff9191d24a64898325b95d8dc52c7eafec0309",
+      "oldBytesPreservedIn": "pre-build-sources.tar.gz"
+    }
+  ],
+  "unexpectedMaterialChanges": [],
+  "deletedReceived": [],
+  "ambientChanged": [
+    ".DS_Store",
+    "products/.DS_Store",
+    "products/convercus-app/.DS_Store",
+    "products/convercus-app/prototype/.DS_Store",
+    "products/convercus-app/docs/.DS_Store",
+    "products/convercus-app/docs/evidence/.DS_Store",
+    "products/convercus-app/prototype/src/.DS_Store"
+  ],
+  "ambientClassification": "Explicit received Finder metadata only; no historical inventory/hash modified. Task did not edit these metadata files.",
+  "newProductAndTests": [
+    "products/convercus-app/prototype/src/app/SportsSeasonApp.tsx",
+    "products/convercus-app/prototype/src/styles/sports-season.css",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/brisa-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/runtime.ts",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/ui.test.tsx",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/runtime.test.ts"
+  ],
+  "historicalReceivedFilesChecked": 458,
+  "historicalChanged": [],
+  "demoDefinitionV02": {
+    "path": "Demo definition v_0_2.md",
+    "beforeSha256": "2d118b1735abb5eeb14bb86fb9b8de63650754710649e503553622b8b09cdda7",
+    "afterSha256": "2d118b1735abb5eeb14bb86fb9b8de63650754710649e503553622b8b09cdda7"
+  },
+  "packageAndLockChanged": false,
+  "status": "PASS"
+}

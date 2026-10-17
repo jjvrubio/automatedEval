@@ -1,0 +1,322 @@
+--- S34/account-sourced-guest-h28.test.ts
++++ S35/historical/account-sourced-guest-h28.test.ts
+@@ -2,7 +2,8 @@
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -229,3 +230,7 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
+--- S34/composition-boundary-h21.test.ts
++++ S35/historical/composition-boundary-h21.test.ts
+@@ -2,7 +2,8 @@
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { describe, expect, it, vi } from "vitest";
+ import { resolveDemo } from "./bootstrap";
+@@ -156,3 +157,6 @@
+     throw new Error("Frozen-baseline observation changed: no initial falsifier. Review the protocol before advancing this harness.");
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
+--- S34/experience-stable-selection-h22.test.ts
++++ S35/historical/experience-stable-selection-h22.test.ts
+@@ -2,7 +2,8 @@
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -225,3 +226,6 @@
+     console.info("H22: SUPPORTED WITH QUALIFICATION; L2a/L2b selection verified; L1/L3/L5 observed, not repaired.");
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
+--- S34/explicit-introductory-framing-h32.test.ts
++++ S35/historical/explicit-introductory-framing-h32.test.ts
+@@ -1,6 +1,7 @@
+ /// <reference types="node" />
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { act, createElement } from "react";
+ import { createRoot } from "react-dom/client";
+@@ -316,3 +317,9 @@
+   };
+   if (process.env.H32_RECORD_PATH) writeFileSync(resolve(process.env.H32_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+ }, 60000);
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h34/mock-adapter"));
++vi.mock("./vertical-evaluation", () => import("./test-fixtures/h34/vertical-evaluation"));
+--- S34/explicit-subject-representation-h27.test.ts
++++ S35/historical/explicit-subject-representation-h27.test.ts
+@@ -3,7 +3,8 @@
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -245,3 +246,7 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
+--- S34/family-adventure-vertical.test.ts
++++ S35/historical/family-adventure-vertical.test.ts
+@@ -174,3 +174,8 @@
+     } finally { await act(async () => root.unmount()); }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h34/mock-adapter"));
+--- S34/operational-session-subject-h34.test.ts
++++ S35/historical/operational-session-subject-h34.test.ts
+@@ -1,6 +1,7 @@
+ /// <reference types="node" />
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { act, createElement } from "react";
+ import { createRoot } from "react-dom/client";
+@@ -52,7 +53,7 @@
+   phase, ...(input ? { input } : {}), snapshot, verticalCalls, verticalResults, jointEvaluationCalls, jointEvaluationResults,
+ });
+ 
+-it("H34 current App: existing session subject reference alone represents operational session across A/B and independent presentation perturbations", async () => {
++it("H34 historical S34 replay: existing session subject reference alone represents operational session across A/B and independent presentation perturbations", async () => {
+   const baselineBytes = readFileSync(resolve(evidenceDir, "session-34/baseline.json"));
+   const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+   const projectRoot = resolve(process.cwd(), "../../..");
+@@ -170,7 +171,7 @@
+       expect(resetFrame.homeDOM).toBe(frames[0].homeDOM);
+       expect(resetFrame.supervisionDOM).toBe(frames[0].supervisionDOM);
+       expect(resetFrame.activityDOM).toBe(frames[0].activityDOM);
+-      return { component: component === App ? "CURRENT APP H34" : "ARCHIVED APP S33", demoId: runtime.manifest.demoId,
++      return { component: component === App ? "ARCHIVED APP S34" : "ARCHIVED APP S33", demoId: runtime.manifest.demoId,
+         scenario: clone(runtime.scenario), script: clone(runtime.script), brand: clone(runtime.brand),
+         frames, resetFrame, executedActions: clone(execute.mock.calls.map(([action]) => action)),
+       };
+@@ -303,7 +304,7 @@
+   expect(generic.map((g) => g.demoId).sort()).toEqual(["hospitality-stay", "retail-baseline"]);
+   const trace = {
+     session: 34, recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+-    method: "Current App createRoot/MemoryRouter/jsdom; public action clicks; real adapter; transparent evaluator spies; archived S33 App compared separately at every phase",
++    method: "Historical S34 App/runtime createRoot/MemoryRouter/jsdom; public action clicks; real adapter; transparent evaluator spies; archived S33 App compared separately at every phase",
+     baselineSha256: sha(baselineBytes), appSha256: sha(appSource),
+     harnessSha256: sha(readFileSync(resolve(process.cwd(), "src/demo-factory/operational-session-subject-h34.test.ts"))),
+     controls, sessionVariations, opaqueReadModelObservation: opaque, genericRegression: generic,
+@@ -312,5 +313,11 @@
+     accountClaim: "REMOVED AS UNSUPPORTED; no account/viewer/authentication relation introduced",
+     recurringPresentationPressure: "QUALIFIED BY H34 / NOT PROMOTED", nextPressure: "OBSERVED / NOT SELECTED; H35 NOT OPENED",
+   };
+-  if (process.env.H34_RECORD_PATH) writeFileSync(resolve(process.env.H34_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
++  if (process.env.H34_REPLAY_RECORD_PATH) writeFileSync(resolve(process.env.H34_REPLAY_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+ }, 60000);
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h34/mock-adapter"));
++vi.mock("./vertical-evaluation", () => import("./test-fixtures/h34/vertical-evaluation"));
+--- S34/operational-subject-status-h29.test.ts
++++ S35/historical/operational-subject-status-h29.test.ts
+@@ -2,7 +2,8 @@
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -237,3 +238,7 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
+--- S34/operational-supervision-subject-h33.test.ts
++++ S35/historical/operational-supervision-subject-h33.test.ts
+@@ -1,6 +1,7 @@
+ /// <reference types="node" />
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { act, createElement } from "react";
+ import { createRoot } from "react-dom/client";
+@@ -295,3 +296,9 @@
+   };
+   if (process.env.H33_REPLAY_RECORD_PATH) writeFileSync(resolve(process.env.H33_REPLAY_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+ }, 60000);
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h34/mock-adapter"));
++vi.mock("./vertical-evaluation", () => import("./test-fixtures/h34/vertical-evaluation"));
+--- S34/pre-delta-position-h30.test.ts
++++ S35/historical/pre-delta-position-h30.test.ts
+@@ -1,7 +1,8 @@
+ /// <reference types="node" />
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { expect, it, vi } from "vitest";
+ import { resolveDemo } from "./bootstrap";
+@@ -61,3 +62,7 @@
+     nullMeaning: "absent existing affordance; not a runtime sentinel", rows,
+   }, null, 2) + "\n", { flag: "wx" });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
+--- S34/script-bound-activity-h25.test.ts
++++ S35/historical/script-bound-activity-h25.test.ts
+@@ -3,7 +3,8 @@
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -306,3 +307,7 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
+--- S34/script-bound-journey-h30.test.ts
++++ S35/historical/script-bound-journey-h30.test.ts
+@@ -1,7 +1,8 @@
+ /// <reference types="node" />
+ import { historicalH31Path } from "./test-fixtures/h31/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, expect, it, vi } from "vitest";
+ import { MockDataAdapter, projectSnapshot } from "@/demo/mock-adapter";
+@@ -312,3 +313,9 @@
+   });
+   if (process.env.H30_RECORD_PATH) writeFileSync(resolve(process.env.H30_RECORD_PATH), JSON.stringify(observations, null, 2) + "\n", { flag: "wx" });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h34/mock-adapter"));
++vi.mock("./vertical-evaluation", () => import("./test-fixtures/h34/vertical-evaluation"));
+--- S34/situated-activity-provenance-h24.test.ts
++++ S35/historical/situated-activity-provenance-h24.test.ts
+@@ -3,7 +3,8 @@
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { defaultDemoCatalogs, resolveDemo } from "./bootstrap";
+@@ -171,3 +172,6 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
+--- S34/situated-evaluation-context-h23.test.ts
++++ S35/historical/situated-evaluation-context-h23.test.ts
+@@ -3,7 +3,8 @@
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+@@ -271,3 +272,6 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
+--- S34/situated-guest-provenance-h26.test.ts
++++ S35/historical/situated-guest-provenance-h26.test.ts
+@@ -3,7 +3,8 @@
+ import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+-import { readFileSync, writeFileSync } from "node:fs";
++import { writeFileSync } from "node:fs";
++import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+ import { resolve } from "node:path";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { resolveDemo } from "./bootstrap";
+@@ -165,3 +166,7 @@
+     }
+   });
+ });
++
++// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
++// Existing earlier mocks retain precedence; current cumulative coverage is H35.
++vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));

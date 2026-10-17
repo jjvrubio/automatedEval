@@ -1,0 +1,83 @@
+{
+  "session": 37,
+  "verifiedAt": "2026-09-21T15:22:09.688Z",
+  "baselineFiles": 454,
+  "unchangedCount": 447,
+  "authorizedChangedFiles": [
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/artifacts.ts",
+      "before": "96e14628e93f2da9bd50da7c5f71c5f4d5db048960eb20659d4452a035518d53",
+      "after": "14f7f467ee437f2d761998d5dbe9f4ad03e587286990eec22802a8f3835d6a7a",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts",
+      "before": "19b8dbb4571268a4513251212616d19bba324d0f8764eaed74ccb598864cb97c",
+      "after": "7e78a81d75b3c01561dff199a453c515418af622ca423968100ec5e90ad18a0d",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/experience-sourced-guest-name-h35.test.ts",
+      "before": "39b1ce7285bc28f910e4bd55ded87453bef24e1a8d7e42c9fee28201790b1e27",
+      "after": "60b75d402e14a8f9ec134ea85c4f773fb51cfd1ac7a679d9ca07c1420c061486",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/experience-sourced-guest-name-h35.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts",
+      "before": "13a5e5050b1fbfd41bfc460f58b9a9324e1a14512f5900c5a38f2d5bf4c4eccd",
+      "after": "0a4c8be4fbb9918640606d257c8c0018b8c263d86d14382bdbe4085a909a9620",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/explicit-introductory-framing-h32.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts",
+      "before": "4d3ee91cfced91f74e6fbce08198b42b4fe4782296871793b5d775a58c8726f4",
+      "after": "a52cb487917c2fb1468210a323eac163cbfc14a6e1f886be6721c02a2b4a9df2",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-session-subject-h34.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts",
+      "before": "5d39c9ba3455dad3340bbff04849041eadd28513121e2915a52ad1323542463b",
+      "after": "b84ec346528b5ae02edc252cf5027f21fc2845ae98a5de97a0d3d7ed361acfdc",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-supervision-subject-h33.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts",
+      "before": "5175c235e63c4d50999bad8d52b3617c09bb5352619841bdf3fe5d0ec7c4d9f6",
+      "after": "110223057597d8d74908bcb730b8df10ca160e509233aafd224430473d1ac9d2",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts.txt"
+    }
+  ],
+  "unexpectedChanges": [],
+  "historicalS36FilesUnchanged": 9,
+  "exactArchivedSourceRoutes": 7,
+  "productDelta": [
+    {
+      "composition": "A",
+      "id": "evidence-b-p2",
+      "before": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+      "after": "Hallazgo atribuido al huésped 2."
+    },
+    {
+      "composition": "A",
+      "id": "evidence-a-p1",
+      "before": "Hallazgo aportado por ti.",
+      "after": "Hallazgo registrado."
+    },
+    {
+      "composition": "B",
+      "id": "evidence-costa-b-p2",
+      "before": "Hallazgo atribuido a Mateo, registrado desde la cuenta de Inés.",
+      "after": "Hallazgo atribuido a Mateo."
+    },
+    {
+      "composition": "B",
+      "id": "evidence-costa-a-p1",
+      "before": "Hallazgo aportado por Inés.",
+      "after": "Hallazgo registrado."
+    }
+  ],
+  "testsAndInfrastructureCountedSeparately": true,
+  "AppByteIdentical": true,
+  "guardsContractsEvaluatorsFixturesManifestsByteIdentical": true,
+  "ArchitectureADR_TES_PSC_unchanged": true
+}

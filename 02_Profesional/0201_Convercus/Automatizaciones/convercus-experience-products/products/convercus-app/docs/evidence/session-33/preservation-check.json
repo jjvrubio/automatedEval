@@ -1,0 +1,39 @@
+{
+  "session": 33,
+  "baselineFiles": 400,
+  "unchangedFiles": 394,
+  "applicationChanged": [
+    "products/convercus-app/prototype/src/app/App.tsx"
+  ],
+  "historicalHarnessChanged": [
+    "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts"
+  ],
+  "metadataDrift": [
+    {
+      "path": ".DS_Store",
+      "before": "2bce4730cda0aa42399ee7526d40b649d2e40520c2db43cbe8792c39be448ffe",
+      "after": "3bb7228846af8a3d685c40ef76fdb7bc6236029db41f21242419bfd424581aa9"
+    },
+    {
+      "path": "products/.DS_Store",
+      "before": "b458ebfe707e56afa15446f96625aebd854ad95bcca34c85191f1471a7689522",
+      "after": "d5117888e832de6de4bc6ad61847098880a1f46b72b9573d24962343e40d6774"
+    },
+    {
+      "path": "products/convercus-app/.DS_Store",
+      "before": "8f2f1deb69c669e164598508d52150243db408aef8a0ba6d489f39d1a945451f",
+      "after": "75316aa99dd91f2bd43c634810173739808560a4592586d7069dd98740d70b4f"
+    },
+    {
+      "path": "products/convercus-app/prototype/.DS_Store",
+      "before": "af48dad82402eff44d0ea75122ab512b146e9a53a6fbac8756c64dc102e5c797",
+      "after": "95527c95eb9b4540b043e8357566f291b7babfcfebcff0416e3eef6b8e536277"
+    }
+  ],
+  "unexpectedSourceChanges": [],
+  "missingFiles": [],
+  "byteIdenticalArchiveByOriginalPath": {
+    "products/convercus-app/prototype/src/app/App.tsx": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h32/App.tsx",
+    "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h32/explicit-introductory-framing-h32.test.ts.txt"
+  }
+}

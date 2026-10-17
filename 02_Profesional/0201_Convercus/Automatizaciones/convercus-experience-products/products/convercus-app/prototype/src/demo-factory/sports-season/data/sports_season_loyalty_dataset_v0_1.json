@@ -1,0 +1,305 @@
+{
+  "dataset": {
+    "dataset_id": "CDF-SPORTS-SEASON-LOYALTY-DATASET",
+    "version": "0.1",
+    "lang": "es",
+    "currency": "EUR",
+    "source": "fixture",
+    "basis_transaction_dataset": "sports_season_transactions_v0_1.csv",
+    "purpose": "Estado de fidelización y contenido Self Service situado para Sports Season / Brisa Sport.",
+    "notes": [
+      "Los datos son ficticios y deterministas.",
+      "El contrafactual de P01 no modifica su estado real de fidelización.",
+      "Las reglas son situadas para esta demo y no representan reglas productivas generales de Convercus."
+    ]
+  },
+  "program": {
+    "program_id": "BRISA-CLUB",
+    "name": "Brisa Club",
+    "points_rule": {
+      "rule_set_version": "sports-season-demo-0.1",
+      "eligible_currency": "EUR",
+      "points_per_full_eur": 1,
+      "calculation_basis": "aggregate_eligible_gross_spend",
+      "rounding": "floor",
+      "eligible_channels": [
+        "store",
+        "web",
+        "app"
+      ],
+      "eligible_categories": "all_categories_in_transaction_fixture"
+    },
+    "levels": [
+      {
+        "level_id": "BASE",
+        "name": "Base",
+        "min_points": 0,
+        "max_points": 299,
+        "benefits": [
+          "Noticias del club",
+          "Acceso a Experiences abiertas"
+        ]
+      },
+      {
+        "level_id": "ACTIVE",
+        "name": "Active",
+        "min_points": 300,
+        "max_points": 599,
+        "benefits": [
+          "Ventajas del nivel Base",
+          "Acceso anticipado a colecciones seleccionadas",
+          "Cupón de nivel del 10% en equipamiento deportivo seleccionado"
+        ]
+      },
+      {
+        "level_id": "PRO",
+        "name": "Pro",
+        "min_points": 600,
+        "max_points": null,
+        "benefits": [
+          "Ventajas del nivel Active",
+          "Cupón de nivel del 15% en equipamiento running seleccionado",
+          "Acceso preferente a sesiones de mejora",
+          "Invitaciones a encuentros deportivos seleccionados"
+        ]
+      }
+    ]
+  },
+  "loyalty_states": [
+    {
+      "person_id": "P01",
+      "program_id": "BRISA-CLUB",
+      "membership_id": null,
+      "membership_status": "non_member",
+      "joined_at": null,
+      "points_balance": null,
+      "level": null,
+      "source": "fixture"
+    },
+    {
+      "person_id": "P02",
+      "program_id": "BRISA-CLUB",
+      "membership_id": "BRISA-M-00042",
+      "membership_status": "active",
+      "joined_at": "2025-11-15",
+      "points_balance": 731,
+      "level": {
+        "level_id": "PRO",
+        "name": "Pro"
+      },
+      "source": "fixture"
+    },
+    {
+      "person_id": "P03",
+      "program_id": "BRISA-CLUB",
+      "membership_id": null,
+      "membership_status": "non_member",
+      "joined_at": null,
+      "points_balance": null,
+      "level": null,
+      "source": "fixture"
+    }
+  ],
+  "commercial_summaries": [
+    {
+      "person_id": "P01",
+      "transaction_count": 8,
+      "gross_spend": 511.75,
+      "currency": "EUR",
+      "basis_transaction_ids": [
+        "TX-P01-001",
+        "TX-P01-002",
+        "TX-P01-003",
+        "TX-P01-004",
+        "TX-P01-005",
+        "TX-P01-006",
+        "TX-P01-007",
+        "TX-P01-008"
+      ],
+      "source": "derived"
+    },
+    {
+      "person_id": "P02",
+      "transaction_count": 8,
+      "gross_spend": 731.2,
+      "currency": "EUR",
+      "basis_transaction_ids": [
+        "TX-P02-001",
+        "TX-P02-002",
+        "TX-P02-003",
+        "TX-P02-004",
+        "TX-P02-005",
+        "TX-P02-006",
+        "TX-P02-007",
+        "TX-P02-008"
+      ],
+      "source": "derived"
+    }
+  ],
+  "loyalty_counterfactuals": [
+    {
+      "counterfactual_id": "CF-P01-2026-09",
+      "person_id": "P01",
+      "program_id": "BRISA-CLUB",
+      "basis_transaction_ids": [
+        "TX-P01-001",
+        "TX-P01-002",
+        "TX-P01-003",
+        "TX-P01-004",
+        "TX-P01-005",
+        "TX-P01-006",
+        "TX-P01-007",
+        "TX-P01-008"
+      ],
+      "basis_amount": 511.75,
+      "currency": "EUR",
+      "hypothetical_points": 511,
+      "hypothetical_level": {
+        "level_id": "ACTIVE",
+        "name": "Active"
+      },
+      "hypothetical_benefits": [
+        "Acceso anticipado a colecciones seleccionadas",
+        "Cupón de nivel del 10% en equipamiento deportivo seleccionado"
+      ],
+      "rule_set_version": "sports-season-demo-0.1",
+      "calculated_at": "2026-09-25T10:00:00+02:00",
+      "source": "derived",
+      "display_disclaimer": "Simulación: estos puntos, nivel y beneficios no han sido obtenidos realmente."
+    }
+  ],
+  "coupons": [
+    {
+      "coupon_id": "CP-P02-RUN15",
+      "person_id": "P02",
+      "title": "15% en equipamiento running seleccionado",
+      "status": "available",
+      "valid_from": "2026-09-01",
+      "valid_until": "2026-10-31",
+      "origin": "tier_benefit",
+      "source": "fixture"
+    },
+    {
+      "coupon_id": "CP-P02-SESSION",
+      "person_id": "P02",
+      "title": "Invitación a sesión de mejora 10K",
+      "status": "available",
+      "valid_from": "2026-09-15",
+      "valid_until": "2026-11-15",
+      "origin": "tier_benefit",
+      "source": "fixture"
+    }
+  ],
+  "badges": [
+    {
+      "badge_id": "BG-P02-CONSISTENCY",
+      "person_id": "P02",
+      "name": "Constancia deportiva",
+      "awarded_at": "2026-06-30T18:00:00+02:00",
+      "origin": "loyalty_program",
+      "source": "fixture"
+    },
+    {
+      "badge_id": "BG-P02-MULTISPORT",
+      "person_id": "P02",
+      "name": "Explorador multideporte",
+      "awarded_at": "2026-08-20T18:00:00+02:00",
+      "origin": "loyalty_program",
+      "source": "fixture"
+    }
+  ],
+  "news": [
+    {
+      "news_id": "NEWS-001",
+      "title": "Nueva temporada de eventos Brisa Sport",
+      "summary": "Carrera, vela y vóley playa abren la nueva temporada de actividades de la comunidad.",
+      "published_at": "2026-09-05T09:00:00+02:00",
+      "status": "published",
+      "source": "fixture"
+    },
+    {
+      "news_id": "NEWS-002",
+      "title": "Guía de preparación para tu próximo 10K",
+      "summary": "Consejos de preparación, hidratación y equipamiento para afrontar una carrera de 10 kilómetros.",
+      "published_at": "2026-09-12T09:00:00+02:00",
+      "status": "published",
+      "source": "fixture"
+    },
+    {
+      "news_id": "NEWS-003",
+      "title": "Colección técnica de otoño: acceso anticipado",
+      "summary": "Los miembros Active y Pro pueden descubrir antes una selección de novedades técnicas.",
+      "published_at": "2026-09-20T09:00:00+02:00",
+      "status": "published",
+      "source": "fixture"
+    }
+  ],
+  "experiences": [
+    {
+      "experience_id": "EXP-RUN-10K",
+      "person_id": "P02",
+      "name": "Sesión de mejora 10K",
+      "status": "open",
+      "person_state": "available",
+      "eligibility": "PRO",
+      "source": "fixture"
+    },
+    {
+      "experience_id": "EXP-SAIL-TECH",
+      "person_id": "P02",
+      "name": "Clínica de técnica de vela",
+      "status": "open",
+      "person_state": "available",
+      "eligibility": "PRO",
+      "source": "fixture"
+    },
+    {
+      "experience_id": "EXP-VOLLEY-SUNSET",
+      "person_id": "P02",
+      "name": "Vóley playa Sunset Session",
+      "status": "open",
+      "person_state": "enrolled",
+      "eligibility": "PRO",
+      "source": "fixture"
+    },
+    {
+      "experience_id": "EXP-RUN-OPEN",
+      "person_id": "P01",
+      "name": "Entrenamiento abierto de carrera urbana",
+      "status": "open",
+      "person_state": "available",
+      "eligibility": "OPEN",
+      "source": "fixture"
+    }
+  ],
+  "self_service_projection": {
+    "P01": {
+      "show": [
+        "commercial_history",
+        "non_member_status",
+        "loyalty_counterfactual",
+        "open_experiences",
+        "news",
+        "join_program_opportunity"
+      ]
+    },
+    "P02": {
+      "show": [
+        "commercial_history",
+        "points_balance",
+        "level",
+        "badges",
+        "coupons",
+        "experiences",
+        "news"
+      ]
+    },
+    "P03": {
+      "show": [
+        "non_customer_status",
+        "news",
+        "event_entry_opportunity"
+      ]
+    }
+  }
+}

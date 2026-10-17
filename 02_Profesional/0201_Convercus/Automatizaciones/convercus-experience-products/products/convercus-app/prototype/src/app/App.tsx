@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
-import { appConfig } from "@/config/app-config";
-import { brand, brandAssets } from "@/config/brand";
-import {
-  MockDataAdapter,
-  type ActivityItem,
-  type AppSnapshot,
-  type Coupon,
-} from "@/demo/mock-adapter";
+import type {
+  ActivityItem,
+  AppSnapshot,
+  CouponReadModel as Coupon,
+  ResolvedDemoRuntime,
+} from "@/demo-factory/contracts";
 import { FeedbackState } from "@/ui/FeedbackState";
 import { Icon, type IconName } from "@/ui/Icon";
-
-const adapter = new MockDataAdapter();
+import type { SportsSeasonResolvedRuntime } from "@/demo-factory/sports-season/contracts";
+import { SportsSeasonApp } from "./SportsSeasonApp";
 
 function formatPoints(points: number): string {
   return new Intl.NumberFormat("es-ES").format(points);
@@ -98,8 +96,51 @@ function ActivityList({ items, compact = false }: { items: ActivityItem[]; compa
   );
 }
 
-function HomePage({ snapshot }: { snapshot: AppSnapshot }) {
+function HomePage({
+  snapshot,
+  guestAction,
+  guestActionLabel,
+  brandName,
+  introductoryFraming,
+}: {
+  snapshot: AppSnapshot;
+  guestAction: () => void;
+  guestActionLabel?: string;
+  brandName: ResolvedDemoRuntime["brand"]["name"];
+  introductoryFraming?: string;
+}) {
   const { member, coupons, activity, news } = snapshot;
+
+  if (snapshot.guestPerspective) {
+    const adventure = snapshot.guestPerspective;
+    return (
+      <main id="main-content" className="adventure-page">
+        <header className="adventure-heading">
+          <p className="eyebrow">Mi aventura · {brandName}</p>
+          <h1 id="adventure-title">{adventure.huntName}</h1>
+          {introductoryFraming && <p>{introductoryFraming}</p>}
+        </header>
+        <section className="adventure-next" aria-labelledby="next-action-title">
+          <p className="eyebrow" id="next-action-title">{guestActionLabel ? "Tu siguiente paso" : "Resultado de la aventura"}</p>
+          <p className="adventure-message" role="status">{adventure.message}</p>
+          {guestActionLabel && <button className="secondary-action" type="button" onClick={guestAction}>{guestActionLabel}<Icon name="arrow" size={18} /></button>}
+          <p className="adventure-count">{adventure.discoveredClueCount} {adventure.discoveredClueCount === 1 ? "pista descubierta" : "pistas descubiertas"}</p>
+        </section>
+        <section aria-labelledby="guests-title">
+          <h2 id="guests-title">Quién puede explorar</h2>
+          <div className="adventure-guests">
+            {adventure.subjects.map((subject) => (
+              <article className="adventure-guest" key={subject.id}>
+                <h3>{subject.label}</h3>
+                <p>{subject.status} · {subject.clueCount} {subject.clueCount === 1 ? "pista aportada" : "pistas aportadas"}</p>
+              </article>
+            ))}
+          </div>
+          <p className="adventure-session">{adventure.sessionLabel}</p>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main id="main-content" className="page-stack home-page">
@@ -137,12 +178,14 @@ function HomePage({ snapshot }: { snapshot: AppSnapshot }) {
         </Link>
       </section>
 
+
       <section aria-labelledby="quick-title">
         <h2 className="sr-only" id="quick-title">Accesos rápidos</h2>
         <div className="quick-actions">
           <Link to="/benefits"><span><Icon name="ticket" size={23} /></span>Mis cupones</Link>
           <Link to="/activity"><span><Icon name="activity" size={23} /></span>Actividad</Link>
           <Link to="/profile"><span><Icon name="user" size={23} /></span>Mi perfil</Link>
+          <Link reloadDocument={!snapshot.guestPerspective} to="/?demo=hospitality-family-adventure"><span><Icon name="compass" size={23} /></span>Búsqueda del tesoro</Link>
         </div>
       </section>
 
@@ -253,22 +296,25 @@ function ProfilePage({ member }: { member: AppSnapshot["member"] }) {
   );
 }
 
-function IPhoneShowcase() {
+function IPhoneShowcase({ runtime }: { runtime: ResolvedDemoRuntime | SportsSeasonResolvedRuntime }) {
   return (
-    <main className="showcase-page">
+    <main className={`showcase-page${"kind" in runtime ? " showcase-page--sports" : ""}`}>
       <header className="showcase-toolbar">
         <div>
           <p className="eyebrow">Modo de presentación</p>
-          <h1>Convercus App en iPhone</h1>
+          <h1>{runtime.brand.name} en iPhone</h1>
         </div>
-        <Link className="showcase-close" to="/">
+        <Link className="showcase-close" to={`/?demo=${encodeURIComponent(runtime.manifest.demoId)}`}>
           <Icon name="close" size={19} />
           <span>Salir</span>
         </Link>
       </header>
 
-      <section className="iphone-stage" aria-label="Simulación visual de Convercus App en un iPhone">
-        <div className="iphone-device">
+      <section
+        className="iphone-stage"
+        aria-label={`Simulación visual de ${runtime.brand.name} en un iPhone`}
+      >
+        <div className={`iphone-device${"kind" in runtime ? " iphone-device--sports" : ""}`}>
           <span className="iphone-device__speaker" aria-hidden="true" />
           <span className="iphone-device__button iphone-device__button--action" aria-hidden="true" />
           <span className="iphone-device__button iphone-device__button--volume-up" aria-hidden="true" />
@@ -276,22 +322,74 @@ function IPhoneShowcase() {
           <span className="iphone-device__button iphone-device__button--power" aria-hidden="true" />
           <iframe
             className="iphone-device__screen"
-            src="/"
-            title="Convercus App — vista iPhone"
+            src={`/?demo=${encodeURIComponent(runtime.manifest.demoId)}`}
+            title={`${runtime.brand.name} — vista iPhone`}
           />
           <span className="iphone-device__home-indicator" aria-hidden="true" />
         </div>
       </section>
 
       <p className="showcase-note">
-        Simulación visual a 393 × 852 px. La validación en un iPhone real se realizará en A5.
+        Vista móvil interactiva. Desplázate dentro de la pantalla para recorrer la demo.
       </p>
     </main>
   );
 }
 
-function SystemPage() {
+function SystemPage({
+  runtime,
+  snapshot,
+  actionError,
+  onPresenterAction,
+}: {
+  runtime: ResolvedDemoRuntime;
+  snapshot: AppSnapshot;
+  actionError?: string;
+  onPresenterAction: () => void;
+}) {
+  if (snapshot.supervisionPerspective) {
+    const supervision = snapshot.supervisionPerspective;
+    return (
+      <main id="main-content" className="adventure-page">
+        <header className="adventure-heading">
+          <p className="eyebrow">Supervisión</p>
+          <h1 id="supervision-title">Estado de la aventura</h1>
+          <p>Observa lo que cambia al actuar en «Mi aventura». Cambiar de vista conserva la sesión.</p>
+        </header>
+        <section className="adventure-guests" aria-label="Sujetos existentes">
+          {supervision.subjects.map((subject) => (
+            <article className="adventure-guest" key={subject.id}>
+              <h2>{subject.id}</h2>
+              <p>{subject.id} · exists: {String(subject.exists)} · {subject.operationalState} · Evidence: {subject.evidenceCount}</p>
+            </article>
+          ))}
+        </section>
+        <section className="system-panel" aria-label="Evaluación compartida">
+          <dl className="system-list">
+            <div><dt>Sujeto de sesión operativa</dt><dd>{supervision.sessionSubjectRef}</dd></div>
+            <div><dt>Criterio K</dt><dd>A AND (B OR C)</dd></div>
+            <div><dt>Evidence recibida</dt><dd>{supervision.evidence.length}</dd></div>
+            <div><dt>Admisibilidad conjunta</dt><dd>{supervision.jointAdmissibility}</dd></div>
+            <div><dt>Suficiencia K</dt><dd>{supervision.sufficiency}</dd></div>
+            <div><dt>Afirmación derivada</dt><dd>{supervision.derivedClaim}</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="evidence-title">
+          <h2 id="evidence-title">Evidence y atribución</h2>
+          {supervision.evidence.length === 0 ? <p>Todavía no hay Evidence. Alistarse o activar a un huésped no aporta pistas.</p> : (
+            <ul className="adventure-evidence">{supervision.evidence.map((item) => <li key={item.id}>{item.id} · {item.subjectRefs.join(", ")} · {item.provenance}</li>)}</ul>
+          )}
+        </section>
+      </main>
+    );
+  }
   const isOnline = navigator.onLine;
+  const capabilityStatuses = [...new Set(runtime.capabilities.map(({ status }) => status))];
+  const scriptStep = runtime.script?.steps.find(
+    ({ action }) => action.actionId === snapshot.scenario?.availableActionId,
+  ) ?? runtime.script?.steps[0];
+  const actionAvailable =
+    scriptStep?.action.actionId === snapshot.scenario?.availableActionId;
 
   return (
     <main id="main-content" className="page-stack">
@@ -302,13 +400,33 @@ function SystemPage() {
       </header>
       <section className="system-panel" aria-label="Estado del sistema">
         <dl className="system-list">
-          <div><dt>Marca</dt><dd>{brand.name}</dd></div>
-          <div><dt>Datos</dt><dd><span className="technical-badge">{appConfig.dataMode}</span></dd></div>
+          <div><dt>Demo</dt><dd>{runtime.manifest.demoId}</dd></div>
+          <div><dt>Marca</dt><dd>{runtime.brand.name}</dd></div>
+          <div><dt>Datos</dt><dd><span className="technical-badge">{capabilityStatuses.join(" + ")}</span></dd></div>
           <div><dt>Red</dt><dd>{isOnline ? "disponible" : "sin conexión"}</dd></div>
-          <div><dt>Baseline</dt><dd>{appConfig.tesBaseline}</dd></div>
+          <div><dt>Baseline</dt><dd>{runtime.experience?.tesBaseline ?? "No aplica a esta demo"}</dd></div>
           <div><dt>Futura</dt><dd>bloqueada hasta verificar licencia</dd></div>
         </dl>
       </section>
+      {scriptStep && snapshot.scenario && (
+        <section className="system-panel" aria-labelledby="presenter-action-title">
+          <p className="eyebrow">Control de presentación</p>
+          <h2 id="presenter-action-title">Escenario actual</h2>
+          <dl className="system-list">
+            <div><dt>Checkpoint</dt><dd>{snapshot.scenario.checkpoint}</dd></div>
+            <div><dt>Resultado esperado</dt><dd>{scriptStep.expectedCheckpoint}</dd></div>
+          </dl>
+          <button
+            className="secondary-action"
+            type="button"
+            disabled={!actionAvailable}
+            onClick={onPresenterAction}
+          >
+            {scriptStep.presenterLabel}
+          </button>
+          {actionError && <p role="alert">{actionError}</p>}
+        </section>
+      )}
       <Link className="back-link" to="/profile"><Icon name="arrowBack" size={18} /> Volver al perfil</Link>
     </main>
   );
@@ -321,51 +439,102 @@ const navigation: { to: string; label: string; icon: IconName }[] = [
   { to: "/profile", label: "Perfil", icon: "user" },
 ];
 
-function AppShell({ snapshot }: { snapshot: AppSnapshot }) {
+function AppShell({
+  snapshot,
+  runtime,
+  actionError,
+  onPresenterAction,
+  onReset,
+}: {
+  snapshot: AppSnapshot;
+  runtime: ResolvedDemoRuntime;
+  actionError?: string;
+  onPresenterAction: () => void;
+  onReset: () => void;
+}) {
+  const guestActionLabel = runtime.script?.steps.find(({ action }) => action.actionId === snapshot.scenario?.availableActionId)?.presenterLabel;
+  const isAdventure = Boolean(snapshot.guestPerspective);
+  const demoSearch = `?demo=${runtime.manifest.demoId}`;
   return (
-    <div className="app-shell">
+    <div className={`app-shell${isAdventure ? " app-shell--adventure" : ""}`}>
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <header className="topbar">
-        <Link to="/" aria-label="Ir al inicio">
-          <img className="brand-logo" src={brandAssets.logoPrimaryUrl} alt="Convercus" />
+        <Link to={`/${demoSearch}`} aria-label="Ir al inicio">
+          <img
+            className="brand-logo"
+            src={runtime.brand.logoUrl}
+            alt={runtime.brand.name}
+          />
         </Link>
-        <Link className="profile-avatar" to="/profile" aria-label="Abrir perfil">
-          {snapshot.member.initials}
-        </Link>
+        {isAdventure ? <span className="adventure-account">Cuenta de {snapshot.member.name}</span> : (
+          <Link className="profile-avatar" to="/profile" aria-label="Abrir perfil">{snapshot.member.initials}</Link>
+        )}
       </header>
 
+      {isAdventure && (
+        <>
+          <nav className="adventure-nav" aria-label="Navegación de la aventura">
+            <NavLink to={`/${demoSearch}`} end>Mi aventura</NavLink>
+            <NavLink to={`/activity${demoSearch}`}>Actividad</NavLink>
+            <NavLink to={`/system${demoSearch}`}>Supervisión</NavLink>
+          </nav>
+          {actionError && <p className="adventure-error" role="alert">{actionError}</p>}
+        </>
+      )}
       <Routes>
-        <Route path="/" element={<HomePage snapshot={snapshot} />} />
+        <Route path="/" element={<HomePage snapshot={snapshot} guestAction={onPresenterAction} guestActionLabel={guestActionLabel} brandName={runtime.brand.name} introductoryFraming={runtime.script?.experimentalIntroductoryFraming} />} />
         <Route path="/benefits" element={<BenefitsPage coupons={snapshot.coupons} />} />
         <Route path="/activity" element={<ActivityPage activity={snapshot.activity} />} />
         <Route path="/profile" element={<ProfilePage member={snapshot.member} />} />
-        <Route path="/system" element={<SystemPage />} />
+        <Route
+          path="/system"
+          element={
+            <SystemPage
+              runtime={runtime}
+              snapshot={snapshot}
+              actionError={actionError}
+              onPresenterAction={onPresenterAction}
+            />
+          }
+        />
         <Route path="*" element={<FeedbackState icon="compass" title="Esta página no existe" description="Vuelve al inicio para seguir explorando." action={{ label: "Ir al inicio", to: "/" }} />} />
       </Routes>
 
-      <nav className="bottom-nav" aria-label="Navegación principal">
+      {isAdventure ? (
+        <footer className="adventure-tools">
+          <p>Demo · hallazgos simulados</p>
+          <button className="text-link" type="button" onClick={onReset}>Reiniciar aventura</button>
+        </footer>
+      ) : <nav className="bottom-nav" aria-label="Navegación principal">
         {navigation.map(({ to, label, icon }) => (
           <NavLink to={to} end={to === "/"} key={to}>
             <Icon name={icon} size={22} />
             <span>{label}</span>
           </NavLink>
         ))}
-      </nav>
+      </nav>}
     </div>
   );
 }
 
-export function App() {
+export function DemoApp({ runtime }: { runtime: ResolvedDemoRuntime | SportsSeasonResolvedRuntime }) {
+  const location = useLocation();
+  if ("kind" in runtime) return <SportsSeasonApp runtime={runtime} surface={location.pathname === "/showcase" ? "app" : "web"} />;
+  return <App runtime={runtime} />;
+}
+
+export function App({ runtime }: { runtime: ResolvedDemoRuntime }) {
   const location = useLocation();
   const [snapshot, setSnapshot] = useState<AppSnapshot>();
   const [error, setError] = useState(false);
+  const [actionError, setActionError] = useState<string>();
 
   useEffect(() => {
-    adapter.getSnapshot().then(setSnapshot).catch(() => setError(true));
-  }, []);
+    runtime.provider.getSnapshot().then(setSnapshot).catch(() => setError(true));
+  }, [runtime.provider]);
 
   if (location.pathname === "/showcase") {
-    return <IPhoneShowcase />;
+    return <IPhoneShowcase runtime={runtime} />;
   }
 
   if (error) {
@@ -376,5 +545,38 @@ export function App() {
     return <FeedbackState loading title="Preparando tu espacio" description="Estamos cargando tus beneficios." />;
   }
 
-  return <AppShell snapshot={snapshot} />;
+  const runPresenterAction = async () => {
+    const step = runtime.script?.steps.find(
+      ({ action }) => action.actionId === snapshot.scenario?.availableActionId,
+    );
+    if (!step) return;
+
+    setActionError(undefined);
+    try {
+      setSnapshot(await runtime.provider.executeAction(step.action));
+    } catch (actionFailure) {
+      setActionError(
+        actionFailure instanceof Error
+          ? actionFailure.message
+          : "No se pudo ejecutar la acción de presentación.",
+      );
+    }
+  };
+
+  return (
+    <AppShell
+      snapshot={snapshot}
+      runtime={runtime}
+      actionError={actionError}
+      onPresenterAction={runPresenterAction}
+      onReset={async () => {
+        setActionError(undefined);
+        try {
+          setSnapshot(await runtime.provider.reset());
+          document.getElementById("main-content")?.scrollIntoView?.({ block: "start" });
+        }
+        catch { setActionError("No se pudo reiniciar la aventura."); }
+      }}
+    />
+  );
 }

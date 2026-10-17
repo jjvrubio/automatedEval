@@ -19,7 +19,7 @@ tes_baseline: "TES_CONVERCUS_BUILDER_2026_07_R1"
 
 ## Estado
 
-Borrador v0.3. Es una construcción de producto destinada a convertir una petición comercial en un paquete de demo reproducible. No sustituye al contrato semántico ni presupone capacidades técnicas no verificadas.
+Borrador v0.4. Es una construcción de producto destinada a convertir una petición comercial en un paquete de demo reproducible. No sustituye al contrato semántico ni presupone capacidades técnicas no verificadas.
 
 ## Principio
 

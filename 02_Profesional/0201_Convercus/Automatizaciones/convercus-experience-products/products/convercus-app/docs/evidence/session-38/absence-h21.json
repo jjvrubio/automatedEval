@@ -1,0 +1,282 @@
+{
+  "experiment": "H21 — Composition Boundary / Factory Reusability",
+  "recordedAt": "2026-09-21T16:36:17.856Z",
+  "frozenBaselineSha256": "b21a44cc80cfe3d64ce753a5120bd4229a53938cddc2068f1d608d83d0570eb1",
+  "sharedFilesUnchanged": true,
+  "bootstrapBehaviorUnchanged": true,
+  "compositionA": {
+    "demoId": "hospitality-family-adventure",
+    "brand": "Aurora Stay",
+    "brandRef": "brand:aurora-stay@1",
+    "fixtureRef": "fixture:hospitality-stay@1",
+    "scenarioRef": "scenario:family-adventure@1",
+    "scenarioId": "family-adventure",
+    "scriptRef": "script:family-adventure@1",
+    "experienceRef": "experience:family-adventure@1",
+    "contexts": [
+      {
+        "type": "property",
+        "id": "aurora-resort"
+      },
+      {
+        "type": "booking",
+        "id": "AS-8842"
+      },
+      {
+        "type": "stay",
+        "id": "stay-AS-8842"
+      }
+    ],
+    "subjects": [
+      {
+        "type": "individual",
+        "id": "subject-p1",
+        "role": "guest"
+      },
+      {
+        "type": "individual",
+        "id": "subject-p2",
+        "role": "guest"
+      }
+    ],
+    "sessionSubjectRef": "subject-p1",
+    "initialSubjectStates": {
+      "subject-p1": "not-enlisted",
+      "subject-p2": "not-enabled"
+    }
+  },
+  "compositionB": {
+    "demoId": "hospitality-family-adventure-costa",
+    "brand": "Costa Clara Resort",
+    "brandRef": "brand:costa-clara@1",
+    "fixtureRef": "fixture:family-adventure-costa@1",
+    "scenarioRef": "scenario:family-adventure-costa@1",
+    "scenarioId": "family-adventure-costa",
+    "scriptRef": "script:family-adventure-costa@1",
+    "experienceRef": "experience:family-adventure@1",
+    "contexts": [
+      {
+        "type": "property",
+        "id": "costa-clara-resort"
+      },
+      {
+        "type": "booking",
+        "id": "CC-205"
+      },
+      {
+        "type": "stay",
+        "id": "stay-CC-205"
+      }
+    ],
+    "subjects": [
+      {
+        "type": "individual",
+        "id": "subject-p1",
+        "role": "guest"
+      },
+      {
+        "type": "individual",
+        "id": "subject-p2",
+        "role": "guest"
+      }
+    ],
+    "sessionSubjectRef": "subject-p1",
+    "initialSubjectStates": {
+      "subject-p1": "not-enlisted",
+      "subject-p2": "not-enabled"
+    }
+  },
+  "resolvedRuntimesDistinct": true,
+  "providersDistinct": true,
+  "providerImplementationSame": true,
+  "experienceSame": true,
+  "inputAction": "resolveDemo(B).provider.getSnapshot()",
+  "expected": "Initial guest and supervision perspectives for B, P1 not-enlisted, P2 not-enabled, no Evidence and no produced claim.",
+  "observed": {
+    "absentReadModels": [
+      "guestPerspective",
+      "supervisionPerspective"
+    ],
+    "initialA": {
+      "member": {
+        "id": "guest-lucia-vega",
+        "name": "Lucía",
+        "fullName": "Lucía Vega",
+        "initials": "LV",
+        "level": "Voyager",
+        "nextLevel": "Luminary",
+        "points": 3480,
+        "progress": 48,
+        "pointsToNextLevel": 520,
+        "memberSince": "enero de 2025"
+      },
+      "coupons": [
+        {
+          "id": "service-late-checkout",
+          "title": "Late check-out",
+          "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+          "validUntil": "Estancia actual",
+          "tag": "Aurora Lisboa",
+          "tone": "cyan",
+          "icon": "home"
+        },
+        {
+          "id": "service-breakfast",
+          "title": "Desayuno de bienvenida",
+          "description": "Una invitación para compartir con tus acompañantes.",
+          "validUntil": "Hasta el 13 sep",
+          "tag": "Para tu estancia",
+          "tone": "pink",
+          "icon": "sparkles"
+        }
+      ],
+      "news": [
+        {
+          "id": "news-lisbon-arrival",
+          "category": "Tu llegada",
+          "title": "Lisboa empieza en Aurora",
+          "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+        }
+      ],
+      "activity": [
+        {
+          "id": "stay-confirmed",
+          "title": "Estancia confirmada",
+          "description": "Aurora Lisboa · 12–15 septiembre.",
+          "occurredAt": "2026-09-01T10:20:00Z",
+          "displayDate": "1 sept, 10:20",
+          "provenance": "mocked",
+          "tone": "cyan",
+          "icon": "home"
+        },
+        {
+          "id": "service-selected",
+          "title": "Preferencia guardada",
+          "description": "La habitación se preparará con una cuna de viaje.",
+          "occurredAt": "2026-09-02T08:45:00Z",
+          "displayDate": "2 sept, 08:45",
+          "provenance": "mocked",
+          "tone": "pink",
+          "icon": "sparkles"
+        }
+      ],
+      "scenario": {
+        "checkpoint": "ready",
+        "availableActionId": "enlist-p1"
+      },
+      "guestPerspective": {
+        "huntName": "Aventura Familiar",
+        "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+        "subjects": [
+          {
+            "id": "subject-p1",
+            "label": "Tú · huésped 1",
+            "status": "Sin alistar",
+            "clueCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "label": "Huésped 2 · ya existe en esta estancia",
+            "status": "Sin habilitar",
+            "clueCount": 0
+          }
+        ],
+        "state": "ready",
+        "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+        "discoveredClueCount": 0
+      },
+      "supervisionPerspective": {
+        "sessionSubjectRef": "subject-p1",
+        "subjects": [
+          {
+            "id": "subject-p1",
+            "exists": true,
+            "operationalState": "not-enlisted",
+            "evidenceCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "exists": true,
+            "operationalState": "not-enabled",
+            "evidenceCount": 0
+          }
+        ],
+        "evidence": [],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted",
+        "derivedClaim": "not-produced"
+      }
+    },
+    "initialB": {
+      "member": {
+        "id": "guest-ines-costa",
+        "name": "Inés",
+        "fullName": "Inés Costa",
+        "initials": "IC",
+        "level": "Voyager",
+        "nextLevel": "Luminary",
+        "points": 3480,
+        "progress": 48,
+        "pointsToNextLevel": 520,
+        "memberSince": "enero de 2025"
+      },
+      "coupons": [
+        {
+          "id": "costa-late-checkout",
+          "title": "Salida tranquila",
+          "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+          "validUntil": "Estancia actual",
+          "tag": "Costa Clara Resort",
+          "tone": "blue",
+          "icon": "home"
+        }
+      ],
+      "news": [
+        {
+          "id": "costa-adventure-introduction",
+          "category": "Tu estancia",
+          "title": "Inés y Mateo en Costa Clara",
+          "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+        }
+      ],
+      "activity": [
+        {
+          "id": "costa-stay-confirmed",
+          "title": "Estancia confirmada",
+          "description": "Costa Clara Resort · reserva CC-205.",
+          "occurredAt": "2026-09-01T10:20:00Z",
+          "displayDate": "1 sept, 10:20",
+          "provenance": "mocked",
+          "tone": "cyan",
+          "icon": "home"
+        }
+      ],
+      "scenario": {
+        "checkpoint": "ready",
+        "availableActionId": "enlist-p1"
+      }
+    }
+  },
+  "lastSuccessfulBoundary": "Both compositions resolve; distinct providers of the same implementation return generic initial snapshots with their own fixture data and initial action.",
+  "firstFailingBoundary": "B initial runtime snapshot -> guest/supervision read models",
+  "responsibleFile": "prototype/src/demo/mock-adapter.ts:81",
+  "guard": "scenario?.id === \"family-adventure\"",
+  "actionsExecuted": [],
+  "resetCalls": 0,
+  "stoppedBefore": "enlist P1 / Evidence / evaluation / presentation / interleaved isolation",
+  "isolationResult": "NOT REACHED beyond distinct provider instances",
+  "contextIntegrityResult": "DECLARED CONTEXTS DISTINCT; EVALUATION CONTEXT NOT REACHED",
+  "contentLeakageResult": "INITIAL GENERIC FIXTURE DATA DISTINCT; GUEST/SUPERVISION PRESENTATION NOT REACHED",
+  "executionConfirmed": [
+    "L2: projection selection gate"
+  ],
+  "inspectionOnly": [
+    "L1",
+    "L3",
+    "L4",
+    "L5",
+    "L2: evaluation selection gate at executeAction"
+  ],
+  "verdict": "FALSIFIED",
+  "stop": "FIRST MATERIAL FALSIFIER; NO SHARED MODIFICATION"
+}

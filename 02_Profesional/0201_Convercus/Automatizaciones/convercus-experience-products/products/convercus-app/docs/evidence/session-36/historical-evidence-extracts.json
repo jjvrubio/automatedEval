@@ -1,0 +1,717 @@
+{
+  "session": 36,
+  "method": "read immutable historical trace JSON and compare recorded values; NOT runtime execution in S36",
+  "sources": {
+    "25": {
+      "path": "products/convercus-app/docs/evidence/session-25/execution-trace.json",
+      "sha256": "4798c260453a6cb6cbf25ab4d6e76f7b69c649fd4c479e96ddc2ccea47308983"
+    },
+    "27": {
+      "path": "products/convercus-app/docs/evidence/session-27/execution-trace.json",
+      "sha256": "75c2af28bd43bc3c40f604a219a0c4b6a03d08f3c264d02e8605cc4044151f39"
+    },
+    "29": {
+      "path": "products/convercus-app/docs/evidence/session-29/execution-trace.json",
+      "sha256": "ccdb6aa4e4cde6585b47bddb8accd17f57d07ef576feea4be3631d9ff1a06c90"
+    },
+    "30": {
+      "path": "products/convercus-app/docs/evidence/session-30/execution-trace.json",
+      "sha256": "fb6e6e24590b4750c2d68e3635657d2ca5c14fedf661e11c9055bef73bd05838"
+    },
+    "35": {
+      "path": "products/convercus-app/docs/evidence/session-35/execution-trace.json",
+      "sha256": "176f1f2946f651a50d064a9f3270063631bd798a49fd4e341941ef890cd7789d"
+    }
+  },
+  "observations": [
+    {
+      "id": "H25-absence-A",
+      "historicalPaths": [
+        "25.controls[0].original",
+        "25.controls[0].absenceControls[2]"
+      ],
+      "result": {
+        "omitted": [
+          1,
+          3
+        ],
+        "allFramesExceptActivityEqual": true,
+        "originalFinalActivityCount": 4,
+        "withoutPresentationFinalActivityCount": 2,
+        "finalSP": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            }
+          ],
+          "evidence": [
+            {
+              "id": "evidence-a-p1",
+              "subjectRefs": [
+                "subject-p1"
+              ],
+              "type": "treasure_hunt.marker-a",
+              "provenance": "demo-control"
+            },
+            {
+              "id": "evidence-b-p2",
+              "subjectRefs": [
+                "subject-p2"
+              ],
+              "type": "treasure_hunt.marker-b",
+              "provenance": "demo-control"
+            }
+          ],
+          "jointAdmissibility": "established",
+          "sufficiency": "established",
+          "derivedClaim": "established"
+        }
+      }
+    },
+    {
+      "id": "H25-absence-B",
+      "historicalPaths": [
+        "25.controls[1].original",
+        "25.controls[1].absenceControls[2]"
+      ],
+      "result": {
+        "omitted": [
+          1,
+          3
+        ],
+        "allFramesExceptActivityEqual": true,
+        "originalFinalActivityCount": 3,
+        "withoutPresentationFinalActivityCount": 1,
+        "finalSP": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            }
+          ],
+          "evidence": [
+            {
+              "id": "evidence-costa-a-p1",
+              "subjectRefs": [
+                "subject-p1"
+              ],
+              "type": "treasure_hunt.marker-a",
+              "provenance": "demo-control"
+            },
+            {
+              "id": "evidence-costa-b-p2",
+              "subjectRefs": [
+                "subject-p2"
+              ],
+              "type": "treasure_hunt.marker-b",
+              "provenance": "demo-control"
+            }
+          ],
+          "jointAdmissibility": "established",
+          "sufficiency": "established",
+          "derivedClaim": "established"
+        }
+      }
+    },
+    {
+      "id": "H27-0",
+      "historicalPaths": [
+        "27.controls[0].absence.frames[0]",
+        "27.controls[0].unknown.frames[0]"
+      ],
+      "result": {
+        "absentLabelsSubjects": [
+          {
+            "id": "subject-p1",
+            "label": "",
+            "status": "Sin alistar",
+            "clueCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "label": "",
+            "status": "Sin habilitar",
+            "clueCount": 0
+          }
+        ],
+        "unknownPresentationSubjects": [
+          {
+            "id": "subject-p1",
+            "label": "",
+            "status": "Sin alistar",
+            "clueCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "label": "Huésped 2",
+            "status": "Sin habilitar",
+            "clueCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "H27-1",
+      "historicalPaths": [
+        "27.controls[1].absence.frames[0]",
+        "27.controls[1].unknown.frames[0]"
+      ],
+      "result": {
+        "absentLabelsSubjects": [
+          {
+            "id": "subject-p1",
+            "label": "",
+            "status": "Sin alistar",
+            "clueCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "label": "",
+            "status": "Sin habilitar",
+            "clueCount": 0
+          }
+        ],
+        "unknownPresentationSubjects": [
+          {
+            "id": "subject-p1",
+            "label": "",
+            "status": "Sin alistar",
+            "clueCount": 0
+          },
+          {
+            "id": "subject-p2",
+            "label": "Mateo",
+            "status": "Sin habilitar",
+            "clueCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "H29-mapping",
+      "historicalPaths": [
+        "29.projectorNegativeControls"
+      ],
+      "result": {
+        "scope": "isolated counterfactual projector inputs only",
+        "fixedStates": {
+          "subject-p1": "enabled",
+          "subject-p2": "enabled"
+        },
+        "before": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Inés",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Inés",
+              "status": "Estado: habilitado",
+              "clueCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "label": "Mateo",
+              "status": "Estado: habilitado",
+              "clueCount": 0
+            }
+          ],
+          "state": "active",
+          "message": "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo.",
+          "discoveredClueCount": 0
+        },
+        "after": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Cuenta X",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "label": "",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            }
+          ],
+          "state": "complete",
+          "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+          "discoveredClueCount": 2
+        },
+        "exchangedStates": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Cuenta X",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "",
+              "status": "Estado: sin habilitar",
+              "clueCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "label": "",
+              "status": "Estado: sin alistar",
+              "clueCount": 0
+            }
+          ],
+          "state": "ready",
+          "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+          "discoveredClueCount": 0
+        },
+        "absentState": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Inés",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Inés",
+              "status": "",
+              "clueCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "label": "Mateo",
+              "status": "",
+              "clueCount": 1
+            }
+          ],
+          "state": "complete",
+          "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+          "discoveredClueCount": 2
+        },
+        "noSubjects": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Inés",
+          "subjects": [],
+          "state": "complete",
+          "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+          "discoveredClueCount": 2
+        }
+      }
+    },
+    {
+      "id": "H30-branches-0",
+      "historicalPaths": [
+        "30.controls[0].original.frames",
+        "30.controls[0].variants.contradiction.frames",
+        "30.controls[0].variants.absence.frames"
+      ],
+      "result": {
+        "original": [
+          {
+            "phase": "initial",
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "sufficiency": "not-attempted"
+          },
+          {
+            "phase": "enlist-p1",
+            "message": "Exploración disponible en el jardín.",
+            "sufficiency": "not-attempted"
+          },
+          {
+            "phase": "discover-clue-a",
+            "message": "Pista del jardín registrada. La siguiente acción está disponible.",
+            "sufficiency": "not-established"
+          },
+          {
+            "phase": "activate-p2",
+            "message": "Nueva exploración disponible en la fuente.",
+            "sufficiency": "not-established"
+          },
+          {
+            "phase": "discover-clue-b",
+            "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+            "sufficiency": "established"
+          }
+        ],
+        "contradictoryMessage": "La condición de la aventura está establecida en el observatorio.",
+        "contradictionFactsUnchanged": true,
+        "absenceMessages": [
+          "La aventura está disponible. Alistamiento pendiente.",
+          "",
+          "",
+          "",
+          "Las pistas aportadas cumplen la condición de esta aventura."
+        ]
+      }
+    },
+    {
+      "id": "H30-branches-1",
+      "historicalPaths": [
+        "30.controls[1].original.frames",
+        "30.controls[1].variants.contradiction.frames",
+        "30.controls[1].variants.absence.frames"
+      ],
+      "result": {
+        "original": [
+          {
+            "phase": "initial",
+            "message": "La aventura está disponible. Alistamiento pendiente.",
+            "sufficiency": "not-attempted"
+          },
+          {
+            "phase": "enlist-p1",
+            "message": "Exploración disponible en el mirador.",
+            "sufficiency": "not-attempted"
+          },
+          {
+            "phase": "discover-clue-a",
+            "message": "Pista del mirador registrada. La siguiente acción está disponible.",
+            "sufficiency": "not-established"
+          },
+          {
+            "phase": "activate-p2",
+            "message": "Nueva exploración disponible en el patio.",
+            "sufficiency": "not-established"
+          },
+          {
+            "phase": "discover-clue-b",
+            "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+            "sufficiency": "established"
+          }
+        ],
+        "contradictoryMessage": "La condición de la aventura está establecida en el observatorio.",
+        "contradictionFactsUnchanged": true,
+        "absenceMessages": [
+          "La aventura está disponible. Alistamiento pendiente.",
+          "",
+          "",
+          "",
+          "Las pistas aportadas cumplen la condición de esta aventura."
+        ]
+      }
+    },
+    {
+      "id": "H35-Activity-0-original",
+      "historicalPaths": [
+        "35.controls[0].original.frames[4]"
+      ],
+      "result": {
+        "memberName": "Lucía",
+        "GPsessionLabel": "Cuenta de Lucía",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Lucía",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Huésped 2",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-b-p2",
+            "title": "Pista de la fuente encontrada",
+            "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-a-p1",
+            "title": "Pista del jardín encontrada",
+            "description": "Hallazgo aportado por ti.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-Activity-0-variants.account",
+      "historicalPaths": [
+        "35.controls[0].variants.account.frames[4]"
+      ],
+      "result": {
+        "memberName": "Cuenta H35",
+        "GPsessionLabel": "Cuenta de Cuenta H35",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Lucía",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Huésped 2",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-b-p2",
+            "title": "Pista de la fuente encontrada",
+            "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-a-p1",
+            "title": "Pista del jardín encontrada",
+            "description": "Hallazgo aportado por ti.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-Activity-0-variants.subjects",
+      "historicalPaths": [
+        "35.controls[0].variants.subjects.frames[4]"
+      ],
+      "result": {
+        "memberName": "Lucía",
+        "GPsessionLabel": "Cuenta de Lucía",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Participante Alfa",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Participante Beta",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-b-p2",
+            "title": "Pista de la fuente encontrada",
+            "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-a-p1",
+            "title": "Pista del jardín encontrada",
+            "description": "Hallazgo aportado por ti.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-name-0",
+      "historicalPaths": [
+        "35.controls[0].variants.experienceName.frames[0]",
+        "35.controls[0].variants.emptyName.frames[0]"
+      ],
+      "result": {
+        "renamed": "Travesía compartida · H35",
+        "empty": ""
+      }
+    },
+    {
+      "id": "H35-Activity-1-original",
+      "historicalPaths": [
+        "35.controls[1].original.frames[4]"
+      ],
+      "result": {
+        "memberName": "Inés",
+        "GPsessionLabel": "Cuenta de Inés",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Inés",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Mateo",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-costa-b-p2",
+            "title": "Pista del patio encontrada",
+            "description": "Hallazgo atribuido a Mateo, registrado desde la cuenta de Inés.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-costa-a-p1",
+            "title": "Pista del mirador encontrada",
+            "description": "Hallazgo aportado por Inés.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-Activity-1-variants.account",
+      "historicalPaths": [
+        "35.controls[1].variants.account.frames[4]"
+      ],
+      "result": {
+        "memberName": "Cuenta H35",
+        "GPsessionLabel": "Cuenta de Cuenta H35",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Inés",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Mateo",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-costa-b-p2",
+            "title": "Pista del patio encontrada",
+            "description": "Hallazgo atribuido a Mateo, registrado desde la cuenta de Inés.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-costa-a-p1",
+            "title": "Pista del mirador encontrada",
+            "description": "Hallazgo aportado por Inés.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-Activity-1-variants.subjects",
+      "historicalPaths": [
+        "35.controls[1].variants.subjects.frames[4]"
+      ],
+      "result": {
+        "memberName": "Inés",
+        "GPsessionLabel": "Cuenta de Inés",
+        "GPsubjects": [
+          {
+            "id": "subject-p1",
+            "label": "Participante Alfa",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          },
+          {
+            "id": "subject-p2",
+            "label": "Participante Beta",
+            "status": "Estado: habilitado",
+            "clueCount": 1
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-costa-b-p2",
+            "title": "Pista del patio encontrada",
+            "description": "Hallazgo atribuido a Mateo, registrado desde la cuenta de Inés.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-costa-a-p1",
+            "title": "Pista del mirador encontrada",
+            "description": "Hallazgo aportado por Inés.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          }
+        ],
+        "descriptionsPresentInHistoricalDOM": true,
+        "sessionSubjectRef": "subject-p1"
+      }
+    },
+    {
+      "id": "H35-name-1",
+      "historicalPaths": [
+        "35.controls[1].variants.experienceName.frames[0]",
+        "35.controls[1].variants.emptyName.frames[0]"
+      ],
+      "result": {
+        "renamed": "Travesía compartida · H35",
+        "empty": ""
+      }
+    }
+  ]
+}

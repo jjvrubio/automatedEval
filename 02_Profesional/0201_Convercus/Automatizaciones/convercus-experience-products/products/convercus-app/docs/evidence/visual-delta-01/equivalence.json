@@ -1,0 +1,100 @@
+{
+  "runtimeTraceByteIdenticalToBuild01": true,
+  "browserPhasesCompared": 20,
+  "textDifferencesIgnoringClockTimes": [],
+  "geometryDifferences": [
+    {
+      "phase": "desktop/crm",
+      "count": 2,
+      "examples": [
+        {
+          "before": {
+            "tag": "TIME",
+            "className": "",
+            "x": 832.59375,
+            "y": 692.296875,
+            "width": 39.90625,
+            "height": 13
+          },
+          "after": {
+            "tag": "TIME",
+            "className": "",
+            "x": 832.59375,
+            "y": 692.296875,
+            "width": 40.28125,
+            "height": 13
+          }
+        },
+        {
+          "before": {
+            "tag": "TIME",
+            "className": "",
+            "x": 848.28125,
+            "y": 790.984375,
+            "width": 39.90625,
+            "height": 13
+          },
+          "after": {
+            "tag": "TIME",
+            "className": "",
+            "x": 848.28125,
+            "y": 790.984375,
+            "width": 40.28125,
+            "height": 13
+          }
+        }
+      ]
+    },
+    {
+      "phase": "mobile/crm",
+      "count": 2,
+      "examples": [
+        {
+          "before": {
+            "tag": "TIME",
+            "className": "",
+            "x": 202.1875,
+            "y": 1181.703125,
+            "width": 40.890625,
+            "height": 13
+          },
+          "after": {
+            "tag": "TIME",
+            "className": "",
+            "x": 202.1875,
+            "y": 1181.703125,
+            "width": 40.359375,
+            "height": 13
+          }
+        },
+        {
+          "before": {
+            "tag": "TIME",
+            "className": "",
+            "x": 217.875,
+            "y": 1299.421875,
+            "width": 40.890625,
+            "height": 13
+          },
+          "after": {
+            "tag": "TIME",
+            "className": "",
+            "x": 217.875,
+            "y": 1299.421875,
+            "width": 40.359375,
+            "height": 13
+          }
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "numPassedTests": 112,
+    "numFailedTests": 18,
+    "numPendingTests": 0
+  },
+  "same18HistoricalFailures": true,
+  "newFailures": [],
+  "geometryInterpretation": "Only the widths of four live clock strings differ (less than 0.54 px); their position and height and all other measured geometry match exactly. Clock times differ between executions.",
+  "layoutPassExceptLiveClockGlyphWidths": true
+}

@@ -1,0 +1,80 @@
+import { act } from "react";
+import { createRoot } from "react-dom/client";
+import { MemoryRouter } from "react-router-dom";
+import { afterEach, expect, it, vi } from "vitest";
+import { DemoApp as App } from "@/app/App";
+import { resolveAppDemo } from "../bootstrap";
+
+Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+afterEach(() => { document.body.innerHTML = ""; vi.restoreAllMocks(); });
+
+it("BUILD 01 actual App: choices, public errors, badge, invitation, same-state CRM and deterministic reset", async () => {
+  const runtime = resolveAppDemo("sports-season-running");
+  if (!("kind" in runtime)) throw new Error("Sports composition absent");
+  const provider = runtime.provider;
+  const execute = vi.spyOn(provider, "executeAction");
+  const reset = vi.spyOn(provider, "reset");
+  const initial = await provider.getSnapshot();
+  const container = document.createElement("div");
+  document.body.append(container);
+  const root = createRoot(container);
+  const click = async (text: string) => {
+    const button = [...container.querySelectorAll("button")].find((item) => item.textContent?.trim() === text);
+    expect(button, text).toBeDefined();
+    await act(async () => button!.click());
+  };
+  const radio = async (name: string, value: string) => {
+    const input = container.querySelector<HTMLInputElement>(`input[name="${name}"][value="${value}"]`);
+    expect(input).not.toBeNull();
+    await act(async () => input!.click());
+  };
+  try {
+    await act(async () => root.render(<MemoryRouter initialEntries={["/?demo=sports-season-running"]}><App runtime={runtime} /></MemoryRouter>));
+    expect(container.textContent).toContain("Una temporada para moverse");
+    expect(container.textContent).toContain("Vela");
+    expect(container.textContent).toContain("Vóley playa");
+    expect(container.textContent).not.toContain("Tu saldo");
+    await click("Elegir Carrera");
+    await click("Confirmar inscripción");
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain("Elige Social o Bienestar");
+    expect(await provider.getSnapshot()).toEqual(initial);
+    await radio("modality", "wellness");
+    await click("Confirmar inscripción");
+    expect((await provider.getSnapshot()).registration?.selectedModality).toBe("wellness");
+    expect((await provider.getSnapshot()).evidence).toEqual([]);
+    await click("Simular check-in");
+    await click("Registrar esfuerzo");
+    expect(container.querySelector('[role="alert"]')?.textContent).toContain("Elige un esfuerzo");
+    expect((await provider.getSnapshot()).badge).toBeUndefined();
+    await radio("effort", "intenso");
+    await click("Registrar esfuerzo");
+    expect(container.textContent).toContain("Primeros kilómetros");
+    expect(container.textContent).toContain("Por inscribirte en Carrera");
+    expect(container.textContent).toContain("Autodeclarado");
+    const final = await provider.getSnapshot();
+    const callsBeforeNavigation = execute.mock.calls.length;
+    await click("Conocer Club Brisa");
+    expect(container.textContent).toContain("sigues siendo participante externo");
+    await click("Marketing / CRM");
+    expect(container.textContent).toContain("participant-self-report");
+    expect(container.textContent).toContain("simulated-check-in");
+    expect(container.textContent).toContain("Bienestar");
+    expect(container.textContent).toContain("Sin alta, consentimiento, conversión ni lead enviado.");
+    expect(await provider.getSnapshot()).toEqual(final);
+    expect(runtime.provider).toBe(provider);
+    expect(runtime.manifest.demoId).toBe("sports-season-running");
+    await click("Participante");
+    expect(await provider.getSnapshot()).toEqual(final);
+    expect(execute).toHaveBeenCalledTimes(callsBeforeNavigation);
+    expect(reset).not.toHaveBeenCalled();
+    await click("Reiniciar demo");
+    expect(await provider.getSnapshot()).toEqual(initial);
+    expect(container.textContent).not.toContain("Primeros kilómetros");
+    await click("Elegir Carrera");
+    expect(container.querySelector('input[name="modality"]:checked')).toBeNull();
+    await radio("modality", "social");
+    await click("Confirmar inscripción");
+    expect((await provider.getSnapshot()).registration?.selectedModality).toBe("social");
+    expect(reset).toHaveBeenCalledOnce();
+  } finally { await act(async () => root.unmount()); }
+});

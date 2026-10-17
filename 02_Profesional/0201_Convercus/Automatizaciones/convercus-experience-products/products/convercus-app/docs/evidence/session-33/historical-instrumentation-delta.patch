@@ -1,0 +1,48 @@
+--- S32/products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts
++++ S33/products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts
+@@ -6,7 +6,7 @@
+ import { createRoot } from "react-dom/client";
+ import { MemoryRouter } from "react-router-dom";
+ import { afterEach, expect, it, vi } from "vitest";
+-import { App } from "@/app/App";
++import { App } from "./test-fixtures/h32/App";
+ import { App as PreviousApp } from "./test-fixtures/h31/App";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+ import { defaultDemoCatalogs, resolveDemo, type DemoCatalogs } from "./bootstrap";
+@@ -15,7 +15,8 @@
+ import * as vertical from "./vertical-evaluation";
+ import * as joint from "./cross-subject-evidence-admissibility";
+ 
+-// Current App/provider/evaluators: no vi.mock and no substituted snapshots.
++// S33: historical S32 App replay; provider/evaluators remain unchanged.
++// Current application coverage now lives in operational-supervision-subject-h33.test.ts.
+ // PreviousApp is mounted separately only for an explicitly labelled DOM comparison.
+ Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+ afterEach(() => { vi.restoreAllMocks(); document.body.innerHTML = ""; });
+@@ -52,7 +53,7 @@
+   return copy.innerHTML;
+ };
+ 
+-it("H32 current App DOM: independent brand and explicit static intro preserve cumulative facts and presentation authorities", async () => {
++it("H32 historical S32 App DOM replay: independent brand and explicit static intro preserve cumulative facts and presentation authorities", async () => {
+   const baselineBytes = readFileSync(resolve(evidenceDir, "session-32/baseline.json"));
+   const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+   // All inherited sources remain identical, or have byte-identical historical copies.
+@@ -62,7 +63,7 @@
+     if (path.endsWith("/.DS_Store")) continue;
+     expect(sha(readFileSync(resolve(projectRoot, historicalH31Path(path)))), path).toBe(hash);
+   }
+-  const appSource = readFileSync(resolve(process.cwd(), "src/app/App.tsx"), "utf8");
++  const appSource = readFileSync(resolve(process.cwd(), "src/demo-factory/test-fixtures/h32/App.tsx"), "utf8");
+   const oldAppSource = readFileSync(resolve(process.cwd(), "src/demo-factory/test-fixtures/h31/App.tsx"), "utf8");
+   expect(appSource).not.toMatch(/Mi aventura · Aurora Stay|Busca las pistas del jardín/);
+   expect(appSource).not.toMatch(/from ["'][^"']*(?:artifacts|costa-artifacts|fixtures)["']/);
+@@ -304,7 +305,7 @@
+   expect(generic.map((g) => g.demoId).sort()).toEqual(["hospitality-stay", "retail-baseline"]);
+   const trace = {
+     session: 32, recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+-    method: "Current App mounted with createRoot/MemoryRouter in jsdom; public actions clicked; transparent provider/evaluator spies; separate previous-App DOM comparisons",
++    method: "Historical S32 App replay in S33; createRoot/MemoryRouter in jsdom; unchanged provider/evaluators; separate S31 App DOM comparisons",
+     baselineSha256: sha(baselineBytes), appSha256: sha(appSource),
+     harnessSha256: sha(readFileSync(resolve(process.cwd(), "src/demo-factory/explicit-introductory-framing-h32.test.ts"))),
+     controls, renamedIdentityControl: renamed, genericRegression: generic,

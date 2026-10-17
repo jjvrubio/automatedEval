@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-23",
+  "basis": "before/after received working tree; SHA-256; not HEAD",
+  "inventory": "received-files-before.json",
+  "excludedTrees": [
+    "node_modules",
+    ".git",
+    "dist",
+    ".obsidian"
+  ],
+  "received": 687,
+  "materialReceived": 675,
+  "finderMetadataReceived": 12,
+  "materialUnchanged": 675,
+  "changedReceived": [
+    ".DS_Store",
+    "products/.DS_Store",
+    "products/convercus-app/.DS_Store",
+    "products/convercus-app/docs/.DS_Store",
+    "products/convercus-app/docs/evidence/.DS_Store"
+  ],
+  "deletedReceived": [],
+  "newArtifactsBeforeThisSelfReport": [
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/app-typecheck.log",
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/frozen-review-input.md",
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/received-files-before.json",
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/source-inspection.json",
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/suite-attempt.log",
+    "products/convercus-app/docs/evidence/sports-season-safe-to-build/verification.json",
+    "products/convercus-app/docs/sports-season-safe-to-build-review.md",
+    "products/convercus-app/docs/sports-season-smallest-buildable-slice.md"
+  ],
+  "selfReport": "products/convercus-app/docs/evidence/sports-season-safe-to-build/preservation-check.json",
+  "reports": [
+    {
+      "path": "products/convercus-app/docs/sports-season-safe-to-build-review.md",
+      "sha256": "1ae938d6b27488f4de8a0d56fa0f0b2fb176a4b666307dca2a92287d0d2e09bb"
+    },
+    {
+      "path": "products/convercus-app/docs/sports-season-smallest-buildable-slice.md",
+      "sha256": "ac09cd807333763ed16d90ffffaef862a6fb2ddd05e7d8d615366b9fd5d75f4d"
+    }
+  ],
+  "linkCheck": {
+    "checked": 39,
+    "missing": []
+  },
+  "status": "PASS — MATERIAL PRESERVATION; AMBIENT DIFFERENCES RECORDED",
+  "meaning": "No received source, contract, fixture, manifest, Scenario, DemoScript, evaluator, CSS, asset, report, baseline, trace or harness changed. Only new documentary/evidence artifacts. No historical verdict reclassification.",
+  "materialChanged": [],
+  "ambientChanged": [
+    ".DS_Store",
+    "products/.DS_Store",
+    "products/convercus-app/.DS_Store",
+    "products/convercus-app/docs/.DS_Store",
+    "products/convercus-app/docs/evidence/.DS_Store"
+  ],
+  "ambientNote": "12 explicitly inventoried Finder metadata files, 5 differences observed during this review; no task command edits these files; creator process not established. No historical baseline classification changed."
+}

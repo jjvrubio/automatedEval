@@ -1,0 +1,655 @@
+{
+  "session": 39,
+  "verifiedAt": "2026-09-22T17:31:19.096Z",
+  "verdict": "FALSIFIED AS PROBLEM ASSUMPTION / STOP",
+  "tests": {
+    "baseline-suite": {
+      "success": true,
+      "passed": 106,
+      "failed": 0,
+      "pending": 0,
+      "files": 31,
+      "perFile": [
+        {
+          "path": "src/config/app-config.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/config/brand.test.ts",
+          "status": "passed",
+          "assertions": 3,
+          "failures": []
+        },
+        {
+          "path": "src/demo/mock-adapter.test.ts",
+          "status": "passed",
+          "assertions": 2,
+          "failures": []
+        },
+        {
+          "path": "src/domain/demo-package.test.ts",
+          "status": "passed",
+          "assertions": 3,
+          "failures": []
+        },
+        {
+          "path": "src/domain/routing.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/account-sourced-guest-h28.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/activity-attribution-reduction-h37.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/app-smoke.test.tsx",
+          "status": "passed",
+          "assertions": 2,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/bootstrap.test.ts",
+          "status": "passed",
+          "assertions": 9,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/composition-boundary-h21.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/cross-subject-evidence-admissibility.test.ts",
+          "status": "passed",
+          "assertions": 8,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/derived-claim-contextual-validity.test.ts",
+          "status": "passed",
+          "assertions": 6,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/evidence-relevance.test.ts",
+          "status": "passed",
+          "assertions": 12,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/evidence-sufficiency.test.ts",
+          "status": "passed",
+          "assertions": 15,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/experience-sourced-guest-name-h35.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/experience-stable-selection-h22.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/explicit-introductory-framing-h32.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/explicit-subject-representation-h27.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/family-adventure-vertical.test.ts",
+          "status": "passed",
+          "assertions": 10,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/historical-replay-portability-h38.test.ts",
+          "status": "passed",
+          "assertions": 8,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-session-subject-h34.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-subject-status-h29.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-supervision-subject-h33.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/pre-delta-position-h30.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/presenter-action.test.tsx",
+          "status": "passed",
+          "assertions": 6,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/projection.test.ts",
+          "status": "passed",
+          "assertions": 4,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/script-bound-activity-h25.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/script-bound-journey-h30.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-activity-provenance-h24.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-evaluation-context-h23.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-guest-provenance-h26.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        }
+      ]
+    },
+    "navigation-final": {
+      "success": true,
+      "passed": 7,
+      "failed": 0,
+      "pending": 0,
+      "files": 1,
+      "perFile": [
+        {
+          "path": "src/demo-factory/effective-composition-navigation-h39.test.tsx",
+          "status": "passed",
+          "assertions": 7,
+          "failures": []
+        }
+      ]
+    },
+    "current-h37": {
+      "success": true,
+      "passed": 1,
+      "failed": 0,
+      "pending": 0,
+      "files": 1,
+      "perFile": [
+        {
+          "path": "src/demo-factory/activity-attribution-reduction-h37.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        }
+      ]
+    },
+    "full-suite-final": {
+      "success": true,
+      "passed": 113,
+      "failed": 0,
+      "pending": 0,
+      "files": 32,
+      "perFile": [
+        {
+          "path": "src/config/app-config.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/config/brand.test.ts",
+          "status": "passed",
+          "assertions": 3,
+          "failures": []
+        },
+        {
+          "path": "src/demo/mock-adapter.test.ts",
+          "status": "passed",
+          "assertions": 2,
+          "failures": []
+        },
+        {
+          "path": "src/domain/demo-package.test.ts",
+          "status": "passed",
+          "assertions": 3,
+          "failures": []
+        },
+        {
+          "path": "src/domain/routing.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/account-sourced-guest-h28.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/activity-attribution-reduction-h37.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/app-smoke.test.tsx",
+          "status": "passed",
+          "assertions": 2,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/bootstrap.test.ts",
+          "status": "passed",
+          "assertions": 9,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/composition-boundary-h21.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/cross-subject-evidence-admissibility.test.ts",
+          "status": "passed",
+          "assertions": 8,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/derived-claim-contextual-validity.test.ts",
+          "status": "passed",
+          "assertions": 6,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/effective-composition-navigation-h39.test.tsx",
+          "status": "passed",
+          "assertions": 7,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/evidence-relevance.test.ts",
+          "status": "passed",
+          "assertions": 12,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/evidence-sufficiency.test.ts",
+          "status": "passed",
+          "assertions": 15,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/experience-sourced-guest-name-h35.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/experience-stable-selection-h22.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/explicit-introductory-framing-h32.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/explicit-subject-representation-h27.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/family-adventure-vertical.test.ts",
+          "status": "passed",
+          "assertions": 10,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/historical-replay-portability-h38.test.ts",
+          "status": "passed",
+          "assertions": 8,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-session-subject-h34.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-subject-status-h29.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/operational-supervision-subject-h33.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/pre-delta-position-h30.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/presenter-action.test.tsx",
+          "status": "passed",
+          "assertions": 6,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/projection.test.ts",
+          "status": "passed",
+          "assertions": 4,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/script-bound-activity-h25.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/script-bound-journey-h30.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-activity-provenance-h24.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-evaluation-context-h23.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        },
+        {
+          "path": "src/demo-factory/situated-guest-provenance-h26.test.ts",
+          "status": "passed",
+          "assertions": 1,
+          "failures": []
+        }
+      ]
+    }
+  },
+  "commands": [
+    {
+      "name": "baseline-suite",
+      "startedAt": "2026-09-22T17:24:52.919Z",
+      "finishedAt": "2026-09-22T17:25:02.192Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/baseline-suite-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "build",
+      "startedAt": "2026-09-22T17:27:01.736Z",
+      "finishedAt": "2026-09-22T17:27:05.975Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "/private/tmp/node-v24.14.0-darwin-arm64/bin/npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "build-final",
+      "startedAt": "2026-09-22T17:27:31.257Z",
+      "finishedAt": "2026-09-22T17:27:35.691Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "/private/tmp/node-v24.14.0-darwin-arm64/bin/npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "current-h37",
+      "startedAt": "2026-09-22T17:26:58.258Z",
+      "finishedAt": "2026-09-22T17:27:00.677Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/demo-factory/activity-attribution-reduction-h37.test.ts",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/current-h37-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "full-suite",
+      "startedAt": "2026-09-22T17:27:07.295Z",
+      "finishedAt": "2026-09-22T17:27:15.232Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/full-suite-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "full-suite-final",
+      "startedAt": "2026-09-22T17:27:58.632Z",
+      "finishedAt": "2026-09-22T17:28:12.052Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/full-suite-final-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "lint",
+      "startedAt": "2026-09-22T17:27:00.580Z",
+      "finishedAt": "2026-09-22T17:27:03.561Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/eslint/bin/eslint.js",
+        "."
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 1,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "lint-final",
+      "startedAt": "2026-09-22T17:27:30.085Z",
+      "finishedAt": "2026-09-22T17:27:32.631Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/eslint/bin/eslint.js",
+        "."
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "navigation",
+      "startedAt": "2026-09-22T17:26:21.263Z",
+      "finishedAt": "2026-09-22T17:26:22.959Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/demo-factory/effective-composition-navigation-h39.test.tsx",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/navigation-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "navigation-final",
+      "startedAt": "2026-09-22T17:27:28.922Z",
+      "finishedAt": "2026-09-22T17:27:30.148Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/demo-factory/effective-composition-navigation-h39.test.tsx",
+        "--reporter=json",
+        "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-39/navigation-final-results.json"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "typecheck",
+      "startedAt": "2026-09-22T17:26:59.410Z",
+      "finishedAt": "2026-09-22T17:27:02.033Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-b",
+        "--pretty",
+        "false"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "typecheck-final",
+      "startedAt": "2026-09-22T17:27:59.783Z",
+      "finishedAt": "2026-09-22T17:28:07.354Z",
+      "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-b",
+        "--pretty",
+        "false"
+      ],
+      "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "preservation": {
+    "session": 39,
+    "verifiedAt": "2026-09-22T17:31:19.082Z",
+    "receivedFiles": 640,
+    "unchangedFiles": 640,
+    "changed": [],
+    "additions": [
+      "products/convercus-app/docs/session-39-effective-composition-navigation-identity.md",
+      "products/convercus-app/prototype/src/demo-factory/effective-composition-navigation-h39.test.tsx"
+    ],
+    "unexpectedAdditions": [],
+    "h37CurrentTrace": {
+      "source": "CURRENT App/provider; inherited harness unchanged",
+      "comparison": "S38 current-cumulative-trace.json; only top-level recordedAt excluded",
+      "changedFields": []
+    },
+    "productDelta": "NONE",
+    "existingHarnessDelta": "NONE",
+    "historicalEvidenceDelta": "NONE",
+    "pass": true
+  },
+  "matrixChanges": [],
+  "exactHarnessAdjustment": {
+    "pass": true,
+    "scope": "Only added DemoCatalogs parameter type annotation to fix unused import lint; first and final traces materially identical"
+  },
+  "browser": "NOT EXECUTED / required in-app execution tool unavailable; generic document reload explicitly modeled in jsdom",
+  "productDelta": "NONE",
+  "dependenciesInstalled": false,
+  "h40": "NOT OPENED",
+  "evidenceVerificationPass": true
+}

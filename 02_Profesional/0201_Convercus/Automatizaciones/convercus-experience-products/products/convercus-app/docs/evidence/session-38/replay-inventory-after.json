@@ -1,0 +1,17 @@
+{
+  "session": 38,
+  "archiveRouteEntries": 84,
+  "distinctLogicalRouteKeys": 24,
+  "pathHelpers": 6,
+  "historicalReaders": 2,
+  "fixtureFiles": 135,
+  "archivedByteCopies": 68,
+  "archivedRuntimeModules": 47,
+  "newMaterialSelectors": 1,
+  "historicalRuntimeHarnesses": 16,
+  "inheritedHarnessesAdaptedInS38": 3,
+  "testFiles": 31,
+  "missingRouteTargets": [],
+  "routeTargetsThatAreAlsoKeys": [],
+  "meaning": "Entry count excludes inline special cases; no recursive archive search. h38 material-baseline is a new selector, not an archived runtime module or source-routing reader."
+}

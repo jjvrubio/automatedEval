@@ -1,0 +1,5617 @@
+{
+  "experiment": "H23 — Situated Evaluation Context Binding",
+  "baselineSha256": "2dcada2a0577d28aa8c287971601ca9d29f836d58ab3b9a0462519f6dc3284ae",
+  "applicationSha256": {
+    "adapter": "12f459f9cb18a3c2cfb8e8e89755a7f40c6392c340bf06acdd6a562d414f0735",
+    "verticalEvaluation": "7accdf6d8edd1c3064ea2d936908a0f776c8c2c604a81e44048a4297f7ed98db"
+  },
+  "method": "Live public provider; transparent spies on original evaluator exports; archived H22 snapshots for regression; no browser",
+  "positiveControls": [
+    {
+      "demoId": "hospitality-family-adventure",
+      "experienceRef": "experience:family-adventure@1",
+      "scenario": {
+        "id": "family-adventure",
+        "experienceRef": "experience:family-adventure@1",
+        "subjects": [
+          {
+            "type": "individual",
+            "id": "subject-p1",
+            "role": "guest"
+          },
+          {
+            "type": "individual",
+            "id": "subject-p2",
+            "role": "guest"
+          }
+        ],
+        "contexts": [
+          {
+            "type": "property",
+            "id": "aurora-resort"
+          },
+          {
+            "type": "booking",
+            "id": "AS-8842"
+          },
+          {
+            "type": "stay",
+            "id": "stay-AS-8842"
+          }
+        ],
+        "checkpoints": [
+          "ready",
+          "clue-a-discovered",
+          "adventure-established"
+        ],
+        "initialCheckpoint": "ready",
+        "operationalSessionSubjectRef": "subject-p1",
+        "initialSubjectStates": {
+          "subject-p1": "not-enlisted",
+          "subject-p2": "not-enabled"
+        },
+        "presenterAction": {
+          "actionId": "enlist-p1",
+          "fromCheckpoint": "ready",
+          "toCheckpoint": "ready"
+        },
+        "actions": [
+          {
+            "actionId": "enlist-p1",
+            "fromCheckpoint": "ready",
+            "toCheckpoint": "ready",
+            "kind": "enlist",
+            "subjectRef": "subject-p1"
+          },
+          {
+            "actionId": "discover-clue-a",
+            "fromCheckpoint": "ready",
+            "toCheckpoint": "clue-a-discovered",
+            "kind": "evidence",
+            "subjectRef": "subject-p1",
+            "requiresEnabledSubject": true,
+            "evidenceType": "treasure_hunt.marker-a"
+          },
+          {
+            "actionId": "activate-p2",
+            "fromCheckpoint": "clue-a-discovered",
+            "toCheckpoint": "clue-a-discovered",
+            "kind": "activate",
+            "subjectRef": "subject-p2"
+          },
+          {
+            "actionId": "discover-clue-b",
+            "fromCheckpoint": "clue-a-discovered",
+            "toCheckpoint": "adventure-established",
+            "kind": "evidence",
+            "subjectRef": "subject-p2",
+            "requiresEnabledSubject": true,
+            "evidenceType": "treasure_hunt.marker-b"
+          }
+        ]
+      },
+      "frames": [
+        {
+          "phase": "initial",
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        },
+        {
+          "phase": "enlist-p1",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "enlist-p1",
+            "operation": "enlist"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "discover-clue-a"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "active",
+              "message": "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        },
+        {
+          "phase": "discover-clue-a",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-a",
+            "evidence": {
+              "id": "evidence-a-p1",
+              "type": "treasure_hunt.marker-a",
+              "occurredAt": "2026-09-12T10:00:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p1",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Tu pista del jardín está aportada. Activa al huésped 2 para que pueda explorar; activarlo no aporta ninguna pista.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "aurora-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            ]
+          ],
+          "jointEvaluationCalls": [
+            [
+              [
+                {
+                  "evidenceRef": "evidence-a-p1",
+                  "subjectRef": "subject-p1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-AS-8842",
+                  "propertyRef": "aurora-resort",
+                  "markerRef": "marker-a",
+                  "bookingRef": "AS-8842"
+                }
+              ],
+              {
+                "evaluationRef": "evaluation-family-adventure-1",
+                "huntRef": "hunt-family-adventure-1",
+                "propertyRef": "aurora-resort",
+                "bookingRef": "AS-8842",
+                "stayRef": "stay-AS-8842"
+              },
+              {
+                "criterionRef": "criterion-family-adventure",
+                "authorityRef": "scenario-policy:family-adventure@1",
+                "scope": {
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "aurora-resort"
+                },
+                "anchorMarkerRef": "marker-a",
+                "alternativeMarkerRefs": [
+                  "marker-b",
+                  "marker-c"
+                ]
+              },
+              {
+                "premiseRef": "premise-family-adventure-p1-p2@1",
+                "authorityRef": "fixture-policy:resort-family-adventure@1",
+                "scope": {
+                  "evaluationRef": "evaluation-family-adventure-1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "aurora-resort",
+                  "bookingRef": "AS-8842",
+                  "stayRef": "stay-AS-8842"
+                },
+                "coveredSubjectRefs": [
+                  "subject-p1",
+                  "subject-p2"
+                ]
+              }
+            ]
+          ],
+          "jointEvaluationResults": [
+            {
+              "type": "return",
+              "value": {
+                "jointAdmissibility": {
+                  "determination": "established",
+                  "reason": "same-subject-control",
+                  "evidenceRefs": [
+                    "evidence-a-p1"
+                  ],
+                  "premiseRefs": [],
+                  "authorityRefs": []
+                },
+                "sufficiency": {
+                  "attempted": true,
+                  "claim": {
+                    "determination": "not-established",
+                    "reason": "criterion-not-established-by-available-evidence",
+                    "huntRef": "hunt-family-adventure-1",
+                    "criterionRef": "criterion-family-adventure",
+                    "authorityRef": "scenario-policy:family-adventure@1",
+                    "consideredEvidenceRefs": [
+                      "evidence-a-p1"
+                    ],
+                    "distinctContributionRefs": [
+                      "marker-a"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "jointReplay": {
+            "determination": "established",
+            "reason": "same-subject-control",
+            "evidenceRefs": [
+              "evidence-a-p1"
+            ],
+            "premiseRefs": [],
+            "authorityRefs": []
+          }
+        },
+        {
+          "phase": "activate-p2",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "activate-p2",
+            "operation": "activate"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "discover-clue-b"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          }
+        },
+        {
+          "phase": "discover-clue-b",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-b",
+            "evidence": {
+              "id": "evidence-b-p2",
+              "type": "treasure_hunt.marker-b",
+              "occurredAt": "2026-09-12T10:05:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p2",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-b-p2",
+                "title": "Pista de la fuente encontrada",
+                "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+                "occurredAt": "2026-09-12T10:05:00Z",
+                "displayDate": "12 sept, 10:05",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "adventure-established"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 1
+                }
+              ],
+              "state": "complete",
+              "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+              "discoveredClueCount": 2
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                },
+                {
+                  "id": "evidence-b-p2",
+                  "subjectRefs": [
+                    "subject-p2"
+                  ],
+                  "type": "treasure_hunt.marker-b",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "established",
+              "derivedClaim": "established"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                },
+                {
+                  "id": "evidence-b-p2",
+                  "type": "treasure_hunt.marker-b",
+                  "occurredAt": "2026-09-12T10:05:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p2",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "aurora-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            ]
+          ],
+          "jointEvaluationCalls": [
+            [
+              [
+                {
+                  "evidenceRef": "evidence-a-p1",
+                  "subjectRef": "subject-p1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-AS-8842",
+                  "propertyRef": "aurora-resort",
+                  "markerRef": "marker-a",
+                  "bookingRef": "AS-8842"
+                },
+                {
+                  "evidenceRef": "evidence-b-p2",
+                  "subjectRef": "subject-p2",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-AS-8842",
+                  "propertyRef": "aurora-resort",
+                  "markerRef": "marker-b",
+                  "bookingRef": "AS-8842"
+                }
+              ],
+              {
+                "evaluationRef": "evaluation-family-adventure-1",
+                "huntRef": "hunt-family-adventure-1",
+                "propertyRef": "aurora-resort",
+                "bookingRef": "AS-8842",
+                "stayRef": "stay-AS-8842"
+              },
+              {
+                "criterionRef": "criterion-family-adventure",
+                "authorityRef": "scenario-policy:family-adventure@1",
+                "scope": {
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "aurora-resort"
+                },
+                "anchorMarkerRef": "marker-a",
+                "alternativeMarkerRefs": [
+                  "marker-b",
+                  "marker-c"
+                ]
+              },
+              {
+                "premiseRef": "premise-family-adventure-p1-p2@1",
+                "authorityRef": "fixture-policy:resort-family-adventure@1",
+                "scope": {
+                  "evaluationRef": "evaluation-family-adventure-1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "aurora-resort",
+                  "bookingRef": "AS-8842",
+                  "stayRef": "stay-AS-8842"
+                },
+                "coveredSubjectRefs": [
+                  "subject-p1",
+                  "subject-p2"
+                ]
+              }
+            ]
+          ],
+          "jointEvaluationResults": [
+            {
+              "type": "return",
+              "value": {
+                "jointAdmissibility": {
+                  "determination": "established",
+                  "reason": "applicable-authoritative-premise",
+                  "evidenceRefs": [
+                    "evidence-a-p1",
+                    "evidence-b-p2"
+                  ],
+                  "premiseRefs": [
+                    "premise-family-adventure-p1-p2@1"
+                  ],
+                  "authorityRefs": [
+                    "fixture-policy:resort-family-adventure@1"
+                  ]
+                },
+                "sufficiency": {
+                  "attempted": true,
+                  "claim": {
+                    "determination": "established",
+                    "reason": "criterion-satisfied",
+                    "huntRef": "hunt-family-adventure-1",
+                    "criterionRef": "criterion-family-adventure",
+                    "authorityRef": "scenario-policy:family-adventure@1",
+                    "consideredEvidenceRefs": [
+                      "evidence-a-p1",
+                      "evidence-b-p2"
+                    ],
+                    "distinctContributionRefs": [
+                      "marker-a",
+                      "marker-b"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "jointReplay": {
+            "determination": "established",
+            "reason": "applicable-authoritative-premise",
+            "evidenceRefs": [
+              "evidence-a-p1",
+              "evidence-b-p2"
+            ],
+            "premiseRefs": [
+              "premise-family-adventure-p1-p2@1"
+            ],
+            "authorityRefs": [
+              "fixture-policy:resort-family-adventure@1"
+            ]
+          }
+        },
+        {
+          "phase": "reset",
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "demoId": "hospitality-family-adventure-costa",
+      "experienceRef": "experience:family-adventure@1",
+      "scenario": {
+        "id": "family-adventure-costa",
+        "experienceRef": "experience:family-adventure@1",
+        "subjects": [
+          {
+            "type": "individual",
+            "id": "subject-p1",
+            "role": "guest"
+          },
+          {
+            "type": "individual",
+            "id": "subject-p2",
+            "role": "guest"
+          }
+        ],
+        "contexts": [
+          {
+            "type": "property",
+            "id": "costa-clara-resort"
+          },
+          {
+            "type": "booking",
+            "id": "CC-205"
+          },
+          {
+            "type": "stay",
+            "id": "stay-CC-205"
+          }
+        ],
+        "checkpoints": [
+          "ready",
+          "clue-a-discovered",
+          "adventure-established"
+        ],
+        "initialCheckpoint": "ready",
+        "operationalSessionSubjectRef": "subject-p1",
+        "initialSubjectStates": {
+          "subject-p1": "not-enlisted",
+          "subject-p2": "not-enabled"
+        },
+        "presenterAction": {
+          "actionId": "enlist-p1",
+          "fromCheckpoint": "ready",
+          "toCheckpoint": "ready"
+        },
+        "actions": [
+          {
+            "actionId": "enlist-p1",
+            "fromCheckpoint": "ready",
+            "toCheckpoint": "ready",
+            "kind": "enlist",
+            "subjectRef": "subject-p1"
+          },
+          {
+            "actionId": "discover-clue-a",
+            "fromCheckpoint": "ready",
+            "toCheckpoint": "clue-a-discovered",
+            "kind": "evidence",
+            "subjectRef": "subject-p1",
+            "requiresEnabledSubject": true,
+            "evidenceType": "treasure_hunt.marker-a"
+          },
+          {
+            "actionId": "activate-p2",
+            "fromCheckpoint": "clue-a-discovered",
+            "toCheckpoint": "clue-a-discovered",
+            "kind": "activate",
+            "subjectRef": "subject-p2"
+          },
+          {
+            "actionId": "discover-clue-b",
+            "fromCheckpoint": "clue-a-discovered",
+            "toCheckpoint": "adventure-established",
+            "kind": "evidence",
+            "subjectRef": "subject-p2",
+            "requiresEnabledSubject": true,
+            "evidenceType": "treasure_hunt.marker-b"
+          }
+        ]
+      },
+      "frames": [
+        {
+          "phase": "initial",
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        },
+        {
+          "phase": "enlist-p1",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "enlist-p1",
+            "operation": "enlist"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "discover-clue-a"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "active",
+              "message": "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        },
+        {
+          "phase": "discover-clue-a",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-a",
+            "evidence": {
+              "id": "evidence-costa-a-p1",
+              "type": "treasure_hunt.marker-a",
+              "occurredAt": "2026-09-12T10:00:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p1",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Tu pista del jardín está aportada. Activa al huésped 2 para que pueda explorar; activarlo no aporta ninguna pista.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "costa-clara-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            ]
+          ],
+          "jointEvaluationCalls": [
+            [
+              [
+                {
+                  "evidenceRef": "evidence-costa-a-p1",
+                  "subjectRef": "subject-p1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-CC-205",
+                  "propertyRef": "costa-clara-resort",
+                  "markerRef": "marker-a",
+                  "bookingRef": "CC-205"
+                }
+              ],
+              {
+                "evaluationRef": "evaluation-family-adventure-1",
+                "huntRef": "hunt-family-adventure-1",
+                "propertyRef": "costa-clara-resort",
+                "bookingRef": "CC-205",
+                "stayRef": "stay-CC-205"
+              },
+              {
+                "criterionRef": "criterion-family-adventure",
+                "authorityRef": "scenario-policy:family-adventure@1",
+                "scope": {
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "costa-clara-resort"
+                },
+                "anchorMarkerRef": "marker-a",
+                "alternativeMarkerRefs": [
+                  "marker-b",
+                  "marker-c"
+                ]
+              },
+              {
+                "premiseRef": "premise-family-adventure-p1-p2@1",
+                "authorityRef": "fixture-policy:resort-family-adventure@1",
+                "scope": {
+                  "evaluationRef": "evaluation-family-adventure-1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "costa-clara-resort",
+                  "bookingRef": "CC-205",
+                  "stayRef": "stay-CC-205"
+                },
+                "coveredSubjectRefs": [
+                  "subject-p1",
+                  "subject-p2"
+                ]
+              }
+            ]
+          ],
+          "jointEvaluationResults": [
+            {
+              "type": "return",
+              "value": {
+                "jointAdmissibility": {
+                  "determination": "established",
+                  "reason": "same-subject-control",
+                  "evidenceRefs": [
+                    "evidence-costa-a-p1"
+                  ],
+                  "premiseRefs": [],
+                  "authorityRefs": []
+                },
+                "sufficiency": {
+                  "attempted": true,
+                  "claim": {
+                    "determination": "not-established",
+                    "reason": "criterion-not-established-by-available-evidence",
+                    "huntRef": "hunt-family-adventure-1",
+                    "criterionRef": "criterion-family-adventure",
+                    "authorityRef": "scenario-policy:family-adventure@1",
+                    "consideredEvidenceRefs": [
+                      "evidence-costa-a-p1"
+                    ],
+                    "distinctContributionRefs": [
+                      "marker-a"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "jointReplay": {
+            "determination": "established",
+            "reason": "same-subject-control",
+            "evidenceRefs": [
+              "evidence-costa-a-p1"
+            ],
+            "premiseRefs": [],
+            "authorityRefs": []
+          }
+        },
+        {
+          "phase": "activate-p2",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "activate-p2",
+            "operation": "activate"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "discover-clue-b"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "not-established",
+              "derivedClaim": "not-established"
+            }
+          }
+        },
+        {
+          "phase": "discover-clue-b",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-b",
+            "evidence": {
+              "id": "evidence-costa-b-p2",
+              "type": "treasure_hunt.marker-b",
+              "occurredAt": "2026-09-12T10:05:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p2",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-b-p2",
+                "title": "Pista de la fuente encontrada",
+                "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+                "occurredAt": "2026-09-12T10:05:00Z",
+                "displayDate": "12 sept, 10:05",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "adventure-established"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 1
+                }
+              ],
+              "state": "complete",
+              "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+              "discoveredClueCount": 2
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                },
+                {
+                  "id": "evidence-costa-b-p2",
+                  "subjectRefs": [
+                    "subject-p2"
+                  ],
+                  "type": "treasure_hunt.marker-b",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "established",
+              "sufficiency": "established",
+              "derivedClaim": "established"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                },
+                {
+                  "id": "evidence-costa-b-p2",
+                  "type": "treasure_hunt.marker-b",
+                  "occurredAt": "2026-09-12T10:05:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p2",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "costa-clara-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            ]
+          ],
+          "jointEvaluationCalls": [
+            [
+              [
+                {
+                  "evidenceRef": "evidence-costa-a-p1",
+                  "subjectRef": "subject-p1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-CC-205",
+                  "propertyRef": "costa-clara-resort",
+                  "markerRef": "marker-a",
+                  "bookingRef": "CC-205"
+                },
+                {
+                  "evidenceRef": "evidence-costa-b-p2",
+                  "subjectRef": "subject-p2",
+                  "huntRef": "hunt-family-adventure-1",
+                  "stayRef": "stay-CC-205",
+                  "propertyRef": "costa-clara-resort",
+                  "markerRef": "marker-b",
+                  "bookingRef": "CC-205"
+                }
+              ],
+              {
+                "evaluationRef": "evaluation-family-adventure-1",
+                "huntRef": "hunt-family-adventure-1",
+                "propertyRef": "costa-clara-resort",
+                "bookingRef": "CC-205",
+                "stayRef": "stay-CC-205"
+              },
+              {
+                "criterionRef": "criterion-family-adventure",
+                "authorityRef": "scenario-policy:family-adventure@1",
+                "scope": {
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "costa-clara-resort"
+                },
+                "anchorMarkerRef": "marker-a",
+                "alternativeMarkerRefs": [
+                  "marker-b",
+                  "marker-c"
+                ]
+              },
+              {
+                "premiseRef": "premise-family-adventure-p1-p2@1",
+                "authorityRef": "fixture-policy:resort-family-adventure@1",
+                "scope": {
+                  "evaluationRef": "evaluation-family-adventure-1",
+                  "huntRef": "hunt-family-adventure-1",
+                  "propertyRef": "costa-clara-resort",
+                  "bookingRef": "CC-205",
+                  "stayRef": "stay-CC-205"
+                },
+                "coveredSubjectRefs": [
+                  "subject-p1",
+                  "subject-p2"
+                ]
+              }
+            ]
+          ],
+          "jointEvaluationResults": [
+            {
+              "type": "return",
+              "value": {
+                "jointAdmissibility": {
+                  "determination": "established",
+                  "reason": "applicable-authoritative-premise",
+                  "evidenceRefs": [
+                    "evidence-costa-a-p1",
+                    "evidence-costa-b-p2"
+                  ],
+                  "premiseRefs": [
+                    "premise-family-adventure-p1-p2@1"
+                  ],
+                  "authorityRefs": [
+                    "fixture-policy:resort-family-adventure@1"
+                  ]
+                },
+                "sufficiency": {
+                  "attempted": true,
+                  "claim": {
+                    "determination": "established",
+                    "reason": "criterion-satisfied",
+                    "huntRef": "hunt-family-adventure-1",
+                    "criterionRef": "criterion-family-adventure",
+                    "authorityRef": "scenario-policy:family-adventure@1",
+                    "consideredEvidenceRefs": [
+                      "evidence-costa-a-p1",
+                      "evidence-costa-b-p2"
+                    ],
+                    "distinctContributionRefs": [
+                      "marker-a",
+                      "marker-b"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "jointReplay": {
+            "determination": "established",
+            "reason": "applicable-authoritative-premise",
+            "evidenceRefs": [
+              "evidence-costa-a-p1",
+              "evidence-costa-b-p2"
+            ],
+            "premiseRefs": [
+              "premise-family-adventure-p1-p2@1"
+            ],
+            "authorityRefs": [
+              "fixture-policy:resort-family-adventure@1"
+            ]
+          }
+        },
+        {
+          "phase": "reset",
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "enlist-p1"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Sin alistar",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "ready",
+              "message": "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "not-enlisted",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "negativeControls": [
+    {
+      "demoId": "retail-baseline",
+      "frames": [
+        {
+          "phase": "initial",
+          "snapshot": {
+            "member": {
+              "id": "member-demo-001",
+              "name": "Alex",
+              "fullName": "Alex Martín",
+              "initials": "AM",
+              "level": "Essential",
+              "nextLevel": "Plus",
+              "points": 1240,
+              "progress": 62,
+              "pointsToNextLevel": 760,
+              "memberSince": "marzo de 2024"
+            },
+            "coupons": [
+              {
+                "id": "coupon-welcome",
+                "title": "20% de bienvenida",
+                "description": "Disfruta tu ventaja en la próxima compra.",
+                "validUntil": "Hasta el 30 ago",
+                "tag": "Para ti",
+                "tone": "cyan",
+                "icon": "gift"
+              },
+              {
+                "id": "coupon-double-points",
+                "title": "Puntos x2",
+                "description": "Duplica tus puntos durante todo el fin de semana.",
+                "validUntil": "Este fin de semana",
+                "tag": "Especial",
+                "tone": "pink",
+                "icon": "sparkles"
+              },
+              {
+                "id": "coupon-member",
+                "title": "Envío sin coste",
+                "description": "Una ventaja exclusiva por ser miembro Essential.",
+                "validUntil": "Hasta el 15 sep",
+                "tag": "Essential",
+                "tone": "blue",
+                "icon": "ticket"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-new-season",
+                "category": "Novedades",
+                "title": "Una nueva temporada para descubrir",
+                "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+              }
+            ],
+            "activity": [
+              {
+                "id": "activity-purchase",
+                "title": "Compra registrada",
+                "description": "Tus puntos ya están disponibles.",
+                "occurredAt": "2026-08-02T17:30:00Z",
+                "displayDate": "2 ago, 17:30",
+                "points": 120,
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "star"
+              },
+              {
+                "id": "activity-coupon",
+                "title": "Nuevo beneficio",
+                "description": "Has recibido tu cupón de bienvenida.",
+                "occurredAt": "2026-08-01T09:15:00Z",
+                "displayDate": "1 ago, 09:15",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "gift"
+              },
+              {
+                "id": "activity-profile",
+                "title": "Perfil actualizado",
+                "description": "Tus preferencias se han guardado correctamente.",
+                "occurredAt": "2026-07-28T11:00:00Z",
+                "displayDate": "28 jul, 11:00",
+                "provenance": "mocked",
+                "tone": "blue",
+                "icon": "user"
+              }
+            ]
+          }
+        }
+      ],
+      "reset": {
+        "member": {
+          "id": "member-demo-001",
+          "name": "Alex",
+          "fullName": "Alex Martín",
+          "initials": "AM",
+          "level": "Essential",
+          "nextLevel": "Plus",
+          "points": 1240,
+          "progress": 62,
+          "pointsToNextLevel": 760,
+          "memberSince": "marzo de 2024"
+        },
+        "coupons": [
+          {
+            "id": "coupon-welcome",
+            "title": "20% de bienvenida",
+            "description": "Disfruta tu ventaja en la próxima compra.",
+            "validUntil": "Hasta el 30 ago",
+            "tag": "Para ti",
+            "tone": "cyan",
+            "icon": "gift"
+          },
+          {
+            "id": "coupon-double-points",
+            "title": "Puntos x2",
+            "description": "Duplica tus puntos durante todo el fin de semana.",
+            "validUntil": "Este fin de semana",
+            "tag": "Especial",
+            "tone": "pink",
+            "icon": "sparkles"
+          },
+          {
+            "id": "coupon-member",
+            "title": "Envío sin coste",
+            "description": "Una ventaja exclusiva por ser miembro Essential.",
+            "validUntil": "Hasta el 15 sep",
+            "tag": "Essential",
+            "tone": "blue",
+            "icon": "ticket"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-new-season",
+            "category": "Novedades",
+            "title": "Una nueva temporada para descubrir",
+            "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+          }
+        ],
+        "activity": [
+          {
+            "id": "activity-purchase",
+            "title": "Compra registrada",
+            "description": "Tus puntos ya están disponibles.",
+            "occurredAt": "2026-08-02T17:30:00Z",
+            "displayDate": "2 ago, 17:30",
+            "points": 120,
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "star"
+          },
+          {
+            "id": "activity-coupon",
+            "title": "Nuevo beneficio",
+            "description": "Has recibido tu cupón de bienvenida.",
+            "occurredAt": "2026-08-01T09:15:00Z",
+            "displayDate": "1 ago, 09:15",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "gift"
+          },
+          {
+            "id": "activity-profile",
+            "title": "Perfil actualizado",
+            "description": "Tus preferencias se han guardado correctamente.",
+            "occurredAt": "2026-07-28T11:00:00Z",
+            "displayDate": "28 jul, 11:00",
+            "provenance": "mocked",
+            "tone": "blue",
+            "icon": "user"
+          }
+        ]
+      }
+    },
+    {
+      "demoId": "hospitality-stay",
+      "experienceRef": "experience:arrival-welcome@1",
+      "frames": [
+        {
+          "phase": "initial",
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "pre-arrival-confirmed",
+              "availableActionId": "confirm-arrival"
+            }
+          }
+        },
+        {
+          "phase": "confirm-arrival",
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-check-in-AS-8842",
+                "title": "booking.checked_in",
+                "description": "Evidencia recibida desde demo-control.",
+                "occurredAt": "2026-09-12T15:05:00Z",
+                "displayDate": "12 sept, 15:05",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "checked-in"
+            }
+          },
+          "evaluationCalls": []
+        }
+      ],
+      "reset": {
+        "member": {
+          "id": "guest-lucia-vega",
+          "name": "Lucía",
+          "fullName": "Lucía Vega",
+          "initials": "LV",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "service-late-checkout",
+            "title": "Late check-out",
+            "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Aurora Lisboa",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-breakfast",
+            "title": "Desayuno de bienvenida",
+            "description": "Una invitación para compartir con tus acompañantes.",
+            "validUntil": "Hasta el 13 sep",
+            "tag": "Para tu estancia",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-lisbon-arrival",
+            "category": "Tu llegada",
+            "title": "Lisboa empieza en Aurora",
+            "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+          }
+        ],
+        "activity": [
+          {
+            "id": "stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Aurora Lisboa · 12–15 septiembre.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-selected",
+            "title": "Preferencia guardada",
+            "description": "La habitación se preparará con una cuna de viaje.",
+            "occurredAt": "2026-09-02T08:45:00Z",
+            "displayDate": "2 sept, 08:45",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "pre-arrival-confirmed",
+          "availableActionId": "confirm-arrival"
+        }
+      }
+    }
+  ],
+  "adversarialControls": [
+    {
+      "scenarioContexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "frames": [
+        {
+          "phase": "enlist-p1",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "enlist-p1",
+            "operation": "enlist"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "discover-clue-a"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "active",
+              "message": "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [],
+          "verticalResults": [],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "discover-clue-a",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-a",
+            "evidence": {
+              "id": "evidence-costa-a-p1",
+              "type": "treasure_hunt.marker-a",
+              "occurredAt": "2026-09-12T10:00:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p1",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Tu pista del jardín está aportada. Activa al huésped 2 para que pueda explorar; activarlo no aporta ninguna pista.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "costa-clara-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            ]
+          ],
+          "verticalResults": [
+            {
+              "type": "return",
+              "value": {
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "type": "treasure_hunt.marker-a",
+                    "occurredAt": "2026-09-12T10:00:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p1",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "AS-8842"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-AS-8842"
+                      }
+                    ]
+                  }
+                ],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted"
+              }
+            }
+          ],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "activate-p2",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "activate-p2",
+            "operation": "activate"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "discover-clue-b"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [],
+          "verticalResults": [],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "discover-clue-b",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-b",
+            "evidence": {
+              "id": "evidence-costa-b-p2",
+              "type": "treasure_hunt.marker-b",
+              "occurredAt": "2026-09-12T10:05:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p2",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-ines-costa",
+              "name": "Inés",
+              "fullName": "Inés Costa",
+              "initials": "IC",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "costa-late-checkout",
+                "title": "Salida tranquila",
+                "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Costa Clara Resort",
+                "tone": "blue",
+                "icon": "home"
+              }
+            ],
+            "news": [
+              {
+                "id": "costa-adventure-introduction",
+                "category": "Tu estancia",
+                "title": "Inés y Mateo en Costa Clara",
+                "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-costa-b-p2",
+                "title": "Pista de la fuente encontrada",
+                "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+                "occurredAt": "2026-09-12T10:05:00Z",
+                "displayDate": "12 sept, 10:05",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "evidence-costa-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "costa-stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Costa Clara Resort · reserva CC-205.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "adventure-established"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 1
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 2
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                },
+                {
+                  "id": "evidence-costa-b-p2",
+                  "subjectRefs": [
+                    "subject-p2"
+                  ],
+                  "type": "treasure_hunt.marker-b",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-costa-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                },
+                {
+                  "id": "evidence-costa-b-p2",
+                  "type": "treasure_hunt.marker-b",
+                  "occurredAt": "2026-09-12T10:05:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p2",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "AS-8842"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-AS-8842"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "costa-clara-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            ]
+          ],
+          "verticalResults": [
+            {
+              "type": "return",
+              "value": {
+                "evidence": [
+                  {
+                    "id": "evidence-costa-a-p1",
+                    "type": "treasure_hunt.marker-a",
+                    "occurredAt": "2026-09-12T10:00:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p1",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "AS-8842"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-AS-8842"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "evidence-costa-b-p2",
+                    "type": "treasure_hunt.marker-b",
+                    "occurredAt": "2026-09-12T10:05:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p2",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "AS-8842"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-AS-8842"
+                      }
+                    ]
+                  }
+                ],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted"
+              }
+            }
+          ],
+          "jointEvaluationCalls": []
+        }
+      ]
+    },
+    {
+      "scenarioContexts": [
+        {
+          "type": "property",
+          "id": "aurora-resort"
+        },
+        {
+          "type": "booking",
+          "id": "AS-8842"
+        },
+        {
+          "type": "stay",
+          "id": "stay-AS-8842"
+        }
+      ],
+      "frames": [
+        {
+          "phase": "enlist-p1",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "enlist-p1",
+            "operation": "enlist"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "ready",
+              "availableActionId": "discover-clue-a"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "active",
+              "message": "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo.",
+              "discoveredClueCount": 0
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [],
+          "verticalResults": [],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "discover-clue-a",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-a",
+            "evidence": {
+              "id": "evidence-a-p1",
+              "type": "treasure_hunt.marker-a",
+              "occurredAt": "2026-09-12T10:00:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p1",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "activate-p2"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Sin habilitar",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Tu pista del jardín está aportada. Activa al huésped 2 para que pueda explorar; activarlo no aporta ninguna pista.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "not-enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "aurora-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            ]
+          ],
+          "verticalResults": [
+            {
+              "type": "return",
+              "value": {
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "type": "treasure_hunt.marker-a",
+                    "occurredAt": "2026-09-12T10:00:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p1",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "CC-205"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-CC-205"
+                      }
+                    ]
+                  }
+                ],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted"
+              }
+            }
+          ],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "activate-p2",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "activate-p2",
+            "operation": "activate"
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "clue-a-discovered",
+              "availableActionId": "discover-clue-b"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 0
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 1
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 0
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [],
+          "verticalResults": [],
+          "jointEvaluationCalls": []
+        },
+        {
+          "phase": "discover-clue-b",
+          "input": {
+            "type": "scenario_action",
+            "actionId": "discover-clue-b",
+            "evidence": {
+              "id": "evidence-b-p2",
+              "type": "treasure_hunt.marker-b",
+              "occurredAt": "2026-09-12T10:05:00Z",
+              "source": "demo-control",
+              "reliability": "confirmed",
+              "subjects": [
+                {
+                  "type": "individual",
+                  "id": "subject-p2",
+                  "role": "guest"
+                }
+              ],
+              "contexts": [
+                {
+                  "type": "booking",
+                  "id": "CC-205"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-CC-205"
+                }
+              ]
+            }
+          },
+          "snapshot": {
+            "member": {
+              "id": "guest-lucia-vega",
+              "name": "Lucía",
+              "fullName": "Lucía Vega",
+              "initials": "LV",
+              "level": "Voyager",
+              "nextLevel": "Luminary",
+              "points": 3480,
+              "progress": 48,
+              "pointsToNextLevel": 520,
+              "memberSince": "enero de 2025"
+            },
+            "coupons": [
+              {
+                "id": "service-late-checkout",
+                "title": "Late check-out",
+                "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+                "validUntil": "Estancia actual",
+                "tag": "Aurora Lisboa",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-breakfast",
+                "title": "Desayuno de bienvenida",
+                "description": "Una invitación para compartir con tus acompañantes.",
+                "validUntil": "Hasta el 13 sep",
+                "tag": "Para tu estancia",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "news": [
+              {
+                "id": "news-lisbon-arrival",
+                "category": "Tu llegada",
+                "title": "Lisboa empieza en Aurora",
+                "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+              }
+            ],
+            "activity": [
+              {
+                "id": "evidence-b-p2",
+                "title": "Pista de la fuente encontrada",
+                "description": "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+                "occurredAt": "2026-09-12T10:05:00Z",
+                "displayDate": "12 sept, 10:05",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "evidence-a-p1",
+                "title": "Pista del jardín encontrada",
+                "description": "Hallazgo aportado por ti.",
+                "occurredAt": "2026-09-12T10:00:00Z",
+                "displayDate": "12 sept, 10:00",
+                "provenance": "simulated",
+                "tone": "blue",
+                "icon": "activity"
+              },
+              {
+                "id": "stay-confirmed",
+                "title": "Estancia confirmada",
+                "description": "Aurora Lisboa · 12–15 septiembre.",
+                "occurredAt": "2026-09-01T10:20:00Z",
+                "displayDate": "1 sept, 10:20",
+                "provenance": "mocked",
+                "tone": "cyan",
+                "icon": "home"
+              },
+              {
+                "id": "service-selected",
+                "title": "Preferencia guardada",
+                "description": "La habitación se preparará con una cuna de viaje.",
+                "occurredAt": "2026-09-02T08:45:00Z",
+                "displayDate": "2 sept, 08:45",
+                "provenance": "mocked",
+                "tone": "pink",
+                "icon": "sparkles"
+              }
+            ],
+            "scenario": {
+              "checkpoint": "adventure-established"
+            },
+            "guestPerspective": {
+              "huntName": "Aventura Familiar",
+              "sessionLabel": "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "label": "Tú · huésped 1",
+                  "status": "Alistada y habilitada",
+                  "clueCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "label": "Huésped 2 · ya existe en esta estancia",
+                  "status": "Habilitado por ti",
+                  "clueCount": 1
+                }
+              ],
+              "state": "exploring",
+              "message": "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre.",
+              "discoveredClueCount": 2
+            },
+            "supervisionPerspective": {
+              "sessionSubjectRef": "subject-p1",
+              "subjects": [
+                {
+                  "id": "subject-p1",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                },
+                {
+                  "id": "subject-p2",
+                  "exists": true,
+                  "operationalState": "enabled",
+                  "evidenceCount": 1
+                }
+              ],
+              "evidence": [
+                {
+                  "id": "evidence-a-p1",
+                  "subjectRefs": [
+                    "subject-p1"
+                  ],
+                  "type": "treasure_hunt.marker-a",
+                  "provenance": "demo-control"
+                },
+                {
+                  "id": "evidence-b-p2",
+                  "subjectRefs": [
+                    "subject-p2"
+                  ],
+                  "type": "treasure_hunt.marker-b",
+                  "provenance": "demo-control"
+                }
+              ],
+              "jointAdmissibility": "cannot-currently-establish",
+              "sufficiency": "not-attempted",
+              "derivedClaim": "not-produced"
+            }
+          },
+          "verticalCalls": [
+            [
+              [
+                {
+                  "id": "evidence-a-p1",
+                  "type": "treasure_hunt.marker-a",
+                  "occurredAt": "2026-09-12T10:00:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p1",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                },
+                {
+                  "id": "evidence-b-p2",
+                  "type": "treasure_hunt.marker-b",
+                  "occurredAt": "2026-09-12T10:05:00Z",
+                  "source": "demo-control",
+                  "reliability": "confirmed",
+                  "subjects": [
+                    {
+                      "type": "individual",
+                      "id": "subject-p2",
+                      "role": "guest"
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "type": "booking",
+                      "id": "CC-205"
+                    },
+                    {
+                      "type": "stay",
+                      "id": "stay-CC-205"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "type": "property",
+                  "id": "aurora-resort"
+                },
+                {
+                  "type": "booking",
+                  "id": "AS-8842"
+                },
+                {
+                  "type": "stay",
+                  "id": "stay-AS-8842"
+                }
+              ]
+            ]
+          ],
+          "verticalResults": [
+            {
+              "type": "return",
+              "value": {
+                "evidence": [
+                  {
+                    "id": "evidence-a-p1",
+                    "type": "treasure_hunt.marker-a",
+                    "occurredAt": "2026-09-12T10:00:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p1",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "CC-205"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-CC-205"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "evidence-b-p2",
+                    "type": "treasure_hunt.marker-b",
+                    "occurredAt": "2026-09-12T10:05:00Z",
+                    "source": "demo-control",
+                    "reliability": "confirmed",
+                    "subjects": [
+                      {
+                        "type": "individual",
+                        "id": "subject-p2",
+                        "role": "guest"
+                      }
+                    ],
+                    "contexts": [
+                      {
+                        "type": "booking",
+                        "id": "CC-205"
+                      },
+                      {
+                        "type": "stay",
+                        "id": "stay-CC-205"
+                      }
+                    ]
+                  }
+                ],
+                "jointAdmissibility": "cannot-currently-establish",
+                "sufficiency": "not-attempted"
+              }
+            }
+          ],
+          "jointEvaluationCalls": []
+        }
+      ]
+    }
+  ],
+  "incompleteContextControls": [
+    {
+      "name": "Evidence alone supplies no applicable context",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        }
+      ],
+      "contexts": [],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    },
+    {
+      "name": "Scenario missing property",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    },
+    {
+      "name": "Scenario ambiguous booking",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        },
+        {
+          "type": "booking",
+          "id": "AS-8842"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    },
+    {
+      "name": "Evidence missing stay",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    },
+    {
+      "name": "Evidence ambiguous booking",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            },
+            {
+              "type": "booking",
+              "id": "AS-8842"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            },
+            {
+              "type": "booking",
+              "id": "AS-8842"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              },
+              {
+                "type": "booking",
+                "id": "AS-8842"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              },
+              {
+                "type": "booking",
+                "id": "AS-8842"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    },
+    {
+      "name": "Evidence explicit conflicting property",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            },
+            {
+              "type": "property",
+              "id": "aurora-resort"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p2",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            },
+            {
+              "type": "property",
+              "id": "aurora-resort"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              },
+              {
+                "type": "property",
+                "id": "aurora-resort"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p2",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              },
+              {
+                "type": "property",
+                "id": "aurora-resort"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      },
+      "jointEvaluationCalls": []
+    }
+  ],
+  "authoritySeparationControls": [
+    {
+      "composition": "A",
+      "control": "no premise",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "AS-8842"
+          },
+          {
+            "evidenceRef": "evidence-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "AS-8842"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "aurora-resort",
+          "bookingRef": "AS-8842",
+          "stayRef": "stay-AS-8842"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "aurora-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        null
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-a-p1",
+            "evidence-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "composition": "A",
+      "control": "premise with wrong context",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "AS-8842"
+          },
+          {
+            "evidenceRef": "evidence-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "AS-8842"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "aurora-resort",
+          "bookingRef": "AS-8842",
+          "stayRef": "stay-AS-8842"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "aurora-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        {
+          "premiseRef": "premise-family-adventure-p1-p2@1",
+          "authorityRef": "fixture-policy:resort-family-adventure@1",
+          "scope": {
+            "evaluationRef": "evaluation-family-adventure-1",
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "aurora-resort",
+            "bookingRef": "unrelated-booking",
+            "stayRef": "stay-AS-8842"
+          },
+          "coveredSubjectRefs": [
+            "subject-p1",
+            "subject-p2"
+          ]
+        }
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-a-p1",
+            "evidence-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "composition": "A",
+      "control": "premise does not cover P2",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "AS-8842"
+          },
+          {
+            "evidenceRef": "evidence-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-AS-8842",
+            "propertyRef": "aurora-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "AS-8842"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "aurora-resort",
+          "bookingRef": "AS-8842",
+          "stayRef": "stay-AS-8842"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "aurora-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        {
+          "premiseRef": "premise-family-adventure-p1-p2@1",
+          "authorityRef": "fixture-policy:resort-family-adventure@1",
+          "scope": {
+            "evaluationRef": "evaluation-family-adventure-1",
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "aurora-resort",
+            "bookingRef": "AS-8842",
+            "stayRef": "stay-AS-8842"
+          },
+          "coveredSubjectRefs": [
+            "subject-p1"
+          ]
+        }
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-a-p1",
+            "evidence-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "composition": "B",
+      "control": "no premise",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-costa-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "CC-205"
+          },
+          {
+            "evidenceRef": "evidence-costa-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "CC-205"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "costa-clara-resort",
+          "bookingRef": "CC-205",
+          "stayRef": "stay-CC-205"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "costa-clara-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        null
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-costa-a-p1",
+            "evidence-costa-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "composition": "B",
+      "control": "premise with wrong context",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-costa-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "CC-205"
+          },
+          {
+            "evidenceRef": "evidence-costa-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "CC-205"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "costa-clara-resort",
+          "bookingRef": "CC-205",
+          "stayRef": "stay-CC-205"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "costa-clara-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        {
+          "premiseRef": "premise-family-adventure-p1-p2@1",
+          "authorityRef": "fixture-policy:resort-family-adventure@1",
+          "scope": {
+            "evaluationRef": "evaluation-family-adventure-1",
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "costa-clara-resort",
+            "bookingRef": "unrelated-booking",
+            "stayRef": "stay-CC-205"
+          },
+          "coveredSubjectRefs": [
+            "subject-p1",
+            "subject-p2"
+          ]
+        }
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-costa-a-p1",
+            "evidence-costa-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "composition": "B",
+      "control": "premise does not cover P2",
+      "input": [
+        [
+          {
+            "evidenceRef": "evidence-costa-a-p1",
+            "subjectRef": "subject-p1",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-a",
+            "bookingRef": "CC-205"
+          },
+          {
+            "evidenceRef": "evidence-costa-b-p2",
+            "subjectRef": "subject-p2",
+            "huntRef": "hunt-family-adventure-1",
+            "stayRef": "stay-CC-205",
+            "propertyRef": "costa-clara-resort",
+            "markerRef": "marker-b",
+            "bookingRef": "CC-205"
+          }
+        ],
+        {
+          "evaluationRef": "evaluation-family-adventure-1",
+          "huntRef": "hunt-family-adventure-1",
+          "propertyRef": "costa-clara-resort",
+          "bookingRef": "CC-205",
+          "stayRef": "stay-CC-205"
+        },
+        {
+          "criterionRef": "criterion-family-adventure",
+          "authorityRef": "scenario-policy:family-adventure@1",
+          "scope": {
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "costa-clara-resort"
+          },
+          "anchorMarkerRef": "marker-a",
+          "alternativeMarkerRefs": [
+            "marker-b",
+            "marker-c"
+          ]
+        },
+        {
+          "premiseRef": "premise-family-adventure-p1-p2@1",
+          "authorityRef": "fixture-policy:resort-family-adventure@1",
+          "scope": {
+            "evaluationRef": "evaluation-family-adventure-1",
+            "huntRef": "hunt-family-adventure-1",
+            "propertyRef": "costa-clara-resort",
+            "bookingRef": "CC-205",
+            "stayRef": "stay-CC-205"
+          },
+          "coveredSubjectRefs": [
+            "subject-p1"
+          ]
+        }
+      ],
+      "result": {
+        "jointAdmissibility": {
+          "determination": "cannot-currently-establish",
+          "reason": "no-applicable-authoritative-premise",
+          "evidenceRefs": [
+            "evidence-costa-a-p1",
+            "evidence-costa-b-p2"
+          ],
+          "premiseRefs": [],
+          "authorityRefs": []
+        },
+        "sufficiency": {
+          "attempted": false
+        }
+      }
+    },
+    {
+      "control": "integration P1/P3 with fixed P1/P2 premise",
+      "evidence": [
+        {
+          "id": "evidence-costa-a-p1",
+          "type": "treasure_hunt.marker-a",
+          "occurredAt": "2026-09-12T10:00:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p1",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        },
+        {
+          "id": "evidence-costa-b-p2",
+          "type": "treasure_hunt.marker-b",
+          "occurredAt": "2026-09-12T10:05:00Z",
+          "source": "demo-control",
+          "reliability": "confirmed",
+          "subjects": [
+            {
+              "type": "individual",
+              "id": "subject-p3",
+              "role": "guest"
+            }
+          ],
+          "contexts": [
+            {
+              "type": "booking",
+              "id": "CC-205"
+            },
+            {
+              "type": "stay",
+              "id": "stay-CC-205"
+            }
+          ]
+        }
+      ],
+      "contexts": [
+        {
+          "type": "property",
+          "id": "costa-clara-resort"
+        },
+        {
+          "type": "booking",
+          "id": "CC-205"
+        },
+        {
+          "type": "stay",
+          "id": "stay-CC-205"
+        }
+      ],
+      "result": {
+        "evidence": [
+          {
+            "id": "evidence-costa-a-p1",
+            "type": "treasure_hunt.marker-a",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p1",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          },
+          {
+            "id": "evidence-costa-b-p2",
+            "type": "treasure_hunt.marker-b",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "source": "demo-control",
+            "reliability": "confirmed",
+            "subjects": [
+              {
+                "type": "individual",
+                "id": "subject-p3",
+                "role": "guest"
+              }
+            ],
+            "contexts": [
+              {
+                "type": "booking",
+                "id": "CC-205"
+              },
+              {
+                "type": "stay",
+                "id": "stay-CC-205"
+              }
+            ]
+          }
+        ],
+        "jointAdmissibility": "cannot-currently-establish",
+        "sufficiency": "not-attempted"
+      }
+    }
+  ],
+  "recordedAt": "2026-09-13T12:49:32.147Z",
+  "verdict": "SUPPORTED WITH QUALIFICATION",
+  "L1": "SITUATED BINDING EXECUTION-VERIFIED WITH SEPARATED A/B EVALUATION INPUTS",
+  "authoritySeparation": "PRESERVED under the existing explicitly assumed experimental premise",
+  "regressions": "A/B snapshots equal H22; live H22 positive/negative selection controls pass",
+  "outOfScope": {
+    "L3": "preserved / execution-confirmed",
+    "L4": "preserved / source-inspection only",
+    "L5": "preserved / execution-confirmed"
+  },
+  "qualifications": [
+    "Existing experimental premise explicitly situated, not productive authority accreditation",
+    "Property supplied by Scenario when absent from Evidence, without modifying the fact",
+    "No general binding architecture",
+    "No historical H21/H22 revision",
+    "No content repair or full Factory reuse"
+  ],
+  "nextMaterialPressure": "Authority provenance and missing factual property remain bounded assumptions; L3/L4/L5 remain; H24 NOT SELECTED"
+}

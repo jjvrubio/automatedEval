@@ -1,0 +1,70 @@
+{
+  "session": 35,
+  "verifiedAt": "2026-09-18T21:11:42.676094+00:00",
+  "baselineInitialCheck": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": {
+      "passed": 92,
+      "timedOut": 4
+    },
+    "build": "NOT RUN after failed tests"
+  },
+  "baselineSerialCheck": {
+    "tests": {
+      "files": 28,
+      "passed": 96
+    },
+    "buildPWA": "PASS"
+  },
+  "finalCheck": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": {
+      "files": 29,
+      "passed": 97
+    },
+    "buildPWA": "PASS"
+  },
+  "testCommand": "npm test -- --maxWorkers=1",
+  "timeoutsOrAssertionsRelaxed": false,
+  "currentAppRuns": 24,
+  "currentAppFramesIncludingReset": 137,
+  "currentAppDOMCaptures": 411,
+  "historicalRunsCountedAsCurrent": 0,
+  "variantsPerComposition": [
+    [
+      "subjects",
+      "account",
+      "brand",
+      "intro",
+      "journey",
+      "experienceName",
+      "emptyName",
+      "experienceId",
+      "presenter",
+      "activity"
+    ],
+    [
+      "subjects",
+      "account",
+      "brand",
+      "intro",
+      "journey",
+      "experienceName",
+      "emptyName",
+      "experienceId",
+      "presenter",
+      "activity"
+    ]
+  ],
+  "requiredReportSectionsVerified": 47,
+  "traceSourceHashesVerified": true,
+  "unexpectedInheritedSourceChanges": [],
+  "AppByteIdenticalToS34": true,
+  "domIntegrationVerification": "EXECUTED",
+  "browserVisualValidation": "NOT EXECUTED",
+  "reportSha256": "0f67d2fc53286961083c2e0e90cf7147fc6633fffee445f4687e1d580736a1ff",
+  "traceSha256": "176f1f2946f651a50d064a9f3270063631bd798a49fd4e341941ef890cd7789d",
+  "localReportLinksVerified": 18
+}

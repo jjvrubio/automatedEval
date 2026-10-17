@@ -1,0 +1,49 @@
+{
+  "verifiedAt": "2026-09-14T16:17:24.050837+00:00",
+  "prechangeSuite": {
+    "tests": 86,
+    "files": 18,
+    "result": "PASS"
+  },
+  "focalH25": {
+    "tests": 1,
+    "result": "PASS",
+    "verdict": "SUPPORTED WITH QUALIFICATION"
+  },
+  "historicalAndVerticalRegression": {
+    "tests": 14,
+    "files": 5,
+    "result": "PASS",
+    "h24": "FALSIFIED / unchanged"
+  },
+  "fullCheck": {
+    "command": "npm run check",
+    "tests": 87,
+    "files": 19,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "testsResult": "PASS",
+    "build": "PASS",
+    "exitCode": 0
+  },
+  "baselineFilesPreserved": 137,
+  "expectedChangedFiles": [
+    "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/bootstrap.ts",
+    "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts"
+  ],
+  "archivedOriginalsVerified": 9,
+  "reportRequiredSectionsVerified": 28,
+  "artifactSha256": {
+    "baseline.json": "ba494defcf5c2f34f8b8b2450c42a8124c19594797351d641783ca89c1e0809a",
+    "execution-trace.json": "4798c260453a6cb6cbf25ab4d6e76f7b69c649fd4c479e96ddc2ccea47308983",
+    "application-delta.patch": "dc3e70e8a67bb7788ccd9bed6ab80c701fd6fc4081dc0cb908aaf1eb98acfcae",
+    "session-25-script-bound-situated-activity-representation.md": "d5b5dc64b3f093ca38e70142a08074b8ec9e6bf4da3e2b4b29823cac93070c26"
+  }
+}

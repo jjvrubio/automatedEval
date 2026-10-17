@@ -1,0 +1,64 @@
+--- S33/operational-supervision-subject-h33.test.ts
++++ S34/historical-replay-h33.test.ts
+@@ -6,7 +6,7 @@
+ import { createRoot } from "react-dom/client";
+ import { MemoryRouter } from "react-router-dom";
+ import { afterEach, expect, it, vi } from "vitest";
+-import { App } from "@/app/App";
++import { App } from "./test-fixtures/h33/App";
+ import { App as PreviousApp } from "./test-fixtures/h32/App";
+ import { MockDataAdapter } from "@/demo/mock-adapter";
+ import { defaultDemoCatalogs, resolveDemo, type DemoCatalogs } from "./bootstrap";
+@@ -14,7 +14,8 @@
+ import * as vertical from "./vertical-evaluation";
+ import * as joint from "./cross-subject-evidence-admissibility";
+ 
+-// Current App and actual provider/evaluators for every complete public journey.
++// S34: historical S33 App replay; provider/evaluators unchanged.
++// Current App coverage lives in operational-session-subject-h34.test.ts.
+ // Only the explicitly isolated read-model observations substitute getSnapshot.
+ Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+ afterEach(() => { vi.restoreAllMocks(); document.body.innerHTML = ""; });
+@@ -52,7 +53,7 @@
+   phase, ...(input ? { input } : {}), snapshot, verticalCalls, verticalResults, jointEvaluationCalls, jointEvaluationResults,
+ });
+ 
+-it("H33 current App: operational subject references alone identify supervision subjects across A/B and independent presentation perturbations", async () => {
++it("H33 historical S33 App replay: operational subject references alone identify supervision subjects across A/B and independent presentation perturbations", async () => {
+   const baselineBytes = readFileSync(resolve(evidenceDir, "session-33/baseline.json"));
+   const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+   const projectRoot = resolve(process.cwd(), "../../..");
+@@ -65,7 +66,7 @@
+     if (path === ".DS_Store" || path.endsWith("/.DS_Store")) continue;
+     expect(sha(readFileSync(archived[path] ? resolve(process.cwd(), archived[path]) : resolve(projectRoot, path))), path).toBe(hash);
+   }
+-  const appSource = readFileSync(resolve(process.cwd(), "src/app/App.tsx"), "utf8");
++  const appSource = readFileSync(resolve(process.cwd(), "src/demo-factory/test-fixtures/h33/App.tsx"), "utf8");
+   const oldSource = readFileSync(resolve(process.cwd(), "src/demo-factory/test-fixtures/h32/App.tsx"), "utf8");
+   const oldHeading = '<h2>{subject.id === "subject-p1" ? "P1 · Lucía" : "P2 · Huésped 2"}</h2>';
+   expect(oldSource.split(oldHeading)).toHaveLength(2);
+@@ -170,7 +171,7 @@
+       expect(resetFrame.homeDOM).toBe(frames[0].homeDOM);
+       expect(resetFrame.supervisionDOM).toBe(frames[0].supervisionDOM);
+       expect(resetFrame.activityDOM).toBe(frames[0].activityDOM);
+-      return { component: component === App ? "CURRENT APP H33" : "ARCHIVED APP S32", demoId: runtime.manifest.demoId,
++      return { component: component === App ? "ARCHIVED APP S33" : "ARCHIVED APP S32", demoId: runtime.manifest.demoId,
+         scenario: clone(runtime.scenario), script: clone(runtime.script), brand: clone(runtime.brand),
+         frames, resetFrame, executedActions: clone(execute.mock.calls.map(([action]) => action)),
+       };
+@@ -283,7 +284,7 @@
+   expect(generic.map((g) => g.demoId).sort()).toEqual(["hospitality-stay", "retail-baseline"]);
+   const trace = {
+     session: 33, recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+-    method: "Current App createRoot/MemoryRouter/jsdom; public action clicks; real adapter; transparent evaluator spies; archived S32 App compared separately at every phase",
++    method: "Historical S33 App createRoot/MemoryRouter/jsdom; public action clicks; real adapter; transparent evaluator spies; archived S32 App compared separately at every phase",
+     baselineSha256: sha(baselineBytes), appSha256: sha(appSource),
+     harnessSha256: sha(readFileSync(resolve(process.cwd(), "src/demo-factory/operational-supervision-subject-h33.test.ts"))),
+     controls, isolatedReadModelObservations: [order, unknown], genericRegression: generic,
+@@ -292,5 +293,5 @@
+     humanPresentation: "NOT REQUIRED for H33; no human supervision relation introduced",
+     recurringPresentationPressure: "QUALIFIED BY H33 / NOT PROMOTED", nextPressure: "OBSERVED / NOT SELECTED; H34 NOT OPENED",
+   };
+-  if (process.env.H33_RECORD_PATH) writeFileSync(resolve(process.env.H33_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
++  if (process.env.H33_REPLAY_RECORD_PATH) writeFileSync(resolve(process.env.H33_REPLAY_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+ }, 60000);

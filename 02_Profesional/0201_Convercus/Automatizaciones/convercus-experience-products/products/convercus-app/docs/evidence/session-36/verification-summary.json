@@ -1,0 +1,40 @@
+{
+  "session": 36,
+  "verifiedAt": "2026-09-19T09:34:19.175346+00:00",
+  "verdict": "FALSIFIED for exhaustive compatible-meaning coverage; four modes remain partially useful / qualified",
+  "codeDelta": "NONE",
+  "testInfrastructureDelta": "NONE",
+  "baselineFileCount": 445,
+  "unchangedInheritedFiles": 445,
+  "requiredReportSectionsVerified": 34,
+  "matrixUnits": 36,
+  "matrixRequiredAttributesPerUnit": 12,
+  "currentSourceHashMatches": 10,
+  "historicalTraceDataObservations": 15,
+  "sourceInspection": "EXECUTED",
+  "historicalTraceReadAndComparison": "EXECUTED; NOT runtime execution",
+  "currentSuiteExecution": "NOT EXECUTED",
+  "currentRuntimeDOMExecution": "NOT EXECUTED",
+  "browserVisualValidation": "NOT EXECUTED",
+  "historicalS35Suite": {
+    "testsPassed": 97,
+    "testFiles": 29,
+    "executionMode": "serial maxWorkers=1",
+    "provenance": "session-35/verification-summary.json"
+  },
+  "testInfrastructurePressure": "MATERIAL PRESSURE",
+  "promotion": "NOT PROMOTED",
+  "H37": "NOT OPENED",
+  "reportSha256": "45685d222fe976f670e041d31d48f9e4e8e32b47ca0bd2971ec177b8b27445a5",
+  "matrixSha256": "8cda1029fa4143f5b79dc2687c32673a5af88f9c8d553918903959ae2b7135dc",
+  "localReportLinksVerified": 24,
+  "auditArtifactHashes": {
+    "addressed-surface-matrix.json": "8cda1029fa4143f5b79dc2687c32673a5af88f9c8d553918903959ae2b7135dc",
+    "baseline.json": "d2975d9dc8460a8bd39a01bd33e62943e4a639c169b12038c2a2f46cd1fc9289",
+    "current-source-excerpts.md": "384c4c9b7a4a3cb32f78cc61675ab8f84390d112bce185b6251187162b7bdde0",
+    "current-source-verification.json": "bc76cce99b90ed33aad83f8c88df0488cc0f4d9c1b40408c5f9a82e297f464e1",
+    "historical-evidence-extracts.json": "9627b7c97944a9ee52256ba78ea10c8c4bcfc05ef17beaa093639f1ae15c5b89",
+    "preservation-check.json": "e01e15a73391b1cd84ab8c538d78db65f0a4b7238a0b8a30ed5c96ea94cf179a",
+    "test-infrastructure-observation.json": "2a84216ab515b3f1bfbd8dcb3eab016101a8b76e1e2bb8fcf198f395fa04f99f"
+  }
+}

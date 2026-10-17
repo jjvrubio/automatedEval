@@ -1,0 +1,11 @@
+--- S33/App.tsx
++++ S34/App.tsx
+@@ -364,7 +364,7 @@
+         </section>
+         <section className="system-panel" aria-label="Evaluación compartida">
+           <dl className="system-list">
+-            <div><dt>Cuenta/sesión operativa</dt><dd>{supervision.sessionSubjectRef}</dd></div>
++            <div><dt>Sujeto de sesión operativa</dt><dd>{supervision.sessionSubjectRef}</dd></div>
+             <div><dt>Criterio K</dt><dd>A AND (B OR C)</dd></div>
+             <div><dt>Evidence recibida</dt><dd>{supervision.evidence.length}</dd></div>
+             <div><dt>Admisibilidad conjunta</dt><dd>{supervision.jointAdmissibility}</dd></div>

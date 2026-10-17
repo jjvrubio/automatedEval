@@ -1,0 +1,14 @@
+{
+  "name": "lint",
+  "startedAt": "2026-09-22T17:27:00.580Z",
+  "finishedAt": "2026-09-22T17:27:03.561Z",
+  "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+  "args": [
+    "node_modules/eslint/bin/eslint.js",
+    "."
+  ],
+  "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+  "exitCode": 1,
+  "signal": null,
+  "error": null
+}

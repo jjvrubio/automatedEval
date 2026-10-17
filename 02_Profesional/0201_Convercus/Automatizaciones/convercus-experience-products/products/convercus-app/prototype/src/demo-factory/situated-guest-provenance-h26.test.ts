@@ -1,0 +1,172 @@
+/// <reference types="node" />
+import { historicalH31Path } from "./test-fixtures/h31/source-path";
+import { historicalH29Path } from "./test-fixtures/h29/source-path";
+import { historicalH28Path } from "./test-fixtures/h28/source-path";
+import { createHash } from "node:crypto";
+import { writeFileSync } from "node:fs";
+import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+import { resolve } from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { resolveDemo } from "./bootstrap";
+import { historicalH26Path } from "./test-fixtures/h26/source-path";
+import type { AppSnapshot, DemoAction, DemoEnableAction } from "./contracts";
+import * as vertical from "./vertical-evaluation";
+import * as joint from "./cross-subject-evidence-admissibility";
+
+// H26 remains FALSIFIED with its original no-new-relation premise and snapshots.
+vi.mock("./artifacts", () => import("./test-fixtures/h26/artifacts"));
+vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h26/mock-adapter"));
+vi.mock("./vertical-evaluation", () => import("./test-fixtures/h26/vertical-evaluation"));
+
+afterEach(() => vi.restoreAllMocks());
+const root = resolve(process.cwd(), "../../..");
+const evidenceDir = resolve(process.cwd(), "../docs/evidence");
+const sha256 = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
+type Frame = {
+  phase: string;
+  input?: DemoAction | DemoEnableAction;
+  snapshot: AppSnapshot;
+  verticalCalls: Parameters<typeof vertical.evaluateVerticalEvidence>[];
+  verticalResults: vertical.VerticalEvaluationState[];
+  jointEvaluationCalls: Parameters<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+  jointEvaluationResults: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+};
+
+describe("H26 — Situated Guest Perspective Provenance", () => {
+  it("reproduces the inspected missing subject/narrative relation without changing any application source", async () => {
+    const baselineBytes = readFileSync(resolve(evidenceDir, "session-26/baseline.json"));
+    const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+    for (const [path, hash] of Object.entries(baseline.files)) expect(sha256(readFileSync(resolve(root, historicalH31Path(historicalH29Path(historicalH28Path(historicalH26Path(path))))))), path).toBe(hash);
+    const h25 = JSON.parse(readFileSync(resolve(evidenceDir, "session-25/execution-trace.json"), "utf8")) as {
+      verdict: string; controls: Array<{ original: { frames: Frame[]; reset: AppSnapshot } }>;
+    };
+    expect(h25.verdict).toBe("SUPPORTED WITH QUALIFICATION");
+    const app = readFileSync(resolve(process.cwd(), "src/app/App.tsx"), "utf8");
+    // Source inspection only. These observations do not render or fix B's UI.
+    expect(app).toContain("Cuenta de {snapshot.member.name}");
+    expect(app).toContain("const guestActionLabel = runtime.script?.steps.find(({ action }) => action.actionId === snapshot.scenario?.availableActionId)?.presenterLabel;");
+    const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+    const cross = vi.spyOn(joint, "evaluateCrossSubjectEvidenceSufficiency");
+    const guest = vi.spyOn(vertical, "projectGuestPerspective");
+    const controls: Array<{ composition: string; frames: Frame[]; reset: AppSnapshot; observations: unknown[] }> = [];
+    const trace: Record<string, unknown> = {
+      experiment: "H26 — Situated Guest Perspective Provenance",
+      baselineSha256: sha256(baselineBytes), unchangedFiles: Object.keys(baseline.files).length,
+      harnessSha256: sha256(readFileSync(resolve(process.cwd(), "src/demo-factory/situated-guest-provenance-h26.test.ts"))),
+      method: "Diagnostic replay only after inspection STOP; live public snapshots and transparent original projector/evaluator spies; no candidate implementation or UI rendering",
+      inspectionStop: "L3b: SubjectReference has only id/type/role; no explicit situated subject display or account-to-subject relationship",
+      controls,
+    };
+    const record = () => {
+      if (process.env.H26_RECORD_PATH) writeFileSync(resolve(process.env.H26_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+    };
+    try {
+      for (const [index, demoId] of ["hospitality-family-adventure", "hospitality-family-adventure-costa"].entries()) {
+        const runtime = resolveDemo(demoId);
+        expect(runtime.scenario!.subjects).toEqual([
+          { type: "individual", id: "subject-p1", role: "guest" },
+          { type: "individual", id: "subject-p2", role: "guest" },
+        ]);
+        const expectedLabels = index === 0 ? [
+          "Alistarme", "Encontrar la pista del jardín · yo", "Activar al huésped 2 desde mi cuenta", "Encontrar la pista de la fuente · huésped 2", undefined,
+        ] : [
+          "Alistarme", "Encontrar la pista del mirador · Inés", "Activar a Mateo desde mi cuenta", "Encontrar la pista del patio · Mateo", undefined,
+        ];
+        const frames: Frame[] = [];
+        const observations: unknown[] = [];
+        controls.push({ composition: index === 0 ? "A" : "B", frames, reset: h25.controls[index].original.reset, observations });
+        const observe = (snapshot: AppSnapshot, stepIndex: number, reset = false) => {
+          expect(guest).toHaveBeenCalledOnce();
+          const args = structuredClone(guest.mock.calls[0]);
+          expect(args).toHaveLength(3);
+          expect(args[1]).toEqual(runtime.scenario!.subjects);
+          expect(args[2]).toEqual(Object.fromEntries(snapshot.supervisionPerspective!.subjects.map((s) => [s.id, s.operationalState])));
+          expect(guest.mock.results[0].value).toEqual(snapshot.guestPerspective);
+          const availableActionId = snapshot.scenario?.availableActionId;
+          const label = runtime.script?.steps.find(({ action }) => action.actionId === availableActionId)?.presenterLabel;
+          expect(label).toBe(expectedLabels[stepIndex]);
+          expect(snapshot.member.name).toBe(index === 0 ? "Lucía" : "Inés");
+          expect(snapshot.supervisionPerspective!.sessionSubjectRef).toBe("subject-p1");
+          expect(snapshot.guestPerspective!.sessionLabel).toContain("cuenta de Lucía, huésped 1");
+          observations.push({
+            phase: reset ? "reset" : stepIndex === 0 ? "initial" : runtime.script!.steps[stepIndex - 1].action.actionId,
+            projectionArguments: args,
+            sources: { member: snapshot.member, brand: runtime.brand.name, experience: runtime.experience,
+              subjects: runtime.scenario!.subjects, contexts: runtime.scenario!.contexts,
+              operationalSessionSubjectRef: runtime.scenario!.operationalSessionSubjectRef },
+            existingAppAccountExpression: `Cuenta de ${snapshot.member.name}`,
+            accountObservationScope: "Existing App expression replay over public member field; not an assertion of subject/authentication identity or a UI render",
+            availableActionId, nextActionAffordance: label,
+          });
+        };
+        evaluate.mockClear(); cross.mockClear(); guest.mockClear();
+        const initial = await runtime.provider.getSnapshot();
+        frames.push({ phase: "initial", snapshot: initial, verticalCalls: [], verticalResults: [], jointEvaluationCalls: [], jointEvaluationResults: [] });
+        observe(initial, 0);
+        for (const [i, step] of runtime.script!.steps.entries()) {
+          evaluate.mockClear(); cross.mockClear(); guest.mockClear();
+          const input = structuredClone(step.action);
+          const snapshot = await runtime.provider.executeAction(input);
+          expect(input).toEqual(step.action);
+          expect(evaluate).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+          expect(cross).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+          if ("evidence" in input) {
+            expect(evaluate.mock.calls[0][0].at(-1)).toEqual(input.evidence);
+            expect(evaluate.mock.calls[0][1]).toEqual(runtime.scenario!.contexts);
+            expect(guest.mock.calls[0][0]).toEqual(evaluate.mock.results[0].value);
+          }
+          frames.push({ phase: input.actionId, input, snapshot,
+            verticalCalls: structuredClone(evaluate.mock.calls),
+            verticalResults: structuredClone(evaluate.mock.results.map((result) => result.value)),
+            jointEvaluationCalls: structuredClone(cross.mock.calls),
+            jointEvaluationResults: structuredClone(cross.mock.results.map((result) => result.value)),
+          });
+          observe(snapshot, i + 1);
+        }
+        // Full snapshots (including GuestPerspective AND Activity), full facts,
+        // operational state, evaluator input, premise and claim remain H25's.
+        expect(frames).toEqual(h25.controls[index].original.frames);
+        expect(frames.map((f) => f.snapshot.guestPerspective!.state)).toEqual(["ready", "active", "exploring", "exploring", "complete"]);
+        expect(frames.map((f) => f.snapshot.supervisionPerspective!.sufficiency)).toEqual(["not-attempted", "not-attempted", "not-established", "not-established", "established"]);
+        if (index === 1) {
+          const guestText = JSON.stringify(frames.map((f) => f.snapshot.guestPerspective));
+          expect(guestText).toMatch(/Lucía/); expect(guestText).toMatch(/jardín/); expect(guestText).toMatch(/fuente/);
+          expect(guestText).not.toMatch(/Inés|Mateo|mirador|patio|Aurora Stay/);
+          const activity = frames[4].snapshot.activity.filter((item) => item.provenance === "simulated");
+          expect(activity.map((item) => item.title)).toEqual(["Pista del patio encontrada", "Pista del mirador encontrada"]);
+          expect(JSON.stringify(activity)).not.toMatch(/jardín|fuente/);
+        }
+        evaluate.mockClear(); cross.mockClear(); guest.mockClear();
+        const reset = await runtime.provider.reset();
+        expect(reset).toEqual(initial);
+        expect(reset).toEqual(h25.controls[index].original.reset);
+        controls[index].reset = reset;
+        observe(reset, 0, true);
+      }
+      expect(controls[0].frames.map((f) => f.snapshot.guestPerspective)).toEqual(controls[1].frames.map((f) => f.snapshot.guestPerspective));
+      Object.assign(trace, {
+        recordedAt: new Date().toISOString(), verdict: "FALSIFIED",
+        firstMaterialFalsifier: "NO LEGITIMATE EXISTING SOURCE for situated subject display; labels/prose cannot establish account-subject identity",
+        L3a: "Account display source available and existing App expression verified; GuestPerspective sessionLabel still hardcoded / OPEN",
+        L3b: "NO LEGITIMATE EXISTING SOURCE / OPEN; no mapping invented",
+        L3c: "State/evaluation sources available; situated present-journey narrative source absent / OPEN",
+        nextActionAffordance: "Existing runtime availableActionId -> Script presenterLabel relation verified for A/B; not generalized to narrative",
+        noNewRelation: "INSUFFICIENT",
+        L4: "PRESERVED / SOURCE-INSPECTION / OUT OF SCOPE",
+        L5: "PRESERVED / SCRIPT-BOUND SITUATED REPRESENTATION EXECUTION-VERIFIED within A/B / NOT PROMOTED",
+        factPresentationSeparation: "H25 facts/evaluation/Activity preserved; no changed GuestPerspective candidate implemented or positive independence claim",
+        nextMaterialPressure: "Missing subject display and situated present-state narrative relations observed; H27 NOT SELECTED",
+      });
+      record();
+      console.info("H26: FALSIFIED at existing-source audit; L3b relation absent; diagnostic PASS reproduces L3 and preserves H25/L5.");
+    } catch (error) {
+      Object.assign(trace, { recordedAt: new Date().toISOString(), diagnosticVerification: "FAILED", error: String(error) });
+      record();
+      throw error;
+    }
+  });
+});
+
+// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
+// Existing earlier mocks retain precedence; current cumulative coverage is H35.
+vi.mock("./bootstrap", () => import("./test-fixtures/h34/bootstrap"));

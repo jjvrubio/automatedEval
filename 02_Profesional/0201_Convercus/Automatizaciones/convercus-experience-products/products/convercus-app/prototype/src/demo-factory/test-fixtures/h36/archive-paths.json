@@ -1,0 +1,9 @@
+{
+  "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/explicit-introductory-framing-h32.test.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-supervision-subject-h33.test.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-session-subject-h34.test.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/experience-sourced-guest-name-h35.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/experience-sourced-guest-name-h35.test.ts.txt",
+  "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts.txt"
+}

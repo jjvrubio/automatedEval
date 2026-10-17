@@ -1,0 +1,58 @@
+{
+  "session": 38,
+  "recordedAt": "2026-09-21T16:44:59.024Z",
+  "observations": {
+    "H21": {
+      "material": 51,
+      "incidental": [
+        "00-governance/.DS_Store",
+        "01-semantic-contract/.DS_Store",
+        "01-semantic-contract/source-excerpts/.DS_Store",
+        "02-shared-contracts/.DS_Store"
+      ],
+      "originalHashesRetained": true
+    },
+    "H22": {
+      "material": 74,
+      "incidental": [
+        "00-governance/.DS_Store",
+        "01-semantic-contract/.DS_Store",
+        "01-semantic-contract/source-excerpts/.DS_Store",
+        "02-shared-contracts/.DS_Store"
+      ],
+      "originalHashesRetained": true
+    },
+    "H23": {
+      "material": 94,
+      "incidental": [
+        "00-governance/.DS_Store",
+        "01-semantic-contract/.DS_Store",
+        "01-semantic-contract/source-excerpts/.DS_Store",
+        "02-shared-contracts/.DS_Store",
+        "products/convercus-app/prototype/src/.DS_Store"
+      ],
+      "originalHashesRetained": true
+    },
+    "membership": "Material hash changes/removal/unclassified additions fail; filename alone never excludes a source",
+    "unicode": {
+      "platform": "darwin",
+      "normalization": "logical paths NFC; collision fail; case-sensitive",
+      "fileBytesPreserved": true
+    },
+    "absolutePathAlias": "OPEN: mismatched symlink spelling bypasses the legacy route; actual historical callers use cwd-relative resolved paths",
+    "routing": {
+      "selected": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/artifacts.ts",
+      "olderArchiveWins": true,
+      "newerAndCurrentExist": true,
+      "missingOldArchiveDoesNotFallBack": true,
+      "nativeCurrentReadIndependent": true
+    },
+    "historicalAssertions": "All unchanged; exact import/enumeration-only delta checked against pre-S38 sources",
+    "freeze": {
+      "protectedFiles": 480,
+      "productDelta": "NONE",
+      "semanticDelta": "NONE",
+      "routingDelta": "NONE"
+    }
+  }
+}

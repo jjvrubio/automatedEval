@@ -1,0 +1,116 @@
+{
+  "recordedAt": "2026-09-16T17:36:56.292448+00:00",
+  "result": "PASS",
+  "baselineFileCount": 204,
+  "unchangedExistingFiles": 196,
+  "changedExistingFiles": [
+    "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "historicalArchivesByteIdentical": true,
+  "historicalAssertionCountsPreserved": true,
+  "runtimeDeltaFiles": [
+    "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+  ],
+  "instrumentationOnlyExistingFiles": [
+    "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts",
+    "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts"
+  ],
+  "preDeltaStateCopyMatrixRows": 24,
+  "requiredReportSections": [
+    "H28 CONSOLIDATED INPUT",
+    "H29 HYPOTHESIS",
+    "VARIABLE UNDER TEST",
+    "WHY L3c IS DIAGNOSTICALLY SPLIT",
+    "EXISTING OPERATIONAL STATE SOURCE",
+    "PRE-DELTA STATE / COPY MATRIX",
+    "SOURCE AUTHORITY",
+    "NO-NEW-COMPOSITION-RELATION CONDITION",
+    "HOST / PROJECTION ANALYSIS",
+    "THREADING PATH",
+    "BASELINE",
+    "CODE DELTA",
+    "A CONTROL",
+    "B CONTROL",
+    "TEMPORAL / TRANSITION CONTROL",
+    "ACCOUNT INDEPENDENCE CONTROL",
+    "SUBJECT PRESENTATION INDEPENDENCE CONTROL",
+    "ACTIVITY REPRESENTATION INDEPENDENCE CONTROL",
+    "EVIDENCE DISCRIMINATION CONTROL",
+    "CAUSALITY NEGATIVE CONTROL",
+    "EXECUTION TRACE",
+    "L3a STATUS",
+    "L3b STATUS",
+    "L3c SUBJECT STATUS RESULT",
+    "L3c REMAINING NARRATIVE PRESSURE",
+    "L4 STATUS",
+    "L5 STATUS",
+    "FALSIFICATION ANALYSIS",
+    "H29 VERDICT",
+    "ARCHITECTURAL CONSEQUENCE",
+    "SEMANTIC CONSEQUENCE",
+    "ARTIFACT QUARANTINE",
+    "WHAT H29 DOES NOT PROVE",
+    "REMAINING PRESSURES"
+  ],
+  "allReportLinksResolve": true,
+  "prechangeTests": {
+    "passed": 90,
+    "files": 22
+  },
+  "directedRegressionIncludingH29": {
+    "passed": 19,
+    "files": 10,
+    "exitCode": 0
+  },
+  "fullCheck": {
+    "command": "npm run check",
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": 91,
+    "testFiles": 23,
+    "build": "PASS",
+    "exitCode": 0
+  },
+  "principalRun": {
+    "command": "H29_RECORD_PATH=../docs/evidence/session-29/execution-trace.json npm test -- src/demo-factory/operational-subject-status-h29.test.ts",
+    "passed": 1,
+    "exitCode": 0,
+    "recordedAt": "2026-09-16T17:32:25.307Z",
+    "familyAdventureSequences": 8,
+    "snapshotObservationsIncludingReset": 48,
+    "genericDemos": [
+      "retail-baseline",
+      "hospitality-stay"
+    ]
+  },
+  "instrumentationDiagnostics": [
+    "First directed regression: 17 PASS, 1 historical UI copy failure; pre-H29 projector replay added without changing historical assertions.",
+    "Intermediate partial source-routing update: 14 PASS, 4 hash-reader failures; routes completed, then all 19 directed tests passed."
+  ],
+  "artifactSha256": {
+    "products/convercus-app/docs/evidence/session-29/baseline.json": "115a8d8d15e2160f2c66a56f304f31b88a7defd23f2ccec46226287879c2eb02",
+    "products/convercus-app/docs/evidence/session-29/source-inspection.md": "6f8360a24ce21871df7187936721e2f98113d1b8dde888906e7200059f3224a1",
+    "products/convercus-app/docs/evidence/session-29/pre-delta-state-copy-matrix.json": "62a984cd73b2891fcc3115f8949b7b10cbdd2feb89642db6d2dfd1c694283362",
+    "products/convercus-app/docs/evidence/session-29/execution-trace.json": "ccdb6aa4e4cde6585b47bddb8accd17f57d07ef576feea4be3631d9ff1a06c90",
+    "products/convercus-app/docs/evidence/session-29/application-delta.patch": "fc43dbad31c8d13006f2acbc598305dea6646fafa06986195ca0288f272c4cb1",
+    "products/convercus-app/docs/evidence/session-29/historical-instrumentation-delta.patch": "99e20fda3af634027e606e399a8d4c28751d3dd9b41a6d50159308df4053c51b",
+    "products/convercus-app/docs/session-29-operational-subject-status-provenance.md": "2cfd852c68e9bff686e7a1dd43bdbd9cc10f87c154a31c0597351f1efdb3a2c2",
+    "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts": "b3a8544b8742322f028b6823b5caeac5529d7e7573bd239cc8981021b3668927"
+  },
+  "browserValidation": "NOT PERFORMED; live provider/projector execution and source inspection; historical S20 UI uses jsdom and archived projector",
+  "governance": "Architecture v0.5 ACTIVE; ADR001–005 ACCEPTED; TES/PSC unchanged; P01 OPEN/EVIDENCE-BACKED; P02 NOT CREATED",
+  "quarantine": "H25/H27/H28 NOT PROMOTED; H29 local reversible prototype experiment",
+  "nextPressure": "message narrative / L4 OBSERVED but NOT SELECTED; H30 NOT OPENED"
+}

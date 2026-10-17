@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-09-21T16:45:24.417Z",
+  "node": "v24.14.0",
+  "platform": "darwin-arm64",
+  "runnerConfigDelta": "NONE",
+  "concurrency": "Vitest default; no serial override; no timeout increase",
+  "results": [
+    {
+      "name": "full-suite",
+      "command": "npm test -- --reporter=default --reporter=json --outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-38/full-suite-results.json",
+      "code": 0,
+      "milliseconds": 13819,
+      "log": "full-suite.log"
+    },
+    {
+      "name": "current-h37",
+      "command": "npm test -- src/demo-factory/activity-attribution-reduction-h37.test.ts --reporter=default --reporter=json --outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/session-38/current-h37-results.json",
+      "code": 0,
+      "milliseconds": 2800,
+      "log": "current-h37.log"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "code": 0,
+      "milliseconds": 3244,
+      "log": "typecheck.log"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "code": 0,
+      "milliseconds": 3255,
+      "log": "lint.log"
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "code": 0,
+      "milliseconds": 4940,
+      "log": "build.log"
+    }
+  ]
+}

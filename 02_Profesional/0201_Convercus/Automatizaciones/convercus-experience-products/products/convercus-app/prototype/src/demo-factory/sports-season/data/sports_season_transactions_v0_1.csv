@@ -1,0 +1,17 @@
+﻿transaction_id,person_id,occurred_at,channel,store_id,currency,gross_amount,product_category,product_name,quantity,unit_amount,line_amount,source,observed_at
+TX-P01-001,P01,2026-01-17T12:34:00+01:00,store,MAD-CHM-01,EUR,89.90,running,Zapatillas running AeroRun 5,1,89.90,89.90,fixture,2026-09-25T10:00:00+02:00
+TX-P01-002,P01,2026-02-08T19:12:00+01:00,web,WEB-ES,EUR,54.80,running_apparel,Camiseta técnica DryMotion,2,27.40,54.80,fixture,2026-09-25T10:00:00+02:00
+TX-P01-003,P01,2026-03-21T11:08:00+01:00,store,MAD-SER-02,EUR,34.95,hydration,Chaleco hidratación TrailLite,1,34.95,34.95,fixture,2026-09-25T10:00:00+02:00
+TX-P01-004,P01,2026-04-12T21:17:00+02:00,app,APP-ES,EUR,79.00,fitness,Pulsómetro Move HR,1,79.00,79.00,fixture,2026-09-25T10:00:00+02:00
+TX-P01-005,P01,2026-05-30T13:42:00+02:00,store,MAD-CHM-01,EUR,119.90,running,Zapatillas running Tempo Pro,1,119.90,119.90,fixture,2026-09-25T10:00:00+02:00
+TX-P01-006,P01,2026-06-18T18:26:00+02:00,web,WEB-ES,EUR,42.50,accessories,Cinturón running Race Belt,1,42.50,42.50,fixture,2026-09-25T10:00:00+02:00
+TX-P01-007,P01,2026-08-03T20:04:00+02:00,app,APP-ES,EUR,64.90,running_apparel,Cortavientos RunShield,1,64.90,64.90,fixture,2026-09-25T10:00:00+02:00
+TX-P01-008,P01,2026-09-10T17:51:00+02:00,store,MAD-CHM-01,EUR,25.80,nutrition,Gel energético Endurance Pack,2,12.90,25.80,fixture,2026-09-25T10:00:00+02:00
+TX-P02-001,P02,2026-01-09T18:03:00+01:00,web,WEB-ES,EUR,139.90,running,Zapatillas running Carbon X,1,139.90,139.90,fixture,2026-09-25T10:00:00+02:00
+TX-P02-002,P02,2026-02-26T12:47:00+01:00,store,MAD-CHM-01,EUR,69.80,running_apparel,Malla técnica Performance,2,34.90,69.80,fixture,2026-09-25T10:00:00+02:00
+TX-P02-003,P02,2026-03-14T10:21:00+01:00,app,APP-ES,EUR,149.00,wearables,Reloj GPS Pace One,1,149.00,149.00,fixture,2026-09-25T10:00:00+02:00
+TX-P02-004,P02,2026-04-29T19:36:00+02:00,store,MAD-SER-02,EUR,48.90,sailing,Guantes vela GripWave,1,48.90,48.90,fixture,2026-09-25T10:00:00+02:00
+TX-P02-005,P02,2026-05-24T16:15:00+02:00,web,WEB-ES,EUR,94.00,sailing_apparel,Chaqueta náutica WindDeck,1,94.00,94.00,fixture,2026-09-25T10:00:00+02:00
+TX-P02-006,P02,2026-06-27T11:52:00+02:00,store,MAD-CHM-01,EUR,79.90,beach_volleyball,Zapatillas arena Court Sand,1,79.90,79.90,fixture,2026-09-25T10:00:00+02:00
+TX-P02-007,P02,2026-08-16T20:33:00+02:00,app,APP-ES,EUR,39.80,accessories,Gafas deportivas SunFlow,2,19.90,39.80,fixture,2026-09-25T10:00:00+02:00
+TX-P02-008,P02,2026-09-19T13:09:00+02:00,store,MAD-CHM-01,EUR,109.90,running,Zapatillas running Velocity 8,1,109.90,109.90,fixture,2026-09-25T10:00:00+02:00

@@ -1,0 +1,325 @@
+{
+  "result": "PASS",
+  "scope": "Fidelidad de transcripción y estructura documental; no se han ejecutado las instrucciones históricas ni las pruebas del producto.",
+  "sourceArchiveSha256": "27a5cabe7007eb5a49d7c60258bb314b7fae66bf9874565e8efefd154a039ea3",
+  "sourceArchiveUnchanged": true,
+  "compilationSha256": "bdf332eb34e9bca547f6185e6ab5157f46b4438523a23602c075f49616cb4bbf",
+  "compilationBytes": 661942,
+  "compilationLines": 35466,
+  "standaloneCount": 37,
+  "records": [
+    {
+      "key": "s02-enviado",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 16990
+    },
+    {
+      "key": "s03",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 15929
+    },
+    {
+      "key": "s04",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 9344
+    },
+    {
+      "key": "s05",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 14034
+    },
+    {
+      "key": "s06",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 10357
+    },
+    {
+      "key": "s07",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 12321
+    },
+    {
+      "key": "s08",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 9559
+    },
+    {
+      "key": "s09",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 13442
+    },
+    {
+      "key": "s10",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 18635
+    },
+    {
+      "key": "s11",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 14162
+    },
+    {
+      "key": "s12",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 16124
+    },
+    {
+      "key": "s13",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 27215
+    },
+    {
+      "key": "s14",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 27695
+    },
+    {
+      "key": "s14-correccion",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 19305
+    },
+    {
+      "key": "s15",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 25455
+    },
+    {
+      "key": "s16",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 15651
+    },
+    {
+      "key": "s17",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 24303
+    },
+    {
+      "key": "s17-consolidacion",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 23391
+    },
+    {
+      "key": "s20-continuacion",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 7269
+    },
+    {
+      "key": "s21",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 7507
+    },
+    {
+      "key": "s21-continuacion",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 7905
+    },
+    {
+      "key": "s22",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 10392
+    },
+    {
+      "key": "s23",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 10252
+    },
+    {
+      "key": "s24",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 10132
+    },
+    {
+      "key": "s25",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 13484
+    },
+    {
+      "key": "s26",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 12539
+    },
+    {
+      "key": "s27",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 14060
+    },
+    {
+      "key": "s28",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 10709
+    },
+    {
+      "key": "s29",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 16504
+    },
+    {
+      "key": "s31",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 17634
+    },
+    {
+      "key": "s32",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 21472
+    },
+    {
+      "key": "s33",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 19765
+    },
+    {
+      "key": "s34",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 17898
+    },
+    {
+      "key": "s35",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 17046
+    },
+    {
+      "key": "s36",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 20634
+    },
+    {
+      "key": "s01-enviado",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 986
+    },
+    {
+      "key": "s02-interpretacion",
+      "sourceEqualsStandalone": true,
+      "sha256MatchesManifest": true,
+      "sourceEqualsCompilation": true,
+      "bytes": 3763
+    }
+  ],
+  "chapters": 38,
+  "fullRows": 35,
+  "partialRows": 1,
+  "pendingRows": 2,
+  "brokenLinks": [],
+  "linkCount": 117,
+  "unclosedFence": null,
+  "guideSha256": "a40f1776c656a799f046bfd0d5a6b951708cddd0abced0aafd5bd0fd9819cc9e",
+  "s30Sha256": "0b57a9861f5eabc174324f66fdcfd9c4807417b9b19ff4800a9366756cca9987",
+  "headingPositions": [
+    {
+      "line": 73,
+      "text": "## Capítulo 01 — Inspección arquitectónica del repositorio"
+    },
+    {
+      "line": 136,
+      "text": "## Capítulo 02 — Anatomía semántica y Architecture v0.1"
+    },
+    {
+      "line": 877,
+      "text": "## Capítulo 03 — Revisión adversarial de Architecture v0.1"
+    },
+    {
+      "line": 7694,
+      "text": "## Capítulo 14 — Promoción limitada de ADR-005"
+    },
+    {
+      "line": 12469,
+      "text": "## Capítulo 17 — Composición entre sujetos acotada por autoridad"
+    },
+    {
+      "line": 15352,
+      "text": "## Capítulo 18 — Validez contextual del claim derivado"
+    },
+    {
+      "line": 15362,
+      "text": "## Capítulo 19 — Preparación para la primera demo vertical"
+    },
+    {
+      "line": 15372,
+      "text": "## Capítulo 20 — Construir y corregir Aventura Familiar"
+    },
+    {
+      "line": 15834,
+      "text": "## Capítulo 21 — Falsar la reutilización de composición"
+    },
+    {
+      "line": 31205,
+      "text": "## Capítulo 36 — Auditoría de autoridad por afirmación"
+    }
+  ],
+  "previousOriginalsUnchanged": true,
+  "guideUnchanged": true,
+  "s30OriginalUnchanged": true
+}

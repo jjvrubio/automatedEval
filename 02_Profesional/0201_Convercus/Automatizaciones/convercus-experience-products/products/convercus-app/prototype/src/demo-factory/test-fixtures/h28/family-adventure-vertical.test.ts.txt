@@ -1,0 +1,169 @@
+import { act, createElement } from "react";
+import { createRoot } from "react-dom/client";
+import { MemoryRouter } from "react-router-dom";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { App } from "@/app/App";
+import { evaluateVerticalEvidence } from "./vertical-evaluation";
+import { resolveDemo } from "./bootstrap";
+import type { AppSnapshot, DemoAction } from "./contracts";
+
+Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+afterEach(() => { document.body.innerHTML = ""; });
+
+function setup() {
+  const runtime = resolveDemo("hospitality-family-adventure");
+  const steps = runtime.script!.steps;
+  return { runtime, provider: runtime.provider, enlist: steps[0].action, a: steps[1].action as DemoAction, activate: steps[2].action, b: steps[3].action as DemoAction };
+}
+function expectSubjects(snapshot: AppSnapshot, p1: string, p2: string, counts = [0, 0]) {
+  expect(snapshot.supervisionPerspective?.subjects).toEqual([
+    { id: "subject-p1", exists: true, operationalState: p1, evidenceCount: counts[0] },
+    { id: "subject-p2", exists: true, operationalState: p2, evidenceCount: counts[1] },
+  ]);
+  expect(snapshot.guestPerspective?.subjects.map((subject) => subject.clueCount)).toEqual(counts);
+  expect(snapshot.supervisionPerspective?.sessionSubjectRef).toBe("subject-p1");
+}
+
+describe("Hospitality Family Adventure corrected Session 20", () => {
+  it("starts with two existing subjects, no enlistment and no Evidence or claim", async () => {
+    const { provider } = setup();
+    const snapshot = await provider.getSnapshot();
+    expectSubjects(snapshot, "not-enlisted", "not-enabled");
+    expect(snapshot.supervisionPerspective).toMatchObject({ evidence: [], sufficiency: "not-attempted", derivedClaim: "not-produced" });
+    expect(snapshot.scenario?.availableActionId).toBe("enlist-p1");
+  });
+
+  it("enlists P1 via the public action without producing Evidence or changing existing subjects", async () => {
+    const { provider, enlist } = setup();
+    const initial = await provider.getSnapshot();
+    const snapshot = await provider.executeAction(enlist);
+    expectSubjects(snapshot, "enabled", "not-enabled");
+    expect(snapshot.supervisionPerspective).toMatchObject({ evidence: [], sufficiency: "not-attempted", derivedClaim: "not-produced" });
+    expect(snapshot.activity).toEqual(initial.activity);
+    expect(snapshot.guestPerspective?.message).toContain("Todavía no has encontrado ninguna pista");
+    await expect(provider.executeAction(enlist)).rejects.toThrow();
+  });
+
+  it("produces A only from the enabled P1 Experience action", async () => {
+    const { provider, enlist, a } = setup();
+    await expect(provider.executeAction(a)).rejects.toThrow("aún no está habilitado");
+    await provider.executeAction(enlist);
+    const snapshot = await provider.executeAction(a);
+    expectSubjects(snapshot, "enabled", "not-enabled", [1, 0]);
+    expect(snapshot.supervisionPerspective?.evidence).toEqual([expect.objectContaining({ id: "evidence-a-p1", subjectRefs: ["subject-p1"] })]);
+    expect(snapshot.supervisionPerspective?.sufficiency).toBe("not-established");
+    await expect(provider.executeAction(a)).rejects.toThrow();
+  });
+
+  it("P1 activates existing P2 in the same session, without B or any new Evidence", async () => {
+    const { provider, enlist, a, activate, b } = setup();
+    await expect(provider.executeAction(activate)).rejects.toThrow();
+    await provider.executeAction(enlist);
+    const before = await provider.executeAction(a);
+    await expect(provider.executeAction(b)).rejects.toThrow("aún no está habilitado");
+    const after = await provider.executeAction(activate);
+    expectSubjects(after, "enabled", "enabled", [1, 0]);
+    expect(after.supervisionPerspective?.evidence).toEqual(before.supervisionPerspective?.evidence);
+    expect(after.supervisionPerspective?.sufficiency).toBe("not-established");
+    expect(after.activity).toEqual(before.activity);
+    expect(after.scenario?.availableActionId).toBe("discover-clue-b");
+    expect(after.guestPerspective?.message).toContain("Todavía no ha aportado pistas");
+    await expect(provider.executeAction(activate)).rejects.toThrow();
+  });
+
+  it("attributes B to P2 while retaining P1's session and evaluates A+B for both projections", async () => {
+    const { provider, enlist, a, activate, b } = setup();
+    for (const action of [enlist, a, activate]) await provider.executeAction(action);
+    const result = await provider.executeAction(b);
+    expectSubjects(result, "enabled", "enabled", [1, 1]);
+    expect(result.supervisionPerspective).toMatchObject({
+      evidence: [expect.objectContaining({ subjectRefs: ["subject-p1"] }), expect.objectContaining({ subjectRefs: ["subject-p2"] })],
+      jointAdmissibility: "established", sufficiency: "established", derivedClaim: "established",
+    });
+    expect(result.guestPerspective).toMatchObject({ state: "complete", discoveredClueCount: 2 });
+    expect(result.scenario?.availableActionId).toBeUndefined();
+    await expect(provider.executeAction(b)).rejects.toThrow();
+  });
+
+  it("rejects evidence attributed to enabled P1 when the configured action belongs to P2", async () => {
+    const { provider, enlist, a, activate, b } = setup();
+    for (const action of [enlist, a, activate]) await provider.executeAction(action);
+    const before = await provider.getSnapshot();
+    await expect(provider.executeAction({ ...b, evidence: { ...b.evidence, subjects: a.evidence.subjects } })).rejects.toThrow("atribución");
+    expect(await provider.getSnapshot()).toEqual(before);
+  });
+
+  it("rejects mixed enable/Evidence payloads and wrong marker payloads without mutation", async () => {
+    const { provider, enlist, a } = setup();
+    await expect(provider.executeAction({ ...enlist, evidence: a.evidence })).rejects.toThrow("no producen Evidence");
+    expectSubjects(await provider.getSnapshot(), "not-enlisted", "not-enabled");
+    await provider.executeAction(enlist);
+    await expect(provider.executeAction({ ...a, evidence: { ...a.evidence, type: "treasure_hunt.marker-b" } })).rejects.toThrow("atribución");
+    expect((await provider.getSnapshot()).supervisionPerspective?.evidence).toEqual([]);
+  });
+
+  it("preserves the B+C negative control independently of evidence count", () => {
+    const { b, runtime } = setup();
+    const evaluation = evaluateVerticalEvidence([b.evidence, { ...b.evidence, id: "evidence-c-p2", type: "treasure_hunt.marker-c" }], runtime.scenario!.contexts);
+    expect(evaluation.jointAdmissibility).toBe("established");
+    expect(evaluation.sufficiency).toBe("not-established");
+    expect(evaluation.claim?.determination).toBe("not-established");
+  });
+
+  it("resets all operational state, Evidence, evaluation and both projections deterministically", async () => {
+    const { provider, enlist, a, activate, b } = setup();
+    const initial = await provider.getSnapshot();
+    for (const action of [enlist, a, activate, b]) await provider.executeAction(action);
+    expect(await provider.reset()).toEqual(initial);
+    const leaked = await provider.getSnapshot();
+    leaked.supervisionPerspective!.subjects[0].operationalState = "enabled";
+    expect(await provider.getSnapshot()).toEqual(initial);
+  });
+
+  it("UI labels invoke the four distinct public actions and navigation preserves the same runtime", async () => {
+    const { runtime, provider } = setup();
+    const execute = vi.spyOn(provider, "executeAction");
+    const reset = vi.spyOn(provider, "reset");
+    const container = document.createElement("div");
+    document.body.append(container);
+    const root = createRoot(container);
+    const click = async (label: string) => {
+      const element = [...container.querySelectorAll<HTMLElement>("button, a")].find((item) => item.textContent === label);
+      expect(element, label).toBeDefined();
+      await act(async () => element!.click());
+    };
+    try {
+      await act(async () => root.render(createElement(MemoryRouter, { initialEntries: ["/?demo=hospitality-family-adventure"] }, createElement(App, { runtime }))));
+      expect(container.textContent).not.toContain("Tu saldo");
+      expect(container.querySelector('a[aria-current="page"]')?.textContent).toBe("Mi aventura");
+      await click("Alistarme");
+      expect(execute.mock.calls[0][0]).toMatchObject({ actionId: "enlist-p1", operation: "enlist" });
+      expect(container.textContent).toContain("Alistada y habilitada · 0 pistas aportadas");
+      await click("Supervisión");
+      expect(container.querySelector('a[aria-current="page"]')?.textContent).toBe("Supervisión");
+      expect(container.textContent).toContain("subject-p1 · exists: true · enabled · Evidence: 0");
+      await click("Mi aventura");
+      await click("Encontrar la pista del jardín · yo");
+      await click("Activar al huésped 2 desde mi cuenta");
+      expect(container.textContent).toContain("Habilitado por ti · 0 pistas aportadas");
+      await click("Supervisión");
+      expect(container.textContent).toContain("subject-p2 · exists: true · enabled · Evidence: 0");
+      await click("Mi aventura");
+      await click("Encontrar la pista de la fuente · huésped 2");
+      expect(execute.mock.calls.map(([action]) => action.actionId)).toEqual(["enlist-p1", "discover-clue-a", "activate-p2", "discover-clue-b"]);
+      expect(container.textContent).toContain("cumplen la condición");
+      await click("Actividad");
+      expect(container.textContent).toContain("Pista de la fuente encontrada");
+      await click("Mi aventura");
+      expect(container.textContent).toContain("cumplen la condición");
+      await click("Supervisión");
+      expect(container.textContent).toContain("evidence-a-p1 · subject-p1");
+      expect(container.textContent).toContain("evidence-b-p2 · subject-p2");
+      await click("Reiniciar aventura");
+      expect(reset).toHaveBeenCalledOnce();
+      expect(container.textContent).toContain("not-produced");
+      await click("Mi aventura");
+      expect(container.textContent).toContain("Alistarme");
+    } finally { await act(async () => root.unmount()); }
+  });
+});

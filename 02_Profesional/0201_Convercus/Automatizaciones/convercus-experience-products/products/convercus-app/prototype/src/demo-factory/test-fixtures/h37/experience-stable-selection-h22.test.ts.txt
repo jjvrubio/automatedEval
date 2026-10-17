@@ -1,0 +1,231 @@
+/// <reference types="node" />
+import { historicalH31Path } from "./test-fixtures/h31/source-path";
+import { historicalH29Path } from "./test-fixtures/h29/source-path";
+import { createHash } from "node:crypto";
+import { writeFileSync } from "node:fs";
+import { readHistoricalH34FileSync as readFileSync } from "./test-fixtures/h34/historical-read";
+import { resolve } from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { MockDataAdapter } from "@/demo/mock-adapter";
+import { defaultDemoCatalogs, resolveDemo } from "./bootstrap";
+import { historicalH24Path } from "./test-fixtures/h24/source-path";
+import type { AppSnapshot, DemoAction, DemoEnableAction, ResolvedDemoRuntime } from "./contracts";
+import * as vertical from "./vertical-evaluation";
+import * as crossSubject from "./cross-subject-evidence-admissibility";
+import { MockDataAdapter as H21Adapter } from "./test-fixtures/h21/mock-adapter";
+
+// Reproduce H22 against byte-identical archived application sources. H23 tests
+// separately verify the H22 selection behavior on the live context integration.
+vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h22/mock-adapter"));
+vi.mock("./vertical-evaluation", () => import("./test-fixtures/h22/vertical-evaluation"));
+// H25 adds Script presentation; historical inputs and resolver stay frozen.
+vi.mock("./bootstrap", () => import("./test-fixtures/h24/bootstrap"));
+
+afterEach(() => vi.restoreAllMocks());
+
+const sha256 = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
+const root = resolve(process.cwd(), "../../..");
+const baseline = JSON.parse(readFileSync(resolve(process.cwd(), "../docs/evidence/session-22/baseline.json"), "utf8")) as {
+  files: Record<string, string>;
+  allowedChangedFiles: string[];
+  archive: string;
+};
+
+function describeComposition(runtime: ResolvedDemoRuntime) {
+  return {
+    manifest: runtime.manifest,
+    experience: runtime.experience,
+    scenario: runtime.scenario,
+    script: runtime.script,
+  };
+}
+
+function assertPerspectives(snapshot: AppSnapshot, present: boolean) {
+  expect(snapshot.guestPerspective !== undefined).toBe(present);
+  expect(snapshot.supervisionPerspective !== undefined).toBe(present);
+}
+
+describe("H22 — Experience-Stable Behavior Selection (local experiment)", () => {
+  it("checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier", async () => {
+    // Product delta is exactly two selector substitutions. Historical H21's
+    // harness is the only other existing source changed, to replay its archive.
+    for (const [path, hash] of Object.entries(baseline.files)) {
+      if (!baseline.allowedChangedFiles.includes(path)) {
+        const frozenPath = path === "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+          ? "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/vertical-evaluation.ts"
+          : path === "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts"
+            ? "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/family-adventure-vertical.test.ts.txt"
+            : historicalH24Path(path);
+        expect(sha256(readFileSync(resolve(root, historicalH31Path(historicalH29Path(frozenPath))))), path).toBe(hash);
+      }
+    }
+    const adapterPath = "products/convercus-app/prototype/src/demo/mock-adapter.ts";
+    const executedAdapterPath = "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/mock-adapter.ts";
+    const historicalSource = readFileSync(resolve(root, historicalH31Path(historicalH29Path(baseline.archive))), "utf8");
+    expect(sha256(historicalSource)).toBe(baseline.files[adapterPath]);
+    const expectedSource = historicalSource
+      .replace('scenario?.id === "family-adventure"', 'scenario?.experienceRef === "experience:family-adventure@1"')
+      .replace('this.scenario?.id === "family-adventure"', 'this.scenario?.experienceRef === "experience:family-adventure@1"');
+    expect(readFileSync(resolve(root, historicalH31Path(historicalH29Path(executedAdapterPath))), "utf8")).toBe(expectedSource);
+
+    const a = resolveDemo("hospitality-family-adventure");
+    const b = resolveDemo("hospitality-family-adventure-costa");
+    expect(a.scenario!.id).toBe("family-adventure");
+    expect(b.scenario!.id).toBe("family-adventure-costa");
+    expect(a.experience).toBe(b.experience);
+    for (const runtime of [a, b]) {
+      expect(runtime.scenario!.experienceRef).toBe("experience:family-adventure@1");
+      expect(runtime.experience).toBe(defaultDemoCatalogs.experiences[runtime.scenario!.experienceRef]);
+      expect(Object.getPrototypeOf(runtime.provider)).toBe(MockDataAdapter.prototype);
+    }
+    expect(a.provider).not.toBe(b.provider);
+    const initialA = await a.provider.getSnapshot();
+    const initialB = await b.provider.getSnapshot();
+    assertPerspectives(initialA, true);
+    assertPerspectives(initialB, true);
+    expect(initialA.member.name).toBe("Lucía");
+    expect(initialB.member.name).toBe("Inés");
+    expect(initialB.supervisionPerspective).toEqual(initialA.supervisionPerspective);
+    expect(initialB.supervisionPerspective).toMatchObject({
+      evidence: [], derivedClaim: "not-produced", sufficiency: "not-attempted",
+      subjects: [
+        { id: "subject-p1", operationalState: "not-enlisted", evidenceCount: 0 },
+        { id: "subject-p2", operationalState: "not-enabled", evidenceCount: 0 },
+      ],
+    });
+
+    // Transparent observation of real exported functions, with their original
+    // implementations and results. No evaluator/provider/private-state override.
+    const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+    const cross = vi.spyOn(crossSubject, "evaluateCrossSubjectEvidenceSufficiency");
+    const negativeControls: unknown[] = [];
+    for (const demoId of ["retail-baseline", "hospitality-stay"]) {
+      const runtime = resolveDemo(demoId);
+      expect(runtime.scenario?.experienceRef).not.toBe("experience:family-adventure@1");
+      // Retail has no Experience; Arrival is the actual distinct-Experience control.
+      if (demoId === "retail-baseline") expect(runtime.experience).toBeUndefined();
+      else expect(runtime.scenario!.experienceRef).toBe("experience:arrival-welcome@1");
+      const old = new H21Adapter(defaultDemoCatalogs.fixtures[runtime.manifest.fixtureRef], runtime.scenario);
+      const initial = await runtime.provider.getSnapshot();
+      assertPerspectives(initial, false);
+      expect(initial).toEqual(await old.getSnapshot());
+      const frames: unknown[] = [{ phase: "initial", snapshot: initial }];
+      for (const step of runtime.script?.steps ?? []) {
+        evaluate.mockClear(); cross.mockClear();
+        const snapshot = await runtime.provider.executeAction(step.action);
+        expect(evaluate).not.toHaveBeenCalled();
+        expect(cross).not.toHaveBeenCalled();
+        assertPerspectives(snapshot, false);
+        expect(snapshot).toEqual(await old.executeAction(step.action));
+        frames.push({ phase: step.action.actionId, snapshot, actionEvaluationCalls: 0 });
+      }
+      const reset = await runtime.provider.reset();
+      assertPerspectives(reset, false);
+      expect(reset).toEqual(initial);
+      negativeControls.push({ composition: describeComposition(runtime), frames, reset });
+    }
+
+    const positiveControls: unknown[] = [];
+    for (const runtime of [a, b]) {
+      const initial = await runtime.provider.getSnapshot();
+      const oldA = runtime === a
+        ? new H21Adapter(defaultDemoCatalogs.fixtures[runtime.manifest.fixtureRef], runtime.scenario)
+        : undefined;
+      if (oldA) expect(initial).toEqual(await oldA.getSnapshot());
+      const frames: unknown[] = [{ phase: "initial", snapshot: initial }];
+      let before = initial;
+      for (const [index, step] of runtime.script!.steps.entries()) {
+        evaluate.mockClear(); cross.mockClear();
+        const input = structuredClone(step.action) as DemoAction | DemoEnableAction;
+        const snapshot = await runtime.provider.executeAction(input);
+        expect(input).toEqual(step.action);
+        const isEvidence = "evidence" in input;
+        expect(evaluate).toHaveBeenCalledTimes(isEvidence ? 1 : 0);
+        expect(cross).toHaveBeenCalledTimes(isEvidence ? 1 : 0);
+        const evaluationCalls = structuredClone(evaluate.mock.calls);
+        const evaluationResults = structuredClone(evaluate.mock.results);
+        const crossCalls = structuredClone(cross.mock.calls);
+        const crossResults = structuredClone(cross.mock.results);
+        assertPerspectives(snapshot, true);
+        expect(snapshot.scenario!.checkpoint).toBe(step.expectedCheckpoint);
+        const perspective = snapshot.supervisionPerspective!;
+        const count = [0, 1, 1, 2][index];
+        expect(perspective.evidence).toHaveLength(count);
+        expect(snapshot.guestPerspective!.discoveredClueCount).toBe(count);
+        expect(perspective.subjects.map((s) => s.operationalState)).toEqual([
+          "enabled", index >= 2 ? "enabled" : "not-enabled",
+        ]);
+        expect(perspective.subjects.map((s) => s.evidenceCount)).toEqual([
+          index >= 1 ? 1 : 0, index === 3 ? 1 : 0,
+        ]);
+        expect(perspective.sessionSubjectRef).toBe("subject-p1");
+        expect(perspective.sufficiency).toBe(index === 0 ? "not-attempted" : index === 3 ? "established" : "not-established");
+        expect(perspective.derivedClaim).toBe(index === 0 ? "not-produced" : index === 3 ? "established" : "not-established");
+        if (!isEvidence) {
+          expect(perspective.evidence).toEqual(before.supervisionPerspective!.evidence);
+          expect(snapshot.activity).toEqual(before.activity);
+        } else {
+          expect(perspective.evidence.at(-1)).toMatchObject({
+            id: input.evidence.id, subjectRefs: [index === 1 ? "subject-p1" : "subject-p2"],
+          });
+          expect(evaluationCalls[0][0].at(-1)).toEqual(input.evidence);
+          expect(evaluate.mock.results[0].type).toBe("return");
+          expect(evaluate.mock.results[0].value.sufficiency).toBe(perspective.sufficiency);
+          expect(crossCalls[0][0].at(-1)?.evidenceRef).toBe(input.evidence.id);
+          if (runtime === b) {
+            // Direct observation of L1 in the real nested evaluation call.
+            expect(input.evidence.contexts).toContainEqual({ type: "stay", id: "stay-CC-205" });
+            expect(crossCalls[0][1]).toMatchObject({
+              propertyRef: "aurora-resort", bookingRef: "AS-8842", stayRef: "stay-AS-8842",
+            });
+            expect(crossCalls[0][0].at(-1)).toMatchObject({
+              propertyRef: "aurora-resort", bookingRef: "AS-8842", stayRef: "stay-AS-8842",
+            });
+          }
+        }
+        if (oldA) expect(snapshot).toEqual(await oldA.executeAction(step.action));
+        frames.push({ phase: step.action.actionId, input, snapshot, evaluationCalls, evaluationResults, crossCalls, crossResults });
+        before = snapshot;
+      }
+      expect(before.guestPerspective!.state).toBe("complete");
+      expect(before.scenario!.availableActionId).toBeUndefined();
+      expect(before.supervisionPerspective!.jointAdmissibility).toBe("established");
+      const reset = await runtime.provider.reset();
+      expect(reset).toEqual(initial);
+      if (oldA) expect(reset).toEqual(await oldA.reset());
+      positiveControls.push({ composition: describeComposition(runtime), frames, reset,
+        comparedToArchivedA: oldA !== undefined });
+    }
+
+    const observation = {
+      experiment: "H22 — Experience-Stable Behavior Selection",
+      recordedAt: new Date().toISOString(),
+      baselineFile: "baseline.json",
+      baselineSha256: sha256(readFileSync(resolve(process.cwd(), "../docs/evidence/session-22/baseline.json"))),
+      adapterSha256: sha256(readFileSync(resolve(root, historicalH31Path(historicalH29Path(executedAdapterPath))))),
+      selector: 'scenario.experienceRef === "experience:family-adventure@1"',
+      runtimeDelta: "Two selector substitutions only; no threading or contract change",
+      L2a: "EXPERIENCE SELECTION VERIFIED IN A/B; NEGATIVE CONTROLS PASS",
+      L2b: "EXPERIENCE SELECTION VERIFIED BY PUBLIC ACTIONS AND REAL EVALUATION CALLS",
+      positiveControls, negativeControls,
+      regressions: "A full snapshots equal frozen adapter at initial / every action / reset; negative controls unchanged",
+      observationMethod: "Public provider commands and snapshots; transparent spies on real exported evaluator functions; no B UI rendering",
+      outOfScopeLeaks: {
+        L1: "EXECUTION-CONFIRMED: Costa Evidence enters vertical evaluator, Aurora context reaches nested evaluator",
+        L3: "EXECUTION-CONFIRMED: B guest sessionLabel says Lucía; action messages mention jardín/fuente",
+        L4: "SOURCE-INSPECTION FINDING: B App UI not rendered",
+        L5: "EXECUTION-CONFIRMED: B runtime activity titles mention jardín/fuente",
+      },
+      verdict: "SUPPORTED WITH QUALIFICATION",
+      qualifications: ["No general Experience→Behavior mapping", "No correct contextual binding", "No content transport", "No historical H21 repair", "No full Factory reuse"],
+      nextMaterialPressure: "Contextual binding and situated content observed; H23 NOT SELECTED",
+    };
+    if (process.env.H22_RECORD_PATH) {
+      writeFileSync(resolve(process.env.H22_RECORD_PATH), JSON.stringify(observation, null, 2) + "\n");
+    }
+    console.info("H22: SUPPORTED WITH QUALIFICATION; L2a/L2b selection verified; L1/L3/L5 observed, not repaired.");
+  });
+});
+
+// S35: historical replay only; frozen S34 sources fill unresolved archive paths.
+// Existing earlier mocks retain precedence; current cumulative coverage is H35.

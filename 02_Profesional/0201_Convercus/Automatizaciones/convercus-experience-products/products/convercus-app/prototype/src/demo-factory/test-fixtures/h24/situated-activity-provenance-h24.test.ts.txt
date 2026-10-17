@@ -1,0 +1,162 @@
+/// <reference types="node" />
+import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { defaultDemoCatalogs, resolveDemo } from "./bootstrap";
+import type { AppSnapshot, DemoAction, DemoEnableAction } from "./contracts";
+import * as vertical from "./vertical-evaluation";
+import * as joint from "./cross-subject-evidence-admissibility";
+
+afterEach(() => vi.restoreAllMocks());
+const root = resolve(process.cwd(), "../../..");
+const evidenceDir = resolve(process.cwd(), "../docs/evidence");
+const sha256 = (value: Buffer) => createHash("sha256").update(value).digest("hex");
+type Frame = {
+  phase: string;
+  input?: DemoAction | DemoEnableAction;
+  snapshot: AppSnapshot;
+  verticalCalls: Parameters<typeof vertical.evaluateVerticalEvidence>[];
+  verticalResults: vertical.VerticalEvaluationState[];
+  jointEvaluationCalls: Parameters<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+  jointEvaluationResults: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+};
+
+describe("H24 — Situated Activity Representation Provenance", () => {
+  it("records the existing-source falsifier without changing runtime or inventing a representation contract", async () => {
+    const baselineBytes = readFileSync(resolve(evidenceDir, "session-24/baseline.json"));
+    const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+    // Finder metadata was incidentally captured at the prototype root. Keep
+    // that historical capture, but do not freeze OS-managed directory metadata.
+    const preservedFiles = Object.entries(baseline.files).filter(([path]) => !path.endsWith("/.DS_Store"));
+    for (const [path, hash] of preservedFiles) {
+      expect(sha256(readFileSync(resolve(root, path))), path).toBe(hash);
+    }
+    const historical = JSON.parse(readFileSync(resolve(evidenceDir, "session-23/execution-trace.json"), "utf8")) as {
+      positiveControls: Array<{ frames: Array<{
+        snapshot: AppSnapshot;
+        verticalCalls?: Frame["verticalCalls"];
+        jointEvaluationCalls?: Frame["jointEvaluationCalls"];
+        jointEvaluationResults?: Array<{ type: string; value: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency> }>;
+      }> }>;
+    };
+    // Transparent spies capture real facts, evaluation input and full claim.
+    // Snapshot alone omits factual contexts and the full claim structure.
+    const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+    const cross = vi.spyOn(joint, "evaluateCrossSubjectEvidenceSufficiency");
+    const observations: Record<string, unknown> = {
+      experiment: "H24 — Situated Activity Representation Provenance",
+      baselineSha256: sha256(baselineBytes),
+      unchangedBaselineFiles: preservedFiles.length,
+      excludedNonSourceMetadata: Object.keys(baseline.files).filter((path) => path.endsWith("/.DS_Store")),
+      method: "Public provider snapshots and transparent original evaluator spies; no browser; no runtime delta",
+      inspectionDecision: "NO LEGITIMATE EXISTING SOURCE; implementation STOP",
+    };
+    const controls: unknown[] = [];
+    observations.controls = controls;
+    const record = () => {
+      if (process.env.H24_RECORD_PATH) writeFileSync(resolve(process.env.H24_RECORD_PATH), JSON.stringify(observations, null, 2) + "\n", { flag: "wx" });
+    };
+    try {
+      for (const [composition, demoId] of ["hospitality-family-adventure", "hospitality-family-adventure-costa"].entries()) {
+        const run = async (labels: "original" | "changed-affordance" | "empty-affordance") => {
+          const original = resolveDemo(demoId);
+          const script = structuredClone(original.script!);
+          if (labels !== "original") {
+            for (const step of script.steps) {
+              if ("evidence" in step.action) step.presenterLabel = labels === "empty-affordance" ? "" : `Registrar hallazgo alternativo ${step.id}`;
+            }
+          }
+          // Only the existing affordance field varies. It is not recast as
+          // completed-action representation. No commercial fixture is registered.
+          const runtime = resolveDemo(demoId, {
+            ...defaultDemoCatalogs,
+            scripts: { ...defaultDemoCatalogs.scripts, [original.manifest.scriptRef!]: script },
+          });
+          expect(script.steps.map((step) => step.action)).toEqual(original.script!.steps.map((step) => step.action));
+          expect(runtime.scenario).toEqual(original.scenario);
+          const initial = await runtime.provider.getSnapshot();
+          const frames: Frame[] = [{ phase: "initial", snapshot: initial, verticalCalls: [], verticalResults: [], jointEvaluationCalls: [], jointEvaluationResults: [] }];
+          const facts: DemoAction["evidence"][] = [];
+          for (const step of runtime.script!.steps) {
+            evaluate.mockClear(); cross.mockClear();
+            const input = structuredClone(step.action);
+            expect(frames.at(-1)!.snapshot.scenario!.availableActionId).toBe(input.actionId);
+            const snapshot = await runtime.provider.executeAction(input);
+            expect(input).toEqual(step.action);
+            expect(snapshot.scenario!.checkpoint).toBe(step.expectedCheckpoint);
+            expect(snapshot.supervisionPerspective!.sessionSubjectRef).toBe("subject-p1");
+            expect(evaluate).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+            expect(cross).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+            if ("evidence" in input) {
+              facts.push(input.evidence);
+              expect(evaluate.mock.calls[0]).toEqual([facts, runtime.scenario!.contexts]);
+              expect(evaluate.mock.results[0].value.evidence).toEqual(facts);
+              const converted = cross.mock.calls[0][0];
+              expect(converted.map((fact) => [fact.evidenceRef, fact.subjectRef, fact.markerRef])).toEqual(
+                facts.map((fact) => [fact.id, fact.subjects[0].id, fact.type.replace("treasure_hunt.", "")]),
+              );
+              expect(snapshot.activity[0]).toMatchObject({
+                id: input.evidence.id,
+                title: facts.length === 1 ? "Pista del jardín encontrada" : "Pista de la fuente encontrada",
+                description: facts.length === 1 ? "Hallazgo aportado por ti." : "Hallazgo atribuido al huésped 2, registrado desde tu cuenta.",
+                occurredAt: input.evidence.occurredAt, provenance: "simulated",
+              });
+            }
+            frames.push({ phase: input.actionId, input, snapshot,
+              verticalCalls: structuredClone(evaluate.mock.calls),
+              verticalResults: structuredClone(evaluate.mock.results.map((result) => result.value)),
+              jointEvaluationCalls: structuredClone(cross.mock.calls),
+              jointEvaluationResults: structuredClone(cross.mock.results.map((result) => result.value)),
+            });
+          }
+          expect(frames[2].snapshot.supervisionPerspective!.sufficiency).toBe("not-established");
+          expect(frames[4].snapshot.supervisionPerspective).toMatchObject({ jointAdmissibility: "established", sufficiency: "established", derivedClaim: "established" });
+          const activity = frames[4].snapshot.activity.filter((item) => facts.some((fact) => fact.id === item.id));
+          expect(activity).toHaveLength(2);
+          expect(JSON.stringify(activity)).not.toMatch(/mirador|patio/);
+          if (composition === 1) {
+            expect(JSON.stringify(frames.map((frame) => frame.snapshot.guestPerspective))).toMatch(/Lucía/);
+            expect(JSON.stringify(frames.map((frame) => frame.snapshot.guestPerspective))).toMatch(/jardín/);
+            expect(JSON.stringify(frames.map((frame) => frame.snapshot.guestPerspective))).toMatch(/fuente/);
+          }
+          const reset = await runtime.provider.reset();
+          expect(reset).toEqual(initial);
+          return { labels, script, scenario: runtime.scenario, frames, reset };
+        };
+        const original = await run("original");
+        for (const [index, frame] of original.frames.entries()) {
+          const prior = historical.positiveControls[composition].frames[index];
+          expect(frame.snapshot).toEqual(prior.snapshot);
+          expect(frame.verticalCalls).toEqual(prior.verticalCalls ?? []);
+          expect(frame.jointEvaluationCalls).toEqual(prior.jointEvaluationCalls ?? []);
+          expect(frame.jointEvaluationResults).toEqual(prior.jointEvaluationResults?.map((result) => result.value) ?? []);
+        }
+        const changed = await run("changed-affordance");
+        const empty = await run("empty-affordance");
+        expect(changed.script).not.toEqual(original.script);
+        expect(empty.script).not.toEqual(original.script);
+        expect(changed.frames).toEqual(original.frames);
+        expect(empty.frames).toEqual(original.frames);
+        controls.push({ composition: composition === 0 ? "A" : "B", demoId, original, changedAffordance: changed, emptyAffordance: empty });
+      }
+      Object.assign(observations, {
+        recordedAt: new Date().toISOString(), verdict: "FALSIFIED",
+        falsifier: "No legitimate existing action-to-completed-Activity representation source; runtime still chooses situated narrative from subjectRef",
+        L5: "EXECUTION-CONFIRMED / OPEN",
+        independenceControl: "NOT EXECUTABLE within existing action representation shape; affordance variation is only a rejected-candidate diagnostic, not a positive independence control",
+        absenceControl: "NO SELECTED SOURCE; empty affordance leaves factual state and Activity unchanged, including existing garden/fountain coupling; no fallback policy introduced",
+        factRepresentationSeparation: "UNSUPPORTED within tested accepted-action provenance scope",
+        L3: "PRESERVED / OUT OF SCOPE / EXECUTION-CONFIRMED",
+        L4: "PRESERVED / SOURCE-INSPECTION / OUT OF SCOPE",
+        nextMaterialPressure: "Missing completed-action representation provenance; OBSERVED, NOT SELECTED",
+      });
+      record();
+      console.info("H24: FALSIFIED; no legitimate existing source; L5 OPEN; runtime unchanged. Harness PASS means falsifier reproduced.");
+    } catch (error) {
+      Object.assign(observations, { recordedAt: new Date().toISOString(), verification: "FAILED", error: String(error) });
+      record();
+      throw error;
+    }
+  });
+});

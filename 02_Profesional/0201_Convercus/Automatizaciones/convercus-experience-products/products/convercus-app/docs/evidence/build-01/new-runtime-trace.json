@@ -1,0 +1,3751 @@
+[
+  {
+    "modality": "social",
+    "level": "suave",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "suave"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "modality": "social",
+    "level": "medio",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "medio"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "modality": "social",
+    "level": "intenso",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "intenso"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "modality": "wellness",
+    "level": "suave",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "suave"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "modality": "wellness",
+    "level": "medio",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "medio"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "modality": "wellness",
+    "level": "intenso",
+    "initial": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "evidence": [],
+      "stage": "available"
+    },
+    "registered": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [],
+      "stage": "registered"
+    },
+    "present": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        }
+      ],
+      "stage": "presence-received"
+    },
+    "final": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "wellness",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "intenso"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    }
+  },
+  {
+    "legacyIds": [
+      "retail-baseline",
+      "hospitality-stay",
+      "hospitality-family-adventure",
+      "hospitality-family-adventure-costa"
+    ],
+    "initial": [
+      {
+        "member": {
+          "id": "member-demo-001",
+          "name": "Alex",
+          "fullName": "Alex Martín",
+          "initials": "AM",
+          "level": "Essential",
+          "nextLevel": "Plus",
+          "points": 1240,
+          "progress": 62,
+          "pointsToNextLevel": 760,
+          "memberSince": "marzo de 2024"
+        },
+        "coupons": [
+          {
+            "id": "coupon-welcome",
+            "title": "20% de bienvenida",
+            "description": "Disfruta tu ventaja en la próxima compra.",
+            "validUntil": "Hasta el 30 ago",
+            "tag": "Para ti",
+            "tone": "cyan",
+            "icon": "gift"
+          },
+          {
+            "id": "coupon-double-points",
+            "title": "Puntos x2",
+            "description": "Duplica tus puntos durante todo el fin de semana.",
+            "validUntil": "Este fin de semana",
+            "tag": "Especial",
+            "tone": "pink",
+            "icon": "sparkles"
+          },
+          {
+            "id": "coupon-member",
+            "title": "Envío sin coste",
+            "description": "Una ventaja exclusiva por ser miembro Essential.",
+            "validUntil": "Hasta el 15 sep",
+            "tag": "Essential",
+            "tone": "blue",
+            "icon": "ticket"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-new-season",
+            "category": "Novedades",
+            "title": "Una nueva temporada para descubrir",
+            "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+          }
+        ],
+        "activity": [
+          {
+            "id": "activity-purchase",
+            "title": "Compra registrada",
+            "description": "Tus puntos ya están disponibles.",
+            "occurredAt": "2026-08-02T17:30:00Z",
+            "displayDate": "2 ago, 17:30",
+            "points": 120,
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "star"
+          },
+          {
+            "id": "activity-coupon",
+            "title": "Nuevo beneficio",
+            "description": "Has recibido tu cupón de bienvenida.",
+            "occurredAt": "2026-08-01T09:15:00Z",
+            "displayDate": "1 ago, 09:15",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "gift"
+          },
+          {
+            "id": "activity-profile",
+            "title": "Perfil actualizado",
+            "description": "Tus preferencias se han guardado correctamente.",
+            "occurredAt": "2026-07-28T11:00:00Z",
+            "displayDate": "28 jul, 11:00",
+            "provenance": "mocked",
+            "tone": "blue",
+            "icon": "user"
+          }
+        ]
+      },
+      {
+        "member": {
+          "id": "guest-lucia-vega",
+          "name": "Lucía",
+          "fullName": "Lucía Vega",
+          "initials": "LV",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "service-late-checkout",
+            "title": "Late check-out",
+            "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Aurora Lisboa",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-breakfast",
+            "title": "Desayuno de bienvenida",
+            "description": "Una invitación para compartir con tus acompañantes.",
+            "validUntil": "Hasta el 13 sep",
+            "tag": "Para tu estancia",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-lisbon-arrival",
+            "category": "Tu llegada",
+            "title": "Lisboa empieza en Aurora",
+            "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+          }
+        ],
+        "activity": [
+          {
+            "id": "stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Aurora Lisboa · 12–15 septiembre.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-selected",
+            "title": "Preferencia guardada",
+            "description": "La habitación se preparará con una cuna de viaje.",
+            "occurredAt": "2026-09-02T08:45:00Z",
+            "displayDate": "2 sept, 08:45",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "pre-arrival-confirmed",
+          "availableActionId": "confirm-arrival"
+        }
+      },
+      {
+        "member": {
+          "id": "guest-lucia-vega",
+          "name": "Lucía",
+          "fullName": "Lucía Vega",
+          "initials": "LV",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "service-late-checkout",
+            "title": "Late check-out",
+            "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Aurora Lisboa",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-breakfast",
+            "title": "Desayuno de bienvenida",
+            "description": "Una invitación para compartir con tus acompañantes.",
+            "validUntil": "Hasta el 13 sep",
+            "tag": "Para tu estancia",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-lisbon-arrival",
+            "category": "Tu llegada",
+            "title": "Lisboa empieza en Aurora",
+            "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+          }
+        ],
+        "activity": [
+          {
+            "id": "stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Aurora Lisboa · 12–15 septiembre.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-selected",
+            "title": "Preferencia guardada",
+            "description": "La habitación se preparará con una cuna de viaje.",
+            "occurredAt": "2026-09-02T08:45:00Z",
+            "displayDate": "2 sept, 08:45",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "ready",
+          "availableActionId": "enlist-p1"
+        },
+        "guestPerspective": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Lucía",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Lucía",
+              "status": "Estado: sin alistar",
+              "clueCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "label": "Huésped 2",
+              "status": "Estado: sin habilitar",
+              "clueCount": 0
+            }
+          ],
+          "state": "ready",
+          "message": "La aventura está disponible. Alistamiento pendiente.",
+          "discoveredClueCount": 0
+        },
+        "supervisionPerspective": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "not-enlisted",
+              "evidenceCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "not-enabled",
+              "evidenceCount": 0
+            }
+          ],
+          "evidence": [],
+          "jointAdmissibility": "cannot-currently-establish",
+          "sufficiency": "not-attempted",
+          "derivedClaim": "not-produced"
+        }
+      },
+      {
+        "member": {
+          "id": "guest-ines-costa",
+          "name": "Inés",
+          "fullName": "Inés Costa",
+          "initials": "IC",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "costa-late-checkout",
+            "title": "Salida tranquila",
+            "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Costa Clara Resort",
+            "tone": "blue",
+            "icon": "home"
+          }
+        ],
+        "news": [
+          {
+            "id": "costa-adventure-introduction",
+            "category": "Tu estancia",
+            "title": "Inés y Mateo en Costa Clara",
+            "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+          }
+        ],
+        "activity": [
+          {
+            "id": "costa-stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Costa Clara Resort · reserva CC-205.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "ready",
+          "availableActionId": "enlist-p1"
+        },
+        "guestPerspective": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Inés",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Inés",
+              "status": "Estado: sin alistar",
+              "clueCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "label": "Mateo",
+              "status": "Estado: sin habilitar",
+              "clueCount": 0
+            }
+          ],
+          "state": "ready",
+          "message": "La aventura está disponible. Alistamiento pendiente.",
+          "discoveredClueCount": 0
+        },
+        "supervisionPerspective": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "not-enlisted",
+              "evidenceCount": 0
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "not-enabled",
+              "evidenceCount": 0
+            }
+          ],
+          "evidence": [],
+          "jointAdmissibility": "cannot-currently-establish",
+          "sufficiency": "not-attempted",
+          "derivedClaim": "not-produced"
+        }
+      }
+    ],
+    "legacyFinal": [
+      {
+        "member": {
+          "id": "member-demo-001",
+          "name": "Alex",
+          "fullName": "Alex Martín",
+          "initials": "AM",
+          "level": "Essential",
+          "nextLevel": "Plus",
+          "points": 1240,
+          "progress": 62,
+          "pointsToNextLevel": 760,
+          "memberSince": "marzo de 2024"
+        },
+        "coupons": [
+          {
+            "id": "coupon-welcome",
+            "title": "20% de bienvenida",
+            "description": "Disfruta tu ventaja en la próxima compra.",
+            "validUntil": "Hasta el 30 ago",
+            "tag": "Para ti",
+            "tone": "cyan",
+            "icon": "gift"
+          },
+          {
+            "id": "coupon-double-points",
+            "title": "Puntos x2",
+            "description": "Duplica tus puntos durante todo el fin de semana.",
+            "validUntil": "Este fin de semana",
+            "tag": "Especial",
+            "tone": "pink",
+            "icon": "sparkles"
+          },
+          {
+            "id": "coupon-member",
+            "title": "Envío sin coste",
+            "description": "Una ventaja exclusiva por ser miembro Essential.",
+            "validUntil": "Hasta el 15 sep",
+            "tag": "Essential",
+            "tone": "blue",
+            "icon": "ticket"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-new-season",
+            "category": "Novedades",
+            "title": "Una nueva temporada para descubrir",
+            "summary": "Ideas, ventajas y experiencias elegidas para acompañarte."
+          }
+        ],
+        "activity": [
+          {
+            "id": "activity-purchase",
+            "title": "Compra registrada",
+            "description": "Tus puntos ya están disponibles.",
+            "occurredAt": "2026-08-02T17:30:00Z",
+            "displayDate": "2 ago, 17:30",
+            "points": 120,
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "star"
+          },
+          {
+            "id": "activity-coupon",
+            "title": "Nuevo beneficio",
+            "description": "Has recibido tu cupón de bienvenida.",
+            "occurredAt": "2026-08-01T09:15:00Z",
+            "displayDate": "1 ago, 09:15",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "gift"
+          },
+          {
+            "id": "activity-profile",
+            "title": "Perfil actualizado",
+            "description": "Tus preferencias se han guardado correctamente.",
+            "occurredAt": "2026-07-28T11:00:00Z",
+            "displayDate": "28 jul, 11:00",
+            "provenance": "mocked",
+            "tone": "blue",
+            "icon": "user"
+          }
+        ]
+      },
+      {
+        "member": {
+          "id": "guest-lucia-vega",
+          "name": "Lucía",
+          "fullName": "Lucía Vega",
+          "initials": "LV",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "service-late-checkout",
+            "title": "Late check-out",
+            "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Aurora Lisboa",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-breakfast",
+            "title": "Desayuno de bienvenida",
+            "description": "Una invitación para compartir con tus acompañantes.",
+            "validUntil": "Hasta el 13 sep",
+            "tag": "Para tu estancia",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-lisbon-arrival",
+            "category": "Tu llegada",
+            "title": "Lisboa empieza en Aurora",
+            "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-check-in-AS-8842",
+            "title": "booking.checked_in",
+            "description": "Evidencia recibida desde demo-control.",
+            "occurredAt": "2026-09-12T15:05:00Z",
+            "displayDate": "12 sept, 15:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Aurora Lisboa · 12–15 septiembre.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-selected",
+            "title": "Preferencia guardada",
+            "description": "La habitación se preparará con una cuna de viaje.",
+            "occurredAt": "2026-09-02T08:45:00Z",
+            "displayDate": "2 sept, 08:45",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "checked-in"
+        }
+      },
+      {
+        "member": {
+          "id": "guest-lucia-vega",
+          "name": "Lucía",
+          "fullName": "Lucía Vega",
+          "initials": "LV",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "service-late-checkout",
+            "title": "Late check-out",
+            "description": "Amplía tu salida hasta las 14:00 durante esta estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Aurora Lisboa",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-breakfast",
+            "title": "Desayuno de bienvenida",
+            "description": "Una invitación para compartir con tus acompañantes.",
+            "validUntil": "Hasta el 13 sep",
+            "tag": "Para tu estancia",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "news": [
+          {
+            "id": "news-lisbon-arrival",
+            "category": "Tu llegada",
+            "title": "Lisboa empieza en Aurora",
+            "summary": "Tu reserva está preparada y el equipo conoce la hora estimada de llegada."
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-b-p2",
+            "title": "Pista de la fuente encontrada",
+            "description": "Hallazgo atribuido al huésped 2.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-a-p1",
+            "title": "Pista del jardín encontrada",
+            "description": "Hallazgo registrado.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Aurora Lisboa · 12–15 septiembre.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          },
+          {
+            "id": "service-selected",
+            "title": "Preferencia guardada",
+            "description": "La habitación se preparará con una cuna de viaje.",
+            "occurredAt": "2026-09-02T08:45:00Z",
+            "displayDate": "2 sept, 08:45",
+            "provenance": "mocked",
+            "tone": "pink",
+            "icon": "sparkles"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "adventure-established"
+        },
+        "guestPerspective": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Lucía",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Lucía",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "label": "Huésped 2",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            }
+          ],
+          "state": "complete",
+          "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+          "discoveredClueCount": 2
+        },
+        "supervisionPerspective": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            }
+          ],
+          "evidence": [
+            {
+              "id": "evidence-a-p1",
+              "subjectRefs": [
+                "subject-p1"
+              ],
+              "type": "treasure_hunt.marker-a",
+              "provenance": "demo-control"
+            },
+            {
+              "id": "evidence-b-p2",
+              "subjectRefs": [
+                "subject-p2"
+              ],
+              "type": "treasure_hunt.marker-b",
+              "provenance": "demo-control"
+            }
+          ],
+          "jointAdmissibility": "established",
+          "sufficiency": "established",
+          "derivedClaim": "established"
+        }
+      },
+      {
+        "member": {
+          "id": "guest-ines-costa",
+          "name": "Inés",
+          "fullName": "Inés Costa",
+          "initials": "IC",
+          "level": "Voyager",
+          "nextLevel": "Luminary",
+          "points": 3480,
+          "progress": 48,
+          "pointsToNextLevel": 520,
+          "memberSince": "enero de 2025"
+        },
+        "coupons": [
+          {
+            "id": "costa-late-checkout",
+            "title": "Salida tranquila",
+            "description": "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+            "validUntil": "Estancia actual",
+            "tag": "Costa Clara Resort",
+            "tone": "blue",
+            "icon": "home"
+          }
+        ],
+        "news": [
+          {
+            "id": "costa-adventure-introduction",
+            "category": "Tu estancia",
+            "title": "Inés y Mateo en Costa Clara",
+            "summary": "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia."
+          }
+        ],
+        "activity": [
+          {
+            "id": "evidence-costa-b-p2",
+            "title": "Pista del patio encontrada",
+            "description": "Hallazgo atribuido a Mateo.",
+            "occurredAt": "2026-09-12T10:05:00Z",
+            "displayDate": "12 sept, 10:05",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "evidence-costa-a-p1",
+            "title": "Pista del mirador encontrada",
+            "description": "Hallazgo registrado.",
+            "occurredAt": "2026-09-12T10:00:00Z",
+            "displayDate": "12 sept, 10:00",
+            "provenance": "simulated",
+            "tone": "blue",
+            "icon": "activity"
+          },
+          {
+            "id": "costa-stay-confirmed",
+            "title": "Estancia confirmada",
+            "description": "Costa Clara Resort · reserva CC-205.",
+            "occurredAt": "2026-09-01T10:20:00Z",
+            "displayDate": "1 sept, 10:20",
+            "provenance": "mocked",
+            "tone": "cyan",
+            "icon": "home"
+          }
+        ],
+        "scenario": {
+          "checkpoint": "adventure-established"
+        },
+        "guestPerspective": {
+          "huntName": "Aventura Familiar",
+          "sessionLabel": "Cuenta de Inés",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "label": "Inés",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "label": "Mateo",
+              "status": "Estado: habilitado",
+              "clueCount": 1
+            }
+          ],
+          "state": "complete",
+          "message": "Las pistas aportadas cumplen la condición de esta aventura.",
+          "discoveredClueCount": 2
+        },
+        "supervisionPerspective": {
+          "sessionSubjectRef": "subject-p1",
+          "subjects": [
+            {
+              "id": "subject-p1",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            },
+            {
+              "id": "subject-p2",
+              "exists": true,
+              "operationalState": "enabled",
+              "evidenceCount": 1
+            }
+          ],
+          "evidence": [
+            {
+              "id": "evidence-costa-a-p1",
+              "subjectRefs": [
+                "subject-p1"
+              ],
+              "type": "treasure_hunt.marker-a",
+              "provenance": "demo-control"
+            },
+            {
+              "id": "evidence-costa-b-p2",
+              "subjectRefs": [
+                "subject-p2"
+              ],
+              "type": "treasure_hunt.marker-b",
+              "provenance": "demo-control"
+            }
+          ],
+          "jointAdmissibility": "established",
+          "sufficiency": "established",
+          "derivedClaim": "established"
+        }
+      }
+    ],
+    "sportsFinal": {
+      "scenario": {
+        "id": "scenario:brisa-sports-season@1",
+        "fixtureRef": "fixture:brisa-external-runner@1",
+        "person": {
+          "id": "person:lea",
+          "name": "Lea Martín",
+          "membershipStatus": "external",
+          "customerRelationship": "not-established"
+        },
+        "contrastPerson": {
+          "id": "person:diego",
+          "name": "Diego Vidal",
+          "membershipStatus": "member",
+          "customerRelationship": "not-established"
+        },
+        "season": {
+          "id": "season:brisa-autumn-2026",
+          "title": "Una temporada para moverse",
+          "dates": "Septiembre — noviembre 2026",
+          "introduction": "En tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya."
+        },
+        "events": [
+          {
+            "id": "event:running-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "running",
+            "label": "Carrera",
+            "title": "Kilómetros en compañía",
+            "date": "2026-09-27",
+            "place": "Paseo del litoral · 5 km",
+            "description": "A tu ritmo. Una mañana para compartir o dedicarte tiempo.",
+            "executable": true
+          },
+          {
+            "id": "event:sailing-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "sailing",
+            "label": "Vela",
+            "title": "Un horizonte compartido",
+            "date": "2026-10-17",
+            "place": "Escuela de vela",
+            "description": "Otra forma de vivir la temporada. Evento informativo en esta demo.",
+            "executable": false
+          },
+          {
+            "id": "event:volleyball-01",
+            "seasonRef": "season:brisa-autumn-2026",
+            "discipline": "beach-volleyball",
+            "label": "Vóley playa",
+            "title": "Nos vemos en la arena",
+            "date": "2026-11-07",
+            "place": "Playa deportiva",
+            "description": "Una jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.",
+            "executable": false
+          }
+        ],
+        "modalities": [
+          {
+            "value": "social",
+            "label": "Social",
+            "description": "Compartir el recorrido y disfrutar en compañía."
+          },
+          {
+            "value": "wellness",
+            "label": "Bienestar",
+            "description": "Dedicarte un momento y moverte a tu ritmo."
+          }
+        ],
+        "efforts": [
+          {
+            "value": "suave",
+            "label": "Suave"
+          },
+          {
+            "value": "medio",
+            "label": "Medio"
+          },
+          {
+            "value": "intenso",
+            "label": "Intenso"
+          }
+        ],
+        "badge": {
+          "id": "badge:brisa-first-running@1",
+          "title": "Primeros kilómetros",
+          "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+        },
+        "club": {
+          "name": "Club Brisa",
+          "invitation": "La próxima salida puede ser el comienzo de algo más.",
+          "description": "Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta."
+        }
+      },
+      "registration": {
+        "registrationId": "registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "selectedModality": "social",
+        "status": "accepted"
+      },
+      "evidence": [
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:presence",
+          "kind": "presence",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "simulated-check-in",
+          "simulation": true
+        },
+        {
+          "evidenceId": "registration:scenario:brisa-sports-season@1:1:effort",
+          "kind": "effort",
+          "personRef": "person:lea",
+          "eventRef": "event:running-01",
+          "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+          "occurredAt": "2026-09-27T09:30:00.000Z",
+          "source": "participant-self-report",
+          "simulation": true,
+          "level": "medio"
+        }
+      ],
+      "badge": {
+        "badgeId": "badge:brisa-first-running@1",
+        "personRef": "person:lea",
+        "eventRef": "event:running-01",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "ruleRef": "sports-season:accepted-registration-presence-effort@1",
+        "supportingEvidenceRefs": [
+          "registration:scenario:brisa-sports-season@1:1:presence",
+          "registration:scenario:brisa-sports-season@1:1:effort"
+        ],
+        "title": "Primeros kilómetros",
+        "reason": "Por inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación."
+      },
+      "opportunity": {
+        "id": "invitation:registration:scenario:brisa-sports-season@1:1",
+        "personRef": "person:lea",
+        "registrationRef": "registration:scenario:brisa-sports-season@1:1",
+        "badgeRef": "badge:brisa-first-running@1",
+        "kind": "club-invitation",
+        "status": "available"
+      },
+      "stage": "recognized"
+    },
+    "isolated": true
+  }
+]

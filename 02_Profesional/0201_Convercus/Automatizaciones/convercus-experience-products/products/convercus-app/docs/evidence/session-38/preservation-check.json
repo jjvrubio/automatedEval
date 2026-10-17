@@ -1,0 +1,39 @@
+{
+  "session": 38,
+  "verifiedAt": "2026-09-21T16:53:21.011Z",
+  "baselineFiles": 483,
+  "unchangedCount": 480,
+  "authorizedChangedFiles": [
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts",
+      "before": "a6a705ffb2c23260a88ba26f5e8cf479043290819b6b79f40866509318243624",
+      "after": "889955b75f92f21978c0467f47d854133ffbcbfb645cc21c060b5d987f32509e",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h37/composition-boundary-h21.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts",
+      "before": "269df51dbbe32b46ac000cc84913b1a71ce8f6d38c8d6c4c7414e73b29746675",
+      "after": "e07ef45bb1fb25d990c4a94bfeb07963f95db9bfb84d32ca24aaf40493d93ab8",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h37/experience-stable-selection-h22.test.ts.txt"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+      "before": "970f3aca484c547843422a3e7570baa90b05bece02400c5ecf0172a125ab822f",
+      "after": "2238a491bb5a22292a286df9d497751d974b1151df7c5149bf1b794ab94fdf49",
+      "archive": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h37/situated-evaluation-context-h23.test.ts.txt"
+    }
+  ],
+  "unexpectedChanges": [],
+  "sourceHashesEqualS37FinalTrace": true,
+  "finalS37TraceComparison": {
+    "differences": [
+      "recordedAt"
+    ],
+    "allMaterialOutputAndHarnessHashesIdentical": true
+  },
+  "productDelta": "NONE",
+  "semanticDelta": "NONE",
+  "archiveRoutingDelta": "NONE",
+  "nodePackageLockConfigDelta": "NONE",
+  "historicalExpectations": "Exact original assertion bodies; only import and preservation enumeration changed; verified by H38 test"
+}

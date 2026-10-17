@@ -1,0 +1,611 @@
+{
+  "tool": "Standalone Playwright + installed Edge, headless, temporary profile",
+  "phases": [
+    {
+      "phase": "desktop-initial",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónUn programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "registration-qr-entry",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoElige arriba qué persona reconoce esta simulación.Esta entrada no acredita presencia ni confirma la inscripción.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "known-customer-counterfactual",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "equipment",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Carrera seleccionada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañíaDatos necesarios para inscribirsePersona: Lea Martín · Evento: Carrera. Elige la modalidad; no necesitas aportar información adicional para participar.¿Cómo quieres participar esta vez?SocialCompartir el recorrido y disfrutar en compañía.BienestarDedicarte un momento y moverte a tu ritmo.La elección se aplica a este evento. No define tu perfil ni te incorpora al club.Confirmar inscripciónSimulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "social",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "wellness",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "registration-error",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Carrera seleccionada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañíaDatos necesarios para inscribirsePersona: Lea Martín · Evento: Carrera. Elige la modalidad; no necesitas aportar información adicional para participar.¿Cómo quieres participar esta vez?SocialCompartir el recorrido y disfrutar en compañía.BienestarDedicarte un momento y moverte a tu ritmo.La elección se aplica a este evento. No define tu perfil ni te incorpora al club.Confirmar inscripciónElige Social o Bienestar para confirmar la inscripción.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "social",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "wellness",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "draft-modality-web-to-app",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Carrera seleccionada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañíaDatos necesarios para inscribirsePersona: Lea Martín · Evento: Carrera. Elige la modalidad; no necesitas aportar información adicional para participar.¿Cómo quieres participar esta vez?SocialCompartir el recorrido y disfrutar en compañía.BienestarDedicarte un momento y moverte a tu ritmo.La elección se aplica a este evento. No define tu perfil ni te incorpora al club.Confirmar inscripciónElige Social o Bienestar para confirmar la inscripción.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "social",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "wellness",
+          "checked": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "app-registration",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaSi compartes al menos una respuesta, podrás consultar la «Guía de preparación para 5 km» aquí mismo. También puedes continuar sin responder.Frecuencia de práctica (opcional)Sin respuestaDe vez en cuandoUna vez por semanaVarias veces por semanaObjetivo (opcional)Sin respuestaSentirme bienMoverme en compañíaMantener el hábitoSon respuestas declaradas por ti, no observaciones de la marca. La guía es un incentivo por información, separado de la insignia deportiva y de la pertenencia al club.Compartir información y obtener la guíaContinuar sin aportar información02Registra tu presencia · QR de presenciaSimula el check-in del evento. No se escanea un QR real ni se verifica asistencia física.Simular check-in03Comparte tu esfuerzoDisponible después del check-in simulado.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "select-one",
+          "value": ""
+        },
+        {
+          "name": "",
+          "type": "select-one",
+          "value": ""
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "draft-voluntary-app-to-web",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaSi compartes al menos una respuesta, podrás consultar la «Guía de preparación para 5 km» aquí mismo. También puedes continuar sin responder.Frecuencia de práctica (opcional)Sin respuestaDe vez en cuandoUna vez por semanaVarias veces por semanaObjetivo (opcional)Sin respuestaSentirme bienMoverme en compañíaMantener el hábitoSon respuestas declaradas por ti, no observaciones de la marca. La guía es un incentivo por información, separado de la insignia deportiva y de la pertenencia al club.Compartir información y obtener la guíaContinuar sin aportar información02Registra tu presencia · QR de presenciaSimula el check-in del evento. No se escanea un QR real ni se verifica asistencia física.Simular check-in03Comparte tu esfuerzoDisponible después del check-in simulado.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "select-one",
+          "value": "weekly"
+        },
+        {
+          "name": "",
+          "type": "select-one",
+          "value": "habit"
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "voluntary-incentive",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaSimula el check-in del evento. No se escanea un QR real ni se verifica asistencia física.Simular check-in03Comparte tu esfuerzoDisponible después del check-in simulado.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "registered-and-incentive-web-to-app",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaSimula el check-in del evento. No se escanea un QR real ni se verifica asistencia física.Simular check-in03Comparte tu esfuerzoDisponible después del check-in simulado.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "app-effort-error",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzo¿Cómo has sentido el esfuerzo?SuaveMedioIntensoEs tu declaración, separada de la presencia. Los tres niveles reciben el mismo reconocimiento.Registrar esfuerzoElige un esfuerzo: suave, medio o intenso.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "effort",
+          "type": "radio",
+          "value": "suave",
+          "checked": false
+        },
+        {
+          "name": "effort",
+          "type": "radio",
+          "value": "medio",
+          "checked": false
+        },
+        {
+          "name": "effort",
+          "type": "radio",
+          "value": "intenso",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "app-badge",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo intenso · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Una invitación, una nueva decisiónLa próxima salida puede ser el comienzo de algo más.Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta.Conocer Club BrisaLa temporada continúaEsta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "app-invitation",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo intenso · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Una invitación, una nueva decisiónLa próxima salida puede ser el comienzo de algo más.Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta.Cerrar información del clubClub BrisaEl club reúne novedades y próximas actividades de la marca. Esta pantalla sólo muestra información: sigues siendo participante externo. No se ha enviado una solicitud, un lead ni un consentimiento.La temporada continúaEsta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "badge-and-invitation-app-to-web",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo intenso · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Una invitación, una nueva decisiónLa próxima salida puede ser el comienzo de algo más.Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta.Cerrar información del clubClub BrisaEl club reúne novedades y próximas actividades de la marca. Esta pantalla sólo muestra información: sigues siendo participante externo. No se ha enviado una solicitud, un lead ni un consentimiento.La temporada continúaEsta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "crm-primary-compatibility",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMMarketing / CRMLa participación, con contexto.La misma persona y los mismos registros. Una oportunidad para iniciar una relación con el club.01 · Datos de escenario ficticioLea MartínEstado de clubExterno · no pertenece al clubRelación como clienteCliente conocidoTemporadaUna temporada para moversePeriodoSeptiembre — noviembre 2026Persona y calendario proceden de datos ficticios. No hay autenticación real.02 · Registros de esta ejecuciónInscripción y aportacionesEventoKilómetros en compañíaDisciplinaCarreraModalidad elegidaBienestarInscripciónAceptada · elección de esta participaciónLa inscripción no acredita presencia ni esfuerzo.Presencia · check-in simuladoAceptada sólo dentro de la simulación. Sin acreditación física.Origen: simulated-check-in · 19:54:50Esfuerzo · intensoAutodeclarado por el participante. Sin medición externa.Origen: participant-self-report · 19:54:5103 · Reconocimiento derivado localPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Los tres niveles de esfuerzo satisfacen el mismo requisito. No se infiere rendimiento ni intención de compra.Criterio y referenciasRegla local experimentalsports-season:accepted-registration-presence-effort@1Personaperson:leaInscripción / eventoregistration:scenario:brisa-sports-season@1:1:person:lea / event:running-01Evidencias de apoyoregistration:scenario:brisa-sports-season@1:1:person:lea:presence · registration:scenario:brisa-sports-season@1:1:person:lea:effort04 · Oportunidad comercialInvitación al club disponibleLa participación de Lea Martín permite proponer conocer Club Brisa.Estado de club: externo. Sin alta, consentimiento, conversión ni lead enviado.Continuidad registrada: primera participación reconocida en esta temporada. No se ha ejecutado una segunda participación.Contraste de diseño · miembro y competición, sin ejecutarDiego Vidal ya pertenece al club en el escenario ficticio. En otro recorrido podría elegir competición y declarar resultado y posición para un reconocimiento individual; un trofeo sería distinto de una insignia o un beneficio. El recorrido competitivo no tiene acciones, resultados ni reconocimientos registrados.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "return-primary",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoCliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosLea MartínRelación con la marcaCliente conocidoPrograma de fidelizaciónNo pertenece al programaLocalidad conocidaValenciaPráctica conocida en el escenarioCarreraCompras ficticias registradasZapatillas para correr12/7/2026129,90 €Camiseta técnica3/8/202639,90 €Botella de hidratación5/9/202625,00 €Contrafactual · no es saldo disponible194 puntos potencialesCon tus compras realizadas (194,80 €), si hubieras pertenecido al programa, habrías obtenido estos puntos.Ejemplo ficticio: 1 punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Bienestar · Lea MartínRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaInformación declarada: Una vez por semana · Mantener el hábito.Incentivo por información disponibleGuía de preparación para 5 kmAbrir guíaRevisa el lugar de salida y prepara tu equipamiento con antelación.Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.Consulta el horario y los servicios disponibles del encuentro.Comparte el plan con quien vaya a acompañarte.Este contenido no es una insignia, puntos ni un alta en el programa.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo intenso · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Una invitación, una nueva decisiónLa próxima salida puede ser el comienzo de algo más.Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta.Cerrar información del clubClub BrisaEl club reúne novedades y próximas actividades de la marca. Esta pantalla sólo muestra información: sigues siendo participante externo. No se ha enviado una solicitud, un lead ni un consentimiento.La temporada continúaEsta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "reset-primary",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónUn programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "member-contrast",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "interests-error",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMElige al menos un interés de la lista, dentro de Recibir información.Temporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Recibir información · sin participar¿Qué te interesa?Elige los temas sobre los que querrías saber másCarreraVelaVóley playaPróximas convocatoriasRegistrar interesesSimulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "declared-interests",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Recibir información · sin participar¿Qué te interesa?Elige los temas sobre los que querrías saber másCarreraVelaVóley playaPróximas convocatoriasRegistrar interesesInterés declarado registradoVela · Próximas convocatoriasSin inscripción, presencia, esfuerzo ni insignia. No se envían comunicaciones ni se crea una suscripción real.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "declared-interests-web-to-app",
+      "dimensions": {
+        "width": 369,
+        "height": 768
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Recibir información · sin participar¿Qué te interesa?Elige los temas sobre los que querrías saber másCarreraVelaVóley playaPróximas convocatoriasRegistrar interesesInterés declarado registradoVela · Próximas convocatoriasSin inscripción, presencia, esfuerzo ni insignia. No se envían comunicaciones ni se crea una suscripción real.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "updated-interests-app-to-web",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Recibir información · sin participar¿Qué te interesa?Elige los temas sobre los que querrías saber másCarreraVelaVóley playaPróximas convocatoriasRegistrar interesesInterés declarado registradoVela · Próximas convocatorias · CarreraSin inscripción, presencia, esfuerzo ni insignia. No se envían comunicaciones ni se crea una suscripción real.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": false
+        },
+        {
+          "name": "",
+          "type": "checkbox",
+          "value": "on",
+          "checked": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "member-badge-without-new-membership",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónPersona seleccionada · datos ficticios conocidosDiego VidalRelación con la marcaCliente conocidoPrograma de fidelizaciónMiembro de Club BrisaLocalidad conocidaValenciaPráctica conocida en el escenarioVela y carreraCompras ficticias registradasChaqueta para actividades al aire libre19/8/202689,00 €Estado del programa · simulado860 puntos · nivel ActivoSaldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.Acceso a encuentros del clubNovedades de actividades deportivas02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Social · Diego VidalRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaHas continuado sin aportar información adicional. Tu inscripción y tu posibilidad de obtener la insignia se mantienen.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo medio · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "member-crm-compatibility",
+      "dimensions": {
+        "width": 1280,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4173/?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMMarketing / CRMLa participación, con contexto.La misma persona y los mismos registros. Su pertenencia al club se mantiene.01 · Datos de escenario ficticioDiego VidalEstado de clubMiembro del clubRelación como clienteCliente conocidoTemporadaUna temporada para moversePeriodoSeptiembre — noviembre 2026Persona y calendario proceden de datos ficticios. No hay autenticación real.02 · Registros de esta ejecuciónInscripción y aportacionesEventoKilómetros en compañíaDisciplinaCarreraModalidad elegidaSocialInscripciónAceptada · elección de esta participaciónLa inscripción no acredita presencia ni esfuerzo.Presencia · check-in simuladoAceptada sólo dentro de la simulación. Sin acreditación física.Origen: simulated-check-in · 19:54:52Esfuerzo · medioAutodeclarado por el participante. Sin medición externa.Origen: participant-self-report · 19:54:5203 · Reconocimiento derivado localPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Los tres niveles de esfuerzo satisfacen el mismo requisito. No se infiere rendimiento ni intención de compra.Criterio y referenciasRegla local experimentalsports-season:accepted-registration-presence-effort@1Personaperson:diegoInscripción / eventoregistration:scenario:brisa-sports-season@1:5:person:diego / event:running-01Evidencias de apoyoregistration:scenario:brisa-sports-season@1:5:person:diego:presence · registration:scenario:brisa-sports-season@1:5:person:diego:effort04 · Oportunidad comercialAún sin invitaciónYa pertenece al club. Esta participación no genera una invitación de alta.Estado de club: miembro. Sin alta, consentimiento, conversión ni lead enviado.Continuidad registrada: primera participación reconocida en esta temporada. No se ha ejecutado una segunda participación.Contraste de diseño · miembro y competición, sin ejecutarDiego Vidal ya pertenece al club en el escenario ficticio. En otro recorrido podría elegir competición y declarar resultado y posición para un reconocimiento individual; un trofeo sería distinto de una insignia o un beneficio. El recorrido competitivo no tiene acciones, resultados ni reconocimientos registrados.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "mobile-app-initial",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónUn programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "unknown-minimum-form",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoPersona no reconocida. Puedes participar sin ser cliente: elige Participar y completa el nombre ficticio para la inscripción.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosPersona sin identificarRelación con la marcaNo cliente · sin relación comercial establecidaPrograma de fidelizaciónNo pertenece al programaNo hay historial transaccional ni datos de cliente. Un evento puede ser el comienzo de la relación; inscribirte no crea una cuenta ni te incorpora al programa.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Datos mínimos para la inscripciónNombre ficticio para esta demoContinuar con este nombreLa identificación completa y el alta de cliente se narran; no se ejecutan. Puedes completar aquí la participación deportiva simulada.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Carrera seleccionada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañíaDatos necesarios para inscribirsePersona: Persona sin identificar · Evento: Carrera. Elige la modalidad; no necesitas aportar información adicional para participar.¿Cómo quieres participar esta vez?SocialCompartir el recorrido y disfrutar en compañía.BienestarDedicarte un momento y moverte a tu ritmo.La elección se aplica a este evento. No define tu perfil ni te incorpora al club.Confirmar inscripciónSimulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "text",
+          "value": "",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "social",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "wellness",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "unknown-required-name-error",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoPersona no reconocida. Puedes participar sin ser cliente: elige Participar y completa el nombre ficticio para la inscripción.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosPersona sin identificarRelación con la marcaNo cliente · sin relación comercial establecidaPrograma de fidelizaciónNo pertenece al programaNo hay historial transaccional ni datos de cliente. Un evento puede ser el comienzo de la relación; inscribirte no crea una cuenta ni te incorpora al programa.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Datos mínimos para la inscripciónNombre ficticio para esta demoContinuar con este nombreLa identificación completa y el alta de cliente se narran; no se ejecutan. Puedes completar aquí la participación deportiva simulada.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Carrera seleccionada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañíaDatos necesarios para inscribirsePersona: Persona sin identificar · Evento: Carrera. Elige la modalidad; no necesitas aportar información adicional para participar.¿Cómo quieres participar esta vez?SocialCompartir el recorrido y disfrutar en compañía.BienestarDedicarte un momento y moverte a tu ritmo.La elección se aplica a este evento. No define tu perfil ni te incorpora al club.Confirmar inscripciónIndica un nombre ficticio para esta inscripción.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "text",
+          "value": "",
+          "checked": false
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "social",
+          "checked": true
+        },
+        {
+          "name": "modality",
+          "type": "radio",
+          "value": "wellness",
+          "checked": false
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "voluntary-empty-error",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoPersona no reconocida. Puedes participar sin ser cliente: elige Participar y completa el nombre ficticio para la inscripción.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosAlex PruebaRelación con la marcaNo cliente · sin relación comercial establecidaPrograma de fidelizaciónNo pertenece al programaNo hay historial transaccional ni datos de cliente. Un evento puede ser el comienzo de la relación; inscribirte no crea una cuenta ni te incorpora al programa.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Datos mínimos para la inscripciónNombre para esta inscripción: Alex Prueba. Sigues sin ser cliente ni miembro del programa.La identificación completa y el alta de cliente se narran; no se ejecutan. Puedes completar aquí la participación deportiva simulada.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Social · Alex PruebaRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaSi compartes al menos una respuesta, podrás consultar la «Guía de preparación para 5 km» aquí mismo. También puedes continuar sin responder.Frecuencia de práctica (opcional)Sin respuestaDe vez en cuandoUna vez por semanaVarias veces por semanaObjetivo (opcional)Sin respuestaSentirme bienMoverme en compañíaMantener el hábitoSon respuestas declaradas por ti, no observaciones de la marca. La guía es un incentivo por información, separado de la insignia deportiva y de la pertenencia al club.Compartir información y obtener la guíaContinuar sin aportar información02Registra tu presencia · QR de presenciaSimula el check-in del evento. No se escanea un QR real ni se verifica asistencia física.Simular check-in03Comparte tu esfuerzoDisponible después del check-in simulado.Selecciona al menos una respuesta voluntaria válida o continúa sin aportarla.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [
+        {
+          "name": "",
+          "type": "select-one",
+          "value": ""
+        },
+        {
+          "name": "",
+          "type": "select-one",
+          "value": ""
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "unknown-participant-badge",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónQR de inscripción · simuladoPersona no reconocida. Puedes participar sin ser cliente: elige Participar y completa el nombre ficticio para la inscripción.Esta entrada no acredita presencia ni confirma la inscripción.Persona seleccionada · datos ficticios conocidosAlex PruebaRelación con la marcaNo cliente · sin relación comercial establecidaPrograma de fidelizaciónNo pertenece al programaNo hay historial transaccional ni datos de cliente. Un evento puede ser el comienzo de la relación; inscribirte no crea una cuenta ni te incorpora al programa.02 · Tu decisión en este encuentro¿Qué quieres hacer ahora?ParticiparNo participar, pero quiero recibir informaciónNo participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.Datos mínimos para la inscripciónNombre para esta inscripción: Alex Prueba. Sigues sin ser cliente ni miembro del programa.La identificación completa y el alta de cliente se narran; no se ejecutan. Puedes completar aquí la participación deportiva simulada.Un programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Inscripción confirmada02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Para el evento que has elegidoEquipamiento para CarreraSugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.CalzadoZapatillas para correr que ya hayas utilizado y te resulten cómodas.Textil técnicoRopa adecuada al tiempo previsto y al movimiento.HidrataciónUna botella reutilizable para llevar contigo.AccesoriosUna gorra o un cinturón para tus pequeños objetos, si los necesitas.Tu participación · CarreraKilómetros en compañía01Inscripción confirmadaModalidad Social · Alex PruebaRegistradaDespués de inscribirte · tú decidesInformación adicional voluntariaHas continuado sin aportar información adicional. Tu inscripción y tu posibilidad de obtener la insignia se mantienen.02Registra tu presencia · QR de presenciaCheck-in simulado registrado. No acredita asistencia física real.Simulada03Comparte tu esfuerzoEsfuerzo suave · autodeclarado, sin medición externa.AutodeclaradoTu primera insignia de CarreraPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Un reconocimiento individual de esta demo. No es un cupón, un trofeo ni un nivel del club.Una invitación, una nueva decisiónLa próxima salida puede ser el comienzo de algo más.Brisa Sport ya cuenta con un club. Conoce sus novedades y próximas actividades; participar en esta carrera no te da de alta.Conocer Club BrisaLa temporada continúaEsta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "unknown-remains-noncustomer",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMMarketing / CRMLa participación, con contexto.La misma persona y los mismos registros. Una oportunidad para iniciar una relación con el club.01 · Datos de escenario ficticioAlex PruebaEstado de clubExterno · no pertenece al clubRelación como clienteNo establecidaTemporadaUna temporada para moversePeriodoSeptiembre — noviembre 2026Persona y calendario proceden de datos ficticios. No hay autenticación real.02 · Registros de esta ejecuciónInscripción y aportacionesEventoKilómetros en compañíaDisciplinaCarreraModalidad elegidaSocialInscripciónAceptada · elección de esta participaciónLa inscripción no acredita presencia ni esfuerzo.Presencia · check-in simuladoAceptada sólo dentro de la simulación. Sin acreditación física.Origen: simulated-check-in · 19:54:54Esfuerzo · suaveAutodeclarado por el participante. Sin medición externa.Origen: participant-self-report · 19:54:5403 · Reconocimiento derivado localPrimeros kilómetrosPor inscribirte en Carrera, registrar el check-in simulado y compartir el esfuerzo de esta participación.Los tres niveles de esfuerzo satisfacen el mismo requisito. No se infiere rendimiento ni intención de compra.Criterio y referenciasRegla local experimentalsports-season:accepted-registration-presence-effort@1Personaperson:visitorInscripción / eventoregistration:scenario:brisa-sports-season@1:1:person:visitor / event:running-01Evidencias de apoyoregistration:scenario:brisa-sports-season@1:1:person:visitor:presence · registration:scenario:brisa-sports-season@1:1:person:visitor:effort04 · Oportunidad comercialInvitación al club disponibleLa participación de Alex Prueba permite proponer conocer Club Brisa.Estado de club: externo. Sin alta, consentimiento, conversión ni lead enviado.Continuidad registrada: primera participación reconocida en esta temporada. No se ha ejecutado una segunda participación.Contraste de diseño · miembro y competición, sin ejecutarDiego Vidal ya pertenece al club en el escenario ficticio. En otro recorrido podría elegir competición y declarar resultado y posición para un reconocimiento individual; un trofeo sería distinto de una insignia o un beneficio. El recorrido competitivo no tiene acciones, resultados ni reconocimientos registrados.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    },
+    {
+      "phase": "mobile-app-reset",
+      "dimensions": {
+        "width": 350,
+        "height": 727
+      },
+      "url": "http://127.0.0.1:4173/showcase?demo=sports-season-running",
+      "text": "Saltar al contenidoDemo · marca y personas ficticiasParticipanteMarketing / CRMTemporada deportiva · Septiembre — noviembre 2026Una temporada para moverseEn tierra, en el agua o en la arena. Encuentra una forma de participar y hazla tuya.Abierta también a personas ajenas al clubSal.Muévete.Conecta.01 · Una persona, distintas relaciones¿Con quién quieres probar la demo?Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.Lea MartínCliente conocidoNo miembro del programaCaso principalElegir a Lea MartínDiego VidalCliente conocidoMiembro de Club BrisaElegir a Diego VidalPersona sin identificarNo clienteNo miembro del programaElegir a Persona sin identificar¿Vienes desde el QR del evento?Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.Leer QR de inscripciónUn programa, distintas formas de participarLos eventos de la temporada3 disciplinas01Recorrido disponibleCarreraKilómetros en compañía27 de septiembre · Paseo del litoral · 5 kmA tu ritmo. Una mañana para compartir o dedicarte tiempo.Elegir Carrera02Sólo informativoVelaUn horizonte compartido17 de octubre · Escuela de velaOtra forma de vivir la temporada. Evento informativo en esta demo.Sin inscripción disponible en esta demo.03Sólo informativoVóley playaNos vemos en la arena7 de noviembre · Playa deportivaUna jornada organizada por equipos. Evento informativo, sin juego ni reconocimientos colectivos en esta demo.Sin inscripción disponible en esta demo.Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.Reiniciar demo",
+      "fields": [],
+      "horizontalOverflow": false
+    }
+  ],
+  "surfaceComparisons": [
+    {
+      "phase": "draft-modality-web-to-app",
+      "to": "app",
+      "identical": true
+    },
+    {
+      "phase": "draft-voluntary-app-to-web",
+      "to": "web",
+      "identical": true
+    },
+    {
+      "phase": "registered-and-incentive-web-to-app",
+      "to": "app",
+      "identical": true
+    },
+    {
+      "phase": "badge-and-invitation-app-to-web",
+      "to": "web",
+      "identical": true
+    },
+    {
+      "phase": "declared-interests-web-to-app",
+      "to": "app",
+      "identical": true
+    },
+    {
+      "phase": "updated-interests-app-to-web",
+      "to": "web",
+      "identical": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "humanUXAcceptance": "NOT EXECUTED",
+  "status": "PASS"
+}

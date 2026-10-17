@@ -1,0 +1,183 @@
+import type { DemoFixture } from "./contracts";
+
+export const retailFixture: DemoFixture = {
+  id: "fixture:retail-baseline@1",
+  member: {
+    id: "member-demo-001",
+    name: "Alex",
+    fullName: "Alex Martín",
+    initials: "AM",
+    level: "Essential",
+    nextLevel: "Plus",
+    points: 1_240,
+    progress: 62,
+    pointsToNextLevel: 760,
+    memberSince: "marzo de 2024",
+  },
+  coupons: [
+    {
+      id: "coupon-welcome",
+      title: "20% de bienvenida",
+      description: "Disfruta tu ventaja en la próxima compra.",
+      validUntil: "Hasta el 30 ago",
+      tag: "Para ti",
+      tone: "cyan",
+      icon: "gift",
+    },
+    {
+      id: "coupon-double-points",
+      title: "Puntos x2",
+      description: "Duplica tus puntos durante todo el fin de semana.",
+      validUntil: "Este fin de semana",
+      tag: "Especial",
+      tone: "pink",
+      icon: "sparkles",
+    },
+    {
+      id: "coupon-member",
+      title: "Envío sin coste",
+      description: "Una ventaja exclusiva por ser miembro Essential.",
+      validUntil: "Hasta el 15 sep",
+      tag: "Essential",
+      tone: "blue",
+      icon: "ticket",
+    },
+  ],
+  news: [
+    {
+      id: "news-new-season",
+      category: "Novedades",
+      title: "Una nueva temporada para descubrir",
+      summary: "Ideas, ventajas y experiencias elegidas para acompañarte.",
+    },
+  ],
+  activityRecords: [
+    {
+      id: "activity-purchase",
+      kind: "purchase",
+      title: "Compra registrada",
+      description: "Tus puntos ya están disponibles.",
+      occurredAt: "2026-08-02T17:30:00Z",
+      points: 120,
+      provenance: "mocked",
+    },
+    {
+      id: "activity-coupon",
+      kind: "benefit",
+      title: "Nuevo beneficio",
+      description: "Has recibido tu cupón de bienvenida.",
+      occurredAt: "2026-08-01T09:15:00Z",
+      provenance: "mocked",
+    },
+    {
+      id: "activity-profile",
+      kind: "profile",
+      title: "Perfil actualizado",
+      description: "Tus preferencias se han guardado correctamente.",
+      occurredAt: "2026-07-28T11:00:00Z",
+      provenance: "mocked",
+    },
+  ],
+};
+
+export const hospitalityFixture: DemoFixture = {
+  id: "fixture:hospitality-stay@1",
+  member: {
+    id: "guest-lucia-vega",
+    name: "Lucía",
+    fullName: "Lucía Vega",
+    initials: "LV",
+    level: "Voyager",
+    nextLevel: "Luminary",
+    points: 3_480,
+    progress: 48,
+    pointsToNextLevel: 520,
+    memberSince: "enero de 2025",
+  },
+  coupons: [
+    {
+      id: "service-late-checkout",
+      title: "Late check-out",
+      description: "Amplía tu salida hasta las 14:00 durante esta estancia.",
+      validUntil: "Estancia actual",
+      tag: "Aurora Lisboa",
+      tone: "cyan",
+      icon: "home",
+    },
+    {
+      id: "service-breakfast",
+      title: "Desayuno de bienvenida",
+      description: "Una invitación para compartir con tus acompañantes.",
+      validUntil: "Hasta el 13 sep",
+      tag: "Para tu estancia",
+      tone: "pink",
+      icon: "sparkles",
+    },
+  ],
+  news: [
+    {
+      id: "news-lisbon-arrival",
+      category: "Tu llegada",
+      title: "Lisboa empieza en Aurora",
+      summary: "Tu reserva está preparada y el equipo conoce la hora estimada de llegada.",
+    },
+  ],
+  activityRecords: [
+    {
+      id: "stay-confirmed",
+      kind: "stay",
+      title: "Estancia confirmada",
+      description: "Aurora Lisboa · 12–15 septiembre.",
+      occurredAt: "2026-09-01T10:20:00Z",
+      provenance: "mocked",
+    },
+    {
+      id: "service-selected",
+      kind: "service",
+      title: "Preferencia guardada",
+      description: "La habitación se preparará con una cuna de viaje.",
+      occurredAt: "2026-09-02T08:45:00Z",
+      provenance: "mocked",
+    },
+  ],
+};
+
+// Situated input only: no pre-enablement, Evidence, admissibility or claim.
+export const costaFixture: DemoFixture = {
+  id: "fixture:family-adventure-costa@1",
+  member: {
+    id: "guest-ines-costa",
+    name: "Inés",
+    fullName: "Inés Costa",
+    initials: "IC",
+    level: "Voyager",
+    nextLevel: "Luminary",
+    points: 3480,
+    progress: 48,
+    pointsToNextLevel: 520,
+    memberSince: "enero de 2025",
+  },
+  coupons: [{
+    id: "costa-late-checkout",
+    title: "Salida tranquila",
+    description: "Disfruta Costa Clara hasta las 14:00 durante tu estancia.",
+    validUntil: "Estancia actual",
+    tag: "Costa Clara Resort",
+    tone: "blue",
+    icon: "home",
+  }],
+  news: [{
+    id: "costa-adventure-introduction",
+    category: "Tu estancia",
+    title: "Inés y Mateo en Costa Clara",
+    summary: "El mirador y el patio son los lugares de esta aventura. Mateo ya figura en la estancia.",
+  }],
+  activityRecords: [{
+    id: "costa-stay-confirmed",
+    kind: "stay",
+    title: "Estancia confirmada",
+    description: "Costa Clara Resort · reserva CC-205.",
+    occurredAt: "2026-09-01T10:20:00Z",
+    provenance: "mocked",
+  }],
+};

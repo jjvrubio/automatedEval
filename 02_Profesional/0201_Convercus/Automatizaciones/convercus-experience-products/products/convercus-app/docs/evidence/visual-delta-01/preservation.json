@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "receivedFiles": 749,
+  "unchangedFiles": 746,
+  "changedFiles": [
+    "products/convercus-app/prototype/src/styles/sports-season.css",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/brisa-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/artifacts.ts"
+  ],
+  "missingFiles": [],
+  "historicalDocsTestsFixturesChecked": 572,
+  "allHistoricalDocsTestsFixturesUnchanged": true
+}

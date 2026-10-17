@@ -1,0 +1,103 @@
+--- H29/products/convercus-app/prototype/src/demo/mock-adapter.ts
++++ H30/products/convercus-app/prototype/src/demo/mock-adapter.ts
+@@ -46,6 +46,7 @@
+   evaluation: VerticalEvaluationState = { evidence: [], jointAdmissibility: "cannot-currently-establish", sufficiency: "not-attempted" },
+   subjectStates: Record<string, DemoSubjectState> = {},
+   subjectPresentations: DemoScript["subjectPresentations"] = [],
++  experimentalJourneyPresentations: DemoScript["experimentalJourneyPresentations"] = [],
+ ): AppSnapshot {
+   const snapshot: AppSnapshot = {
+     member: structuredClone(fixture.member),
+@@ -81,7 +82,10 @@
+   }
+ 
+   if (scenario?.experienceRef === "experience:family-adventure@1") {
+-    snapshot.guestPerspective = projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations, fixture.member.name);
++    snapshot.guestPerspective = projectGuestPerspective(
++      evaluation, scenario.subjects, subjectStates, subjectPresentations, fixture.member.name,
++      snapshot.scenario?.availableActionId, experimentalJourneyPresentations,
++    );
+     snapshot.supervisionPerspective = projectSupervisionPerspective(
+       evaluation, scenario.subjects, subjectStates, scenario.operationalSessionSubjectRef,
+     );
+@@ -119,6 +123,7 @@
+       this.evaluation,
+       this.subjectStates,
+       this.script?.subjectPresentations,
++      this.script?.experimentalJourneyPresentations,
+     );
+   }
+ 
+--- H29/products/convercus-app/prototype/src/demo-factory/artifacts.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/artifacts.ts
+@@ -180,6 +180,11 @@
+       { subjectRef: "subject-p1", label: "Lucía" },
+       { subjectRef: "subject-p2", label: "Huésped 2" },
+     ],
++    experimentalJourneyPresentations: [
++      { availableActionId: "discover-clue-a", message: "Exploración disponible en el jardín." },
++      { availableActionId: "activate-p2", message: "Pista del jardín registrada. La siguiente acción está disponible." },
++      { availableActionId: "discover-clue-b", message: "Nueva exploración disponible en la fuente." },
++    ],
+     steps: [
+       {
+         id: "enlist-p1",
+--- H29/products/convercus-app/prototype/src/demo-factory/contracts.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/contracts.ts
+@@ -221,6 +221,10 @@
+   // H27: EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED.
+   // Display relation only; no account, authentication or subject identity claim.
+   subjectPresentations?: Array<{ subjectRef: string; label: string }>;
++  // H30: EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED.
++  // Existing available affordance -> situated message, never runtime authority.
++  // Available action is not journey state; no viewer or TES Progression relation.
++  experimentalJourneyPresentations?: Array<{ availableActionId: string; message: string }>;
+   steps: Array<{
+     id: string;
+     presenterLabel: string;
+--- H29/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
+@@ -134,6 +134,8 @@
+   subjectPresentations: DemoScript["subjectPresentations"] = [],
+   // H28: existing account display source only, never subject/viewer identity.
+   accountName = "",
++  availableActionId?: string,
++  experimentalJourneyPresentations: DemoScript["experimentalJourneyPresentations"] = [],
+ ): GuestPerspectiveReadModel {
+   const discoveredClueCount = evaluation.evidence.length;
+   const complete = evaluation.sufficiency === "established";
+@@ -157,13 +159,13 @@
+     state: complete ? "complete" : discoveredClueCount > 0 ? "exploring" : enlisted ? "active" : "ready",
+     message: complete
+       ? "Las pistas aportadas cumplen la condición de esta aventura."
+-      : discoveredClueCount > 0
+-        ? subjectStates["subject-p2"] === "enabled"
+-          ? "Has habilitado al huésped 2. Todavía no ha aportado pistas. Registra su hallazgo en la fuente cuando lo encuentre."
+-          : "Tu pista del jardín está aportada. Activa al huésped 2 para que pueda explorar; activarlo no aporta ninguna pista."
+-        : enlisted
+-          ? "Estás alistada y habilitada. Todavía no has encontrado ninguna pista. Explora el jardín y registra tu hallazgo."
+-          : "La aventura está disponible. Alístate para empezar a explorar. Todavía no has aportado pistas.",
++      : discoveredClueCount === 0 && subjectStates["subject-p1"] === "not-enlisted"
++        ? "La aventura está disponible. Alistamiento pendiente."
++        // H30 local presentation lookup only. Missing affordance/declaration
++        // means no situated copy; absence is not a product UX policy.
++        : availableActionId
++          ? experimentalJourneyPresentations.find((item) => item.availableActionId === availableActionId)?.message ?? ""
++          : "",
+     discoveredClueCount,
+   };
+ }
+--- H29/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
+@@ -91,6 +91,11 @@
+       { subjectRef: "subject-p1", label: "Inés" },
+       { subjectRef: "subject-p2", label: "Mateo" },
+     ],
++    experimentalJourneyPresentations: [
++      { availableActionId: "discover-clue-a", message: "Exploración disponible en el mirador." },
++      { availableActionId: "activate-p2", message: "Pista del mirador registrada. La siguiente acción está disponible." },
++      { availableActionId: "discover-clue-b", message: "Nueva exploración disponible en el patio." },
++    ],
+     steps: [
+       {
+         id: "enlist-p1",

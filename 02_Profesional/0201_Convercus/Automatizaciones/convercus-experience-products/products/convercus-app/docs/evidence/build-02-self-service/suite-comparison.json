@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "pass": 131,
+    "fail": 19
+  },
+  "current": {
+    "pass": 158,
+    "fail": 21
+  },
+  "existingFailures": [
+    "BUILD 01 actual App: choices, public errors, badge, invitation, same-state CRM and deterministic reset",
+    "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+    "H22 \u2014 Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+    "H23 \u2014 Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+    "H24 \u2014 Situated Activity Representation Provenance records the existing-source falsifier without changing runtime or inventing a representation contract",
+    "H25 \u2014 Script-Bound Situated Activity Representation separates declaration, accepted facts, optional representation and evaluation on the live shared provider",
+    "H26 \u2014 Situated Guest Perspective Provenance reproduces the inspected missing subject/narrative relation without changing any application source",
+    "H27 \u2014 Explicit Situated Subject Representation keeps declared subject labels independent of account, facts, session, evaluation and Activity",
+    "H28 \u2014 Account-Sourced Guest Presentation derives account-only sessionLabel from member.name independently of subject presentation and all factual inputs",
+    "H29 \u2014 Operational Subject Status Provenance represents only existing present state, independently of account, subject labels, Activity and Evidence",
+    "H30 current-live: script-bound situated narrative preserves facts and accumulated H25\u2013H29 behavior",
+    "H30 pre-delta: records and compares all six operational positions in A/B",
+    "H32 historical S32 App DOM replay: independent brand and explicit static intro preserve cumulative facts and presentation authorities",
+    "H33 historical S33 App replay: operational subject references alone identify supervision subjects across A/B and independent presentation perturbations",
+    "H34 historical S34 replay: existing session subject reference alone represents operational session across A/B and independent presentation perturbations",
+    "H35 historical S35 replay: Experience.name supplies the GuestPerspective name across A/B and independent presentation perturbations",
+    "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+    "H38 inherited product, historical evidence, routing, config and all other sources remain byte-identical",
+    "H39 STOP gate preserves every received material file and existing H37/H38 assertions"
+  ],
+  "newFailures": [
+    "BUILD 02 visible member contrast and information-only branch produce declared interests without a registration",
+    "BUILD 02 visible primary path: recognized customer, counterfactual, required data, optional skip, unchanged badge and shared CRM"
+  ]
+}

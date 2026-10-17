@@ -1,0 +1,18 @@
+{
+  "session": 34,
+  "checkedAt": "2026-09-18T20:00:18.073185+00:00",
+  "baselineFiles": 391,
+  "unchangedFiles": 389,
+  "applicationChanged": [
+    "products/convercus-app/prototype/src/app/App.tsx"
+  ],
+  "historicalHarnessChanged": [
+    "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts"
+  ],
+  "unexpectedSourceChanges": [],
+  "missingFiles": [],
+  "byteIdenticalArchiveByOriginalPath": {
+    "products/convercus-app/prototype/src/app/App.tsx": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h33/App.tsx",
+    "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h33/operational-supervision-subject-h33.test.ts.txt"
+  }
+}

@@ -1,0 +1,317 @@
+/// <reference types="node" />
+import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { act, createElement } from "react";
+import { createRoot } from "react-dom/client";
+import { MemoryRouter } from "react-router-dom";
+import { afterEach, expect, it, vi } from "vitest";
+import { App } from "@/app/App";
+import { App as PreviousApp } from "./test-fixtures/h31/App";
+import { MockDataAdapter } from "@/demo/mock-adapter";
+import { defaultDemoCatalogs, resolveDemo, type DemoCatalogs } from "./bootstrap";
+import type { AppSnapshot, DemoAction, DemoEnableAction, DemoScript, ResolvedDemoRuntime } from "./contracts";
+import { historicalH31Path } from "./test-fixtures/h31/source-path";
+import * as vertical from "./vertical-evaluation";
+import * as joint from "./cross-subject-evidence-admissibility";
+
+// Current App/provider/evaluators: no vi.mock and no substituted snapshots.
+// PreviousApp is mounted separately only for an explicitly labelled DOM comparison.
+Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+afterEach(() => { vi.restoreAllMocks(); document.body.innerHTML = ""; });
+const evidenceDir = resolve(process.cwd(), "../docs/evidence");
+const projectRoot = resolve(process.cwd(), "../../..");
+const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+const clone = <T,>(value: T): T => structuredClone(value);
+const ids = ["hospitality-family-adventure", "hospitality-family-adventure-costa"];
+const intros = [
+  "Una aventura de pistas entre el jardín y la fuente.",
+  "Una aventura de pistas entre el mirador y el patio.",
+];
+type FactFrame = {
+  phase: string; input?: DemoAction | DemoEnableAction; snapshot: AppSnapshot;
+  verticalCalls: Parameters<typeof vertical.evaluateVerticalEvidence>[];
+  verticalResults: vertical.VerticalEvaluationState[];
+  jointEvaluationCalls: Parameters<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+  jointEvaluationResults: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+};
+type Frame = FactFrame & { dom: string; withoutFramingDOM: string; eyebrow: string | null; intro: string | null; h1: string | null };
+const facts = ({ phase, input, snapshot, verticalCalls, verticalResults, jointEvaluationCalls, jointEvaluationResults }: Frame): FactFrame => ({
+  phase, ...(input ? { input } : {}), snapshot, verticalCalls, verticalResults, jointEvaluationCalls, jointEvaluationResults,
+});
+const withoutIntro = (script: DemoScript) => { const s = clone(script); delete s.experimentalIntroductoryFraming; return s; };
+// Attribute insertion order changes after navigation; preserve all names/values,
+// text and element order while comparing DOM independently of that serialization.
+const stableDOM = (element: HTMLElement): string => {
+  const copy = element.cloneNode(true) as HTMLElement;
+  for (const node of copy.querySelectorAll("*")) {
+    const attributes = [...node.attributes].map(({ name, value }) => [name, value]).sort(([a], [b]) => a.localeCompare(b));
+    for (const { name } of [...node.attributes]) node.removeAttribute(name);
+    for (const [name, value] of attributes) node.setAttribute(name, value);
+  }
+  return copy.innerHTML;
+};
+
+it("H32 current App DOM: independent brand and explicit static intro preserve cumulative facts and presentation authorities", async () => {
+  const baselineBytes = readFileSync(resolve(evidenceDir, "session-32/baseline.json"));
+  const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+  // All inherited sources remain identical, or have byte-identical historical copies.
+  for (const [path, hash] of Object.entries(baseline.files)) {
+    // Finder metadata was captured too; it is not a source/runtime artifact.
+    // Any drift is reported separately by the preservation audit, not rebased.
+    if (path.endsWith("/.DS_Store")) continue;
+    expect(sha(readFileSync(resolve(projectRoot, historicalH31Path(path)))), path).toBe(hash);
+  }
+  const appSource = readFileSync(resolve(process.cwd(), "src/app/App.tsx"), "utf8");
+  const oldAppSource = readFileSync(resolve(process.cwd(), "src/demo-factory/test-fixtures/h31/App.tsx"), "utf8");
+  expect(appSource).not.toMatch(/Mi aventura · Aurora Stay|Busca las pistas del jardín/);
+  expect(appSource).not.toMatch(/from ["'][^"']*(?:artifacts|costa-artifacts|fixtures)["']/);
+  expect(appSource).not.toMatch(/scenario\.id|brand\.id/);
+  expect(appSource).toContain('introductoryFraming={runtime.script?.experimentalIntroductoryFraming}');
+  expect(appSource).toContain('brandName={runtime.brand.name}');
+  // Freeze everything outside HomePage props/header and the one HomePage call site.
+  const stripAllowed = (s: string) => s
+    .replace(/ {2}brandName,\n| {2}introductoryFraming,\n| {2}brandName: ResolvedDemoRuntime\["brand"\]\["name"\];\n| {2}introductoryFraming\?: string;\n/g, "")
+    .replace('<p className="eyebrow">Mi aventura · {brandName}</p>', '<p className="eyebrow">Mi aventura · Aurora Stay</p>')
+    .replace('{introductoryFraming && <p>{introductoryFraming}</p>}', '<p>Busca las pistas del jardín y de la fuente durante tu estancia.</p>')
+    .replace(' brandName={runtime.brand.name} introductoryFraming={runtime.script?.experimentalIntroductoryFraming}', "");
+  expect(stripAllowed(appSource)).toBe(oldAppSource);
+
+  const h30 = JSON.parse(readFileSync(resolve(evidenceDir, "session-30/execution-trace.json"), "utf8")) as {
+    controls: Array<{ original: { scenario: unknown; script: DemoScript; frames: FactFrame[]; reset: AppSnapshot; resetFrame: FactFrame } }>;
+    genericRegression: Array<{ demoId: string; frames: Array<{ phase: string; snapshot: AppSnapshot }>; reset: AppSnapshot }>;
+  };
+  const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+  const cross = vi.spyOn(joint, "evaluateCrossSubjectEvidenceSufficiency");
+  const run = async (runtime: ResolvedDemoRuntime, component = App) => {
+    expect(Object.getPrototypeOf(runtime.provider)).toBe(MockDataAdapter.prototype);
+    const initial = await runtime.provider.getSnapshot();
+    const family = Boolean(initial.guestPerspective);
+    const container = document.createElement("div"); document.body.append(container);
+    const root = createRoot(container);
+    const execute = vi.spyOn(runtime.provider, "executeAction");
+    const resetSpy = vi.spyOn(runtime.provider, "reset");
+    const frames: Frame[] = [];
+    const clear = () => { evaluate.mockClear(); cross.mockClear(); };
+    const mount = async (key = "initial") => {
+      await act(async () => root.render(createElement(MemoryRouter, {
+        key, initialEntries: [family ? "/?demo=" + runtime.manifest.demoId : "/system"],
+      }, createElement(component, { runtime }))));
+    };
+    const capture = async (phase: string, input?: DemoAction | DemoEnableAction): Promise<Frame> => {
+      const snapshot = await runtime.provider.getSnapshot();
+      const header = container.querySelector(".adventure-heading");
+      const eyebrow = header?.querySelector(".eyebrow")?.textContent ?? null;
+      const intro = header?.querySelector("h1 + p")?.textContent ?? null;
+      const h1 = header?.querySelector("h1")?.textContent ?? null;
+      if (family) {
+        expect(h1).toBe(snapshot.guestPerspective!.huntName);
+        expect(container.querySelector(".adventure-message")?.textContent).toBe(snapshot.guestPerspective!.message);
+        expect(container.querySelector(".adventure-session")?.textContent).toBe(snapshot.guestPerspective!.sessionLabel);
+        const subjects = [...container.querySelectorAll(".adventure-guest")];
+        expect(subjects.map((n) => n.querySelector("h3")?.textContent)).toEqual(snapshot.guestPerspective!.subjects.map((s) => s.label));
+        subjects.forEach((n, i) => expect(n.querySelector("p")?.textContent).toContain(snapshot.guestPerspective!.subjects[i].status));
+        if (component === App) {
+          expect(eyebrow).toBe("Mi aventura · " + runtime.brand.name);
+          expect(intro).toBe(runtime.script?.experimentalIntroductoryFraming || null);
+          expect(header!.querySelectorAll("p")).toHaveLength(intro === null ? 1 : 2);
+        }
+      } else {
+        expect(header).toBeNull(); expect(intro).toBeNull(); expect(eyebrow).toBeNull();
+      }
+      const copy = container.cloneNode(true) as HTMLElement;
+      copy.querySelector(".adventure-heading .eyebrow")?.remove();
+      copy.querySelector(".adventure-heading h1 + p")?.remove();
+      return { phase, ...(input ? { input } : {}), snapshot,
+        verticalCalls: clone(evaluate.mock.calls), verticalResults: clone(evaluate.mock.results.map((r) => r.value)),
+        jointEvaluationCalls: clone(cross.mock.calls), jointEvaluationResults: clone(cross.mock.results.map((r) => r.value)),
+        dom: stableDOM(container), withoutFramingDOM: stableDOM(copy), eyebrow, intro, h1,
+      };
+    };
+    const clickText = async (text: string) => {
+      const target = [...container.querySelectorAll<HTMLElement>("a,button")].find((n) => n.textContent === text);
+      expect(target, text).toBeDefined(); await act(async () => target!.click());
+    };
+    try {
+      clear(); await mount(); frames.push(await capture("initial"));
+      // Follow public availability, including the operational-state perturbation.
+      for (let count = 0; count < 8; count++) {
+        const snapshot = frames.at(-1)!.snapshot;
+        if (!snapshot.scenario?.availableActionId) break;
+        const step = runtime.script!.steps.find((s) => s.action.actionId === snapshot.scenario!.availableActionId)!;
+        expect(step).toBeDefined();
+        const button = container.querySelector<HTMLButtonElement>(family ? ".adventure-next button" : ".system-panel button");
+        expect(button?.textContent).toBe(step.presenterLabel);
+        expect(button?.disabled).toBe(false);
+        clear(); await act(async () => button!.click());
+        expect(execute.mock.calls.at(-1)?.[0]).toEqual(step.action);
+        frames.push(await capture(step.action.actionId, step.action));
+      }
+      expect(frames.at(-1)!.snapshot.scenario?.availableActionId).toBeUndefined();
+      const beforeNavigation = await runtime.provider.getSnapshot();
+      const navigation: Record<string, string> = {};
+      if (family) {
+        await clickText("Supervisión");
+        navigation.supervision = stableDOM(container);
+        expect(container.textContent).toContain("P1 · Lucía");
+        expect(container.textContent).toContain("P2 · Huésped 2");
+        expect(container.textContent).toContain("Cuenta/sesión operativa");
+        await clickText("Actividad");
+        navigation.activity = stableDOM(container);
+        expect([...container.querySelectorAll(".activity-item h3")].map((n) => n.textContent))
+          .toEqual(beforeNavigation.activity.map((item) => item.title));
+        await clickText("Mi aventura");
+      } else {
+        await clickText("Inicio"); navigation.home = stableDOM(container);
+        expect(container.querySelector(".adventure-heading")).toBeNull();
+        await clickText("Actividad"); navigation.activity = stableDOM(container);
+      }
+      expect(await runtime.provider.getSnapshot()).toEqual(beforeNavigation);
+      clear();
+      if (family) await clickText("Reiniciar aventura");
+      else { await runtime.provider.reset(); await mount("reset"); }
+      const resetFrame = await capture("reset");
+      expect(resetFrame.snapshot).toEqual(initial);
+      expect(resetSpy).toHaveBeenCalledOnce();
+      expect(resetFrame.dom).toBe(frames[0].dom);
+      return { manifest: clone(runtime.manifest), brand: clone(runtime.brand), experience: clone(runtime.experience),
+        scenario: clone(runtime.scenario), script: clone(runtime.script), frames, resetFrame, navigation,
+        executedActions: clone(execute.mock.calls.map(([action]) => action)),
+      };
+    } finally {
+      await act(async () => root.unmount()); container.remove();
+      execute.mockRestore(); resetSpy.mockRestore();
+    }
+  };
+  type Run = Awaited<ReturnType<typeof run>>;
+  const pureFacts = (r: Run) => [...r.frames, r.resetFrame].map(facts);
+  const framing = (r: Run) => [...r.frames, r.resetFrame].map(({ eyebrow, intro }) => ({ eyebrow, intro }));
+  const equivalent = (a: Run, b: Run) => {
+    expect(pureFacts(a)).toEqual(pureFacts(b));
+    expect(a.executedActions).toEqual(b.executedActions);
+    expect(a.scenario).toEqual(b.scenario); expect(a.experience).toEqual(b.experience);
+  };
+  const catalogs = () => clone(defaultDemoCatalogs);
+  const controls: Array<{ composition: string; original: Run; previousApp: Run; variants: Record<string, Run> }> = [];
+  for (const [index, demoId] of ids.entries()) {
+    const make = (mutate?: (c: DemoCatalogs, m: DemoCatalogs["manifests"][string]) => void) => {
+      const c = catalogs(); mutate?.(c, c.manifests[demoId]); return resolveDemo(demoId, c);
+    };
+    const original = await run(make());
+    const old = h30.controls[index].original;
+    expect(original.script!.experimentalIntroductoryFraming).toBe(intros[index]);
+    expect(original.script!.experimentalIntroductoryFraming).not.toMatch(/(?:^|[^\p{L}])(?:tú|tu|te|ti|eres|estás|has|contigo)(?=$|[^\p{L}])/u);
+    expect(original.scenario).toEqual(old.scenario);
+    expect(withoutIntro(original.script!)).toEqual(old.script);
+    expect(original.frames.map(facts)).toEqual(old.frames);
+    expect(facts(original.resetFrame)).toEqual(old.resetFrame);
+    const previousApp = await run(make(), PreviousApp);
+    equivalent(original, previousApp);
+    expect(original.frames.map((f) => f.withoutFramingDOM)).toEqual(previousApp.frames.map((f) => f.withoutFramingDOM));
+    expect(original.navigation).toEqual(previousApp.navigation);
+    const variants: Record<string, Run> = {};
+    for (const [name, intro] of [
+      ["X", "Introducción editorial X."], ["Y", "Introducción editorial Y."],
+      ["contradiction", "Una aventura sin pistas en el observatorio."], ["absence", undefined], ["empty", ""],
+      ["crossComposition", intros[1 - index]],
+    ] as const) {
+      const r = await run(make((c, m) => {
+        if (intro === undefined) delete c.scripts[m.scriptRef!].experimentalIntroductoryFraming;
+        else c.scripts[m.scriptRef!].experimentalIntroductoryFraming = intro;
+      }));
+      equivalent(r, original);
+      expect(r.manifest).toEqual(original.manifest); expect(r.brand).toEqual(original.brand);
+      expect(withoutIntro(r.script!)).toEqual(withoutIntro(original.script!));
+      expect(r.frames.map((f) => f.eyebrow)).toEqual(original.frames.map((f) => f.eyebrow));
+      expect(r.frames.every((f) => f.intro === (intro || null))).toBe(true);
+      expect(r.frames.map((f) => f.withoutFramingDOM)).toEqual(original.frames.map((f) => f.withoutFramingDOM));
+      expect(r.navigation).toEqual(original.navigation);
+      variants[name] = r;
+    }
+    equivalent(variants.X, variants.Y);
+    expect(variants.X.frames[0].intro).not.toBe(variants.Y.frames[0].intro);
+    for (const name of ["Marca X", "Marca Y"]) {
+      const r = await run(make((c, m) => { c.brands[m.brandRef].name = name; }));
+      equivalent(r, original); expect(r.script).toEqual(original.script);
+      expect(r.frames.every((f) => f.eyebrow === "Mi aventura · " + name && f.intro === intros[index])).toBe(true);
+      variants[name] = r;
+    }
+    expect(framing(variants["Marca X"])).not.toEqual(framing(variants["Marca Y"]));
+
+    // Each source is perturbed alone; intro and brand are untouched.
+    const mutations: Record<string, (c: DemoCatalogs, m: DemoCatalogs["manifests"][string]) => void> = {
+      account: (c, m) => { c.fixtures[m.fixtureRef].member.name = "Cuenta Demo"; },
+      subjects: (c, m) => { c.scripts[m.scriptRef!].subjectPresentations!.forEach((s, i) => { s.label = "Etiqueta " + i; }); },
+      journey: (c, m) => { c.scripts[m.scriptRef!].experimentalJourneyPresentations!.forEach((j) => { j.message = "Narrativa independiente."; }); },
+      activity: (c, m) => { c.scripts[m.scriptRef!].steps.forEach((s) => { if (s.activityPresentation) s.activityPresentation = { title: "Otra Activity", description: "Representación independiente." }; }); },
+      affordance: (c, m) => { c.scripts[m.scriptRef!].steps.forEach((s) => { s.presenterLabel = "Acción disponible"; }); },
+      news: (c, m) => { c.fixtures[m.fixtureRef].news.forEach((n) => { n.title = "Otra noticia"; n.summary = "Otro contenido editorial."; }); },
+    };
+    for (const [name, mutate] of Object.entries(mutations)) {
+      const r = await run(make(mutate));
+      expect(framing(r)).toEqual(framing(original));
+      const mask = (f: FactFrame): FactFrame => {
+        const v = clone(f), s = v.snapshot;
+        if (name === "account") { s.member.name = ""; s.guestPerspective!.sessionLabel = ""; }
+        if (name === "subjects") s.guestPerspective!.subjects.forEach((x) => { x.label = ""; });
+        if (name === "journey") s.guestPerspective!.message = "";
+        if (name === "activity") s.activity.forEach((x) => { x.title = ""; x.description = ""; });
+        if (name === "news") s.news.forEach((x) => { x.title = ""; x.summary = ""; });
+        return v;
+      };
+      expect(pureFacts(r).map(mask)).toEqual(pureFacts(original).map(mask));
+      if (name === "account") expect(r.frames[0].snapshot.guestPerspective!.sessionLabel).not.toBe(original.frames[0].snapshot.guestPerspective!.sessionLabel);
+      if (name === "subjects") expect(r.frames[0].snapshot.guestPerspective!.subjects).not.toEqual(original.frames[0].snapshot.guestPerspective!.subjects);
+      if (name === "journey") expect(r.frames[1].snapshot.guestPerspective!.message).not.toBe(original.frames[1].snapshot.guestPerspective!.message);
+      if (name === "activity") expect(r.frames[2].snapshot.activity).not.toEqual(original.frames[2].snapshot.activity);
+      variants[name] = r;
+    }
+    // Operational input perturbation, not a representation-only variant:
+    // P1 starts enabled, so the public flow legitimately skips enlist-p1.
+    variants.subjectStates = await run(make((c, m) => { c.scenarios[m.scenarioRef!].initialSubjectStates!["subject-p1"] = "enabled"; }));
+    expect(variants.subjectStates.frames[0].snapshot.guestPerspective!.subjects[0].status).toBe("Estado: habilitado");
+    expect(variants.subjectStates.frames[0].snapshot.guestPerspective!.subjects[0].status).not.toBe(original.frames[0].snapshot.guestPerspective!.subjects[0].status);
+    expect(variants.subjectStates.frames[0].snapshot.scenario!.availableActionId).toBe("discover-clue-a");
+    expect(variants.subjectStates.frames.every((f) => f.intro === intros[index])).toBe(true);
+    expect(variants.subjectStates.resetFrame.intro).toBe(intros[index]);
+    controls.push({ composition: index === 0 ? "A" : "B", original, previousApp, variants });
+  }
+  expect(controls[0].original.frames[0].eyebrow).toBe("Mi aventura · Aurora Stay");
+  expect(controls[1].original.frames[0].eyebrow).toBe("Mi aventura · Costa Clara Resort");
+  expect(controls[0].original.frames[0].intro).not.toBe(controls[1].original.frames[0].intro);
+  expect(controls[1].original.frames[0].intro).not.toMatch(/jardín|fuente|Aurora/);
+  const renamedCatalogs = catalogs(), baseManifest = renamedCatalogs.manifests[ids[1]];
+  renamedCatalogs.manifests["renamed-h32"] = { ...baseManifest, demoId: "renamed-h32" };
+  renamedCatalogs.scenarios[baseManifest.scenarioRef!].id = "renamed-scenario-h32";
+  renamedCatalogs.scripts[baseManifest.scriptRef!].id = "renamed-script-h32";
+  renamedCatalogs.brands[baseManifest.brandRef].id = "renamed-brand-h32";
+  const renamed = await run(resolveDemo("renamed-h32", renamedCatalogs));
+  expect(pureFacts(renamed)).toEqual(pureFacts(controls[1].original));
+  expect(framing(renamed)).toEqual(framing(controls[1].original));
+
+  const generic = [];
+  for (const old of h30.genericRegression) {
+    const runtime = resolveDemo(old.demoId);
+    expect(runtime.script?.experimentalIntroductoryFraming).toBeUndefined();
+    const current = await run(runtime), previous = await run(resolveDemo(old.demoId), PreviousApp);
+    equivalent(current, previous);
+    expect(current.frames.map((f) => f.dom)).toEqual(previous.frames.map((f) => f.dom));
+    expect(current.navigation).toEqual(previous.navigation);
+    expect(current.frames.map(({ phase, snapshot }) => ({ phase, snapshot }))).toEqual(old.frames);
+    expect(current.resetFrame.snapshot).toEqual(old.reset);
+    generic.push({ demoId: old.demoId, current, previous });
+  }
+  expect(generic.map((g) => g.demoId).sort()).toEqual(["hospitality-stay", "retail-baseline"]);
+  const trace = {
+    session: 32, recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+    method: "Current App mounted with createRoot/MemoryRouter in jsdom; public actions clicked; transparent provider/evaluator spies; separate previous-App DOM comparisons",
+    baselineSha256: sha(baselineBytes), appSha256: sha(appSource),
+    harnessSha256: sha(readFileSync(resolve(process.cwd(), "src/demo-factory/explicit-introductory-framing-h32.test.ts"))),
+    controls, renamedIdentityControl: renamed, genericRegression: generic,
+    contradictionClassification: "representational inconsistency, not factual mutation",
+    absenceBehavior: "LOCAL EXPERIMENTAL: paragraph absent; NOT PROMOTED",
+    browserVisualValidation: "NOT EXECUTED", domIntegrationVerification: "EXECUTED",
+    viewerRelation: "NOT INTRODUCED", recurringPresentationPressure: "STRENGTHENED / NOT PROMOTED",
+  };
+  if (process.env.H32_RECORD_PATH) writeFileSync(resolve(process.env.H32_RECORD_PATH), JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
+}, 60000);

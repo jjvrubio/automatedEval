@@ -1,0 +1,1165 @@
+--- received/README.md
++++ build-02/README.md
+@@ -44,7 +44,8 @@
+ - `/activity`: actividad mock.
+ - `/profile`: perfil y acceso a herramientas de presentación.
+ - `/showcase`: la misma App dentro de un marco visual de iPhone a 393 × 852 px.
+-- `/showcase?demo=sports-season-running`: Sports Season dentro del marco de iPhone, con recorrido interactivo y desplazamiento dentro del teléfono. «Salir» conserva la selección de demo; al abrir esta vista se inicia una ejecución nueva en memoria.
++- `/?demo=sports-season-running`: Sports Season BUILD 02, con selección de persona y recorrido de participación o intereses.
++- `/showcase?demo=sports-season-running`: Sports Season dentro del marco de iPhone, con recorrido interactivo y desplazamiento dentro del teléfono. «Ver como App» y «Ver como Web» conservan el recorrido y los formularios en la misma pestaña. Recargar o abrir otra pestaña inicia una ejecución nueva en memoria.
+ - `/system`: estado técnico de la demo.
+ 
+ ## Selección experimental de demo
+--- received/src/app/App.tsx
++++ build-02/src/app/App.tsx
+@@ -519,8 +519,7 @@
+ 
+ export function DemoApp({ runtime }: { runtime: ResolvedDemoRuntime | SportsSeasonResolvedRuntime }) {
+   const location = useLocation();
+-  if ("kind" in runtime && location.pathname === "/showcase") return <IPhoneShowcase runtime={runtime} />;
+-  if ("kind" in runtime) return <SportsSeasonApp runtime={runtime} />;
++  if ("kind" in runtime) return <SportsSeasonApp runtime={runtime} surface={location.pathname === "/showcase" ? "app" : "web"} />;
+   return <App runtime={runtime} />;
+ }
+ 
+--- received/src/app/SportsSeasonApp.tsx
++++ build-02/src/app/SportsSeasonApp.tsx
+@@ -1,7 +1,11 @@
+ import { useEffect, useRef, useState } from "react";
+-import type { SportsAction, SportsSeasonResolvedRuntime, SportsSnapshot } from "@/demo-factory/sports-season/contracts";
++import type { SportsDemoAction, SportsSeasonResolvedRuntime, SportsSnapshot } from "@/demo-factory/sports-season/contracts";
+ import { Icon } from "@/ui/Icon";
+ import "../styles/sports-season.css";
++import { SportsEquipmentPanel, SportsInterestPanel, SportsPersonPanel, SportsVoluntaryPanel, type SportsDrafts } from "./SportsUserPanels";
++import { SportsSurface } from "./SportsSurface";
++
++const emptyDrafts: SportsDrafts = { visitorName: "", interests: [], frequency: "", goal: "" };
+ 
+ function eventDate(date: string) {
+   return new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(date));
+@@ -16,15 +20,15 @@
+       <header className="sports-heading">
+         <p className="sports-kicker">Marketing / CRM</p>
+         <h1>La participación, con contexto.</h1>
+-        <p>La misma persona y los mismos registros. Una oportunidad para iniciar una relación con el club.</p>
++        <p>La misma persona y los mismos registros.{scenario.person.membershipStatus === "external" ? " Una oportunidad para iniciar una relación con el club." : " Su pertenencia al club se mantiene."}</p>
+       </header>
+       <div className="sports-crm-grid">
+         <section className="sports-panel" aria-labelledby="crm-person">
+           <p className="sports-kicker">01 · Datos de escenario ficticio</p>
+           <h2 id="crm-person">{scenario.person.name}</h2>
+           <dl className="sports-facts">
+-            <div><dt>Estado de club</dt><dd>Externo · no pertenece al club</dd></div>
+-            <div><dt>Relación como cliente</dt><dd>No establecida</dd></div>
++            <div><dt>Estado de club</dt><dd>{scenario.person.membershipStatus === "member" ? "Miembro del club" : "Externo · no pertenece al club"}</dd></div>
++            <div><dt>Relación como cliente</dt><dd>{scenario.person.customerRelationship === "established" ? "Cliente conocido" : "No establecida"}</dd></div>
+             <div><dt>Temporada</dt><dd>{scenario.season.title}</dd></div>
+             <div><dt>Periodo</dt><dd>{scenario.season.dates}</dd></div>
+           </dl>
+@@ -74,20 +78,20 @@
+         <section className="sports-panel sports-opportunity" aria-labelledby="crm-opportunity">
+           <p className="sports-kicker">04 · Oportunidad comercial</p>
+           <h2 id="crm-opportunity">{opportunity ? "Invitación al club disponible" : "Aún sin invitación"}</h2>
+-          <p>{opportunity ? `La participación de ${scenario.person.name} permite proponer conocer ${scenario.club.name}.` : "La invitación aparecerá después del reconocimiento de esta participación."}</p>
+-          <p>Estado de club: <strong>externo</strong>. Sin alta, consentimiento, conversión ni lead enviado.</p>
++          <p>{opportunity ? `La participación de ${scenario.person.name} permite proponer conocer ${scenario.club.name}.` : scenario.person.membershipStatus === "member" ? "Ya pertenece al club. Esta participación no genera una invitación de alta." : "La invitación aparecerá después del reconocimiento de esta participación."}</p>
++          <p>Estado de club: <strong>{scenario.person.membershipStatus === "member" ? "miembro" : "externo"}</strong>. Sin alta, consentimiento, conversión ni lead enviado.</p>
+           <p className="sports-note">Continuidad registrada: {badge ? "primera participación reconocida en esta temporada." : "ninguna participación reconocida todavía."} No se ha ejecutado una segunda participación.</p>
+         </section>
+       </div>
+       <details className="sports-contrast">
+         <summary>Contraste de diseño · miembro y competición, sin ejecutar</summary>
+-        <p>{scenario.contrastPerson.name} ya pertenece al club en el escenario ficticio. En otro recorrido podría elegir competición y declarar resultado y posición para un reconocimiento individual; un trofeo sería distinto de una insignia o un beneficio. Este caso no tiene acciones, resultados ni reconocimientos registrados.</p>
++        <p>{scenario.contrastPerson.name} ya pertenece al club en el escenario ficticio. En otro recorrido podría elegir competición y declarar resultado y posición para un reconocimiento individual; un trofeo sería distinto de una insignia o un beneficio. El recorrido competitivo no tiene acciones, resultados ni reconocimientos registrados.</p>
+       </details>
+     </main>
+   );
+ }
+ 
+-export function SportsSeasonApp({ runtime }: { runtime: SportsSeasonResolvedRuntime }) {
++export function SportsSeasonApp({ runtime, surface = "web" }: { runtime: SportsSeasonResolvedRuntime; surface?: "web" | "app" }) {
+   const [snapshot, setSnapshot] = useState<SportsSnapshot>();
+   const [view, setView] = useState<"participant" | "crm">("participant");
+   const [selectedEvent, setSelectedEvent] = useState("");
+@@ -96,6 +100,7 @@
+   const [clubOpen, setClubOpen] = useState(false);
+   const [error, setError] = useState<string>();
+   const [busy, setBusy] = useState(false);
++  const [drafts, setDrafts] = useState<SportsDrafts>(emptyDrafts);
+   const errorRef = useRef<HTMLDivElement>(null);
+ 
+   useEffect(() => {
+@@ -109,11 +114,11 @@
+     return () => { mounted = false; };
+   }, [runtime.provider]);
+ 
+-  async function run(action: SportsAction) {
++  async function run(action: SportsDemoAction) {
+     setBusy(true);
+     setError(undefined);
+-    try { setSnapshot(await runtime.provider.executeAction(action)); }
+-    catch (failure) { setError(failure instanceof Error ? failure.message : "No se ha podido registrar la acción."); }
++    try { setSnapshot(await runtime.provider.executeAction(action)); return true; }
++    catch (failure) { setError(failure instanceof Error ? failure.message : "No se ha podido registrar la acción."); return false; }
+     finally { setBusy(false); }
+   }
+ 
+@@ -122,20 +127,31 @@
+     setError(undefined);
+     try {
+       setSnapshot(await runtime.provider.reset());
+-      setSelectedEvent(""); setModality(""); setEffort(""); setClubOpen(false);
++      setSelectedEvent(""); setModality(""); setEffort(""); setClubOpen(false); setDrafts(emptyDrafts);
++      setView("participant");
+     } catch { setError("No se ha podido reiniciar la demo."); }
+     finally { setBusy(false); }
+   }
+ 
+   if (!snapshot) return <main className="sports-main"><p role={error ? "alert" : "status"}>{error ?? "Preparando la temporada…"}</p></main>;
+   const { scenario, registration, evidence, badge, opportunity } = snapshot;
+-  const event = scenario.events.find((item) => item.id === (registration?.eventRef ?? selectedEvent));
++  const user = snapshot.userPlane;
++  const event = scenario.events.find((item) => item.id === (registration?.eventRef ?? user?.selectedEventRef ?? selectedEvent));
++  const updateDrafts = (patch: Partial<SportsDrafts>) => setDrafts(value => ({ ...value, ...patch }));
++  const choosePerson = async (personRef: string) => {
++    if (personRef === user?.person?.id) return;
++    if (await run({ type: "sports-select-person", personRef })) {
++      setSelectedEvent(""); setModality(""); setEffort(""); setClubOpen(false); setDrafts(emptyDrafts);
++    }
++  };
++  const panelProps = user ? { user, busy, run, drafts, update: updateDrafts } : undefined;
+   const presence = evidence.find((item) => item.kind === "presence");
+   const declaredEffort = evidence.find((item) => item.kind === "effort");
+   const selectedModality = scenario.modalities.find((item) => item.value === registration?.selectedModality);
+   const feedback = error ? <div ref={errorRef} className="sports-error" role="alert" tabIndex={-1}>{error}</div> : null;
+ 
+   return (
++    <SportsSurface surface={surface} demoId={runtime.manifest.demoId} brand={runtime.brand}>
+     <div className="sports-shell">
+       <a className="skip-link" href="#sports-main">Saltar al contenido</a>
+       <header className="sports-topbar">
+@@ -144,7 +160,7 @@
+       </header>
+       <nav className="sports-perspectives" aria-label="Perspectiva de la demo">
+         <button type="button" aria-pressed={view === "participant"} onClick={() => setView("participant")}>Participante</button>
+-        <button type="button" aria-pressed={view === "crm"} onClick={() => setView("crm")}>Marketing / CRM</button>
++        <button type="button" aria-pressed={view === "crm"} disabled={Boolean(user && !user.person)} onClick={() => setView("crm")}>Marketing / CRM</button>
+       </nav>
+       {(view === "crm" || !event) && feedback}
+       {view === "crm" ? <CRMView snapshot={snapshot} /> : (
+@@ -158,11 +174,11 @@
+             </div>
+             <div className="sports-track" aria-hidden="true"><span>Sal.<br />Muévete.<br /><em>Conecta.</em></span></div>
+           </header>
+-          <div className="sports-person">
+-            <span className="sports-avatar" aria-hidden="true"><Icon name="user" /></span>
+-            <div><strong>{scenario.person.name}</strong><span>Participante simulado · Externo al club</span></div>
+-            <span className="sports-person-note">Participar no te da de alta.</span>
+-          </div>
++          {panelProps ? <>
++            <SportsPersonPanel {...panelProps} choosePerson={personRef => void choosePerson(personRef)} qrEventRef={scenario.events.find(item => item.executable)!.id} registered={Boolean(registration)} />
++            <SportsInterestPanel {...panelProps} />
++          </> : <div className="sports-person"><span className="sports-avatar" aria-hidden="true"><Icon name="user" /></span><div><strong>{scenario.person.name}</strong><span>Participante simulado · Externo al club</span></div><span className="sports-person-note">Participar no te da de alta.</span></div>}
++          {user?.intention !== "information" && <>
+           <section aria-labelledby="sports-events">
+             <div className="sports-section-title"><div><p className="sports-kicker">Un programa, distintas formas de participar</p><h2 id="sports-events">Los eventos de la temporada</h2></div><span>3 disciplinas</span></div>
+             <div className="sports-events">
+@@ -172,16 +188,18 @@
+                   <p className="sports-kicker">{item.label}</p><h3>{item.title}</h3>
+                   <p className="sports-event-date"><time dateTime={item.date}>{eventDate(item.date)}</time> · {item.place}</p>
+                   <p>{item.description}</p>
+-                  {item.executable ? <button className="sports-button sports-button--outline" type="button" disabled={Boolean(registration) || busy} onClick={() => { setSelectedEvent(item.id); setError(undefined); }}>
+-                    {registration ? "Inscripción confirmada" : selectedEvent === item.id ? "Carrera seleccionada" : "Elegir Carrera"}<Icon name="arrow" size={18} />
++                  {item.executable ? <button className="sports-button sports-button--outline" type="button" disabled={Boolean(registration) || busy || Boolean(user && user.intention !== "participate")} onClick={() => { if (user) void run({ type: "sports-select-event", personRef: user.person!.id, eventRef: item.id }); else { setSelectedEvent(item.id); setError(undefined); } }}>
++                    {registration ? "Inscripción confirmada" : (user?.selectedEventRef ?? selectedEvent) === item.id ? "Carrera seleccionada" : "Elegir Carrera"}<Icon name="arrow" size={18} />
+                   </button> : <p className="sports-note">Sin inscripción disponible en esta demo.</p>}
+                 </article>
+               ))}
+             </div>
+           </section>
++          {user && <SportsEquipmentPanel user={user} />}
+           {event && <section className="sports-journey" aria-labelledby="sports-journey-title">
+             <div className="sports-journey-heading"><p className="sports-kicker">Tu participación · {event.label}</p><h2 id="sports-journey-title">{event.title}</h2></div>
+             {!registration ? <form noValidate onSubmit={(e) => { e.preventDefault(); void run({ type: "sports-register", personRef: scenario.person.id, eventRef: event.id, selectedModality: modality }); }}>
++              {user && <div className="sports-required-data"><p className="sports-kicker">Datos necesarios para inscribirse</p><p>Persona: <strong>{scenario.person.name}</strong> · Evento: <strong>{event.label}</strong>. Elige la modalidad; no necesitas aportar información adicional para participar.</p></div>}
+               <fieldset disabled={busy}><legend>¿Cómo quieres participar esta vez?</legend>
+                 <div className="sports-options">{scenario.modalities.map((item) => <label key={item.value} className={`sports-option ${modality === item.value ? "is-selected" : ""}`}>
+                   <input type="radio" name="modality" value={item.value} checked={modality === item.value} onChange={(e) => setModality(e.target.value)} />
+@@ -193,8 +211,9 @@
+             </form> : (
+               <div className="sports-steps">
+                 <div className="sports-step"><span className="sports-step-index">01</span><div><h3>Inscripción confirmada</h3><p>Modalidad {selectedModality?.label} · {scenario.person.name}</p></div><span className="sports-state">Registrada</span></div>
+-                <div className="sports-step"><span className="sports-step-index">02</span><div><h3>Registra tu presencia</h3><p>{presence ? "Check-in simulado registrado. No acredita asistencia física real." : "Simula el check-in del evento. No se escanea un QR real ni se verifica asistencia física."}</p>
+-                  {!presence && <button className="sports-button" disabled={busy} onClick={() => void run({ type: "sports-check-in", personRef: scenario.person.id, eventRef: registration.eventRef, registrationRef: registration.registrationId })}>Simular check-in</button>}
++                {panelProps && <SportsVoluntaryPanel {...panelProps} />}
++                <div className="sports-step"><span className="sports-step-index">02</span><div><h3>Registra tu presencia{user ? " · QR de presencia" : ""}</h3><p>{presence ? "Check-in simulado registrado. No acredita asistencia física real." : "Simula el check-in del evento. No se escanea un QR real ni se verifica asistencia física."}</p>
++                  {!presence && <button className="sports-button" disabled={busy || Boolean(user && !user.voluntary)} onClick={() => void run({ type: "sports-check-in", personRef: scenario.person.id, eventRef: registration.eventRef, registrationRef: registration.registrationId })}>Simular check-in</button>}
+                 </div>{presence && <span className="sports-state">Simulada</span>}</div>
+                 <div className="sports-step"><span className="sports-step-index">03</span><div><h3>Comparte tu esfuerzo</h3>
+                   {declaredEffort ? <p>Esfuerzo {declaredEffort.level} · autodeclarado, sin medición externa.</p> : presence ? <form noValidate onSubmit={(e) => { e.preventDefault(); void run({ type: "sports-effort", personRef: scenario.person.id, eventRef: registration.eventRef, registrationRef: registration.registrationId, level: effort }); }}>
+@@ -218,9 +237,11 @@
+             </div>
+             <aside><Icon name="compass" size={32} /><h3>La temporada continúa</h3><p>Esta es tu primera participación registrada. Vela y Vóley playa muestran otros encuentros del programa; sus recorridos aún no están disponibles en esta demo.</p></aside>
+           </section>}
++          </>}
+         </main>
+       )}
+-      <footer className="sports-footer"><p>Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva conserva el recorrido.</p><button type="button" disabled={busy} onClick={() => void reset()}>Reiniciar demo</button></footer>
++      <footer className="sports-footer"><p>Simulación local · Al recargar se reinicia la demo. Cambiar de perspectiva o de vista Web/App conserva el recorrido.</p><button type="button" disabled={busy} onClick={() => void reset()}>Reiniciar demo</button></footer>
+     </div>
++    </SportsSurface>
+   );
+ }
+--- received/src/styles/sports-season.css
++++ build-02/src/styles/sports-season.css
+@@ -109,7 +109,55 @@
+ .sports-footer button { background: transparent; border: 0; border-bottom: 1px solid var(--color-primary-action); color: var(--color-primary-action); padding: .6rem 0; white-space: nowrap; }
+ .sports-error { margin: 1rem 3rem 0; padding: 1rem; background: var(--color-surface); border: 1px solid var(--color-text-strong); border-radius: .5rem; color: var(--color-primary); }
+ .sports-journey .sports-error { margin: 1rem 0 0; }
++.sports-surface-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; max-width: 1180px; margin: 0 auto; padding: .9rem 3rem; background: var(--color-background); color: var(--color-text-muted); font-size: .85rem; }
++.sports-surface-toolbar a { color: var(--color-primary-action); font-weight: 700; white-space: nowrap; }
++.sports-user-section { margin-bottom: 2.5rem; }
++.sports-people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
++.sports-person-card { display: flex; flex-direction: column; align-items: start; min-width: 0; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: 14px; }
++.sports-person-card h3 { font-size: 1.3rem; margin-bottom: .7rem; }
++.sports-person-card p { line-height: 1.5; }
++.sports-person-card .sports-button { margin-top: auto; max-width: 100%; }
++.sports-person-card.is-selected { border-color: var(--color-primary); box-shadow: inset 0 0 0 1px var(--color-primary); background: var(--color-surface); }
++.sports-qr-entry { display: flex; align-items: center; justify-content: space-between; gap: 1.4rem; margin: 1.2rem 0; padding: 1.2rem; border: 1px solid var(--color-border); border-radius: 14px; }
++.sports-qr-entry h3 { margin-bottom: .6rem; }
++.sports-qr-entry p { max-width: 550px; margin: 0; line-height: 1.5; }
++.sports-entry-status, .sports-person-summary, .sports-visitor { margin-top: 1rem; }
++.sports-person-summary > h3 { margin-top: 1.5rem; }
++.sports-purchases { list-style: none; padding: 0; margin: 1rem 0; }
++.sports-purchases li { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--color-surface); }
++.sports-purchases li > span { white-space: nowrap; }
++.sports-purchases time { display: block; font-size: .8rem; color: var(--color-text-muted); margin-top: .3rem; }
++.sports-counterfactual, .sports-program, .sports-incentive { padding: 1.2rem; margin-top: 1.2rem; border-left: 3px solid var(--color-primary-action); background: var(--color-surface); }
++.sports-counterfactual h3, .sports-program h3 { font-size: 1.5rem; }
++.sports-intention { margin-top: 2rem; }
++.sports-intention-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: .8rem; }
++.sports-intention .sports-note { margin: 1rem 0; }
++.sports-intention-actions [aria-pressed=true] { outline: 2px solid var(--color-primary); outline-offset: 3px; }
++.sports-interest-panel { margin-bottom: 2rem; }
++.sports-interest-panel fieldset { padding: 0; border: 0; min-width: 0; margin: 1rem 0; }
++.sports-interest-panel legend { font-weight: 700; margin-bottom: 1rem; }
++.sports-interest-options { display: flex; flex-wrap: wrap; gap: 1rem; }
++.sports-interest-options label { display: flex; align-items: center; gap: .6rem; padding: .8rem; border: 1px solid var(--color-border); border-radius: .5rem; cursor: pointer; }
++.sports-interest-confirmation { margin-top: 1.5rem; padding: 1rem; background: var(--color-surface); }
++.sports-field { display: grid; gap: .5rem; font-weight: 700; margin: 0 0 1rem; }
++.sports-field input, .sports-field select { display: block; width: 100%; min-width: 0; padding: .75rem; min-height: 44px; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--color-background); color: var(--color-text); font: inherit; font-weight: 400; }
++.sports-field select:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
++.sports-voluntary { margin: 1rem 0; }
++.sports-voluntary-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
++.sports-incentive summary { cursor: pointer; font-weight: 700; padding: .6rem 0; }
++.sports-incentive li { margin-bottom: .6rem; line-height: 1.5; }
++.sports-equipment { margin: 2rem 0; }
++.sports-equipment-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
++.sports-equipment-grid article { padding: 1rem; border-radius: .7rem; background: var(--color-surface); }
++.sports-equipment-grid h3 { font-size: 1.15rem; }
++.sports-equipment-grid p { font-size: .9rem; line-height: 1.5; margin: 0; }
++.sports-required-data { padding: 1rem; margin-bottom: 1.5rem; background: var(--color-surface); }
++.sports-required-data p { line-height: 1.5; }
+ @media (max-width: 760px) {
++  .sports-surface-toolbar { padding-inline: 1.1rem; }
++  .sports-people, .sports-voluntary-fields, .sports-equipment-grid { grid-template-columns: 1fr; }
++  .sports-qr-entry { flex-direction: column; align-items: start; }
++  .sports-person-summary { padding: 1.1rem; }
+   .sports-topbar, .sports-perspectives, .sports-footer { padding-inline: 1.1rem; }
+   .sports-main { padding: 1.3rem 1.1rem 2rem; }
+   .sports-demo-label { max-width: 115px; text-align: right; font-size: .7rem; }
+--- received/src/demo-factory/bootstrap.ts
++++ build-02/src/demo-factory/bootstrap.ts
+@@ -14,6 +14,7 @@
+ import { demoManifests } from "./manifests";
+ import { sportsBrand, sportsSeasonScenario } from "./sports-season/artifacts";
+ import { SportsSeasonProvider } from "./sports-season/runtime";
++import { sportsUserConfiguration } from "./sports-season/user-plane-artifacts";
+ import type { SportsSeasonResolvedRuntime } from "./sports-season/contracts";
+ 
+ const requiredBrandVariables = [
+@@ -197,7 +198,7 @@
+   });
+   return {
+     kind: "sports-season", manifest, brand, scenario: structuredClone(scenario),
+-    provider: new SportsSeasonProvider(scenario), capabilities,
++    provider: new SportsSeasonProvider(scenario, undefined, sportsUserConfiguration), capabilities,
+   };
+ }
+ 
+--- received/src/demo-factory/sports-season/contracts.ts
++++ build-02/src/demo-factory/sports-season/contracts.ts
+@@ -8,7 +8,7 @@
+   id: string;
+   name: string;
+   membershipStatus: "external" | "member";
+-  customerRelationship: "not-established";
++  customerRelationship: "not-established" | "established";
+ }
+ 
+ export interface SportsEvent {
+@@ -86,6 +86,7 @@
+   opportunity?: CaptureOpportunity;
+   // Operational demo position, never TES Progression/Completion.
+   stage: "available" | "registered" | "presence-received" | "recognized";
++  userPlane?: SportsUserSnapshot;
+ }
+ 
+ interface SportsActionSubject { personRef: string; eventRef: string }
+@@ -94,9 +95,59 @@
+   | (SportsActionSubject & { type: "sports-check-in"; registrationRef: string })
+   | (SportsActionSubject & { type: "sports-effort"; registrationRef: string; level: string });
+ 
++// BUILD 02: situated, fictitious user context. These records are not sports Evidence.
++export interface SportsPurchase {
++  id: string;
++  date: string;
++  description: string;
++  amountCents: number;
++}
++
++export interface SportsDemoPerson extends SportsPerson {
++  knownData?: { city: string; usualSport: string };
++  purchases: SportsPurchase[];
++  program?: { points: number; level: string; benefits: string[] };
++}
++
++export interface SportsUserConfiguration {
++  people: SportsDemoPerson[];
++  primaryPersonRef: string;
++  counterfactualPointsPerEuro: number;
++  interests: Array<{ value: string; label: string }>;
++  frequencies: Array<{ value: string; label: string }>;
++  goals: Array<{ value: string; label: string }>;
++  incentive: { id: string; title: string; content: string[] };
++  equipment: Array<{ eventRef: string; title: string; description: string }>;
++}
++
++export interface SportsUserSnapshot {
++  configuration: SportsUserConfiguration;
++  person?: SportsDemoPerson;
++  intention?: "participate" | "information";
++  selectedEventRef?: string;
++  registrationEntry?: { eventRef: string; source: "simulated-registration-qr"; recognized: boolean };
++  visitorIdentified: boolean;
++  declaredInterests?: { personRef: string; values: string[]; source: "person-declared"; occurredAt: string };
++  voluntary?: { personRef: string; decision: "provided" | "skipped"; frequency?: string; goal?: string; source: "person-declared"; occurredAt: string };
++  counterfactual?: { totalCents: number; potentialPoints: number; credited: false };
++  incentive?: { id: string; personRef: string; title: string; content: string[]; source: "voluntary-information" };
++  recommendations: SportsUserConfiguration["equipment"];
++}
++
++export type SportsUserAction =
++  | { type: "sports-select-person"; personRef: string }
++  | { type: "sports-registration-qr"; eventRef: string }
++  | { type: "sports-identify-visitor"; personRef: string; name: string }
++  | { type: "sports-intention"; personRef: string; intention: string }
++  | (SportsActionSubject & { type: "sports-select-event" })
++  | { type: "sports-interests"; personRef: string; values: string[] }
++  | { type: "sports-voluntary"; personRef: string; decision: "provided" | "skipped"; frequency?: string; goal?: string };
++
++export type SportsDemoAction = SportsAction | SportsUserAction;
++
+ export interface SportsProvider {
+   getSnapshot(): Promise<SportsSnapshot>;
+-  executeAction(action: SportsAction): Promise<SportsSnapshot>;
++  executeAction(action: SportsDemoAction): Promise<SportsSnapshot>;
+   reset(): Promise<SportsSnapshot>;
+ }
+ 
+--- received/src/demo-factory/sports-season/runtime.ts
++++ build-02/src/demo-factory/sports-season/runtime.ts
+@@ -1,4 +1,4 @@
+-import type { EffortLevel, SportsAction, SportsBadge, SportsEvidence, SportsModality, SportsProvider, SportsRegistration, SportsSeasonScenario, SportsSnapshot } from "./contracts";
++import type { EffortLevel, SportsDemoAction, SportsBadge, SportsDemoPerson, SportsEvidence, SportsModality, SportsProvider, SportsRegistration, SportsSeasonScenario, SportsSnapshot, SportsUserAction, SportsUserConfiguration, SportsUserSnapshot } from "./contracts";
+ 
+ export const sportsBadgeRuleRef = "sports-season:accepted-registration-presence-effort@1";
+ const modalities: readonly string[] = ["social", "wellness"];
+@@ -29,8 +29,17 @@
+   private registration?: SportsRegistration;
+   private evidence: SportsEvidence[] = [];
+   private badge?: SportsBadge;
+-
+-  constructor(scenario: SportsSeasonScenario, private readonly now: () => string = () => new Date().toISOString()) {
++  private readonly userConfiguration?: SportsUserConfiguration;
++  private selectedPersonRef?: string;
++  private intention?: SportsUserSnapshot["intention"];
++  private selectedEventRef?: string;
++  private registrationEntry?: SportsUserSnapshot["registrationEntry"];
++  private visitorName?: string;
++  private declaredInterests?: SportsUserSnapshot["declaredInterests"];
++  private voluntary?: SportsUserSnapshot["voluntary"];
++  private execution = 0;
++
++  constructor(scenario: SportsSeasonScenario, private readonly now: () => string = () => new Date().toISOString(), userConfiguration?: SportsUserConfiguration) {
+     const runnable = scenario.events.filter((event) => event.executable);
+     if (scenario.person.membershipStatus !== "external" || scenario.contrastPerson.id === scenario.person.id ||
+         runnable.length !== 1 || runnable[0].discipline !== "running" ||
+@@ -43,37 +52,88 @@
+       throw new Error("Configuración incompatible con el corte local de Carrera.");
+     }
+     this.scenario = structuredClone(scenario);
++    if (userConfiguration) {
++      const people = userConfiguration.people;
++      const primary = people.find((person) => person.id === userConfiguration.primaryPersonRef);
++      if (!primary || primary.customerRelationship !== "established" || primary.membershipStatus !== "external" ||
++          new Set(people.map((person) => person.id)).size !== people.length ||
++          !people.some((person) => person.membershipStatus === "member") ||
++          !people.some((person) => person.customerRelationship === "not-established") ||
++          !Number.isSafeInteger(userConfiguration.counterfactualPointsPerEuro) || userConfiguration.counterfactualPointsPerEuro < 1 ||
++          people.some((person) => !person.id || !person.name.trim() ||
++            (person.membershipStatus === "member" && (person.customerRelationship !== "established" || !person.program)) ||
++            (person.membershipStatus === "external" && person.program) ||
++            (person.customerRelationship === "not-established" && (person.purchases.length > 0 || person.knownData)) ||
++            person.purchases.some((purchase) => !Number.isSafeInteger(purchase.amountCents) || purchase.amountCents < 0)) ||
++          userConfiguration.equipment.some((item) => item.eventRef !== runnable[0].id)) {
++        throw new Error("Configuración de personas incompatible con el plano usuario.");
++      }
++      this.userConfiguration = structuredClone(userConfiguration);
++    }
++  }
++
++  private person(): SportsDemoPerson | undefined {
++    const person = this.userConfiguration?.people.find((item) => item.id === this.selectedPersonRef);
++    return person ? { ...person, name: this.visitorName ?? person.name } : undefined;
++  }
++
++  private userSnapshot(): SportsUserSnapshot | undefined {
++    const configuration = this.userConfiguration;
++    if (!configuration) return undefined;
++    const person = this.person();
++    const totalCents = person?.purchases.reduce((sum, item) => sum + item.amountCents, 0) ?? 0;
++    return {
++      configuration, person, intention: this.intention, selectedEventRef: this.selectedEventRef,
++      registrationEntry: this.registrationEntry, visitorIdentified: Boolean(this.visitorName),
++      declaredInterests: this.declaredInterests, voluntary: this.voluntary,
++      counterfactual: person?.customerRelationship === "established" && person.membershipStatus === "external"
++        ? { totalCents, potentialPoints: Math.floor(totalCents / 100 * configuration.counterfactualPointsPerEuro), credited: false } : undefined,
++      incentive: person && this.voluntary?.decision === "provided" ? {
++        ...configuration.incentive, personRef: person.id, source: "voluntary-information",
++      } : undefined,
++      recommendations: this.intention === "participate" ? configuration.equipment.filter((item) => item.eventRef === this.selectedEventRef) : [],
++    };
+   }
+ 
+   async getSnapshot(): Promise<SportsSnapshot> {
++    const person = this.person();
++    const scenario = person ? { ...this.scenario, person: {
++      id: person.id, name: person.name, membershipStatus: person.membershipStatus, customerRelationship: person.customerRelationship,
++    } } : this.scenario;
+     return structuredClone({
+-      scenario: this.scenario,
++      scenario,
+       criterion: { ruleRef: sportsBadgeRuleRef, explanation: "Inscripción aceptada, presencia simulada y esfuerzo autodeclarado para la misma persona y el mismo evento." },
+       registration: this.registration,
+       evidence: this.evidence,
+       badge: this.badge,
+-      opportunity: this.badge ? {
++      opportunity: this.badge && scenario.person.membershipStatus === "external" ? {
+         id: `invitation:${this.badge.registrationRef}`,
+         personRef: this.badge.personRef, registrationRef: this.badge.registrationRef,
+         badgeRef: this.badge.badgeId, kind: "club-invitation" as const, status: "available" as const,
+       } : undefined,
+       stage: this.badge ? "recognized" : this.evidence.length ? "presence-received" : this.registration ? "registered" : "available",
++      userPlane: this.userSnapshot(),
+     });
+   }
+ 
+-  async executeAction(action: SportsAction): Promise<SportsSnapshot> {
+-    if (!action || !["sports-register", "sports-check-in", "sports-effort"].includes(action.type)) {
+-      throw new Error("Esta acción no está disponible en la demo.");
+-    }
+-    if (action.personRef !== this.scenario.person.id) throw new Error("La acción no corresponde a este participante.");
++  async executeAction(action: SportsDemoAction): Promise<SportsSnapshot> {
++    if (!action) throw new Error("Esta acción no está disponible en la demo.");
++    if (action.type !== "sports-register" && action.type !== "sports-check-in" && action.type !== "sports-effort") return this.executeUserAction(action);
++    const person = this.person();
++    if (this.userConfiguration && !person) throw new Error("Selecciona una persona antes de participar.");
++    if (action.personRef !== (person ?? this.scenario.person).id) throw new Error("La acción no corresponde a este participante.");
+     const event = this.scenario.events.find((item) => item.id === action.eventRef);
+     if (!event?.executable || event.discipline !== "running") throw new Error("Elige el evento de Carrera disponible.");
++    if (this.userConfiguration && (this.intention !== "participate" || this.selectedEventRef !== event.id)) {
++      throw new Error("Elige Participar y selecciona Carrera antes de inscribirte.");
++    }
+ 
+     if (action.type === "sports-register") {
+       if (this.registration) throw new Error("La inscripción ya está confirmada. Reinicia la demo para empezar de nuevo.");
+       if (!modalities.includes(action.selectedModality)) throw new Error("Elige Social o Bienestar para confirmar la inscripción.");
++      if (person?.customerRelationship === "not-established" && !this.visitorName) throw new Error("Indica un nombre ficticio para esta inscripción.");
+       this.registration = {
+-        registrationId: `registration:${this.scenario.id}:1`,
++        registrationId: `registration:${this.scenario.id}:${this.userConfiguration ? `${this.execution}:${action.personRef}` : "1"}`,
+         personRef: action.personRef, eventRef: action.eventRef,
+         selectedModality: action.selectedModality as SportsModality, status: "accepted",
+       };
+@@ -87,6 +147,7 @@
+     }
+     if (action.type === "sports-check-in") {
+       if (this.evidence.length) throw new Error("El check-in simulado ya está registrado.");
++      if (this.userConfiguration && !this.voluntary) throw new Error("Comparte la información voluntaria o elige continuar sin aportarla.");
+       const presence: SportsEvidence = {
+         evidenceId: `${registration.registrationId}:presence`, kind: "presence",
+         personRef: action.personRef, eventRef: action.eventRef, registrationRef: action.registrationRef,
+@@ -111,10 +172,80 @@
+     return this.getSnapshot();
+   }
+ 
+-  async reset(): Promise<SportsSnapshot> {
++  private async executeUserAction(action: SportsUserAction): Promise<SportsSnapshot> {
++    const configuration = this.userConfiguration;
++    if (!configuration) throw new Error("Esta acción no está disponible en la demo.");
++    if (action.type === "sports-select-person") {
++      if (!configuration.people.some((person) => person.id === action.personRef)) throw new Error("Elige una persona de esta demo.");
++      if (this.selectedPersonRef === action.personRef) return this.getSnapshot();
++      const entry = !this.selectedPersonRef ? this.registrationEntry : undefined;
++      this.clear();
++      this.selectedPersonRef = action.personRef;
++      if (entry) this.registrationEntry = { ...entry, recognized: this.person()?.customerRelationship === "established" };
++      return this.getSnapshot();
++    }
++    if (action.type === "sports-registration-qr") {
++      const event = this.scenario.events.find((item) => item.id === action.eventRef && item.executable);
++      if (!event || this.registration || this.intention === "information") throw new Error("El QR de inscripción está disponible antes de inscribirte. Reinicia para probar otro recorrido.");
++      this.registrationEntry = { eventRef: event.id, source: "simulated-registration-qr", recognized: this.person()?.customerRelationship === "established" };
++      if (this.intention === "participate") this.selectedEventRef = event.id;
++      return this.getSnapshot();
++    }
++    const person = this.person();
++    if (!person || action.personRef !== person.id) throw new Error("La acción no corresponde a la persona seleccionada.");
++    switch (action.type) {
++      case "sports-identify-visitor": {
++        if (person.customerRelationship === "established" || this.registration) throw new Error("Los datos de esta persona ya están disponibles.");
++        const name = typeof action.name === "string" ? action.name.trim() : "";
++        if (name.length < 2 || name.length > 80) throw new Error("Escribe un nombre ficticio de entre 2 y 80 caracteres.");
++        this.visitorName = name;
++        break;
++      }
++      case "sports-intention":
++        if (!["participate", "information"].includes(action.intention)) throw new Error("Elige Participar o Recibir información.");
++        if (this.intention && this.intention !== action.intention) throw new Error("Reinicia el recorrido para probar otra intención.");
++        this.intention = action.intention as SportsUserSnapshot["intention"];
++        if (this.intention === "participate" && this.registrationEntry) this.selectedEventRef = this.registrationEntry.eventRef;
++        break;
++      case "sports-select-event":
++        if (this.intention !== "participate" || this.registration || !this.scenario.events.some((event) => event.id === action.eventRef && event.executable)) throw new Error("Elige Participar y el evento de Carrera disponible.");
++        this.selectedEventRef = action.eventRef;
++        break;
++      case "sports-interests":
++        if (this.intention !== "information" || !Array.isArray(action.values) || action.values.length === 0 ||
++            new Set(action.values).size !== action.values.length || action.values.some((value) => !configuration.interests.some((item) => item.value === value))) throw new Error("Elige al menos un interés de la lista, dentro de Recibir información.");
++        this.declaredInterests = { personRef: person.id, values: [...action.values], source: "person-declared", occurredAt: this.now() };
++        break;
++      case "sports-voluntary":
++        if (!this.registration || this.intention !== "participate" || this.voluntary) throw new Error("La información voluntaria se decide una vez, después de la inscripción.");
++        if (action.decision !== "provided" && action.decision !== "skipped") throw new Error("Elige compartir información o continuar sin aportarla.");
++        if (action.decision === "skipped" && (action.frequency || action.goal)) throw new Error("Continuar sin información no registra respuestas.");
++        if (action.decision === "provided" && ((!action.frequency && !action.goal) ||
++            (action.frequency && !configuration.frequencies.some((item) => item.value === action.frequency)) ||
++            (action.goal && !configuration.goals.some((item) => item.value === action.goal)))) throw new Error("Selecciona al menos una respuesta voluntaria válida o continúa sin aportarla.");
++        this.voluntary = { personRef: person.id, decision: action.decision, frequency: action.frequency || undefined, goal: action.goal || undefined, source: "person-declared", occurredAt: this.now() };
++        break;
++      default: throw new Error("Esta acción no está disponible en la demo.");
++    }
++    return this.getSnapshot();
++  }
++
++  private clear(): void {
+     this.registration = undefined;
+     this.evidence = [];
+     this.badge = undefined;
++    this.selectedPersonRef = undefined;
++    this.intention = undefined;
++    this.selectedEventRef = undefined;
++    this.registrationEntry = undefined;
++    this.visitorName = undefined;
++    this.declaredInterests = undefined;
++    this.voluntary = undefined;
++    this.execution += 1;
++  }
++
++  async reset(): Promise<SportsSnapshot> {
++    this.clear();
+     return this.getSnapshot();
+   }
+ }
+--- /dev/null
++++ build-02/src/app/SportsSurface.tsx
+@@ -0,0 +1,45 @@
++import { useState, type ReactNode } from "react";
++import { createPortal } from "react-dom";
++import { Link } from "react-router-dom";
++import type { BrandArtifact } from "@/demo-factory/contracts";
++
++// One React tree and provider; the iframe supplies only a mobile viewport, never a second bootstrap.
++export function SportsSurface({ surface, demoId, brand, children }: {
++  surface: "web" | "app";
++  demoId: string;
++  brand: BrandArtifact;
++  children: ReactNode;
++}) {
++  const [host, setHost] = useState<HTMLElement>();
++  const query = `?demo=${encodeURIComponent(demoId)}`;
++  if (surface === "web") return <>
++    <nav className="sports-surface-toolbar" aria-label="Superficie de la demo"><span>Vista Web · mismo recorrido al cambiar de vista</span><Link to={`/showcase${query}`}>Ver como App</Link></nav>
++    {children}
++  </>;
++  return <main className="showcase-page showcase-page--sports">
++    <header className="showcase-toolbar"><div><p className="eyebrow">Vista App · recorrido compartido con Web</p><h1>{brand.name} en iPhone</h1></div><Link className="showcase-close" to={`/${query}`}>Ver como Web</Link></header>
++    <section className="iphone-stage" aria-label={`Simulación visual de ${brand.name} en un iPhone`}>
++      <div className="iphone-device iphone-device--sports">
++        <span className="iphone-device__speaker" aria-hidden="true" />
++        <span className="iphone-device__button iphone-device__button--action" aria-hidden="true" />
++        <span className="iphone-device__button iphone-device__button--volume-up" aria-hidden="true" />
++        <span className="iphone-device__button iphone-device__button--volume-down" aria-hidden="true" />
++        <span className="iphone-device__button iphone-device__button--power" aria-hidden="true" />
++        <iframe className="iphone-device__screen" title={`${brand.name} — vista App`}
++          srcDoc={'<!doctype html><html lang="es"><head><meta name="viewport" content="width=device-width,initial-scale=1" /></head><body><div id="sports-app-root"></div></body></html>'}
++          onLoad={event => {
++            const doc = event.currentTarget.contentDocument;
++            if (!doc) return;
++            doc.title = `${brand.name} — vista App`;
++            const base = doc.createElement("base"); base.href = document.baseURI; doc.head.append(base);
++            document.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => doc.head.append(node.cloneNode(true)));
++            Object.entries(brand.cssVariables).forEach(([key, value]) => doc.documentElement.style.setProperty(key, value));
++            setHost(doc.getElementById("sports-app-root") ?? undefined);
++          }} />
++        {host && createPortal(children, host)}
++        <span className="iphone-device__home-indicator" aria-hidden="true" />
++      </div>
++    </section>
++    <p className="showcase-note">Desplázate dentro del teléfono. «Ver como Web» conserva este recorrido en la misma pestaña.</p>
++  </main>;
++}
+--- /dev/null
++++ build-02/src/app/SportsUserPanels.tsx
+@@ -0,0 +1,130 @@
++import type { SportsDemoAction, SportsUserSnapshot } from "@/demo-factory/sports-season/contracts";
++
++export interface SportsDrafts {
++  visitorName: string;
++  interests: string[];
++  frequency: string;
++  goal: string;
++}
++
++interface PanelProps {
++  user: SportsUserSnapshot;
++  busy: boolean;
++  run: (action: SportsDemoAction) => Promise<boolean>;
++  drafts: SportsDrafts;
++  update: (patch: Partial<SportsDrafts>) => void;
++}
++
++const money = (cents: number) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" }).format(cents / 100);
++
++export function SportsPersonPanel({ user, busy, run, drafts, update, choosePerson, qrEventRef, registered }: PanelProps & {
++  choosePerson: (personRef: string) => void;
++  qrEventRef: string;
++  registered: boolean;
++}) {
++  const person = user.person;
++  return <section className="sports-user-section" aria-labelledby="person-selection-title">
++    <div className="sports-section-title"><div><p className="sports-kicker">01 · Una persona, distintas relaciones</p><h2 id="person-selection-title">¿Con quién quieres probar la demo?</h2></div></div>
++    <p className="sports-note">Personas y compras ficticias. Elegir otra persona inicia un recorrido nuevo; no es un inicio de sesión.</p>
++    <div className="sports-people">
++      {user.configuration.people.map((item) => <article className={`sports-person-card${person?.id === item.id ? " is-selected" : ""}`} key={item.id}>
++        <h3>{item.name}</h3>
++        <p>{item.customerRelationship === "established" ? "Cliente conocido" : "No cliente"}<br />{item.membershipStatus === "member" ? "Miembro de Club Brisa" : "No miembro del programa"}</p>
++        {item.id === user.configuration.primaryPersonRef && <p className="sports-tag">Caso principal</p>}
++        <button type="button" className="sports-button sports-button--outline" aria-pressed={person?.id === item.id} disabled={busy} onClick={() => choosePerson(item.id)}>{`Elegir a ${item.name}`}</button>
++      </article>)}
++    </div>
++    <div className="sports-qr-entry">
++      <div><h3>¿Vienes desde el QR del evento?</h3><p>Simula la entrada a la inscripción de Carrera. El registro de presencia llegará después.</p></div>
++      <button type="button" className="sports-button" disabled={busy || registered || user.intention === "information"} onClick={() => void run({ type: "sports-registration-qr", eventRef: qrEventRef })}>Leer QR de inscripción</button>
++    </div>
++    {user.registrationEntry && <div className="sports-panel sports-entry-status" role="status">
++      <h3>QR de inscripción · simulado</h3>
++      <p>{!person ? "Elige arriba qué persona reconoce esta simulación." : user.registrationEntry.recognized ? "Cliente reconocido. Recuperamos sus datos ficticios y su estado de programa; no hace falta volver a introducirlos." : "Persona no reconocida. Puedes participar sin ser cliente: elige Participar y completa el nombre ficticio para la inscripción."}</p>
++      <p className="sports-note">Esta entrada no acredita presencia ni confirma la inscripción.</p>
++    </div>}
++    {person && <section className="sports-panel sports-person-summary" aria-labelledby="selected-person-title">
++      <p className="sports-kicker">Persona seleccionada · datos ficticios conocidos</p>
++      <h2 id="selected-person-title">{person.name}</h2>
++      <dl className="sports-facts">
++        <div><dt>Relación con la marca</dt><dd>{person.customerRelationship === "established" ? "Cliente conocido" : "No cliente · sin relación comercial establecida"}</dd></div>
++        <div><dt>Programa de fidelización</dt><dd>{person.membershipStatus === "member" ? "Miembro de Club Brisa" : "No pertenece al programa"}</dd></div>
++        {person.knownData && <><div><dt>Localidad conocida</dt><dd>{person.knownData.city}</dd></div><div><dt>Práctica conocida en el escenario</dt><dd>{person.knownData.usualSport}</dd></div></>}
++      </dl>
++      {person.customerRelationship === "established" ? <>
++        <h3>Compras ficticias registradas</h3>
++        <ul className="sports-purchases">{person.purchases.map((purchase) => <li key={purchase.id}><div><strong>{purchase.description}</strong><time dateTime={purchase.date}>{new Date(purchase.date).toLocaleDateString("es-ES", { timeZone: "UTC" })}</time></div><span>{money(purchase.amountCents)}</span></li>)}</ul>
++      </> : <p>No hay historial transaccional ni datos de cliente. Un evento puede ser el comienzo de la relación; inscribirte no crea una cuenta ni te incorpora al programa.</p>}
++      {user.counterfactual && <aside className="sports-counterfactual" aria-label="Contrafactual de fidelización">
++        <p className="sports-kicker">Contrafactual · no es saldo disponible</p>
++        <h3>{user.counterfactual.potentialPoints} puntos potenciales</h3>
++        <p>Con tus compras realizadas ({money(user.counterfactual.totalCents)}), si hubieras pertenecido al programa, habrías obtenido estos puntos.</p>
++        <p className="sports-note">Ejemplo ficticio: {user.configuration.counterfactualPointsPerEuro} punto por euro completo. No se abonan puntos ni se crean beneficios retroactivos.</p>
++      </aside>}
++      {person.program && <aside className="sports-program" aria-label="Estado ficticio del programa">
++        <p className="sports-kicker">Estado del programa · simulado</p>
++        <h3>{person.program.points} puntos · nivel {person.program.level}</h3>
++        <p>Saldo ficticio de este miembro, separado del contrafactual de quien no pertenece al programa.</p>
++        <ul>{person.program.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
++      </aside>}
++    </section>}
++    {person && <section className="sports-intention" aria-labelledby="intention-title">
++      <p className="sports-kicker">02 · Tu decisión en este encuentro</p><h2 id="intention-title">¿Qué quieres hacer ahora?</h2>
++      <div className="sports-intention-actions">
++        <button className="sports-button" type="button" aria-pressed={user.intention === "participate"} disabled={busy || user.intention === "information"} onClick={() => void run({ type: "sports-intention", personRef: person.id, intention: "participate" })}>Participar</button>
++        <button className="sports-button sports-button--outline" type="button" aria-pressed={user.intention === "information"} disabled={busy || user.intention === "participate"} onClick={() => void run({ type: "sports-intention", personRef: person.id, intention: "information" })}>No participar, pero quiero recibir información</button>
++      </div>
++      <p className="sports-note">No participar no significa falta de interés. Para probar otra intención, reinicia el recorrido.</p>
++    </section>}
++    {person?.customerRelationship === "not-established" && user.intention === "participate" && <section className="sports-panel sports-visitor" aria-labelledby="visitor-title">
++      <h3 id="visitor-title">Datos mínimos para la inscripción</h3>
++      {user.visitorIdentified ? <p>Nombre para esta inscripción: <strong>{person.name}</strong>. Sigues sin ser cliente ni miembro del programa.</p> : <form noValidate onSubmit={e => { e.preventDefault(); void run({ type: "sports-identify-visitor", personRef: person.id, name: drafts.visitorName }); }}>
++        <label className="sports-field">Nombre ficticio para esta demo<input type="text" value={drafts.visitorName} maxLength={80} onChange={e => update({ visitorName: e.target.value })} disabled={busy} /></label>
++        <button className="sports-button" disabled={busy}>Continuar con este nombre</button>
++      </form>}
++      <p className="sports-note">La identificación completa y el alta de cliente se narran; no se ejecutan. Puedes completar aquí la participación deportiva simulada.</p>
++    </section>}
++  </section>;
++}
++
++export function SportsInterestPanel({ user, busy, run, drafts, update }: PanelProps) {
++  if (!user.person || user.intention !== "information") return null;
++  const personRef = user.person.id;
++  return <section className="sports-panel sports-interest-panel" aria-labelledby="interests-title">
++    <p className="sports-kicker">Recibir información · sin participar</p><h2 id="interests-title">¿Qué te interesa?</h2>
++    <form noValidate onSubmit={e => { e.preventDefault(); void run({ type: "sports-interests", personRef, values: drafts.interests }); }}>
++      <fieldset disabled={busy}><legend>Elige los temas sobre los que querrías saber más</legend><div className="sports-interest-options">{user.configuration.interests.map(item => <label key={item.value}>
++        <input type="checkbox" checked={drafts.interests.includes(item.value)} onChange={e => update({ interests: e.target.checked ? [...drafts.interests, item.value] : drafts.interests.filter(value => value !== item.value) })} />{item.label}
++      </label>)}</div></fieldset>
++      <button className="sports-button" disabled={busy}>Registrar intereses</button>
++    </form>
++    {user.declaredInterests && <div className="sports-interest-confirmation" role="status"><h3>Interés declarado registrado</h3><p>{user.declaredInterests.values.map(value => user.configuration.interests.find(item => item.value === value)?.label).join(" · ")}</p><p>Sin inscripción, presencia, esfuerzo ni insignia. No se envían comunicaciones ni se crea una suscripción real.</p></div>}
++  </section>;
++}
++
++export function SportsVoluntaryPanel({ user, busy, run, drafts, update }: PanelProps) {
++  if (!user.person) return null;
++  const personRef = user.person.id;
++  return <section className="sports-panel sports-voluntary" aria-labelledby="voluntary-title">
++    <p className="sports-kicker">Después de inscribirte · tú decides</p><h3 id="voluntary-title">Información adicional voluntaria</h3>
++    {!user.voluntary ? <>
++      <p>Si compartes al menos una respuesta, podrás consultar la «{user.configuration.incentive.title}» aquí mismo. También puedes continuar sin responder.</p>
++      <form noValidate onSubmit={e => { e.preventDefault(); void run({ type: "sports-voluntary", personRef, decision: "provided", frequency: drafts.frequency, goal: drafts.goal }); }}>
++        <div className="sports-voluntary-fields">
++          <label className="sports-field">Frecuencia de práctica (opcional)<select value={drafts.frequency} disabled={busy} onChange={e => update({ frequency: e.target.value })}><option value="">Sin respuesta</option>{user.configuration.frequencies.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}</select></label>
++          <label className="sports-field">Objetivo (opcional)<select value={drafts.goal} disabled={busy} onChange={e => update({ goal: e.target.value })}><option value="">Sin respuesta</option>{user.configuration.goals.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}</select></label>
++        </div>
++        <p className="sports-note">Son respuestas declaradas por ti, no observaciones de la marca. La guía es un incentivo por información, separado de la insignia deportiva y de la pertenencia al club.</p>
++        <div className="sports-intention-actions"><button className="sports-button" disabled={busy}>Compartir información y obtener la guía</button><button className="sports-button sports-button--outline" type="button" disabled={busy} onClick={() => void run({ type: "sports-voluntary", personRef, decision: "skipped" })}>Continuar sin aportar información</button></div>
++      </form>
++    </> : user.voluntary.decision === "skipped" ? <p>Has continuado sin aportar información adicional. Tu inscripción y tu posibilidad de obtener la insignia se mantienen.</p> : <>
++      <p>Información declarada: {[user.configuration.frequencies.find(item => item.value === user.voluntary?.frequency)?.label, user.configuration.goals.find(item => item.value === user.voluntary?.goal)?.label].filter(Boolean).join(" · ")}.</p>
++      {user.incentive && <div className="sports-incentive" role="status"><p className="sports-kicker">Incentivo por información disponible</p><h3>{user.incentive.title}</h3><details><summary>Abrir guía</summary><ul>{user.incentive.content.map(item => <li key={item}>{item}</li>)}</ul></details><p className="sports-note">Este contenido no es una insignia, puntos ni un alta en el programa.</p></div>}
++    </>}
++  </section>;
++}
++
++export function SportsEquipmentPanel({ user }: { user: SportsUserSnapshot }) {
++  if (!user.recommendations.length) return null;
++  return <section className="sports-equipment" aria-labelledby="equipment-title"><p className="sports-kicker">Para el evento que has elegido</p><h2 id="equipment-title">Equipamiento para Carrera</h2><p className="sports-note">Sugerencias editoriales de esta demo, comunes para quienes eligen Carrera. Sin selección automática, precios ni compra.</p><div className="sports-equipment-grid">{user.recommendations.map(item => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></section>;
++}
+--- /dev/null
++++ build-02/src/demo-factory/sports-season/user-plane-artifacts.ts
+@@ -0,0 +1,52 @@
++import type { SportsUserConfiguration } from "./contracts";
++
++// Fictitious data for BUILD 02. No imported customer data or productive programme.
++export const sportsUserConfiguration: SportsUserConfiguration = {
++  primaryPersonRef: "person:lea",
++  people: [
++    {
++      id: "person:lea", name: "Lea Martín", customerRelationship: "established", membershipStatus: "external",
++      knownData: { city: "Valencia", usualSport: "Carrera" },
++      purchases: [
++        { id: "purchase:lea:1", date: "2026-07-12", description: "Zapatillas para correr", amountCents: 12990 },
++        { id: "purchase:lea:2", date: "2026-08-03", description: "Camiseta técnica", amountCents: 3990 },
++        { id: "purchase:lea:3", date: "2026-09-05", description: "Botella de hidratación", amountCents: 2500 },
++      ],
++    },
++    {
++      id: "person:diego", name: "Diego Vidal", customerRelationship: "established", membershipStatus: "member",
++      knownData: { city: "Valencia", usualSport: "Vela y carrera" },
++      purchases: [{ id: "purchase:diego:1", date: "2026-08-19", description: "Chaqueta para actividades al aire libre", amountCents: 8900 }],
++      program: { points: 860, level: "Activo", benefits: ["Acceso a encuentros del club", "Novedades de actividades deportivas"] },
++    },
++    { id: "person:visitor", name: "Persona sin identificar", customerRelationship: "not-established", membershipStatus: "external", purchases: [] },
++  ],
++  counterfactualPointsPerEuro: 1,
++  interests: [
++    { value: "running", label: "Carrera" }, { value: "sailing", label: "Vela" },
++    { value: "volleyball", label: "Vóley playa" }, { value: "next-events", label: "Próximas convocatorias" },
++  ],
++  frequencies: [
++    { value: "occasional", label: "De vez en cuando" }, { value: "weekly", label: "Una vez por semana" },
++    { value: "several-weekly", label: "Varias veces por semana" },
++  ],
++  goals: [
++    { value: "wellbeing", label: "Sentirme bien" }, { value: "company", label: "Moverme en compañía" },
++    { value: "habit", label: "Mantener el hábito" },
++  ],
++  incentive: {
++    id: "incentive:running-guide", title: "Guía de preparación para 5 km",
++    content: [
++      "Revisa el lugar de salida y prepara tu equipamiento con antelación.",
++      "Elige ropa y calzado que ya conozcas y con los que te sientas cómodo.",
++      "Consulta el horario y los servicios disponibles del encuentro.",
++      "Comparte el plan con quien vaya a acompañarte.",
++    ],
++  },
++  equipment: [
++    { eventRef: "event:running-01", title: "Calzado", description: "Zapatillas para correr que ya hayas utilizado y te resulten cómodas." },
++    { eventRef: "event:running-01", title: "Textil técnico", description: "Ropa adecuada al tiempo previsto y al movimiento." },
++    { eventRef: "event:running-01", title: "Hidratación", description: "Una botella reutilizable para llevar contigo." },
++    { eventRef: "event:running-01", title: "Accesorios", description: "Una gorra o un cinturón para tus pequeños objetos, si los necesitas." },
++  ],
++};
+--- /dev/null
++++ build-02/src/demo-factory/sports-season/user-plane.test.ts
+@@ -0,0 +1,234 @@
++import { afterAll, describe, expect, it } from "vitest";
++import { writeFileSync } from "node:fs";
++import { resolveAppDemo } from "../bootstrap";
++import { sportsSeasonScenario } from "./artifacts";
++import { SportsSeasonProvider, sportsBadgeRuleRef } from "./runtime";
++import { sportsUserConfiguration } from "./user-plane-artifacts";
++import type { SportsDemoAction, SportsSnapshot } from "./contracts";
++
++const now = () => "2026-09-27T09:30:00.000Z";
++const eventRef = sportsSeasonScenario.events[0].id;
++const make = () => new SportsSeasonProvider(sportsSeasonScenario, now, sportsUserConfiguration);
++const trace: unknown[] = [];
++async function choose(p: SportsSeasonProvider, personRef = "person:lea", intention = "participate") {
++  await p.executeAction({ type: "sports-select-person", personRef });
++  await p.executeAction({ type: "sports-intention", personRef, intention });
++  if (intention === "participate") await p.executeAction({ type: "sports-select-event", personRef, eventRef });
++}
++async function register(p: SportsSeasonProvider, personRef = "person:lea", selectedModality = "social") {
++  return p.executeAction({ type: "sports-register", personRef, eventRef, selectedModality });
++}
++async function checkIn(p: SportsSeasonProvider, s: SportsSnapshot) {
++  return p.executeAction({ type: "sports-check-in", personRef: s.registration!.personRef, eventRef, registrationRef: s.registration!.registrationId });
++}
++async function finish(p: SportsSeasonProvider, s: SportsSnapshot, level = "medio") {
++  return p.executeAction({ type: "sports-effort", personRef: s.registration!.personRef, eventRef, registrationRef: s.registration!.registrationId, level });
++}
++async function unchanged(p: SportsSeasonProvider, action: SportsDemoAction) {
++  const before = await p.getSnapshot();
++  await expect(p.executeAction(action)).rejects.toThrow();
++  expect(await p.getSnapshot()).toEqual(before);
++}
++const sportsFacts = (s: SportsSnapshot) => ({ registration: s.registration, evidence: s.evidence, badge: s.badge, opportunity: s.opportunity });
++
++describe("BUILD 02 user plane — one situated sports provider", () => {
++  it("starts with selectable people, no assumed participant, intention, registration or credited value", async () => {
++    const runtime = resolveAppDemo("sports-season-running");
++    const s = await runtime.provider.getSnapshot() as SportsSnapshot;
++    expect(s.userPlane?.person).toBeUndefined();
++    expect(s.userPlane?.configuration.people).toHaveLength(3);
++    expect(s.userPlane?.intention).toBeUndefined();
++    expect(s.registration).toBeUndefined();
++    expect(s.evidence).toEqual([]);
++    expect(s.userPlane?.counterfactual).toBeUndefined();
++  });
++
++  it("keeps the nonmember's 194 potential points separate from programme balance and declared information", async () => {
++    const p = make();
++    const selected = await p.executeAction({ type: "sports-select-person", personRef: "person:lea" });
++    expect(selected.userPlane?.person).toMatchObject({ customerRelationship: "established", membershipStatus: "external" });
++    expect(selected.userPlane?.counterfactual).toEqual({ totalCents: 19480, potentialPoints: 194, credited: false });
++    expect(selected.userPlane?.person?.program).toBeUndefined();
++    expect(selected.userPlane?.person?.purchases).toHaveLength(3);
++    expect(selected.scenario.person.id).toBe("person:lea");
++    trace.push({ case: "known nonmember", selected });
++  });
++
++  it("registration QR recognizes the selected customer, selects only the event context and creates no presence", async () => {
++    const p = make();
++    const entry = await p.executeAction({ type: "sports-registration-qr", eventRef });
++    expect(entry.userPlane?.registrationEntry?.recognized).toBe(false);
++    expect(entry.userPlane?.person).toBeUndefined();
++    expect(entry.evidence).toEqual([]);
++    const selected = await p.executeAction({ type: "sports-select-person", personRef: "person:lea" });
++    expect(selected.userPlane?.registrationEntry).toEqual({ eventRef, source: "simulated-registration-qr", recognized: true });
++    expect(selected.userPlane?.selectedEventRef).toBeUndefined();
++    const intended = await p.executeAction({ type: "sports-intention", personRef: "person:lea", intention: "participate" });
++    expect(intended.userPlane?.selectedEventRef).toBe(eventRef);
++    expect(intended.userPlane?.recommendations).toHaveLength(4);
++    expect(intended.registration).toBeUndefined();
++    expect(intended.evidence).toEqual([]);
++    await unchanged(p, { type: "sports-identify-visitor", personRef: "person:lea", name: "Overwrite known name" });
++    const registered = await register(p);
++    expect(registered.evidence).toEqual([]);
++    await unchanged(p, { type: "sports-registration-qr", eventRef });
++    trace.push({ case: "registration QR", entry, selected, intended, registered });
++  });
++
++  it("unknown visitor can identify a fictitious name and participate without becoming a customer or member", async () => {
++    const p = make();
++    await p.executeAction({ type: "sports-registration-qr", eventRef });
++    await p.executeAction({ type: "sports-select-person", personRef: "person:visitor" });
++    await p.executeAction({ type: "sports-intention", personRef: "person:visitor", intention: "participate" });
++    await unchanged(p, { type: "sports-register", personRef: "person:visitor", eventRef, selectedModality: "social" });
++    await unchanged(p, { type: "sports-identify-visitor", personRef: "person:visitor", name: " " });
++    const identified = await p.executeAction({ type: "sports-identify-visitor", personRef: "person:visitor", name: "  Alex Prueba  " });
++    expect(identified.userPlane?.person?.name).toBe("Alex Prueba");
++    expect(identified.userPlane?.registrationEntry?.recognized).toBe(false);
++    const s = await register(p, "person:visitor");
++    await p.executeAction({ type: "sports-voluntary", personRef: "person:visitor", decision: "skipped" });
++    const final = await finish(p, await checkIn(p, s));
++    expect(final.scenario.person).toMatchObject({ id: "person:visitor", name: "Alex Prueba", customerRelationship: "not-established", membershipStatus: "external" });
++    expect(final.userPlane?.person?.purchases).toEqual([]);
++    expect(final.userPlane?.counterfactual).toBeUndefined();
++    expect(final.badge?.personRef).toBe("person:visitor");
++    expect(final.opportunity?.personRef).toBe("person:visitor");
++    trace.push({ case: "unknown visitor", identified, final });
++  });
++
++  for (const personRef of ["person:lea", "person:diego", "person:visitor"]) {
++    it(`records interests for ${personRef} without creating sports facts or inferring purchase intent`, async () => {
++      const p = make();
++      await choose(p, personRef, "information");
++      await unchanged(p, { type: "sports-interests", personRef, values: [] });
++      await unchanged(p, { type: "sports-interests", personRef, values: ["running", "running"] });
++      await unchanged(p, { type: "sports-interests", personRef, values: ["unsupported"] });
++      const s = await p.executeAction({ type: "sports-interests", personRef, values: ["sailing", "next-events"] });
++      expect(s.userPlane?.declaredInterests).toEqual({ personRef, values: ["sailing", "next-events"], source: "person-declared", occurredAt: now() });
++      expect(sportsFacts(s)).toEqual({ registration: undefined, evidence: [], badge: undefined, opportunity: undefined });
++      expect(s.userPlane?.recommendations).toEqual([]);
++      expect(s.userPlane?.incentive).toBeUndefined();
++      await unchanged(p, { type: "sports-register", personRef, eventRef, selectedModality: "social" });
++      await unchanged(p, { type: "sports-select-event", personRef, eventRef });
++      await unchanged(p, { type: "sports-intention", personRef, intention: "participate" });
++      await unchanged(p, { type: "sports-voluntary", personRef, decision: "provided", frequency: "weekly" });
++      trace.push({ case: "information only", personRef, final: s });
++    });
++  }
++
++  for (const modality of ["social", "wellness"]) for (const level of ["suave", "medio", "intenso"]) {
++    it(`preserves the badge rule for ${modality}/${level} whether voluntary information is given or skipped`, async () => {
++      const finals: SportsSnapshot[] = [];
++      for (const decision of ["provided", "skipped"] as const) {
++        const p = make();
++        await choose(p);
++        const s = await register(p, "person:lea", modality);
++        await unchanged(p, { type: "sports-check-in", personRef: "person:lea", eventRef, registrationRef: s.registration!.registrationId });
++        const voluntary = await p.executeAction({ type: "sports-voluntary", personRef: "person:lea", decision, ...(decision === "provided" ? { frequency: "weekly", goal: "habit" } : {}) });
++        expect(voluntary.evidence).toEqual([]);
++        expect(voluntary.badge).toBeUndefined();
++        expect(Boolean(voluntary.userPlane?.incentive)).toBe(decision === "provided");
++        const present = await checkIn(p, s);
++        expect(present.evidence).toHaveLength(1);
++        expect(present.badge).toBeUndefined();
++        const final = await finish(p, present, level);
++        expect(final.badge?.ruleRef).toBe(sportsBadgeRuleRef);
++        expect(final.badge?.supportingEvidenceRefs).toEqual(final.evidence.map(item => item.evidenceId));
++        expect(final.evidence.map(item => item.source)).toEqual(["simulated-check-in", "participant-self-report"]);
++        expect(final.userPlane?.counterfactual?.credited).toBe(false);
++        expect(final.userPlane?.person?.program).toBeUndefined();
++        finals.push(final);
++        trace.push({ case: "participation", modality, level, decision, final });
++      }
++      expect(sportsFacts(finals[0])).toEqual(sportsFacts(finals[1]));
++    });
++  }
++
++  it("member participates with an independent modality, unchanged points and no invitation to join again", async () => {
++    const p = make();
++    await choose(p, "person:diego");
++    const selected = await p.getSnapshot();
++    expect(selected.userPlane?.counterfactual).toBeUndefined();
++    expect(selected.userPlane?.person?.program?.points).toBe(860);
++    const s = await register(p, "person:diego", "wellness");
++    await p.executeAction({ type: "sports-voluntary", personRef: "person:diego", decision: "skipped" });
++    const final = await finish(p, await checkIn(p, s), "suave");
++    expect(final.registration?.selectedModality).toBe("wellness");
++    expect(final.badge?.personRef).toBe("person:diego");
++    expect(final.userPlane?.person?.program).toEqual(selected.userPlane?.person?.program);
++    expect(final.opportunity).toBeUndefined();
++    trace.push({ case: "member", final });
++  });
++
++  it("rejects invalid values, wrong attribution and out-of-order declarations atomically", async () => {
++    const p = make();
++    await unchanged(p, { type: "sports-select-person", personRef: "absent" });
++    await unchanged(p, { type: "sports-registration-qr", eventRef: "event:sailing-01" });
++    await unchanged(p, { type: "sports-intention", personRef: "person:lea", intention: "participate" });
++    await choose(p);
++    await unchanged(p, { type: "sports-intention", personRef: "person:lea", intention: "purchase" });
++    await unchanged(p, { type: "sports-interests", personRef: "person:lea", values: ["running"] });
++    await unchanged(p, { type: "sports-voluntary", personRef: "person:lea", decision: "provided", frequency: "weekly" });
++    const s = await register(p);
++    for (const payload of [{ decision: "provided" as const }, { decision: "provided" as const, goal: "invalid" }, { decision: "skipped" as const, frequency: "weekly" }]) {
++      await unchanged(p, { type: "sports-voluntary", personRef: "person:lea", ...payload });
++    }
++    await unchanged(p, { type: "sports-voluntary", personRef: "person:diego", decision: "skipped" });
++    await p.executeAction({ type: "sports-voluntary", personRef: "person:lea", decision: "provided", goal: "company" });
++    await unchanged(p, { type: "sports-voluntary", personRef: "person:lea", decision: "skipped" });
++    await unchanged(p, { type: "sports-effort", personRef: "person:lea", eventRef, registrationRef: s.registration!.registrationId, level: "medio" });
++    await checkIn(p, s);
++    await unchanged(p, { type: "sports-check-in", personRef: "person:lea", eventRef, registrationRef: s.registration!.registrationId });
++    await unchanged(p, { type: "sports-effort", personRef: "person:diego", eventRef, registrationRef: s.registration!.registrationId, level: "medio" });
++  });
++
++  it("changing person and reset clear the journey; stale registrations cannot contaminate later runs", async () => {
++    const p = make();
++    const initial = await p.getSnapshot();
++    await choose(p);
++    const old = await register(p);
++    await p.executeAction({ type: "sports-voluntary", personRef: "person:lea", decision: "provided", frequency: "weekly" });
++    await finish(p, await checkIn(p, old));
++    const selected = await p.executeAction({ type: "sports-select-person", personRef: "person:diego" });
++    expect(sportsFacts(selected)).toEqual({ registration: undefined, evidence: [], badge: undefined, opportunity: undefined });
++    expect(selected.userPlane?.incentive).toBeUndefined();
++    expect(selected.userPlane?.voluntary).toBeUndefined();
++    expect(selected.userPlane?.intention).toBeUndefined();
++    expect(await p.executeAction({ type: "sports-select-person", personRef: "person:diego" })).toEqual(selected);
++    expect(await p.reset()).toEqual(initial);
++    await choose(p);
++    const next = await register(p);
++    expect(next.registration!.registrationId).not.toBe(old.registration!.registrationId);
++    await p.executeAction({ type: "sports-voluntary", personRef: "person:lea", decision: "skipped" });
++    await unchanged(p, { type: "sports-check-in", personRef: "person:lea", eventRef, registrationRef: old.registration!.registrationId });
++    expect((await checkIn(p, next)).evidence).toHaveLength(1);
++  });
++
++  it("clones configuration and snapshots and isolates separate demo instances", async () => {
++    const configuration = structuredClone(sportsUserConfiguration);
++    const p = new SportsSeasonProvider(sportsSeasonScenario, now, configuration);
++    const other = make();
++    const untouched = await other.getSnapshot();
++    configuration.people[0].purchases[0].amountCents = 1;
++    await choose(p);
++    const view = await p.getSnapshot();
++    view.userPlane!.person!.purchases[0].amountCents = 1;
++    view.userPlane!.configuration.people.length = 0;
++    expect((await p.getSnapshot()).userPlane?.counterfactual?.potentialPoints).toBe(194);
++    expect((await p.getSnapshot()).userPlane?.configuration.people).toHaveLength(3);
++    expect(await other.getSnapshot()).toEqual(untouched);
++  });
++
++  it("rejects contradictory commercial fixture data before creating a journey", () => {
++    const badMember = structuredClone(sportsUserConfiguration);
++    badMember.people[0].program = { points: 1, level: "Invalid", benefits: [] };
++    expect(() => new SportsSeasonProvider(sportsSeasonScenario, now, badMember)).toThrow();
++    const badVisitor = structuredClone(sportsUserConfiguration);
++    badVisitor.people[2].purchases.push({ id: "fake", date: "2026-01-01", description: "not known", amountCents: 1 });
++    expect(() => new SportsSeasonProvider(sportsSeasonScenario, now, badVisitor)).toThrow();
++  });
++});
++
++afterAll(() => {
++  if (process.env.BUILD02_TRACE_PATH) writeFileSync(process.env.BUILD02_TRACE_PATH, JSON.stringify(trace, null, 2) + "\n", { flag: "wx" });
++});
+--- /dev/null
++++ build-02/src/demo-factory/sports-season/user-plane-ui.test.tsx
+@@ -0,0 +1,105 @@
++import { act } from "react";
++import { createRoot } from "react-dom/client";
++import { MemoryRouter } from "react-router-dom";
++import { afterEach, expect, it, vi } from "vitest";
++import { DemoApp } from "@/app/App";
++import { resolveAppDemo } from "../bootstrap";
++
++Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
++afterEach(() => { document.body.innerHTML = ""; vi.restoreAllMocks(); });
++
++async function mount() {
++  const runtime = resolveAppDemo("sports-season-running");
++  if (!("kind" in runtime)) throw new Error("Sports composition absent");
++  const container = document.createElement("div"); document.body.append(container);
++  const root = createRoot(container);
++  const click = async (text: string) => {
++    const button = [...container.querySelectorAll("button")].find(item => item.textContent?.trim() === text);
++    expect(button, text).toBeDefined();
++    expect(button!.disabled, text + " enabled").toBe(false);
++    await act(async () => button!.click());
++  };
++  const radio = async (value: string) => {
++    const input = container.querySelector<HTMLInputElement>(`input[type="radio"][value="${value}"]`);
++    expect(input).not.toBeNull();
++    await act(async () => input!.click());
++  };
++  await act(async () => root.render(<MemoryRouter initialEntries={["/?demo=sports-season-running"]}><DemoApp runtime={runtime} /></MemoryRouter>));
++  return { runtime, container, click, radio, close: () => act(async () => root.unmount()) };
++}
++
++it("BUILD 02 visible primary path: recognized customer, counterfactual, required data, optional skip, unchanged badge and shared CRM", async () => {
++  const { runtime, container, click, radio, close } = await mount();
++  const provider = runtime.provider;
++  const execute = vi.spyOn(provider, "executeAction");
++  try {
++    expect(container.textContent).toContain("¿Con quién quieres probar la demo?");
++    expect(container.textContent).toContain("Vela");
++    expect(container.textContent).toContain("Vóley playa");
++    await click("Leer QR de inscripción");
++    await click("Elegir a Lea Martín");
++    expect(container.textContent).toContain("Cliente reconocido");
++    expect(container.textContent).toContain("194 puntos potenciales");
++    expect(container.textContent).toContain("no es saldo disponible");
++    expect(container.querySelector('input[type="text"]')).toBeNull();
++    expect(container.textContent).toContain("No participar, pero quiero recibir información");
++    await click("Participar");
++    expect(container.textContent).toContain("Equipamiento para Carrera");
++    expect(container.textContent).toContain("Datos necesarios para inscribirse");
++    await click("Confirmar inscripción");
++    expect(container.querySelector('[role="alert"]')?.textContent).toContain("Elige Social o Bienestar");
++    await radio("wellness");
++    await click("Confirmar inscripción");
++    expect(container.textContent).toContain("Información adicional voluntaria");
++    await click("Compartir información y obtener la guía");
++    expect(container.querySelector('[role="alert"]')?.textContent).toContain("Selecciona al menos una respuesta");
++    await click("Continuar sin aportar información");
++    expect((await provider.getSnapshot()).userPlane?.incentive).toBeUndefined();
++    await click("Simular check-in");
++    await radio("medio");
++    await click("Registrar esfuerzo");
++    expect(container.textContent).toContain("Primeros kilómetros");
++    expect(container.textContent).toContain("194 puntos potenciales");
++    const final = await provider.getSnapshot();
++    const actions = execute.mock.calls.length;
++    await click("Conocer Club Brisa");
++    await click("Marketing / CRM");
++    expect(container.textContent).toContain("Cliente conocido");
++    expect(container.textContent).toContain("Externo · no pertenece al club");
++    expect(container.textContent).toContain("participant-self-report");
++    expect(await provider.getSnapshot()).toEqual(final);
++    expect(execute).toHaveBeenCalledTimes(actions);
++    await click("Reiniciar demo");
++    expect(container.textContent).toContain("¿Con quién quieres probar la demo?");
++    expect(container.textContent).not.toContain("194 puntos potenciales");
++    expect((await provider.getSnapshot()).userPlane?.person).toBeUndefined();
++  } finally { await close(); }
++});
++
++it("BUILD 02 visible member contrast and information-only branch produce declared interests without a registration", async () => {
++  const { runtime, container, click, close } = await mount();
++  try {
++    await click("Elegir a Diego Vidal");
++    expect(container.textContent).toContain("860 puntos · nivel Activo");
++    expect(container.querySelector('.sports-counterfactual')).toBeNull();
++    await click("No participar, pero quiero recibir información");
++    await click("Registrar intereses");
++    expect(container.querySelector('[role="alert"]')?.textContent).toContain("Elige al menos un interés");
++    const checkbox = container.querySelector<HTMLInputElement>('input[type="checkbox"]');
++    await act(async () => checkbox!.click());
++    await click("Registrar intereses");
++    expect(container.textContent).toContain("Interés declarado registrado");
++    expect(container.textContent).toContain("No se envían comunicaciones");
++    const snapshot = await runtime.provider.getSnapshot();
++    expect(snapshot.userPlane?.declaredInterests?.values).toEqual(["running"]);
++    expect(snapshot.registration).toBeUndefined();
++    expect(snapshot.evidence).toEqual([]);
++    expect(snapshot.badge).toBeUndefined();
++    expect(snapshot.userPlane?.person?.program?.points).toBe(860);
++    await click("Elegir a Lea Martín");
++    const changed = await runtime.provider.getSnapshot();
++    expect(changed.userPlane?.intention).toBeUndefined();
++    expect(changed.userPlane?.declaredInterests).toBeUndefined();
++    expect(container.textContent).not.toContain("Interés declarado registrado");
++  } finally { await close(); }
++});

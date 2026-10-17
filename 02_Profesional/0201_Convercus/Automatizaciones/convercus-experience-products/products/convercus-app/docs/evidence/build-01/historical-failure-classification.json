@@ -1,0 +1,257 @@
+{
+  "fullSuiteExitCode": 1,
+  "passed": 112,
+  "failed": 18,
+  "skipped": 0,
+  "failures": [
+    {
+      "harness": "src/demo-factory/account-sourced-guest-h28.test.ts",
+      "test": "H28 — Account-Sourced Guest Presentation derives account-only sessionLabel from member.name independently of subject presentation and all factual inputs",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/activity-attribution-reduction-h37.test.ts",
+      "test": "H37 current App: reduce unsupported Activity attribution without new relations or factual changes",
+      "failure": "AssertionError: src/app/App.tsx: expected 'c74f98087ba188cea1e11499448ed4040fd78…' to be 'cde3b490f05d42bf11abff185f09b9be5e882…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/app/App.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/composition-boundary-h21.test.ts",
+      "test": "H21 frozen-baseline falsification experiment records the first material falsifier and stops at B's initial read-model boundary",
+      "failure": "AssertionError: Frozen file: products/convercus-app/prototype/src/main.tsx: expected '1f07f3e51bdcda2d405ae248343c29e9b3827…' to be 'cb88ce48d25e4dfe894e0483efbdd495b77e2…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/main.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/effective-composition-navigation-h39.test.tsx",
+      "test": "H39 STOP gate preserves every received material file and existing H37/H38 assertions",
+      "failure": "AssertionError: products/convercus-app/prototype/src/app/App.tsx: expected 'c74f98087ba188cea1e11499448ed4040fd78…' to be 'cde3b490f05d42bf11abff185f09b9be5e882…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/app/App.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/experience-sourced-guest-name-h35.test.ts",
+      "test": "H35 historical S35 replay: Experience.name supplies the GuestPerspective name across A/B and independent presentation perturbations",
+      "failure": "AssertionError: products/convercus-app/prototype/src/app/App.tsx: expected 'c74f98087ba188cea1e11499448ed4040fd78…' to be 'cde3b490f05d42bf11abff185f09b9be5e882…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/app/App.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/experience-stable-selection-h22.test.ts",
+      "test": "H22 — Experience-Stable Behavior Selection (local experiment) checks frozen inputs, positive/negative controls and both selection boundaries; stops on first falsifier",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/explicit-introductory-framing-h32.test.ts",
+      "test": "H32 historical S32 App DOM replay: independent brand and explicit static intro preserve cumulative facts and presentation authorities",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/explicit-subject-representation-h27.test.ts",
+      "test": "H27 — Explicit Situated Subject Representation keeps declared subject labels independent of account, facts, session, evaluation and Activity",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/historical-replay-portability-h38.test.ts",
+      "test": "H38 inherited product, historical evidence, routing, config and all other sources remain byte-identical",
+      "failure": "AssertionError: products/convercus-app/prototype/src/app/App.tsx: expected 'c74f98087ba188cea1e11499448ed4040fd78…' to be 'cde3b490f05d42bf11abff185f09b9be5e882…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/app/App.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/operational-session-subject-h34.test.ts",
+      "test": "H34 historical S34 replay: existing session subject reference alone represents operational session across A/B and independent presentation perturbations",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/contracts.ts: expected '02a27b7da364b8468b66b472d156b802a8981…' to be '60a58bdbee08ed21760bda8805b4b23376440…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/contracts.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/operational-subject-status-h29.test.ts",
+      "test": "H29 — Operational Subject Status Provenance represents only existing present state, independently of account, subject labels, Activity and Evidence",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/operational-supervision-subject-h33.test.ts",
+      "test": "H33 historical S33 App replay: operational subject references alone identify supervision subjects across A/B and independent presentation perturbations",
+      "failure": "AssertionError: products/convercus-app/prototype/src/main.tsx: expected '1f07f3e51bdcda2d405ae248343c29e9b3827…' to be 'cb88ce48d25e4dfe894e0483efbdd495b77e2…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/main.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/pre-delta-position-h30.test.ts",
+      "test": "H30 pre-delta: records and compares all six operational positions in A/B",
+      "failure": "AssertionError: products/convercus-app/prototype/src/main.tsx: expected '1f07f3e51bdcda2d405ae248343c29e9b3827…' to be 'cb88ce48d25e4dfe894e0483efbdd495b77e2…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/main.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/script-bound-activity-h25.test.ts",
+      "test": "H25 — Script-Bound Situated Activity Representation separates declaration, accepted facts, optional representation and evaluation on the live shared provider",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/script-bound-journey-h30.test.ts",
+      "test": "H30 current-live: script-bound situated narrative preserves facts and accumulated H25–H29 behavior",
+      "failure": "AssertionError: products/convercus-app/prototype/src/main.tsx: expected '1f07f3e51bdcda2d405ae248343c29e9b3827…' to be 'cb88ce48d25e4dfe894e0483efbdd495b77e2…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/main.tsx",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/situated-activity-provenance-h24.test.ts",
+      "test": "H24 — Situated Activity Representation Provenance records the existing-source falsifier without changing runtime or inventing a representation contract",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/situated-evaluation-context-h23.test.ts",
+      "test": "H23 — Situated Evaluation Context Binding checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    },
+    {
+      "harness": "src/demo-factory/situated-guest-provenance-h26.test.ts",
+      "test": "H26 — Situated Guest Perspective Provenance reproduces the inspected missing subject/narrative relation without changing any application source",
+      "failure": "AssertionError: products/convercus-app/prototype/src/demo-factory/manifests.ts: expected '59cb5f6d1e5f368e9825783e6e2009ddf0ada…' to be '61123b910189581eec6b785c365d9aef9c6ba…' // Object.is equality",
+      "changedSource": "products/convercus-app/prototype/src/demo-factory/manifests.ts",
+      "classification": "current product changed intentionally; archived byte guard no longer describes current sources",
+      "noAssertionChanged": true,
+      "deeperBehaviorInThisTest": "NOT EXECUTED after first hash guard failure"
+    }
+  ],
+  "newTests": [
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime starts with an external person, no member record, no registration or Evidence",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves social/suave, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves social/medio, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves social/intenso, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves wellness/suave, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves wellness/medio, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime preserves wellness/intenso, separate sources and correct individual recognition",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime rejects invalid order, repetition and unknown actions without changing any facts",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime rejects invalid modality and effort atomically, then accepts a correction",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime rejects wrong person, event and registration at every public boundary",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime isolates snapshots and incoming configuration, and resets all mutable state",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime copy, labels and display names cannot change facts, attribution or eligibility",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 situated sports runtime rejects a configuration that fabricates membership or other executable disciplines",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 composition boundary and legacy isolation resolves sports without any member fixture, TES Experience or hotel context",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 composition boundary and legacy isolation fails explicitly for incompatible sports references and capability claims",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/runtime.test.ts",
+      "name": "BUILD 01 composition boundary and legacy isolation sports actions/reset leave R/H/A/B untouched, and their actions leave sports untouched",
+      "status": "passed"
+    },
+    {
+      "file": "src/demo-factory/sports-season/ui.test.tsx",
+      "name": "BUILD 01 actual App: choices, public errors, badge, invitation, same-state CRM and deterministic reset",
+      "status": "passed"
+    }
+  ]
+}

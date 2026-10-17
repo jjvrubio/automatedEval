@@ -1,0 +1,46 @@
+{
+  "status": "MATERIAL PRESSURE",
+  "testFiles": 29,
+  "historicalReplayOrArchiveCoupledHarnessFiles": 15,
+  "definition": "test files referencing test-fixtures; excludes H35 which uses archive-paths solely for preservation audit and executes current runtime",
+  "harnesses": [
+    "src/demo-factory/account-sourced-guest-h28.test.ts",
+    "src/demo-factory/composition-boundary-h21.test.ts",
+    "src/demo-factory/experience-stable-selection-h22.test.ts",
+    "src/demo-factory/explicit-introductory-framing-h32.test.ts",
+    "src/demo-factory/explicit-subject-representation-h27.test.ts",
+    "src/demo-factory/family-adventure-vertical.test.ts",
+    "src/demo-factory/operational-session-subject-h34.test.ts",
+    "src/demo-factory/operational-subject-status-h29.test.ts",
+    "src/demo-factory/operational-supervision-subject-h33.test.ts",
+    "src/demo-factory/pre-delta-position-h30.test.ts",
+    "src/demo-factory/script-bound-activity-h25.test.ts",
+    "src/demo-factory/script-bound-journey-h30.test.ts",
+    "src/demo-factory/situated-activity-provenance-h24.test.ts",
+    "src/demo-factory/situated-evaluation-context-h23.test.ts",
+    "src/demo-factory/situated-guest-provenance-h26.test.ts"
+  ],
+  "archivedFixtureFiles": 119,
+  "historicalRoutingHelpers": 7,
+  "h34RoutedExactPaths": 18,
+  "s35InstrumentedHistoricalHarnesses": 15,
+  "s35BaselineConcurrent": {
+    "passed": 92,
+    "timeouts": 4,
+    "files": 28
+  },
+  "s35BaselineSerial": {
+    "passed": 96,
+    "files": 28
+  },
+  "s35FinalSerial": {
+    "passed": 97,
+    "files": 29
+  },
+  "s36InfrastructureDelta": "NONE",
+  "s36Suite": "NOT EXECUTED",
+  "testFileCountIncludes": [
+    "*.test.ts",
+    "*.test.tsx"
+  ]
+}

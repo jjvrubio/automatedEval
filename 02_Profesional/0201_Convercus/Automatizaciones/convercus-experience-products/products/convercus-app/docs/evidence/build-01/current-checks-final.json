@@ -1,0 +1,47 @@
+{
+  "typecheck-final": {
+    "command": [
+      "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "node_modules/typescript/bin/tsc",
+      "-b",
+      "--pretty",
+      "false"
+    ],
+    "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "exitCode": 0,
+    "log": "typecheck-final.log"
+  },
+  "lint-final": {
+    "command": [
+      "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "node_modules/eslint/bin/eslint.js",
+      "."
+    ],
+    "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "exitCode": 0,
+    "log": "lint-final.log"
+  },
+  "full-suite-final": {
+    "command": [
+      "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "--no-file-parallelism",
+      "--reporter=json",
+      "--outputFile=/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/docs/evidence/build-01/current-full-suite-final.json"
+    ],
+    "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "exitCode": 1,
+    "log": "full-suite-final.log"
+  },
+  "build-final": {
+    "command": [
+      "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+      "node_modules/vite/bin/vite.js",
+      "build"
+    ],
+    "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "exitCode": 0,
+    "log": "build-final.log"
+  }
+}

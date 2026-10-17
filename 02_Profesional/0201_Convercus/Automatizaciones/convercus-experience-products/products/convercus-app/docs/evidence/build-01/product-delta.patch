@@ -1,0 +1,145 @@
+--- pre-build/products/convercus-app/prototype/src/main.tsx
++++ build-01/products/convercus-app/prototype/src/main.tsx
+@@ -2,10 +2,10 @@
+ import { createRoot } from "react-dom/client";
+ import { BrowserRouter } from "react-router-dom";
+ import { registerSW } from "virtual:pwa-register";
+-import { App } from "@/app/App";
++import { DemoApp } from "@/app/App";
+ import {
+   applyResolvedBrand,
+-  resolveDemo,
++  resolveAppDemo,
+   selectDemoId,
+ } from "@/demo-factory/bootstrap";
+ import "@/styles/fonts.css";
+@@ -20,14 +20,20 @@
+ }
+ 
+ try {
+-  const runtime = resolveDemo(selectDemoId(window.location.search));
++  const runtime = resolveAppDemo(selectDemoId(window.location.search));
+   applyResolvedBrand(document.documentElement.style, runtime.brand);
+   document.title = `${runtime.brand.name} — Demo`;
++  if ("kind" in runtime) {
++    const icon = document.createElement("link");
++    icon.rel = "icon";
++    icon.href = runtime.brand.logoUrl;
++    document.head.append(icon);
++  }
+ 
+   createRoot(root).render(
+     <StrictMode>
+       <BrowserRouter>
+-        <App runtime={runtime} />
++        <DemoApp runtime={runtime} />
+       </BrowserRouter>
+     </StrictMode>,
+   );
+--- pre-build/products/convercus-app/prototype/src/app/App.tsx
++++ build-01/products/convercus-app/prototype/src/app/App.tsx
+@@ -8,6 +8,8 @@
+ } from "@/demo-factory/contracts";
+ import { FeedbackState } from "@/ui/FeedbackState";
+ import { Icon, type IconName } from "@/ui/Icon";
++import type { SportsSeasonResolvedRuntime } from "@/demo-factory/sports-season/contracts";
++import { SportsSeasonApp } from "./SportsSeasonApp";
+ 
+ function formatPoints(points: number): string {
+   return new Intl.NumberFormat("es-ES").format(points);
+@@ -515,6 +517,11 @@
+   );
+ }
+ 
++export function DemoApp({ runtime }: { runtime: ResolvedDemoRuntime | SportsSeasonResolvedRuntime }) {
++  if ("kind" in runtime) return <SportsSeasonApp runtime={runtime} />;
++  return <App runtime={runtime} />;
++}
++
+ export function App({ runtime }: { runtime: ResolvedDemoRuntime }) {
+   const location = useLocation();
+   const [snapshot, setSnapshot] = useState<AppSnapshot>();
+--- pre-build/products/convercus-app/prototype/src/demo-factory/contracts.ts
++++ build-01/products/convercus-app/prototype/src/demo-factory/contracts.ts
+@@ -178,6 +178,8 @@
+   fixtureRef: string;
+   scenarioRef?: string;
+   scriptRef?: string;
++  // BUILD 01 local composition selector; not a provider registry or TES relation.
++  sportsSeasonRef?: string;
+   visibleModules: DemoModule[];
+   requestedCapabilities: CapabilityRequest[];
+ }
+--- pre-build/products/convercus-app/prototype/src/demo-factory/manifests.ts
++++ build-01/products/convercus-app/prototype/src/demo-factory/manifests.ts
+@@ -1,4 +1,5 @@
+ import type { DemoManifest } from "./contracts";
++import { sportsSeasonManifest } from "./sports-season/artifacts";
+ 
+ const sharedCapabilities = [
+   { id: "member-profile", label: "Perfil", expectedStatus: "mocked" },
+@@ -61,6 +62,7 @@
+ };
+ 
+ export const demoManifests: Record<string, DemoManifest> = {
++  [sportsSeasonManifest.demoId]: sportsSeasonManifest,
+   [costaManifest.demoId]: costaManifest,
+   [retailManifest.demoId]: retailManifest,
+   [hospitalityManifest.demoId]: hospitalityManifest,
+--- pre-build/products/convercus-app/prototype/src/demo-factory/bootstrap.ts
++++ build-01/products/convercus-app/prototype/src/demo-factory/bootstrap.ts
+@@ -12,6 +12,9 @@
+ } from "./contracts";
+ import { costaFixture, hospitalityFixture, retailFixture } from "./fixtures";
+ import { demoManifests } from "./manifests";
++import { sportsBrand, sportsSeasonScenario } from "./sports-season/artifacts";
++import { SportsSeasonProvider } from "./sports-season/runtime";
++import type { SportsSeasonResolvedRuntime } from "./sports-season/contracts";
+ 
+ const requiredBrandVariables = [
+   "--color-primary",
+@@ -40,7 +43,7 @@
+ 
+ export const defaultDemoCatalogs: DemoCatalogs = {
+   manifests: demoManifests,
+-  brands,
++  brands: { ...brands, "brand:brisa-sport@1": sportsBrand },
+   fixtures: {
+     [retailFixture.id]: retailFixture,
+     [hospitalityFixture.id]: hospitalityFixture,
+@@ -169,6 +172,35 @@
+   return new URLSearchParams(search).get("demo") || "retail-baseline";
+ }
+ 
++// BUILD 01: one explicit local composition, preserving the existing resolver.
++// No invented member, hotel context, Experience reference or general provider API.
++export function resolveAppDemo(
++  demoId: string,
++  catalogs: DemoCatalogs = defaultDemoCatalogs,
++): ResolvedDemoRuntime | SportsSeasonResolvedRuntime {
++  const manifest = catalogs.manifests[demoId];
++  if (!manifest?.sportsSeasonRef) return resolveDemo(demoId, catalogs);
++  if (manifest.schemaVersion !== 1) throw new Error("Versión de composición deportiva incompatible.");
++  const scenario = requiredArtifact(
++    { [sportsSeasonScenario.id]: sportsSeasonScenario }, manifest.sportsSeasonRef, "Sports Scenario", demoId,
++  );
++  if (manifest.scenarioRef !== scenario.id || manifest.fixtureRef !== scenario.fixtureRef || manifest.scriptRef) {
++    throw new Error("Referencias de la composición deportiva incompatibles.");
++  }
++  const brand = requiredArtifact(catalogs.brands, manifest.brandRef, "marca", demoId);
++  validateBrand(brand, demoId);
++  const capabilities: ResolvedCapability[] = manifest.requestedCapabilities.map((request) => {
++    if (!["sports-participation", "sports-crm-view"].includes(request.id) || request.expectedStatus !== "simulated") {
++      throw new Error(`Capability deportiva no resuelta: ${request.id}.`);
++    }
++    return { ...request, providerId: "sports-season-local", status: "simulated", provenance: `${scenario.fixtureRef} · local simulation` };
++  });
++  return {
++    kind: "sports-season", manifest, brand, scenario: structuredClone(scenario),
++    provider: new SportsSeasonProvider(scenario), capabilities,
++  };
++}
++
+ export function applyResolvedBrand(
+   target: Pick<CSSStyleDeclaration, "setProperty">,
+   brand: BrandArtifact,

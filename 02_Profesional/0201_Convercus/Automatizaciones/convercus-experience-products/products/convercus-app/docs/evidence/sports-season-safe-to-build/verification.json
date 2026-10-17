@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-23",
+  "productDelta": "NONE",
+  "hypothesisOpened": false,
+  "s39ArchivedBaselineComparison": {
+    "total": 640,
+    "unchanged": 640,
+    "differences": []
+  },
+  "archivedS39Suite": {
+    "source": "../session-39/full-suite-final-results.json",
+    "passed": 113,
+    "failed": 0,
+    "currentRun": false
+  },
+  "currentSuiteAttempt": {
+    "command": "/Applications/Codex.app/Contents/Resources/cua_node/bin/node node_modules/vitest/vitest.mjs run --no-file-parallelism --reporter=json --outputFile=/tmp/convercus-safe-to-build-suite.json",
+    "workingDirectory": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "nodeVersion": "v24.14.0",
+    "processExitCode": 1,
+    "status": "STARTUP ERROR / NO TESTS EXECUTED",
+    "cause": "ERR_DLOPEN_FAILED: macOS native binding signature Team IDs mismatch (Codex Node / Rolldown)",
+    "log": "suite-attempt.log",
+    "historicalTraceEnvironmentVariablesRemoved": true,
+    "dependencyChanges": false
+  },
+  "appTypecheck": {
+    "command": "/Applications/Codex.app/Contents/Resources/cua_node/bin/node node_modules/typescript/bin/tsc -p tsconfig.app.json --noEmit --incremental --tsBuildInfoFile /tmp/convercus-safe-to-build-app.tsbuildinfo --pretty false",
+    "workingDirectory": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+    "exitCode": 0,
+    "status": "PASS",
+    "log": "app-typecheck.log",
+    "scope": "tsconfig.app.json only; not full npm run typecheck, not build"
+  },
+  "notExecuted": [
+    "lint",
+    "build",
+    "native browser inspection",
+    "human UX acceptance",
+    "new sports runtime execution"
+  ],
+  "preservation": "preservation-check.json"
+}

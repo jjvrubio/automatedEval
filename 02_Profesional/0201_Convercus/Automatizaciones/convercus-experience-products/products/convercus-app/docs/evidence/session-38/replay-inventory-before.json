@@ -1,0 +1,1356 @@
+{
+  "session": 38,
+  "capturedAt": "2026-09-21T16:32:42.947Z",
+  "routes": [
+    {
+      "session": 24,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 9,
+      "map": {
+        "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/mock-adapter.ts",
+        "products/convercus-app/prototype/src/demo-factory/contracts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/contracts.ts",
+        "products/convercus-app/prototype/src/demo-factory/bootstrap.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/bootstrap.ts",
+        "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/costa-artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/composition-boundary-h21.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/experience-stable-selection-h22.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/situated-activity-provenance-h24.test.ts.txt"
+      }
+    },
+    {
+      "session": 26,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 9,
+      "map": {
+        "products/convercus-app/prototype/src/demo-factory/contracts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/contracts.ts",
+        "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/costa-artifacts.ts",
+        "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/mock-adapter.ts",
+        "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/vertical-evaluation.ts",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-activity-provenance-h24.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/script-bound-activity-h25.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-guest-provenance-h26.test.ts.txt"
+      }
+    },
+    {
+      "session": 27,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 3,
+      "map": {
+        "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/mock-adapter.ts",
+        "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/vertical-evaluation.ts",
+        "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/explicit-subject-representation-h27.test.ts.txt"
+      }
+    },
+    {
+      "session": 28,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 8,
+      "map": {
+        "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/family-adventure-vertical.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-activity-provenance-h24.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/script-bound-activity-h25.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-guest-provenance-h26.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/explicit-subject-representation-h27.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/vertical-evaluation.ts",
+        "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/account-sourced-guest-h28.test.ts.txt"
+      }
+    },
+    {
+      "session": 29,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 14,
+      "map": {
+        "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/mock-adapter.ts",
+        "products/convercus-app/prototype/src/demo-factory/contracts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/contracts.ts",
+        "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/vertical-evaluation.ts",
+        "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/costa-artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/account-sourced-guest-h28.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/composition-boundary-h21.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/experience-stable-selection-h22.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/explicit-subject-representation-h27.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/operational-subject-status-h29.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/script-bound-activity-h25.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-activity-provenance-h24.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-guest-provenance-h26.test.ts.txt"
+      }
+    },
+    {
+      "session": 31,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/source-path.ts",
+      "kind": "logical path mapping",
+      "count": 16,
+      "map": {
+        "products/convercus-app/prototype/src/app/App.tsx": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/App.tsx",
+        "products/convercus-app/prototype/src/demo-factory/contracts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/contracts.ts",
+        "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/costa-artifacts.ts",
+        "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/explicit-subject-representation-h27.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/script-bound-activity-h25.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-activity-provenance-h24.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/operational-subject-status-h29.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/experience-stable-selection-h22.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-journey-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/script-bound-journey-h30.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-guest-provenance-h26.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/pre-delta-position-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/pre-delta-position-h30.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/account-sourced-guest-h28.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/composition-boundary-h21.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/family-adventure-vertical.test.ts.txt"
+      }
+    },
+    {
+      "session": 34,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/archive-paths.json",
+      "kind": "historical-read exact path map",
+      "count": 18,
+      "map": {
+        "products/convercus-app/prototype/src/demo/mock-adapter.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/mock-adapter.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/bootstrap.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/bootstrap.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/vertical-evaluation.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/account-sourced-guest-h28.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/composition-boundary-h21.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/experience-stable-selection-h22.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-introductory-framing-h32.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-subject-representation-h27.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/family-adventure-vertical.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-session-subject-h34.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-subject-status-h29.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-supervision-subject-h33.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/pre-delta-position-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/pre-delta-position-h30.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-activity-h25.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/script-bound-journey-h30.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-journey-h30.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-activity-provenance-h24.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-evaluation-context-h23.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-guest-provenance-h26.test.ts.txt"
+      }
+    },
+    {
+      "session": 36,
+      "file": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/archive-paths.json",
+      "kind": "historical-read exact path map",
+      "count": 7,
+      "map": {
+        "products/convercus-app/prototype/src/demo-factory/artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/explicit-introductory-framing-h32.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-supervision-subject-h33.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-session-subject-h34.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/experience-sourced-guest-name-h35.test.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/experience-sourced-guest-name-h35.test.ts.txt",
+        "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts.txt"
+      }
+    }
+  ],
+  "routeCount": 84,
+  "pathMappingHelpers": 6,
+  "historicalReaders": 2,
+  "testFileCount": 30,
+  "fixtureFileCount": 130,
+  "archiveByteCopies": 65,
+  "archivedRuntimeModules": 47,
+  "fixtureFiles": [
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h21/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/cross-subject-evidence-admissibility.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/evidence-sufficiency.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/family-adventure-vertical.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/aurora-stay-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/bootstrap.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/composition-boundary-h21.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/costa-clara-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/experience-stable-selection-h22.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/fixtures.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/manifests.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/aurora-stay-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/costa-clara-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/cross-subject-evidence-admissibility.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/evidence-sufficiency.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/situated-guest-provenance-h26.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/cross-subject-evidence-admissibility.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/evidence-sufficiency.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/account-sourced-guest-h28.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/cross-subject-evidence-admissibility.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/evidence-sufficiency.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/family-adventure-vertical.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/situated-guest-provenance-h26.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/account-sourced-guest-h28.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/aurora-stay-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/composition-boundary-h21.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/costa-clara-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/cross-subject-evidence-admissibility.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/evidence-sufficiency.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/experience-stable-selection-h22.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/operational-subject-status-h29.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/situated-guest-provenance-h26.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/account-sourced-guest-h28.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/App.tsx",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/aurora-stay-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/composition-boundary-h21.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/costa-clara-logo.svg",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/experience-stable-selection-h22.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/family-adventure-vertical.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/operational-subject-status-h29.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/pre-delta-position-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/script-bound-journey-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/situated-guest-provenance-h26.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/source-path.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h32/App.tsx",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h32/explicit-introductory-framing-h32.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h33/App.tsx",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h33/operational-supervision-subject-h33.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/account-sourced-guest-h28.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/archive-paths.json",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/bootstrap.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/bootstrap.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/composition-boundary-h21.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/experience-stable-selection-h22.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-introductory-framing-h32.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/explicit-subject-representation-h27.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/family-adventure-vertical.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/mock-adapter.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/mock-adapter.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-session-subject-h34.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-subject-status-h29.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/operational-supervision-subject-h33.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/pre-delta-position-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-activity-h25.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/script-bound-journey-h30.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-activity-provenance-h24.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-evaluation-context-h23.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/situated-guest-provenance-h26.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/vertical-evaluation.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/vertical-evaluation.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/archive-paths.json",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/experience-sourced-guest-name-h35.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/explicit-introductory-framing-h32.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-session-subject-h34.test.ts.txt",
+    "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/operational-supervision-subject-h33.test.ts.txt"
+  ],
+  "harnesses": [
+    {
+      "path": "products/convercus-app/prototype/src/config/app-config.test.ts",
+      "sha256": "816d04c217b690a3ebaa7f897004edf17d42c5eb43d8b8a2f6c513ba435a1d51",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/config/brand.test.ts",
+      "sha256": "864183ac5b4dbc08aae81e49231d2dd632e05a0563ca29b1b23589e627a10d9b",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts",
+      "sha256": "7e346785b9bb70b1f29fa9a2b514693da161e580faad1a78b3d954febdc2eb14",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h27/source-path",
+        "./test-fixtures/h28/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h28/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h29/artifacts"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h29/mock-adapter"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H28_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/activity-attribution-reduction-h37.test.ts",
+      "sha256": "06c6a0ef2771ecfd20bde5135942f56503f342a33ce2b052cee217f9723455cb",
+      "historical": true,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [
+        "H37_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/app-smoke.test.tsx",
+      "sha256": "28328650372f65c38ce1d85317f28de65489106831acf0825eb33e95342603ab",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/bootstrap.test.ts",
+      "sha256": "078a609d039bf35746b82f0e8a3fa89478a9294a9f4abf6a1360b2fe5a0c8e6f",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts",
+      "sha256": "a6a705ffb2c23260a88ba26f5e8cf479043290819b6b79f40866509318243624",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h24/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h21/mock-adapter"
+        },
+        {
+          "module": "@/demo-factory/vertical-evaluation",
+          "replacement": "./test-fixtures/h22/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h24/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H21_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/cross-subject-evidence-admissibility.test.ts",
+      "sha256": "b131f33dfe0e64e227e4290fb26a6d1f7ebc71ae1431e8d08bd80eecd499ae3f",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/derived-claim-contextual-validity.test.ts",
+      "sha256": "4229668c57b69b48e5861914a67fe28476ab1ca0c9eb9a4fb980f27704fca1e5",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/evidence-relevance.test.ts",
+      "sha256": "9523f693757cb94d171428b83acc8d112e636a41adcf95141f3c1493cfa41d87",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/evidence-sufficiency.test.ts",
+      "sha256": "8433fb89f73cc0921cabf44755f67f3468a168c2cc31c141765934089c9b8080",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/experience-sourced-guest-name-h35.test.ts",
+      "sha256": "60b75d402e14a8f9ec134ea85c4f773fb51cfd1ac7a679d9ca07c1420c061486",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h36/historical-read",
+        "./test-fixtures/h34/archive-paths.json"
+      ],
+      "mocks": [
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h36/artifacts"
+        }
+      ],
+      "recordingVariables": [
+        "H35_REPLAY_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts",
+      "sha256": "269df51dbbe32b46ac000cc84913b1a71ce8f6d38c8d6c4c7414e73b29746675",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h24/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h22/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h22/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h24/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H22_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/explicit-introductory-framing-h32.test.ts",
+      "sha256": "0a4c8be4fbb9918640606d257c8c0018b8c263d86d14382bdbe4085a909a9620",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h31/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h34/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h34/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h36/artifacts"
+        }
+      ],
+      "recordingVariables": [
+        "H32_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts",
+      "sha256": "9034e0b2bd46f603fe22450c0c104f0957162d009bb4add1d92554eb1a6e27f9",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h28/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h26/source-path",
+        "./test-fixtures/h27/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h27/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h27/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h29/artifacts"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H27_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts",
+      "sha256": "edd68cded71b0bc2f98a688c8cde685c92687ad439df3ea479c959b7a0951399",
+      "historical": true,
+      "routeHelpers": [],
+      "mocks": [
+        {
+          "module": "@/app/App",
+          "replacement": "./test-fixtures/h31/App"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h31/artifacts"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h28/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h34/mock-adapter"
+        }
+      ],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/operational-session-subject-h34.test.ts",
+      "sha256": "a52cb487917c2fb1468210a323eac163cbfc14a6e1f886be6721c02a2b4a9df2",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h34/historical-read"
+      ],
+      "mocks": [
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h34/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h34/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h36/artifacts"
+        }
+      ],
+      "recordingVariables": [
+        "H34_REPLAY_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts",
+      "sha256": "4224af66c7292689993ef284601d1fd38ce5df60aab61431c7c496965e21b06d",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h28/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h29/artifacts"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h29/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h29/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H29_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/operational-supervision-subject-h33.test.ts",
+      "sha256": "b84ec346528b5ae02edc252cf5027f21fc2845ae98a5de97a0d3d7ed361acfdc",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h34/historical-read"
+      ],
+      "mocks": [
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h34/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h34/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h36/artifacts"
+        }
+      ],
+      "recordingVariables": [
+        "H33_REPLAY_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/pre-delta-position-h30.test.ts",
+      "sha256": "7329b468b5a3947f46ef7e4cea5b35ffe5d07cb7aff1a3ddb4877ce65a194626",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h29/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h29/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h29/vertical-evaluation"
+        },
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h29/artifacts"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H30_MATRIX_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/presenter-action.test.tsx",
+      "sha256": "58088d859b036dff3bb26de9408a5a04b652e870f6933599e28ef0213926353d",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/projection.test.ts",
+      "sha256": "11cba6631f5af922d9dbb410e8872ba9ceac51777be51671e49e1d7559fe565a",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts",
+      "sha256": "78fbb897671be88051f77fbcbcfbf66eb09a4e83d5d284876353914bfb08a4c0",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h28/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h24/source-path",
+        "./test-fixtures/h26/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h26/artifacts"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h26/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h26/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H25_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/script-bound-journey-h30.test.ts",
+      "sha256": "9656ca05be21ec64a5c5b3fcae87da55209f37be01725c0abbf969e418358334",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h29/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h31/artifacts"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h34/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h34/vertical-evaluation"
+        }
+      ],
+      "recordingVariables": [
+        "H30_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts",
+      "sha256": "86f71570827e4a4717d466b8d47469ef299ba4bc2b4364f238e7392deb17d4c8",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h28/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h24/source-path",
+        "./test-fixtures/h26/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h24/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h24/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h26/vertical-evaluation"
+        }
+      ],
+      "recordingVariables": [
+        "H24_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts",
+      "sha256": "970f3aca484c547843422a3e7570baa90b05bece02400c5ecf0172a125ab822f",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h28/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h24/source-path",
+        "./test-fixtures/h26/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h24/bootstrap"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h24/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h26/vertical-evaluation"
+        }
+      ],
+      "recordingVariables": [
+        "H23_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts",
+      "sha256": "a8b502016c8b805c9b9103b73069255ee84fe13ff4be5ee32fbc76d47e4a995a",
+      "historical": true,
+      "routeHelpers": [
+        "./test-fixtures/h31/source-path",
+        "./test-fixtures/h29/source-path",
+        "./test-fixtures/h28/source-path",
+        "./test-fixtures/h34/historical-read",
+        "./test-fixtures/h26/source-path"
+      ],
+      "mocks": [
+        {
+          "module": "./artifacts",
+          "replacement": "./test-fixtures/h26/artifacts"
+        },
+        {
+          "module": "@/demo/mock-adapter",
+          "replacement": "./test-fixtures/h26/mock-adapter"
+        },
+        {
+          "module": "./vertical-evaluation",
+          "replacement": "./test-fixtures/h26/vertical-evaluation"
+        },
+        {
+          "module": "./bootstrap",
+          "replacement": "./test-fixtures/h34/bootstrap"
+        }
+      ],
+      "recordingVariables": [
+        "H26_RECORD_PATH"
+      ],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo/mock-adapter.test.ts",
+      "sha256": "6370a0c6a79df0b2fb9e463b6f213eb9144eac58d1cd45e147ce254c9427099d",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/domain/demo-package.test.ts",
+      "sha256": "def9ebca3a0e380a2e46ad092b8b03cbcb48b158729c85954a2b24791faf9fdb",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    },
+    {
+      "path": "products/convercus-app/prototype/src/domain/routing.test.ts",
+      "sha256": "740dd36bab697b2ec0a14550df3a18c7e18edc5f73e69b6db587b461ddd4760b",
+      "historical": false,
+      "routeHelpers": [],
+      "mocks": [],
+      "recordingVariables": [],
+      "portability": "relative to prototype cwd; no universally relocatable/package guarantee"
+    }
+  ],
+  "relocatedImports": [
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h21/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/contracts.ts",
+      "imports": [
+        "../../contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/cross-subject-evidence-admissibility.ts",
+      "imports": [
+        "../../cross-subject-evidence-admissibility"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/evidence-sufficiency.ts",
+      "imports": [
+        "../../evidence-sufficiency"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/vertical-evaluation.ts",
+      "imports": [
+        "./cross-subject-evidence-admissibility",
+        "./evidence-sufficiency",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/artifacts.ts",
+      "imports": [
+        "./costa-artifacts",
+        "./aurora-stay-logo.svg?url",
+        "@/config/brand",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/bootstrap.ts",
+      "imports": [
+        "@/demo/mock-adapter",
+        "./artifacts",
+        "./contracts",
+        "./fixtures",
+        "./manifests"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/contracts.ts",
+      "imports": [
+        "@/ui/Icon",
+        "@/domain/contracts",
+        "@/domain/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/costa-artifacts.ts",
+      "imports": [
+        "./costa-clara-logo.svg?url",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/fixtures.ts",
+      "imports": [
+        "../../fixtures"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/manifests.ts",
+      "imports": [
+        "../../manifests"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h24/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/artifacts.ts",
+      "imports": [
+        "./costa-artifacts",
+        "./aurora-stay-logo.svg?url",
+        "@/config/brand",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/contracts.ts",
+      "imports": [
+        "@/ui/Icon",
+        "@/domain/contracts",
+        "@/domain/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/costa-artifacts.ts",
+      "imports": [
+        "./costa-clara-logo.svg?url",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/cross-subject-evidence-admissibility.ts",
+      "imports": [
+        "../../cross-subject-evidence-admissibility"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/evidence-sufficiency.ts",
+      "imports": [
+        "../../evidence-sufficiency"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h26/vertical-evaluation.ts",
+      "imports": [
+        "./cross-subject-evidence-admissibility",
+        "./evidence-sufficiency",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/contracts.ts",
+      "imports": [
+        "../../contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/cross-subject-evidence-admissibility.ts",
+      "imports": [
+        "../../cross-subject-evidence-admissibility"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/evidence-sufficiency.ts",
+      "imports": [
+        "../../evidence-sufficiency"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h27/vertical-evaluation.ts",
+      "imports": [
+        "./cross-subject-evidence-admissibility",
+        "./evidence-sufficiency",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/contracts.ts",
+      "imports": [
+        "../../contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/cross-subject-evidence-admissibility.ts",
+      "imports": [
+        "../../cross-subject-evidence-admissibility"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/evidence-sufficiency.ts",
+      "imports": [
+        "../../evidence-sufficiency"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h28/vertical-evaluation.ts",
+      "imports": [
+        "./cross-subject-evidence-admissibility",
+        "./evidence-sufficiency",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/artifacts.ts",
+      "imports": [
+        "./costa-artifacts",
+        "./aurora-stay-logo.svg?url",
+        "@/config/brand",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/contracts.ts",
+      "imports": [
+        "@/ui/Icon",
+        "@/domain/contracts",
+        "@/domain/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/costa-artifacts.ts",
+      "imports": [
+        "./costa-clara-logo.svg?url",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/cross-subject-evidence-admissibility.ts",
+      "imports": [
+        "../../cross-subject-evidence-admissibility"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/evidence-sufficiency.ts",
+      "imports": [
+        "../../evidence-sufficiency"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h29/vertical-evaluation.ts",
+      "imports": [
+        "./cross-subject-evidence-admissibility",
+        "./evidence-sufficiency",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/App.tsx",
+      "imports": [
+        "react",
+        "react-router-dom",
+        "@/demo-factory/contracts",
+        "@/ui/FeedbackState",
+        "@/ui/Icon"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/artifacts.ts",
+      "imports": [
+        "./costa-artifacts",
+        "./aurora-stay-logo.svg?url",
+        "@/config/brand",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/contracts.ts",
+      "imports": [
+        "@/ui/Icon",
+        "@/domain/contracts",
+        "@/domain/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h31/costa-artifacts.ts",
+      "imports": [
+        "./costa-clara-logo.svg?url",
+        "./contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h32/App.tsx",
+      "imports": [
+        "react",
+        "react-router-dom",
+        "@/demo-factory/contracts",
+        "@/ui/FeedbackState",
+        "@/ui/Icon"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h33/App.tsx",
+      "imports": [
+        "react",
+        "react-router-dom",
+        "@/demo-factory/contracts",
+        "@/ui/FeedbackState",
+        "@/ui/Icon"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/bootstrap.ts",
+      "imports": [
+        "@/demo/mock-adapter",
+        "@/demo-factory/artifacts",
+        "@/demo-factory/contracts",
+        "@/demo-factory/fixtures",
+        "@/demo-factory/manifests"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/historical-read.ts",
+      "imports": [
+        "../h36/historical-read",
+        "node:path",
+        "./archive-paths.json"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/mock-adapter.ts",
+      "imports": [
+        "@/demo-factory/contracts",
+        "@/demo-factory/vertical-evaluation"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h34/vertical-evaluation.ts",
+      "imports": [
+        "@/demo-factory/cross-subject-evidence-admissibility",
+        "@/demo-factory/evidence-sufficiency",
+        "@/demo-factory/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/artifacts.ts",
+      "imports": [
+        "./costa-artifacts",
+        "@/demo-factory/aurora-stay-logo.svg?url",
+        "@/config/brand",
+        "@/demo-factory/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/costa-artifacts.ts",
+      "imports": [
+        "@/demo-factory/costa-clara-logo.svg?url",
+        "@/demo-factory/contracts"
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/test-fixtures/h36/historical-read.ts",
+      "imports": [
+        "node:fs",
+        "node:path",
+        "./archive-paths.json"
+      ]
+    }
+  ],
+  "baselineManifests": [
+    "products/convercus-app/docs/evidence/session-22/baseline.json",
+    "products/convercus-app/docs/evidence/session-23/baseline.json",
+    "products/convercus-app/docs/evidence/session-24/baseline.json",
+    "products/convercus-app/docs/evidence/session-25/baseline.json",
+    "products/convercus-app/docs/evidence/session-26/baseline.json",
+    "products/convercus-app/docs/evidence/session-27/baseline.json",
+    "products/convercus-app/docs/evidence/session-28/baseline.json",
+    "products/convercus-app/docs/evidence/session-29/baseline.json",
+    "products/convercus-app/docs/evidence/session-30/baseline.json",
+    "products/convercus-app/docs/evidence/session-31/baseline.json",
+    "products/convercus-app/docs/evidence/session-32/baseline.json",
+    "products/convercus-app/docs/evidence/session-33/baseline.json",
+    "products/convercus-app/docs/evidence/session-34/baseline.json",
+    "products/convercus-app/docs/evidence/session-35/baseline.json",
+    "products/convercus-app/docs/evidence/session-36/baseline.json",
+    "products/convercus-app/docs/evidence/session-37/baseline.json",
+    "products/convercus-app/docs/session-21-frozen-baseline.json"
+  ],
+  "preservationChecks": [
+    "products/convercus-app/docs/evidence/session-30/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-31/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-32/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-32/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-33/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-33/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-34/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-34/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-35/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-35/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-36/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-36/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-37/preservation-check.json",
+    "products/convercus-app/docs/evidence/session-37/verification-summary.json",
+    "products/convercus-app/docs/evidence/session-37/verify-session.mjs"
+  ],
+  "incidentalObserved": [
+    {
+      "path": ".DS_Store",
+      "sha256": "f6aaab5a8952f155e509eff5566a938fc6f187ddc158456b39b534bcf1b15c52",
+      "byteLength": 6148,
+      "headerHex": "00000001427564310000100000000800"
+    },
+    {
+      "path": "products/.DS_Store",
+      "sha256": "29e270117a092a34e99da71180928d62ef042b4c86f190056140d9d41fb929dc",
+      "byteLength": 6148,
+      "headerHex": "00000001427564310000100000000800"
+    },
+    {
+      "path": "products/convercus-app/.DS_Store",
+      "sha256": "68cdd66aaa73392b3ab29febec1b81cc4e4dabde5aca8daad14783f2090ea1b0",
+      "byteLength": 6148,
+      "headerHex": "00000001427564310000100000000800"
+    },
+    {
+      "path": "products/convercus-app/prototype/.DS_Store",
+      "sha256": "59aa51e8e434b3da2c4600aa34dc721762021731de4f2335dbf8b645e9c14e30",
+      "byteLength": 6148,
+      "headerHex": "00000001427564310000100000000800"
+    }
+  ],
+  "otherIncidentalCandidatesFound": [],
+  "nativeToolchain": {
+    "node": "v24.14.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+    "declaredEngine": ">=24",
+    "delta": "NONE"
+  }
+}

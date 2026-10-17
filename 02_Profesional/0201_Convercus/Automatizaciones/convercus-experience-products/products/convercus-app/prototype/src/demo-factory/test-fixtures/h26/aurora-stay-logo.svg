@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" role="img" aria-labelledby="title">
+  <title id="title">Aurora Stay</title>
+  <rect width="56" height="56" rx="16" fill="#173F3A"/>
+  <path d="M14 36 28 13l14 23h-8l-6-11-6 11h-8Z" fill="#F6C177"/>
+  <text x="70" y="36" fill="#173F3A" font-family="system-ui, sans-serif" font-size="27" font-weight="700">Aurora Stay</text>
+</svg>

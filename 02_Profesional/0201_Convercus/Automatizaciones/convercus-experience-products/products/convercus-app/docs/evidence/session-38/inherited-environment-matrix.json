@@ -1,0 +1,126 @@
+{
+  "session": 38,
+  "recordedAt": "2026-09-21T16:47:25.161Z",
+  "scope": "All 30 inherited test files in both metadata conditions; new H38 tests verified separately in actual tree",
+  "results": [
+    {
+      "label": "absent",
+      "passed": 98,
+      "failed": 0,
+      "pending": 0,
+      "files": 30
+    },
+    {
+      "label": "present",
+      "passed": 98,
+      "failed": 0,
+      "pending": 0,
+      "files": 30
+    }
+  ],
+  "comparedTraceVariables": [
+    "H28_RECORD_PATH",
+    "H37_RECORD_PATH",
+    "H21_RECORD_PATH",
+    "H35_REPLAY_RECORD_PATH",
+    "H22_RECORD_PATH",
+    "H32_RECORD_PATH",
+    "H27_RECORD_PATH",
+    "H34_REPLAY_RECORD_PATH",
+    "H29_RECORD_PATH",
+    "H33_REPLAY_RECORD_PATH",
+    "H30_MATRIX_PATH",
+    "H25_RECORD_PATH",
+    "H30_RECORD_PATH",
+    "H24_RECORD_PATH",
+    "H23_RECORD_PATH",
+    "H26_RECORD_PATH"
+  ],
+  "traceEquality": "Exact deep equality after removing only top-level recordedAt, or capturedAt for H30_MATRIX_PATH",
+  "observedDifferences": [
+    {
+      "path": "H28_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:22.197Z",
+      "present": "2026-09-21T16:46:30.853Z"
+    },
+    {
+      "path": "H37_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:22.882Z",
+      "present": "2026-09-21T16:46:31.287Z"
+    },
+    {
+      "path": "H21_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:25.519Z",
+      "present": "2026-09-21T16:46:33.652Z"
+    },
+    {
+      "path": "H35_REPLAY_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:23.812Z",
+      "present": "2026-09-21T16:46:32.637Z"
+    },
+    {
+      "path": "H22_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:25.035Z",
+      "present": "2026-09-21T16:46:34.116Z"
+    },
+    {
+      "path": "H32_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:23.062Z",
+      "present": "2026-09-21T16:46:32.056Z"
+    },
+    {
+      "path": "H27_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:24.388Z",
+      "present": "2026-09-21T16:46:32.548Z"
+    },
+    {
+      "path": "H34_REPLAY_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:23.267Z",
+      "present": "2026-09-21T16:46:32.151Z"
+    },
+    {
+      "path": "H29_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:23.931Z",
+      "present": "2026-09-21T16:46:30.839Z"
+    },
+    {
+      "path": "H33_REPLAY_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:23.186Z",
+      "present": "2026-09-21T16:46:32.071Z"
+    },
+    {
+      "path": "H30_MATRIX_PATH/capturedAt",
+      "absent": "2026-09-21T16:46:24.542Z",
+      "present": "2026-09-21T16:46:33.353Z"
+    },
+    {
+      "path": "H25_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:24.390Z",
+      "present": "2026-09-21T16:46:33.372Z"
+    },
+    {
+      "path": "H30_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:20.248Z",
+      "present": "2026-09-21T16:46:28.834Z"
+    },
+    {
+      "path": "H24_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:24.532Z",
+      "present": "2026-09-21T16:46:33.700Z"
+    },
+    {
+      "path": "H23_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:25.048Z",
+      "present": "2026-09-21T16:46:33.676Z"
+    },
+    {
+      "path": "H26_RECORD_PATH/recordedAt",
+      "absent": "2026-09-21T16:46:25.060Z",
+      "present": "2026-09-21T16:46:33.340Z"
+    }
+  ],
+  "initialComparatorObservation": "Initial strict comparison removed recordedAt only and correctly reported H30 capturedAt; full structural diff found only 16 capture timestamps. No material field, historical assertion or stored trace was changed.",
+  "environmentQualification": "Same macOS arm64, official Node and installed dependencies; brand asset origin held fixed with fixture-only explicit Vite fs.allow entry",
+  "productDelta": "NONE",
+  "historicalExpectedDelta": "NONE"
+}

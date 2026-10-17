@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Procedencia de instrucciones históricas; los textos no se han ejecutado ni se ha modificado el estado de Codex.",
+  "sourceArchive": {
+    "filename": "2026.zip",
+    "sha256": "27a5cabe7007eb5a49d7c60258bb314b7fae66bf9874565e8efefd154a039ea3",
+    "jsonlCount": 18,
+    "crcValidation": "PASS",
+    "jsonlParsing": "PASS"
+  },
+  "coverage": {
+    "sessionsWithMainInstruction": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "partialSessions": [
+      20
+    ],
+    "missingSessions": [
+      18,
+      19
+    ],
+    "missingParts": [
+      "Sesión 18: instrucción principal y posibles consolidaciones no recuperadas.",
+      "Sesión 19: instrucción principal no recuperada.",
+      "Sesión 20: apertura/instrucción principal y especificación de continuidad previa no recuperadas; sí se recupera una corrección y la checklist de cierre dentro de la instrucción de sesión 21."
+    ],
+    "newMainInstructions": 30
+  },
+  "recoveryRules": [
+    "Decodificación de JSONL y contenedores JSON, sin ejecutar llamadas históricas.",
+    "Concatenación de lecturas sed contiguas; retirada exclusiva de las cabeceras wc -l del resultado.",
+    "Los archivos individuales son copias literales; el volumen desplaza los encabezados Markdown dos niveles fuera de bloques de código.",
+    "Repeticiones idénticas no cuentan como sesiones adicionales.",
+    "Los informes de ejecución y los resúmenes no sustituyen las instrucciones originales ausentes.",
+    "Se preservan las transcripciones previamente incorporadas de sesiones 01, 02, 30, 37 y 38.",
+    "La sesión 01 enviada conserva la errata inicial nspect; la versión documental previa comienza Inspect.",
+    "El adjunto de sesión 14 prevalece para la numeración frente al mensaje de envío que lo llamó sesión 15; se conserva la corrección posterior."
+  ],
+  "sourceLimit": "Los adjuntos originales del M3 no forman parte de este ZIP. La integridad se verifica sobre el texto recuperado de sus lecturas registradas, con cotejos de lecturas repetidas, wc y hashes históricos cuando existen.",
+  "records": [
+    {
+      "key": "s02-enviado",
+      "session": 2,
+      "scope": "version-enviada",
+      "bytes": 16990,
+      "lineCount": 640,
+      "sha256": "a923844150def599edbfd345e6884861b8623ea8af6188dc4ab0b84e341c8780",
+      "attachment": "/Users/juanjo/.codex/attachments/d253e566-78e3-4161-9080-aa3dc7920d83/pasted-text.txt",
+      "userLine": 513,
+      "timestamp": "2026-09-03T09:45:55.532Z",
+      "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+      "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+      "sources": [
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 519,
+          "locator": "output[1].text",
+          "callId": "call_IdWMRNk81mVy902TqMrUubq0",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 523,
+          "locator": "output[1].text",
+          "callId": "call_Rnn81E8fshuLar5eZEhGyday",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 640,
+      "file": "sesion-02-enviado-original.md"
+    },
+    {
+      "key": "s03",
+      "session": 3,
+      "scope": "principal",
+      "bytes": 15929,
+      "lineCount": 552,
+      "sha256": "0317d377caccf83fdec7866d1353cb667f3a37f76b2ea2a2c083fc4e95a93edf",
+      "attachment": "/Users/juanjo/.codex/attachments/2ab8e373-0c96-44cb-8e29-3ab08dc977b4/pasted-text.txt",
+      "userLine": 587,
+      "timestamp": "2026-09-03T16:28:11.284Z",
+      "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+      "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+      "sources": [
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 593,
+          "locator": "output[1].text",
+          "callId": "call_wsrMNHsmbEYYycPxqOXpeVNS",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 597,
+          "locator": "output[1].text",
+          "callId": "call_d0auKEVhC4tNvjJl0GhshfvE",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 600,
+          "locator": "output[1].text",
+          "callId": "call_jTXZWjXCMcIlfotXCcKdS1Ib",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 552,
+      "file": "sesion-03-original.md"
+    },
+    {
+      "key": "s04",
+      "session": 4,
+      "scope": "principal",
+      "bytes": 9344,
+      "lineCount": 326,
+      "sha256": "2074812206902e385128d90cfa3c86f018850a41fa52007be4e37420330ae795",
+      "attachment": "/Users/juanjo/.codex/attachments/b3be2f2b-3c7f-4a8e-ae57-3df67a05ae89/pasted-text.txt",
+      "userLine": 9,
+      "timestamp": "2026-09-03T17:14:08.834Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 17,
+          "locator": "output[1].text",
+          "callId": "call_NbFJPClXsBg23fdcSRHab8lL",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 21,
+          "locator": "output[1].text",
+          "callId": "call_bLRY6d2F82nqnBV716CcmJ6p",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "adjunto repetido con hashes históricos"
+      ],
+      "file": "sesion-04-original.md"
+    },
+    {
+      "key": "s05",
+      "session": 5,
+      "scope": "principal",
+      "bytes": 14034,
+      "lineCount": 601,
+      "sha256": "0a581e9054c3e9fec389855ae93b503856f4f7d06047e979e1ba2542ba90d8cf",
+      "attachment": "/Users/juanjo/.codex/attachments/473633ab-bd0c-45dc-adaf-55bc26f9a82f/pasted-text.txt",
+      "userLine": 209,
+      "timestamp": "2026-09-03T17:39:18.353Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 217,
+          "locator": "output[1].text",
+          "callId": "call_Ca6dLknnMTGAS2fNyXCJdoAH",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 221,
+          "locator": "output[1].text",
+          "callId": "call_1lVjor1c6ytA6gyKTBatORDZ",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-05-original.md"
+    },
+    {
+      "key": "s06",
+      "session": 6,
+      "scope": "principal",
+      "bytes": 10357,
+      "lineCount": 391,
+      "sha256": "5ef674d204b96d4f69a162cbbe30f77ef68aaada15d1f108093a7e8c58fecce6",
+      "attachment": "/Users/juanjo/.codex/attachments/5e1e5bc8-5968-4c30-b6a9-a02e7410e557/pasted-text.txt",
+      "userLine": 472,
+      "timestamp": "2026-09-03T22:05:39.007Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 480,
+          "locator": "output[1].text",
+          "callId": "call_hMJdCfXlJCnJ5lUNfIpw4uiM",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 484,
+          "locator": "output[1].text",
+          "callId": "call_JPyftL6KA3d4jeLlxmyhR6td",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-06-original.md"
+    },
+    {
+      "key": "s07",
+      "session": 7,
+      "scope": "principal",
+      "bytes": 12321,
+      "lineCount": 524,
+      "sha256": "500bf0eeeab9a3450e9b0fa9c6cb22b04561fb8264d053bb8f9830169553462c",
+      "attachment": "/Users/juanjo/.codex/attachments/a64eb5c5-93f3-4320-828d-5f928d31a5de/pasted-text.txt",
+      "userLine": 580,
+      "timestamp": "2026-09-04T07:45:09.886Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 588,
+          "locator": "output[1].text",
+          "callId": "call_DFtWpKGydW1YO6bgt942Qkba",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 592,
+          "locator": "output[1].text",
+          "callId": "call_8VNVw1tWPXIGRgUEOA4DkOR8",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-07-original.md"
+    },
+    {
+      "key": "s08",
+      "session": 8,
+      "scope": "principal",
+      "bytes": 9559,
+      "lineCount": 396,
+      "sha256": "5b2c5a2dc2b83dc1c7645f869079164b21af6e91471f65261b4a460165f0d615",
+      "attachment": "/Users/juanjo/.codex/attachments/eb451089-c860-41a2-b7a8-1cea5bd94301/pasted-text.txt",
+      "userLine": 736,
+      "timestamp": "2026-09-04T08:30:20.584Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 744,
+          "locator": "output[1].text",
+          "callId": "call_VSvA1cjj2V2yHwjroHkevoYI",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 748,
+          "locator": "output[1].text",
+          "callId": "call_aZ8rRe8CeOmX8wpLWRydX5Kq",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "lectura repetida completa"
+      ],
+      "file": "sesion-08-original.md"
+    },
+    {
+      "key": "s09",
+      "session": 9,
+      "scope": "principal",
+      "bytes": 13442,
+      "lineCount": 542,
+      "sha256": "6afcc1d0c03c8af7b13fc0639c884f375d8f2daa826c63be58571eeb2c854886",
+      "attachment": "/Users/juanjo/.codex/attachments/f5e5022d-109d-405f-b192-3f7bb7bed4c1/pasted-text.txt",
+      "userLine": 841,
+      "timestamp": "2026-09-04T09:52:39.072Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 848,
+          "locator": "output[1].text",
+          "callId": "call_OdBJ7Fv9zOdaC1kUAU3nc6LD",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 852,
+          "locator": "output[1].text",
+          "callId": "call_9sw5gyxm8KU3HsJmznEOufTu",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-09-original.md"
+    },
+    {
+      "key": "s10",
+      "session": 10,
+      "scope": "principal",
+      "bytes": 18635,
+      "lineCount": 736,
+      "sha256": "18568fb456e40fe446f8da5002d79029e0f12a5a97484dac764ab9ba8031910c",
+      "attachment": "/Users/juanjo/.codex/attachments/69e76f7f-2891-400f-935c-4d0aa6bef98c/pasted-text.txt",
+      "userLine": 927,
+      "timestamp": "2026-09-04T12:35:52.812Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 934,
+          "locator": "output[1].text",
+          "callId": "call_BozL3o0B1k2g6Kjv3NC2MljJ",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 938,
+          "locator": "output[1].text",
+          "callId": "call_VapxPQZtdtPEPOu95kfMpshA",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-10-original.md"
+    },
+    {
+      "key": "s11",
+      "session": 11,
+      "scope": "principal",
+      "bytes": 14162,
+      "lineCount": 636,
+      "sha256": "69295fa6cab01690f3019caab18caee98b255527116969c308cf18ba2c25d74e",
+      "attachment": "/Users/juanjo/.codex/attachments/4627a0b4-b048-4274-b2b2-04cfd11a7d73/pasted-text.txt",
+      "userLine": 1152,
+      "timestamp": "2026-09-04T16:06:22.026Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1165,
+          "locator": "output[1].text",
+          "callId": "call_YkeK74VH0hW8S4R1URuNf0c8",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1169,
+          "locator": "output[1].text",
+          "callId": "call_HyC93wGA8lmX8DJvw02BtoLy",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 636,
+      "file": "sesion-11-original.md"
+    },
+    {
+      "key": "s12",
+      "session": 12,
+      "scope": "principal",
+      "bytes": 16124,
+      "lineCount": 608,
+      "sha256": "2fb55be881ca6eab32f27cb1df8de54ccb507bc15a3d02b4b301e1230450acc7",
+      "attachment": "/Users/juanjo/.codex/attachments/2178a6a2-4a26-4774-b5d8-969aa57e77c7/pasted-text.txt",
+      "userLine": 1316,
+      "timestamp": "2026-09-04T18:02:09.420Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1324,
+          "locator": "output[1].text",
+          "callId": "call_FaCtgHzcNhc3T1BBb8jGw9x2",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1328,
+          "locator": "output[1].text",
+          "callId": "call_jqgEzUpWUSfp0KBxNoXxB7np",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 608,
+      "file": "sesion-12-original.md"
+    },
+    {
+      "key": "s13",
+      "session": 13,
+      "scope": "principal",
+      "bytes": 27215,
+      "lineCount": 1340,
+      "sha256": "b2d1c94fea1d1dd44e8dbd62fe63618c5995acb78f09436a06ed83994cf47470",
+      "attachment": "/Users/juanjo/.codex/attachments/c1ece5f0-4684-4c3a-be8a-68fe33977867/pasted-text.txt",
+      "userLine": 1371,
+      "timestamp": "2026-09-04T19:09:49.407Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1379,
+          "locator": "output[1].text",
+          "callId": "call_qnBtahLXTGeEiCOoTjnemBCa",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1385,
+          "locator": "output[1].text",
+          "callId": "call_6fEVuwt2ijF0GAZav0P5qMQZ",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1389,
+          "locator": "output[1].text",
+          "callId": "call_0kR2JoO3hmURPN5I5L5VSPTu",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 1340,
+      "file": "sesion-13-original.md"
+    },
+    {
+      "key": "s14",
+      "session": 14,
+      "scope": "principal",
+      "bytes": 27695,
+      "lineCount": 1406,
+      "sha256": "080208b4422e8d57a6b36fb3389db084e046e64760efb4dad1dd19e2564500d0",
+      "attachment": "/Users/juanjo/.codex/attachments/69672406-51af-4291-a423-9e411fafa97c/pasted-text.txt",
+      "userLine": 1535,
+      "timestamp": "2026-09-04T20:09:31.498Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1543,
+          "locator": "output[1].text",
+          "callId": "call_RKY9ynAvyUgfCo2zaUlVfuMT",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1549,
+          "locator": "output[1].text",
+          "callId": "call_NPxpl1e2PT4d1tOCulP8oi89",
+          "wcHeaderRemoved": false
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1553,
+          "locator": "output[1].text",
+          "callId": "call_gcrN1VgkLoPB2TmgRmk9ejDa",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 1406,
+      "crossChecks": [
+        "lectura repetida completa"
+      ],
+      "file": "sesion-14-original.md"
+    },
+    {
+      "key": "s14-correccion",
+      "session": 14,
+      "scope": "correccion-posterior",
+      "bytes": 19305,
+      "lineCount": 925,
+      "sha256": "633083d2c63c7856eb09a04a03a4cdce4c7a04396fe3407e3b998334a6ebfb4c",
+      "attachment": "/Users/juanjo/.codex/attachments/83118154-8473-4e93-a076-c67dc6cac576/pasted-text.txt",
+      "userLine": 1656,
+      "timestamp": "2026-09-04T21:02:48.204Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1664,
+          "locator": "output[1].text",
+          "callId": "call_YncSrB4b3aPlfRUyZ5ir0T8B",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1670,
+          "locator": "output[1].text",
+          "callId": "call_BaSRzWVPxtDeIlaAZDoJMT3C",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 925,
+      "file": "sesion-14-correccion-original.md"
+    },
+    {
+      "key": "s15",
+      "session": 15,
+      "scope": "principal",
+      "bytes": 25455,
+      "lineCount": 1519,
+      "sha256": "e068f63fa47d5c6ace414395ca624172b1bc65f9023fa766aeb98b5c10fea642",
+      "attachment": "/Users/juanjo/.codex/attachments/3a4f2edb-f47c-44c0-b395-4faf2d89d082/pasted-text.txt",
+      "userLine": 1743,
+      "timestamp": "2026-09-06T10:30:16.321Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1751,
+          "locator": "output[1].text",
+          "callId": "call_hK8MsX0wHpx4ljubPrgXeYay",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1757,
+          "locator": "output[1].text",
+          "callId": "call_CZL7YiIi7yOtImq49xBC15XC",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 1519,
+      "file": "sesion-15-original.md"
+    },
+    {
+      "key": "s16",
+      "session": 16,
+      "scope": "principal",
+      "bytes": 15651,
+      "lineCount": 869,
+      "sha256": "a5f6c5faec462a148b14b67e3f13d2a26d2c3733ac0c496afcc7c403588318a2",
+      "attachment": "/Users/juanjo/.codex/attachments/e7dc4a4b-ff0a-4ae6-a11f-732c5192e755/pasted-text.txt",
+      "userLine": 1861,
+      "timestamp": "2026-09-06T11:24:29.765Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1869,
+          "locator": "output[1].text",
+          "callId": "call_pJQfGbZkSU1ofEbUu3IuERJb",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1875,
+          "locator": "output[1].text",
+          "callId": "call_Pg0mltbpGeba2xdy9qlz2cyt",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 869,
+      "file": "sesion-16-original.md"
+    },
+    {
+      "key": "s17",
+      "session": 17,
+      "scope": "principal",
+      "bytes": 24303,
+      "lineCount": 1434,
+      "sha256": "277a6eb5f9808c2d8b5ab04961fd52e678dc0e0b09bb6d537758424393bc9a87",
+      "attachment": "/Users/juanjo/.codex/attachments/589a882c-9cbd-460b-8178-abe86c751ae9/pasted-text.txt",
+      "userLine": 1927,
+      "timestamp": "2026-09-06T22:42:15.697Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1935,
+          "locator": "output[1].text",
+          "callId": "call_bFyesVukkVlxgDxZN87sScg5",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 1941,
+          "locator": "output[1].text",
+          "callId": "call_EXjcgKTMENeMp0OHHPNwivt8",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 1434,
+      "file": "sesion-17-original.md"
+    },
+    {
+      "key": "s17-consolidacion",
+      "session": 17,
+      "scope": "consolidacion",
+      "bytes": 23391,
+      "lineCount": 1425,
+      "sha256": "e09d19b7f13d1841ea1449602890831b4b39f03879f60b24b25624b30358e024",
+      "attachment": "/Users/juanjo/.codex/attachments/ae3b728c-7ec5-4fe7-8b5f-aecd985ed087/pasted-text.txt",
+      "userLine": 2033,
+      "timestamp": "2026-09-07T09:21:16.488Z",
+      "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+      "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+      "sources": [
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 2041,
+          "locator": "output[1].text",
+          "callId": "call_a3mVtmX6iKW8itXKXw0Bemlj",
+          "wcHeaderRemoved": true
+        },
+        {
+          "entry": "2026/09/03/rollout-2026-09-03T18-13-56-01a06843-4d71-7a32-bb84-9b332893cf6a.jsonl",
+          "entrySha256": "a7cabc6deb5da0259c6899a1fa2e52e30e22a98604f5d78731a11db929971bd5",
+          "line": 2047,
+          "locator": "output[1].text",
+          "callId": "call_KAfN77sNm210EEAZem4oB7Ik",
+          "wcHeaderRemoved": false
+        }
+      ],
+      "recordedWcLines": 1425,
+      "file": "sesion-17-consolidacion-original.md"
+    },
+    {
+      "key": "s20-continuacion",
+      "session": 20,
+      "scope": "continuacion-sin-apertura",
+      "bytes": 7269,
+      "lineCount": 443,
+      "sha256": "949718de8780a13e01693736eb2b721a98ea0e16c6bf51923e9750484f07932b",
+      "attachment": "/Users/juanjo/.codex/attachments/651fe269-ec34-45a4-b9c9-c21426021510/pasted-text.txt",
+      "userLine": 58,
+      "timestamp": "2026-09-08T09:05:22.598Z",
+      "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+      "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+      "sources": [
+        {
+          "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+          "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+          "line": 64,
+          "locator": "output[1].text/json.output",
+          "callId": "call_XdXIPZ61zvfnvFqP0EZabOg2",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "adjunto repetido"
+      ],
+      "file": "sesion-20-continuacion-original.md"
+    },
+    {
+      "key": "s21",
+      "session": 21,
+      "scope": "principal",
+      "bytes": 7507,
+      "lineCount": 407,
+      "sha256": "306cad76c3652ce00f72de47d9e3eacfc3da08bd4653394a79c81e2d047c7fd8",
+      "attachment": "/Users/juanjo/.codex/attachments/429dd138-c6e4-4309-9349-39d7eb477d83/pasted-text.txt",
+      "userLine": 406,
+      "timestamp": "2026-09-12T21:02:19.686Z",
+      "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+      "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+      "sources": [
+        {
+          "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+          "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+          "line": 413,
+          "locator": "output[1].text/json.output",
+          "callId": "call_hqLfzy6sfHn1w6SeoWD4AOrB",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-21-original.md"
+    },
+    {
+      "key": "s21-continuacion",
+      "session": 21,
+      "scope": "continuacion",
+      "bytes": 7905,
+      "lineCount": 388,
+      "sha256": "de0d8276e297a59f2b8029080a853ef4d2e9da1fb8ee73dbe7f1b346b0ef8f85",
+      "attachment": "/Users/juanjo/.codex/attachments/b9cd5fb8-1093-4ae8-9498-4573596ff95c/pasted-text.txt",
+      "userLine": 489,
+      "timestamp": "2026-09-13T09:58:56.245Z",
+      "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+      "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+      "sources": [
+        {
+          "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+          "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+          "line": 496,
+          "locator": "output[1].text/json.output",
+          "callId": "call_0P8y2nAyzymJZ8wrHI2imOlc",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-21-continuacion-original.md"
+    },
+    {
+      "key": "s22",
+      "session": 22,
+      "scope": "principal",
+      "bytes": 10392,
+      "lineCount": 619,
+      "sha256": "04c5fb0fbfde8e5e01b5893031cd059d65a5e437ae176af10ef607552191e29d",
+      "attachment": "/Users/juanjo/.codex/attachments/02cc3c63-437e-4d16-8012-be6712c860eb/pasted-text.txt",
+      "userLine": 599,
+      "timestamp": "2026-09-13T10:45:40.633Z",
+      "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+      "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+      "sources": [
+        {
+          "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+          "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+          "line": 606,
+          "locator": "output[1].text/json.output",
+          "callId": "call_1VfmGfBm1MpU9tZNf6m6bg5b",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "lectura cat frente a lectura segmentada"
+      ],
+      "file": "sesion-22-original.md"
+    },
+    {
+      "key": "s23",
+      "session": 23,
+      "scope": "principal",
+      "bytes": 10252,
+      "lineCount": 760,
+      "sha256": "b075a06a141f69f34626d858c7bbdc554b32b46ccca1156e461952d16b17a951",
+      "attachment": "/Users/juanjo/.codex/attachments/3f536c6a-fb39-4e35-a47e-0ad843cea974/pasted-text.txt",
+      "userLine": 718,
+      "timestamp": "2026-09-13T12:41:41.084Z",
+      "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+      "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+      "sources": [
+        {
+          "entry": "2026/09/08/rollout-2026-09-08T09-46-18-01a08032-5aa5-7063-ac04-0df7be912ee5.jsonl",
+          "entrySha256": "3261aa3ee07cde6ffe3f1abeb580562ec917bf05c9218f8ecb2b223cabe62aa3",
+          "line": 725,
+          "locator": "output[1].text/json.output",
+          "callId": "call_OIxA85JJQXvQV6XEi0RT6WMZ",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-23-original.md"
+    },
+    {
+      "key": "s24",
+      "session": 24,
+      "scope": "principal",
+      "bytes": 10132,
+      "lineCount": 640,
+      "sha256": "c396e0b646f33cc45102e06faefa52849ae7ef9a1c60f1ba66c21b308988f9c9",
+      "attachment": "/Users/juanjo/.codex/attachments/69f4a56b-8b05-4165-b1b8-4c2f798b2d0e/pasted-text.txt",
+      "userLine": 9,
+      "timestamp": "2026-09-14T12:17:12.622Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 15,
+          "locator": "output[1].text/json.output",
+          "callId": "call_eZJT75ut3Ny9iU2JE1dyA0JN",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-24-original.md"
+    },
+    {
+      "key": "s25",
+      "session": 25,
+      "scope": "principal",
+      "bytes": 13484,
+      "lineCount": 912,
+      "sha256": "a281b05665effa84ce9661856b348780d618283b2b1319d685508212138cc0ec",
+      "attachment": "/Users/juanjo/.codex/attachments/89679180-9bd3-4e6c-b37f-1164dbcae419/pasted-text.txt",
+      "userLine": 101,
+      "timestamp": "2026-09-14T16:02:17.121Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 107,
+          "locator": "output[1].text/json.output",
+          "callId": "call_s1rbjgAUoP70DYbo1aOlDQ8K",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-25-original.md"
+    },
+    {
+      "key": "s26",
+      "session": 26,
+      "scope": "principal",
+      "bytes": 12539,
+      "lineCount": 858,
+      "sha256": "d4458858033c162bf111f4eb70b560858596ee21b8856ef9e517f5db770ed1f0",
+      "attachment": "/Users/juanjo/.codex/attachments/0644a21c-55cb-4878-8042-4c785432d017/pasted-text.txt",
+      "userLine": 193,
+      "timestamp": "2026-09-14T16:48:38.212Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 199,
+          "locator": "output[1].text/json.output",
+          "callId": "call_t3Aa6KDOnyRjtNqiGBMXNjzV",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-26-original.md"
+    },
+    {
+      "key": "s27",
+      "session": 27,
+      "scope": "principal",
+      "bytes": 14060,
+      "lineCount": 1000,
+      "sha256": "f7194bcf34f1c2e68ab4d417de3627710c91f692ac94fc3e9700d74c2f6c0816",
+      "attachment": "/Users/juanjo/.codex/attachments/5004c780-db43-450a-ae8f-5d9c36da070c/pasted-text.txt",
+      "userLine": 262,
+      "timestamp": "2026-09-14T17:15:59.013Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 268,
+          "locator": "output[1].text/json.output",
+          "callId": "call_GynA0jtfY1sVuUuyKHqJVIZI",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-27-original.md"
+    },
+    {
+      "key": "s28",
+      "session": 28,
+      "scope": "principal",
+      "bytes": 10709,
+      "lineCount": 744,
+      "sha256": "4ebe42dcec8b8875a1c763d3d102f72c06957b70b5e9da08d818a33af4038127",
+      "attachment": "/Users/juanjo/.codex/attachments/36dd4055-76b0-4d98-87e9-96d93a3ec94f/pasted-text.txt",
+      "userLine": 364,
+      "timestamp": "2026-09-16T17:04:56.163Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 371,
+          "locator": "output[1].text/json.output",
+          "callId": "call_qpdBmIjSiZ3XCTYk2DKxM7hV",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "lectura repetida completa"
+      ],
+      "file": "sesion-28-original.md"
+    },
+    {
+      "key": "s29",
+      "session": 29,
+      "scope": "principal",
+      "bytes": 16504,
+      "lineCount": 1112,
+      "sha256": "c5671f06ce73fffc02d0bcc1b192c9459c4bbc9219d05f1642a31a61a2e25c9f",
+      "attachment": "/Users/juanjo/.codex/attachments/3b802e71-c1db-4c7e-9353-2c8266e53914/pasted-text.txt",
+      "userLine": 490,
+      "timestamp": "2026-09-16T17:25:24.488Z",
+      "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+      "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+      "sources": [
+        {
+          "entry": "2026/09/14/rollout-2026-09-14T13-17-09-01a09fd9-8978-7280-9a36-812ea094c412.jsonl",
+          "entrySha256": "fe7e207d1bea95709a0e2966985c1acdef74b7a7083ae90a20afa964da5cb5c3",
+          "line": 498,
+          "locator": "output[1].text/json.output",
+          "callId": "call_1I2Tl3UZ4LuKPtRCfbhiluzO",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-29-original.md"
+    },
+    {
+      "key": "s31",
+      "session": 31,
+      "scope": "principal",
+      "bytes": 17634,
+      "lineCount": 1118,
+      "sha256": "3a885cf11f6f38b003f8c048d7a9394c38834e94603cf2a78b8acfaa6e3b60d8",
+      "attachment": "/Users/juanjo/.codex/attachments/143167d9-9cee-443c-ae2c-c2c06e34283f/pasted-text.txt",
+      "userLine": 129,
+      "timestamp": "2026-09-18T08:23:08.746Z",
+      "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+      "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+      "sources": [
+        {
+          "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+          "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+          "line": 135,
+          "locator": "output[1].text/json.output",
+          "callId": "call_Y9GUX435XnCuP66yGT93k4gl",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-31-original.md"
+    },
+    {
+      "key": "s32",
+      "session": 32,
+      "scope": "principal",
+      "bytes": 21472,
+      "lineCount": 1424,
+      "sha256": "75244f7bb7e2e1fa0a3ea1a150f003ae0ef8818884a47f19af6fa827b91152d2",
+      "attachment": "/Users/juanjo/.codex/attachments/eb47d62a-fc95-4950-b330-3ea8ff7312f2/pasted-text.txt",
+      "userLine": 210,
+      "timestamp": "2026-09-18T09:28:20.296Z",
+      "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+      "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+      "sources": [
+        {
+          "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+          "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+          "line": 216,
+          "locator": "output[1].text/json.output",
+          "callId": "call_7ipIhjJ2bKTs9HPG0dFgEgAg",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "adjunto repetido"
+      ],
+      "file": "sesion-32-original.md"
+    },
+    {
+      "key": "s33",
+      "session": 33,
+      "scope": "principal",
+      "bytes": 19765,
+      "lineCount": 1307,
+      "sha256": "b32c260cc587a9a8a3f3eb7775965062d717b6c858c4b0af343b0fe8e6ba3e48",
+      "attachment": "/Users/juanjo/.codex/attachments/d0b00d60-e042-421d-a403-daf7ff6f6d2a/pasted-text.txt",
+      "userLine": 356,
+      "timestamp": "2026-09-18T11:38:35.297Z",
+      "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+      "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+      "sources": [
+        {
+          "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+          "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+          "line": 363,
+          "locator": "output[1].text/json.output",
+          "callId": "call_yxJsgRbGdpdPFb9zLwFUTKIO",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "crossChecks": [
+        "adjunto repetido en otro hilo"
+      ],
+      "file": "sesion-33-original.md"
+    },
+    {
+      "key": "s34",
+      "session": 34,
+      "scope": "principal",
+      "bytes": 17898,
+      "lineCount": 1243,
+      "sha256": "38891f57a6f888dacfeadf8561cfb830da142fc1d4c12500a698e8e987138f7c",
+      "attachment": "/Users/juanjo/.codex/attachments/9c95eff1-bfe3-4c2c-a28f-911960336f68/pasted-text.txt",
+      "userLine": 54,
+      "timestamp": "2026-09-18T19:44:13.028Z",
+      "entry": "2026/09/18/rollout-2026-09-18T14-34-19-01a0b4b9-9faf-7ac2-a5b7-d7b3ac53a0cb.jsonl",
+      "entrySha256": "3c9f9a5e0b4d8203417f1bc3f7f70d35b24d30c001f4da0c3d1aef0ce9cee9d9",
+      "sources": [
+        {
+          "entry": "2026/09/18/rollout-2026-09-18T14-34-19-01a0b4b9-9faf-7ac2-a5b7-d7b3ac53a0cb.jsonl",
+          "entrySha256": "3c9f9a5e0b4d8203417f1bc3f7f70d35b24d30c001f4da0c3d1aef0ce9cee9d9",
+          "line": 60,
+          "locator": "output[1].text/json.output",
+          "callId": "call_1z6MBJRvuDxKYCccG44khZMi",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-34-original.md"
+    },
+    {
+      "key": "s35",
+      "session": 35,
+      "scope": "principal",
+      "bytes": 17046,
+      "lineCount": 1173,
+      "sha256": "8e4d4b1d6b0b505e69fa125bf56e04e151bbe13e909f60586f2b382a52b5d755",
+      "attachment": "/Users/juanjo/.codex/attachments/82c84f51-aa8f-45f8-889f-6c80bd8aa734/pasted-text.txt",
+      "userLine": 157,
+      "timestamp": "2026-09-18T20:34:47.043Z",
+      "entry": "2026/09/18/rollout-2026-09-18T14-34-19-01a0b4b9-9faf-7ac2-a5b7-d7b3ac53a0cb.jsonl",
+      "entrySha256": "3c9f9a5e0b4d8203417f1bc3f7f70d35b24d30c001f4da0c3d1aef0ce9cee9d9",
+      "sources": [
+        {
+          "entry": "2026/09/18/rollout-2026-09-18T14-34-19-01a0b4b9-9faf-7ac2-a5b7-d7b3ac53a0cb.jsonl",
+          "entrySha256": "3c9f9a5e0b4d8203417f1bc3f7f70d35b24d30c001f4da0c3d1aef0ce9cee9d9",
+          "line": 163,
+          "locator": "output[1].text/json.output",
+          "callId": "call_JeUbvAeENOVSeYCL6mg9tJzs",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-35-original.md"
+    },
+    {
+      "key": "s36",
+      "session": 36,
+      "scope": "principal",
+      "bytes": 20634,
+      "lineCount": 1360,
+      "sha256": "dd5fc838ee61293e71d7fa778b32e0a416d71f9b099e438e4ee4384fbc6f7aca",
+      "attachment": "/Users/juanjo/.codex/attachments/8dfbbe99-35fe-405f-ad56-12ca1c9effdb/pasted-text.txt",
+      "userLine": 497,
+      "timestamp": "2026-09-19T09:22:11.489Z",
+      "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+      "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+      "sources": [
+        {
+          "entry": "2026/09/17/rollout-2026-09-17T22-18-33-01a0b13c-4a03-7702-8be0-e7dcf49af57e.jsonl",
+          "entrySha256": "7f5571a411d45e5959d353ef1b5e4b55fa0b598f08423c187509d8a266f6cc05",
+          "line": 504,
+          "locator": "output[1].text/json.output",
+          "callId": "call_X5XdA7tcGruMZEMLsufkSm48",
+          "exitCode": 0,
+          "wcHeaderRemoved": false
+        }
+      ],
+      "file": "sesion-36-original.md"
+    },
+    {
+      "key": "s01-enviado",
+      "session": 1,
+      "scope": "version-enviada",
+      "bytes": 986,
+      "lineCount": 16,
+      "sha256": "0e4221814f9243cbb6efbdf17c68fe7757fc0f515d9ae70786ad96dca0fc57bb",
+      "userLine": 462,
+      "timestamp": "2026-09-02T22:27:55.607Z",
+      "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+      "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+      "sources": [
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 462,
+          "locator": "payload.content[].text",
+          "kind": "user-message"
+        }
+      ],
+      "file": "sesion-01-enviado-original.md"
+    },
+    {
+      "key": "s02-interpretacion",
+      "session": 2,
+      "scope": "instruccion-complementaria",
+      "bytes": 3763,
+      "lineCount": 68,
+      "sha256": "5fe21d3b35586baff78da71ceb1e72977837a0dd95ae609b46b8db6805f672a0",
+      "userLine": 559,
+      "timestamp": "2026-09-03T16:25:42.170Z",
+      "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+      "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+      "sources": [
+        {
+          "entry": "2026/08/03/rollout-2026-08-03T00-01-30-019fc4b6-02f1-7211-8aaa-81c05f4b4129.jsonl",
+          "entrySha256": "882ddabff376da04f84a736a331eeb2a8c955d5f71a8cae197e5747b0f285cd3",
+          "line": 559,
+          "locator": "payload.content[].text",
+          "kind": "user-message"
+        }
+      ],
+      "file": "sesion-02-interpretacion-original.md"
+    }
+  ]
+}

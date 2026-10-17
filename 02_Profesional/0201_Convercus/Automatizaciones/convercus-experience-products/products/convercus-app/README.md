@@ -56,6 +56,11 @@ El plan inicial de implementación se encuentra en [docs/implementation-plan.md]
 
 - [Marco de la demo canónica](docs/canonical-demo-framework.md).
 - [Protocolo inicial de especificación](docs/demo-specification-protocol.md).
+- [Informe de Sesión 20: Aventura Familiar, corrección y aceptación](docs/session-20-first-family-adventure-vertical.md).
+- [Sesión 21: auditoría de composición y protocolo experimental H21](docs/session-21-composition-boundary-factory-reusability-audit.md).
+- [Sesión 21: ejecución de H21 y primer falsador observado](docs/session-21-composition-boundary-factory-reusability-execution.md).
+- [Sesión 22: selección estable por Experience y veredicto H22](docs/session-22-experience-stable-behavior-selection.md).
+- [Sesión 23: contexto situado de evaluación y veredicto H23](docs/session-23-situated-evaluation-context-binding.md).
 
 ## Estado
 

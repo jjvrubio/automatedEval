@@ -1,0 +1,16 @@
+{
+  "temp": "/private/tmp/convercus-h38-portability-xYAVpk",
+  "conditions": [
+    {
+      "name": "absence",
+      "environment": "/private/tmp/convercus-h38-portability-xYAVpk/environment-a-absent",
+      "code": 1,
+      "milliseconds": 1669,
+      "passed": 0,
+      "failed": 0,
+      "tests": [],
+      "log": "absence.log",
+      "reporter": "absence-results.json"
+    }
+  ]
+}

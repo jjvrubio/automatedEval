@@ -1,0 +1,16 @@
+{
+  "name": "typecheck-final",
+  "startedAt": "2026-09-22T17:27:59.783Z",
+  "finishedAt": "2026-09-22T17:28:07.354Z",
+  "executable": "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+  "args": [
+    "node_modules/typescript/bin/tsc",
+    "-b",
+    "--pretty",
+    "false"
+  ],
+  "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+  "exitCode": 0,
+  "signal": null,
+  "error": null
+}

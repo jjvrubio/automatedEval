@@ -1,0 +1,36 @@
+{
+  "verifiedAt": "2026-09-14T16:57:23.140439+00:00",
+  "baselineFilesPreserved": 166,
+  "existingFilesChanged": [],
+  "prechangeSuite": {
+    "tests": 87,
+    "files": 19,
+    "result": "PASS"
+  },
+  "focalH26": {
+    "tests": 1,
+    "result": "PASS",
+    "verdict": "FALSIFIED"
+  },
+  "historicalAndVerticalRegression": {
+    "tests": 15,
+    "files": 6,
+    "result": "PASS"
+  },
+  "fullCheck": {
+    "command": "npm run check",
+    "tests": 88,
+    "files": 20,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "testsResult": "PASS",
+    "build": "PASS",
+    "exitCode": 0
+  },
+  "reportRequiredSectionsVerified": 26,
+  "artifactSha256": {
+    "baseline.json": "8b6452a9bf1f3170ab5d721f488bf7ea0443c35969600263e8d9c3f45576094a",
+    "execution-trace.json": "1294c05d095b08e6b53797c0fe8a2502cad8079ed407957939bc807fc2ad5386",
+    "session-26-situated-guest-perspective-provenance.md": "e0fb0c65ae6e2705fe2256b9f242bd9a22f73e7c230a81261bf7c54b68e3a351"
+  }
+}

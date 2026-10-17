@@ -1,0 +1,71 @@
+--- before/products/convercus-app/prototype/src/app/App.tsx
++++ after/products/convercus-app/prototype/src/app/App.tsx
+@@ -98,10 +98,14 @@
+   snapshot,
+   guestAction,
+   guestActionLabel,
++  brandName,
++  introductoryFraming,
+ }: {
+   snapshot: AppSnapshot;
+   guestAction: () => void;
+   guestActionLabel?: string;
++  brandName: ResolvedDemoRuntime["brand"]["name"];
++  introductoryFraming?: string;
+ }) {
+   const { member, coupons, activity, news } = snapshot;
+ 
+@@ -110,9 +114,9 @@
+     return (
+       <main id="main-content" className="adventure-page">
+         <header className="adventure-heading">
+-          <p className="eyebrow">Mi aventura · Aurora Stay</p>
++          <p className="eyebrow">Mi aventura · {brandName}</p>
+           <h1 id="adventure-title">{adventure.huntName}</h1>
+-          <p>Busca las pistas del jardín y de la fuente durante tu estancia.</p>
++          {introductoryFraming && <p>{introductoryFraming}</p>}
+         </header>
+         <section className="adventure-next" aria-labelledby="next-action-title">
+           <p className="eyebrow" id="next-action-title">{guestActionLabel ? "Tu siguiente paso" : "Resultado de la aventura"}</p>
+@@ -476,7 +480,7 @@
+         </>
+       )}
+       <Routes>
+-        <Route path="/" element={<HomePage snapshot={snapshot} guestAction={onPresenterAction} guestActionLabel={guestActionLabel} />} />
++        <Route path="/" element={<HomePage snapshot={snapshot} guestAction={onPresenterAction} guestActionLabel={guestActionLabel} brandName={runtime.brand.name} introductoryFraming={runtime.script?.experimentalIntroductoryFraming} />} />
+         <Route path="/benefits" element={<BenefitsPage coupons={snapshot.coupons} />} />
+         <Route path="/activity" element={<ActivityPage activity={snapshot.activity} />} />
+         <Route path="/profile" element={<ProfilePage member={snapshot.member} />} />
+--- before/products/convercus-app/prototype/src/demo-factory/artifacts.ts
++++ after/products/convercus-app/prototype/src/demo-factory/artifacts.ts
+@@ -176,6 +176,7 @@
+     id: "family-adventure",
+     scenarioRef: "scenario:family-adventure@1",
+     initialCheckpoint: "ready",
++    experimentalIntroductoryFraming: "Una aventura de pistas entre el jardín y la fuente.",
+     subjectPresentations: [
+       { subjectRef: "subject-p1", label: "Lucía" },
+       { subjectRef: "subject-p2", label: "Huésped 2" },
+--- before/products/convercus-app/prototype/src/demo-factory/contracts.ts
++++ after/products/convercus-app/prototype/src/demo-factory/contracts.ts
+@@ -225,6 +225,10 @@
+   // Existing available affordance -> situated message, never runtime authority.
+   // Available action is not journey state; no viewer or TES Progression relation.
+   experimentalJourneyPresentations?: Array<{ availableActionId: string; message: string }>;
++  // H32: EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED.
++  // Static introduction for the selected demonstration, not runtime truth,
++  // branding, journey state or a viewer/subject/stay relationship.
++  experimentalIntroductoryFraming?: string;
+   steps: Array<{
+     id: string;
+     presenterLabel: string;
+--- before/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
++++ after/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
+@@ -87,6 +87,7 @@
+     id: "family-adventure-costa",
+     scenarioRef: "scenario:family-adventure-costa@1",
+     initialCheckpoint: "ready",
++    experimentalIntroductoryFraming: "Una aventura de pistas entre el mirador y el patio.",
+     subjectPresentations: [
+       { subjectRef: "subject-p1", label: "Inés" },
+       { subjectRef: "subject-p2", label: "Mateo" },

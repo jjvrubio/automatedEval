@@ -1,0 +1,27 @@
+{
+  "session": 32,
+  "baselineTests": {
+    "files": 25,
+    "passed": 93
+  },
+  "finalCheck": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "tests": {
+      "files": 26,
+      "passed": 94
+    },
+    "buildPWA": "PASS"
+  },
+  "currentAppRuns": 35,
+  "currentAppFramesIncludingReset": 201,
+  "previousAppComparisonRuns": 4,
+  "previousAppFramesIncludingReset": 17,
+  "requiredReportSectionsVerified": 48,
+  "localReportLinksVerified": 10,
+  "traceSourceHashesVerified": true,
+  "browserVisualValidation": "NOT EXECUTED",
+  "domIntegrationVerification": "EXECUTED",
+  "reportSha256": "4fd8f54d906ed048741e7f842f13b6f517c190334e102af66a24fc508ccfe993",
+  "traceSha256": "22ee5a6121e5965f74df1f402669224a19e61089aadda23dbd32a277abe4f307"
+}

@@ -1,0 +1,11 @@
+--- S32/products/convercus-app/prototype/src/app/App.tsx
++++ S33/products/convercus-app/prototype/src/app/App.tsx
+@@ -357,7 +357,7 @@
+         <section className="adventure-guests" aria-label="Sujetos existentes">
+           {supervision.subjects.map((subject) => (
+             <article className="adventure-guest" key={subject.id}>
+-              <h2>{subject.id === "subject-p1" ? "P1 · Lucía" : "P2 · Huésped 2"}</h2>
++              <h2>{subject.id}</h2>
+               <p>{subject.id} · exists: {String(subject.exists)} · {subject.operationalState} · Evidence: {subject.evidenceCount}</p>
+             </article>
+           ))}

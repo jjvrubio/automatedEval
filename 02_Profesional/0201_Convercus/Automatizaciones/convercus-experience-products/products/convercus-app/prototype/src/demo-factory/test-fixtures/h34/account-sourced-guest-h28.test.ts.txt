@@ -1,0 +1,231 @@
+/// <reference types="node" />
+import { historicalH31Path } from "./test-fixtures/h31/source-path";
+import { historicalH29Path } from "./test-fixtures/h29/source-path";
+import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { MockDataAdapter } from "@/demo/mock-adapter";
+import { defaultDemoCatalogs, resolveDemo } from "./bootstrap";
+import type { AppSnapshot, DemoAction, DemoEnableAction, DemoScript, ResolvedDemoRuntime } from "./contracts";
+import { historicalH27Path } from "./test-fixtures/h27/source-path";
+import { historicalH28Path } from "./test-fixtures/h28/source-path";
+import * as vertical from "./vertical-evaluation";
+import * as joint from "./cross-subject-evidence-admissibility";
+
+vi.mock("./vertical-evaluation", () => import("./test-fixtures/h28/vertical-evaluation"));
+
+// H30 historical replay only; current cumulative behavior is checked in H30.
+vi.mock("./artifacts", () => import("./test-fixtures/h29/artifacts"));
+vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h29/mock-adapter"));
+
+afterEach(() => vi.restoreAllMocks());
+const root = resolve(process.cwd(), "../../..");
+const prefix = "products/convercus-app/prototype/src/";
+const evidenceDir = resolve(process.cwd(), "../docs/evidence");
+const hash = (value: Buffer | string) => createHash("sha256").update(value).digest("hex");
+type Frame = {
+  phase: string; input?: DemoAction | DemoEnableAction; snapshot: AppSnapshot;
+  verticalCalls: Parameters<typeof vertical.evaluateVerticalEvidence>[];
+  verticalResults: vertical.VerticalEvaluationState[];
+  jointEvaluationCalls: Parameters<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+  jointEvaluationResults: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+};
+// Comparison views only. All tested sessionLabels come from the live provider.
+const withoutSessionLabel = (s: AppSnapshot): AppSnapshot => ({ ...s, guestPerspective: { ...s.guestPerspective!, sessionLabel: "" } });
+const withoutSubjectLabels = (s: AppSnapshot): AppSnapshot => ({ ...s, guestPerspective: {
+  ...s.guestPerspective!, subjects: s.guestPerspective!.subjects.map((subject) => ({ ...subject, label: "" })),
+} });
+const withoutAccountPresentation = (s: AppSnapshot): AppSnapshot => ({ ...withoutSessionLabel(s), member: { ...s.member, name: "" } });
+const compareFrames = (frames: Frame[], view: (snapshot: AppSnapshot) => AppSnapshot) => frames.map((f) => ({ ...f, snapshot: view(f.snapshot) }));
+
+describe("H28 — Account-Sourced Guest Presentation", () => {
+  it("derives account-only sessionLabel from member.name independently of subject presentation and all factual inputs", async () => {
+    const baselineBytes = readFileSync(resolve(evidenceDir, "session-28/baseline.json"));
+    const baseline = JSON.parse(baselineBytes.toString()) as {
+      files: Record<string, string>; allowedChangedFiles: string[]; archiveByOriginalPath: Record<string, string>;
+    };
+    for (const [path, digest] of Object.entries(baseline.files)) {
+      const preserved = baseline.allowedChangedFiles.includes(path) ? baseline.archiveByOriginalPath[path] : path;
+      if (preserved !== path) expect(historicalH27Path(path)).toBe(preserved);
+      expect(hash(readFileSync(resolve(root, historicalH31Path(historicalH29Path(historicalH28Path(preserved)))))), path).toBe(digest);
+    }
+    const read = (path: string, old = false) => readFileSync(resolve(root, historicalH31Path(historicalH29Path(old ? historicalH27Path(prefix + path) : historicalH28Path(prefix + path)))), "utf8");
+    const adapter = read("demo/mock-adapter.ts");
+    const oldAdapter = read("demo/mock-adapter.ts", true);
+    expect(adapter).toBe(oldAdapter.replace(
+      "projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations);",
+      "projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations, fixture.member.name);",
+    ));
+    const oldVertical = read("demo-factory/vertical-evaluation.ts", true);
+    const currentVertical = read("demo-factory/vertical-evaluation.ts");
+    // Preserve the evaluator, subject labels/status, message and supervision
+    // byte-for-byte; only the new scalar input and sessionLabel may differ.
+    expect(currentVertical).toBe(oldVertical.replace(
+      '  subjectPresentations: DemoScript["subjectPresentations"] = [],\n',
+      '  subjectPresentations: DemoScript["subjectPresentations"] = [],\n  // H28: existing account display source only, never subject/viewer identity.\n  accountName = "",\n',
+    ).replace(
+      'sessionLabel: "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",',
+      'sessionLabel: `Cuenta de ${accountName}`,',
+    ));
+    const historical = JSON.parse(readFileSync(resolve(evidenceDir, "session-27/execution-trace.json"), "utf8")) as {
+      verdict: string; controls: Array<{ original: { frames: Frame[]; reset: AppSnapshot; projectionInputs: unknown[][] } }>;
+      genericRegression: Array<{ demoId: string; frames: Array<{ phase: string; snapshot: AppSnapshot }>; reset: AppSnapshot }>;
+    };
+    expect(historical.verdict).toBe("SUPPORTED WITH QUALIFICATION");
+    const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+    const cross = vi.spyOn(joint, "evaluateCrossSubjectEvidenceSufficiency");
+    const guest = vi.spyOn(vertical, "projectGuestPerspective");
+    const observations: Record<string, unknown> = {
+      experiment: "H28 — Account-Sourced Guest Presentation", baselineSha256: hash(baselineBytes),
+      applicationSha256: { adapter: hash(adapter), verticalEvaluationAndProjector: hash(currentVertical) },
+      harnessSha256: hash(readFileSync(resolve(root, historicalH31Path(historicalH29Path(historicalH28Path(prefix + "demo-factory/account-sourced-guest-h28.test.ts")))))),
+      method: "Live public snapshots and transparent original projector/evaluator spies; complete H27 factual baseline; no browser or semantic mapping",
+    };
+    const record = () => {
+      if (process.env.H28_RECORD_PATH) writeFileSync(resolve(process.env.H28_RECORD_PATH), JSON.stringify(observations, null, 2) + "\n", { flag: "wx" });
+    };
+    let phase = "baseline and minimal source threading";
+    const withInputs = (demoId: string, script: DemoScript, accountName?: string) => {
+      const manifest = defaultDemoCatalogs.manifests[demoId];
+      const fixture = structuredClone(defaultDemoCatalogs.fixtures[manifest.fixtureRef]);
+      if (accountName !== undefined) fixture.member.name = accountName;
+      return resolveDemo(demoId, {
+        ...defaultDemoCatalogs,
+        scripts: { ...defaultDemoCatalogs.scripts, [manifest.scriptRef!]: script },
+        fixtures: { ...defaultDemoCatalogs.fixtures, [manifest.fixtureRef]: fixture },
+      });
+    };
+    const run = async (runtime: ResolvedDemoRuntime, accountName: string, labels: string[]) => {
+      expect(Object.getPrototypeOf(runtime.provider)).toBe(MockDataAdapter.prototype);
+      const frames: Frame[] = [];
+      const projectionInputs: Parameters<typeof vertical.projectGuestPerspective>[] = [];
+      const check = (snapshot: AppSnapshot) => {
+        expect(snapshot.member.name).toBe(accountName);
+        expect(snapshot.guestPerspective!.sessionLabel).toBe(`Cuenta de ${accountName}`);
+        expect(snapshot.guestPerspective!.sessionLabel).not.toMatch(/\b(tú|tu|usas|ti|P1|puedes|activar|habilitado)\b|subject-p1|huésped|Mateo/i);
+        expect(snapshot.guestPerspective!.subjects.map((s) => [s.id, s.label])).toEqual([
+          ["subject-p1", labels[0]], ["subject-p2", labels[1]],
+        ]);
+        expect(snapshot.supervisionPerspective!.sessionSubjectRef).toBe("subject-p1");
+        expect(guest).toHaveBeenCalledOnce();
+        expect(guest.mock.calls[0]).toHaveLength(5);
+        expect(guest.mock.calls[0][1]).toEqual(runtime.scenario!.subjects);
+        expect(guest.mock.calls[0][2]).toEqual(Object.fromEntries(snapshot.supervisionPerspective!.subjects.map((s) => [s.id, s.operationalState])));
+        expect(guest.mock.calls[0][3]).toEqual(runtime.script!.subjectPresentations);
+        expect(typeof guest.mock.calls[0][4]).toBe("string");
+        expect(guest.mock.calls[0][4]).toBe(accountName);
+        projectionInputs.push(structuredClone(guest.mock.calls[0]));
+      };
+      const frame = (phase: string, snapshot: AppSnapshot, input?: DemoAction | DemoEnableAction): Frame => ({
+        phase, ...(input ? { input } : {}), snapshot,
+        verticalCalls: structuredClone(evaluate.mock.calls), verticalResults: structuredClone(evaluate.mock.results.map((r) => r.value)),
+        jointEvaluationCalls: structuredClone(cross.mock.calls), jointEvaluationResults: structuredClone(cross.mock.results.map((r) => r.value)),
+      });
+      evaluate.mockClear(); cross.mockClear(); guest.mockClear();
+      const initial = await runtime.provider.getSnapshot();
+      check(initial); frames.push(frame("initial", initial));
+      expect(initial.supervisionPerspective).toMatchObject({ evidence: [], sufficiency: "not-attempted", derivedClaim: "not-produced" });
+      for (const step of runtime.script!.steps) {
+        phase = `${runtime.manifest.demoId}: ${step.action.actionId}`;
+        evaluate.mockClear(); cross.mockClear(); guest.mockClear();
+        const input = structuredClone(step.action);
+        const snapshot = await runtime.provider.executeAction(input);
+        expect(input).toEqual(step.action);
+        expect(evaluate).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+        expect(cross).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+        check(snapshot); frames.push(frame(input.actionId, snapshot, input));
+      }
+      guest.mockClear();
+      const reset = await runtime.provider.reset();
+      check(reset); expect(reset).toEqual(initial);
+      return { scenario: runtime.scenario, script: runtime.script, frames, reset, projectionInputs };
+    };
+    try {
+      type Run = Awaited<ReturnType<typeof run>>;
+      const controls: Array<{ composition: string; original: Run; subjectVariants: Run[]; accountVariants: Run[] }> = [];
+      observations.controls = controls;
+      for (const [index, demoId] of ["hospitality-family-adventure", "hospitality-family-adventure-costa"].entries()) {
+        const runtime = resolveDemo(demoId);
+        const name = index === 0 ? "Lucía" : "Inés";
+        const labels = index === 0 ? ["Lucía", "Huésped 2"] : ["Inés", "Mateo"];
+        const original = await run(runtime, name, labels);
+        expect(compareFrames(original.frames, withoutSessionLabel)).toEqual(compareFrames(historical.controls[index].original.frames, withoutSessionLabel));
+        expect(withoutSessionLabel(original.reset)).toEqual(withoutSessionLabel(historical.controls[index].original.reset));
+        expect(original.projectionInputs.map((args) => args.slice(0, 4))).toEqual(historical.controls[index].original.projectionInputs);
+        expect(original.frames[4].snapshot.activity.filter((a) => a.provenance === "simulated").map((a) => a.title)).toEqual(index === 0
+          ? ["Pista de la fuente encontrada", "Pista del jardín encontrada"]
+          : ["Pista del patio encontrada", "Pista del mirador encontrada"]);
+        // L3c remains visible outside the tested field, including B's locations,
+        // second person and gender. These are not repaired via account copy.
+        expect(original.frames[1].snapshot.guestPerspective!.message).toContain("jardín");
+        expect(original.frames[3].snapshot.guestPerspective!.message).toContain("fuente");
+        expect(original.frames[3].snapshot.guestPerspective!.subjects[1].status).toBe("Habilitado por ti");
+
+        const subjectVariants: Run[] = [];
+        const accountVariants: Run[] = [];
+        for (const variant of ["X", "Y"]) {
+          const script = structuredClone(runtime.script!);
+          const variantLabels = [`Sujeto ${variant} primero`, `Sujeto ${variant} segundo`];
+          script.subjectPresentations!.forEach((entry, i) => { entry.label = variantLabels[i]; });
+          expect({ ...script, subjectPresentations: runtime.script!.subjectPresentations }).toEqual(runtime.script);
+          expect(script.subjectPresentations!.map((p) => p.subjectRef)).toEqual(runtime.script!.subjectPresentations!.map((p) => p.subjectRef));
+          const subjectResult = await run(withInputs(demoId, script), name, variantLabels);
+          expect(subjectResult.scenario).toEqual(original.scenario);
+          expect(compareFrames(subjectResult.frames, withoutSubjectLabels)).toEqual(compareFrames(original.frames, withoutSubjectLabels));
+          subjectVariants.push(subjectResult);
+
+          const accountResult = await run(withInputs(demoId, structuredClone(runtime.script!), `Cuenta ${variant}`), `Cuenta ${variant}`, labels);
+          expect(accountResult.scenario).toEqual(original.scenario);
+          expect(accountResult.script).toEqual(original.script);
+          expect(compareFrames(accountResult.frames, withoutAccountPresentation)).toEqual(compareFrames(original.frames, withoutAccountPresentation));
+          accountVariants.push(accountResult);
+        }
+        expect(subjectVariants[0].frames.map((f) => f.snapshot.guestPerspective!.sessionLabel)).toEqual(subjectVariants[1].frames.map((f) => f.snapshot.guestPerspective!.sessionLabel));
+        expect(subjectVariants[0].frames[4].snapshot.guestPerspective!.subjects).not.toEqual(subjectVariants[1].frames[4].snapshot.guestPerspective!.subjects);
+        expect(accountVariants[0].frames[4].snapshot.guestPerspective!.sessionLabel).not.toBe(accountVariants[1].frames[4].snapshot.guestPerspective!.sessionLabel);
+        expect(accountVariants[0].frames[4].snapshot.guestPerspective!.subjects).toEqual(accountVariants[1].frames[4].snapshot.guestPerspective!.subjects);
+        controls.push({ composition: index === 0 ? "A" : "B", original, subjectVariants, accountVariants });
+      }
+
+      phase = "primary and inverse B decoupling";
+      const b = resolveDemo("hospitality-family-adventure-costa");
+      const base = controls[1].original;
+      const primary = await run(withInputs(b.manifest.demoId, structuredClone(b.script!), "Cuenta Demo"), "Cuenta Demo", ["Inés", "Mateo"]);
+      expect(compareFrames(primary.frames, withoutAccountPresentation)).toEqual(compareFrames(base.frames, withoutAccountPresentation));
+      const inverseScript = structuredClone(b.script!);
+      inverseScript.subjectPresentations![0].label = "Participante Alfa";
+      const inverse = await run(withInputs(b.manifest.demoId, inverseScript), "Inés", ["Participante Alfa", "Mateo"]);
+      expect(compareFrames(inverse.frames, withoutSubjectLabels)).toEqual(compareFrames(base.frames, withoutSubjectLabels));
+      observations.accountDecoupling = primary;
+      observations.inverseDecoupling = inverse;
+
+      phase = "generic Activity/Experience regression on live provider";
+      const generic = [];
+      for (const old of historical.genericRegression) {
+        const runtime = resolveDemo(old.demoId);
+        const frames = [{ phase: "initial", snapshot: await runtime.provider.getSnapshot() }];
+        for (const step of runtime.script?.steps ?? []) frames.push({ phase: step.action.actionId, snapshot: await runtime.provider.executeAction(step.action) });
+        const reset = await runtime.provider.reset();
+        expect({ demoId: old.demoId, frames, reset }).toEqual(old);
+        generic.push({ demoId: old.demoId, frames, reset });
+      }
+      observations.genericRegression = generic;
+      Object.assign(observations, {
+        recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+        L3a: "ACCOUNT-SOURCED ACCOUNT-ONLY SESSION LABEL EXECUTION-VERIFIED within A/B",
+        accountSubjectPresentationSeparation: "PRESERVED within tested scope",
+        L3b: "PRESERVED / EXPERIMENTALLY ADDRESSED H27", L3c: "PRESERVED / OPEN",
+        L4: "PRESERVED / SOURCE-INSPECTION / OUT OF SCOPE", L5: "PRESERVED / EXPERIMENTALLY ADDRESSED H25",
+        sourceAuthority: "Existing fixture.member.name scalar only; no account/subject/viewer/authentication relationship",
+        quarantine: "H25 and H27 shapes remain EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED",
+        nextMaterialPressure: "L3c and L4 observed but NOT SELECTED; H29 NOT OPENED",
+      });
+      record();
+      console.info("H28: SUPPORTED WITH QUALIFICATION; account-only sessionLabel independent of subject presentation; facts/evaluation/Activity unchanged.");
+    } catch (error) {
+      Object.assign(observations, { recordedAt: new Date().toISOString(), verdict: "FALSIFIED", stoppedAt: phase, error: String(error) });
+      record(); throw error;
+    }
+  });
+});

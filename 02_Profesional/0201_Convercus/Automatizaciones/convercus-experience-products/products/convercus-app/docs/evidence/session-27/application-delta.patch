@@ -1,0 +1,94 @@
+--- H26/products/convercus-app/prototype/src/demo-factory/contracts.ts
++++ H27/products/convercus-app/prototype/src/demo-factory/contracts.ts
+@@ -218,6 +218,9 @@
+   id: string;
+   scenarioRef: string;
+   initialCheckpoint: string;
++  // H27: EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED.
++  // Display relation only; no account, authentication or subject identity claim.
++  subjectPresentations?: Array<{ subjectRef: string; label: string }>;
+   steps: Array<{
+     id: string;
+     presenterLabel: string;
+--- H26/products/convercus-app/prototype/src/demo-factory/artifacts.ts
++++ H27/products/convercus-app/prototype/src/demo-factory/artifacts.ts
+@@ -176,6 +176,10 @@
+     id: "family-adventure",
+     scenarioRef: "scenario:family-adventure@1",
+     initialCheckpoint: "ready",
++    subjectPresentations: [
++      { subjectRef: "subject-p1", label: "Lucía" },
++      { subjectRef: "subject-p2", label: "Huésped 2" },
++    ],
+     steps: [
+       {
+         id: "enlist-p1",
+--- H26/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
++++ H27/products/convercus-app/prototype/src/demo-factory/costa-artifacts.ts
+@@ -87,6 +87,10 @@
+     id: "family-adventure-costa",
+     scenarioRef: "scenario:family-adventure-costa@1",
+     initialCheckpoint: "ready",
++    subjectPresentations: [
++      { subjectRef: "subject-p1", label: "Inés" },
++      { subjectRef: "subject-p2", label: "Mateo" },
++    ],
+     steps: [
+       {
+         id: "enlist-p1",
+--- H26/products/convercus-app/prototype/src/demo/mock-adapter.ts
++++ H27/products/convercus-app/prototype/src/demo/mock-adapter.ts
+@@ -45,6 +45,7 @@
+   checkpoint?: string,
+   evaluation: VerticalEvaluationState = { evidence: [], jointAdmissibility: "cannot-currently-establish", sufficiency: "not-attempted" },
+   subjectStates: Record<string, DemoSubjectState> = {},
++  subjectPresentations: DemoScript["subjectPresentations"] = [],
+ ): AppSnapshot {
+   const snapshot: AppSnapshot = {
+     member: structuredClone(fixture.member),
+@@ -80,7 +81,7 @@
+   }
+ 
+   if (scenario?.experienceRef === "experience:family-adventure@1") {
+-    snapshot.guestPerspective = projectGuestPerspective(evaluation, scenario.subjects, subjectStates);
++    snapshot.guestPerspective = projectGuestPerspective(evaluation, scenario.subjects, subjectStates, subjectPresentations);
+     snapshot.supervisionPerspective = projectSupervisionPerspective(
+       evaluation, scenario.subjects, subjectStates, scenario.operationalSessionSubjectRef,
+     );
+@@ -117,6 +118,7 @@
+       this.checkpoint,
+       this.evaluation,
+       this.subjectStates,
++      this.script?.subjectPresentations,
+     );
+   }
+ 
+--- H26/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
++++ H27/products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts
+@@ -11,6 +11,7 @@
+ import type {
+   ContextReference,
+   DemoSubjectState,
++  DemoScript,
+   EvidenceInput,
+   GuestPerspectiveReadModel,
+   SupervisionPerspectiveReadModel,
+@@ -130,6 +131,7 @@
+   evaluation: VerticalEvaluationState,
+   subjects: readonly SubjectReference[] = [],
+   subjectStates: Record<string, DemoSubjectState> = {},
++  subjectPresentations: DemoScript["subjectPresentations"] = [],
+ ): GuestPerspectiveReadModel {
+   const discoveredClueCount = evaluation.evidence.length;
+   const complete = evaluation.sufficiency === "established";
+@@ -139,7 +141,9 @@
+     sessionLabel: "Usas la cuenta de Lucía, huésped 1. El huésped 2 ya figura en esta estancia: puedes habilitarlo y registrar su hallazgo desde aquí.",
+     subjects: subjects.map(({ id }) => ({
+       id,
+-      label: id === "subject-p1" ? "Tú · huésped 1" : "Huésped 2 · ya existe en esta estancia",
++      // H27 local absence: no supplied label means no display text. The subject
++      // still comes from Scenario; this is not a general product fallback policy.
++      label: subjectPresentations.find(({ subjectRef }) => subjectRef === id)?.label ?? "",
+       status: subjectStates[id] === "enabled"
+         ? id === "subject-p1" ? "Alistada y habilitada" : "Habilitado por ti"
+         : id === "subject-p1" ? "Sin alistar" : "Sin habilitar",

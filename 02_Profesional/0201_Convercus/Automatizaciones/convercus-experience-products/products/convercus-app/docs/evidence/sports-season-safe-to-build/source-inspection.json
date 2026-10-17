@@ -1,0 +1,341 @@
+{
+  "review": "sports-season-safe-to-build",
+  "date": "2026-09-23",
+  "basis": "received working tree, not HEAD",
+  "frozenInput": {
+    "source": "/Users/juanjo/.codex/attachments/f6dbb8dd-ea19-4eba-9fc4-aa50bcaaa13b/Texto pegado.txt",
+    "copy": "frozen-review-input.md",
+    "sha256": "ccc2eeee15f0ba0a2979a8778763ec5fc1def9f75b239034660e68314ca6034a",
+    "byteIdentical": true
+  },
+  "sources": [
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/contracts.ts",
+      "sha256": "60a58bdbee08ed21760bda8805b4b23376440623f949561ed958ac8464983c64",
+      "lineCount": 268,
+      "observedAnchors": [
+        {
+          "needle": "export interface MemberReadModel",
+          "lines": [
+            6
+          ]
+        },
+        {
+          "needle": "export interface AppSnapshot",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "needle": "export interface DemoFixture",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "needle": "export interface ContextReference",
+          "lines": [
+            124
+          ]
+        },
+        {
+          "needle": "export interface EvidenceInput",
+          "lines": [
+            135
+          ]
+        },
+        {
+          "needle": "export type DemoAction",
+          "lines": [
+            146
+          ]
+        },
+        {
+          "needle": "export interface DemoProvider",
+          "lines": [
+            158
+          ]
+        },
+        {
+          "needle": "export interface ScenarioDefinition",
+          "lines": [
+            191
+          ]
+        },
+        {
+          "needle": "export interface DemoScript",
+          "lines": [
+            217
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/bootstrap.ts",
+      "sha256": "6388ada8fde7ea4b043d6f5c75f8fa925f213499350ffd6f0dd038e7caa1cd54",
+      "lineCount": 179,
+      "observedAnchors": [
+        {
+          "needle": "const supportedCapabilities",
+          "lines": [
+            23
+          ]
+        },
+        {
+          "needle": "export function resolveDemo",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "needle": "const experience =",
+          "lines": [
+            126
+          ]
+        },
+        {
+          "needle": "provider: new MockDataAdapter",
+          "lines": [
+            163
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo/mock-adapter.ts",
+      "sha256": "6e688118327e9f36ee55c23b6d100409e4f7cb01f668ad2152a5bde2c6912b35",
+      "lineCount": 206,
+      "observedAnchors": [
+        {
+          "needle": "export function projectSnapshot",
+          "lines": [
+            42
+          ]
+        },
+        {
+          "needle": "member: structuredClone",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "needle": "scenario?.experienceRef ===",
+          "lines": [
+            85,
+            178
+          ]
+        },
+        {
+          "needle": "async executeAction",
+          "lines": [
+            132
+          ]
+        },
+        {
+          "needle": "configuredAction?.requiresEnabledSubject",
+          "lines": [
+            169,
+            182
+          ]
+        },
+        {
+          "needle": "this.evidence.push",
+          "lines": [
+            177
+          ]
+        },
+        {
+          "needle": "async reset",
+          "lines": [
+            198
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts",
+      "sha256": "e021823511336bfa31699120bb3ed9d039362ea97b787a155b89c895328891fd",
+      "lineCount": 199,
+      "observedAnchors": [
+        {
+          "needle": "export function evaluateVerticalEvidence",
+          "lines": [
+            63
+          ]
+        },
+        {
+          "needle": "const criterion:",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "needle": "const authoritativePremise:",
+          "lines": [
+            100
+          ]
+        },
+        {
+          "needle": "export function projectGuestPerspective",
+          "lines": [
+            130
+          ]
+        },
+        {
+          "needle": "export function projectSupervisionPerspective",
+          "lines": [
+            175
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/app/App.tsx",
+      "sha256": "cde3b490f05d42bf11abff185f09b9be5e8828897cc0a96a1c064a964a99b8ef",
+      "lineCount": 574,
+      "observedAnchors": [
+        {
+          "needle": "function HomePage",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "needle": "if (snapshot.guestPerspective)",
+          "lines": [
+            112
+          ]
+        },
+        {
+          "needle": "function SystemPage",
+          "lines": [
+            337
+          ]
+        },
+        {
+          "needle": "if (snapshot.supervisionPerspective)",
+          "lines": [
+            348
+          ]
+        },
+        {
+          "needle": "const demoSearch",
+          "lines": [
+            455
+          ]
+        },
+        {
+          "needle": "const runPresenterAction",
+          "lines": [
+            540
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/main.tsx",
+      "sha256": "cb88ce48d25e4dfe894e0483efbdd495b77e2460e802a66cdbb7e43934e5fd9f",
+      "lineCount": 42,
+      "observedAnchors": [
+        {
+          "needle": "const runtime = resolveDemo",
+          "lines": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/effective-composition-navigation-h39.test.tsx",
+      "sha256": "286976e4fb53a6e56c0644dd3f3b5ef750cfdad661307e147463a1aa0af6515c",
+      "lineCount": 195,
+      "observedAnchors": [
+        {
+          "needle": "H39 STOP gate",
+          "lines": [
+            179
+          ]
+        },
+        {
+          "needle": "baseline.files",
+          "lines": [
+            181
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/demo-factory/activity-attribution-reduction-h37.test.ts",
+      "sha256": "06c6a0ef2771ecfd20bde5135942f56503f342a33ce2b052cee217f9723455cb",
+      "lineCount": 401,
+      "observedAnchors": [
+        {
+          "needle": "sourceHashes",
+          "lines": [
+            57,
+            58,
+            81,
+            390
+          ]
+        },
+        {
+          "needle": "baseline.files",
+          "lines": [
+            59,
+            73
+          ]
+        }
+      ]
+    },
+    {
+      "path": "products/convercus-app/prototype/src/domain/contracts.ts",
+      "sha256": "ff86f7e418ed5721216377238a0509b1a6bb108dd8ca87fae072ba3b63943eee",
+      "lineCount": 105,
+      "observedAnchors": [
+        {
+          "needle": "export interface ExperienceParticipation",
+          "lines": [
+            59
+          ]
+        },
+        {
+          "needle": "export interface SignificantEvent",
+          "lines": [
+            69
+          ]
+        }
+      ]
+    },
+    {
+      "path": "00-governance/decisions/ADR-001-bounded-tes-semantic-authority.md",
+      "sha256": "00c3dd5e3f498008f5b307704511bab00e88d1c73fbb31180e6e7a21e48d002b",
+      "role": "accepted architecture authority inspected"
+    },
+    {
+      "path": "00-governance/decisions/ADR-002-logical-separation-composition-runtime-read-models.md",
+      "sha256": "af7db7c79b6b7bfc1f6682ac2c6380408be150f7aef89bafb5c89f6ebebcfabd",
+      "role": "accepted architecture authority inspected"
+    },
+    {
+      "path": "00-governance/decisions/ADR-003-desired-effective-demo-composition.md",
+      "sha256": "15f17fd575f4fc2975454155855ffd68d5d905dc2d266843fb20e6c5df430878",
+      "role": "accepted architecture authority inspected"
+    },
+    {
+      "path": "00-governance/decisions/ADR-004-experience-scenario-demo-script-separation.md",
+      "sha256": "1118fc930e7d0f770784e0fadd468dcd2dce47df20b09a4cf68c43ed42f41732",
+      "role": "accepted architecture authority inspected"
+    },
+    {
+      "path": "00-governance/decisions/ADR-005-neutral-evidence-authority-bounded-contextual-evaluation.md",
+      "sha256": "7c80b348271be787afcd272606318e1fa0d4eb536203ccd48e22bb31948d8c68",
+      "role": "accepted architecture authority inspected"
+    },
+    {
+      "path": "01-semantic-contract/product-experience-definitions/active-challenge.md",
+      "sha256": "abef133798fd81c6315053f4a86e533afcad2ac486f80df4a63c191040a86792",
+      "role": "non-executable candidate; no sports runtime authority"
+    }
+  ],
+  "method": "Source inspection and archived evidence; no new sports execution, no new experimental harness."
+}

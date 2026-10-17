@@ -1,0 +1,65 @@
+--- S34/prototype/src/demo/mock-adapter.ts
++++ S35/prototype/src/demo/mock-adapter.ts
+@@ -47,6 +47,7 @@
+   subjectStates: Record<string, DemoSubjectState> = {},
+   subjectPresentations: DemoScript["subjectPresentations"] = [],
+   experimentalJourneyPresentations: DemoScript["experimentalJourneyPresentations"] = [],
++  experienceName = "",
+ ): AppSnapshot {
+   const snapshot: AppSnapshot = {
+     member: structuredClone(fixture.member),
+@@ -84,7 +85,7 @@
+   if (scenario?.experienceRef === "experience:family-adventure@1") {
+     snapshot.guestPerspective = projectGuestPerspective(
+       evaluation, scenario.subjects, subjectStates, subjectPresentations, fixture.member.name,
+-      snapshot.scenario?.availableActionId, experimentalJourneyPresentations,
++      snapshot.scenario?.availableActionId, experimentalJourneyPresentations, experienceName,
+     );
+     snapshot.supervisionPerspective = projectSupervisionPerspective(
+       evaluation, scenario.subjects, subjectStates, scenario.operationalSessionSubjectRef,
+@@ -106,7 +107,7 @@
+   private subjectStates: Record<string, DemoSubjectState> = {};
+   private evaluation = evaluateVerticalEvidence([]);
+ 
+-  constructor(fixture: DemoFixture, scenario?: ScenarioDefinition, script?: DemoScript) {
++  constructor(fixture: DemoFixture, scenario?: ScenarioDefinition, script?: DemoScript, private readonly experienceName = "") {
+     this.initialFixture = structuredClone(fixture);
+     this.fixture = structuredClone(fixture);
+     this.scenario = scenario ? structuredClone(scenario) : undefined;
+@@ -124,6 +125,7 @@
+       this.subjectStates,
+       this.script?.subjectPresentations,
+       this.script?.experimentalJourneyPresentations,
++      this.experienceName,
+     );
+   }
+ 
+--- S34/prototype/src/demo-factory/bootstrap.ts
++++ S35/prototype/src/demo-factory/bootstrap.ts
+@@ -160,7 +160,7 @@
+     experience,
+     scenario,
+     script,
+-    provider: new MockDataAdapter(fixture, scenario, script),
++    provider: new MockDataAdapter(fixture, scenario, script, experience?.name),
+     capabilities: resolveCapabilities(manifest),
+   };
+ }
+--- S34/prototype/src/demo-factory/vertical-evaluation.ts
++++ S35/prototype/src/demo-factory/vertical-evaluation.ts
+@@ -136,12 +136,14 @@
+   accountName = "",
+   availableActionId?: string,
+   experimentalJourneyPresentations: DemoScript["experimentalJourneyPresentations"] = [],
++  // H35: resolved Experience.name; semantic name transport, not Script copy.
++  experienceName = "",
+ ): GuestPerspectiveReadModel {
+   const discoveredClueCount = evaluation.evidence.length;
+   const complete = evaluation.sufficiency === "established";
+   const enlisted = subjectStates["subject-p1"] === "enabled";
+   return {
+-    huntName: "Aventura Familiar",
++    huntName: experienceName,
+     sessionLabel: `Cuenta de ${accountName}`,
+     subjects: subjects.map(({ id }) => ({
+       id,

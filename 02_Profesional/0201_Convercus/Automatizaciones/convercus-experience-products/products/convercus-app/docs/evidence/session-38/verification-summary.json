@@ -1,0 +1,48 @@
+{
+  "session": 38,
+  "verifiedAt": "2026-09-21T16:53:21.085Z",
+  "verdict": "SUPPORTED WITH QUALIFICATION",
+  "requiredSections": 43,
+  "verifiedLocalLinks": 36,
+  "frozenFiles": 480,
+  "changedInheritedFiles": 3,
+  "finalSuite": {
+    "passed": 106,
+    "failed": 0,
+    "files": 31
+  },
+  "historicalRuntime": {
+    "files": 16,
+    "tests": 25
+  },
+  "currentVerification": {
+    "files": 14,
+    "tests": 73
+  },
+  "environmentMatrix": [
+    {
+      "label": "absent",
+      "passed": 98,
+      "failed": 0,
+      "pending": 0,
+      "files": 30
+    },
+    {
+      "label": "present",
+      "passed": 98,
+      "failed": 0,
+      "pending": 0,
+      "files": 30
+    }
+  ],
+  "currentH37MaterialEqualityToS37FinalTrace": true,
+  "newEvidenceFilesHashed": 110,
+  "qualifications": [
+    "macOS arm64 only",
+    "Shared Node/dependencies/asset origin in temporary conditions",
+    "Absolute asset URL/root relocation OPEN",
+    "Legacy lexical path alias pressure OPEN",
+    "No browser visual or commercial acceptance",
+    "Rule NOT PROMOTED; H39 NOT OPENED"
+  ]
+}

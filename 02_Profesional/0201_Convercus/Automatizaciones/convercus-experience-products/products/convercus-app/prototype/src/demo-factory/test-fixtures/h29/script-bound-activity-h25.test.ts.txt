@@ -1,0 +1,306 @@
+/// <reference types="node" />
+import { historicalH28Path } from "./test-fixtures/h28/source-path";
+import { createHash } from "node:crypto";
+import { readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { MockDataAdapter } from "@/demo/mock-adapter";
+import { defaultDemoCatalogs, resolveDemo } from "./bootstrap";
+import type { AppSnapshot, DemoAction, DemoEnableAction, DemoScript, ResolvedDemoRuntime } from "./contracts";
+import { scripts as historicalScripts, scenarios as historicalScenarios } from "./test-fixtures/h24/artifacts";
+import { historicalH24Path } from "./test-fixtures/h24/source-path";
+import { historicalH26Path } from "./test-fixtures/h26/source-path";
+import * as vertical from "./vertical-evaluation";
+import * as joint from "./cross-subject-evidence-admissibility";
+
+// H27 adds subject labels. Preserve H25's composition, projection and snapshots;
+// H27 separately verifies Activity and factual regression on the live provider.
+vi.mock("./artifacts", () => import("./test-fixtures/h26/artifacts"));
+vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h26/mock-adapter"));
+vi.mock("./vertical-evaluation", () => import("./test-fixtures/h26/vertical-evaluation"));
+
+afterEach(() => vi.restoreAllMocks());
+type PublicAction = DemoAction | DemoEnableAction;
+type Frame = {
+  phase: string;
+  input?: PublicAction;
+  snapshot: AppSnapshot;
+  verticalCalls: Parameters<typeof vertical.evaluateVerticalEvidence>[];
+  verticalResults: vertical.VerticalEvaluationState[];
+  jointEvaluationCalls: Parameters<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+  jointEvaluationResults: ReturnType<typeof joint.evaluateCrossSubjectEvidenceSufficiency>[];
+};
+const root = resolve(process.cwd(), "../../..");
+const prefix = "products/convercus-app/prototype/src/";
+const evidenceDir = resolve(process.cwd(), "../docs/evidence");
+const hash = (bytes: Buffer | string) => createHash("sha256").update(bytes).digest("hex");
+const stripPresentation = (script: DemoScript) => {
+  const copy = structuredClone(script);
+  for (const step of copy.steps) delete step.activityPresentation;
+  return copy;
+};
+// Comparison views only: no provider snapshot/read model is ever edited to
+// produce an experimental representation. All output comes from executeAction.
+const nonActivityFrame = (frame: Frame) => ({ ...frame, snapshot: { ...frame.snapshot, activity: [] } });
+const nonTextActivity = (snapshot: AppSnapshot) => snapshot.activity.map((item) => ({ ...item, title: "", description: "" }));
+
+describe("H25 — Script-Bound Situated Activity Representation", () => {
+  it("separates declaration, accepted facts, optional representation and evaluation on the live shared provider", async () => {
+    const baselineBytes = readFileSync(resolve(evidenceDir, "session-25/baseline.json"));
+    const baseline = JSON.parse(baselineBytes.toString()) as {
+      files: Record<string, string>; allowedChangedFiles: string[]; archiveByOriginalPath: Record<string, string>;
+    };
+    for (const [path, digest] of Object.entries(baseline.files)) {
+      if (!baseline.allowedChangedFiles.includes(path)) expect(hash(readFileSync(resolve(root, historicalH28Path(historicalH26Path(path))))), path).toBe(digest);
+      else {
+        expect(historicalH24Path(path)).toBe(baseline.archiveByOriginalPath[path]);
+        expect(hash(readFileSync(resolve(root, baseline.archiveByOriginalPath[path]))), `archive: ${path}`).toBe(digest);
+      }
+    }
+    const oldAdapter = readFileSync(resolve(root, historicalH24Path(prefix + "demo/mock-adapter.ts")), "utf8");
+    const adapter = readFileSync(resolve(root, historicalH26Path(prefix + "demo/mock-adapter.ts")), "utf8");
+    const section = (source: string, start: string, end: string) => source.slice(source.indexOf(start), source.indexOf(end));
+    expect(section(adapter, "export function projectSnapshot", "export class MockDataAdapter")).toBe(section(oldAdapter, "export function projectSnapshot", "export class MockDataAdapter"));
+    expect(section(adapter, "  async executeAction", "      this.evidence.push")).toBe(section(oldAdapter, "  async executeAction", "      this.evidence.push"));
+    expect(adapter).not.toMatch(/jardín|fuente|mirador|patio|presenterLabel/);
+    const contract = readFileSync(resolve(root, historicalH26Path(prefix + "demo-factory/contracts.ts")), "utf8");
+    const oldContract = readFileSync(resolve(root, historicalH24Path(prefix + "demo-factory/contracts.ts")), "utf8");
+    expect(section(contract, "export interface EvidenceInput", "export type DemoModule")).toBe(section(oldContract, "export interface EvidenceInput", "export type DemoModule"));
+
+    const historical = JSON.parse(readFileSync(resolve(evidenceDir, "session-24/execution-trace-final.json"), "utf8")) as {
+      verdict: string; controls: Array<{ original: { frames: Frame[]; reset: AppSnapshot } }>;
+    };
+    expect(historical.verdict).toBe("FALSIFIED");
+    const h23 = JSON.parse(readFileSync(resolve(evidenceDir, "session-23/execution-trace.json"), "utf8")) as {
+      negativeControls: Array<{ frames: Array<{ snapshot: AppSnapshot }>; reset: AppSnapshot }>;
+    };
+    const evaluate = vi.spyOn(vertical, "evaluateVerticalEvidence");
+    const cross = vi.spyOn(joint, "evaluateCrossSubjectEvidenceSufficiency");
+    const observations: Record<string, unknown> = {
+      experiment: "H25 — Script-Bound Situated Activity Representation",
+      baselineSha256: hash(baselineBytes),
+      applicationSha256: Object.fromEntries(baseline.allowedChangedFiles.slice(0, 5).map((path) => [path, hash(readFileSync(resolve(root, historicalH28Path(historicalH26Path(path)))))])),
+      harnessSha256: hash(readFileSync(resolve(process.cwd(), "src/demo-factory/script-bound-activity-h25.test.ts"))),
+      method: "Live public providers, public snapshots, transparent original evaluator spies; archived H24 facts/snapshots; no browser",
+    };
+    let phase = "source and authority boundaries";
+    const record = () => {
+      if (process.env.H25_RECORD_PATH) writeFileSync(resolve(process.env.H25_RECORD_PATH), JSON.stringify(observations, null, 2) + "\n", { flag: "wx" });
+    };
+    const withScript = (demoId: string, script: DemoScript) => {
+      const manifest = defaultDemoCatalogs.manifests[demoId];
+      return resolveDemo(demoId, { ...defaultDemoCatalogs, scripts: { ...defaultDemoCatalogs.scripts, [manifest.scriptRef!]: script } });
+    };
+    const frame = (phase: string, snapshot: AppSnapshot, input?: PublicAction): Frame => ({
+      phase, ...(input ? { input } : {}), snapshot,
+      verticalCalls: structuredClone(evaluate.mock.calls),
+      verticalResults: structuredClone(evaluate.mock.results.map((result) => result.value)),
+      jointEvaluationCalls: structuredClone(cross.mock.calls),
+      jointEvaluationResults: structuredClone(cross.mock.results.map((result) => result.value)),
+    });
+    const run = async (runtime: ResolvedDemoRuntime, actions = runtime.script!.steps.map((step) => step.action)) => {
+      expect(Object.getPrototypeOf(runtime.provider)).toBe(MockDataAdapter.prototype);
+      evaluate.mockClear(); cross.mockClear();
+      const initial = await runtime.provider.getSnapshot();
+      expect(initial.supervisionPerspective).toMatchObject({ evidence: [], sufficiency: "not-attempted", derivedClaim: "not-produced" });
+      const initialRecords = structuredClone(defaultDemoCatalogs.fixtures[runtime.manifest.fixtureRef].activityRecords);
+      expect(initial.activity.map((item) => item.id)).toEqual(initialRecords.map((item) => item.id));
+      const frames = [frame("initial", initial)];
+      const facts: DemoAction["evidence"][] = [];
+      for (const action of actions) {
+        phase = `${runtime.manifest.demoId}: ${action.actionId}`;
+        evaluate.mockClear(); cross.mockClear();
+        const input = structuredClone(action);
+        const before = frames.at(-1)!.snapshot;
+        expect(before.scenario!.availableActionId).toBe(input.actionId);
+        const snapshot = await runtime.provider.executeAction(input);
+        expect(input).toEqual(action);
+        expect(evaluate).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+        expect(cross).toHaveBeenCalledTimes("evidence" in input ? 1 : 0);
+        if ("evidence" in input) {
+          facts.push(input.evidence);
+          expect(evaluate.mock.calls[0]).toEqual([facts, runtime.scenario!.contexts]);
+          expect(evaluate.mock.results[0].value.evidence).toEqual(facts);
+          const presentation = runtime.script?.steps.find((step) => step.action.actionId === input.actionId)?.activityPresentation;
+          if (presentation) {
+            expect(snapshot.activity).toHaveLength(before.activity.length + 1);
+            expect(snapshot.activity[0]).toMatchObject({
+              id: input.evidence.id, title: presentation.title, description: presentation.description,
+              occurredAt: input.evidence.occurredAt, provenance: "simulated", icon: "activity", tone: "blue",
+            });
+            expect(snapshot.activity.slice(1)).toEqual(before.activity);
+          } else expect(snapshot.activity).toEqual(before.activity);
+        } else {
+          expect(snapshot.activity).toEqual(before.activity);
+          expect(snapshot.supervisionPerspective!.evidence).toEqual(before.supervisionPerspective!.evidence);
+        }
+        frames.push(frame(input.actionId, snapshot, input));
+      }
+      const reset = await runtime.provider.reset();
+      expect(reset).toEqual(initial);
+      return { scenario: runtime.scenario, script: runtime.script, frames, reset };
+    };
+    try {
+      const controls: unknown[] = [];
+      observations.controls = controls;
+      for (const [index, demoId] of ["hospitality-family-adventure", "hospitality-family-adventure-costa"].entries()) {
+        const runtime = resolveDemo(demoId);
+        expect(runtime.scenario).toEqual(historicalScenarios[runtime.manifest.scenarioRef!]);
+        expect(stripPresentation(runtime.script!)).toEqual(historicalScripts[runtime.manifest.scriptRef!]);
+        expect(runtime.script!.steps.filter((step) => step.activityPresentation)).toHaveLength(2);
+        const original = await run(runtime);
+        const previous = historical.controls[index].original;
+        expect(original.frames.map(nonActivityFrame)).toEqual(previous.frames.map(nonActivityFrame));
+        expect(original.reset).toEqual(previous.reset);
+        if (index === 0) expect(original.frames).toEqual(previous.frames);
+        else {
+          expect(original.frames.map((f) => nonTextActivity(f.snapshot))).toEqual(previous.frames.map((f) => nonTextActivity(f.snapshot)));
+          const clueActivity = original.frames[4].snapshot.activity.filter((item) => item.provenance === "simulated");
+          expect(clueActivity.map((item) => item.title)).toEqual(["Pista del patio encontrada", "Pista del mirador encontrada"]);
+          expect(JSON.stringify(clueActivity)).not.toMatch(/jardín|fuente/);
+          // L3 is intentionally distinct and still present in GuestPerspective.
+          expect(JSON.stringify(original.frames.map((f) => f.snapshot.guestPerspective))).toMatch(/Lucía/);
+          expect(JSON.stringify(original.frames.map((f) => f.snapshot.guestPerspective))).toMatch(/jardín/);
+          expect(JSON.stringify(original.frames.map((f) => f.snapshot.guestPerspective))).toMatch(/fuente/);
+        }
+
+        const variants = [];
+        for (const variant of ["X", "Y"]) {
+          const script = structuredClone(runtime.script!);
+          for (const step of script.steps) if (step.activityPresentation) step.activityPresentation = {
+            title: `Representación ${variant}: ${step.id}`,
+            description: `Relato ${variant} independiente del hecho y su evaluación.`,
+          };
+          expect(stripPresentation(script)).toEqual(stripPresentation(runtime.script!));
+          const result = await run(withScript(demoId, script));
+          expect(result.frames.map(nonActivityFrame)).toEqual(original.frames.map(nonActivityFrame));
+          expect(result.frames.map((f) => nonTextActivity(f.snapshot))).toEqual(original.frames.map((f) => nonTextActivity(f.snapshot)));
+          variants.push(result);
+        }
+        expect(variants[0].frames[2].snapshot.activity).not.toEqual(variants[1].frames[2].snapshot.activity);
+        expect(variants[0].frames[4].snapshot.activity).not.toEqual(variants[1].frames[4].snapshot.activity);
+
+        const absenceControls = [];
+        for (const omitted of [[1], [3], [1, 3]]) {
+          const script = structuredClone(runtime.script!);
+          for (const stepIndex of omitted) delete script.steps[stepIndex].activityPresentation;
+          expect(stripPresentation(script)).toEqual(stripPresentation(runtime.script!));
+          const result = await run(withScript(demoId, script));
+          expect(result.frames.map(nonActivityFrame)).toEqual(original.frames.map(nonActivityFrame));
+          const omittedIds = omitted.map((i) => (script.steps[i].action as DemoAction).evidence.id);
+          for (const [i, actual] of result.frames.entries()) expect(actual.snapshot.activity).toEqual(
+            original.frames[i].snapshot.activity.filter((item) => !omittedIds.includes(item.id)),
+          );
+          absenceControls.push({ omitted, ...result });
+        }
+
+        // Affordance and expected narrative are never transformed into each other.
+        const affordance = structuredClone(runtime.script!);
+        for (const step of affordance.steps) step.presenterLabel = "Etiqueta ajena a Activity";
+        const changedAffordance = await run(withScript(demoId, affordance));
+        expect(changedAffordance.frames).toEqual(original.frames);
+
+        // Resolved Script contents cannot replace the actual submitted facts or
+        // the Scenario transition. Only its actionId binds the presentation.
+        const misleading = structuredClone(runtime.script!);
+        for (const step of misleading.steps) if ("evidence" in step.action) {
+          step.expectedCheckpoint = "not-a-runtime-checkpoint";
+          step.action.evidence.id = "not-the-submitted-fact";
+          step.action.evidence.subjects = [];
+          step.action.evidence.contexts = [];
+        }
+        const scriptAuthority = await run(withScript(demoId, misleading), runtime.script!.steps.map((step) => step.action));
+        expect(scriptAuthority.frames).toEqual(original.frames);
+
+        const rejected = [];
+        const guarded = resolveDemo(demoId);
+        for (const actionIndex of [1, 3]) {
+          const input = structuredClone(guarded.script!.steps[actionIndex].action);
+          expect(guarded.script!.steps[actionIndex].activityPresentation).toBeDefined();
+          const before = await guarded.provider.getSnapshot();
+          evaluate.mockClear(); cross.mockClear();
+          await expect(guarded.provider.executeAction(input)).rejects.toThrow(actionIndex === 1 ? "aún no está habilitado" : "checkpoint");
+          const after = await guarded.provider.getSnapshot();
+          expect(after).toEqual(before);
+          expect(after.supervisionPerspective).toMatchObject({ evidence: [], sufficiency: "not-attempted", derivedClaim: "not-produced" });
+          expect(evaluate).not.toHaveBeenCalled(); expect(cross).not.toHaveBeenCalled();
+          rejected.push({ input, before, after, evaluationCalls: [] });
+        }
+        controls.push({ composition: index === 0 ? "A" : "B", original, variants, absenceControls, changedAffordance, scriptAuthority, rejected });
+      }
+
+      phase = "live H22 selection / generic Activity regression";
+      const generic = [];
+      for (const [index, demoId] of ["retail-baseline", "hospitality-stay"].entries()) {
+        const runtime = resolveDemo(demoId);
+        const initial = await runtime.provider.getSnapshot();
+        expect(initial).toEqual(h23.negativeControls[index].frames[0].snapshot);
+        expect(initial.guestPerspective).toBeUndefined(); expect(initial.supervisionPerspective).toBeUndefined();
+        const frames = [{ phase: "initial", snapshot: initial }];
+        for (const [i, step] of (runtime.script?.steps ?? []).entries()) {
+          expect(step.activityPresentation).toBeUndefined();
+          evaluate.mockClear(); cross.mockClear();
+          const snapshot = await runtime.provider.executeAction(step.action);
+          expect(snapshot).toEqual(h23.negativeControls[index].frames[i + 1].snapshot);
+          expect(evaluate).not.toHaveBeenCalled(); expect(cross).not.toHaveBeenCalled();
+          frames.push({ phase: step.action.actionId, snapshot });
+        }
+        const reset = await runtime.provider.reset();
+        expect(reset).toEqual(initial);
+        generic.push({ demoId, frames, reset });
+      }
+      observations.genericActivityRegression = generic;
+
+      phase = "live H23 mismatch and independent authority regression";
+      const mismatchControls = [];
+      for (const [demoId, otherId] of [["hospitality-family-adventure", "hospitality-family-adventure-costa"], ["hospitality-family-adventure-costa", "hospitality-family-adventure"]]) {
+        const runtime = resolveDemo(demoId);
+        const other = resolveDemo(otherId);
+        const frames = [];
+        for (const [i, step] of runtime.script!.steps.entries()) {
+          const action = structuredClone(step.action);
+          if ("evidence" in action) action.evidence.contexts = structuredClone((other.script!.steps[i].action as DemoAction).evidence.contexts);
+          evaluate.mockClear(); cross.mockClear();
+          const snapshot = await runtime.provider.executeAction(action);
+          expect(snapshot.supervisionPerspective).toMatchObject({ jointAdmissibility: "cannot-currently-establish", sufficiency: "not-attempted", derivedClaim: "not-produced" });
+          expect(cross).not.toHaveBeenCalled();
+          if ("evidence" in action) {
+            expect(evaluate.mock.calls[0][0].at(-1)).toEqual(action.evidence);
+            expect(evaluate.mock.results[0].value.evidence).toEqual(evaluate.mock.calls[0][0]);
+            expect(snapshot.activity[0].title).toBe(step.activityPresentation!.title);
+          }
+          frames.push(frame(action.actionId, snapshot, action));
+        }
+        mismatchControls.push({ demoId, frames });
+      }
+      observations.mismatchControls = mismatchControls;
+      const authorityControls = [];
+      for (const control of historical.controls) {
+        const [facts, context, criterion, premise] = control.original.frames[4].jointEvaluationCalls[0];
+        for (const authority of [undefined, { ...premise!, scope: { ...context, bookingRef: "wrong-booking" } }, { ...premise!, coveredSubjectRefs: ["subject-p1"] }]) {
+          const result = joint.evaluateCrossSubjectEvidenceSufficiency(facts, context, criterion, authority);
+          expect(result).toMatchObject({ jointAdmissibility: { determination: "cannot-currently-establish" }, sufficiency: { attempted: false } });
+          authorityControls.push({ input: [facts, context, criterion, authority], result });
+        }
+      }
+      observations.authorityControls = authorityControls;
+      Object.assign(observations, {
+        recordedAt: new Date().toISOString(), verdict: "SUPPORTED WITH QUALIFICATION",
+        L5: "SCRIPT-BOUND SITUATED REPRESENTATION EXECUTION-VERIFIED within tested A/B scope",
+        factRepresentationIndependence: "SUPPORTED within tested scope",
+        declarationOccurrenceSeparation: "SUPPORTED; declaration/enlistment create no clue Activity",
+        absenceBehavior: "LOCAL EXPERIMENTAL ABSENCE BEHAVIOR / NOT PRODUCT FALLBACK POLICY",
+        shapeStatus: "EXPERIMENTAL / LOCAL / REVERSIBLE / NOT PROMOTED",
+        historicalH24: "FALSIFIED / unchanged; new relation authorized only in H25",
+        L3: "PRESERVED / OUT OF SCOPE", L4: "PRESERVED / SOURCE-INSPECTION / OUT OF SCOPE",
+        nextMaterialPressure: "General provenance, absence and responsibility boundaries remain observed; H26 NOT SELECTED",
+      });
+      record();
+      console.info("H25: SUPPORTED WITH QUALIFICATION; A preserved, B situated, facts/evaluation independent; H24 remains FALSIFIED.");
+    } catch (error) {
+      Object.assign(observations, { recordedAt: new Date().toISOString(), verdict: "FALSIFIED", stoppedAt: phase, error: String(error) });
+      record();
+      throw error;
+    }
+  });
+});

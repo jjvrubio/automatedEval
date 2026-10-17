@@ -1,0 +1,39 @@
+{
+  "receivedMaterialFiles": 799,
+  "unchanged": 792,
+  "changed": [
+    "products/convercus-app/prototype/README.md",
+    "products/convercus-app/prototype/src/app/App.tsx",
+    "products/convercus-app/prototype/src/app/SportsSeasonApp.tsx",
+    "products/convercus-app/prototype/src/styles/sports-season.css",
+    "products/convercus-app/prototype/src/demo-factory/bootstrap.ts",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/contracts.ts",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/runtime.ts"
+  ],
+  "missing": [],
+  "newProductAndTestFiles": [
+    "src/app/SportsSurface.tsx",
+    "src/app/SportsUserPanels.tsx",
+    "src/demo-factory/sports-season/user-plane-artifacts.ts",
+    "src/demo-factory/sports-season/user-plane.test.ts",
+    "src/demo-factory/sports-season/user-plane-ui.test.tsx"
+  ],
+  "historicalTestsChanged": [],
+  "recognizeFunctionByteIdentical": true,
+  "build01TraceByteIdentical": true,
+  "build01TraceReference": "products/convercus-app/docs/evidence/build-01/new-runtime-trace-final.json",
+  "sourceSha256": {
+    "products/convercus-app/prototype/README.md": "6dd58033d5db5cccfe41473b55855bff34de4c8bd594761a35765b0c803b3b23",
+    "products/convercus-app/prototype/src/app/App.tsx": "8d20f76984df1ee000220052257bf0444065bc33d7b4eeb671e59e206e796bba",
+    "products/convercus-app/prototype/src/app/SportsSeasonApp.tsx": "738b81cb78c0b74eaca75f964a27301ebb0babb1c5f881ea06b22348c5b939c1",
+    "products/convercus-app/prototype/src/styles/sports-season.css": "b75d93708cffbf152ad5f750d638113e3183a70e31a84b2c332da30750e632a1",
+    "products/convercus-app/prototype/src/demo-factory/bootstrap.ts": "68b16d39b08600faa8a0c3749f6e394e5f56645b21a3aee3c83657da6ca66f48",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/contracts.ts": "e8aba09ed4ecce439cd302c534b5c101078ecd002d7ebf8a206fa33e8ccf2f5f",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/runtime.ts": "f5370743f2f1aa1b4d8a939e619de938aa48b7c6bf8b738353720715091b9f79",
+    "products/convercus-app/prototype/src/app/SportsSurface.tsx": "a7daba92a612542ccd4e6c1c683ef2a83485276d3f972be41584087c87e0d81b",
+    "products/convercus-app/prototype/src/app/SportsUserPanels.tsx": "e0c439fe9b4ee1753e09fd03d87788729d6995737e853690991272095bb69350",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/user-plane-artifacts.ts": "8f6cd3921b397d84654c8029f9e5ccd444c4fd3993cdb245269d00e46de587db",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/user-plane.test.ts": "2ea703b1e0c9ad38ec13ca17bb6891c9ff134b1ca266d43f940940d98ce43bec",
+    "products/convercus-app/prototype/src/demo-factory/sports-season/user-plane-ui.test.tsx": "08689806373958acec16d8808cf96d0aa3f414361d569b56228169a4a372edbb"
+  }
+}

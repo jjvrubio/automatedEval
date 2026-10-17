@@ -1,0 +1,52 @@
+{
+  "session": 39,
+  "capturedAt": "2026-09-22T17:31:19.101Z",
+  "files": {
+    "audit-session.mjs": "56ba96e79c4eb45042f7ba3ad44210bdfa80f5bbf7ca06c3cee5fe0c2fe4cf63",
+    "baseline-suite-command.json": "20aea2fb4210cb6db5281544466f9ac2b51dad9c3f76fc2932c12c2371ef076d",
+    "baseline-suite-results.json": "ef32c18bc54813eec3c85220cc10058714d99ff7591585600508240fa1f0c88c",
+    "baseline-suite.log": "a670d42326b5efcfe5d0cfe3a75385e966dee2f864ddfad577fac92ce603a69c",
+    "baseline.json": "622e33cd8fe9925a127019c4e4a33367b281fd466890d37caed33fc76c601311",
+    "browser-inspection.md": "42f96bc7e19aed9559bb7cffc7bd75c60ffd41d53ad47d04706543b45b6986a6",
+    "build-command.json": "8083ffa2c18ff7c0a9fb18fe455ec42f213f8b2d2b84c7fe23b92c247c297230",
+    "build-final-command.json": "1a35b987fbae418f2398712c63f8855224e13b00aef53f829888d02a1317fafb",
+    "build-final.log": "706d7d8b81330140855a70748853b03628e1f07a15ac40a421d9c0ff5b50c84b",
+    "build.log": "7b4ae1f90fe5a4fc30a2170458a8f11d8a025130a1081bdf3b21b589240c61c2",
+    "current-cumulative-trace.json": "84109de1de374a38df033523579eb5f0039ddd8e5bef14859bef14f118164ba6",
+    "current-h37-command.json": "d3adcbf2e2fa20e26c2dfc24f92ec16dcf1a9b374b392fca0941e3db1526ee6f",
+    "current-h37-results.json": "6dbde25bfe78ce874c2fbae538da2184eb993b00528a867e63b39f23799d4fc2",
+    "current-h37.log": "7b055cba1f4022f4eac99adeddbff7d61e9ca1fd1ac576a4886e497f5adf9285",
+    "full-suite-command.json": "816733dc9cdc328893219c1b81ded92e35104d882b7f8e3bf8c76d76a747b9d2",
+    "full-suite-final-command.json": "536535ca00f65fb053475717c7452c36fd5dbb912494d81f96377c5cab46a450",
+    "full-suite-final-results.json": "561b8e4ab361b3b1905d3d95c331603224821d6c16b1ba4af135ea5a431ccd8a",
+    "full-suite-final.log": "9d0c93f596271db12e7427de76f891ab4d01a8c6353a4cd5d1576198c7db6828",
+    "full-suite-results.json": "9a5e4ede522b2ac701df19862b0e1f4e249d282829886795bdddf37fe64c84b5",
+    "full-suite.log": "0ad29e72c37b7c3a0b178f88bd5ed378a23e0706d2ec9b7d8c55d85e9b0a324d",
+    "lint-command.json": "f7aefb55192a45e5bd0a5c9bf066b8d9b39e163d5dd0d4e8015e71a9e4fde1f3",
+    "lint-final-command.json": "b96c8f3a605c4968fad390dbb70f75375b2b203e24a9a3332d80b3e6e6366302",
+    "lint-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lint.log": "7e0d3667d046cbf698b31847177f57560da0f2834699b4154917995ec9d0c995",
+    "navigation-command.json": "46d178aaf1e3ad0f91965c0469844eaabe1430c3d1c881434d360b20b5d8b084",
+    "navigation-final-command.json": "7750b30bf0f7ce50620ba5759a3b6a75d2246e6fdd29734bb85e2a4a65d0dd1e",
+    "navigation-final-results.json": "3b1a00115cca4357775bf8f10401bf4cb8a26e3739a5d202dad20e830e5e7900",
+    "navigation-final.log": "0ee4f1e5ad60a8070ef07ae2c272d1d6556ad649c7527da4a38c006af727c736",
+    "navigation-results.json": "579cb49070c5009502d070dfe886050ab1eeed2b28e97178b3c9937ea1a92965",
+    "navigation.log": "e03486a55feb9d602232054a62b43a6f30b272335821dcb2411e12e16301277f",
+    "pre-delta-navigation-matrix-final.json": "03c13c48e893b3a5729f1ab69721abaef7f78c9a81aa7da6aa1f3e11890933aa",
+    "pre-delta-navigation-matrix.json": "d5f83181c79f5b5210762e16cbe2ef2de36c88b934efdbc9625fe113b2c9f4e2",
+    "preservation-check.json": "03d1266b16f17937b95d891107c4b3521cfaa7001f94fe04f0d2dbac371b668b",
+    "typecheck-command.json": "0f62fddafc026474bc18b3d1aad00f2280f240e44eaed04bf873cfec5987108b",
+    "typecheck-final-command.json": "f00cfa490151e2aa692065db56dc48c3d4b381bd1a060fd6ba62041efe1aea70",
+    "typecheck-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification-summary.json": "5803933377b57d1ce90e90cef62b40b80c255fe06e5c9551c7da02d065a17b35"
+  },
+  "report": {
+    "path": "products/convercus-app/docs/session-39-effective-composition-navigation-identity.md",
+    "sha256": "30467f52b05bb481ff136457cbeed1123f6db58e73151a1e4f7a9bb6fea34b24"
+  },
+  "harness": {
+    "path": "products/convercus-app/prototype/src/demo-factory/effective-composition-navigation-h39.test.tsx",
+    "sha256": "286976e4fb53a6e56c0644dd3f3b5ef750cfdad661307e147463a1aa0af6515c"
+  }
+}

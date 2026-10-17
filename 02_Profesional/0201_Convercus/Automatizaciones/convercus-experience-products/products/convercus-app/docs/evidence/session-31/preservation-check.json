@@ -1,0 +1,23 @@
+{
+  "session": 31,
+  "verification": "SOURCE-PRESERVATION / DOCUMENT-COMPLETENESS; not application execution",
+  "baselineFileCount": 343,
+  "unchangedFileCount": 343,
+  "changedFiles": [],
+  "missingFiles": [],
+  "requiredSectionsVerified": 32,
+  "localReportLinksVerified": 16,
+  "syntaxInventoryEntries": 670,
+  "syntaxInventorySourceHashesVerified": 4,
+  "applicationCodeDelta": false,
+  "currentAppExecution": "NOT EXECUTED",
+  "browserVisualValidation": "NOT EXECUTED",
+  "domIntegrationVerification": "NOT EXECUTED",
+  "testSuite": "NOT EXECUTED",
+  "newSessionFiles": [
+    "session-31-application-composition-framing-provenance.md",
+    "evidence/session-31/baseline.json",
+    "evidence/session-31/app-syntax-inventory.json",
+    "evidence/session-31/preservation-check.json"
+  ]
+}

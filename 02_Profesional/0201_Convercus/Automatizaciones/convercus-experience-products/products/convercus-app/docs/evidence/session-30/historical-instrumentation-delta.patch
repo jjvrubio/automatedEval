@@ -1,0 +1,283 @@
+--- H29/products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/explicit-subject-representation-h27.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+@@ -17,6 +18,9 @@
+ // projector; H28 separately verifies live subject-label and factual regression.
+ vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h27/mock-adapter"));
+ vi.mock("./vertical-evaluation", () => import("./test-fixtures/h27/vertical-evaluation"));
++
++// H30 historical replay only; current cumulative behavior is checked in H30.
++vi.mock("./artifacts", () => import("./test-fixtures/h29/artifacts"));
+ 
+ afterEach(() => vi.restoreAllMocks());
+ const root = resolve(process.cwd(), "../../..");
+@@ -52,9 +56,9 @@
+     for (const [path, digest] of Object.entries(baseline.files)) {
+       const source = baseline.allowedChangedFiles.includes(path) ? baseline.archiveByOriginalPath[path] : path;
+       if (source !== path) expect(historicalH26Path(path)).toBe(source);
+-      expect(hash(readFileSync(resolve(root, historicalH28Path(source)))), path).toBe(digest);
++      expect(hash(readFileSync(resolve(root, historicalH29Path(historicalH28Path(source))))), path).toBe(digest);
+     }
+-    const read = (path: string, old = false) => readFileSync(resolve(root, old ? historicalH26Path(prefix + path) : historicalH27Path(prefix + path)), "utf8");
++    const read = (path: string, old = false) => readFileSync(resolve(root, historicalH29Path(old ? historicalH26Path(prefix + path) : historicalH27Path(prefix + path))), "utf8");
+     const adapter = read("demo/mock-adapter.ts");
+     const oldAdapter = read("demo/mock-adapter.ts", true);
+     expect(adapter.slice(adapter.indexOf("  async executeAction"))).toBe(oldAdapter.slice(oldAdapter.indexOf("  async executeAction")));
+@@ -77,7 +81,7 @@
+     const guest = vi.spyOn(vertical, "projectGuestPerspective");
+     const observations: Record<string, unknown> = {
+       experiment: "H27 — Explicit Situated Subject Representation", baselineSha256: hash(baselineBytes),
+-      applicationSha256: Object.fromEntries(baseline.allowedChangedFiles.slice(0, 5).map((path) => [path, hash(readFileSync(resolve(root, historicalH27Path(path))))])),
++      applicationSha256: Object.fromEntries(baseline.allowedChangedFiles.slice(0, 5).map((path) => [path, hash(readFileSync(resolve(root, historicalH29Path(historicalH27Path(path)))))])),
+       harnessSha256: hash(readFileSync(resolve(process.cwd(), "src/demo-factory/explicit-subject-representation-h27.test.ts"))),
+       method: "Live resolved providers and public snapshots; original projector/evaluator spies; H26 full factual baseline; no browser or identity mapping",
+     };
+--- H29/products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/script-bound-activity-h25.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+@@ -51,20 +52,20 @@
+       files: Record<string, string>; allowedChangedFiles: string[]; archiveByOriginalPath: Record<string, string>;
+     };
+     for (const [path, digest] of Object.entries(baseline.files)) {
+-      if (!baseline.allowedChangedFiles.includes(path)) expect(hash(readFileSync(resolve(root, historicalH28Path(historicalH26Path(path))))), path).toBe(digest);
++      if (!baseline.allowedChangedFiles.includes(path)) expect(hash(readFileSync(resolve(root, historicalH29Path(historicalH28Path(historicalH26Path(path)))))), path).toBe(digest);
+       else {
+         expect(historicalH24Path(path)).toBe(baseline.archiveByOriginalPath[path]);
+-        expect(hash(readFileSync(resolve(root, baseline.archiveByOriginalPath[path]))), `archive: ${path}`).toBe(digest);
++        expect(hash(readFileSync(resolve(root, historicalH29Path(baseline.archiveByOriginalPath[path])))), `archive: ${path}`).toBe(digest);
+       }
+     }
+-    const oldAdapter = readFileSync(resolve(root, historicalH24Path(prefix + "demo/mock-adapter.ts")), "utf8");
+-    const adapter = readFileSync(resolve(root, historicalH26Path(prefix + "demo/mock-adapter.ts")), "utf8");
++    const oldAdapter = readFileSync(resolve(root, historicalH29Path(historicalH24Path(prefix + "demo/mock-adapter.ts"))), "utf8");
++    const adapter = readFileSync(resolve(root, historicalH29Path(historicalH26Path(prefix + "demo/mock-adapter.ts"))), "utf8");
+     const section = (source: string, start: string, end: string) => source.slice(source.indexOf(start), source.indexOf(end));
+     expect(section(adapter, "export function projectSnapshot", "export class MockDataAdapter")).toBe(section(oldAdapter, "export function projectSnapshot", "export class MockDataAdapter"));
+     expect(section(adapter, "  async executeAction", "      this.evidence.push")).toBe(section(oldAdapter, "  async executeAction", "      this.evidence.push"));
+     expect(adapter).not.toMatch(/jardín|fuente|mirador|patio|presenterLabel/);
+-    const contract = readFileSync(resolve(root, historicalH26Path(prefix + "demo-factory/contracts.ts")), "utf8");
+-    const oldContract = readFileSync(resolve(root, historicalH24Path(prefix + "demo-factory/contracts.ts")), "utf8");
++    const contract = readFileSync(resolve(root, historicalH29Path(historicalH26Path(prefix + "demo-factory/contracts.ts"))), "utf8");
++    const oldContract = readFileSync(resolve(root, historicalH29Path(historicalH24Path(prefix + "demo-factory/contracts.ts"))), "utf8");
+     expect(section(contract, "export interface EvidenceInput", "export type DemoModule")).toBe(section(oldContract, "export interface EvidenceInput", "export type DemoModule"));
+ 
+     const historical = JSON.parse(readFileSync(resolve(evidenceDir, "session-24/execution-trace-final.json"), "utf8")) as {
+@@ -79,7 +80,7 @@
+     const observations: Record<string, unknown> = {
+       experiment: "H25 — Script-Bound Situated Activity Representation",
+       baselineSha256: hash(baselineBytes),
+-      applicationSha256: Object.fromEntries(baseline.allowedChangedFiles.slice(0, 5).map((path) => [path, hash(readFileSync(resolve(root, historicalH28Path(historicalH26Path(path)))))])),
++      applicationSha256: Object.fromEntries(baseline.allowedChangedFiles.slice(0, 5).map((path) => [path, hash(readFileSync(resolve(root, historicalH29Path(historicalH28Path(historicalH26Path(path))))))])),
+       harnessSha256: hash(readFileSync(resolve(process.cwd(), "src/demo-factory/script-bound-activity-h25.test.ts"))),
+       method: "Live public providers, public snapshots, transparent original evaluator spies; archived H24 facts/snapshots; no browser",
+     };
+--- H29/products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/situated-activity-provenance-h24.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+@@ -39,7 +40,7 @@
+     // that historical capture, but do not freeze OS-managed directory metadata.
+     const preservedFiles = Object.entries(baseline.files).filter(([path]) => !path.endsWith("/.DS_Store"));
+     for (const [path, hash] of preservedFiles) {
+-      expect(sha256(readFileSync(resolve(root, historicalH28Path(historicalH26Path(historicalH24Path(path)))))), path).toBe(hash);
++      expect(sha256(readFileSync(resolve(root, historicalH29Path(historicalH28Path(historicalH26Path(historicalH24Path(path))))))), path).toBe(hash);
+     }
+     const historical = JSON.parse(readFileSync(resolve(evidenceDir, "session-23/execution-trace.json"), "utf8")) as {
+       positiveControls: Array<{ frames: Array<{
+--- H29/products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/operational-subject-status-h29.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+ import { resolve } from "node:path";
+@@ -9,6 +10,11 @@
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import * as vertical from "./vertical-evaluation";
+ import * as joint from "./cross-subject-evidence-admissibility";
++
++// H30 historical replay only; current cumulative behavior is checked in H30.
++vi.mock("./artifacts", () => import("./test-fixtures/h29/artifacts"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h29/mock-adapter"));
++vi.mock("./vertical-evaluation", () => import("./test-fixtures/h29/vertical-evaluation"));
+ 
+ afterEach(() => vi.restoreAllMocks());
+ const root = resolve(process.cwd(), "../../..");
+@@ -46,11 +52,11 @@
+     for (const [path, digest] of Object.entries(baseline.files)) {
+       const preserved = baseline.allowedChangedFiles.includes(path) ? baseline.archiveByOriginalPath[path] : path;
+       if (preserved !== path) expect(historicalH28Path(path)).toBe(preserved);
+-      expect(hash(readFileSync(resolve(root, preserved))), path).toBe(digest);
++      expect(hash(readFileSync(resolve(root, historicalH29Path(preserved)))), path).toBe(digest);
+     }
+     const path = prefix + "demo-factory/vertical-evaluation.ts";
+-    const old = readFileSync(resolve(root, historicalH28Path(path)), "utf8");
+-    const current = readFileSync(resolve(root, path), "utf8");
++    const old = readFileSync(resolve(root, historicalH29Path(historicalH28Path(path))), "utf8");
++    const current = readFileSync(resolve(root, historicalH29Path(path)), "utf8");
+     expect(current).toBe(old.replace(
+       '      status: subjectStates[id] === "enabled"\n        ? id === "subject-p1" ? "Alistada y habilitada" : "Habilitado por ti"\n        : id === "subject-p1" ? "Sin alistar" : "Sin habilitar",',
+       '      // H29: present operational state only; no actor, viewer or personal gender.\n      status: ({\n        "not-enlisted": "Estado: sin alistar",\n        "not-enabled": "Estado: sin habilitar",\n        enabled: "Estado: habilitado",\n      })[subjectStates[id]] ?? "",',
+--- H29/products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/experience-stable-selection-h22.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+ import { resolve } from "node:path";
+@@ -53,17 +54,17 @@
+           : path === "products/convercus-app/prototype/src/demo-factory/family-adventure-vertical.test.ts"
+             ? "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/family-adventure-vertical.test.ts.txt"
+             : historicalH24Path(path);
+-        expect(sha256(readFileSync(resolve(root, frozenPath))), path).toBe(hash);
++        expect(sha256(readFileSync(resolve(root, historicalH29Path(frozenPath)))), path).toBe(hash);
+       }
+     }
+     const adapterPath = "products/convercus-app/prototype/src/demo/mock-adapter.ts";
+     const executedAdapterPath = "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/mock-adapter.ts";
+-    const historicalSource = readFileSync(resolve(root, baseline.archive), "utf8");
++    const historicalSource = readFileSync(resolve(root, historicalH29Path(baseline.archive)), "utf8");
+     expect(sha256(historicalSource)).toBe(baseline.files[adapterPath]);
+     const expectedSource = historicalSource
+       .replace('scenario?.id === "family-adventure"', 'scenario?.experienceRef === "experience:family-adventure@1"')
+       .replace('this.scenario?.id === "family-adventure"', 'this.scenario?.experienceRef === "experience:family-adventure@1"');
+-    expect(readFileSync(resolve(root, executedAdapterPath), "utf8")).toBe(expectedSource);
++    expect(readFileSync(resolve(root, historicalH29Path(executedAdapterPath)), "utf8")).toBe(expectedSource);
+ 
+     const a = resolveDemo("hospitality-family-adventure");
+     const b = resolveDemo("hospitality-family-adventure-costa");
+@@ -199,7 +200,7 @@
+       recordedAt: new Date().toISOString(),
+       baselineFile: "baseline.json",
+       baselineSha256: sha256(readFileSync(resolve(process.cwd(), "../docs/evidence/session-22/baseline.json"))),
+-      adapterSha256: sha256(readFileSync(resolve(root, executedAdapterPath))),
++      adapterSha256: sha256(readFileSync(resolve(root, historicalH29Path(executedAdapterPath)))),
+       selector: 'scenario.experienceRef === "experience:family-adventure@1"',
+       runtimeDelta: "Two selector substitutions only; no threading or contract change",
+       L2a: "EXPERIENCE SELECTION VERIFIED IN A/B; NEGATIVE CONTROLS PASS",
+--- H29/products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/situated-guest-provenance-h26.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+@@ -33,7 +34,7 @@
+   it("reproduces the inspected missing subject/narrative relation without changing any application source", async () => {
+     const baselineBytes = readFileSync(resolve(evidenceDir, "session-26/baseline.json"));
+     const baseline = JSON.parse(baselineBytes.toString()) as { files: Record<string, string> };
+-    for (const [path, hash] of Object.entries(baseline.files)) expect(sha256(readFileSync(resolve(root, historicalH28Path(historicalH26Path(path))))), path).toBe(hash);
++    for (const [path, hash] of Object.entries(baseline.files)) expect(sha256(readFileSync(resolve(root, historicalH29Path(historicalH28Path(historicalH26Path(path)))))), path).toBe(hash);
+     const h25 = JSON.parse(readFileSync(resolve(evidenceDir, "session-25/execution-trace.json"), "utf8")) as {
+       verdict: string; controls: Array<{ original: { frames: Frame[]; reset: AppSnapshot } }>;
+     };
+--- H29/products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/situated-evaluation-context-h23.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { historicalH28Path } from "./test-fixtures/h28/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+@@ -38,20 +39,20 @@
+   it("checks effective A/B inputs, contradictions and independent authority; stops on first material falsifier", async () => {
+     for (const [path, hash] of Object.entries(baseline.files)) {
+       if (!baseline.allowedChangedFiles.includes(path)) {
+-        expect(sha256(readFileSync(resolve(root, historicalH28Path(historicalH26Path(historicalH24Path(path)))))), path).toBe(hash);
++        expect(sha256(readFileSync(resolve(root, historicalH29Path(historicalH28Path(historicalH26Path(historicalH24Path(path))))))), path).toBe(hash);
+       }
+     }
+-    const archived = (file: string) => readFileSync(resolve(root, prefix + "demo-factory/test-fixtures/h22/" + file), "utf8");
++    const archived = (file: string) => readFileSync(resolve(root, historicalH29Path(prefix + "demo-factory/test-fixtures/h22/" + file)), "utf8");
+     const oldAdapter = archived("mock-adapter.ts");
+     const oldVertical = archived("vertical-evaluation.ts");
+     expect(sha256(oldAdapter)).toBe(baseline.files[prefix + "demo/mock-adapter.ts"]);
+     expect(sha256(oldVertical)).toBe(baseline.files[prefix + "demo-factory/vertical-evaluation.ts"]);
+-    const currentAdapter = readFileSync(resolve(root, historicalH24Path(prefix + "demo/mock-adapter.ts")), "utf8");
++    const currentAdapter = readFileSync(resolve(root, historicalH29Path(historicalH24Path(prefix + "demo/mock-adapter.ts"))), "utf8");
+     expect(currentAdapter).toBe(oldAdapter.replace(
+       "evaluateVerticalEvidence(this.evidence);",
+       "evaluateVerticalEvidence(this.evidence, this.scenario.contexts);",
+     ));
+-    const currentVertical = readFileSync(resolve(root, historicalH26Path(prefix + "demo-factory/vertical-evaluation.ts")), "utf8");
++    const currentVertical = readFileSync(resolve(root, historicalH29Path(historicalH26Path(prefix + "demo-factory/vertical-evaluation.ts"))), "utf8");
+     const projections = (source: string) => source.slice(source.indexOf("export function projectGuestPerspective"))
+       .replace("export const verticalEvaluationContext = evaluationContext;", "").trim();
+     expect(projections(currentVertical)).toBe(projections(oldVertical));
+--- H29/products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/account-sourced-guest-h28.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+ import { resolve } from "node:path";
+@@ -12,6 +13,10 @@
+ import * as joint from "./cross-subject-evidence-admissibility";
+ 
+ vi.mock("./vertical-evaluation", () => import("./test-fixtures/h28/vertical-evaluation"));
++
++// H30 historical replay only; current cumulative behavior is checked in H30.
++vi.mock("./artifacts", () => import("./test-fixtures/h29/artifacts"));
++vi.mock("@/demo/mock-adapter", () => import("./test-fixtures/h29/mock-adapter"));
+ 
+ afterEach(() => vi.restoreAllMocks());
+ const root = resolve(process.cwd(), "../../..");
+@@ -42,9 +47,9 @@
+     for (const [path, digest] of Object.entries(baseline.files)) {
+       const preserved = baseline.allowedChangedFiles.includes(path) ? baseline.archiveByOriginalPath[path] : path;
+       if (preserved !== path) expect(historicalH27Path(path)).toBe(preserved);
+-      expect(hash(readFileSync(resolve(root, historicalH28Path(preserved)))), path).toBe(digest);
++      expect(hash(readFileSync(resolve(root, historicalH29Path(historicalH28Path(preserved))))), path).toBe(digest);
+     }
+-    const read = (path: string, old = false) => readFileSync(resolve(root, old ? historicalH27Path(prefix + path) : historicalH28Path(prefix + path)), "utf8");
++    const read = (path: string, old = false) => readFileSync(resolve(root, historicalH29Path(old ? historicalH27Path(prefix + path) : historicalH28Path(prefix + path))), "utf8");
+     const adapter = read("demo/mock-adapter.ts");
+     const oldAdapter = read("demo/mock-adapter.ts", true);
+     expect(adapter).toBe(oldAdapter.replace(
+@@ -73,7 +78,7 @@
+     const observations: Record<string, unknown> = {
+       experiment: "H28 — Account-Sourced Guest Presentation", baselineSha256: hash(baselineBytes),
+       applicationSha256: { adapter: hash(adapter), verticalEvaluationAndProjector: hash(currentVertical) },
+-      harnessSha256: hash(readFileSync(resolve(root, historicalH28Path(prefix + "demo-factory/account-sourced-guest-h28.test.ts")))),
++      harnessSha256: hash(readFileSync(resolve(root, historicalH29Path(historicalH28Path(prefix + "demo-factory/account-sourced-guest-h28.test.ts"))))),
+       method: "Live public snapshots and transparent original projector/evaluator spies; complete H27 factual baseline; no browser or semantic mapping",
+     };
+     const record = () => {
+--- H29/products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts
++++ H30/products/convercus-app/prototype/src/demo-factory/composition-boundary-h21.test.ts
+@@ -1,4 +1,5 @@
+ /// <reference types="node" />
++import { historicalH29Path } from "./test-fixtures/h29/source-path";
+ import { createHash } from "node:crypto";
+ import { readFileSync, writeFileSync } from "node:fs";
+ import { resolve } from "node:path";
+@@ -63,9 +64,9 @@
+         : path === "products/convercus-app/prototype/src/demo-factory/vertical-evaluation.ts"
+           ? "products/convercus-app/prototype/src/demo-factory/test-fixtures/h22/vertical-evaluation.ts"
+           : historicalH24Path(path);
+-      expect(sha256(readFileSync(resolve(root, frozenPath))), `Frozen file: ${path}`).toBe(hash);
++      expect(sha256(readFileSync(resolve(root, historicalH29Path(frozenPath)))), `Frozen file: ${path}`).toBe(hash);
+     }
+-    const bootstrap = readFileSync(resolve(root, historicalH24Path("products/convercus-app/prototype/src/demo-factory/bootstrap.ts")), "utf8");
++    const bootstrap = readFileSync(resolve(root, historicalH29Path(historicalH24Path("products/convercus-app/prototype/src/demo-factory/bootstrap.ts"))), "utf8");
+     const withoutBRegistration = bootstrap
+       .replace('import { costaFixture, hospitalityFixture, retailFixture } from "./fixtures";',
+         'import { hospitalityFixture, retailFixture } from "./fixtures";')

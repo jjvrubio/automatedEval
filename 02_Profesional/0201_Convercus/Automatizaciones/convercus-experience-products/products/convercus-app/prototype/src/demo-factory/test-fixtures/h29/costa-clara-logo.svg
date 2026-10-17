@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" role="img" aria-label="Costa Clara Resort">
+  <rect width="44" height="44" y="2" rx="12" fill="#173D59"/>
+  <path d="M8 29q7-10 14 0t14 0M8 35q7-10 14 0t14 0" fill="none" stroke="#EBC88A" stroke-width="3"/>
+  <circle cx="22" cy="15" r="5" fill="#EBC88A"/>
+  <text x="55" y="24" font-family="sans-serif" font-size="19" font-weight="700" fill="#173D59">Costa Clara</text>
+  <text x="56" y="39" font-family="sans-serif" font-size="10" letter-spacing="3" fill="#576C79">RESORT</text>
+</svg>

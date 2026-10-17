@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/private/tmp/node-v24.14.0-darwin-arm64/bin/node",
+    "node_modules/vite/bin/vite.js",
+    "build"
+  ],
+  "cwd": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-experience-products/products/convercus-app/prototype",
+  "exitCode": 0,
+  "log": "build.log"
+}
