@@ -1,0 +1,17 @@
+python3 move_sent_messages.py \
+  --app mail \
+  --account "iCloud" \
+  --source "Enviado" \
+  --dest "Enviado/Archivo" \
+  --subject-contains "factura" \
+  --dry-run
+  
+  ---
+  
+python3 move_sent_messages.py \
+  --app mail \
+  --account "convercus" \
+  --source "Elementos enviados" \
+  --dest "Por Apollo" \
+  --subject-contains "Convercus e o seu" \
+  --dry-run
