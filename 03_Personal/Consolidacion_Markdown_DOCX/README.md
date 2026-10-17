@@ -63,8 +63,7 @@ python md2docx.py profiles
 - `research_article`: articulos de investigacion, ensayos largos y piezas con
   citas. Activa `citeproc`, APA 7 e indice de profundidad 3.
 - `commercial_proposal`: propuestas comerciales y ofertas. Usa indice corto,
-  metadatos de propuesta, marca Convercus y la plantilla especifica
-  `assets/templates/plantilla_oferta.docx`.
+  metadatos de propuesta y marca Convercus.
 - `teaching_material`: material docente, lecciones y temas. Activa portada,
   `citeproc`, APA 7 e indice de profundidad 3.
 
@@ -75,55 +74,8 @@ Los tres perfiles heredan de `base_docx`, que define:
 - filtro `filters/obsidian-docx.lua` para callouts, resaltados e imagenes
   `![[...]]`;
 - filtro comun de indice `filters/docprep.lua`;
-- plantilla Word predeterminada `assets/templates/plantilla_pulse.docx`. El
-  perfil `commercial_proposal` la sustituye por `plantilla_oferta.docx`.
-
-### Portada de propuestas comerciales
-
-`commercial_proposal` conserva y completa la portada nativa de
-`plantilla_oferta.docx`. El bloque inicial del Markdown debe seguir esta
-estructura:
-
-```markdown
----
-title: "Titulo o nombre del cliente/proyecto"
-date: "2026-07-15"
----
-
-# Subtitulo de la propuesta
-## Linea secundaria o caso de uso
-
-> **Cliente final:** Ejemplo
-> **Fecha:** 13 de julio de 2026
-> **Version:** v0.2
-
----
-```
-
-`title` es la fuente canónica del título y rellena la portada. El primer `#`
-rellena el subtítulo y el primer `##`, junto con las líneas de control
-documental citadas con `>`, aparece debajo. El filtro retira este bloque del
-cuerpo para evitar duplicados. El año se obtiene de `date` en el frontmatter.
-Como compatibilidad, si falta `title`, el segundo `#` se usa como título.
-
-### Portada de artículos Convercus
-
-`docx_convercus_article` inserta la portada nativa de
-`assets/templates/plantilla_pulse.docx` y rellena sus controles de título,
-subtítulo, autor y año desde el frontmatter:
-
-```yaml
----
-title: "Título del artículo"
-subtitle: "Subtítulo del artículo"
-author: "Nombre o marca"
-date: "2026-07-15"
----
-```
-
-Las claves inglesas son las canónicas. Para mantener compatibles los
-documentos existentes también se aceptan `titulo`, `subtitulo`, `autor` y
-`fecha`. La portada termina con un salto de página y precede al índice.
+- plantilla Word comun
+  `assets/templates/plantilla_pulse.docx`.
 
 ## Compatibilidad
 
@@ -154,11 +106,6 @@ resource_path:
 ---
 ```
 
-El campo `title` se usa como título visible del artículo, oferta, material
-docente o documento general. En propuestas comerciales también alimenta el
-control de título de la portada Word y la propiedad interna de título del
-DOCX.
-
 Las citas ZotLit/Zotero deben quedar en sintaxis Pandoc, por ejemplo
 `[@clave2026]` o `[@clave2026, p. 42]`. Los perfiles APA 7 activan
 `--citeproc` y usan `assets/csl/apa-7th-edition.csl`.
@@ -168,75 +115,9 @@ Las citas ZotLit/Zotero deben quedar en sintaxis Pandoc, por ejemplo
 El filtro `filters/obsidian-docx.lua` normaliza:
 
 - Resaltados `==texto==` hacia resaltado nativo de Word.
-- Callouts `>[!note]`, `>[!warning]`, etc. hacia tablas Word de una celda,
-  con fondo suave, borde lateral por tipo e iconos gráficos de `SF Symbols`.
+- Callouts `>[!note]`, `>[!warning]`, etc. hacia estilos Word `Callout ...`.
 - Admonitions en bloques `ad-note`, `ad-warning`, etc. hacia el mismo tratamiento que los callouts.
 - Embeds de imagen Obsidian `![[imagen.png]]` hacia imagenes DOCX, usando `resource_path`.
-
-## Saltos de pagina y de seccion
-
-El filtro `filters/page-section-breaks.lua` interpreta las lineas horizontales
-Markdown como instrucciones de maquetacion para Word:
-
-```markdown
----
-```
-
-Una linea genera un salto de pagina normal.
-
-```markdown
----
----
-```
-
-Dos lineas consecutivas generan un salto de seccion de tipo **Pagina
-siguiente**. Puede haber una linea en blanco entre ambas: Pandoc sigue
-considerandolas consecutivas mientras no exista otro contenido. Los
-delimitadores `---` del frontmatter YAML no se transforman.
-
-Además, el postprocesado inserta automáticamente un salto de sección de tipo
-**Página siguiente** después de cada campo Word de tabla de contenidos
-(`TOC`), índice de ilustraciones, índice de tablas o índice de términos
-(`INDEX`). Si el documento ya contiene ese salto, no se duplica.
-
-## Control documental opcional
-
-Para añadir una última página con el control del documento, actívala en el
-frontmatter:
-
-```yaml
----
-title: "Título del documento"
-version: "v1.0"
-status: final
-date: "2026-07-15"
-author: "Nombre o marca"
-document_control: true
----
-```
-
-La página se genera cuando el valor es `true` o `activo`. Si la clave no existe
-o vale `false`, no se genera. También se acepta el alias `control_documento`.
-La tabla incorpora únicamente los campos presentes, y en este orden: título,
-subtítulo, idioma, fecha, versión, estado y tags. Se aceptan sus nombres en
-inglés y español (`title`/`titulo`, `subtitle`/`subtitulo`,
-`language`/`idioma`, `date`/`fecha`, `status`/`estado` y
-`tags`/`etiquetas`).
-
-La modalidad avanzada permite sustituir los campos estándar:
-
-```yaml
-document_control:
-  enabled: true
-  heading: "Ficha de publicación"
-  include_standard_fields: false
-  fields:
-    Propietario: "Equipo editorial"
-    Canal: "Web"
-```
-
-También se aceptan `generar`, `titulo_pagina`, `incluir_campos_estandar` y
-`campos` como aliases españoles dentro del bloque.
 
 El flujo canonico usa `plantilla_pulse.docx`. Si necesitas probar otra plantilla
 sin tocar perfiles:
