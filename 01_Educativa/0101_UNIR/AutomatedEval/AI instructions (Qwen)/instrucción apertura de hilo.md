@@ -1,0 +1,2 @@
+Aplica la Micro-Instrucción Maestra del proyecto al TFE adjunto: [NOMBRE ESTUDIANTE / TÍTULO]. 
+Ejecuta la auditoría de 4 secciones extrayendo la lógica de los archivos de conocimiento (Rúbrica Unificada, Manual de Reparación, Checklist de Barreras y MUDPE). No seas laxo: detecta rupturas epistémicas, incongruencias objetivos vs conclusiones, insuficiencia justificativa, auto-citas y omisión del kit canónico.
