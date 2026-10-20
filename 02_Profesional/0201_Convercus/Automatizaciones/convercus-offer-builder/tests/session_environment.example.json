@@ -1,0 +1,9 @@
+{
+  "environment": {
+    "type": "self_hosted",
+    "workspace_directory": "/Users/juanjo/Documents/Personal/JJVR/automatizaciones",
+    "capability_directories": [
+      "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Constructor de ofertas Convercus"
+  short_description: "Prepara y revisa ofertas Convercus"
+  brand_color: "#165D66"
+  default_prompt: "Usa $convercus-offer-builder para preparar una oferta de Convercus con fuentes e importes validados."
+policy:
+  allow_implicit_invocation: true

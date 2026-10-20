@@ -1,0 +1,21 @@
+converter:
+  root: "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/03_Personal/Consolidacion_Markdown_DOCX"
+  command: "python3 md2docx.py"
+  default_profile: "commercial_proposal"
+  convercus_profile: "docx_convercus_offer"
+  recommended_profile: "commercial_proposal"
+  reference_doc: "assets/templates/plantilla_oferta.docx"
+  note: "Use the converter in place. Do not copy, fork, or modify it from this skill unless the user explicitly asks."
+
+workspace:
+  root: "/Users/juanjo/Documents/Personal/JJVR/automatizaciones"
+  skill_root: "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-offer-builder"
+  generated_dir: "/Users/juanjo/Documents/Personal/JJVR/automatizaciones/02_Profesional/0201_Convercus/Automatizaciones/convercus-offer-builder/tests/output"
+
+trial:
+  account: "Compactor"
+  source_dir: "/Users/juanjo/Library/CloudStorage/OneDrive-KALEIDAGEOGRAFIAS&MERCADOSSL/The Octavius/Convercus/Accounts/Compactor/ensayo habilidad"
+  documents:
+    - "Compactor_Ensayo_v0_1.docx"
+    - "Compactor_Informe_Ensayo_v0_1.md"
+  rule: "Treat Compactor only as a trial/reference account. Do not reuse its data, prices, volumes, technologies, or conditions for other accounts."
