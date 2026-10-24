@@ -29,8 +29,7 @@ Sistema automatizado para evaluación académica de TFMs y gestión de contenido
 
 ### Gestión de entornos
 - **`venv_arm64/`**: Python 3.13 para Apple Silicon (`/opt/homebrew/opt/python@3.13`)
-- **`venv_intel/`**: Python para arquitectura Intel
-- **Razón**: Compatibilidades diferentes de `pyobjc` y dependencias nativas
+- Solo se mantiene el entorno Apple Silicon (el entorno Intel se eliminó)
 
 ## Convenciones críticas
 
@@ -74,7 +73,7 @@ Trabajo: {descripcion_tfm}
 ### Gestión de dependencias
 - Hay 3 archivos de requirements:
   - `requirements.txt`: Dependencias generales
-  - `modulos-arm.txt` / `modulos-intel.txt`: Específicos por arquitectura
+  - `modulos-arm.txt`: Específico para Apple Silicon
   - `01_Educativa/0101_UNIR/AutomatedEval/APA Report/requirements_referencias.txt`: Módulo independiente
 
 ## Tareas de desarrollo comunes
@@ -85,7 +84,7 @@ Trabajo: {descripcion_tfm}
 arch  # "arm64" o "i386"
 
 # Activar
-source venv_arm64/bin/activate  # o venv_intel
+source venv_arm64/bin/activate
 ```
 
 ### Ejecutar evaluación de TFM
