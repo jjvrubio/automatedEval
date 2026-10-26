@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0-draft",
+  "status": "inventory_only_not_enforced",
+  "root": "~/Library/Mobile Documents/iCloud~md~obsidian/Documents",
+  "default_policy": {"access": "R0", "writes_enabled": false, "symlinks": "deny", "nested_vaults": "exclude", "private_config": "deny"},
+  "vaults": [
+    {"id": "documents-root", "relative_path": ".", "access": "R1_candidate"},
+    {"id": "clippings", "relative_path": "Clippings", "access": "R1_candidate"},
+    {"id": "artificial-intelligence", "relative_path": "Artificial Intelligence", "access": "R1_candidate"},
+    {"id": "metis-vision", "relative_path": "METIS™ Vision® Framework", "access": "R1_candidate"},
+    {"id": "negocios-digitales", "relative_path": "Negocios Digitales", "access": "R1_candidate"},
+    {"id": "scaling-up", "relative_path": "Negocios Digitales/MMAA MODAM/Scaling Up", "access": "R1_candidate"},
+    {"id": "miu-liderazgo", "relative_path": "Negocios Digitales/MIU - Certificado en Liderazgo", "access": "R1_candidate"},
+    {"id": "cajon", "relative_path": "cajón", "access": "R1_candidate"},
+    {"id": "invertir", "relative_path": "invertir", "access": "R1_candidate"},
+    {"id": "guias-tfm", "relative_path": "Guías para TFM", "access": "R1_candidate"},
+    {"id": "osint", "relative_path": "OSINT", "access": "R1_candidate"},
+    {"id": "dataroom-jacquard", "relative_path": "Dataroom Jacquard- OSINT + MEDDIC", "access": "R1_candidate"},
+    {"id": "proposal-building", "relative_path": "Proposal building model", "access": "R1_candidate"},
+    {"id": "telar-tes", "relative_path": "Telar Editorial Situado TES", "access": "R1_candidate"},
+    {"id": "martech", "relative_path": "Martech", "access": "R1_candidate"},
+    {"id": "cookieless", "relative_path": "Martech/Cookieless", "access": "R1_candidate"}
+  ]
+}
