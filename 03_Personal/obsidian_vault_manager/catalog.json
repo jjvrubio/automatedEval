@@ -41,13 +41,8 @@
       "access": "R1_candidate"
     },
     {
-      "id": "scaling-up",
-      "relative_path": "Negocios Digitales/MMAA MODAM/Scaling Up",
-      "access": "R1_candidate"
-    },
-    {
       "id": "miu-liderazgo",
-      "relative_path": "Negocios Digitales/MIU - Certificado en Liderazgo",
+      "relative_path": "MIU - Certificado en Liderazgo",
       "access": "R1_candidate"
     },
     {
@@ -91,8 +86,8 @@
       "access": "R1_candidate"
     },
     {
-      "id": "cookieless",
-      "relative_path": "Martech/Cookieless",
+      "id": "mmaa-modam",
+      "relative_path": "MMAA MODAM",
       "access": "R1_candidate"
     }
   ]
