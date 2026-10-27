@@ -14,6 +14,10 @@ Check that every amount, discount, capacity, term, and scenario has a current so
 - Taxes and pass-through costs.
 - Optional modules and exclusions.
 
+For implementation services, keep the internal effort estimate in hours separate from commercial amounts. Map each service activity to the applicable Pricing Calculator category and verify the actual scope of any fixed module-enablement line before treating work as covered. Do not derive hours from a fixed fee, hourly rate, or day rate, and do not count the same task in both a fixed line and an hourly service or more than one service activity.
+
+For Iberia, the user-provided commercial reference is €1,200 fixed enablement per module, €100/hour for variable services, and an 8-hour day (€800). These figures are pricing references only, not effort benchmarks. Apply them only to the matching Iberia scope; keep effort estimates evidence-based and independent. If the current authorized calculator inputs or opportunity terms conflict with these references, flag the discrepancy for confirmation rather than changing calculator formulas or silently choosing a value.
+
 Do not calculate ROI unless the opportunity provides the necessary margin contribution, cost basis, incentives, and scenario assumptions. Do not infer missing values from Compactor or another account.
 
 ## Approval Separation

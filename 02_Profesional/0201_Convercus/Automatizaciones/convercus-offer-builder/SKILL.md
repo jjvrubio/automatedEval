@@ -12,6 +12,7 @@ Start by locating the opportunity sources. Distinguish confirmed facts, assumpti
 ## Operating Boundaries
 
 - Do not invent amounts, discounts, capacities, deadlines, scope, legal terms, assumptions, or commercial conditions.
+- For pre-contractual effort, produce evidence-linked analyst estimates in hours; distinguish them from validated commercial prices and never derive hours from prices or historical customer figures.
 - Use only final pricing or ROI outputs that the user identifies as validated for the current opportunity.
 - Keep three decisions separate: Word generation succeeded, documentary review passed, and commercial approval was granted.
 - Do not modify original client/reference documents. Work on copies inside the workspace or another user-approved output folder.
@@ -23,10 +24,11 @@ Start by locating the opportunity sources. Distinguish confirmed facts, assumpti
 
 1. Read `assets/convercus_offer_builder.yaml` and confirm paths exist.
 2. For offer preparation, read `references/source-control.md` and build a source inventory with owner, date, status, and what each source can prove.
-3. For economic content, read `references/commercial-review.md`. Stop or ask for missing validated pricing outputs instead of filling gaps.
-4. For Word generation, read `references/word-publication.md`, then use the configured converter root and the `commercial_proposal` profile unless the user explicitly authorizes another profile. Prefer passing account resource paths at invocation time or via copied working files rather than relying on account-specific profiles.
-5. For Compactor trial work, read `references/compactor-trial.md`. Use the trial documents only to inspect behavior and structure.
-6. Before reporting completion, state separately: generation result, documentary review status, commercial approval status, checks run, and unresolved blockers.
+3. If the scope includes implementation, configuration, migration, or integrations, read `references/functional-effort-estimation.md` and prepare its internal effort estimate before pricing inputs. Keep the estimate separate from the client-facing proposal unless the user asks otherwise.
+4. For economic content, read `references/commercial-review.md`. Stop or ask for missing validated pricing outputs instead of filling gaps; technical uncertainty may be recorded as a conditional risk without inventing a reserve.
+5. For Word generation, read `references/word-publication.md`, then use the configured converter root and the `commercial_proposal` profile unless the user explicitly authorizes another profile. Prefer passing account resource paths at invocation time or via copied working files rather than relying on account-specific profiles.
+6. For Compactor trial work, read `references/compactor-trial.md`. Use the trial documents only to inspect behavior and structure.
+7. Before reporting completion, state separately: generation result, documentary review status, commercial approval status, checks run, and unresolved blockers.
 
 ## Language
 
